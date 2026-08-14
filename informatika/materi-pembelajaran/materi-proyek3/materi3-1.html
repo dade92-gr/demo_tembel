@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi 3.1: Hak Kekayaan Intelektual & Jejak Digital - Informatika Kelas X</title>
+    <link rel="stylesheet" href="../../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --informatika-primary: #3498db;
+            --informatika-secondary: #2980b9;
+            --informatika-light: #ebf5fb;
+            --informatika-dark: #21618c;
+            --informatika-semester1: #3498db;
+            --success: #27ae60;
+            --warning: #e74c3c;
+            --info: #f39c12;
+            --purple: #9b59b6;
+            --copyright: #e74c3c;
+            --cc: #2ecc71;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+        
+        .materi-container {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+        
+        .materi-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 30px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(52, 152, 219, 0.15);
+            border-left: 8px solid var(--informatika-semester1);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        .materi-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(52, 152, 219, 0.1) 0%, transparent 70%);
+            z-index: 0;
+        }
+        
+        .materi-card > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .materi-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 3px solid var(--informatika-light);
+            flex-wrap: wrap;
+        }
+        
+        .materi-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--copyright), var(--informatika-primary));
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+        }
+        
+        .materi-title-wrapper {
+            flex: 1;
+        }
+        
+        .materi-title-wrapper h1 {
+            color: var(--informatika-dark);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .materi-subtitle {
+            color: var(--informatika-primary);
+            font-size: 1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .materi-badge {
+            background: var(--informatika-light);
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: var(--informatika-dark);
+        }
+        
+        .materi-badge i {
+            margin-right: 4px;
+        }
+        
+        .tujuan-card {
+            background: linear-gradient(135deg, var(--informatika-light), white);
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(52, 152, 219, 0.2);
+        }
+        
+        .tujuan-card h3 {
+            color: var(--informatika-dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .tujuan-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 0.8rem;
+        }
+        
+        .tujuan-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            padding: 0.8rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .tujuan-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .tujuan-item i {
+            color: var(--success);
+        }
+        
+        .materi-content {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid rgba(52, 152, 219, 0.1);
+        }
+        
+        .materi-content h2 {
+            color: var(--informatika-dark);
+            font-size: 1.8rem;
+            margin: 1.5rem 0 1rem 0;
+            border-bottom: 2px solid var(--informatika-light);
+            padding-bottom: 0.5rem;
+        }
+        
+        .materi-content h2:first-of-type {
+            margin-top: 0;
+        }
+        
+        .materi-content h3 {
+            color: var(--informatika-dark);
+            font-size: 1.3rem;
+            margin: 1.2rem 0 0.8rem 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .materi-content h3 i {
+            color: var(--informatika-primary);
+        }
+        
+        .materi-content p {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        
+        .materi-content ul, .materi-content ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .materi-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .quote-box {
+            margin: 1.5rem 0;
+            padding: 1rem 1.5rem;
+            background: var(--informatika-light);
+            border-left: 4px solid var(--informatika-primary);
+            border-radius: 0 12px 12px 0;
+        }
+        
+        .note-box {
+            background: #fff3e0;
+            border-left: 4px solid var(--info);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid var(--informatika-primary);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .warning-box {
+            background: #fee2e2;
+            border-left: 4px solid var(--warning);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .success-box {
+            background: #d4edda;
+            border-left: 4px solid var(--success);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .haki-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .haki-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #e9ecef;
+        }
+        
+        .haki-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .haki-card.active {
+            border: 2px solid var(--informatika-primary);
+            background: var(--informatika-light);
+        }
+        
+        .haki-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .haki-title {
+            font-weight: bold;
+            color: var(--informatika-dark);
+        }
+        
+        .haki-desc {
+            font-size: 0.8rem;
+            color: #6c757d;
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid #e9ecef;
+            display: none;
+        }
+        
+        .haki-card.active .haki-desc {
+            display: block;
+            color: var(--informatika-dark);
+        }
+        
+        .pelanggaran-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .pelanggaran-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #e9ecef;
+        }
+        
+        .pelanggaran-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .pelanggaran-card.active {
+            border: 2px solid var(--warning);
+            background: #fee2e2;
+        }
+        
+        .pelanggaran-title {
+            font-weight: bold;
+            color: var(--warning);
+            margin-bottom: 0.5rem;
+        }
+        
+        .pelanggaran-desc {
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid #e9ecef;
+            display: none;
+        }
+        
+        .pelanggaran-card.active .pelanggaran-desc {
+            display: block;
+        }
+        
+        .cc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .cc-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #e9ecef;
+        }
+        
+        .cc-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .cc-card.active {
+            border: 2px solid var(--cc);
+            background: #d4edda;
+        }
+        
+        .cc-simbol {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--cc);
+        }
+        
+        .cc-nama {
+            font-weight: bold;
+            margin: 0.3rem 0;
+        }
+        
+        .cc-desc {
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid #e9ecef;
+            display: none;
+        }
+        
+        .cc-card.active .cc-desc {
+            display: block;
+        }
+        
+        .situs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .situs-card {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: white;
+            border-radius: 12px;
+            padding: 0.8rem;
+            transition: all 0.3s ease;
+            border: 1px solid #e9ecef;
+        }
+        
+        .situs-card:hover {
+            transform: translateX(5px);
+            background: var(--informatika-light);
+        }
+        
+        .situs-icon {
+            font-size: 1.5rem;
+        }
+        
+        .situs-name {
+            font-weight: bold;
+        }
+        
+        .situs-url {
+            font-family: monospace;
+            font-size: 0.8rem;
+            color: var(--informatika-primary);
+        }
+        
+        /* Digital Footprint */
+        .footprint-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .footprint-card {
+            border-radius: 16px;
+            padding: 1.2rem;
+        }
+        
+        .footprint-card.aktif {
+            background: #d4edda;
+            border: 2px solid var(--success);
+        }
+        
+        .footprint-card.pasif {
+            background: #fee2e2;
+            border: 2px solid var(--warning);
+        }
+        
+        .footprint-card h4 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footprint-card ul {
+            margin-left: 1.2rem;
+        }
+        
+        .materi-navigation {
+            display: flex;
+            gap: 1rem;
+            justify-content: space-between;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn.primary {
+            background: linear-gradient(135deg, var(--informatika-primary), var(--informatika-secondary));
+            color: white;
+        }
+        
+        .nav-btn.primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .nav-btn.secondary {
+            background: white;
+            color: var(--informatika-dark);
+            border: 2px solid var(--informatika-light);
+        }
+        
+        .nav-btn.secondary:hover {
+            background: var(--informatika-light);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .materi-container { padding: 1rem; }
+            .materi-card { padding: 1.5rem; }
+            .materi-header { flex-direction: column; text-align: center; }
+            .footprint-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="../../../assets/images/logo.png" alt="Logo Sekolah">
+                    <h1>INFORMATIKA - MATERI PEMBELAJARAN</h1>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="../../../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="../../index-informatika.html" class="nav-link"><i class="fas fa-laptop-code"></i> Beranda Informatika</a></li>
+                    <li><a href="../../aktivitas-pembelajaran/index-aktivitas-informatika.html" class="nav-link"><i class="fas fa-tasks"></i> Daftar Aktivitas</a></li>
+                    <li><a href="../index-materi-informatika.html" class="nav-link active"><i class="fas fa-book-open"></i> Daftar Materi</a></li>
+                    <li><a href="../../penilaian/index-penilaian-informatika.html" class="nav-link"><i class="fas fa-chart-line"></i> Penilaian</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="materi-container">
+        <div class="materi-card">
+            <!-- Header -->
+            <div class="materi-header">
+                <div class="materi-icon">
+                    <i class="fas fa-copyright"></i>
+                </div>
+                <div class="materi-title-wrapper">
+                    <h1>Hak Kekayaan Intelektual &amp; Jejak Digital</h1>
+                    <div class="materi-subtitle">
+                        <i class="fas fa-circle"></i>
+                        <span>Proyek 3: Etika Digital - Pertemuan 1</span>
+                        <span class="materi-badge"><i class="fas fa-clock"></i> 4 JP</span>
+                        <span class="materi-badge"><i class="fas fa-tag"></i> TP 2.7</span>
+                        <span class="materi-badge"><i class="fas fa-globe"></i> Online</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tujuan Pembelajaran -->
+            <div class="tujuan-card">
+                <h3><i class="fas fa-bullseye"></i> 🎯 Tujuan Pembelajaran</h3>
+                <div class="tujuan-list">
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Memahami pengertian dan jenis-jenis Hak Kekayaan Intelektual (HAKI)</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Menjelaskan konsep hak cipta (copyright) dan perlindungannya</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Mengenal berbagai jenis lisensi Creative Commons</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Memahami konsep jejak digital dan dampaknya</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Menunjukkan sikap menghargai hak kekayaan intelektual dalam dunia digital</div>
+                </div>
+            </div>
+
+            <!-- Konten Materi -->
+            <div class="materi-content">
+                <h2>A. Apa Itu Hak Kekayaan Intelektual (HAKI)?</h2>
+                <p><strong>Hak Kekayaan Intelektual (HAKI)</strong> adalah hak eksklusif yang diberikan kepada seseorang atau kelompok atas hasil karya cipta, inovasi, atau penemuan yang dihasilkan. HAKI melindungi karya seseorang agar tidak digunakan, diambil, atau disalahgunakan oleh pihak lain tanpa izin.</p>
+                
+                <div class="quote-box">
+                    <i class="fas fa-quote-left"></i> <strong>WIPO (World Intellectual Property Organization):</strong> "Hak kekayaan intelektual adalah hak yang timbul dari hasil olah pikir manusia yang menghasilkan suatu produk atau proses yang berguna untuk masyarakat."
+                </div>
+                
+                <div class="info-box">
+                    <i class="fas fa-lightbulb"></i> <strong>Karya yang Dilindungi HAKI:</strong><br>
+                    📝 Tulisan &nbsp;|&nbsp; 🎵 Lagu &nbsp;|&nbsp; 🎨 Lukisan &nbsp;|&nbsp; 📸 Foto &nbsp;|&nbsp; 💻 Program &nbsp;|&nbsp; 🎬 Film &nbsp;|&nbsp; 📚 Buku &nbsp;|&nbsp; 🏛️ Penemuan<br>
+                    <strong>→ Jangan diambil tanpa izin!</strong>
+                </div>
+
+                <h2>B. Jenis-Jenis Hak Kekayaan Intelektual</h2>
+                <p><strong>Klik pada setiap jenis HAKI</strong> untuk melihat penjelasan detail:</p>
+                
+                <div class="haki-grid" id="hakiGrid">
+                    <div class="haki-card" data-haki="copyright">
+                        <div class="haki-icon"><i class="fas fa-copyright"></i></div>
+                        <div class="haki-title">Hak Cipta</div>
+                        <div class="haki-desc">Melindungi karya seni, sastra, ilmu pengetahuan. Contoh: buku, lagu, lukisan, program komputer. Masa berlaku: sepanjang hidup pencipta + 70 tahun.</div>
+                    </div>
+                    <div class="haki-card" data-haki="paten">
+                        <div class="haki-icon"><i class="fas fa-microchip"></i></div>
+                        <div class="haki-title">Hak Paten</div>
+                        <div class="haki-desc">Melindungi invensi di bidang teknologi. Contoh: alat, mesin, proses produksi. Masa berlaku: 20 tahun.</div>
+                    </div>
+                    <div class="haki-card" data-haki="merek">
+                        <div class="haki-icon"><i class="fas fa-trademark"></i></div>
+                        <div class="haki-title">Hak Merek</div>
+                        <div class="haki-desc">Melindungi tanda pengenal barang/jasa. Contoh: logo, nama brand. Masa berlaku: 10 tahun (bisa diperpanjang).</div>
+                    </div>
+                    <div class="haki-card" data-haki="desain">
+                        <div class="haki-icon"><i class="fas fa-paintbrush"></i></div>
+                        <div class="haki-title">Desain Industri</div>
+                        <div class="haki-desc">Melindungi bentuk, konfigurasi, komposisi garis/warna. Contoh: desain produk, kemasan. Masa berlaku: 10 tahun.</div>
+                    </div>
+                    <div class="haki-card" data-haki="rahasia">
+                        <div class="haki-icon"><i class="fas fa-lock"></i></div>
+                        <div class="haki-title">Rahasia Dagang</div>
+                        <div class="haki-desc">Melindungi informasi bisnis yang tidak diketahui umum. Contoh: resep rahasia, formula. Masa berlaku: tidak terbatas.</div>
+                    </div>
+                </div>
+
+                <h2>C. Pelanggaran Hak Cipta di Dunia Digital</h2>
+                <p><strong>Klik pada setiap jenis pelanggaran</strong> untuk melihat penjelasan detail:</p>
+                
+                <div class="pelanggaran-grid" id="pelanggaranGrid">
+                    <div class="pelanggaran-card" data-pelanggaran="plagiarisme">
+                        <div class="pelanggaran-title">📝 Plagiarisme</div>
+                        <div class="pelanggaran-desc">Tindakan mengambil karya orang lain dan mengakuinya sebagai karya sendiri. Jenis: kata demi kata, parafrase, mozek, self-plagiarism.</div>
+                    </div>
+                    <div class="pelanggaran-card" data-pelanggaran="pembajakan">
+                        <div class="pelanggaran-title">💿 Pembajakan</div>
+                        <div class="pelanggaran-desc">Penggandaan dan penyebaran karya cipta tanpa izin. Contoh: software bajakan, film bajakan, musik bajakan, buku bajakan.</div>
+                    </div>
+                    <div class="pelanggaran-card" data-pelanggaran="tanpaizin">
+                        <div class="pelanggaran-title">🚫 Penggunaan Tanpa Izin</div>
+                        <div class="pelanggaran-desc">Menggunakan karya orang lain tanpa izin. Contoh: mengambil foto dari Google, menggunakan lagu tanpa lisensi, menggunakan logo tanpa izin.</div>
+                    </div>
+                </div>
+
+                <h2>D. Lisensi Creative Commons (CC)</h2>
+                <p><strong>Klik pada setiap lisensi CC</strong> untuk melihat penjelasan detail:</p>
+                
+                <div class="cc-grid" id="ccGrid">
+                    <div class="cc-card" data-cc="by">
+                        <div class="cc-simbol">CC BY</div>
+                        <div class="cc-nama">Atribusi</div>
+                        <div class="cc-desc">Pengguna wajib mencantumkan nama pencipta. Boleh digunakan untuk komersial, boleh diubah, lisensi tidak harus sama.</div>
+                    </div>
+                    <div class="cc-card" data-cc="bysa">
+                        <div class="cc-simbol">CC BY-SA</div>
+                        <div class="cc-nama">Atribusi-Berbagi Serupa</div>
+                        <div class="cc-desc">Pengguna wajib mencantumkan nama pencipta dan membagikan dengan lisensi yang sama. Boleh untuk komersial, boleh diubah.</div>
+                    </div>
+                    <div class="cc-card" data-cc="bync">
+                        <div class="cc-simbol">CC BY-NC</div>
+                        <div class="cc-nama">Atribusi-NonKomersial</div>
+                        <div class="cc-desc">Boleh digunakan, tapi tidak untuk tujuan komersial. Wajib mencantumkan nama pencipta, boleh diubah.</div>
+                    </div>
+                    <div class="cc-card" data-cc="bynd">
+                        <div class="cc-simbol">CC BY-ND</div>
+                        <div class="cc-nama">Atribusi-Tanpa Turunan</div>
+                        <div class="cc-desc">Boleh digunakan untuk komersial, wajib mencantumkan nama pencipta, TIDAK boleh diubah.</div>
+                    </div>
+                    <div class="cc-card" data-cc="byncsa">
+                        <div class="cc-simbol">CC BY-NC-SA</div>
+                        <div class="cc-nama">Atribusi-NonKomersial-Berbagi Serupa</div>
+                        <div class="cc-desc">Tidak untuk komersial, wajib atribusi, harus share dengan lisensi sama, boleh diubah.</div>
+                    </div>
+                    <div class="cc-card" data-cc="byncnd">
+                        <div class="cc-simbol">CC BY-NC-ND</div>
+                        <div class="cc-nama">Atribusi-NonKomersial-Tanpa Turunan</div>
+                        <div class="cc-desc">Tidak untuk komersial, wajib atribusi, TIDAK boleh diubah. Paling ketat.</div>
+                    </div>
+                    <div class="cc-card" data-cc="cc0">
+                        <div class="cc-simbol">CC0</div>
+                        <div class="cc-nama">Domain Publik</div>
+                        <div class="cc-desc">Pencipta melepaskan semua hak. Bebas digunakan untuk apa pun, tanpa atribusi.</div>
+                    </div>
+                </div>
+
+                <h2>E. Cara Menghargai Hak Cipta di Dunia Digital</h2>
+                <div class="success-box">
+                    <i class="fas fa-check-circle"></i> <strong>Etika Digital yang Harus Diterapkan:</strong><br>
+                    ✔ <strong>Cantumkan Sumber</strong> - Setiap kali menggunakan karya orang lain, cantumkan nama pencipta dan sumber<br>
+                    ✔ <strong>Minta Izin</strong> - Jika ragu, minta izin langsung ke pencipta<br>
+                    ✔ <strong>Gunakan Lisensi CC</strong> - Cari karya dengan lisensi Creative Commons yang sesuai kebutuhan<br>
+                    ✔ <strong>Gunakan Situs Penyedia Gratis</strong> - Gunakan situs yang menyediakan gambar/video bebas hak cipta<br>
+                    ✔ <strong>Beli Lisensi Resmi</strong> - Untuk penggunaan komersial, beli lisensi resmi<br>
+                    ✔ <strong>Jangan Bajak</strong> - Hindari mengunduh dari situs ilegal
+                </div>
+
+                <h2>F. Situs Penyedia Konten Bebas Hak Cipta</h2>
+                
+                <h3>Gambar dan Foto Gratis</h3>
+                <div class="situs-grid">
+                    <div class="situs-card"><div class="situs-icon"><i class="fas fa-image"></i></div><div><div class="situs-name">Unsplash</div><div class="situs-url">unsplash.com</div></div></div>
+                    <div class="situs-card"><div class="situs-icon"><i class="fas fa-image"></i></div><div><div class="situs-name">Pexels</div><div class="situs-url">pexels.com</div></div></div>
+                    <div class="situs-card"><div class="situs-icon"><i class="fas fa-image"></i></div><div><div class="situs-name">Pixabay</div><div class="situs-url">pixabay.com</div></div></div>
+                    <div class="situs-card"><div class="situs-icon"><i class="fas fa-image"></i></div><div><div class="situs-name">Freepik</div><div class="situs-url">freepik.com</div></div></div>
+                </div>
+
+                <h3>Musik dan Audio Gratis</h3>
+                <div class="situs-grid">
+                    <div class="situs-card"><div class="situs-icon"><i class="fas fa-music"></i></div><div><div class="situs-name">YouTube Audio Library</div><div class="situs-url">youtube.com/audiolibrary</div></div></div>
+                    <div class="situs-card"><div class="situs-icon"><i class="fas fa-music"></i></div><div><div class="situs-name">Free Music Archive</div><div class="situs-url">freemusicarchive.org</div></div></div>
+                    <div class="situs-card"><div class="situs-icon"><i class="fas fa-music"></i></div><div><div class="situs-name">Incompetech</div><div class="situs-url">incompetech.com</div></div></div>
+                </div>
+
+                <h2>G. Jejak Digital (Digital Footprint)</h2>
+                <p><strong>Jejak digital</strong> adalah semua data, informasi, dan aktivitas yang kita tinggalkan saat menggunakan internet. Jejak digital bisa bersifat <strong>aktif</strong> (sengaja kita buat) atau <strong>pasif</strong> (secara tidak sengaja tertinggal).</p>
+
+                <div class="footprint-grid">
+                    <div class="footprint-card aktif">
+                        <h4><i class="fas fa-user-edit" style="color: var(--success);"></i> Jejak Digital Aktif</h4>
+                        <p style="font-size: 0.9rem;">Data yang sengaja kita buat dan bagikan:</p>
+                        <ul>
+                            <li>Postingan di media sosial</li>
+                            <li>Komentar di forum/YouTube</li>
+                            <li>Foto/video yang diunggah</li>
+                            <li>Blog atau artikel yang ditulis</li>
+                            <li>Review atau rating produk</li>
+                            <li>Like dan share konten</li>
+                        </ul>
+                    </div>
+                    <div class="footprint-card pasif">
+                        <h4><i class="fas fa-user-secret" style="color: var(--warning);"></i> Jejak Digital Pasif</h4>
+                        <p style="font-size: 0.9rem;">Data yang tertinggal tanpa kita sadari:</p>
+                        <ul>
+                            <li>Riwayat browsing</li>
+                            <li>Lokasi yang dilacak</li>
+                            <li>Cookie di website</li>
+                            <li>Alamat IP pengunjung</li>
+                            <li>Data yang dikumpulkan aplikasi</li>
+                            <li>Pencarian di mesin telusur</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <i class="fas fa-exclamation-triangle"></i> <strong>Pentingnya Menjaga Jejak Digital:</strong><br>
+                    • Jejak digital bisa dilihat oleh <strong>siapa saja</strong> (termasuk guru, HRD, dan orang tua)<br>
+                    • Jejak digital <strong>sulit dihapus</strong> secara permanen<br>
+                    • Jejak digital bisa mempengaruhi <strong>masa depan</strong> (pekerjaan, beasiswa)<br>
+                    • Jejak digital bisa digunakan untuk <strong>penipuan</strong> atau <strong>pelecehan</strong><br>
+                    • Jejak digital <strong>mencerminkan kepribadian</strong> kita di dunia maya
+                </div>
+
+                <div class="info-box">
+                    <i class="fas fa-lightbulb"></i> <strong>Cara Mengelola Jejak Digital:</strong><br>
+                    • <strong>Atur Privasi</strong> - Jadikan akun media sosial private<br>
+                    • <strong>Pikirkan Sebelum Posting</strong> - Apakah postingan ini aman untuk masa depan?<br>
+                    • <strong>Hapus Konten Tidak Perlu</strong> - Arsipkan atau hapus postingan lama<br>
+                    • <strong>Cek Nama Sendiri</strong> - Google nama sendiri untuk melihat jejak digital<br>
+                    • <strong>Gunakan Password Kuat</strong> - Lindungi akun dari peretasan<br>
+                    • <strong>Hati-hati dengan Aplikasi</strong> - Periksa izin aplikasi sebelum install
+                </div>
+
+                <div class="warning-box" style="margin-top: 1.5rem;">
+                    <i class="fas fa-gavel"></i> <strong>Sanksi Pelanggaran Hak Cipta di Indonesia (UU No. 28 Tahun 2014):</strong><br>
+                    • Pelanggaran Hak Cipta untuk komersial → Pidana penjara paling lama 4 tahun dan/atau denda paling banyak Rp 1 miliar<br>
+                    • Pembajakan → Pidana penjara paling lama 10 tahun dan/atau denda paling banyak Rp 4 miliar
+                </div>
+
+                <div class="quote-box" style="margin-top: 1.5rem; text-align: center;">
+                    <i class="fas fa-copyright"></i> Hargai Karya Orang Lain, Jaga Jejak Digitalmu! 🔒
+                </div>
+            </div>
+
+            <!-- Navigasi -->
+            <div class="materi-navigation">
+                <a href="../index-materi-informatika.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i> Kembali ke Daftar Materi
+                </a>
+                <a href="materi3-2.html" class="nav-btn primary">
+                    Lanjut ke Materi 3.2: Keamanan Digital & Privasi
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script src="../../../script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                });
+            }
+            
+            // HAKI Interaktif
+            const hakiCards = document.querySelectorAll('.haki-card');
+            hakiCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    hakiCards.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            
+            // Pelanggaran Interaktif
+            const pelanggaranCards = document.querySelectorAll('.pelanggaran-card');
+            pelanggaranCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    pelanggaranCards.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            
+            // CC Interaktif
+            const ccCards = document.querySelectorAll('.cc-card');
+            ccCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    ccCards.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

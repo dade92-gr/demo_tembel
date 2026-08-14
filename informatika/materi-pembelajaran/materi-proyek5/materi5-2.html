@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi 5.2: Simulasi Model IPO - Informatika Kelas X</title>
+    <link rel="stylesheet" href="../../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --informatika-primary: #3498db;
+            --informatika-secondary: #2980b9;
+            --informatika-light: #ebf5fb;
+            --informatika-dark: #21618c;
+            --informatika-semester1: #3498db;
+            --success: #27ae60;
+            --warning: #e74c3c;
+            --info: #f39c12;
+            --purple: #9b59b6;
+            --cpu-color: #e74c3c;
+            --memory-color: #3498db;
+            --input-color: #27ae60;
+            --output-color: #f39c12;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+        
+        .materi-container {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+        
+        .materi-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 30px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(52, 152, 219, 0.15);
+            border-left: 8px solid var(--informatika-semester1);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        .materi-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(52, 152, 219, 0.1) 0%, transparent 70%);
+            z-index: 0;
+        }
+        
+        .materi-card > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .materi-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 3px solid var(--informatika-light);
+            flex-wrap: wrap;
+        }
+        
+        .materi-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--cpu-color), var(--memory-color));
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+        }
+        
+        .materi-title-wrapper {
+            flex: 1;
+        }
+        
+        .materi-title-wrapper h1 {
+            color: var(--informatika-dark);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .materi-subtitle {
+            color: var(--informatika-primary);
+            font-size: 1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .materi-badge {
+            background: var(--informatika-light);
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: var(--informatika-dark);
+        }
+        
+        .materi-badge i {
+            margin-right: 4px;
+        }
+        
+        .tujuan-card {
+            background: linear-gradient(135deg, var(--informatika-light), white);
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(52, 152, 219, 0.2);
+        }
+        
+        .tujuan-card h3 {
+            color: var(--informatika-dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .tujuan-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 0.8rem;
+        }
+        
+        .tujuan-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            padding: 0.8rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .tujuan-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .tujuan-item i {
+            color: var(--success);
+        }
+        
+        .materi-content {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid rgba(52, 152, 219, 0.1);
+        }
+        
+        .materi-content h2 {
+            color: var(--informatika-dark);
+            font-size: 1.8rem;
+            margin: 1.5rem 0 1rem 0;
+            border-bottom: 2px solid var(--informatika-light);
+            padding-bottom: 0.5rem;
+        }
+        
+        .materi-content h2:first-of-type {
+            margin-top: 0;
+        }
+        
+        .materi-content h3 {
+            color: var(--informatika-dark);
+            font-size: 1.3rem;
+            margin: 1.2rem 0 0.8rem 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .materi-content h3 i {
+            color: var(--informatika-primary);
+        }
+        
+        .materi-content p {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        
+        .materi-content ul, .materi-content ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .materi-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .quote-box {
+            margin: 1.5rem 0;
+            padding: 1rem 1.5rem;
+            background: var(--informatika-light);
+            border-left: 4px solid var(--informatika-primary);
+            border-radius: 0 12px 12px 0;
+        }
+        
+        .note-box {
+            background: #fff3e0;
+            border-left: 4px solid var(--info);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid var(--informatika-primary);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .warning-box {
+            background: #fee2e2;
+            border-left: 4px solid var(--warning);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .success-box {
+            background: #d4edda;
+            border-left: 4px solid var(--success);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .arch-diagram {
+            background: #f8f9fa;
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+        
+        .arch-flow {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 0.8rem;
+            margin: 1rem 0;
+        }
+        
+        .arch-box {
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            min-width: 120px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .arch-box:hover {
+            transform: scale(1.05);
+        }
+        
+        .arch-box.input {
+            background: linear-gradient(135deg, var(--input-color), #1e8449);
+            color: white;
+        }
+        
+        .arch-box.cpu {
+            background: linear-gradient(135deg, var(--cpu-color), #b03a2e);
+            color: white;
+        }
+        
+        .arch-box.output {
+            background: linear-gradient(135deg, var(--output-color), #d4ac0d);
+            color: white;
+        }
+        
+        .arch-box.memory {
+            background: linear-gradient(135deg, var(--memory-color), #1a5276);
+            color: white;
+        }
+        
+        .arch-box.storage {
+            background: linear-gradient(135deg, #6c757d, #495057);
+            color: white;
+        }
+        
+        .arch-box.active {
+            transform: scale(1.08);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+        
+        .arch-icon {
+            font-size: 2rem;
+            display: block;
+        }
+        
+        .arch-label {
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        .arch-desc {
+            font-size: 0.7rem;
+            opacity: 0.9;
+            margin-top: 0.2rem;
+        }
+        
+        .arch-arrow {
+            font-size: 1.5rem;
+            color: var(--informatika-primary);
+        }
+        
+        .simulasi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .simulasi-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1.2rem;
+            transition: all 0.3s ease;
+            border: 1px solid #e9ecef;
+        }
+        
+        .simulasi-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .simulasi-card .step-num {
+            display: inline-block;
+            background: var(--informatika-primary);
+            color: white;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .simulasi-card .step-title {
+            font-weight: bold;
+            color: var(--informatika-dark);
+        }
+        
+        .simulasi-card .step-desc {
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin-top: 0.3rem;
+        }
+        
+        .simulasi-card .step-type {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+        
+        .step-type.input { background: #d4edda; color: #155724; }
+        .step-type.process { background: #f3e5f5; color: #6c3483; }
+        .step-type.output { background: #fff3e0; color: #e67e22; }
+        
+        .pseudocode {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 1rem;
+            border-radius: 12px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            line-height: 1.8;
+        }
+        
+        .pseudocode .comment { color: #7f8c8d; }
+        .pseudocode .keyword { color: #f39c12; }
+        .pseudocode .string { color: #2ecc71; }
+        .pseudocode .variable { color: #3498db; }
+        
+        .diagram-example {
+            background: #f8f9fa;
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            font-family: monospace;
+            white-space: pre;
+            overflow-x: auto;
+            font-size: 0.8rem;
+            border: 2px dashed var(--informatika-primary);
+        }
+        
+        .materi-navigation {
+            display: flex;
+            gap: 1rem;
+            justify-content: space-between;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn.primary {
+            background: linear-gradient(135deg, var(--informatika-primary), var(--informatika-secondary));
+            color: white;
+        }
+        
+        .nav-btn.primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .nav-btn.secondary {
+            background: white;
+            color: var(--informatika-dark);
+            border: 2px solid var(--informatika-light);
+        }
+        
+        .nav-btn.secondary:hover {
+            background: var(--informatika-light);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .materi-container { padding: 1rem; }
+            .materi-card { padding: 1.5rem; }
+            .materi-header { flex-direction: column; text-align: center; }
+            .arch-flow { flex-direction: column; }
+            .arch-arrow { transform: rotate(90deg); }
+            .pseudocode { font-size: 0.7rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="../../../assets/images/logo.png" alt="Logo Sekolah">
+                    <h1>INFORMATIKA - MATERI PEMBELAJARAN</h1>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="../../../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="../../index-informatika.html" class="nav-link"><i class="fas fa-laptop-code"></i> Beranda Informatika</a></li>
+                    <li><a href="../../aktivitas-pembelajaran/index-aktivitas-informatika.html" class="nav-link"><i class="fas fa-tasks"></i> Daftar Aktivitas</a></li>
+                    <li><a href="../index-materi-informatika.html" class="nav-link active"><i class="fas fa-book-open"></i> Daftar Materi</a></li>
+                    <li><a href="../../penilaian/index-penilaian-informatika.html" class="nav-link"><i class="fas fa-chart-line"></i> Penilaian</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="materi-container">
+        <div class="materi-card">
+            <!-- Header -->
+            <div class="materi-header">
+                <div class="materi-icon">
+                    <i class="fas fa-microchip"></i>
+                </div>
+                <div class="materi-title-wrapper">
+                    <h1>Simulasi Model IPO</h1>
+                    <div class="materi-subtitle">
+                        <i class="fas fa-circle"></i>
+                        <span>Proyek 5: Arsitektur Komputer - Pertemuan 2</span>
+                        <span class="materi-badge"><i class="fas fa-clock"></i> 4 JP</span>
+                        <span class="materi-badge"><i class="fas fa-tag"></i> TP 1.6</span>
+                        <span class="materi-badge"><i class="fas fa-globe"></i> Online</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tujuan Pembelajaran -->
+            <div class="tujuan-card">
+                <h3><i class="fas fa-bullseye"></i> 🎯 Tujuan Pembelajaran</h3>
+                <div class="tujuan-list">
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Memahami komponen-komponen utama arsitektur Von Neumann</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Menjelaskan alur data dalam arsitektur Von Neumann</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Menghubungkan arsitektur Von Neumann dengan model IPO</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Menyimulasikan model IPO pada kasus ATM</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Mengidentifikasi input, proses, dan output dalam pseudocode program</div>
+                </div>
+            </div>
+
+            <!-- Konten Materi -->
+            <div class="materi-content">
+                <h2>A. Review Arsitektur Von Neumann</h2>
+                <p><strong>Arsitektur Von Neumann</strong> adalah desain dasar komputer modern yang diperkenalkan oleh John von Neumann pada tahun 1945. Arsitektur ini terdiri dari empat komponen utama yang saling terhubung.</p>
+                
+                <div class="quote-box">
+                    <i class="fas fa-quote-left"></i> <strong>John von Neumann:</strong> "Komputer adalah mesin yang memproses data berdasarkan instruksi yang tersimpan dalam memori."
+                </div>
+
+                <h3>Alur Data dalam Arsitektur Von Neumann</h3>
+                <div class="arch-diagram">
+                    <div class="arch-flow">
+                        <div class="arch-box input" data-arch="input">
+                            <span class="arch-icon"><i class="fas fa-keyboard"></i></span>
+                            <span class="arch-label">INPUT</span>
+                            <span class="arch-desc">Keyboard, Mouse, Scanner</span>
+                        </div>
+                        <span class="arch-arrow"><i class="fas fa-arrow-right"></i></span>
+                        <div class="arch-box cpu" data-arch="cpu">
+                            <span class="arch-icon"><i class="fas fa-microchip"></i></span>
+                            <span class="arch-label">CPU</span>
+                            <span class="arch-desc">Prosesor (Otak Komputer)</span>
+                        </div>
+                        <span class="arch-arrow"><i class="fas fa-arrow-right"></i></span>
+                        <div class="arch-box output" data-arch="output">
+                            <span class="arch-icon"><i class="fas fa-desktop"></i></span>
+                            <span class="arch-label">OUTPUT</span>
+                            <span class="arch-desc">Monitor, Printer, Speaker</span>
+                        </div>
+                    </div>
+                    <div class="arch-flow" style="margin-top: 0.5rem;">
+                        <div class="arch-box memory" data-arch="memory">
+                            <span class="arch-icon"><i class="fas fa-database"></i></span>
+                            <span class="arch-label">MEMORY (RAM)</span>
+                            <span class="arch-desc">Penyimpanan sementara</span>
+                        </div>
+                        <span class="arch-arrow"><i class="fas fa-arrows-h"></i></span>
+                        <div class="arch-box storage" data-arch="storage">
+                            <span class="arch-icon"><i class="fas fa-hdd"></i></span>
+                            <span class="arch-label">STORAGE</span>
+                            <span class="arch-desc">HDD/SSD</span>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Komponen dan Fungsinya</h3>
+                <div class="success-box">
+                    <strong>📌 Komponen Utama Arsitektur Von Neumann:</strong><br>
+                    • <strong>CPU (Central Processing Unit):</strong> Memproses data dan menjalankan instruksi. Terdiri dari ALU, CU, dan Register.<br>
+                    • <strong>Memory (RAM):</strong> Menyimpan data dan program sementara saat komputer menyala.<br>
+                    • <strong>Input Device:</strong> Perangkat untuk memasukkan data ke komputer (keyboard, mouse, scanner).<br>
+                    • <strong>Output Device:</strong> Perangkat untuk menampilkan hasil (monitor, printer, speaker).<br>
+                    • <strong>Storage:</strong> Menyimpan data secara permanen (HDD, SSD).
+                </div>
+
+                <h2>B. Hubungan Arsitektur Von Neumann dengan Model IPO</h2>
+                <div class="info-box">
+                    <i class="fas fa-chart-line"></i> <strong>Pemetaan IPO ke Arsitektur Von Neumann:</strong><br>
+                    • <strong>INPUT</strong> → Input Device (keyboard, mouse, scanner) → Data masuk ke sistem<br>
+                    • <strong>PROSES</strong> → CPU (ALU, CU, Register) + Memory (RAM) → Data diolah<br>
+                    • <strong>OUTPUT</strong> → Output Device (monitor, printer, speaker) → Hasil keluar sistem
+                </div>
+
+                <div class="success-box">
+                    <strong>📌 Contoh Aliran Data:</strong><br>
+                    1. <strong>Input:</strong> User mengetik angka 10 dan 5 di keyboard<br>
+                    2. <strong>Proses:</strong> CPU menghitung 10 × 5 = 50<br>
+                    3. <strong>Output:</strong> Monitor menampilkan hasil "50"
+                </div>
+
+                <h2>C. Simulasi IPO Kasus ATM</h2>
+                <p>Berikut adalah simulasi model IPO pada kasus ATM (Anjungan Tunai Mandiri). <strong>Klik pada setiap langkah</strong> untuk memperjelas tampilan:</p>
+                
+                <div class="simulasi-grid" id="simulasiGrid">
+                    <div class="simulasi-card" data-step="1">
+                        <div class="step-num">Langkah 1</div>
+                        <div class="step-title">Masukkan Kartu ATM</div>
+                        <div class="step-desc">Nasabah memasukkan kartu ATM ke mesin ATM</div>
+                        <span class="step-type input">INPUT</span>
+                    </div>
+                    <div class="simulasi-card" data-step="2">
+                        <div class="step-num">Langkah 2</div>
+                        <div class="step-title">Masukkan PIN</div>
+                        <div class="step-desc">Nasabah memasukkan PIN (Personal Identification Number)</div>
+                        <span class="step-type input">INPUT</span>
+                    </div>
+                    <div class="simulasi-card" data-step="3">
+                        <div class="step-num">Langkah 3</div>
+                        <div class="step-title">Verifikasi PIN</div>
+                        <div class="step-desc">Sistem memverifikasi apakah PIN yang dimasukkan benar</div>
+                        <span class="step-type process">PROSES</span>
+                    </div>
+                    <div class="simulasi-card" data-step="4">
+                        <div class="step-num">Langkah 4</div>
+                        <div class="step-title">Pilih Menu Tarik Tunai</div>
+                        <div class="step-desc">Nasabah memilih menu tarik tunai pada layar ATM</div>
+                        <span class="step-type input">INPUT</span>
+                    </div>
+                    <div class="simulasi-card" data-step="5">
+                        <div class="step-num">Langkah 5</div>
+                        <div class="step-title">Proses Pengurangan Saldo</div>
+                        <div class="step-desc">Sistem memproses permintaan dan mengurangi saldo nasabah</div>
+                        <span class="step-type process">PROSES</span>
+                    </div>
+                    <div class="simulasi-card" data-step="6">
+                        <div class="step-num">Langkah 6</div>
+                        <div class="step-title">Uang dan Struk Keluar</div>
+                        <div class="step-desc">ATM mengeluarkan uang dan struk transaksi</div>
+                        <span class="step-type output">OUTPUT</span>
+                    </div>
+                </div>
+
+                <div class="info-box" style="margin-top: 1rem;">
+                    <i class="fas fa-lightbulb"></i> <strong>Kesimpulan Simulasi ATM:</strong><br>
+                    Model IPO pada ATM: <strong>Input</strong> (Kartu, PIN, pilihan menu) → <strong>Proses</strong> (Verifikasi PIN, cek saldo, kurangi saldo) → <strong>Output</strong> (Uang keluar, struk, saldo berkurang)
+                </div>
+
+                <h2>D. IPO dalam Pseudocode Program</h2>
+                <p><strong>Pseudocode</strong> adalah cara menuliskan logika program dengan bahasa yang mudah dipahami, mirip instruksi sehari-hari. Berikut adalah pseudocode program ATM sederhana.</p>
+                
+                <div class="pseudocode">
+                    <span class="comment">// DEKLARASI VARIABEL</span>
+                    <span class="variable">saldo</span> = 1000000  <span class="comment">← Data awal (simpanan)</span>
+                    <span class="variable">pinUser</span> = 123456  <span class="comment">← Data PIN yang benar</span>
+
+                    <span class="comment">// ===== INPUT =====</span>
+                    TAMPILKAN <span class="string">"Masukkan kartu ATM"</span>
+                    TAMPILKAN <span class="string">"Masukkan PIN"</span>
+                    MASUKKAN <span class="variable">pinInput</span>  <span class="comment">← Data dari user</span>
+
+                    <span class="comment">// ===== PROSES =====</span>
+                    IF <span class="variable">pinInput</span> == <span class="variable">pinUser</span> THEN
+                        TAMPILKAN <span class="string">"Masukkan jumlah tarikan"</span>
+                        MASUKKAN <span class="variable">jumlahTarik</span>  <span class="comment">← Data dari user</span>
+                        IF <span class="variable">jumlahTarik</span> &lt;= <span class="variable">saldo</span> THEN
+                            <span class="variable">saldo</span> = <span class="variable">saldo</span> - <span class="variable">jumlahTarik</span>  <span class="comment">← Proses pengurangan</span>
+                            <span class="comment">// ===== OUTPUT =====</span>
+                            TAMPILKAN <span class="string">"Uang keluar: "</span> + <span class="variable">jumlahTarik</span>
+                            TAMPILKAN <span class="string">"Saldo tersisa: "</span> + <span class="variable">saldo</span>
+                            TAMPILKAN <span class="string">"Cetak struk"</span>
+                        ELSE
+                            TAMPILKAN <span class="string">"Saldo tidak mencukupi"</span>
+                        ENDIF
+                    ELSE
+                        TAMPILKAN <span class="string">"PIN salah"</span>
+                    ENDIF
+                </div>
+
+                <div class="success-box">
+                    <strong>📌 Identifikasi IPO dalam Pseudocode:</strong><br>
+                    • <strong>INPUT:</strong> pinInput, jumlahTarik (data yang dimasukkan user)<br>
+                    • <strong>PROSES:</strong> IF pinInput == pinUser THEN, saldo = saldo - jumlahTarik (verifikasi dan pengurangan)<br>
+                    • <strong>OUTPUT:</strong> TAMPILKAN "Uang keluar: ", "Saldo tersisa: ", "Cetak struk" (hasil yang ditampilkan)
+                </div>
+
+                <h2>E. Contoh Diagram IPO ATM</h2>
+                <div class="diagram-example">
++------------------+     +------------------+     +------------------+
+|                  |     |                  |     |                  |
+|     INPUT        |────▶│     PROSES       │────▶│     OUTPUT       |
+|                  |     |                  |     |                  |
++------------------+     +------------------+     +------------------+
+        │                          │                          │
+        ▼                          ▼                          ▼
+  💳 Kartu ATM             ⚙️ Verifikasi PIN          💰 Uang Keluar
+  🔐 PIN                   💳 Cek Saldo              📄 Struk Transaksi
+  📋 Pilihan Menu          ➖ Kurangi Saldo          📉 Saldo Berkurang
+                </div>
+
+                <div class="warning-box">
+                    <i class="fas fa-exclamation-triangle"></i> <strong>Ingat!</strong> Setiap sistem komputer mengikuti pola IPO. Pahami input, proses, dan output-nya untuk memahami cara kerja sistem tersebut!
+                </div>
+
+                <div class="quote-box" style="margin-top: 1.5rem; text-align: center;">
+                    <i class="fas fa-microchip"></i> Simulasi IPO, Pahami Alur Komputasi! 🔄
+                </div>
+            </div>
+
+            <!-- Navigasi -->
+            <div class="materi-navigation">
+                <a href="materi5-1.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i> Kembali ke Materi 5.1
+                </a>
+                <a href="materi5-3.html" class="nav-btn primary">
+                    Lanjut ke Materi 5.3: Perangkat Keras Komputer
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script src="../../../script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                });
+            }
+            
+            // Arsitektur Komponen Interaktif
+            const archBoxes = document.querySelectorAll('.arch-box');
+            archBoxes.forEach(box => {
+                box.addEventListener('click', function() {
+                    archBoxes.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            if(archBoxes.length) archBoxes[0].classList.add('active');
+            
+            // Simulasi Grid Interaktif
+            const simulasiCards = document.querySelectorAll('.simulasi-card');
+            simulasiCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    simulasiCards.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            if(simulasiCards.length) simulasiCards[0].classList.add('active');
+        });
+    </script>
+</body>
+</html>

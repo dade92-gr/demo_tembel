@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi 6.1: Mengenal Algoritma & Struktur Data - Informatika Kelas X</title>
+    <link rel="stylesheet" href="../../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --informatika-primary: #3498db;
+            --informatika-secondary: #2980b9;
+            --informatika-light: #ebf5fb;
+            --informatika-dark: #21618c;
+            --informatika-semester1: #3498db;
+            --success: #27ae60;
+            --warning: #e74c3c;
+            --info: #f39c12;
+            --purple: #9b59b6;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+        
+        .materi-container {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+        
+        .materi-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 30px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(52, 152, 219, 0.15);
+            border-left: 8px solid var(--informatika-semester1);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        .materi-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(52, 152, 219, 0.1) 0%, transparent 70%);
+            z-index: 0;
+        }
+        
+        .materi-card > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .materi-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 3px solid var(--informatika-light);
+            flex-wrap: wrap;
+        }
+        
+        .materi-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--informatika-semester1), var(--informatika-primary));
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+        }
+        
+        .materi-title-wrapper {
+            flex: 1;
+        }
+        
+        .materi-title-wrapper h1 {
+            color: var(--informatika-dark);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .materi-subtitle {
+            color: var(--informatika-primary);
+            font-size: 1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .materi-badge {
+            background: var(--informatika-light);
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: var(--informatika-dark);
+        }
+        
+        .materi-badge i {
+            margin-right: 4px;
+        }
+        
+        .tujuan-card {
+            background: linear-gradient(135deg, var(--informatika-light), white);
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(52, 152, 219, 0.2);
+        }
+        
+        .tujuan-card h3 {
+            color: var(--informatika-dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .tujuan-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 0.8rem;
+        }
+        
+        .tujuan-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            padding: 0.8rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .tujuan-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .tujuan-item i {
+            color: var(--success);
+        }
+        
+        .materi-content {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid rgba(52, 152, 219, 0.1);
+        }
+        
+        .materi-content h2 {
+            color: var(--informatika-dark);
+            font-size: 1.8rem;
+            margin: 1.5rem 0 1rem 0;
+            border-bottom: 2px solid var(--informatika-light);
+            padding-bottom: 0.5rem;
+        }
+        
+        .materi-content h2:first-of-type {
+            margin-top: 0;
+        }
+        
+        .materi-content h3 {
+            color: var(--informatika-dark);
+            font-size: 1.3rem;
+            margin: 1.2rem 0 0.8rem 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .materi-content h3 i {
+            color: var(--informatika-primary);
+        }
+        
+        .materi-content p {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        
+        .materi-content ul, .materi-content ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .materi-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .quote-box {
+            margin: 1.5rem 0;
+            padding: 1rem 1.5rem;
+            background: var(--informatika-light);
+            border-left: 4px solid var(--informatika-primary);
+            border-radius: 0 12px 12px 0;
+        }
+        
+        .note-box {
+            background: #fff3e0;
+            border-left: 4px solid var(--info);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid var(--informatika-primary);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .warning-box {
+            background: #fee2e2;
+            border-left: 4px solid var(--warning);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .success-box {
+            background: #d4edda;
+            border-left: 4px solid var(--success);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .code-block {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 1rem;
+            border-radius: 12px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+            line-height: 1.8;
+        }
+        
+        .code-block .comment { color: #7f8c8d; }
+        .code-block .keyword { color: #f39c12; }
+        .code-block .string { color: #2ecc71; }
+        .code-block .variable { color: #3498db; }
+        
+        .karakteristik-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .karakteristik-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #e9ecef;
+        }
+        
+        .karakteristik-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .karakteristik-card.active {
+            border: 2px solid var(--informatika-primary);
+            background: var(--informatika-light);
+        }
+        
+        .karakteristik-number {
+            width: 40px;
+            height: 40px;
+            background: var(--informatika-primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.5rem;
+            font-weight: bold;
+        }
+        
+        .karakteristik-title {
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+            color: var(--informatika-dark);
+        }
+        
+        .karakteristik-desc {
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid #e9ecef;
+            line-height: 1.4;
+        }
+        
+        .karakteristik-card.active .karakteristik-desc {
+            color: var(--informatika-dark);
+            font-weight: 500;
+            border-top-color: var(--informatika-primary);
+        }
+        
+        .contoh-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .contoh-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #e9ecef;
+        }
+        
+        .contoh-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .contoh-card.active {
+            border: 2px solid var(--success);
+            background: #d4edda;
+        }
+        
+        .contoh-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .contoh-title {
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+            color: var(--informatika-dark);
+        }
+        
+        .contoh-steps {
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid #e9ecef;
+            line-height: 1.4;
+            text-align: left;
+        }
+        
+        .contoh-card.active .contoh-steps {
+            color: var(--success);
+            font-weight: 500;
+            border-top-color: var(--success);
+        }
+        
+        .tipe-data-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .tipe-data-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #e9ecef;
+            text-align: center;
+        }
+        
+        .tipe-data-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .tipe-data-card.active {
+            border: 2px solid var(--purple);
+            background: #f3e5f5;
+        }
+        
+        .tipe-data-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tipe-data-title {
+            font-weight: bold;
+            color: var(--informatika-dark);
+        }
+        
+        .tipe-data-desc {
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin-top: 0.3rem;
+        }
+        
+        .tipe-data-example {
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: var(--purple);
+            margin-top: 0.3rem;
+            padding-top: 0.3rem;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        .tipe-data-card.active .tipe-data-desc {
+            color: var(--informatika-dark);
+            font-weight: 500;
+        }
+        
+        .tipe-data-card.active .tipe-data-example {
+            color: var(--informatika-primary);
+        }
+        
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+        
+        .compare-table th {
+            background: var(--informatika-primary);
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .compare-table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .compare-table tr:hover {
+            background: var(--informatika-light);
+        }
+        
+        .perbandingan-algo {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .algo-card {
+            border-radius: 16px;
+            padding: 1.2rem;
+        }
+        
+        .algo-card.buruk {
+            background: #fee2e2;
+            border: 2px solid var(--warning);
+        }
+        
+        .algo-card.baik {
+            background: #d4edda;
+            border: 2px solid var(--success);
+        }
+        
+        .algo-card h4 {
+            margin-bottom: 1rem;
+        }
+        
+        .algo-card .code-block {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 0.8rem;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.7rem;
+            margin: 0.5rem 0;
+        }
+        
+        .materi-navigation {
+            display: flex;
+            gap: 1rem;
+            justify-content: space-between;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn.primary {
+            background: linear-gradient(135deg, var(--informatika-primary), var(--informatika-secondary));
+            color: white;
+        }
+        
+        .nav-btn.primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .nav-btn.secondary {
+            background: white;
+            color: var(--informatika-dark);
+            border: 2px solid var(--informatika-light);
+        }
+        
+        .nav-btn.secondary:hover {
+            background: var(--informatika-light);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .materi-container { padding: 1rem; }
+            .materi-card { padding: 1.5rem; }
+            .materi-header { flex-direction: column; text-align: center; }
+            .perbandingan-algo { grid-template-columns: 1fr; }
+            .compare-table { font-size: 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="../../../assets/images/logo.png" alt="Logo Sekolah">
+                    <h1>INFORMATIKA - MATERI PEMBELAJARAN</h1>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="../../../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="../../index-informatika.html" class="nav-link"><i class="fas fa-laptop-code"></i> Beranda Informatika</a></li>
+                    <li><a href="../../aktivitas-pembelajaran/index-aktivitas-informatika.html" class="nav-link"><i class="fas fa-tasks"></i> Daftar Aktivitas</a></li>
+                    <li><a href="../index-materi-informatika.html" class="nav-link active"><i class="fas fa-book-open"></i> Daftar Materi</a></li>
+                    <li><a href="../../penilaian/index-penilaian-informatika.html" class="nav-link"><i class="fas fa-chart-line"></i> Penilaian</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="materi-container">
+        <div class="materi-card">
+            <!-- Header -->
+            <div class="materi-header">
+                <div class="materi-icon">
+                    <i class="fas fa-code-branch"></i>
+                </div>
+                <div class="materi-title-wrapper">
+                    <h1>Mengenal Algoritma &amp; Struktur Data</h1>
+                    <div class="materi-subtitle">
+                        <i class="fas fa-circle"></i>
+                        <span>Proyek 6: Pemrograman Dasar - Pertemuan 1</span>
+                        <span class="materi-badge"><i class="fas fa-clock"></i> 4 JP</span>
+                        <span class="materi-badge"><i class="fas fa-tag"></i> TP 1.1</span>
+                        <span class="materi-badge"><i class="fas fa-globe"></i> Online</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tujuan Pembelajaran -->
+            <div class="tujuan-card">
+                <h3><i class="fas fa-bullseye"></i> 🎯 Tujuan Pembelajaran</h3>
+                <div class="tujuan-list">
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Menjelaskan pengertian algoritma dan karakteristiknya</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Mengidentifikasi contoh algoritma dalam kehidupan sehari-hari</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Menyusun langkah-langkah algoritma sederhana</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Memahami tipe data dasar dan struktur data sederhana</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Membedakan algoritma yang baik dan algoritma yang buruk</div>
+                </div>
+            </div>
+
+            <!-- Konten Materi -->
+            <div class="materi-content">
+                <h2>A. Apa Itu Algoritma?</h2>
+                <p><strong>Algoritma</strong> adalah urutan langkah-langkah logis dan sistematis untuk menyelesaikan suatu masalah. Setiap langkah harus jelas dan tidak ambigu, serta harus menghasilkan output yang diharapkan dalam waktu yang terbatas.</p>
+                
+                <div class="quote-box">
+                    <i class="fas fa-quote-left"></i> <strong>Donald Knuth (Ilmuwan Komputer):</strong> "Algoritma adalah sekumpulan aturan yang terdefinisi dengan jelas untuk menyelesaikan suatu masalah dalam sejumlah langkah yang terbatas."
+                </div>
+
+                <h3>Ilustrasi Sederhana: Algoritma Membuat Mie Instan</h3>
+                <div class="code-block">
+                    1. Siapkan mie instan, panci, air, dan kompor<br>
+                    2. Isi panci dengan air secukupnya<br>
+                    3. Nyalakan kompor<br>
+                    4. Rebus air hingga mendidih<br>
+                    5. Masukkan mie ke dalam air mendidih<br>
+                    6. Masak selama 3 menit<br>
+                    7. Angkat dan tiriskan mie<br>
+                    8. Campurkan bumbu<br>
+                    9. Mie siap disantap<br>
+                    10. Selesai
+                </div>
+
+                <h2>B. Karakteristik Algoritma yang Baik</h2>
+                <p>Seorang ilmuwan komputer bernama <strong>Donald Knuth</strong> merumuskan 5 karakteristik algoritma yang baik. <strong>Klik pada setiap karakteristik</strong> untuk memperjelas tampilan:</p>
+                
+                <div class="karakteristik-grid" id="karakteristikGrid">
+                    <div class="karakteristik-card" data-karakteristik="1">
+                        <div class="karakteristik-number">1</div>
+                        <div class="karakteristik-title">Input</div>
+                        <div class="karakteristik-desc">Algoritma dapat memiliki nol atau lebih input. Contoh: pada algoritma mie instan: air, mie, bumbu, kompor adalah input yang diperlukan.</div>
+                    </div>
+                    <div class="karakteristik-card" data-karakteristik="2">
+                        <div class="karakteristik-number">2</div>
+                        <div class="karakteristik-title">Output</div>
+                        <div class="karakteristik-desc">Algoritma menghasilkan minimal satu output. Contoh: mie matang siap santap adalah output yang dihasilkan.</div>
+                    </div>
+                    <div class="karakteristik-card" data-karakteristik="3">
+                        <div class="karakteristik-number">3</div>
+                        <div class="karakteristik-title">Definiteness (Kejelasan)</div>
+                        <div class="karakteristik-desc">Setiap langkah harus jelas dan tidak ambigu. Contoh: "Rebus air hingga mendidih" jelas, berbeda dengan "Masak mie sebentar".</div>
+                    </div>
+                    <div class="karakteristik-card" data-karakteristik="4">
+                        <div class="karakteristik-number">4</div>
+                        <div class="karakteristik-title">Finiteness (Keterbatasan)</div>
+                        <div class="karakteristik-desc">Algoritma harus berhenti setelah sejumlah langkah. Contoh: ada langkah "Selesai", tidak berputar terus (infinite loop).</div>
+                    </div>
+                    <div class="karakteristik-card" data-karakteristik="5">
+                        <div class="karakteristik-number">5</div>
+                        <div class="karakteristik-title">Effectiveness (Efektivitas)</div>
+                        <div class="karakteristik-desc">Setiap langkah dapat dilaksanakan dengan tepat. Contoh: langkah-langkahnya masuk akal dan bisa dikerjakan oleh siapa saja.</div>
+                    </div>
+                </div>
+
+                <h2>C. Algoritma dalam Kehidupan Sehari-Hari</h2>
+                <p><strong>Klik pada setiap aktivitas</strong> untuk memperjelas tampilan:</p>
+                
+                <div class="contoh-grid" id="contohGrid">
+                    <div class="contoh-card" data-contoh="bangun">
+                        <div class="contoh-icon"><i class="fas fa-bed"></i></div>
+                        <div class="contoh-title">Membangunkan Tidur</div>
+                        <div class="contoh-steps">1. Pasang alarm<br>2. Alarm berbunyi<br>3. Bangun dari tempat tidur<br>4. Matikan alarm</div>
+                    </div>
+                    <div class="contoh-card" data-contoh="sikat">
+                        <div class="contoh-icon"><i class="fas fa-tooth"></i></div>
+                        <div class="contoh-title">Menyikat Gigi</div>
+                        <div class="contoh-steps">1. Siapkan sikat dan pasta gigi<br>2. Basahi sikat<br>3. Oleskan pasta gigi<br>4. Sikat gigi selama 2 menit<br>5. Kumur dengan air</div>
+                    </div>
+                    <div class="contoh-card" data-contoh="whatsapp">
+                        <div class="contoh-icon"><i class="fab fa-whatsapp"></i></div>
+                        <div class="contoh-title">Mengirim Pesan WhatsApp</div>
+                        <div class="contoh-steps">1. Buka aplikasi WhatsApp<br>2. Pilih kontak tujuan<br>3. Ketik pesan<br>4. Kirim pesan</div>
+                    </div>
+                    <div class="contoh-card" data-contoh="masak">
+                        <div class="contoh-icon"><i class="fas fa-utensils"></i></div>
+                        <div class="contoh-title">Memasak Nasi</div>
+                        <div class="contoh-steps">1. Siapkan beras dan air<br>2. Cuci beras<br>3. Masukkan ke rice cooker<br>4. Tambahkan air<br>5. Tekan tombol cook</div>
+                    </div>
+                </div>
+
+                <h2>D. Algoritma vs Program</h2>
+                <table class="compare-table">
+                    <thead>
+                        <tr><th>Aspek</th><th>Algoritma</th><th>Program</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>Definisi</strong></td><td>Langkah-langkah logis penyelesaian masalah</td><td>Implementasi algoritma dalam bahasa pemrograman</td></tr>
+                        <tr><td><strong>Bentuk</strong></td><td>Bahasa manusia, flowchart, pseudocode</td><td>Kode (Python, Java, HTML, dll)</td></tr>
+                        <tr><td><strong>Dapat dijalankan komputer?</strong></td><td>Tidak langsung, perlu diterjemahkan</td><td>Ya, langsung dapat dijalankan</td></tr>
+                        <tr><td><strong>Sifat</strong></td><td>Abstrak, tidak tergantung bahasa</td><td>Konkret, tergantung bahasa pemrograman</td></tr>
+                    </tbody>
+                </table>
+
+                <h2>E. Tipe Data Dasar</h2>
+                <p><strong>Klik pada setiap tipe data</strong> untuk memperjelas tampilan:</p>
+                
+                <div class="tipe-data-grid" id="tipeDataGrid">
+                    <div class="tipe-data-card" data-tipe="integer">
+                        <div class="tipe-data-icon"><i class="fas fa-hashtag"></i></div>
+                        <div class="tipe-data-title">Integer (Angka Bulat)</div>
+                        <div class="tipe-data-desc">Bilangan bulat, tidak memiliki koma</div>
+                        <div class="tipe-data-example">Contoh: 10, 25, -5, 0, 100</div>
+                    </div>
+                    <div class="tipe-data-card" data-tipe="float">
+                        <div class="tipe-data-icon"><i class="fas fa-arrow-right"></i></div>
+                        <div class="tipe-data-title">Float (Angka Desimal)</div>
+                        <div class="tipe-data-desc">Bilangan pecahan dengan titik desimal</div>
+                        <div class="tipe-data-example">Contoh: 3.14, 2.5, -0.5, 99.99</div>
+                    </div>
+                    <div class="tipe-data-card" data-tipe="string">
+                        <div class="tipe-data-icon"><i class="fas fa-font"></i></div>
+                        <div class="tipe-data-title">String (Teks)</div>
+                        <div class="tipe-data-desc">Kumpulan huruf, angka, atau karakter</div>
+                        <div class="tipe-data-example">Contoh: 'Halo', 'Informatika', 'X RPL 1'</div>
+                    </div>
+                    <div class="tipe-data-card" data-tipe="boolean">
+                        <div class="tipe-data-icon"><i class="fas fa-toggle-on"></i></div>
+                        <div class="tipe-data-title">Boolean (Benar/Salah)</div>
+                        <div class="tipe-data-desc">Nilai logika: True atau False</div>
+                        <div class="tipe-data-example">Contoh: True, False, Ya, Tidak</div>
+                    </div>
+                </div>
+
+                <h2>F. Algoritma yang Baik vs Algoritma yang Buruk</h2>
+                
+                <div class="perbandingan-algo">
+                    <div class="algo-card buruk">
+                        <h4><i class="fas fa-times-circle" style="color: #e74c3c;"></i> Algoritma Buruk</h4>
+                        <p><strong>Cara Membuat Mie (Buruk)</strong></p>
+                        <div class="code-block" style="background: #f8d7da; color: #721c24;">
+                            1. Siapkan bahan<br>
+                            2. Masak mie<br>
+                            3. Selesai
+                        </div>
+                        <p><strong>⚠️ Masalah:</strong> Langkah 2 terlalu umum, tidak jelas bagaimana caranya! Tidak memenuhi karakteristik kejelasan (definiteness).</p>
+                    </div>
+                    <div class="algo-card baik">
+                        <h4><i class="fas fa-check-circle" style="color: #27ae60;"></i> Algoritma Baik</h4>
+                        <p><strong>Cara Membuat Mie (Baik)</strong></p>
+                        <div class="code-block" style="background: #d4edda; color: #155724;">
+                            1. Siapkan mie, panci, air, kompor<br>
+                            2. Isi panci dengan 400 ml air<br>
+                            3. Letakkan panci di atas kompor<br>
+                            4. Nyalakan kompor api sedang<br>
+                            5. Tunggu hingga air mendidih<br>
+                            6. Masukkan mie ke dalam air<br>
+                            7. Masak 3 menit sambil diaduk<br>
+                            8. Matikan kompor<br>
+                            9. Tiriskan dan campur bumbu<br>
+                            10. Mie siap disajikan
+                        </div>
+                        <p><strong>✅ Keunggulan:</strong> Setiap langkah jelas, spesifik, dan dapat diikuti oleh siapa saja.</p>
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <i class="fas fa-exclamation-triangle"></i> <strong>Ingat!</strong> Algoritma adalah fondasi dari semua program komputer. Tanpa algoritma yang baik, program tidak akan berjalan dengan benar!
+                </div>
+
+                <div class="quote-box" style="margin-top: 1.5rem; text-align: center;">
+                    <i class="fas fa-code"></i> Selamat Belajar Algoritma & Struktur Data! 🚀
+                </div>
+            </div>
+
+            <!-- Navigasi -->
+            <div class="materi-navigation">
+                <a href="../index-materi-informatika.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i> Kembali ke Daftar Materi
+                </a>
+                <a href="materi6-2.html" class="nav-btn primary">
+                    Lanjut ke Materi 6.2: Pseudocode & Flowchart
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script src="../../../script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                });
+            }
+            
+            // Karakteristik Interaktif
+            const karakteristikCards = document.querySelectorAll('.karakteristik-card');
+            karakteristikCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    karakteristikCards.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            if(karakteristikCards.length) karakteristikCards[0].classList.add('active');
+            
+            // Contoh Sehari-hari Interaktif
+            const contohCards = document.querySelectorAll('.contoh-card');
+            contohCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    contohCards.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            if(contohCards.length) contohCards[0].classList.add('active');
+            
+            // Tipe Data Interaktif
+            const tipeCards = document.querySelectorAll('.tipe-data-card');
+            tipeCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    tipeCards.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            if(tipeCards.length) tipeCards[0].classList.add('active');
+        });
+    </script>
+</body>
+</html>

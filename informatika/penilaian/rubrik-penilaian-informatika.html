@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rubrik Penilaian - Informatika Kelas X</title>
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.4.0/exceljs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <style>
+        /* ===== VARIABEL & RESET ===== */
+        :root {
+            --info-primary: #3498db;
+            --info-secondary: #2980b9;
+            --info-light: #d6eaf8;
+            --info-dark: #1f618d;
+            --border-radius: 16px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f2f5; color: #2c3e50; line-height: 1.6; }
+        
+        /* ===== NAVBAR ===== */
+        .profile-section {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: white;
+            padding: 0.3rem 0.8rem 0.3rem 0.3rem;
+            border-radius: 50px;
+            border: 1px solid var(--info-light);
+            margin-left: auto;
+        }
+        .profile-avatar {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--info-primary), var(--info-secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        .profile-info { font-size: 0.85rem; }
+        .profile-name { font-weight: 700; color: var(--info-dark); }
+        .profile-role { font-size: 0.7rem; color: #888; }
+        .logout-btn {
+            background: none;
+            border: none;
+            color: #e74c3c;
+            cursor: pointer;
+            font-size: 1rem;
+            padding: 5px;
+            transition: all 0.3s ease;
+        }
+        .logout-btn:hover { transform: scale(1.1); color: #c0392b; }
+        
+        .preview-container { padding: 1.5rem; max-width: 1400px; margin: 0 auto; }
+        .info-content-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: 0 10px 30px rgba(52, 152, 219, 0.1);
+            border-left: 5px solid var(--info-primary);
+            margin-bottom: 1.5rem;
+        }
+        .info-content-card h2 { color: var(--info-dark); font-size: 1.5rem; }
+        .info-content-card p { color: #666; font-size: 0.9rem; }
+        
+        .simple-card {
+            background: white;
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(52, 152, 219, 0.1);
+        }
+        .section-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--info-light);
+            flex-wrap: wrap;
+        }
+        .section-title .title-left { display: flex; align-items: center; gap: 10px; }
+        .section-title i {
+            width: 35px;
+            height: 35px;
+            background: var(--info-light);
+            color: var(--info-primary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .section-title h3 { font-size: 1.1rem; color: var(--info-dark); }
+        
+        /* ===== TOMBOL EXPORT ===== */
+        .export-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .export-group .btn-export-excel {
+            background: linear-gradient(135deg, #28a745, #218838);
+            color: white;
+            border: none;
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.3s ease;
+        }
+        .export-group .btn-export-excel:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+        }
+        .export-group .btn-export-excel:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .export-group .btn-export-excel.hidden {
+            display: none !important;
+        }
+        .export-group .export-select {
+            padding: 0.4rem 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            background: white;
+            cursor: pointer;
+            min-width: 140px;
+        }
+        .export-group .export-select:disabled { opacity: 0.5; cursor: not-allowed; }
+        
+        .filter-form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: flex-end;
+        }
+        .filter-group { flex: 1; min-width: 200px; }
+        .filter-group label {
+            display: block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--info-dark);
+            margin-bottom: 0.3rem;
+        }
+        .filter-group select {
+            width: 100%;
+            padding: 0.6rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            background: white;
+            cursor: pointer;
+        }
+        .filter-group select:disabled { background: #f5f5f5; cursor: not-allowed; }
+        
+        .btn-tampilkan {
+            background: linear-gradient(135deg, var(--info-primary), var(--info-secondary));
+            color: white;
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+        .btn-tampilkan:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+        .btn-tampilkan:disabled { opacity: 0.5; cursor: not-allowed; }
+        
+        .aktivitas-info {
+            background: var(--info-light);
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            margin-top: 1rem;
+            display: none;
+        }
+        .aktivitas-info .nama-aktivitas { font-size: 1.2rem; font-weight: 700; color: var(--info-dark); }
+        .aktivitas-info .kode-aktivitas { font-size: 0.85rem; color: #666; }
+        .aktivitas-info .tp-list {
+            margin-top: 0.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .aktivitas-info .tp-list .tp-tag {
+            background: white;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--info-dark);
+            border: 1px solid var(--info-primary);
+        }
+        .aktivitas-info .tp-list .tp-tag .tp-desc { font-weight: 400; color: #555; font-size: 0.7rem; }
+        
+        .rubrik-container { margin-top: 1.5rem; display: none; }
+        .rubrik-container .tp-section {
+            margin-bottom: 2rem;
+            border: 1px solid #eee;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+        .rubrik-container .tp-header {
+            background: linear-gradient(135deg, var(--info-primary), var(--info-secondary));
+            color: white;
+            padding: 0.8rem 1.2rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .rubrik-container .tp-header .tp-left { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
+        .rubrik-container .tp-header .tp-code { font-weight: 700; font-size: 1rem; }
+        .rubrik-container .tp-header .tp-desc { font-size: 0.9rem; opacity: 0.95; }
+        .rubrik-container .tp-header .tp-right { display: flex; flex-wrap: wrap; gap: 0.8rem; align-items: center; }
+        .rubrik-container .tp-header .tp-jumlah-kriteria {
+            font-size: 0.7rem;
+            background: rgba(255,255,255,0.15);
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+        }
+        
+        .tp-formula {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: rgba(255,255,255,0.15);
+            padding: 0.2rem 0.8rem;
+            border-radius: 8px;
+            font-size: 0.7rem;
+            line-height: 1.2;
+            width: auto;
+            min-width: fit-content;
+        }
+        .tp-formula .formula-label { font-weight: 700; font-size: 0.75rem; color: white; margin-right: 2px; white-space: nowrap; }
+        .tp-formula .formula-equals { font-size: 0.8rem; font-weight: 700; color: white; }
+        .tp-formula .formula-fraction {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            font-weight: 600;
+            color: white;
+            margin: 0 2px;
+        }
+        .tp-formula .formula-fraction .numerator { font-size: 0.8rem; padding-bottom: 1px; white-space: nowrap; }
+        .tp-formula .formula-fraction .denominator { font-size: 0.8rem; padding-top: 1px; white-space: nowrap; }
+        .tp-formula .formula-fraction .fraction-line {
+            width: 100%;
+            min-width: 20px;
+            height: 2px;
+            background: rgba(255,255,255,0.8);
+            border-radius: 2px;
+        }
+        .tp-formula .formula-times { font-size: 0.7rem; font-weight: 700; color: white; }
+        .tp-formula .formula-100 { font-size: 0.85rem; font-weight: 700; color: white; }
+        
+        .rubrik-table-wrapper { overflow-x: auto; padding: 0.5rem; }
+        .rubrik-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.82rem;
+            min-width: 700px;
+        }
+        .rubrik-table th {
+            background: var(--info-light);
+            color: var(--info-dark);
+            padding: 0.6rem 0.8rem;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid var(--info-primary);
+            position: sticky;
+            top: 0;
+            z-index: 2;
+        }
+        .rubrik-table th:first-child { min-width: 40px; text-align: center; }
+        .rubrik-table th:nth-child(2) { min-width: 200px; }
+        .rubrik-table th:not(:first-child):not(:nth-child(2)) { text-align: center; min-width: 120px; }
+        .rubrik-table td {
+            padding: 0.6rem 0.8rem;
+            border-bottom: 1px solid #f0f0f0;
+            vertical-align: top;
+        }
+        .rubrik-table td:first-child { text-align: center; font-weight: 600; color: #888; font-size: 0.8rem; }
+        .rubrik-table td:nth-child(2) { font-weight: 500; color: #333; }
+        .rubrik-table td:not(:first-child):not(:nth-child(2)) { text-align: center; font-size: 0.8rem; color: #555; }
+        .rubrik-table tr:hover { background: #f8f9fa; }
+        .rubrik-table .kriteria-nama { font-weight: 600; color: var(--info-dark); }
+        .rubrik-table .skor-label {
+            display: inline-block;
+            background: var(--info-primary);
+            color: white;
+            padding: 0.1rem 0.5rem;
+            border-radius: 12px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+        }
+        .rubrik-table .skor-cell {
+            padding: 0.4rem 0.6rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            line-height: 1.4;
+        }
+        .rubrik-table .skor-cell.skor-4 { background: #e8f4fd; color: #1a5276; border-left: 3px solid #2980b9; }
+        .rubrik-table .skor-cell.skor-3 { background: #e8f8f0; color: #1a6e3a; border-left: 3px solid #27ae60; }
+        .rubrik-table .skor-cell.skor-2 { background: #fef9e7; color: #7d6608; border-left: 3px solid #f39c12; }
+        .rubrik-table .skor-cell.skor-1 { background: #fdedec; color: #78281f; border-left: 3px solid #e74c3c; }
+        
+        .rubrik-empty { text-align: center; color: #999; padding: 2rem; font-style: italic; }
+        
+        .legend-skor {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+            padding: 0.8rem 1rem;
+            background: #f8f9fa;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            align-items: center;
+        }
+        .legend-skor .legend-item { display: flex; align-items: center; gap: 6px; }
+        .legend-skor .legend-color { width: 20px; height: 20px; border-radius: 4px; }
+        .legend-skor .legend-color.s4 { background: #2980b9; }
+        .legend-skor .legend-color.s3 { background: #27ae60; }
+        .legend-skor .legend-color.s2 { background: #f39c12; }
+        .legend-skor .legend-color.s1 { background: #e74c3c; }
+        
+        .legend-rumus {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: #e8f8f0;
+            padding: 0.2rem 0.8rem;
+            border-radius: 8px;
+            border: 1px solid var(--info-primary);
+            font-size: 0.7rem;
+            line-height: 1.2;
+            margin-left: auto;
+            width: auto;
+            min-width: fit-content;
+        }
+        .legend-rumus .rumus-label { font-weight: 700; font-size: 0.75rem; color: var(--info-dark); white-space: nowrap; }
+        .legend-rumus .rumus-equals { font-size: 0.8rem; font-weight: 700; color: var(--info-dark); }
+        .legend-rumus .rumus-fraction {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            font-weight: 700;
+            color: var(--info-dark);
+            margin: 0 2px;
+        }
+        .legend-rumus .rumus-fraction .num { font-size: 0.8rem; padding-bottom: 1px; white-space: nowrap; }
+        .legend-rumus .rumus-fraction .den { font-size: 0.8rem; padding-top: 1px; white-space: nowrap; }
+        .legend-rumus .rumus-fraction .line {
+            width: 100%;
+            min-width: 20px;
+            height: 2px;
+            background: var(--info-dark);
+            border-radius: 2px;
+        }
+        .legend-rumus .rumus-times { font-size: 0.7rem; font-weight: 700; color: var(--info-dark); }
+        .legend-rumus .rumus-100 { font-size: 0.85rem; font-weight: 700; color: var(--info-dark); }
+        
+        .loading-message, .error-message { padding: 2rem; text-align: center; border-radius: var(--border-radius); display: none; }
+        .loading-message { background: #fff3cd; color: #856404; }
+        .error-message { background: #f8d7da; color: #721c24; }
+        
+        .back-nav-simple { text-align: center; margin-top: 1.5rem; }
+        .back-btn-simple {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: white;
+            color: var(--info-dark);
+            padding: 0.6rem 1.5rem;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 1px solid var(--info-light);
+            transition: all 0.3s ease;
+        }
+        .back-btn-simple:hover { background: var(--info-primary); color: white; }
+        
+        /* ===== INFO PANEL HEADER ===== */
+        .info-panel-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .preview-container { padding: 0.8rem; }
+            .filter-form { flex-direction: column; }
+            .btn-tampilkan { width: 100%; justify-content: center; }
+            .section-title { flex-direction: column; align-items: flex-start; }
+            .export-group { width: 100%; }
+            .export-group .btn-export-excel { flex: 1; justify-content: center; }
+            .export-group .export-select { flex: 1; min-width: 100px; }
+            .info-panel-header { flex-direction: column; align-items: flex-start; }
+            .profile-section { margin-left: 0; }
+            .rubrik-container .tp-header { flex-direction: column; align-items: flex-start; }
+            .rubrik-container .tp-header .tp-right { width: 100%; flex-wrap: wrap; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="../../assets/images/logo.png" alt="Logo Sekolah" onerror="this.style.display='none'">
+                    <h1>TEMBOK BELAJAR - PROJEK INFORMATIKA</h1>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="../../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="../index-informatika.html" class="nav-link"><i class="fas fa-laptop-code"></i> Beranda Informatika</a></li>
+                    <li><a href="../aktivitas-pembelajaran/index-aktivitas-informatika.html" class="nav-link"><i class="fas fa-tasks"></i> Daftar Aktivitas</a></li>
+                    <li><a href="../materi-pembelajaran/index-materi-informatika.html" class="nav-link"><i class="fas fa-book-open"></i> Daftar Materi</a></li>
+                    <li><a href="index-penilaian-informatika.html" class="nav-link active"><i class="fas fa-chart-line"></i> Penilaian</a></li>
+                    <li><a href="rubrik-penilaian-informatika.html" class="nav-link"><i class="fas fa-clipboard-list"></i> Rubrik</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div id="mainContent">
+        <section class="preview-container">
+            <div class="info-content-card">
+                <div class="info-panel-header">
+                    <div>
+                        <h2><i class="fas fa-clipboard-list"></i> Rubrik Penilaian Aktivitas Informatika</h2>
+                        <p>Lihat kriteria penilaian untuk setiap aktivitas pembelajaran Informatika</p>
+                    </div>
+                    <!-- ===== PROFILE SECTION ===== -->
+                    <div id="profileContainer" style="display: none;">
+                        <div class="profile-section">
+                            <div class="profile-avatar" id="profileAvatar">G</div>
+                            <div class="profile-info">
+                                <div class="profile-name" id="profileName">Guru</div>
+                                <div class="profile-role" id="profileRole">Administrator</div>
+                            </div>
+                            <button class="logout-btn" id="logoutBtn" title="Logout" onclick="handleLogout()">
+                                <i class="fas fa-sign-out-alt"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FILTER -->
+            <div class="simple-card">
+                <div class="section-title">
+                    <div class="title-left">
+                        <i class="fas fa-filter"></i>
+                        <h3>Pilih Aktivitas</h3>
+                    </div>
+                    <!-- ===== TOMBOL EXPORT - HANYA UNTUK GURU/ADMIN ===== -->
+                    <div class="export-group hidden" id="exportGroup">
+                        <select class="export-select" id="exportMode">
+                            <option value="aktivitas">Export Per Aktivitas</option>
+                            <option value="semester">Export Per Semester</option>
+                        </select>
+                        <button class="btn-export-excel" id="btnExportExcel" disabled>
+                            <i class="fas fa-file-excel"></i> Export ke Excel
+                        </button>
+                    </div>
+                </div>
+
+                <div class="filter-form">
+                    <div class="filter-group">
+                        <label><i class="fas fa-calendar-alt"></i> Semester</label>
+                        <select id="filterSemester">
+                            <option value="">-- Pilih Semester --</option>
+                            <option value="Ganjil" selected>Semester Ganjil</option>
+                            <option value="Genap">Semester Genap</option>
+                        </select>
+                    </div>
+                    <div class="filter-group" style="flex:2;">
+                        <label><i class="fas fa-tasks"></i> Aktivitas</label>
+                        <select id="filterAktivitas" disabled>
+                            <option value="">-- Pilih Semester Dulu --</option>
+                        </select>
+                    </div>
+                    <div class="filter-group" style="flex:0 0 auto;">
+                        <button class="btn-tampilkan" id="btnTampilkan" disabled>
+                            <i class="fas fa-search"></i> Tampilkan Rubrik
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LOADING / ERROR -->
+            <div id="loadingMessage" class="loading-message">
+                <i class="fas fa-spinner fa-spin"></i> Sedang memuat data...
+            </div>
+            <div id="errorMessage" class="error-message">
+                <i class="fas fa-exclamation-triangle"></i>
+                <span id="errorText">Gagal memuat data. Silakan coba lagi.</span>
+            </div>
+
+            <!-- INFO AKTIVITAS -->
+            <div class="simple-card" id="infoCard" style="display:none;">
+                <div class="aktivitas-info" id="aktivitasInfo">
+                    <div class="nama-aktivitas" id="displayNamaAktivitas">-</div>
+                    <div class="kode-aktivitas" id="displayKodeAktivitas">-</div>
+                    <div class="tp-list" id="displayTPList"></div>
+                </div>
+            </div>
+
+            <!-- RUBRIK -->
+            <div class="simple-card" id="rubrikCard" style="display:none;">
+                <div class="section-title">
+                    <div class="title-left">
+                        <i class="fas fa-star"></i>
+                        <h3>Rubrik Penilaian</h3>
+                    </div>
+                </div>
+                <div id="rubrikContainer" class="rubrik-container"></div>
+
+                <div class="legend-skor">
+                    <div class="legend-item"><div class="legend-color s4"></div><span><strong>4 - Sangat Baik</strong> (100)</span></div>
+                    <div class="legend-item"><div class="legend-color s3"></div><span><strong>3 - Baik</strong> (75)</span></div>
+                    <div class="legend-item"><div class="legend-color s2"></div><span><strong>2 - Cukup</strong> (50)</span></div>
+                    <div class="legend-item"><div class="legend-color s1"></div><span><strong>1 - Kurang</strong> (25)</span></div>
+                    
+                    <div class="legend-rumus">
+                        <span class="rumus-label">Nilai TP</span>
+                        <span class="rumus-equals">=</span>
+                        <div class="rumus-fraction">
+                            <span class="num">Σ Skor</span>
+                            <span class="line"></span>
+                            <span class="den">Jml Kriteria × 4</span>
+                        </div>
+                        <span class="rumus-times">×</span>
+                        <span class="rumus-100">100</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="back-nav-simple">
+                <a href="index-penilaian-informatika.html" class="back-btn-simple">
+                    <i class="fas fa-arrow-left"></i> Kembali ke Menu Penilaian
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // ==================== KONFIGURASI ====================
+        // Gunakan URL yang sama dengan IPAS karena data_mapel sama
+        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwRlLJQQ5ypD1jzsHICPZH6kfrSFHKHGXo0hPKjzwtHH04EDrAid7dqtDv7q6TCbDRj/exec';
+
+        // ==================== DESKRIPSI TP INFORMATIKA ====================
+        const DESKRIPSI_TP = {
+            // Ganjil (TP 2.x)
+            'TP 2.1': 'Memahami cara penggunaan mesin pencari dengan variabel pencarian yang kompleks',
+            'TP 2.2': 'Mengetahui dan menerapkan ekosistem periksa fakta untuk memilah fakta dan hoaks',
+            'TP 2.3': 'Menggunakan strategi membaca lateral untuk mengevaluasi informasi digital',
+            'TP 2.4': 'Menggunakan perangkat teknologi untuk mengolah dokumen, lembar kerja, dan presentasi',
+            'TP 2.5': 'Memahami dan menerapkan konfigurasi keamanan dasar untuk konektivitas jaringan lokal dan internet',
+            'TP 2.6': 'Menggunakan media digital untuk produksi konten, partisipasi aktif, dan kolaborasi daring',
+            'TP 2.7': 'Menunjukkan sikap menghargai hak atas kekayaan intelektual dalam dunia digital',
+            'TP 2.8': 'Mengenal berbagai profesi di bidang informatika dan kontribusinya dalam pelestarian budaya',
+            'TP 2.9': 'Memahami dan memberikan contoh penerapan digitalisasi budaya Indonesia',
+            'TP 2.10': 'Menyaring dan menghindari konten negatif di dunia digital',
+            'TP 2.11': 'Mengelola kata sandi secara aman menggunakan manajer kata sandi',
+            'TP 2.12': 'Menerapkan autentikasi dua langkah untuk meningkatkan keamanan akun digital',
+            'TP 2.13': 'Menerapkan pengaturan privasi dan keamanan akun di berbagai platform digital',
+            
+            // Genap (TP 1.x)
+            'TP 1.1': 'Memahami konsep dasar struktur data dan algoritma standar',
+            'TP 1.2': 'Menerapkan proses komputasi sederhana secara mandiri untuk mendapatkan data berkualitas',
+            'TP 1.3': 'Menerapkan proses komputasi kolaboratif untuk menghasilkan data yang berkualitas',
+            'TP 1.4': 'Menggunakan algoritma dan struktur data standar untuk menyelesaikan berbagai persoalan nyata',
+            'TP 1.5': 'Menuliskan rancangan solusi program sederhana dalam bentuk pseudocode',
+            'TP 1.6': 'Memahami dan menyimulasikan model Input–Process–Output (IPO) dalam komputer Von Neumann',
+            'TP 1.7': 'Menjelaskan fungsi dan peran sistem operasi dalam proses komputasi'
+        };
+
+        function getDeskripsiTP(tpKey) {
+            return DESKRIPSI_TP[tpKey] || '';
+        }
+
+        // ==================== DAFTAR AKTIVITAS ====================
+        let aktivitasList = [];
+        let currentRubrikData = null;
+        let currentSemester = 'Ganjil';
+
+        async function loadAktivitasList(semester) {
+            try {
+                const url = `${APPS_SCRIPT_URL}?action=getDaftarAktivitas&semester=${encodeURIComponent(semester)}&_=${Date.now()}`;
+                const response = await fetch(url);
+                const result = await response.json();
+                
+                if (result && result.success && result.aktivitas) {
+                    aktivitasList = result.aktivitas;
+                    return aktivitasList;
+                }
+                return [];
+            } catch (error) {
+                console.error('Gagal load aktivitas:', error);
+                return [];
+            }
+        }
+
+        function updateAktivitasDropdown(aktivitasList) {
+            const select = document.getElementById('filterAktivitas');
+            select.innerHTML = '<option value="">-- Pilih Aktivitas --</option>';
+            
+            aktivitasList.forEach(item => {
+                const option = document.createElement('option');
+                option.value = item.nama;
+                option.textContent = item.nama;
+                select.appendChild(option);
+            });
+            
+            select.disabled = false;
+        }
+
+        // ==================== AMBIL RUBRIK ====================
+        async function fetchRubrik(aktivitas) {
+            try {
+                const url = `${APPS_SCRIPT_URL}?action=getRubrik&aktivitas=${encodeURIComponent(aktivitas)}&_=${Date.now()}`;
+                const response = await fetch(url);
+                const result = await response.json();
+                
+                if (result && result.success && result.rubrik) {
+                    return result;
+                }
+                return null;
+            } catch (error) {
+                console.error('Gagal fetch rubrik:', error);
+                return null;
+            }
+        }
+
+        async function fetchAllRubrik(semester) {
+            try {
+                const list = await loadAktivitasList(semester);
+                if (!list || list.length === 0) return null;
+
+                const allRubrik = {};
+                for (const aktivitas of list) {
+                    const result = await fetchRubrik(aktivitas.nama);
+                    if (result && result.success && result.rubrik) {
+                        allRubrik[aktivitas.nama] = result.rubrik;
+                    }
+                }
+                return allRubrik;
+            } catch (error) {
+                console.error('Gagal fetch semua rubrik:', error);
+                return null;
+            }
+        }
+
+        // ==================== RENDER RUBRIK ====================
+        function renderRubrik(data) {
+            const container = document.getElementById('rubrikContainer');
+            const infoCard = document.getElementById('infoCard');
+            const rubrikCard = document.getElementById('rubrikCard');
+            const infoDiv = document.getElementById('aktivitasInfo');
+            const btnExport = document.getElementById('btnExportExcel');
+
+            if (!data || !data.rubrik) {
+                container.innerHTML = '<div class="rubrik-empty">Tidak ada rubrik untuk aktivitas ini</div>';
+                container.style.display = 'block';
+                rubrikCard.style.display = 'block';
+                infoCard.style.display = 'none';
+                btnExport.disabled = true;
+                return;
+            }
+
+            const rubrik = data.rubrik;
+            const aktivitasNama = data.aktivitas || '';
+
+            let namaAktivitas = aktivitasNama;
+            let kodeAktivitas = '';
+            let tpList = [];
+
+            const found = aktivitasList.find(item => item.nama === aktivitasNama);
+            if (found) {
+                kodeAktivitas = found.kode || '';
+            }
+
+            const tpKeys = Object.keys(rubrik);
+            tpList = tpKeys;
+
+            document.getElementById('displayNamaAktivitas').textContent = namaAktivitas;
+            document.getElementById('displayKodeAktivitas').textContent = kodeAktivitas ? `Kode: ${kodeAktivitas}` : '';
+            
+            const tpListHtml = tpList.map(tp => {
+                const desc = getDeskripsiTP(tp);
+                return `<span class="tp-tag">${tp} <span class="tp-desc">${desc ? ' - ' + desc : ''}</span></span>`;
+            }).join('');
+            document.getElementById('displayTPList').innerHTML = tpListHtml;
+            
+            infoDiv.style.display = 'block';
+            infoCard.style.display = 'block';
+
+            let html = '';
+
+            for (const tpKey of tpKeys) {
+                const tpData = rubrik[tpKey];
+                if (!tpData || !tpData.kriteria) continue;
+
+                const kriteriaList = tpData.kriteria || [];
+                const jumlahKriteria = kriteriaList.length;
+                const tpDesc = getDeskripsiTP(tpKey);
+
+                html += `
+                    <div class="tp-section">
+                        <div class="tp-header">
+                            <div class="tp-left">
+                                <span class="tp-code">${tpKey}</span>
+                                <span class="tp-desc">${tpDesc}</span>
+                            </div>
+                            <div class="tp-right">
+                                <span class="tp-jumlah-kriteria">
+                                    <i class="fas fa-list"></i> ${jumlahKriteria} Kriteria
+                                </span>
+                                <span class="tp-formula">
+                                    <span class="formula-label">Nilai TP</span>
+                                    <span class="formula-equals">=</span>
+                                    <div class="formula-fraction">
+                                        <span class="numerator">Σ Skor</span>
+                                        <span class="fraction-line"></span>
+                                        <span class="denominator">${jumlahKriteria} × 4</span>
+                                    </div>
+                                    <span class="formula-times">×</span>
+                                    <span class="formula-100">100</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="rubrik-table-wrapper">
+                            <table class="rubrik-table">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Kriteria Penilaian</th>
+                                        <th><span class="skor-label">4</span> Sangat Baik</th>
+                                        <th><span class="skor-label">3</span> Baik</th>
+                                        <th><span class="skor-label">2</span> Cukup</th>
+                                        <th><span class="skor-label">1</span> Kurang</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                    `;
+
+                let nomor = 1;
+                for (const kriteria of kriteriaList) {
+                    html += `
+                        <tr>
+                            <td>${nomor}</td>
+                            <td class="kriteria-nama">${escapeHtml(kriteria.nama || '')}</td>
+                            <td class="skor-cell skor-4">${escapeHtml(kriteria['4'] || '-')}</td>
+                            <td class="skor-cell skor-3">${escapeHtml(kriteria['3'] || '-')}</td>
+                            <td class="skor-cell skor-2">${escapeHtml(kriteria['2'] || '-')}</td>
+                            <td class="skor-cell skor-1">${escapeHtml(kriteria['1'] || '-')}</td>
+                        </tr>
+                    `;
+                    nomor++;
+                }
+
+                html += `
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                `;
+            }
+
+            if (html === '') {
+                html = '<div class="rubrik-empty">Tidak ada kriteria penilaian untuk TP ini</div>';
+            }
+
+            container.innerHTML = html;
+            container.style.display = 'block';
+            rubrikCard.style.display = 'block';
+            
+            currentRubrikData = data;
+            
+            // ===== AKTIFKAN TOMBOL EXPORT JIKA GURU =====
+            const userRole = sessionStorage.getItem('adminRole') || '';
+            const isLoggedIn = sessionStorage.getItem('isAdminLoggedIn') === 'true';
+            
+            if (isLoggedIn && (userRole.toLowerCase() === 'guru' || userRole.toLowerCase() === 'admin')) {
+                btnExport.disabled = false;
+            } else {
+                btnExport.disabled = true;
+            }
+        }
+
+        // ==================== ESCAPE HTML ====================
+        function escapeHtml(text) {
+            if (!text) return '';
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // ==================== TAMPILKAN DATA ====================
+        async function tampilkanRubrik() {
+            const semester = document.getElementById('filterSemester').value;
+            const aktivitas = document.getElementById('filterAktivitas').value;
+
+            if (!semester) { alert('Pilih semester terlebih dahulu'); return; }
+            if (!aktivitas) { alert('Pilih aktivitas terlebih dahulu'); return; }
+
+            currentSemester = semester;
+
+            const loadingMsg = document.getElementById('loadingMessage');
+            const errorMsg = document.getElementById('errorMessage');
+            loadingMsg.style.display = 'block';
+            errorMsg.style.display = 'none';
+            document.getElementById('rubrikCard').style.display = 'none';
+            document.getElementById('infoCard').style.display = 'none';
+            document.getElementById('rubrikContainer').style.display = 'none';
+
+            const btn = document.getElementById('btnTampilkan');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memuat...';
+
+            try {
+                const result = await fetchRubrik(aktivitas);
+                
+                if (result && result.success && result.rubrik) {
+                    renderRubrik(result);
+                } else {
+                    document.getElementById('rubrikContainer').innerHTML = 
+                        '<div class="rubrik-empty">Rubrik tidak ditemukan untuk aktivitas ini</div>';
+                    document.getElementById('rubrikContainer').style.display = 'block';
+                    document.getElementById('rubrikCard').style.display = 'block';
+                    document.getElementById('infoCard').style.display = 'none';
+                }
+
+            } catch (error) {
+                console.error('Error:', error);
+                errorMsg.style.display = 'block';
+                document.getElementById('errorText').innerHTML = error.message || 'Gagal memuat rubrik. Silakan coba lagi.';
+            } finally {
+                loadingMsg.style.display = 'none';
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-search"></i> Tampilkan Rubrik';
+            }
+        }
+
+        // ==================== RENDER RUBRIK KE WORKSHEET ====================
+        function renderRubrikToWorksheet(worksheet, rubrikData, aktivitasNama) {
+            const borderStyle = {
+                top: { style: 'thin', color: { argb: 'FF333333' } },
+                bottom: { style: 'thin', color: { argb: 'FF333333' } },
+                left: { style: 'thin', color: { argb: 'FF333333' } },
+                right: { style: 'thin', color: { argb: 'FF333333' } }
+            };
+
+            const headerFill = {
+                type: 'pattern',
+                pattern: 'solid',
+                fgColor: { argb: 'FF2E86C1' }
+            };
+
+            const headerFont = {
+                name: 'Segoe UI',
+                size: 10,
+                bold: true,
+                color: { argb: 'FFFFFFFF' }
+            };
+
+            const titleFont = {
+                name: 'Segoe UI',
+                size: 14,
+                bold: true,
+                color: { argb: 'FF1A5276' }
+            };
+
+            let currentRow = 1;
+
+            // Judul
+            const titleRow = worksheet.getRow(currentRow);
+            titleRow.height = 30;
+            const titleCell = titleRow.getCell(1);
+            titleCell.value = `RUBRIK PENILAIAN - ${aktivitasNama}`;
+            titleCell.font = titleFont;
+            titleCell.alignment = { horizontal: 'center', vertical: 'middle' };
+            worksheet.mergeCells(currentRow, 1, currentRow, 6);
+            currentRow++;
+
+            // Baris kosong
+            currentRow++;
+
+            // Header tabel
+            const headerRow = worksheet.getRow(currentRow);
+            headerRow.height = 25;
+            const headers = ['No', 'Kriteria Penilaian', '4 - Sangat Baik', '3 - Baik', '2 - Cukup', '1 - Kurang'];
+            for (let i = 0; i < headers.length; i++) {
+                const cell = headerRow.getCell(i + 1);
+                cell.value = headers[i];
+                cell.font = headerFont;
+                cell.fill = headerFill;
+                cell.alignment = { horizontal: 'center', vertical: 'middle', wrapText: true };
+                cell.border = borderStyle;
+            }
+            currentRow++;
+
+            // Data per TP
+            const rubrik = rubrikData;
+            const tpKeys = Object.keys(rubrik);
+            for (const tpKey of tpKeys) {
+                const tpData = rubrik[tpKey];
+                if (!tpData || !tpData.kriteria) continue;
+
+                if (tpKeys.indexOf(tpKey) > 0) {
+                    currentRow++;
+                }
+
+                const tpHeaderRow = worksheet.getRow(currentRow);
+                tpHeaderRow.height = 30;
+                const tpHeaderCell = tpHeaderRow.getCell(1);
+                const tpDesc = getDeskripsiTP(tpKey);
+                tpHeaderCell.value = `${tpKey}: ${tpDesc}`;
+                tpHeaderCell.font = { name: 'Segoe UI', size: 11, bold: true, color: { argb: 'FF1A5276' } };
+                tpHeaderCell.alignment = { horizontal: 'left', vertical: 'middle' };
+                worksheet.mergeCells(currentRow, 1, currentRow, 6);
+                currentRow++;
+
+                let nomor = 1;
+                for (const kriteria of tpData.kriteria) {
+                    const row = worksheet.getRow(currentRow);
+                    row.height = 25;
+
+                    const rowData = [
+                        nomor,
+                        kriteria.nama || '',
+                        kriteria['4'] || '-',
+                        kriteria['3'] || '-',
+                        kriteria['2'] || '-',
+                        kriteria['1'] || '-'
+                    ];
+
+                    for (let i = 0; i < rowData.length; i++) {
+                        const cell = row.getCell(i + 1);
+                        cell.value = rowData[i];
+                        cell.border = borderStyle;
+                        cell.alignment = {
+                            vertical: 'middle',
+                            wrapText: true,
+                            horizontal: i === 0 ? 'center' : i === 1 ? 'left' : 'center'
+                        };
+                        
+                        if (i >= 2 && rowData[i] !== '-') {
+                            const skor = i === 2 ? 4 : i === 3 ? 3 : i === 4 ? 2 : 1;
+                            const colors = {
+                                4: { bg: 'FFE8F4FD', border: 'FF2980B9' },
+                                3: { bg: 'FFE8F8F0', border: 'FF27AE60' },
+                                2: { bg: 'FFFEF9E7', border: 'FFF39C12' },
+                                1: { bg: 'FFFDEDEC', border: 'FFE74C3C' }
+                            };
+                            cell.fill = {
+                                type: 'pattern',
+                                pattern: 'solid',
+                                fgColor: { argb: colors[skor].bg }
+                            };
+                            cell.border = {
+                                top: { style: 'thin', color: { argb: 'FF333333' } },
+                                bottom: { style: 'thin', color: { argb: 'FF333333' } },
+                                left: { style: 'thin', color: { argb: colors[skor].border } },
+                                right: { style: 'thin', color: { argb: 'FF333333' } }
+                            };
+                            cell.alignment = { horizontal: 'center', vertical: 'middle', wrapText: true };
+                        }
+                    }
+                    currentRow++;
+                    nomor++;
+                }
+            }
+
+            worksheet.getColumn(1).width = 8;
+            worksheet.getColumn(2).width = 35;
+            worksheet.getColumn(3).width = 25;
+            worksheet.getColumn(4).width = 25;
+            worksheet.getColumn(5).width = 25;
+            worksheet.getColumn(6).width = 25;
+        }
+
+        // ==================== EXPORT KE EXCEL ====================
+        async function exportRubrikToExcel() {
+            const exportMode = document.getElementById('exportMode').value;
+            const btnExport = document.getElementById('btnExportExcel');
+            const semester = document.getElementById('filterSemester').value || currentSemester;
+
+            btnExport.disabled = true;
+            btnExport.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memproses...';
+
+            try {
+                const workbook = new ExcelJS.Workbook();
+                workbook.creator = 'Informatika Guru';
+                workbook.created = new Date();
+
+                if (exportMode === 'aktivitas') {
+                    if (!currentRubrikData || !currentRubrikData.rubrik) {
+                        alert('Tidak ada data rubrik untuk diexport.');
+                        btnExport.disabled = false;
+                        btnExport.innerHTML = '<i class="fas fa-file-excel"></i> Export ke Excel';
+                        return;
+                    }
+
+                    const aktivitasNama = currentRubrikData.aktivitas || 'Aktivitas';
+                    const worksheet = workbook.addWorksheet(aktivitasNama.substring(0, 31), {
+                        properties: { tabColor: { argb: 'FF3498DB' } },
+                        pageSetup: { orientation: 'landscape', fitToPage: true }
+                    });
+                    renderRubrikToWorksheet(worksheet, currentRubrikData.rubrik, aktivitasNama);
+
+                    const fileName = `Rubrik_${aktivitasNama.replace(/\s+/g, '_')}_${new Date().toISOString().slice(0,10)}.xlsx`;
+                    const buffer = await workbook.xlsx.writeBuffer();
+                    const blob = new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+                    saveAs(blob, fileName);
+
+                } else {
+                    const allRubrik = await fetchAllRubrik(semester);
+                    if (!allRubrik || Object.keys(allRubrik).length === 0) {
+                        alert('Tidak ada rubrik untuk semester ini.');
+                        btnExport.disabled = false;
+                        btnExport.innerHTML = '<i class="fas fa-file-excel"></i> Export ke Excel';
+                        return;
+                    }
+
+                    const aktivitasNames = Object.keys(allRubrik);
+                    let sheetCount = 0;
+
+                    for (const nama of aktivitasNames) {
+                        const rubrik = allRubrik[nama];
+                        if (!rubrik || Object.keys(rubrik).length === 0) continue;
+
+                        let sheetName = nama.substring(0, 31);
+                        if (sheetCount > 0) {
+                            const existingSheets = workbook.worksheets.map(s => s.name);
+                            let counter = 1;
+                            let newName = sheetName;
+                            while (existingSheets.includes(newName)) {
+                                newName = `${sheetName.substring(0, 27)}_${counter}`;
+                                counter++;
+                            }
+                            sheetName = newName;
+                        }
+
+                        const worksheet = workbook.addWorksheet(sheetName, {
+                            properties: { tabColor: { argb: 'FF3498DB' } },
+                            pageSetup: { orientation: 'landscape', fitToPage: true }
+                        });
+                        renderRubrikToWorksheet(worksheet, rubrik, nama);
+                        sheetCount++;
+                    }
+
+                    if (sheetCount > 1) {
+                        const summarySheet = workbook.addWorksheet('Daftar Isi', {
+                            properties: { tabColor: { argb: 'FF2980B9' } }
+                        });
+                        
+                        const titleRow = summarySheet.getRow(1);
+                        titleRow.height = 30;
+                        const titleCell = titleRow.getCell(1);
+                        titleCell.value = `DAFTAR RUBRIK - SEMESTER ${semester}`;
+                        titleCell.font = { name: 'Segoe UI', size: 14, bold: true, color: { argb: 'FF1A5276' } };
+                        titleCell.alignment = { horizontal: 'center', vertical: 'middle' };
+                        summarySheet.mergeCells(1, 1, 1, 2);
+                        
+                        const headerRow = summarySheet.getRow(3);
+                        headerRow.height = 25;
+                        headerRow.getCell(1).value = 'No';
+                        headerRow.getCell(2).value = 'Aktivitas';
+                        headerRow.getCell(1).font = { bold: true };
+                        headerRow.getCell(2).font = { bold: true };
+                        headerRow.getCell(1).alignment = { horizontal: 'center' };
+                        headerRow.getCell(2).alignment = { horizontal: 'left' };
+                        
+                        let no = 1;
+                        let rowIndex = 4;
+                        for (const nama of aktivitasNames) {
+                            const row = summarySheet.getRow(rowIndex);
+                            row.getCell(1).value = no;
+                            row.getCell(2).value = nama;
+                            row.getCell(1).alignment = { horizontal: 'center' };
+                            row.getCell(2).alignment = { horizontal: 'left' };
+                            rowIndex++;
+                            no++;
+                        }
+                        
+                        summarySheet.getColumn(1).width = 10;
+                        summarySheet.getColumn(2).width = 50;
+                    }
+
+                    const fileName = `Rubrik_Semester_${semester}_${new Date().toISOString().slice(0,10)}.xlsx`;
+                    const buffer = await workbook.xlsx.writeBuffer();
+                    const blob = new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+                    saveAs(blob, fileName);
+                }
+
+            } catch (error) {
+                console.error('Error export Excel:', error);
+                alert('Gagal mengekspor data: ' + error.message);
+            } finally {
+                btnExport.disabled = false;
+                btnExport.innerHTML = '<i class="fas fa-file-excel"></i> Export ke Excel';
+            }
+        }
+
+        // ==================== LOAD PROFILE DARI SESSION ====================
+        function loadProfileFromSession() {
+            const adminName = sessionStorage.getItem('adminName');
+            const adminRole = sessionStorage.getItem('adminRole');
+            if (adminName) {
+                const profileName = document.getElementById('profileName');
+                const profileRole = document.getElementById('profileRole');
+                const profileAvatar = document.getElementById('profileAvatar');
+                const profileContainer = document.getElementById('profileContainer');
+                
+                if (profileName) profileName.innerText = adminName;
+                if (profileRole) profileRole.innerText = adminRole || 'Administrator';
+                if (profileAvatar) profileAvatar.innerText = adminName.charAt(0);
+                if (profileContainer) profileContainer.style.display = 'block';
+            }
+        }
+
+        // ==================== CEK ROLE USER ====================
+        function checkUserRole() {
+            const exportGroup = document.getElementById('exportGroup');
+            const btnExport = document.getElementById('btnExportExcel');
+            
+            const userRole = sessionStorage.getItem('adminRole') || '';
+            const isLoggedIn = sessionStorage.getItem('isAdminLoggedIn') === 'true';
+            
+            if (isLoggedIn && (userRole.toLowerCase() === 'guru' || userRole.toLowerCase() === 'admin')) {
+                exportGroup.classList.remove('hidden');
+                exportGroup.style.display = 'flex';
+                btnExport.disabled = false;
+            } else {
+                exportGroup.classList.add('hidden');
+                exportGroup.style.display = 'none';
+                btnExport.disabled = true;
+            }
+        }
+
+        // ==================== HANDLE LOGOUT ====================
+        function handleLogout() {
+            sessionStorage.removeItem('isAdminLoggedIn');
+            sessionStorage.removeItem('adminName');
+            sessionStorage.removeItem('adminRole');
+            sessionStorage.removeItem('adminUsername');
+            window.location.href = 'index-penilaian-informatika.html';
+        }
+
+        // ==================== INISIALISASI ====================
+        async function init() {
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            if (hamburger) {
+                hamburger.addEventListener('click', () => navMenu.classList.toggle('active'));
+            }
+
+            // ===== LOAD PROFILE DARI SESSION =====
+            loadProfileFromSession();
+
+            // ===== CEK ROLE USER =====
+            checkUserRole();
+
+            const filterSemester = document.getElementById('filterSemester');
+            const filterAktivitas = document.getElementById('filterAktivitas');
+            const btnTampilkan = document.getElementById('btnTampilkan');
+            const btnExport = document.getElementById('btnExportExcel');
+
+            btnExport.addEventListener('click', exportRubrikToExcel);
+
+            filterSemester.addEventListener('change', async function() {
+                const semester = this.value;
+                currentSemester = semester;
+                filterAktivitas.disabled = true;
+                filterAktivitas.innerHTML = '<option value="">-- Memuat aktivitas... --</option>';
+                btnTampilkan.disabled = true;
+                document.getElementById('rubrikCard').style.display = 'none';
+                document.getElementById('infoCard').style.display = 'none';
+
+                if (!semester) {
+                    filterAktivitas.innerHTML = '<option value="">-- Pilih Semester Dulu --</option>';
+                    return;
+                }
+
+                try {
+                    const list = await loadAktivitasList(semester);
+                    if (list && list.length > 0) {
+                        updateAktivitasDropdown(list);
+                    } else {
+                        filterAktivitas.innerHTML = '<option value="">-- Tidak ada aktivitas --</option>';
+                    }
+                } catch (error) {
+                    filterAktivitas.innerHTML = '<option value="">-- Gagal memuat --</option>';
+                }
+            });
+
+            filterAktivitas.addEventListener('change', function() {
+                btnTampilkan.disabled = !this.value;
+            });
+
+            btnTampilkan.addEventListener('click', tampilkanRubrik);
+
+            filterSemester.value = 'Ganjil';
+            filterSemester.dispatchEvent(new Event('change'));
+        }
+
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>

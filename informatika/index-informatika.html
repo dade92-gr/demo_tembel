@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informatika - Kelas X</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* INFORMATIKA THEME COLORS */
+        :root {
+            --informatika-primary: #3498db;
+            --informatika-secondary: #2980b9;
+            --informatika-light: #ebf5fb;
+            --informatika-dark: #21618c;
+            --informatika-accent: #9b59b6;
+        }
+        
+        /* INFORMATIKA COURSE CONTENT */
+        .informatika-course-content {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .informatika-content-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(52, 152, 219, 0.1);
+            border-left: 5px solid var(--informatika-primary);
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        .informatika-content-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(52, 152, 219, 0.1) 0%, transparent 70%);
+            z-index: 0;
+        }
+        
+        .informatika-content-card h2 {
+            color: var(--informatika-dark);
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        
+        .informatika-content-card h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--informatika-primary), var(--informatika-secondary));
+            border-radius: 2px;
+        }
+        
+        .informatika-content-card > p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #555;
+            margin-bottom: 2.5rem;
+            padding: 1rem 1.5rem;
+            background: var(--informatika-light);
+            border-radius: 10px;
+            border-left: 4px solid var(--informatika-primary);
+        }
+        
+        /* CAPAIAN PEMBELAJARAN STYLES */
+        .informatika-capaian-section {
+            margin-bottom: 2.5rem;
+            animation: fadeInUp 0.6s ease-out 0.2s both;
+        }
+        
+        .informatika-capaian-section h3 {
+            color: var(--informatika-dark);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .informatika-capaian-section h3 i {
+            color: var(--informatika-primary);
+            background: var(--informatika-light);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .informatika-capaian-content {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border: 1px solid #e3f2fd;
+            margin-bottom: 2rem;
+        }
+        
+        .informatika-capaian-content h4 {
+            color: var(--informatika-dark);
+            font-size: 1.2rem;
+            margin: 1.5rem 0 1rem 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--informatika-light);
+        }
+        
+        .informatika-capaian-content h4:first-child {
+            margin-top: 0;
+        }
+        
+        .informatika-capaian-content p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        
+        .informatika-capaian-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+        
+        .informatika-capaian-content ul li {
+            padding: 0.6rem 0 0.6rem 1.8rem;
+            border-bottom: 1px dashed #e0e0e0;
+            line-height: 1.6;
+            position: relative;
+            color: #444;
+        }
+        
+        .informatika-capaian-content ul li:last-child {
+            border-bottom: none;
+        }
+        
+        .informatika-capaian-content ul li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--informatika-primary);
+            font-weight: bold;
+        }
+        
+        .informatika-capaian-content ul li strong {
+            color: var(--informatika-dark);
+        }
+        
+        /* CAPAIAN PEMBELAJARAN PARAGRAPH STYLE */
+        .informatika-capaian-paragraph {
+            background: var(--informatika-light);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--informatika-primary);
+            line-height: 1.8;
+            color: #444;
+            text-align: justify;
+        }
+        
+        .informatika-capaian-paragraph strong {
+            color: var(--informatika-dark);
+        }
+        
+        .informatika-capaian-paragraph.elemen-berpikir {
+            border-left-color: #e74c3c;
+            background: #fef9f8;
+        }
+        
+        .informatika-capaian-paragraph.elemen-literasi {
+            border-left-color: #2ecc71;
+            background: #f0faf6;
+        }
+        
+        /* ELEMEN GRID */
+        .informatika-elemen-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .informatika-elemen-item {
+            background: var(--informatika-light);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border-left: 4px solid var(--informatika-primary);
+            transition: all 0.3s ease;
+        }
+        
+        .informatika-elemen-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.1);
+        }
+        
+        .informatika-elemen-item h5 {
+            color: var(--informatika-dark);
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .informatika-elemen-item p {
+            color: #555;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        
+        /* TUJUAN PEMBELAJARAN INFORMATIKA */
+        .informatika-tujuan-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .informatika-tujuan-phase {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border: 1px solid #e3f2fd;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .informatika-tujuan-phase::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--informatika-primary), var(--informatika-accent));
+        }
+        
+        .informatika-tujuan-phase:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.15);
+        }
+        
+        .informatika-tujuan-phase h4 {
+            color: var(--informatika-dark);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--informatika-light);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .informatika-tujuan-phase h4 i {
+            background: var(--informatika-primary);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+        
+        .informatika-tujuan-phase ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .informatika-tujuan-phase li {
+            padding: 0.8rem 0;
+            margin-bottom: 0.5rem;
+            border-bottom: 1px dashed #e0e0e0;
+            line-height: 1.5;
+            display: flex;
+            gap: 10px;
+            animation: slideInLeft 0.5s ease-out both;
+        }
+        
+        .informatika-tujuan-phase li:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        
+        .informatika-tujuan-phase li strong {
+            color: var(--informatika-primary);
+            background: var(--informatika-light);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            min-width: 40px;
+            text-align: center;
+            display: inline-block;
+            flex-shrink: 0;
+        }
+        
+        /* Warna berbeda untuk setiap fase - disesuaikan dengan urutan proyek baru */
+        .informatika-tujuan-phase:nth-child(1) h4 i {
+            background: #3498db;
+        }
+        .informatika-tujuan-phase:nth-child(1) li strong {
+            color: #3498db;
+            background: #ebf5fb;
+        }
+        
+        .informatika-tujuan-phase:nth-child(2) h4 i {
+            background: #2ecc71;
+        }
+        .informatika-tujuan-phase:nth-child(2) li strong {
+            color: #2ecc71;
+            background: #d5f4e6;
+        }
+        
+        .informatika-tujuan-phase:nth-child(3) h4 i {
+            background: #f39c12;
+        }
+        .informatika-tujuan-phase:nth-child(3) li strong {
+            color: #f39c12;
+            background: #fef5e7;
+        }
+        
+        .informatika-tujuan-phase:nth-child(4) h4 i {
+            background: #e74c3c;
+        }
+        .informatika-tujuan-phase:nth-child(4) li strong {
+            color: #e74c3c;
+            background: #fdedec;
+        }
+        
+        .informatika-tujuan-phase:nth-child(5) h4 i {
+            background: #9b59b6;
+        }
+        .informatika-tujuan-phase:nth-child(5) li strong {
+            color: #9b59b6;
+            background: #f4ecf7;
+        }
+        
+        .informatika-tujuan-phase:nth-child(6) h4 i {
+            background: #1abc9c;
+        }
+        .informatika-tujuan-phase:nth-child(6) li strong {
+            color: #1abc9c;
+            background: #e8f6f3;
+        }
+        
+        /* INFORMATIKA PROYEK GRID */
+        .informatika-course-structure {
+            margin-bottom: 2.5rem;
+            animation: fadeInUp 0.6s ease-out 0.4s both;
+        }
+        
+        .informatika-course-structure h3 {
+            color: var(--informatika-dark);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .informatika-course-structure h3 i {
+            color: var(--informatika-primary);
+            background: var(--informatika-light);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .informatika-proyek-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .informatika-proyek-item {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInScale 0.5s ease-out both;
+        }
+        
+        .informatika-proyek-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(52, 152, 219, 0.2);
+        }
+        
+        .informatika-proyek-item h4 {
+            color: var(--informatika-dark);
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+        
+        .informatika-proyek-item .proyek-number {
+            display: inline-block;
+            background: var(--informatika-primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .informatika-proyek-item .proyek-semester {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            background: var(--informatika-light);
+            color: var(--informatika-primary);
+            border: 1px solid var(--informatika-primary);
+        }
+        
+        .informatika-proyek-item .proyek-semester.semester1 {
+            background: #ebf5fb;
+            color: #3498db;
+            border-color: #3498db;
+        }
+        
+        .informatika-proyek-item .proyek-semester.semester2 {
+            background: #fdedec;
+            color: #e74c3c;
+            border-color: #e74c3c;
+        }
+        
+        .informatika-proyek-item p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+        
+        .informatika-proyek-item .proyek-aktivitas {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px dashed #e0e0e0;
+        }
+        
+        .informatika-proyek-item .proyek-aktivitas ul {
+            list-style: none;
+            padding: 0;
+            margin: 0.5rem 0 0 0;
+        }
+        
+        .informatika-proyek-item .proyek-aktivitas li {
+            padding: 0.3rem 0 0.3rem 1.5rem;
+            font-size: 0.85rem;
+            color: #555;
+            position: relative;
+        }
+        
+        .informatika-proyek-item .proyek-aktivitas li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--informatika-primary);
+        }
+        
+        .informatika-proyek-item .proyek-aktivitas .aktivitas-label {
+            font-weight: 600;
+            color: var(--informatika-dark);
+        }
+        
+        .informatika-proyek-item .proyek-kd {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 1rem;
+        }
+        
+        .informatika-proyek-item .kd-badge {
+            background: var(--informatika-light);
+            color: var(--informatika-primary);
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border: 1px solid var(--informatika-primary);
+        }
+        
+        /* Warna berbeda untuk setiap proyek */
+        .informatika-proyek-item:nth-child(1) {
+            border-top: 5px solid #3498db;
+        }
+        .informatika-proyek-item:nth-child(2) {
+            border-top: 5px solid #2ecc71;
+        }
+        .informatika-proyek-item:nth-child(3) {
+            border-top: 5px solid #f39c12;
+        }
+        .informatika-proyek-item:nth-child(4) {
+            border-top: 5px solid #e74c3c;
+        }
+        .informatika-proyek-item:nth-child(5) {
+            border-top: 5px solid #9b59b6;
+        }
+        .informatika-proyek-item:nth-child(6) {
+            border-top: 5px solid #1abc9c;
+        }
+        
+        /* INFORMATIKA QUICK LINKS */
+        .informatika-quick-links {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px dashed #e0e0e0;
+            animation: fadeInUp 0.6s ease-out 0.6s both;
+        }
+        
+        .informatika-quick-links h3 {
+            color: var(--informatika-dark);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .informatika-quick-links h3 i {
+            color: var(--informatika-primary);
+            background: var(--informatika-light);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulse 2s infinite;
+        }
+        
+        .informatika-quick-links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .informatika-quick-link {
+            background: linear-gradient(135deg, var(--informatika-primary), var(--informatika-secondary));
+            color: white;
+            text-decoration: none;
+            padding: 1.5rem;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            animation: bounceIn 0.6s ease-out both;
+        }
+        
+        .informatika-quick-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--informatika-secondary), var(--informatika-dark));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+        
+        .informatika-quick-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.4);
+        }
+        
+        .informatika-quick-link:hover::before {
+            opacity: 1;
+        }
+        
+        .informatika-quick-link i {
+            font-size: 2.5rem;
+            color: white;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+        }
+        
+        .informatika-quick-link span {
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        .informatika-quick-link:nth-child(1) {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+            animation-delay: 0.1s;
+        }
+        
+        .informatika-quick-link:nth-child(2) {
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
+            animation-delay: 0.2s;
+        }
+        
+        .informatika-quick-link:nth-child(3) {
+            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+            box-shadow: 0 5px 15px rgba(155, 89, 182, 0.3);
+            animation-delay: 0.3s;
+        }
+        
+        /* ANIMATIONS */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            50% {
+                opacity: 0.9;
+                transform: scale(1.05);
+            }
+            80% {
+                opacity: 1;
+                transform: scale(0.95);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+        
+        /* Responsive Design for Informatika */
+        @media (max-width: 768px) {
+            .informatika-course-content {
+                padding: 1rem;
+            }
+            
+            .informatika-content-card {
+                padding: 1.5rem;
+            }
+            
+            .informatika-content-card h2 {
+                font-size: 1.8rem;
+            }
+            
+            .informatika-proyek-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .informatika-tujuan-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .informatika-quick-links-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .informatika-tujuan-phase li {
+                padding: 0.6rem 0;
+            }
+            
+            .informatika-quick-link {
+                animation-delay: 0s !important;
+            }
+            
+            .informatika-elemen-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .informatika-capaian-content {
+                padding: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .informatika-content-card {
+                padding: 1rem;
+            }
+            
+            .informatika-content-card h2 {
+                font-size: 1.5rem;
+            }
+            
+            .informatika-course-info h3,
+            .informatika-course-structure h3,
+            .informatika-quick-links h3,
+            .informatika-capaian-section h3 {
+                font-size: 1.3rem;
+            }
+            
+            .informatika-proyek-item {
+                padding: 1.5rem 1rem;
+            }
+            
+            .informatika-quick-link {
+                padding: 1rem;
+            }
+            
+            .informatika-tujuan-phase {
+                padding: 1rem;
+            }
+            
+            .informatika-tujuan-phase h4 {
+                font-size: 1rem;
+            }
+            
+            .informatika-tujuan-phase li {
+                font-size: 0.9rem;
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .informatika-tujuan-phase li strong {
+                align-self: flex-start;
+            }
+            
+            .informatika-capaian-content {
+                padding: 0.8rem;
+            }
+            
+            .informatika-capaian-content h4 {
+                font-size: 1rem;
+            }
+            
+            .informatika-capaian-content ul li {
+                font-size: 0.9rem;
+            }
+            
+            .informatika-capaian-paragraph {
+                padding: 1rem;
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="../assets/images/logo.png" alt="Logo Sekolah">
+                    <h1>INFORMATIKA - KELAS X</h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="index-informatika.html" class="nav-link active"><i class="fas fa-laptop-code"></i> Beranda Informatika</a></li>
+                    <li><a href="aktivitas-pembelajaran/index-aktivitas-informatika.html" class="nav-link"><i class="fas fa-tasks"></i> Daftar Aktivitas</a></li>
+                    <li><a href="materi-pembelajaran/index-materi-informatika.html" class="nav-link"><i class="fas fa-book-open"></i> Daftar Materi</a></li>
+                    <li><a href="penilaian/index-penilaian-informatika.html" class="nav-link"><i class="fas fa-chart-line"></i> Penilaian</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Course Content -->
+    <section class="informatika-course-content">
+        <div class="informatika-content-card">
+            <h2>Deskripsi Mata Pelajaran Informatika</h2>
+            <p>Informatika adalah disiplin ilmu yang mencari pemahaman konsep dan mengeksplorasi dunia nyata maupun maya, berkaitan dengan studi, pengembangan, dan implementasi sistem komputer. Mata pelajaran ini membekali murid dengan kemampuan berpikir komputasional dan kecakapan digital untuk menjadi <strong>problem solver</strong> yang menguasai konsep inti dan terampil dalam praktik.</p>
+            
+            <p>Melalui pendekatan <strong>berbasis proyek</strong>, murid diajak menggagas, menganalisis, merancang, dan mengembangkan produk digital. Informatika mencakup literasi digital yang didefinisikan sebagai kemampuan untuk mengakses, mengatur, memahami, mengintegrasikan, mengomunikasikan, mengevaluasi, dan mengkreasi informasi dengan aman dan tepat melalui teknologi digital.</p>
+
+            <!-- CAPAIAN PEMBELAJARAN SECTION -->
+            <div class="informatika-capaian-section">
+                <h3><i class="fas fa-graduation-cap"></i> A. Rasional</h3>
+                <div class="informatika-capaian-content">
+                    <p>Informatika adalah sebuah disiplin ilmu yang mencari pemahaman konsep informatika dan mengeksplorasi dunia di sekitar kita, baik nyata maupun maya yang secara khusus berkaitan dengan studi, pengembangan, dan implementasi dari sistem komputer, serta pemahaman terhadap inovasi dan cara pengembangannya. Murid dapat menggagas, menganalisis, merancang, dan mengembangkan produk dalam bentuk perangkat keras, perangkat lunak, atau sistem komputasi berupa kombinasi perangkat keras dan perangkat lunak. Informatika mencakup prinsip keilmuan perangkat keras, perangkat lunak, data, informasi, dan sistem komputasi. Semua pemahaman tersebut membutuhkan kemampuan berpikir komputasional dan kecakapan digital. Oleh karena itu, Informatika mencakup sains, rekayasa, dan teknologi yang berakar pada logika dan matematika serta memberi ruang kepada aspek seni.</p>
+                    
+                    <p>Istilah informatika dalam bahasa Indonesia merupakan padanan kata yang diadaptasi dari Computer Science atau Computing dalam bahasa Inggris. Murid mempelajari mata pelajaran Informatika tidak hanya untuk menjadi pengguna komputer, tetapi juga untuk menyadari perannya sebagai problem solver yang menguasai konsep inti (core concept) dan terampil dalam praktik (core practices), serta berpandangan terbuka ke bidang lain. Di tengah transformasi digital yang mengalir deras, literasi digital dan berpikir kritis menjadi prasyarat penting supaya murid memiliki bekal untuk menjadi warga digital berbudaya dan beradab (civilized digital citizen), dan produktif di dunia digital dengan meminimalisasi dampak negatifnya.</p>
+                    
+                    <p>Informatika mengakomodasi literasi digital yang didefinisikan sebagai kemampuan untuk mengakses, mengatur, memahami, mengintegrasikan, mengomunikasikan, mengevaluasi, dan mengkreasi informasi dengan aman dan tepat melalui teknologi digital untuk bekerja dan berwirausaha, yang mencakup aspek kecakapan, etika, budaya, keamanan, dan keseimbangan digital yang meliputi dimensi kognitif, teknis, dan sosial emosional.</p>
+                    
+                    <p>Mata pelajaran Informatika memberikan fondasi berpikir komputasional, sesuai dengan konteks Indonesia yang beragam. Murid ditantang untuk berinovasi secara kreatif, menyelesaikan persoalan nyata yang dapat diselesaikan secara komputasional secara berjenjang, mulai dari persoalan dan data yang kecil dan sederhana sampai dengan yang besar, kompleks, dan rumit. Mata pelajaran Informatika mendukung enam literasi dasar serta pemodelan dan simulasi berdasarkan sains komputasional (computational science). Mata pelajaran Informatika juga meningkatkan kemampuan Murid untuk memaksimalkan potensi yang bisa diraih di dunia digital melalui kecakapan digital, bijak beretika digital, dan berbudaya Pancasila dalam dunia digital, serta mampu hidup aman dan seimbang di dunia digital.</p>
+                    
+                    <p>Proses pembelajaran Informatika dilaksanakan secara inklusif bagi semua Murid di seluruh Indonesia sesuai dengan usia dan kehidupan sehari-harinya sehingga pembelajarannya dapat tanpa menggunakan komputer (unplugged) atau dengan penggunaan komputer (plugged). Capaian Pembelajaran Mata pelajaran Informatika pada Fase A, B, dan C tidak ditetapkan, pembelajaran Berpikir Komputasional dan Literasi Digital diintegrasikan dengan mata pelajaran lainnya terutama dalam Pendidikan Pancasila, Bahasa, Matematika, dan Sains.</p>
+                    
+                    <p>Pembelajaran Berpikir Komputasional dan Literasi Digital sangat penting bagi murid SD/MI sebagai fondasi untuk tercapainya computationally literate creators dan wise and wellbeing digital citizenship. Proses pembelajaran Informatika berpusat pada murid (student-centered learning) dengan menerapkan model pembelajaran berbasis inkuiri (inquiry-based learning), pembelajaran berbasis masalah (problem-based learning), atau pembelajaran berbasis projek (project-based learning) yang berlandaskan aspek praktik kerekayasaan Informatika dan dilaksanakan dengan menerapkan pembelajaran mendalam.</p>
+                    
+                    <p>Pendidik dapat menentukan tema atau kasus sesuai dengan kondisi lokal. Pembelajaran Informatika mendukung kemampuan murid dalam menumbuhkan budaya digital dalam Pendidikan Pancasila, mengekspresikan kemampuan berpikir secara terstruktur dan pemahaman aspek sintaksis maupun semantik dalam Bahasa, melengkapi kebiasaan murid untuk berpikir logis dan menyumbangkan jalan pikir analisis data dengan sudut pandang informatika dalam Matematika, serta melengkapi kemampuan pemodelan dan simulasi dengan alat bantu yang dibutuhkan dalam eksperimen Sains. Literasi digital dapat diterapkan dalam semua mata pelajaran dengan mengenalkan alat bantu yang sesuai untuk pembelajaran yang menyenangkan dan menimbulkan motivasi.</p>
+                    
+                    <p>Mata pelajaran Informatika berkontribusi mewujudkan dimensi profil lulusan agar murid menjadi warga yang bernalar kritis, mandiri, kreatif melalui penerapan berpikir komputasional serta menjadi warga yang berakhlak mulia, berkebhinekaan global, bergotong-royong dalam berkarya digital yaitu Keimanan dan Ketakwaan terhadap Tuhan YME, Kewargaan, Penalaran Kritis, Kreativitas, Kolaborasi, Kemandirian, Kesehatan, dan Komunikasi yang diwujudkan secara berkolaborasi baik secara luring atau daring.</p>
+                </div>
+
+                <h3><i class="fas fa-cogs"></i> B. Karakteristik</h3>
+                <div class="informatika-capaian-content">
+                    <p>Mata pelajaran Informatika menerapkan praktik engineering process dalam proses pembelajaran dan prinsip keilmuan informatika dengan mengintegrasikan:</p>
+                    <ul>
+                        <li><strong>(a) Berpikir Komputasional</strong> - Kemampuan untuk menyelesaikan masalah secara sistematis dan berjenjang melalui pemodelan dan melalui simulasi untuk menghasilkan solusi efektif, efisien, dan optimal yang dapat dijalankan oleh manusia atau mesin meliputi penalaran logis, kritis, dan kreatif berdasarkan data, baik secara mandiri maupun berkolaborasi.</li>
+                        <li><strong>(b) Literasi Digital</strong> - Kecakapan bermedia digital, berperilaku etis dan berbudaya di dunia digital, berkemampuan menjaga keamanan diri dan lingkungan, serta memiliki kenyamanan dan keseimbangan hidup di dunia nyata sekaligus dunia maya.</li>
+                        <li><strong>(c) Analisis Data</strong> - Kemampuan untuk menstrukturkan, menginput, memproses (antara lain menganalisis, mengambil kesimpulan, membuat keputusan, dan memprediksi), dan menyajikan data dalam berbagai bentuk representasi, seperti teks, audio, gambar, dan video.</li>
+                        <li><strong>(d) Algoritma dan Pemrograman</strong> - Mengembangkan solusi dari berbagai persoalan dengan membaca bermakna dan menulis teks algoritmik terstruktur (logis, sistematis, bertahap, konvergen, dan linier) menjadi kumpulan instruksi yang dapat dikerjakan orang lain atau komputer, berdasarkan paradigma pemrograman prosedural dengan ukuran dan kompleksitas program yang menaik secara bertahap dan berjenjang, dapat dikerjakan secara mandiri atau berkolaborasi dengan yang lain.</li>
+                    </ul>
+                    
+                    <p>Semua elemen harus dicakup dalam pembelajaran sesuai Capaian Pembelajaran, namun beban belajar (JP) yang dialokasi pada setiap elemen pada mata pelajaran Informatika tidak harus sama. Pencapaian Capaian Pembelajaran dapat dilakukan dengan mengambil kasus tematik yang dipetakan ke dalam konsep dan praktik setiap elemen sesuai konteks, dan menerapkan proses pembelajaran mendalam. Beban belajar dan proses pembelajaran sebaiknya dirancang sesuai dengan karakteristik satuan pendidikan (murid, pendidik, serta sarana dan prasarana) dan lingkungan, yang dilakukan oleh tim kurikulum sebelum pelaksanaan mata pelajaran sehingga beban setiap elemen dapat disesuaikan.</p>
+                    
+                    <div class="informatika-elemen-grid">
+                        <div class="informatika-elemen-item">
+                            <h5><i class="fas fa-brain" style="color: var(--informatika-primary);"></i> Berpikir Komputasional</h5>
+                            <p>Kemampuan menyelesaikan masalah secara sistematis dan berjenjang melalui pemodelan dan simulasi untuk menghasilkan solusi efektif, efisien, dan optimal.</p>
+                        </div>
+                        <div class="informatika-elemen-item" style="border-left-color: #2ecc71;">
+                            <h5><i class="fas fa-globe" style="color: #2ecc71;"></i> Literasi Digital</h5>
+                            <p>Kecakapan bermedia digital, berperilaku etis dan berbudaya di dunia digital, serta menjaga keamanan diri dan lingkungan di dunia maya.</p>
+                        </div>
+                        <div class="informatika-elemen-item" style="border-left-color: #f39c12;">
+                            <h5><i class="fas fa-chart-bar" style="color: #f39c12;"></i> Analisis Data</h5>
+                            <p>Kemampuan menstrukturkan, menginput, memproses, dan menyajikan data dalam berbagai bentuk representasi.</p>
+                        </div>
+                        <div class="informatika-elemen-item" style="border-left-color: #9b59b6;">
+                            <h5><i class="fas fa-code" style="color: #9b59b6;"></i> Algoritma dan Pemrograman</h5>
+                            <p>Mengembangkan solusi persoalan dengan menulis teks algoritmik terstruktur menjadi kumpulan instruksi yang dapat dikerjakan orang lain atau komputer.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3><i class="fas fa-flag-checkered"></i> C. Capaian Pembelajaran Fase E</h3>
+                <div class="informatika-capaian-content">
+                    <p><strong>Fase E</strong> (Umumnya untuk Kelas X SMA/MA/Paket C)</p>
+                    <p>Pada akhir Fase E, murid memiliki kemampuan sebagai berikut:</p>
+                    
+                    <h4>2.1 Berpikir Komputasional</h4>
+                    <div class="informatika-capaian-paragraph elemen-berpikir">
+                        <strong>Berpikir Komputasional</strong> — Memahami konsep struktur data dan algoritma standar; menerapkan proses komputasi yang dilakukan manusia secara mandiri atau berkelompok untuk mendapatkan data yang berkualitas; menerapkan algoritma dan struktur data standar untuk menghasilkan berbagai solusi dalam menyelesaikan persoalan; menuliskan solusi rancangan program sederhana dalam format pseudocode yang dekat dengan bahasa komputer; memahami model dan menyimulasikan dinamika Input-Process-Output dalam sebuah komputer Von Neumann, serta memahami peran sistem operasi.
+                    </div>
+                    
+                    <h4>2.2 Literasi Digital</h4>
+                    <div class="informatika-capaian-paragraph elemen-literasi">
+                        <strong>Literasi Digital</strong> — Memahami penggunaan mesin pencari dengan variabel yang lebih banyak; mengetahui ekosistem periksa fakta untuk memilah fakta dan bukan; menggunakan cara membaca lateral untuk mengevaluasi berbagai informasi digital; memahami pemanfaatan perangkat teknologi yang lebih beragam untuk pengolah dokumen, lembar kerja, dan presentasi; memahami konsep dan penerapan serta konfigurasi keamanan dasar untuk konektivitas jaringan data lokal dan internet baik kabel maupun nirkabel; memahami pemanfaatan media digital untuk produksi dan diseminasi konten, partisipasi dan kolaborasi; menghargai hak atas kekayaan intelektual, mengenal profesi bidang Informatika, memahami penerapan digitalisasi budaya Indonesia, menyaring konten negatif di dunia digital; menerapkan pengelolaan kata sandi dengan manajer kata sandi, dan menerapkan autentikasi dua langkah secara sederhana, serta menerapkan konfigurasi privasi dan keamanan pada akun platform digital.
+                    </div>
+                </div>
+            </div>
+
+            <!-- TUJUAN PEMBELAJARAN SECTION - D. Tujuan Pembelajaran -->
+            <div class="informatika-course-info">
+                <h3><i class="fas fa-bullseye"></i> D. Tujuan Pembelajaran</h3>
+                <div class="informatika-tujuan-grid">
+                    <!-- Proyek 1: Saya Siap Jadi Kreator Digital -->
+                    <div class="informatika-tujuan-phase">
+                        <h4><i class="fas fa-paint-brush"></i> Saya Siap Jadi Kreator Digital</h4>
+                        <ul>
+                            <li><strong>2.4</strong> Menggunakan perangkat teknologi untuk mengolah dokumen, lembar kerja, dan presentasi</li>
+                            <li><strong>2.5</strong> Memahami dan menerapkan konfigurasi keamanan dasar untuk konektivitas jaringan lokal dan internet</li>
+                            <li><strong>2.11</strong> Mengelola kata sandi secara aman menggunakan manajer kata sandi</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Proyek 2: Budaya Kita di Dunia Digital -->
+                    <div class="informatika-tujuan-phase">
+                        <h4><i class="fas fa-globe-asia"></i> Budaya Kita di Dunia Digital</h4>
+                        <ul>
+                            <li><strong>2.6</strong> Menggunakan media digital untuk produksi konten, partisipasi aktif, dan kolaborasi daring</li>
+                            <li><strong>2.8</strong> Mengenal berbagai profesi di bidang informatika dan kontribusinya di masyarakat</li>
+                            <li><strong>2.9</strong> Memahami dan memberikan contoh penerapan digitalisasi budaya Indonesia</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Proyek 3: Jejak Digital Aman -->
+                    <div class="informatika-tujuan-phase">
+                        <h4><i class="fas fa-shield-alt"></i> Jejak Digital Aman</h4>
+                        <ul>
+                            <li><strong>2.7</strong> Menunjukkan sikap menghargai hak atas kekayaan intelektual dalam dunia digital</li>
+                            <li><strong>2.11</strong> Mengelola kata sandi secara aman menggunakan manajer kata sandi</li>
+                            <li><strong>2.12</strong> Menerapkan autentikasi dua langkah untuk meningkatkan keamanan akun digital</li>
+                            <li><strong>2.13</strong> Menerapkan pengaturan privasi dan keamanan akun di berbagai platform digital</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Proyek 4: Fakta atau Hoaks? -->
+                    <div class="informatika-tujuan-phase">
+                        <h4><i class="fas fa-search"></i> Fakta atau Hoaks?</h4>
+                        <ul>
+                            <li><strong>2.1</strong> Memahami cara penggunaan mesin pencari dengan variabel pencarian yang kompleks</li>
+                            <li><strong>2.2</strong> Mengetahui dan menerapkan ekosistem periksa fakta untuk memilah fakta dan hoaks</li>
+                            <li><strong>2.3</strong> Menggunakan strategi membaca lateral untuk mengevaluasi informasi digital</li>
+                            <li><strong>2.10</strong> Menyaring dan menghindari konten negatif di dunia digital</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Proyek 5: Rancang Mesin Pintar Mini -->
+                    <div class="informatika-tujuan-phase">
+                        <h4><i class="fas fa-microchip"></i> Rancang Mesin Pintar Mini</h4>
+                        <ul>
+                            <li><strong>1.4</strong> Menggunakan algoritma dan struktur data standar untuk menyelesaikan berbagai persoalan nyata</li>
+                            <li><strong>1.6</strong> Memahami dan menyimulasikan model Input–Process–Output (IPO) dalam komputer Von Neumann</li>
+                            <li><strong>1.7</strong> Menjelaskan fungsi dan peran sistem operasi dalam proses komputasi</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Proyek 6: Bisa Bikin Program? Bisa! -->
+                    <div class="informatika-tujuan-phase">
+                        <h4><i class="fas fa-code"></i> Bisa Bikin Program? Bisa!</h4>
+                        <ul>
+                            <li><strong>1.1</strong> Memahami konsep dasar struktur data dan algoritma standar</li>
+                            <li><strong>1.2</strong> Menerapkan proses komputasi sederhana secara mandiri untuk mendapatkan data berkualitas</li>
+                            <li><strong>1.3</strong> Menerapkan proses komputasi kolaboratif untuk menghasilkan data yang berkualitas</li>
+                            <li><strong>1.4</strong> Menggunakan algoritma dan struktur data standar untuk menyelesaikan berbagai persoalan nyata</li>
+                            <li><strong>1.5</strong> Menuliskan rancangan solusi program sederhana dalam bentuk pseudocode</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PROYEK PEMBELAJARAN -->
+            <div class="informatika-course-structure">
+                <h3><i class="fas fa-project-diagram"></i> Proyek Pembelajaran</h3>
+                <div class="informatika-proyek-grid">
+                    <!-- Proyek 1: Saya Siap Jadi Kreator Digital -->
+                    <div class="informatika-proyek-item">
+                        <div class="proyek-number">1</div>
+                        <h4>Saya Siap Jadi Kreator Digital</h4>
+                        <span class="proyek-semester semester1">Semester Ganjil</span>
+                        <p>Mengenal Google Workspace sebagai alat produktivitas, praktik kolaborasi, dan menyusun portofolio digital awal.</p>
+                        <div class="proyek-aktivitas">
+                            <span style="font-weight:600; color: var(--informatika-dark);">Aktivitas:</span>
+                            <ul>
+                                <li><span class="aktivitas-label">AKTIVITAS 1</span> - Pengenalan Google Workspace &amp; Keamanan Akun</li>
+                                <li><span class="aktivitas-label">AKTIVITAS 2</span> - Praktik Produktivitas &amp; Kolaborasi</li>
+                                <li><span class="aktivitas-label">AKTIVITAS 3</span> - Pengamanan &amp; Portofolio Digital</li>
+                            </ul>
+                        </div>
+                        <div class="proyek-kd">
+                            <span class="kd-badge">KD 2.4</span>
+                            <span class="kd-badge">KD 2.5</span>
+                            <span class="kd-badge">KD 2.11</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Proyek 2: Budaya Kita di Dunia Digital -->
+                    <div class="informatika-proyek-item">
+                        <div class="proyek-number">2</div>
+                        <h4>Budaya Kita di Dunia Digital</h4>
+                        <span class="proyek-semester semester1">Semester Ganjil</span>
+                        <p>Membuat konten digital untuk mempromosikan budaya lokal serta mengenali profesi di bidang informatika.</p>
+                        <div class="proyek-aktivitas">
+                            <span style="font-weight:600; color: var(--informatika-dark);">Aktivitas:</span>
+                            <ul>
+                                <li><span class="aktivitas-label">AKTIVITAS 1</span> - Mengenal Budaya &amp; Dunia Digital</li>
+                                <li><span class="aktivitas-label">AKTIVITAS 2</span> - Profesi Digital &amp; Peran Informatika</li>
+                                <li><span class="aktivitas-label">AKTIVITAS 3</span> - Produksi Konten Budaya Digital</li>
+                            </ul>
+                        </div>
+                        <div class="proyek-kd">
+                            <span class="kd-badge">KD 2.6</span>
+                            <span class="kd-badge">KD 2.8</span>
+                            <span class="kd-badge">KD 2.9</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Proyek 3: Jejak Digital Aman -->
+                    <div class="informatika-proyek-item">
+                        <div class="proyek-number">3</div>
+                        <h4>Jejak Digital Aman</h4>
+                        <span class="proyek-semester semester1">Semester Ganjil</span>
+                        <p>Mengevaluasi keamanan akun digital pribadi dan membuat panduan keamanan akun berbentuk video pendek.</p>
+                        <div class="proyek-aktivitas">
+                            <span style="font-weight:600; color: var(--informatika-dark);">Aktivitas:</span>
+                            <ul>
+                                <li><span class="aktivitas-label">AKTIVITAS 1</span> - Hak Digital &amp; Jejak Digital</li>
+                                <li><span class="aktivitas-label">AKTIVITAS 2</span> - Kelola Akun &amp; Keamanan Digital</li>
+                                <li><span class="aktivitas-label">AKTIVITAS 3</span> - Praktik Pengamanan Digital (2FA)</li>
+                                <li><span class="aktivitas-label">AKTIVITAS 4</span> - Edukasi Publik tentang Jejak Digital</li>
+                            </ul>
+                        </div>
+                        <div class="proyek-kd">
+                            <span class="kd-badge">KD 2.7</span>
+                            <span class="kd-badge">KD 2.11</span>
+                            <span class="kd-badge">KD 2.12</span>
+                            <span class="kd-badge">KD 2.13</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Proyek 4: Fakta atau Hoaks? -->
+                    <div class="informatika-proyek-item">
+                        <div class="proyek-number">4</div>
+                        <h4>Fakta atau Hoaks?</h4>
+                        <span class="proyek-semester semester1">Semester Ganjil</span>
+                        <p>Menyelidiki isu viral secara daring dan membuat laporan dalam bentuk presentasi/poster digital. Fokus pada pengembangan kemampuan literasi digital untuk membedakan informasi valid dan hoaks.</p>
+                        <div class="proyek-aktivitas">
+                            <span style="font-weight:600; color: var(--informatika-dark);">Aktivitas:</span>
+                            <ul>
+                                <li><span class="aktivitas-label">AKTIVITAS 1</span> - Pengantar Literasi Informasi</li>
+                                <li><span class="aktivitas-label">AKTIVITAS 2</span> - Strategi Mencari Informasi</li>
+                                <li><span class="aktivitas-label">AKTIVITAS 3</span> - Analisis Fakta &amp; Cek Kebenaran</li>
+                                <li><span class="aktivitas-label">AKTIVITAS 4</span> - Merancang Poster Edukatif</li>
+                                <li><span class="aktivitas-label">AKTIVITAS 5</span> - Presentasi &amp; Refleksi</li>
+                            </ul>
+                        </div>
+                        <div class="proyek-kd">
+                            <span class="kd-badge">KD 2.1</span>
+                            <span class="kd-badge">KD 2.2</span>
+                            <span class="kd-badge">KD 2.3</span>
+                            <span class="kd-badge">KD 2.10</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Proyek 5: Rancang Mesin Pintar Mini -->
+                    <div class="informatika-proyek-item">
+                        <div class="proyek-number">5</div>
+                        <h4>Rancang Mesin Pintar Mini</h4>
+                        <span class="proyek-semester semester2">Semester Genap</span>
+                        <p>Memahami model IPO dan sistem operasi melalui simulasi alur kerja komputer menggunakan pseudocode dan HTML.</p>
+                        <div class="proyek-aktivitas">
+                            <span style="font-weight:600; color: var(--informatika-dark);">Aktivitas:</span>
+                            <ul>
+                                <li><span class="aktivitas-label">AKTIVITAS 1</span> - Mengenal Alur Komputasi &amp; IPO</li>
+                                <li><span class="aktivitas-label">AKTIVITAS 2</span> - Simulasi Model IPO</li>
+                                <li><span class="aktivitas-label">AKTIVITAS 3</span> - Sistem Operasi &amp; Model Von Neumann</li>
+                                <li><span class="aktivitas-label">AKTIVITAS 4</span> - Rancang &amp; Uji Solusi</li>
+                                <li><span class="aktivitas-label">AKTIVITAS 5</span> - Presentasi Mesin Pintar Mini</li>
+                            </ul>
+                        </div>
+                        <div class="proyek-kd">
+                            <span class="kd-badge">KD 1.4</span>
+                            <span class="kd-badge">KD 1.6</span>
+                            <span class="kd-badge">KD 1.7</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Proyek 6: Bisa Bikin Program? Bisa! -->
+                    <div class="informatika-proyek-item">
+                        <div class="proyek-number">6</div>
+                        <h4>Bisa Bikin Program? Bisa!</h4>
+                        <span class="proyek-semester semester2">Semester Genap</span>
+                        <p>Mengenal algoritma, struktur data, pseudocode, dan solusi atas masalah nyata melalui simulasi logika komputasi dan pemrograman HTML dasar.</p>
+                        <div class="proyek-aktivitas">
+                            <span style="font-weight:600; color: var(--informatika-dark);">Aktivitas:</span>
+                            <ul>
+                                <li><span class="aktivitas-label">AKTIVITAS 1</span> - Mengenal Algoritma &amp; Struktur Data</li>
+                                <li><span class="aktivitas-label">AKTIVITAS 2</span> - Representasi Data &amp; Logika Dasar</li>
+                                <li><span class="aktivitas-label">AKTIVITAS 3</span> - Pemecahan Masalah dengan Komputasi</li>
+                                <li><span class="aktivitas-label">AKTIVITAS 4</span> - HTML Dasar dengan HTML Editor</li>
+                                <li><span class="aktivitas-label">AKTIVITAS 5</span> - Kondisi &amp; Perulangan Dasar</li>
+                                <li><span class="aktivitas-label">AKTIVITAS 6</span> - Presentasi Program Sederhana</li>
+                            </ul>
+                        </div>
+                        <div class="proyek-kd">
+                            <span class="kd-badge">KD 1.1</span>
+                            <span class="kd-badge">KD 1.2</span>
+                            <span class="kd-badge">KD 1.3</span>
+                            <span class="kd-badge">KD 1.4</span>
+                            <span class="kd-badge">KD 1.5</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="../script.js"></script>
+    <script>
+        // JavaScript untuk interaksi Informatika
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add hover effect for proyek items
+            const proyekItems = document.querySelectorAll('.informatika-proyek-item');
+            proyekItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px) scale(1.02)';
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+            
+            // Add animation delay for tujuan items
+            const tujuanItems = document.querySelectorAll('.informatika-tujuan-phase li');
+            tujuanItems.forEach((item, index) => {
+                item.style.animationDelay = `${index * 0.05}s`;
+            });
+            
+            // Add click effect for quick links
+            const quickLinks = document.querySelectorAll('.informatika-quick-link');
+            quickLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 200);
+                });
+            });
+            
+            // Add animation for proyek numbers
+            const proyekNumbers = document.querySelectorAll('.proyek-number');
+            proyekNumbers.forEach((number, index) => {
+                number.style.animationDelay = `${index * 0.1}s`;
+            });
+            
+            // Add animation for KD badges
+            const kdBadges = document.querySelectorAll('.kd-badge');
+            kdBadges.forEach((badge, index) => {
+                badge.style.animationDelay = `${index * 0.05}s`;
+            });
+        });
+    </script>
+</body>
+</html>

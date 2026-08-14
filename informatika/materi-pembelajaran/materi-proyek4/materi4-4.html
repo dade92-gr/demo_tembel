@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi 4.4: Merancang Poster Edukatif - Informatika Kelas X</title>
+    <link rel="stylesheet" href="../../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --informatika-primary: #3498db;
+            --informatika-secondary: #2980b9;
+            --informatika-light: #ebf5fb;
+            --informatika-dark: #21618c;
+            --informatika-semester1: #3498db;
+            --success: #27ae60;
+            --warning: #e74c3c;
+            --info: #f39c12;
+            --purple: #9b59b6;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+        
+        .materi-container {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+        
+        .materi-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 30px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(52, 152, 219, 0.15);
+            border-left: 8px solid var(--informatika-semester1);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        .materi-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(52, 152, 219, 0.1) 0%, transparent 70%);
+            z-index: 0;
+        }
+        
+        .materi-card > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .materi-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 3px solid var(--informatika-light);
+            flex-wrap: wrap;
+        }
+        
+        .materi-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--purple), var(--informatika-primary));
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+        }
+        
+        .materi-title-wrapper {
+            flex: 1;
+        }
+        
+        .materi-title-wrapper h1 {
+            color: var(--informatika-dark);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .materi-subtitle {
+            color: var(--informatika-primary);
+            font-size: 1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .materi-badge {
+            background: var(--informatika-light);
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: var(--informatika-dark);
+        }
+        
+        .materi-badge i {
+            margin-right: 4px;
+        }
+        
+        .tujuan-card {
+            background: linear-gradient(135deg, var(--informatika-light), white);
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(52, 152, 219, 0.2);
+        }
+        
+        .tujuan-card h3 {
+            color: var(--informatika-dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .tujuan-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 0.8rem;
+        }
+        
+        .tujuan-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            padding: 0.8rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .tujuan-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .tujuan-item i {
+            color: var(--success);
+        }
+        
+        .materi-content {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid rgba(52, 152, 219, 0.1);
+        }
+        
+        .materi-content h2 {
+            color: var(--informatika-dark);
+            font-size: 1.8rem;
+            margin: 1.5rem 0 1rem 0;
+            border-bottom: 2px solid var(--informatika-light);
+            padding-bottom: 0.5rem;
+        }
+        
+        .materi-content h2:first-of-type {
+            margin-top: 0;
+        }
+        
+        .materi-content h3 {
+            color: var(--informatika-dark);
+            font-size: 1.3rem;
+            margin: 1.2rem 0 0.8rem 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .materi-content h3 i {
+            color: var(--informatika-primary);
+        }
+        
+        .materi-content p {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        
+        .materi-content ul, .materi-content ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .materi-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .quote-box {
+            margin: 1.5rem 0;
+            padding: 1rem 1.5rem;
+            background: var(--informatika-light);
+            border-left: 4px solid var(--informatika-primary);
+            border-radius: 0 12px 12px 0;
+        }
+        
+        .note-box {
+            background: #fff3e0;
+            border-left: 4px solid var(--info);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid var(--informatika-primary);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .warning-box {
+            background: #fee2e2;
+            border-left: 4px solid var(--warning);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .success-box {
+            background: #d4edda;
+            border-left: 4px solid var(--success);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        /* Poster Elements Grid */
+        .poster-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .poster-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1.2rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #e9ecef;
+            text-align: center;
+        }
+        
+        .poster-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .poster-card.active {
+            border: 2px solid var(--informatika-primary);
+            background: var(--informatika-light);
+        }
+        
+        .poster-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .poster-title {
+            font-weight: bold;
+            color: var(--informatika-dark);
+            margin-bottom: 0.3rem;
+        }
+        
+        .poster-desc {
+            font-size: 0.85rem;
+            color: #6c757d;
+        }
+        
+        .poster-card.active .poster-desc {
+            color: var(--informatika-dark);
+            font-weight: 500;
+        }
+        
+        /* Design Principles */
+        .prinsip-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .prinsip-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1rem;
+            text-align: center;
+            border: 1px solid #e9ecef;
+        }
+        
+        .prinsip-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--informatika-primary);
+        }
+        
+        .prinsip-title {
+            font-weight: bold;
+            color: var(--informatika-dark);
+        }
+        
+        .prinsip-desc {
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin-top: 0.3rem;
+        }
+        
+        /* Aplikasi Desain */
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .app-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid #e9ecef;
+            cursor: pointer;
+        }
+        
+        .app-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .app-card.active {
+            border: 2px solid var(--info);
+            background: #fff3e0;
+        }
+        
+        .app-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .app-name {
+            font-weight: bold;
+        }
+        
+        .app-platform {
+            font-size: 0.75rem;
+            color: #6c757d;
+        }
+        
+        /* Sketsa Steps */
+        .sketsa-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .sketsa-step {
+            text-align: center;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 16px;
+            border: 1px solid #e9ecef;
+        }
+        
+        .sketsa-step .step-num {
+            width: 40px;
+            height: 40px;
+            background: var(--purple);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.5rem;
+            font-weight: bold;
+        }
+        
+        .sketsa-step .step-title {
+            font-weight: bold;
+            color: var(--informatika-dark);
+        }
+        
+        .sketsa-step .step-desc {
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin-top: 0.3rem;
+        }
+        
+        .peer-review-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .peer-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1rem;
+            border: 1px solid #e9ecef;
+            text-align: center;
+        }
+        
+        .peer-card .score {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--informatika-primary);
+        }
+        
+        .peer-card .label {
+            font-size: 0.85rem;
+            color: #6c757d;
+        }
+        
+        .materi-navigation {
+            display: flex;
+            gap: 1rem;
+            justify-content: space-between;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn.primary {
+            background: linear-gradient(135deg, var(--informatika-primary), var(--informatika-secondary));
+            color: white;
+        }
+        
+        .nav-btn.primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .nav-btn.secondary {
+            background: white;
+            color: var(--informatika-dark);
+            border: 2px solid var(--informatika-light);
+        }
+        
+        .nav-btn.secondary:hover {
+            background: var(--informatika-light);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .materi-container { padding: 1rem; }
+            .materi-card { padding: 1.5rem; }
+            .materi-header { flex-direction: column; text-align: center; }
+            .poster-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="../../../assets/images/logo.png" alt="Logo Sekolah">
+                    <h1>INFORMATIKA - MATERI PEMBELAJARAN</h1>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="../../../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="../../index-informatika.html" class="nav-link"><i class="fas fa-laptop-code"></i> Beranda Informatika</a></li>
+                    <li><a href="../../aktivitas-pembelajaran/index-aktivitas-informatika.html" class="nav-link"><i class="fas fa-tasks"></i> Daftar Aktivitas</a></li>
+                    <li><a href="../index-materi-informatika.html" class="nav-link active"><i class="fas fa-book-open"></i> Daftar Materi</a></li>
+                    <li><a href="../../penilaian/index-penilaian-informatika.html" class="nav-link"><i class="fas fa-chart-line"></i> Penilaian</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="materi-container">
+        <div class="materi-card">
+            <!-- Header -->
+            <div class="materi-header">
+                <div class="materi-icon">
+                    <i class="fas fa-paintbrush"></i>
+                </div>
+                <div class="materi-title-wrapper">
+                    <h1>Merancang Poster Edukatif</h1>
+                    <div class="materi-subtitle">
+                        <i class="fas fa-circle"></i>
+                        <span>Proyek 4: Fakta atau Hoaks? - Pertemuan 4</span>
+                        <span class="materi-badge"><i class="fas fa-clock"></i> 4 JP</span>
+                        <span class="materi-badge"><i class="fas fa-tag"></i> TP 2.3</span>
+                        <span class="materi-badge"><i class="fas fa-globe"></i> Online</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tujuan Pembelajaran -->
+            <div class="tujuan-card">
+                <h3><i class="fas fa-bullseye"></i> 🎯 Tujuan Pembelajaran</h3>
+                <div class="tujuan-list">
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Memahami elemen-elemen penting dalam poster edukatif</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Menerapkan prinsip desain visual dalam poster</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Menggunakan aplikasi desain untuk membuat poster digital</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Merancang poster edukatif berdasarkan hasil investigasi</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Memberikan dan menerima masukan melalui peer review</div>
+                </div>
+            </div>
+
+            <!-- Konten Materi -->
+            <div class="materi-content">
+                <h2>A. Apa Itu Poster Edukatif?</h2>
+                <p><strong>Poster edukatif</strong> adalah media visual yang dirancang untuk menyampaikan informasi, pengetahuan, atau pesan edukatif kepada khalayak. Poster edukatif menggabungkan elemen teks, gambar, dan desain untuk menyampaikan pesan secara jelas dan menarik.</p>
+                
+                <div class="quote-box">
+                    <i class="fas fa-quote-left"></i> Poster edukatif yang baik tidak hanya menyampaikan informasi, tetapi juga menginspirasi pembaca untuk bertindak dan menyebarkan pengetahuan.
+                </div>
+
+                <h3>Elemen-Elemen Poster Edukatif</h3>
+                <p><strong>Klik pada setiap elemen</strong> untuk memperjelas tampilan:</p>
+                
+                <div class="poster-grid" id="posterGrid">
+                    <div class="poster-card" data-poster="judul">
+                        <div class="poster-icon"><i class="fas fa-heading"></i></div>
+                        <div class="poster-title">Judul</div>
+                        <div class="poster-desc">Judul yang menarik dan jelas. Gunakan font besar dan mudah dibaca. Harus mencerminkan isi poster. Contoh: "Kenali Hoaks! Cek Fakta Sebelum Share"</div>
+                    </div>
+                    <div class="poster-card" data-poster="visual">
+                        <div class="poster-icon"><i class="fas fa-image"></i></div>
+                        <div class="poster-title">Visual/Gambar</div>
+                        <div class="poster-desc">Gambar, ilustrasi, atau infografis yang mendukung pesan. Visual membuat poster lebih menarik dan mudah diingat. Gunakan gambar yang relevan dan berkualitas.</div>
+                    </div>
+                    <div class="poster-card" data-poster="fakta">
+                        <div class="poster-icon"><i class="fas fa-check-circle"></i></div>
+                        <div class="poster-title">Fakta Utama</div>
+                        <div class="poster-desc">Informasi penting yang ingin disampaikan (3-5 poin). Gunakan kalimat singkat, jelas, dan mudah dipahami. Sertakan data atau kutipan dari sumber kredibel.</div>
+                    </div>
+                    <div class="poster-card" data-poster="sumber">
+                        <div class="poster-icon"><i class="fas fa-link"></i></div>
+                        <div class="poster-title">Sumber</div>
+                        <div class="poster-desc">Cantumkan sumber informasi yang kredibel. Ini penting untuk membangun kepercayaan dan menunjukkan bahwa poster dibuat berdasarkan fakta, bukan hoaks.</div>
+                    </div>
+                    <div class="poster-card" data-poster="cta">
+                        <div class="poster-icon"><i class="fas fa-bullhorn"></i></div>
+                        <div class="poster-title">Ajakan (Call to Action)</div>
+                        <div class="poster-desc">Apa yang ingin kamu minta pembaca lakukan? Contoh: "Cek fakta sebelum share!", "Laporkan hoaks!", atau "Bagikan informasi yang benar!"</div>
+                    </div>
+                    <div class="poster-card" data-poster="desain">
+                        <div class="poster-icon"><i class="fas fa-palette"></i></div>
+                        <div class="poster-title">Desain &amp; Tata Letak</div>
+                        <div class="poster-desc">Tata letak yang rapi, warna yang sesuai, dan font yang mudah dibaca. Desain yang baik membuat poster lebih profesional dan menarik perhatian.</div>
+                    </div>
+                </div>
+
+                <h2>B. Prinsip Desain Visual Poster</h2>
+                <div class="prinsip-grid">
+                    <div class="prinsip-card">
+                        <div class="prinsip-icon"><i class="fas fa-font"></i></div>
+                        <div class="prinsip-title">Tipografi</div>
+                        <div class="prinsip-desc">Gunakan 2-3 jenis font maksimal. Judul: font besar dan tebal. Isi: font mudah dibaca. Hindari font yang terlalu dekoratif.</div>
+                    </div>
+                    <div class="prinsip-card">
+                        <div class="prinsip-icon"><i class="fas fa-palette"></i></div>
+                        <div class="prinsip-title">Warna</div>
+                        <div class="prinsip-desc">Gunakan 2-4 warna yang serasi. Warna kontras untuk teks dan latar. Warna cerah menarik perhatian, warna netral untuk isi.</div>
+                    </div>
+                    <div class="prinsip-card">
+                        <div class="prinsip-icon"><i class="fas fa-arrows-alt"></i></div>
+                        <div class="prinsip-title">Keseimbangan</div>
+                        <div class="prinsip-desc">Tata letak yang seimbang antara teks dan gambar. Jangan terlalu padat atau terlalu kosong. Gunakan grid untuk tata letak yang rapi.</div>
+                    </div>
+                    <div class="prinsip-card">
+                        <div class="prinsip-icon"><i class="fas fa-layer-group"></i></div>
+                        <div class="prinsip-title">Hierarki Visual</div>
+                        <div class="prinsip-desc">Atur elemen dari yang paling penting. Judul > Subjudul > Isi. Ukuran font yang berbeda menunjukkan tingkat kepentingan.</div>
+                    </div>
+                </div>
+
+                <h2>C. Aplikasi Desain Poster</h2>
+                <div class="app-grid" id="appGrid">
+                    <div class="app-card" data-app="canva">
+                        <div class="app-icon">🎨</div>
+                        <div class="app-name">Canva</div>
+                        <div class="app-platform">Web, Android, iOS | Gratis &amp; Berbayar</div>
+                    </div>
+                    <div class="app-card" data-app="slides">
+                        <div class="app-icon">📽️</div>
+                        <div class="app-name">Google Slides</div>
+                        <div class="app-platform">Web, Android, iOS | Gratis</div>
+                    </div>
+                    <div class="app-card" data-app="photoshop">
+                        <div class="app-icon">📸</div>
+                        <div class="app-name">Adobe Photoshop</div>
+                        <div class="app-platform">Windows, Mac | Berbayar</div>
+                    </div>
+                    <div class="app-card" data-app="picsart">
+                        <div class="app-icon">✏️</div>
+                        <div class="app-name">Picsart</div>
+                        <div class="app-platform">Android, iOS | Gratis &amp; Berbayar</div>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <i class="fas fa-lightbulb"></i> <strong>Rekomendasi untuk Pemula:</strong><br>
+                    • <strong>Canva</strong> adalah pilihan terbaik untuk pemula. Banyak template siap pakai.<br>
+                    • <strong>Google Slides</strong> bisa digunakan dengan mengatur ukuran slide menjadi A4 atau poster.<br>
+                    • Gunakan template yang tersedia agar proses desain lebih cepat dan mudah.
+                </div>
+
+                <h2>D. Langkah-Langkah Membuat Sketsa Poster</h2>
+                <div class="sketsa-steps">
+                    <div class="sketsa-step">
+                        <div class="step-num">1</div>
+                        <div class="step-title">Tentukan Tujuan</div>
+                        <div class="step-desc">Apa yang ingin kamu sampaikan? Siapa target audiens? Apa yang ingin mereka lakukan setelah melihat poster?</div>
+                    </div>
+                    <div class="sketsa-step">
+                        <div class="step-num">2</div>
+                        <div class="step-title">Kumpulkan Konten</div>
+                        <div class="step-desc">Kumpulkan fakta, data, gambar, dan sumber yang akan digunakan. Pastikan semua informasi akurat dan terverifikasi.</div>
+                    </div>
+                    <div class="sketsa-step">
+                        <div class="step-num">3</div>
+                        <div class="step-title">Buat Sketsa Kasar</div>
+                        <div class="step-desc">Gambarkan tata letak poster di kertas. Tentukan posisi judul, gambar, fakta, sumber, dan ajakan. Bebas berkreasi!</div>
+                    </div>
+                    <div class="sketsa-step">
+                        <div class="step-num">4</div>
+                        <div class="step-title">Revisi &amp; Perbaiki</div>
+                        <div class="step-desc">Tinjau sketsa, perbaiki jika ada yang kurang. Minta masukan dari teman atau guru sebelum membuat versi digital.</div>
+                    </div>
+                </div>
+
+                <h2>E. Peer Review Poster</h2>
+                <p><strong>Peer review</strong> adalah proses saling memberi masukan antar kelompok untuk meningkatkan kualitas karya. Memberikan dan menerima masukan adalah keterampilan penting dalam kolaborasi.</p>
+
+                <div class="peer-review-grid">
+                    <div class="peer-card">
+                        <div class="score">1-4</div>
+                        <div class="label">Isi/Konten Edukatif</div>
+                        <div style="font-size: 0.8rem; color: #6c757d;">Fakta akurat, sesuai hasil analisis</div>
+                    </div>
+                    <div class="peer-card">
+                        <div class="score">1-4</div>
+                        <div class="label">Kejelasan &amp; Kreativitas</div>
+                        <div style="font-size: 0.8rem; color: #6c757d;">Pesan mudah dipahami, desain menarik</div>
+                    </div>
+                    <div class="peer-card">
+                        <div class="score">1-4</div>
+                        <div class="label">Sumber Kredibel</div>
+                        <div style="font-size: 0.8rem; color: #6c757d;">Sumber dicantumkan dengan jelas dan terpercaya</div>
+                    </div>
+                </div>
+
+                <div class="success-box">
+                    <i class="fas fa-check-circle"></i> <strong>Tips Memberikan Masukan yang Baik:</strong><br>
+                    • <strong>Spesifik:</strong> "Judulnya bagus, tapi bisa lebih besar" lebih baik dari "Judulnya kurang"<br>
+                    • <strong>Konstruktif:</strong> Berikan saran perbaikan, bukan hanya kritik<br>
+                    • <strong>Seimbang:</strong> Sebutkan apa yang sudah baik dan apa yang perlu diperbaiki<br>
+                    • <strong>Santun:</strong> Sampaikan dengan bahasa yang sopan dan menghargai
+                </div>
+
+                <div class="note-box">
+                    <i class="fas fa-lightbulb"></i> <strong>Tips Membuat Poster Efektif:</strong><br>
+                    • Gunakan <strong>judul yang menarik</strong> dan mudah diingat<br>
+                    • Sampaikan <strong>3-5 fakta utama</strong> dengan kalimat singkat<br>
+                    • <strong>Cantumkan sumber</strong> untuk menunjukkan kredibilitas<br>
+                    • <strong>Ajakan (CTA)</strong> yang jelas dan mudah diikuti<br>
+                    • Gunakan <strong>gambar atau ikon</strong> untuk memperjelas pesan<br>
+                    • Pastikan <strong>warna dan font</strong> mudah dibaca
+                </div>
+
+                <div class="warning-box">
+                    <i class="fas fa-exclamation-triangle"></i> <strong>Ingat!</strong> Poster edukatif yang baik adalah poster yang tidak hanya indah secara visual, tetapi juga akurat informasinya dan mampu menginspirasi pembaca untuk bertindak!
+                </div>
+
+                <div class="quote-box" style="margin-top: 1.5rem; text-align: center;">
+                    <i class="fas fa-paintbrush"></i> Desain dengan Kreativitas, Sampaikan dengan Akurasi! 🎨
+                </div>
+            </div>
+
+            <!-- Navigasi -->
+            <div class="materi-navigation">
+                <a href="materi4-3.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i> Kembali ke Materi 4.3
+                </a>
+                <a href="materi4-5.html" class="nav-btn primary">
+                    Lanjut ke Materi 4.5: Presentasi &amp; Kampanye
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script src="../../../script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                });
+            }
+            
+            // Poster Elements Grid Interaktif
+            const posterCards = document.querySelectorAll('.poster-card');
+            posterCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    posterCards.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            if(posterCards.length) posterCards[0].classList.add('active');
+            
+            // App Grid Interaktif
+            const appCards = document.querySelectorAll('.app-card');
+            appCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    appCards.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

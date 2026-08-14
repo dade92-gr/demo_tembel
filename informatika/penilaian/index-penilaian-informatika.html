@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penilaian Informatika - Kelas X</title>
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --info-primary: #3498db;
+            --info-secondary: #2980b9;
+            --info-light: #d6eaf8;
+            --info-dark: #1f618d;
+            --info-accent: #2ecc71;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f5f7fa; color: #2c3e50; line-height: 1.6; }
+        .activities-container { padding: 2rem; max-width: 1200px; margin: 0 auto; }
+        .info-content-card { background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%); border-radius: 20px; padding: 2.5rem; box-shadow: 0 10px 30px rgba(52, 152, 219, 0.1); border-left: 5px solid var(--info-primary); margin-bottom: 2rem; }
+        .info-content-card h2 { color: var(--info-dark); font-size: 2.2rem; margin-bottom: 1.5rem; display: inline-block; padding-bottom: 10px; position: relative; }
+        .info-content-card h2::after { content: ''; position: absolute; bottom: 0; left: 0; width: 60px; height: 4px; background: linear-gradient(90deg, var(--info-primary), var(--info-secondary)); border-radius: 2px; }
+        .simple-card { background: white; border-radius: 20px; padding: 1.8rem; margin-bottom: 2rem; border: 1px solid rgba(52, 152, 219, 0.1); }
+        .section-title { display: flex; align-items: center; gap: 10px; margin-bottom: 1.5rem; padding-bottom: 0.8rem; border-bottom: 2px solid var(--info-light); }
+        .section-title i { width: 40px; height: 40px; background: var(--info-light); color: var(--info-primary); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+        .assessment-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
+        .assessment-card { background: #f5f7fa; border-radius: 20px; padding: 1.8rem; text-align: center; transition: all 0.3s ease; border: 1px solid rgba(52, 152, 219, 0.1); text-decoration: none; display: block; }
+        .assessment-card:hover { transform: translateY(-8px); box-shadow: 0 15px 35px rgba(52, 152, 219, 0.15); background: white; border-color: var(--info-primary); }
+        .assessment-icon { width: 80px; height: 80px; background: linear-gradient(135deg, var(--info-light), white); border-radius: 30px; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.2rem auto; }
+        .assessment-icon i { font-size: 2.2rem; color: var(--info-primary); }
+        .assessment-card h4 { font-size: 1.3rem; color: var(--info-dark); margin-bottom: 0.5rem; }
+        .assessment-card p { color: #666; font-size: 0.9rem; }
+        .role-badge { display: inline-block; background: var(--info-light); color: var(--info-dark); padding: 4px 12px; border-radius: 30px; font-size: 0.7rem; margin-top: 0.8rem; }
+        .admin-badge { background: #d6eaf8; color: #1f618d; }
+        .rekap-badge { background: #e8d5f5; color: #9b59b6; }
+        .rubrik-badge { background: #fdebd0; color: #e67e22; }
+        .info-panel { background: var(--info-light); border-radius: 16px; padding: 1rem 1.5rem; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+        .role-toggle { display: flex; justify-content: center; gap: 1rem; margin-bottom: 2rem; }
+        .role-btn { background: white; border: 2px solid var(--info-light); color: var(--info-dark); padding: 0.6rem 1.8rem; border-radius: 40px; font-size: 0.9rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: all 0.3s ease; }
+        .role-btn:hover { transform: translateY(-2px); }
+        .role-btn.active { background: var(--info-primary); color: white; border-color: var(--info-primary); }
+        .profile-section { display: flex; align-items: center; gap: 12px; background: white; padding: 0.3rem 0.8rem 0.3rem 0.3rem; border-radius: 50px; border: 1px solid var(--info-light); }
+        .profile-avatar { width: 40px; height: 40px; background: linear-gradient(135deg, var(--info-primary), var(--info-secondary)); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 1.1rem; }
+        .profile-info { font-size: 0.85rem; }
+        .profile-name { font-weight: 700; color: var(--info-dark); }
+        .profile-role { font-size: 0.7rem; color: #888; }
+        .logout-btn { background: none; border: none; color: #e74c3c; cursor: pointer; font-size: 1rem; padding: 5px; transition: all 0.3s ease; }
+        .logout-btn:hover { transform: scale(1.1); color: #c0392b; }
+        
+        /* ============ MODAL ============ */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 10000; justify-content: center; align-items: center; }
+        .modal.active { display: flex; }
+        .modal-content { background: white; border-radius: 24px; width: 90%; max-width: 400px; padding: 2rem; text-align: center; }
+        .modal-icon { width: 70px; height: 70px; background: var(--info-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem auto; }
+        .modal-icon i { font-size: 2rem; color: var(--info-primary); }
+        .input-group { margin-bottom: 1rem; text-align: left; }
+        .input-group label { display: block; font-size: 0.8rem; font-weight: 600; color: var(--info-dark); margin-bottom: 0.3rem; }
+        .input-group input { width: 100%; padding: 0.8rem 1rem; border: 1px solid #ddd; border-radius: 12px; font-size: 0.9rem; transition: border-color 0.3s ease; }
+        .input-group input:focus { outline: none; border-color: var(--info-primary); }
+        .login-btn { width: 100%; background: linear-gradient(135deg, var(--info-primary), var(--info-secondary)); color: white; border: none; padding: 0.8rem; border-radius: 40px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; }
+        .login-btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(52,152,219,0.3); }
+        .login-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+        .login-error { color: #e74c3c; font-size: 0.75rem; margin-top: 0.8rem; display: none; }
+        .loading-spinner { display: none; text-align: center; padding: 0.5rem; }
+        .loading-spinner i { font-size: 1.5rem; color: var(--info-primary); animation: spin 1s linear infinite; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        
+        .role-section { display: none; }
+        .role-section.active-section { display: block; }
+        .admin-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
+        .back-nav-simple { text-align: center; margin-top: 2rem; }
+        .back-btn-simple { display: inline-flex; align-items: center; gap: 8px; background: white; color: var(--info-dark); padding: 0.8rem 2rem; border-radius: 40px; text-decoration: none; font-weight: 600; border: 1px solid var(--info-light); transition: all 0.3s ease; }
+        .back-btn-simple:hover { background: var(--info-primary); color: white; transform: translateX(-5px); }
+        .admin-card, .rekap-card { transition: all 0.3s ease; }
+        
+        @media (max-width: 768px) { 
+            .activities-container { padding: 1rem; } 
+            .role-toggle { flex-direction: column; align-items: center; } 
+            .info-panel { flex-direction: column; align-items: flex-start; } 
+            .profile-section { margin-left: 0; width: 100%; justify-content: space-between; }
+            .assessment-grid { grid-template-columns: 1fr; }
+            .admin-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="../../assets/images/logo.png" alt="Logo Sekolah">
+                    <h1>TEMBOK BELAJAR - PROJEK INFORMATIKA</h1>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="../../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="../index-informatika.html" class="nav-link"><i class="fas fa-laptop-code"></i> Beranda Informatika</a></li>
+                    <li><a href="../aktivitas-pembelajaran/index-aktivitas-informatika.html" class="nav-link"><i class="fas fa-tasks"></i> Daftar Aktivitas</a></li>
+                    <li><a href="../materi-pembelajaran/index-materi-informatika.html" class="nav-link"><i class="fas fa-book-open"></i> Daftar Materi</a></li>
+                    <li><a href="index-penilaian-informatika.html" class="nav-link active"><i class="fas fa-chart-line"></i> Penilaian</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="activities-container">
+        <div class="info-content-card">
+            <h2><i class="fas fa-chart-line"></i> Pusat Penilaian Informatika</h2>
+            <p>Kelola dan pantau seluruh aktivitas penilaian pembelajaran Informatika Kelas X.</p>
+            <div class="info-panel">
+                <span><i class="fas fa-user-graduate"></i> Login sebagai: <strong id="roleDisplay">Pengguna Umum</strong></span>
+                <span><i class="fas fa-calendar-alt"></i> Semester: <strong>Ganjil/Genap</strong></span>
+                <div id="profileContainer" style="display: none;">
+                    <div class="profile-section">
+                        <div class="profile-avatar" id="profileAvatar">G</div>
+                        <div class="profile-info">
+                            <div class="profile-name" id="profileName">Guru</div>
+                            <div class="profile-role" id="profileRole">Administrator</div>
+                        </div>
+                        <button class="logout-btn" id="logoutBtn" title="Logout"><i class="fas fa-sign-out-alt"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="role-toggle">
+            <button class="role-btn umum active" id="umumBtn"><i class="fas fa-users"></i> Pengguna Umum</button>
+            <button class="role-btn admin" id="adminBtn"><i class="fas fa-user-shield"></i> Admin / Guru</button>
+        </div>
+
+        <div id="umum-section" class="role-section active-section">
+            <div class="simple-card">
+                <div class="section-title"><i class="fas fa-clipboard-list"></i><h3>Menu Pengguna Umum</h3></div>
+                <div class="assessment-grid">
+                    <a href="monitoring-aktivitas-informatika.html" class="assessment-card">
+                        <div class="assessment-icon"><i class="fas fa-chart-simple"></i></div>
+                        <h4>Monitoring Aktivitas & Nilai</h4>
+                        <p>Pantau progres aktivitas proyek dan nilai capaian TP siswa</p>
+                        <span class="role-badge"><i class="fas fa-user"></i> Pengguna Umum</span>
+                    </a>
+                    <!-- ===== TOMBOL RUBRIK DITAMBAHKAN DI SINI ===== -->
+                    <a href="rubrik-penilaian-informatika.html" class="assessment-card">
+                        <div class="assessment-icon"><i class="fas fa-clipboard-list"></i></div>
+                        <h4>Rubrik Penilaian</h4>
+                        <p>Lihat kriteria dan standar penilaian setiap aktivitas</p>
+                        <span class="role-badge rubrik-badge"><i class="fas fa-book"></i> Referensi</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="admin-section" class="role-section">
+            <div class="simple-card">
+                <div class="section-title"><i class="fas fa-user-shield"></i><h3>Menu Administrator / Guru</h3></div>
+                <div class="admin-grid" id="adminMenuGrid">
+                    <a href="input-nilai-aktivitas-informatika.html" class="assessment-card admin-card">
+                        <div class="assessment-icon"><i class="fas fa-pen-to-square"></i></div>
+                        <h4>Input Nilai Aktivitas</h4>
+                        <p>Menilai lembar aktivitas setiap proyek informatika</p>
+                        <span class="role-badge admin-badge"><i class="fas fa-user-tie"></i> Admin / Guru</span>
+                    </a>
+                    <a href="monitoring-rekap-aktivitas-kelas-informatika.html" class="assessment-card rekap-card">
+                        <div class="assessment-icon"><i class="fas fa-chart-line"></i></div>
+                        <h4>Rekap Aktivitas dan Nilai Per Kelas</h4>
+                        <p>Ringkasan pengumpulan aktivitas proyek informatika</p>
+                        <span class="role-badge rekap-badge"><i class="fas fa-chalkboard-user"></i> Guru</span>
+                    </a>
+                    <!-- ===== TOMBOL RUBRIK UNTUK GURU DITAMBAHKAN DI SINI ===== -->
+                    <a href="rubrik-penilaian-informatika.html" class="assessment-card admin-card">
+                        <div class="assessment-icon"><i class="fas fa-clipboard-list"></i></div>
+                        <h4>Rubrik Penilaian</h4>
+                        <p>Lihat kriteria dan standar penilaian setiap aktivitas</p>
+                        <span class="role-badge rubrik-badge"><i class="fas fa-book"></i> Referensi</span>
+                    </a>
+                </div>
+            </div>
+            <div class="simple-card" id="adminSummaryContent">
+                <div class="section-title"><i class="fas fa-chart-simple"></i><h3>Ringkasan Penilaian Kelas</h3></div>
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                    <div style="display: flex; justify-content: space-between; padding: 0.8rem; background: #f8f9fa; border-radius: 12px;">
+                        <span><i class="fas fa-users"></i> Total Siswa</span>
+                        <span style="color:#1f618d; background:#d6eaf8; padding:4px 12px; border-radius:20px;">32 Siswa</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding: 0.8rem; background: #f8f9fa; border-radius: 12px;">
+                        <span><i class="fas fa-tasks"></i> Tugas Belum Dinilai</span>
+                        <span style="color:#e67e22; background:#fdebd0; padding:4px 12px; border-radius:20px;">12 Tugas</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding: 0.8rem; background: #f8f9fa; border-radius: 12px;">
+                        <span><i class="fas fa-check-circle"></i> Tugas Sudah Dinilai</span>
+                        <span style="color:#1f618d; background:#d6eaf8; padding:4px 12px; border-radius:20px;">48 Tugas</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding: 0.8rem; background: #f8f9fa; border-radius: 12px;">
+                        <span><i class="fas fa-hourglass-half"></i> Menunggu Pengumpulan</span>
+                        <span style="color:#c0392b; background:#fadbd8; padding:4px 12px; border-radius:20px;">8 Tugas</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="back-nav-simple">
+            <a href="../index-informatika.html" class="back-btn-simple"><i class="fas fa-arrow-left"></i> Kembali ke Beranda Informatika</a>
+        </div>
+    </section>
+
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-icon"><i class="fas fa-user-shield"></i></div>
+            <h3>Login Admin / Guru</h3>
+            <p>Masukkan kredensial Anda untuk mengakses menu guru</p>
+            <div class="input-group">
+                <label>Username</label>
+                <input type="text" id="loginUsername" placeholder="Masukkan username">
+            </div>
+            <div class="input-group">
+                <label>Password</label>
+                <input type="password" id="loginPassword" placeholder="Masukkan password">
+            </div>
+            <div class="loading-spinner" id="loginLoading"><i class="fas fa-spinner"></i> Memverifikasi...</div>
+            <button class="login-btn" id="loginBtn"><i class="fas fa-sign-in-alt"></i> Login</button>
+            <div id="loginError" class="login-error"><i class="fas fa-exclamation-circle"></i> Username atau password salah!</div>
+            <div style="margin-top: 1rem; font-size: 0.7rem; color: #999;"><i class="fas fa-info-circle"></i> Login menggunakan akun resmi dari database</div>
+        </div>
+    </div>
+
+    <script>
+        // ==================== KONFIGURASI ====================
+        // Konfigurasi URL Apps Script untuk validasi login (SAMA SEPERTI IPAS)
+        const LOGIN_API_URL = 'https://script.google.com/macros/s/AKfycbxZMS_o6xWMAQAkjBzzEMR9tJmHOnHCX13KJX2xZMn7WIr-A9pwVK_3DDHnMg7y_rD29Q/exec';
+        
+        let isLoggedIn = false;
+        let currentAdmin = null;
+        let userData = null;
+        
+        const adminSection = document.getElementById('admin-section');
+        const umumSection = document.getElementById('umum-section');
+        const adminBtn = document.getElementById('adminBtn');
+        const umumBtn = document.getElementById('umumBtn');
+        const roleDisplay = document.getElementById('roleDisplay');
+        const profileContainer = document.getElementById('profileContainer');
+        const profileName = document.getElementById('profileName');
+        const profileAvatar = document.getElementById('profileAvatar');
+        const profileRole = document.getElementById('profileRole');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const loginModal = document.getElementById('loginModal');
+        const loginUsername = document.getElementById('loginUsername');
+        const loginPassword = document.getElementById('loginPassword');
+        const loginBtnElement = document.getElementById('loginBtn');
+        const loginError = document.getElementById('loginError');
+        const loginLoading = document.getElementById('loginLoading');
+
+        // ==================== FUNGSI LOGIN ====================
+        function saveLoginSession(adminData) {
+            sessionStorage.setItem('isAdminLoggedIn', 'true');
+            sessionStorage.setItem('adminName', adminData.name);
+            sessionStorage.setItem('adminRole', adminData.role);
+            sessionStorage.setItem('adminUsername', adminData.username);
+            sessionStorage.setItem('adminMapel', JSON.stringify(adminData.mapel || []));
+        }
+        
+        function clearLoginSession() {
+            sessionStorage.removeItem('isAdminLoggedIn');
+            sessionStorage.removeItem('adminName');
+            sessionStorage.removeItem('adminRole');
+            sessionStorage.removeItem('adminUsername');
+            sessionStorage.removeItem('adminMapel');
+        }
+        
+        function loadLoginSession() {
+            if (sessionStorage.getItem('isAdminLoggedIn') === 'true') {
+                return {
+                    username: sessionStorage.getItem('adminUsername'),
+                    name: sessionStorage.getItem('adminName'),
+                    role: sessionStorage.getItem('adminRole'),
+                    mapel: JSON.parse(sessionStorage.getItem('adminMapel') || '[]')
+                };
+            }
+            return null;
+        }
+        
+        function hideAdminMenu() {
+            const adminMenuGrid = document.getElementById('adminMenuGrid');
+            const adminSummary = document.getElementById('adminSummaryContent');
+            if (adminMenuGrid) adminMenuGrid.style.display = 'none';
+            if (adminSummary) adminSummary.style.display = 'none';
+        }
+        
+        function showAdminMenu() {
+            const adminMenuGrid = document.getElementById('adminMenuGrid');
+            const adminSummary = document.getElementById('adminSummaryContent');
+            if (adminMenuGrid) adminMenuGrid.style.display = 'grid';
+            if (adminSummary) adminSummary.style.display = 'block';
+        }
+        
+        function updateUIAfterLogin(adminData) {
+            profileName.innerText = adminData.name;
+            profileAvatar.innerText = adminData.name.charAt(0);
+            profileRole.innerText = adminData.role || 'Guru';
+            profileContainer.style.display = 'block';
+            
+            let mapelText = adminData.mapel && adminData.mapel.length > 0 ? 
+                adminData.mapel.join(', ') : 'Informatika';
+            roleDisplay.innerHTML = adminData.name + ' (Guru - ' + mapelText + ')';
+            
+            showAdminMenu();
+            umumBtn.classList.remove('active');
+            adminBtn.classList.add('active');
+            umumSection.classList.remove('active-section');
+            adminSection.classList.add('active-section');
+        }
+        
+        function logout() {
+            isLoggedIn = false;
+            currentAdmin = null;
+            userData = null;
+            clearLoginSession();
+            profileContainer.style.display = 'none';
+            roleDisplay.innerHTML = 'Pengguna Umum';
+            umumBtn.classList.add('active');
+            adminBtn.classList.remove('active');
+            umumSection.classList.add('active-section');
+            adminSection.classList.remove('active-section');
+            hideAdminMenu();
+            loginUsername.value = '';
+            loginPassword.value = '';
+            loginError.style.display = 'none';
+            loginLoading.style.display = 'none';
+            loginBtnElement.disabled = false;
+        }
+        
+        async function loginWithAPI(username, password) {
+            try {
+                loginLoading.style.display = 'block';
+                loginBtnElement.disabled = true;
+                loginError.style.display = 'none';
+                
+                const response = await fetch(LOGIN_API_URL + '?action=login&username=' + encodeURIComponent(username) + '&password=' + encodeURIComponent(password));
+                const data = await response.json();
+                
+                loginLoading.style.display = 'none';
+                loginBtnElement.disabled = false;
+                
+                if (data.success && data.user) {
+                    isLoggedIn = true;
+                    currentAdmin = {
+                        username: data.user.username,
+                        name: data.user.nama || data.user.username,
+                        role: data.user.peran || 'Guru',
+                        mapel: data.user.mapel || []
+                    };
+                    userData = data.user;
+                    saveLoginSession(currentAdmin);
+                    updateUIAfterLogin(currentAdmin);
+                    loginModal.classList.remove('active');
+                    loginError.style.display = 'none';
+                    return true;
+                } else {
+                    loginError.style.display = 'block';
+                    loginError.innerText = data.message || 'Username atau password salah!';
+                    return false;
+                }
+            } catch (error) {
+                loginLoading.style.display = 'none';
+                loginBtnElement.disabled = false;
+                loginError.style.display = 'block';
+                loginError.innerText = 'Gagal terhubung ke server. Periksa koneksi internet Anda.';
+                console.error('Login error:', error);
+                return false;
+            }
+        }
+        
+        function checkAndRestoreLogin() {
+            const savedAdmin = loadLoginSession();
+            if (savedAdmin && savedAdmin.username) {
+                isLoggedIn = true;
+                currentAdmin = savedAdmin;
+                updateUIAfterLogin(currentAdmin);
+            } else {
+                hideAdminMenu();
+            }
+        }
+
+        // ==================== EVENT LISTENERS ====================
+        adminBtn.addEventListener('click', function() {
+            if (isLoggedIn) {
+                umumBtn.classList.remove('active');
+                adminBtn.classList.add('active');
+                umumSection.classList.remove('active-section');
+                adminSection.classList.add('active-section');
+                showAdminMenu();
+            } else {
+                loginModal.classList.add('active');
+                loginUsername.focus();
+            }
+        });
+        
+        umumBtn.addEventListener('click', function() {
+            umumBtn.classList.add('active');
+            adminBtn.classList.remove('active');
+            umumSection.classList.add('active-section');
+            adminSection.classList.remove('active-section');
+        });
+        
+        loginBtnElement.addEventListener('click', function() {
+            const username = loginUsername.value.trim();
+            const password = loginPassword.value.trim();
+            if (username && password) {
+                loginWithAPI(username, password);
+            } else {
+                loginError.style.display = 'block';
+                loginError.innerText = 'Mohon isi username dan password!';
+            }
+        });
+        
+        loginPassword.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                loginBtnElement.click();
+            }
+        });
+        
+        logoutBtn.addEventListener('click', logout);
+        
+        loginModal.addEventListener('click', function(e) {
+            if (e.target === loginModal) {
+                loginModal.classList.remove('active');
+                loginError.style.display = 'none';
+                loginLoading.style.display = 'none';
+                loginBtnElement.disabled = false;
+            }
+        });
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                });
+            }
+            checkAndRestoreLogin();
+        });
+    </script>
+</body>
+</html>

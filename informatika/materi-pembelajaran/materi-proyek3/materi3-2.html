@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi 3.2: Manajemen Kata Sandi & Privasi Digital - Informatika Kelas X</title>
+    <link rel="stylesheet" href="../../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --informatika-primary: #3498db;
+            --informatika-secondary: #2980b9;
+            --informatika-light: #ebf5fb;
+            --informatika-dark: #21618c;
+            --informatika-semester1: #3498db;
+            --success: #27ae60;
+            --warning: #e74c3c;
+            --info: #f39c12;
+            --purple: #9b59b6;
+            --password-strong: #27ae60;
+            --password-weak: #e74c3c;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+        
+        .materi-container {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+        
+        .materi-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 30px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(52, 152, 219, 0.15);
+            border-left: 8px solid var(--informatika-semester1);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        .materi-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(52, 152, 219, 0.1) 0%, transparent 70%);
+            z-index: 0;
+        }
+        
+        .materi-card > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .materi-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 3px solid var(--informatika-light);
+            flex-wrap: wrap;
+        }
+        
+        .materi-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--password-strong), var(--informatika-primary));
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+        }
+        
+        .materi-title-wrapper {
+            flex: 1;
+        }
+        
+        .materi-title-wrapper h1 {
+            color: var(--informatika-dark);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .materi-subtitle {
+            color: var(--informatika-primary);
+            font-size: 1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .materi-badge {
+            background: var(--informatika-light);
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: var(--informatika-dark);
+        }
+        
+        .materi-badge i {
+            margin-right: 4px;
+        }
+        
+        .tujuan-card {
+            background: linear-gradient(135deg, var(--informatika-light), white);
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(52, 152, 219, 0.2);
+        }
+        
+        .tujuan-card h3 {
+            color: var(--informatika-dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .tujuan-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 0.8rem;
+        }
+        
+        .tujuan-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            padding: 0.8rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .tujuan-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .tujuan-item i {
+            color: var(--success);
+        }
+        
+        .materi-content {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid rgba(52, 152, 219, 0.1);
+        }
+        
+        .materi-content h2 {
+            color: var(--informatika-dark);
+            font-size: 1.8rem;
+            margin: 1.5rem 0 1rem 0;
+            border-bottom: 2px solid var(--informatika-light);
+            padding-bottom: 0.5rem;
+        }
+        
+        .materi-content h2:first-of-type {
+            margin-top: 0;
+        }
+        
+        .materi-content h3 {
+            color: var(--informatika-dark);
+            font-size: 1.3rem;
+            margin: 1.2rem 0 0.8rem 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .materi-content h3 i {
+            color: var(--informatika-primary);
+        }
+        
+        .materi-content p {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        
+        .materi-content ul, .materi-content ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .materi-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .quote-box {
+            margin: 1.5rem 0;
+            padding: 1rem 1.5rem;
+            background: var(--informatika-light);
+            border-left: 4px solid var(--informatika-primary);
+            border-radius: 0 12px 12px 0;
+        }
+        
+        .note-box {
+            background: #fff3e0;
+            border-left: 4px solid var(--info);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid var(--informatika-primary);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .warning-box {
+            background: #fee2e2;
+            border-left: 4px solid var(--warning);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .success-box {
+            background: #d4edda;
+            border-left: 4px solid var(--success);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .kriteria-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .kriteria-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #e9ecef;
+        }
+        
+        .kriteria-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .kriteria-card.active {
+            border: 2px solid var(--success);
+            background: #d4edda;
+        }
+        
+        .kriteria-icon {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .kriteria-title {
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+            color: var(--informatika-dark);
+        }
+        
+        .kriteria-desc {
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid #e9ecef;
+            line-height: 1.4;
+        }
+        
+        .kriteria-card.active .kriteria-desc {
+            color: var(--informatika-dark);
+            font-weight: 500;
+            border-top-color: var(--success);
+        }
+        
+        .password-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .password-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #e9ecef;
+            text-align: center;
+        }
+        
+        .password-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .password-card.weak {
+            border-top: 4px solid var(--password-weak);
+        }
+        
+        .password-card.strong {
+            border-top: 4px solid var(--password-strong);
+        }
+        
+        .password-card.active {
+            border: 2px solid;
+            transform: scale(1.02);
+        }
+        
+        .password-card.weak.active {
+            border-color: var(--password-weak);
+            background: #fee2e2;
+        }
+        
+        .password-card.strong.active {
+            border-color: var(--password-strong);
+            background: #d4edda;
+        }
+        
+        .password-text {
+            font-family: monospace;
+            font-size: 1rem;
+            font-weight: bold;
+            margin: 0.5rem 0;
+        }
+        
+        .password-status {
+            display: inline-block;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+        
+        .status-weak {
+            background: #fee2e2;
+            color: var(--password-weak);
+        }
+        
+        .status-strong {
+            background: #d4edda;
+            color: var(--password-strong);
+        }
+        
+        .password-reason {
+            font-size: 0.8rem;
+            color: #6c757d;
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        .password-card.active .password-reason {
+            color: var(--informatika-dark);
+            font-weight: 500;
+        }
+        
+        .manager-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .manager-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #e9ecef;
+        }
+        
+        .manager-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .manager-card.active {
+            border: 2px solid var(--info);
+            background: #fff3e0;
+        }
+        
+        .manager-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .manager-name {
+            font-weight: bold;
+        }
+        
+        .manager-price {
+            font-size: 0.8rem;
+            color: #6c757d;
+        }
+        
+        .manager-desc {
+            font-size: 0.8rem;
+            color: #6c757d;
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        .manager-card.active .manager-desc {
+            color: var(--informatika-dark);
+            font-weight: 500;
+        }
+        
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+        
+        .compare-table th {
+            background: var(--informatika-primary);
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .compare-table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .compare-table tr:hover {
+            background: var(--informatika-light);
+        }
+        
+        .larangan-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .larangan-card {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: white;
+            border-radius: 12px;
+            padding: 0.8rem;
+            transition: all 0.3s ease;
+            border: 1px solid #e9ecef;
+        }
+        
+        .larangan-card:hover {
+            transform: translateX(5px);
+            background: #fee2e2;
+        }
+        
+        .larangan-icon {
+            font-size: 1.5rem;
+            color: var(--warning);
+        }
+        
+        .metode-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .metode-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1rem;
+            transition: all 0.3s ease;
+            border: 1px solid #e9ecef;
+        }
+        
+        .metode-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .metode-title {
+            font-weight: bold;
+            color: var(--purple);
+            margin-bottom: 0.5rem;
+        }
+        
+        .metode-example {
+            font-family: monospace;
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 0.5rem;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+        }
+        
+        .password-simulator {
+            background: #f8f9fa;
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+        
+        .password-input {
+            width: 100%;
+            padding: 0.8rem;
+            font-size: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+        }
+        
+        .strength-meter {
+            height: 10px;
+            background: #ddd;
+            border-radius: 5px;
+            margin: 1rem 0;
+            overflow: hidden;
+        }
+        
+        .strength-fill {
+            height: 100%;
+            width: 0%;
+            transition: all 0.3s ease;
+        }
+        
+        .strength-fill.weak { background: #e74c3c; }
+        .strength-fill.medium { background: #f39c12; }
+        .strength-fill.strong { background: #27ae60; }
+        
+        /* Privacy Settings */
+        .privacy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .privacy-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1rem;
+            transition: all 0.3s ease;
+            border: 1px solid #e9ecef;
+            text-align: center;
+        }
+        
+        .privacy-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .privacy-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .privacy-title {
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+            color: var(--informatika-dark);
+        }
+        
+        .privacy-desc {
+            font-size: 0.85rem;
+            color: #6c757d;
+        }
+        
+        .materi-navigation {
+            display: flex;
+            gap: 1rem;
+            justify-content: space-between;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn.primary {
+            background: linear-gradient(135deg, var(--informatika-primary), var(--informatika-secondary));
+            color: white;
+        }
+        
+        .nav-btn.primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .nav-btn.secondary {
+            background: white;
+            color: var(--informatika-dark);
+            border: 2px solid var(--informatika-light);
+        }
+        
+        .nav-btn.secondary:hover {
+            background: var(--informatika-light);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .materi-container { padding: 1rem; }
+            .materi-card { padding: 1.5rem; }
+            .materi-header { flex-direction: column; text-align: center; }
+            .compare-table { font-size: 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="../../../assets/images/logo.png" alt="Logo Sekolah">
+                    <h1>INFORMATIKA - MATERI PEMBELAJARAN</h1>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="../../../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="../../index-informatika.html" class="nav-link"><i class="fas fa-laptop-code"></i> Beranda Informatika</a></li>
+                    <li><a href="../../aktivitas-pembelajaran/index-aktivitas-informatika.html" class="nav-link"><i class="fas fa-tasks"></i> Daftar Aktivitas</a></li>
+                    <li><a href="../index-materi-informatika.html" class="nav-link active"><i class="fas fa-book-open"></i> Daftar Materi</a></li>
+                    <li><a href="../../penilaian/index-penilaian-informatika.html" class="nav-link"><i class="fas fa-chart-line"></i> Penilaian</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="materi-container">
+        <div class="materi-card">
+            <!-- Header -->
+            <div class="materi-header">
+                <div class="materi-icon">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <div class="materi-title-wrapper">
+                    <h1>Manajemen Kata Sandi &amp; Privasi Digital</h1>
+                    <div class="materi-subtitle">
+                        <i class="fas fa-circle"></i>
+                        <span>Proyek 3: Etika Digital - Pertemuan 2</span>
+                        <span class="materi-badge"><i class="fas fa-clock"></i> 4 JP</span>
+                        <span class="materi-badge"><i class="fas fa-tag"></i> TP 2.11 &amp; 2.13</span>
+                        <span class="materi-badge"><i class="fas fa-globe"></i> Online</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tujuan Pembelajaran -->
+            <div class="tujuan-card">
+                <h3><i class="fas fa-bullseye"></i> 🎯 Tujuan Pembelajaran</h3>
+                <div class="tujuan-list">
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Memahami pentingnya kata sandi yang kuat dalam keamanan digital</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Mengidentifikasi kriteria kata sandi yang kuat dan lemah</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Memahami konsep dan manfaat manajer kata sandi (password manager)</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Memahami pentingnya pengaturan privasi di platform digital</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Menerapkan praktik terbaik dalam mengelola kata sandi dan privasi</div>
+                </div>
+            </div>
+
+            <!-- Konten Materi -->
+            <div class="materi-content">
+                <h2>A. Apa Itu Kata Sandi (Password)?</h2>
+                <p><strong>Kata sandi (password)</strong> adalah kunci rahasia yang digunakan untuk mengakses akun digital, seperti email, media sosial, atau layanan online lainnya. Kata sandi adalah lapisan pertahanan pertama dalam keamanan digital.</p>
+                
+                <div class="quote-box">
+                    <i class="fas fa-quote-left"></i> <strong>NIST (National Institute of Standards and Technology):</strong> "Kata sandi adalah string karakter rahasia yang digunakan untuk mengautentikasi identitas pengguna."
+                </div>
+                
+                <div class="info-box">
+                    <i class="fas fa-lightbulb"></i> <strong>Ilustrasi Sederhana:</strong><br>
+                    Akun digitalmu seperti rumah:<br>
+                    • <strong>Kata sandi</strong> = kunci pintu depan<br>
+                    • <strong>Kata sandi lemah</strong> = kunci dari plastik (mudah rusak/dibobol)<br>
+                    • <strong>Kata sandi kuat</strong> = kunci baja dengan gembok ganda<br>
+                    • <strong>Kata sandi sama untuk semua akun</strong> = satu kunci untuk semua pintu
+                </div>
+
+                <h2>B. Kriteria Kata Sandi yang Kuat</h2>
+                <p><strong>Klik pada setiap kriteria</strong> untuk memperjelas tampilan:</p>
+                
+                <div class="kriteria-grid" id="kriteriaGrid">
+                    <div class="kriteria-card" data-kriteria="panjang">
+                        <div class="kriteria-icon"><i class="fas fa-ruler"></i></div>
+                        <div class="kriteria-title">Panjang ≥ 12 karakter</div>
+                        <div class="kriteria-desc">Semakin panjang semakin sulit ditebak. Minimal 8 karakter, idealnya 12+ karakter.</div>
+                    </div>
+                    <div class="kriteria-card" data-kriteria="huruf">
+                        <div class="kriteria-icon"><i class="fas fa-font"></i></div>
+                        <div class="kriteria-title">Kombinasi Huruf Besar &amp; Kecil</div>
+                        <div class="kriteria-desc">Menggunakan huruf besar (A-Z) dan huruf kecil (a-z). Contoh: "sayangrumah" ❌ vs "SayangRumah" ✅</div>
+                    </div>
+                    <div class="kriteria-card" data-kriteria="angka">
+                        <div class="kriteria-icon"><i class="fas fa-hashtag"></i></div>
+                        <div class="kriteria-title">Mengandung Angka</div>
+                        <div class="kriteria-desc">Menggunakan angka 0-9. Contoh: "SayangRumah" ❌ vs "SayangRumah123" ✅</div>
+                    </div>
+                    <div class="kriteria-card" data-kriteria="simbol">
+                        <div class="kriteria-icon"><i class="fas fa-exclamation"></i></div>
+                        <div class="kriteria-title">Mengandung Simbol</div>
+                        <div class="kriteria-desc">Menggunakan simbol seperti !@#$%^&amp;*()_+. Contoh: "SayangRumah123" ❌ vs "SayangRumah123!" ✅</div>
+                    </div>
+                    <div class="kriteria-card" data-kriteria="unik">
+                        <div class="kriteria-icon"><i class="fas fa-fingerprint"></i></div>
+                        <div class="kriteria-title">Berbeda Setiap Akun</div>
+                        <div class="kriteria-desc">Jangan gunakan kata sandi yang sama untuk semua akun. Jika satu diretas, semua akun aman.</div>
+                    </div>
+                    <div class="kriteria-card" data-kriteria="pribadi">
+                        <div class="kriteria-icon"><i class="fas fa-user-secret"></i></div>
+                        <div class="kriteria-title">Bukan Informasi Pribadi</div>
+                        <div class="kriteria-desc">Hindari nama, tanggal lahir, nomor telepon. Contoh: "Andi2005" ❌ (mudah ditebak orang yang kenalmu)</div>
+                    </div>
+                </div>
+
+                <h2>C. Contoh Kata Sandi Kuat dan Lemah</h2>
+                <p><strong>Klik pada setiap contoh</strong> untuk memperjelas tampilan:</p>
+                
+                <div class="password-grid" id="passwordGrid">
+                    <div class="password-card weak" data-pass="lemah1">
+                        <div class="password-status status-weak">❌ Sangat Lemah</div>
+                        <div class="password-text">123456</div>
+                        <div class="password-reason">Terlalu pendek, hanya angka, urutan berurutan, sangat mudah ditebak</div>
+                    </div>
+                    <div class="password-card weak" data-pass="lemah2">
+                        <div class="password-status status-weak">❌ Lemah</div>
+                        <div class="password-text">andiganteng</div>
+                        <div class="password-reason">Kata dalam kamus, tidak ada variasi huruf besar/kecil, angka, atau simbol</div>
+                    </div>
+                    <div class="password-card weak" data-pass="lemah3">
+                        <div class="password-status status-weak">⚠️ Sedang</div>
+                        <div class="password-text">Andi2005</div>
+                        <div class="password-reason">Ada huruf besar dan angka, tapi mengandung informasi pribadi (nama &amp; tahun lahir)</div>
+                    </div>
+                    <div class="password-card strong" data-pass="kuat1">
+                        <div class="password-status status-strong">✅ Kuat</div>
+                        <div class="password-text">S4y4ngRum4h!</div>
+                        <div class="password-reason">Panjang, kombinasi huruf besar/kecil, angka, dan simbol</div>
+                    </div>
+                    <div class="password-card strong" data-pass="kuat2">
+                        <div class="password-status status-strong">✅ Sangat Kuat</div>
+                        <div class="password-text">S4y4ngRum4h!KuTerc1nta</div>
+                        <div class="password-reason">Sangat panjang (20+ karakter), variasi lengkap, sulit ditebak</div>
+                    </div>
+                </div>
+
+                <h2>D. Simulasi Kekuatan Kata Sandi</h2>
+                <div class="password-simulator">
+                    <h3><i class="fas fa-chart-line"></i> Coba Kekuatan Kata Sandimu!</h3>
+                    <input type="text" id="passwordInput" class="password-input" placeholder="Masukkan kata sandi untuk diuji...">
+                    <div class="strength-meter">
+                        <div id="strengthFill" class="strength-fill"></div>
+                    </div>
+                    <p id="strengthText" style="font-weight: bold;">Kekuatan: -</p>
+                </div>
+
+                <h2>E. Cara Membuat Kata Sandi Kuat yang Mudah Diingat</h2>
+                <div class="metode-grid">
+                    <div class="metode-card">
+                        <div class="metode-title">📝 Metode 1: Frasa Panjang (Passphrase)</div>
+                        <div class="metode-example">Pilih 4-5 kata acak: "rumah" + "kucing" + "bermain" + "hujan" → RumahKucingBermainHujan!2024</div>
+                    </div>
+                    <div class="metode-card">
+                        <div class="metode-title">✏️ Metode 2: Singkatan Kalimat</div>
+                        <div class="metode-example">"Saya lahir tanggal 17 Agustus 2005 di Jakarta" → Slh17A05dJ!</div>
+                    </div>
+                    <div class="metode-card">
+                        <div class="metode-title">🔢 Metode 3: Kombinasi Kata dan Angka</div>
+                        <div class="metode-example">"KeamananDigital" → K34m4n4nD1g1t4l#</div>
+                    </div>
+                </div>
+
+                <h2>F. Hal yang Tidak Boleh Dilakukan dengan Kata Sandi</h2>
+                <div class="larangan-grid">
+                    <div class="larangan-card"><div class="larangan-icon"><i class="fas fa-ban"></i></div><div><strong>Sama untuk semua akun</strong><br>Jika satu akun diretas, semua akun bisa dibobol</div></div>
+                    <div class="larangan-card"><div class="larangan-icon"><i class="fas fa-ban"></i></div><div><strong>Menulis di kertas/stiker</strong><br>Mudah dilihat orang lain</div></div>
+                    <div class="larangan-card"><div class="larangan-icon"><i class="fas fa-ban"></i></div><div><strong>Menyimpan di catatan ponsel tanpa proteksi</strong><br>Jika ponsel hilang, kata sandi terbaca</div></div>
+                    <div class="larangan-card"><div class="larangan-icon"><i class="fas fa-ban"></i></div><div><strong>Membagikan kepada orang lain</strong><br>Orang tersebut bisa menyalahgunakannya</div></div>
+                    <div class="larangan-card"><div class="larangan-icon"><i class="fas fa-ban"></i></div><div><strong>Login di perangkat publik tanpa logout</strong><br>Orang berikutnya bisa mengakses akunmu</div></div>
+                </div>
+
+                <h2>G. Apa Itu Manajer Kata Sandi (Password Manager)?</h2>
+                <p><strong>Manajer kata sandi</strong> adalah aplikasi yang menyimpan dan mengelola semua kata sandi dalam satu tempat terenkripsi. Kamu hanya perlu mengingat satu kata sandi utama (master password) untuk mengakses semua kata sandi lainnya.</p>
+                
+                <div class="success-box">
+                    <i class="fas fa-check-circle"></i> <strong>Keuntungan Manajer Kata Sandi:</strong><br>
+                    ✔ Hanya perlu ingat 1 password (master password)<br>
+                    ✔ Password unik untuk setiap akun (manajer akan membuatkan password acak yang kuat)<br>
+                    ✔ Tidak perlu mencatat - semua tersimpan aman<br>
+                    ✔ Auto-fill - mengisi password otomatis di website/aplikasi<br>
+                    ✔ Deteksi phishing - tidak akan auto-fill di situs palsu<br>
+                    ✔ Sinkronisasi - bisa diakses di HP, laptop, tablet<br>
+                    ✔ Audit keamanan - memberi tahu jika ada password lemah atau dipakai ulang
+                </div>
+
+                <h3>Contoh Aplikasi Manajer Kata Sandi</h3>
+                <div class="manager-grid" id="managerGrid">
+                    <div class="manager-card" data-manager="google">
+                        <div class="manager-icon"><i class="fab fa-google"></i></div>
+                        <div class="manager-name">Google Password Manager</div>
+                        <div class="manager-price">Gratis</div>
+                        <div class="manager-desc">Terintegrasi dengan akun Google, tersedia di Android dan Chrome browser</div>
+                    </div>
+                    <div class="manager-card" data-manager="lastpass">
+                        <div class="manager-icon"><i class="fas fa-lock"></i></div>
+                        <div class="manager-name">LastPass</div>
+                        <div class="manager-price">Gratis (dengan batasan)</div>
+                        <div class="manager-desc">Mudah digunakan, fitur lengkap, tersedia di semua platform</div>
+                    </div>
+                    <div class="manager-card" data-manager="bitwarden">
+                        <div class="manager-icon"><i class="fas fa-dragon"></i></div>
+                        <div class="manager-name">Bitwarden</div>
+                        <div class="manager-price">Gratis (open source)</div>
+                        <div class="manager-desc">Open source, gratis, aman, tersedia di semua platform</div>
+                    </div>
+                    <div class="manager-card" data-manager="1password">
+                        <div class="manager-icon"><i class="fas fa-key"></i></div>
+                        <div class="manager-name">1Password</div>
+                        <div class="manager-price">Berbayar</div>
+                        <div class="manager-desc">Keamanan tinggi, antarmuka bagus, fitur lengkap</div>
+                    </div>
+                </div>
+
+                <h2>H. Pengaturan Privasi Akun Digital</h2>
+                <p><strong>Pengaturan privasi</strong> adalah fitur yang memungkinkan pengguna mengontrol siapa yang dapat melihat informasi dan aktivitas mereka di platform digital. Pengaturan privasi penting untuk melindungi data pribadi dari akses yang tidak sah.</p>
+
+                <div class="privacy-grid">
+                    <div class="privacy-card">
+                        <div class="privacy-icon"><i class="fas fa-user-secret"></i></div>
+                        <div class="privacy-title">Akun Privat</div>
+                        <div class="privacy-desc">Hanya orang yang kamu setujui yang bisa melihat kontenmu. Cocok untuk media sosial pribadi.</div>
+                    </div>
+                    <div class="privacy-card">
+                        <div class="privacy-icon"><i class="fas fa-eye-slash"></i></div>
+                        <div class="privacy-title">Sembunyikan Aktivitas Online</div>
+                        <div class="privacy-desc">Matikan fitur "active status" atau "last seen" agar orang tidak tahu kamu sedang online.</div>
+                    </div>
+                    <div class="privacy-card">
+                        <div class="privacy-icon"><i class="fas fa-id-card"></i></div>
+                        <div class="privacy-title">Batasi Informasi Pribadi</div>
+                        <div class="privacy-desc">Jangan tampilkan nomor HP, alamat, atau tanggal lahir di profil publik. Gunakan pengaturan "Hanya Saya" untuk data sensitif.</div>
+                    </div>
+                    <div class="privacy-card">
+                        <div class="privacy-icon"><i class="fas fa-tag"></i></div>
+                        <div class="privacy-title">Tinjau Tagging</div>
+                        <div class="privacy-desc">Aktifkan fitur review tagging agar kamu bisa menyetujui sebelum orang lain menandaimu di foto atau postingan.</div>
+                    </div>
+                    <div class="privacy-card">
+                        <div class="privacy-icon"><i class="fas fa-search"></i></div>
+                        <div class="privacy-title">Mesin Pencari</div>
+                        <div class="privacy-desc">Atur agar profilmu tidak muncul di hasil pencarian Google atau mesin pencari lainnya.</div>
+                    </div>
+                    <div class="privacy-card">
+                        <div class="privacy-icon"><i class="fas fa-cookie"></i></div>
+                        <div class="privacy-title">Izin Aplikasi</div>
+                        <div class="privacy-desc">Periksa dan batasi izin aplikasi (kamera, mikrofon, lokasi) yang tidak diperlukan.</div>
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <i class="fas fa-exclamation-triangle"></i> <strong>Penting!</strong> Informasi pribadi yang dibagikan di media sosial bisa digunakan oleh orang yang tidak bertanggung jawab untuk penipuan, pelecehan, atau kejahatan siber. Selalu batasi siapa yang bisa melihat informasi pribadimu!
+                </div>
+
+                <div class="info-box">
+                    <i class="fas fa-lightbulb"></i> <strong>Tips Mengatur Privasi di Platform Populer:</strong><br>
+                    • <strong>Instagram:</strong> Settings → Privacy → Private Account<br>
+                    • <strong>Facebook:</strong> Settings → Privacy → Who can see your posts?<br>
+                    • <strong>TikTok:</strong> Settings → Privacy → Private Account<br>
+                    • <strong>WhatsApp:</strong> Settings → Privacy → Last seen, Profile photo, About<br>
+                    • <strong>Twitter:</strong> Settings → Privacy and safety → Protect your Tweets
+                </div>
+
+                <h2>I. Tabel Perbandingan Metode Pengelolaan Kata Sandi</h2>
+                <table class="compare-table">
+                    <thead>
+                        <tr><th>Metode</th><th>Kelebihan</th><th>Kekurangan</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Menghafal semua password</td><td>Tidak perlu alat bantu</td><td>Sulit jika banyak akun, cenderung pakai password sama</td></tr>
+                        <tr><td>Mencatat di buku</td><td>Cadangan fisik</td><td>Bisa hilang, orang lain bisa melihat</td></tr>
+                        <tr><td>Mencatat di file teks</td><td>Mudah diakses</td><td>Tidak aman, bisa diretas</td></tr>
+                        <tr><td>Manajer Kata Sandi</td><td>Aman, praktis, fitur lengkap</td><td>Perlu setup awal, bergantung pada master password</td></tr>
+                    </tbody>
+                </table>
+
+                <div class="warning-box" style="margin-top: 1.5rem;">
+                    <i class="fas fa-exclamation-triangle"></i> <strong>Ingat!</strong> Kata sandi yang kuat dan pengaturan privasi yang baik adalah benteng perlindungan datamu. Jangan pernah menggunakan password yang sama untuk akun penting!
+                </div>
+
+                <div class="quote-box" style="margin-top: 1.5rem; text-align: center;">
+                    <i class="fas fa-lock"></i> Kelola Kata Sandi, Jaga Privasi, Aman di Dunia Digital! 🔐
+                </div>
+            </div>
+
+            <!-- Navigasi -->
+            <div class="materi-navigation">
+                <a href="materi3-1.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i> Kembali ke Materi 3.1
+                </a>
+                <a href="materi3-3.html" class="nav-btn primary">
+                    Lanjut ke Materi 3.3: Keamanan Digital &amp; Autentikasi
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script src="../../../script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                });
+            }
+            
+            // Kriteria Interaktif
+            const kriteriaCards = document.querySelectorAll('.kriteria-card');
+            kriteriaCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    kriteriaCards.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            
+            // Password Interaktif
+            const passwordCards = document.querySelectorAll('.password-card');
+            passwordCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    passwordCards.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            
+            // Manager Interaktif
+            const managerCards = document.querySelectorAll('.manager-card');
+            managerCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    managerCards.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            
+            // Simulasi Kekuatan Password
+            const passwordInput = document.getElementById('passwordInput');
+            const strengthFill = document.getElementById('strengthFill');
+            const strengthText = document.getElementById('strengthText');
+            
+            function checkPasswordStrength(password) {
+                let score = 0;
+                
+                if (password.length >= 8) score++;
+                if (password.length >= 12) score++;
+                if (/[A-Z]/.test(password)) score++;
+                if (/[a-z]/.test(password)) score++;
+                if (/[0-9]/.test(password)) score++;
+                if (/[^A-Za-z0-9]/.test(password)) score++;
+                if (/[A-Z]/.test(password) && /[a-z]/.test(password) && /[0-9]/.test(password) && /[^A-Za-z0-9]/.test(password)) score += 2;
+                
+                let percentage = Math.min(100, (score / 8) * 100);
+                let strength = '';
+                let colorClass = '';
+                
+                if (percentage < 30) {
+                    strength = 'Lemah';
+                    colorClass = 'weak';
+                } else if (percentage < 60) {
+                    strength = 'Sedang';
+                    colorClass = 'medium';
+                } else {
+                    strength = 'Kuat';
+                    colorClass = 'strong';
+                }
+                
+                strengthFill.style.width = percentage + '%';
+                strengthFill.className = 'strength-fill ' + colorClass;
+                strengthText.innerHTML = 'Kekuatan: ' + strength + ' (' + Math.round(percentage) + '%)';
+            }
+            
+            passwordInput.addEventListener('input', function() {
+                checkPasswordStrength(this.value);
+            });
+        });
+    </script>
+</body>
+</html>

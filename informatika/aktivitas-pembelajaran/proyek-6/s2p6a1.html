@@ -1,0 +1,2880 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyek 6 Aktivitas 1 - Mengenal Algoritma & Struktur Data</title>
+    <link rel="stylesheet" href="../../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --informatika-primary: #3498db;
+            --informatika-secondary: #2980b9;
+            --informatika-light: #ebf5fb;
+            --informatika-dark: #21618c;
+            --informatika-accent: #9b59b6;
+            --informatika-gray: #f5f7fa;
+            --informatika-orange: #f39c12;
+            --informatika-red: #e74c3c;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+
+        .activity-detail-container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .informatika-content-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(52, 152, 219, 0.1);
+            border-left: 5px solid var(--informatika-primary);
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .informatika-content-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(52, 152, 219, 0.1) 0%, transparent 70%);
+            z-index: 0;
+        }
+
+        .informatika-content-card > * { position: relative; z-index: 1; }
+
+        .informatika-content-card h2 {
+            color: var(--informatika-dark);
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .informatika-content-card h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--informatika-primary), var(--informatika-secondary));
+            border-radius: 2px;
+        }
+
+        .informatika-content-card .subtitle {
+            color: #666;
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .informatika-content-card .subtitle i { color: var(--informatika-primary); }
+
+        .informatika-content-card > p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #555;
+            margin-bottom: 2.5rem;
+            padding: 1rem 1.5rem;
+            background: var(--informatika-light);
+            border-radius: 10px;
+            border-left: 4px solid var(--informatika-primary);
+        }
+
+        /* ============ MATERI SECTION ============ */
+        .materi-section {
+            background: linear-gradient(135deg, #fff5e6 0%, #fffaf0 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 2px solid #f39c12;
+            box-shadow: 0 4px 15px rgba(243, 156, 18, 0.15);
+            animation: fadeInUp 0.6s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .materi-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .materi-icon {
+            background: #f39c12;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .materi-icon i {
+            color: white;
+            font-size: 28px;
+        }
+
+        .materi-title h3 {
+            color: #e67e22;
+            margin-bottom: 0.3rem;
+            font-size: 1.4rem;
+        }
+
+        .materi-title p {
+            color: #6c5b3d;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .materi-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.2rem 1.5rem;
+            margin-top: 0.8rem;
+            border-left: 5px solid #f39c12;
+        }
+
+        .materi-card .badge {
+            background: #f39c12;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .materi-card h4 {
+            color: #2c3e50;
+            margin: 0.5rem 0 0 0;
+            font-size: 1.1rem;
+        }
+
+        .materi-card p {
+            color: #666;
+            margin: 0.5rem 0 0 0;
+            font-size: 0.9rem;
+        }
+
+        .materi-card .btn-materi {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 0.8rem;
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            color: white;
+            padding: 0.7rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(243, 156, 18, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+
+        .materi-card .btn-materi:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(243, 156, 18, 0.4);
+        }
+
+        .materi-card .btn-materi i {
+            transition: transform 0.3s ease;
+        }
+
+        .materi-card .btn-materi:hover i {
+            transform: translateX(5px);
+        }
+
+        .materi-tip {
+            margin-top: 0.8rem;
+            padding: 0.8rem 1.2rem;
+            background: #fef9e7;
+            border-radius: 8px;
+            border: 1px dashed #f39c12;
+        }
+
+        .materi-tip p {
+            color: #7d6608;
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        .materi-tip i {
+            color: #f39c12;
+        }
+
+        .worksheet-container {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid var(--informatika-light);
+        }
+
+        .worksheet-title {
+            color: var(--informatika-dark);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            border-bottom: 3px solid var(--informatika-light);
+            padding-bottom: 1rem;
+        }
+
+        .section-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.8rem;
+            margin-bottom: 2rem;
+            border: 1px solid #e0e7ff;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        .section-title {
+            color: var(--informatika-dark);
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--informatika-light);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title i {
+            color: var(--informatika-primary);
+            font-size: 1.6rem;
+        }
+
+        .section-subtitle {
+            color: var(--informatika-secondary);
+            font-size: 1.2rem;
+            margin: 1.5rem 0 1rem 0;
+            font-weight: 600;
+        }
+
+        .instruction-box {
+            background: var(--informatika-light);
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--informatika-primary);
+        }
+
+        .instruction-box ol { margin-left: 20px; }
+        .instruction-box li { margin-bottom: 5px; }
+
+        .identitas-box {
+            background: var(--informatika-light);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .identitas-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .identitas-item label {
+            font-weight: 600;
+            color: var(--informatika-dark);
+        }
+
+        .identitas-item input,
+        .identitas-item select {
+            padding: 0.8rem 1rem;
+            border: 2px solid #c5d5e6;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: white;
+            width: 100%;
+            font-family: inherit;
+        }
+
+        .identitas-item input:focus,
+        .identitas-item select:focus {
+            outline: none;
+            border-color: var(--informatika-primary);
+            box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.15);
+        }
+
+        .qa-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .qa-table th {
+            background: var(--informatika-primary);
+            color: white;
+            font-weight: 600;
+            padding: 12px 14px;
+            text-align: left;
+            font-size: 0.95rem;
+        }
+
+        .qa-table td {
+            padding: 10px 14px;
+            border-bottom: 1px solid #e8edf4;
+            vertical-align: top;
+        }
+
+        .qa-table tr:last-child td { border-bottom: none; }
+        .qa-table tr:hover { background: #f8fafc; }
+
+        .qa-table .no-col { width: 6%; text-align: center; font-weight: 600; color: #7f8c8d; }
+        .qa-table .question-col { width: 34%; font-weight: 500; color: #2c3e50; }
+        .qa-table .answer-col { width: 60%; }
+
+        .answer-field {
+            width: 100% !important;
+            padding: 10px 14px !important;
+            border: 2px solid #d0dbe8 !important;
+            border-radius: 10px !important;
+            font-size: 0.95rem !important;
+            font-family: inherit !important;
+            transition: all 0.3s ease !important;
+            background: #fafcfe !important;
+            color: #2c3e50 !important;
+            box-sizing: border-box !important;
+            resize: vertical;
+        }
+
+        .answer-field:hover {
+            border-color: #a0b8d0 !important;
+            background: #ffffff !important;
+        }
+
+        .answer-field:focus {
+            outline: none !important;
+            border-color: var(--informatika-primary) !important;
+            box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.12) !important;
+            background: #ffffff !important;
+        }
+
+        .answer-field::placeholder {
+            color: #aab8c9;
+            font-style: italic;
+            font-size: 0.9rem;
+        }
+
+        .qa-table input[type="text"].answer-field { min-height: 44px; }
+        .qa-table textarea.answer-field { min-height: 50px; }
+
+        .checkbox-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 0.5rem 1.5rem;
+            margin: 0.5rem 0;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 6px 0;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--informatika-primary);
+            flex-shrink: 0;
+            cursor: pointer;
+        }
+
+        .checkbox-item label {
+            font-size: 0.93rem;
+            cursor: pointer;
+            color: #2c3e50;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .radio-group label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            font-size: 0.93rem;
+        }
+
+        .radio-group input[type="radio"] {
+            width: 16px;
+            height: 16px;
+            accent-color: var(--informatika-primary);
+            cursor: pointer;
+        }
+
+        .alert {
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            margin: 1rem 0;
+            display: none;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border-left: 5px solid #28a745;
+        }
+
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border-left: 5px solid #dc3545;
+        }
+
+        .alert-loading {
+            background: #fff3cd;
+            color: #856404;
+            border-left: 5px solid #ffc107;
+        }
+
+        .alert-loading i { margin-right: 10px; }
+
+        .connection-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .connection-status.online {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .connection-status.offline {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .refresh-btn {
+            background: var(--informatika-primary);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+
+        .refresh-btn:hover { background: var(--informatika-secondary); }
+
+        .btn-submit {
+            background: linear-gradient(135deg, var(--informatika-primary), var(--informatika-secondary));
+            color: white;
+            border: none;
+            padding: 1rem 2.8rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            width: fit-content;
+            margin: 2rem auto;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .btn-submit:hover:not(:disabled) {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4);
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .btn-submit i { margin-right: 10px; }
+
+        /* ============ EXPORT BUTTON ============ */
+        .export-button {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .export-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4);
+        }
+
+        .export-button i { font-size: 1.1rem; }
+
+        .export-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .export-wrapper {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .activity-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: white;
+            color: var(--informatika-dark);
+            padding: 0.8rem 1.5rem;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 1px solid var(--informatika-light);
+        }
+
+        .nav-btn:hover {
+            background: var(--informatika-primary);
+            color: white;
+        }
+
+        .nav-btn.primary {
+            background: var(--informatika-primary);
+            color: white;
+            border: none;
+        }
+
+        .nav-btn.primary:hover {
+            background: var(--informatika-secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .form-disabled {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        .pseudocode-box {
+            background: #1e1e2f;
+            color: #fff;
+            padding: 1.5rem;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+
+        .catatan-penting {
+            background: #fff9e0;
+            border-left: 5px solid #f1c40f;
+            padding: 1rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+        }
+
+        .btn-add-row {
+            background: var(--informatika-accent);
+            color: white;
+            border: none;
+            padding: 0.5rem 1.2rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0.5rem 0.25rem;
+        }
+
+        .btn-add-row:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(155, 89, 182, 0.3);
+        }
+
+        .btn-add-row.btn-danger {
+            background: #e74c3c;
+        }
+
+        .btn-add-row.btn-danger:hover {
+            background: #c0392b;
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+        }
+
+        .btn-add-row i { margin-right: 8px; }
+
+        .row-counter {
+            font-size: 0.85rem;
+            color: #7f8c8d;
+            margin-left: 10px;
+        }
+
+        /* ============ MODAL ============ */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 99999 !important;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.6);
+            animation: fadeIn 0.3s ease;
+            overflow-y: auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 2.5rem;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 450px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: slideDown 0.3s ease;
+            position: relative;
+            z-index: 100000 !important;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-50px) scale(0.95); opacity: 0; }
+            to { transform: translateY(0) scale(1); opacity: 1; }
+        }
+
+        .modal-content .modal-icon { font-size: 4rem; margin-bottom: 1rem; }
+        .modal-content .icon-success { color: var(--informatika-primary); }
+        .modal-content .icon-warning { color: var(--informatika-orange); }
+        .modal-content .icon-danger { color: var(--informatika-red); }
+
+        .modal-content h3 {
+            margin-bottom: 0.5rem;
+            color: var(--informatika-dark);
+            font-size: 1.4rem;
+        }
+
+        .modal-content .sub-text {
+            margin-bottom: 1.5rem;
+            color: #666;
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        .modal-content .sub-text strong {
+            color: var(--informatika-dark);
+            word-break: break-word;
+            background: var(--informatika-light);
+            padding: 2px 10px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 0.5rem;
+        }
+
+        .modal-btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            min-width: 120px;
+            justify-content: center;
+            flex: 1;
+        }
+
+        .modal-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .modal-btn.yes {
+            background: var(--informatika-primary);
+            color: white;
+        }
+
+        .modal-btn.yes:hover {
+            background: var(--informatika-secondary);
+        }
+
+        .modal-btn.danger {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .modal-btn.danger:hover {
+            background: #c0392b;
+        }
+
+        .modal-btn.danger:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .modal-btn.no {
+            background: #6c757d;
+            color: white;
+        }
+
+        .modal-btn.no:hover {
+            background: #5a6268;
+        }
+
+        .modal-btn.secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .modal-btn.secondary:hover {
+            background: #5a6268;
+        }
+
+        body.modal-open {
+            overflow: hidden !important;
+        }
+
+        @media (max-width: 768px) {
+            .activity-detail-container { padding: 1rem; }
+            .worksheet-container { padding: 1rem; }
+            .worksheet-title { font-size: 1.5rem; }
+            .section-card { padding: 1rem; }
+            .section-title { font-size: 1.2rem; }
+            .qa-table { font-size: 0.9rem; }
+            .qa-table td, .qa-table th { padding: 8px 10px; }
+            .qa-table .no-col { width: 10%; }
+            .qa-table .question-col { width: 40%; }
+            .qa-table .answer-col { width: 50%; }
+            .identitas-box { grid-template-columns: 1fr; }
+            .activity-navigation { flex-direction: column; }
+            .nav-btn { width: 100%; justify-content: center; }
+            .checkbox-grid { grid-template-columns: 1fr; }
+            .answer-field { font-size: 0.9rem !important; padding: 8px 12px !important; }
+            .btn-add-row { font-size: 0.8rem; padding: 0.4rem 0.8rem; }
+            .modal-content { margin: 15% auto; padding: 2rem; width: 95%; max-width: 400px; }
+            .modal-buttons { flex-direction: column; align-items: stretch; }
+            .modal-btn { flex: none; min-width: unset; width: 100%; justify-content: center; padding: 0.8rem; }
+            .export-wrapper { justify-content: center; }
+            .export-button { width: 100%; justify-content: center; }
+            .btn-submit { width: 100%; justify-content: center; padding: 1rem; }
+            .informatika-content-card h2 { font-size: 1.6rem; }
+            .informatika-content-card { padding: 1.5rem; }
+            
+            .materi-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            .materi-card .btn-materi {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .activity-detail-container { padding: 0.5rem; }
+            .worksheet-container { padding: 0.8rem; }
+            .informatika-content-card { padding: 1rem; }
+            .modal-content { margin: 20% auto; padding: 1.5rem; width: 98%; }
+            .modal-content .modal-icon { font-size: 3rem; }
+            .modal-btn { font-size: 0.9rem; padding: 0.7rem; }
+            .qa-table { font-size: 0.8rem; }
+            .qa-table td, .qa-table th { padding: 6px 8px; }
+            .materi-section { padding: 1.2rem !important; }
+            .materi-card { padding: 1rem !important; }
+        }
+
+        @media print {
+            .materi-section {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="../../../assets/images/logo.png" alt="Logo Sekolah">
+                    <h1>INFORMATIKA - AKTIVITAS PEMBELAJARAN</h1>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="../../../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="../../index-informatika.html" class="nav-link"><i class="fas fa-laptop-code"></i> Beranda Informatika</a></li>
+                    <li><a href="../index-aktivitas-informatika.html" class="nav-link active"><i class="fas fa-tasks"></i> Daftar Aktivitas</a></li>
+                    <li><a href="../../materi-pembelajaran/index-materi-informatika.html" class="nav-link"><i class="fas fa-book-open"></i> Daftar Materi</a></li>
+                    <li><a href="../../penilaian/index-penilaian-informatika.html" class="nav-link"><i class="fas fa-chart-line"></i> Penilaian</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="activity-detail-container">
+        <div class="informatika-content-card">
+            <h2>Proyek 6 Aktivitas 1: Mengenal Algoritma & Struktur Data</h2>
+            <div class="subtitle">
+                <span><i class="fas fa-calendar"></i> Pertemuan 1 • Proyek 6: Pemrograman Dasar</span>
+                <span><i class="fas fa-clock"></i> 4 JP</span>
+                <span class="connection-status online" id="connectionStatus"><i class="fas fa-wifi"></i> Online</span>
+            </div>
+            <p><i class="fas fa-quote-left"></i> Memahami konsep dasar struktur data dan algoritma standar. <i class="fas fa-quote-right"></i></p>
+        </div>
+
+        <!-- ===== BAGIAN MEMBACA MATERI ===== -->
+        <div class="materi-section">
+            <div class="materi-header">
+                <div class="materi-icon">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <div class="materi-title">
+                    <h3>📖 BACA MATERI TERLEBIH DAHULU</h3>
+                    <p>Sebelum mengerjakan LKPD ini, pastikan kamu sudah membaca dan memahami materi berikut:</p>
+                </div>
+            </div>
+            
+            <div class="materi-card">
+                <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+                    <span class="badge">MATERI 6.1</span>
+                    <h4 style="margin: 0;">Konsep Algoritma & Struktur Data</h4>
+                </div>
+                <p>
+                    <i class="fas fa-check-circle" style="color: #27ae60;"></i> 
+                    Materi ini akan membantu kamu memahami konsep dasar algoritma, struktur data, dan pentingnya dalam pemrograman.
+                </p>
+                <a href="../../materi-pembelajaran/materi-proyek6/materi6-1.html" 
+                   target="_blank" 
+                   class="btn-materi">
+                    <i class="fas fa-arrow-right"></i> Baca Materi Sekarang
+                </a>
+            </div>
+            
+            <div class="materi-tip">
+                <p>
+                    <i class="fas fa-info-circle"></i> 
+                    <strong>Tips:</strong> Baca materi dengan saksama agar kamu lebih mudah mengerjakan LKPD ini. Materi akan terbuka di tab baru.
+                </p>
+            </div>
+        </div>
+
+        <div id="loadingMessage" class="alert alert-loading" style="display:none;">
+            <i class="fas fa-spinner fa-spin"></i> Memuat data siswa...
+        </div>
+
+        <div id="errorMessage" class="alert alert-error" style="display:none;">
+            <i class="fas fa-exclamation-triangle"></i> <span id="errorText">Gagal terhubung ke server.</span>
+            <br><button class="refresh-btn" onclick="location.reload()"><i class="fas fa-sync-alt"></i> Refresh Halaman</button>
+        </div>
+
+        <div class="worksheet-container" id="worksheetForm">
+            <!-- Tombol Export -->
+            <div class="export-wrapper">
+                <button class="export-button" id="exportBtn" onclick="exportToDocx()" disabled>
+                    <i class="fas fa-file-word"></i> Export Template DOCX
+                </button>
+            </div>
+
+            <div class="instruction-box" style="background:#e8f5e9; border-left-color: var(--informatika-primary);">
+                <i class="fas fa-lightbulb" style="color: var(--informatika-primary); margin-right: 10px;"></i>
+                <strong>HALO, KELOMPOK HEBAT! 👋</strong><br>
+                Silakan isi lembar kerja ini untuk mempelajari algoritma dan struktur data.
+            </div>
+
+            <h1 class="worksheet-title">LEMBAR KERJA PESERTA DIDIK (LKPD) PROYEK 6 – AKTIVITAS 1</h1>
+            <p style="text-align: center; margin-bottom: 2rem; font-size: 1.2rem; color: var(--informatika-accent);">
+                <strong>MENGENAL ALGORITMA & STRUKTUR DATA</strong>
+            </p>
+            <div style="text-align: center; margin-bottom: 2rem; background: var(--informatika-light); padding: 0.8rem; border-radius: 10px;">
+                <p><i class="fas fa-bullseye"></i> <strong>Tujuan Pembelajaran (TP 1.1):</strong> Memahami konsep dasar struktur data dan algoritma standar.</p>
+            </div>
+
+            <!-- ===== IDENTITAS ===== -->
+            <h3 style="margin: 2rem 0 1rem 0; color: var(--informatika-dark);">
+                <i class="fas fa-users"></i> Identitas Kelompok
+            </h3>
+            <div class="identitas-box">
+                <div class="identitas-item">
+                    <label><i class="fas fa-building"></i> Kelas</label>
+                    <select id="kelas" onchange="updateNamaDropdown(); saveToLocalStorage();" disabled>
+                        <option value="">-- Pilih Kelas --</option>
+                    </select>
+                </div>
+                <div class="identitas-item">
+                    <label><i class="fas fa-user"></i> Nama Lengkap</label>
+                    <select id="nama" onchange="saveToLocalStorage();" disabled>
+                        <option value="">-- Pilih Nama --</option>
+                    </select>
+                </div>
+                <div class="identitas-item">
+                    <label><i class="fas fa-users"></i> Nama Kelompok</label>
+                    <input type="text" id="kelompok" placeholder="Contoh: Kelompok 1 - Algoritma" oninput="saveToLocalStorage();" disabled>
+                </div>
+                <div class="identitas-item">
+                    <label><i class="fas fa-tasks"></i> Peran dalam Kelompok</label>
+                    <input type="text" id="peran" placeholder="Contoh: Ketua / Notulis" oninput="saveToLocalStorage();" disabled>
+                </div>
+            </div>
+
+            <!-- ===== PETUNJUK ===== -->
+            <div class="instruction-box">
+                <i class="fas fa-info-circle" style="margin-right: 10px;"></i>
+                <strong>📚 PETUNJUK PENGGUNAAN LKPD</strong><br><br>
+                <ol>
+                    <li>Membaca materi <strong>"Konsep Algoritma"</strong> yang tersedia di menu Daftar Materi pada website pembelajaran.</li>
+                    <li>Memahami pengertian algoritma dan contohnya dalam kehidupan sehari-hari.</li>
+                    <li>Menyiapkan alat tulis atau perangkat digital untuk mencatat.</li>
+                    <li>Data akan <strong>tersimpan otomatis</strong> di browser Anda.</li>
+                    <li>Klik tombol <strong>Kumpulkan LKPD</strong> di bagian bawah untuk mengirimkan data ke Google Spreadsheet.</li>
+                </ol>
+            </div>
+
+            <!-- ===== TUJUAN AKTIVITAS ===== -->
+            <div class="section-card">
+                <h3 class="section-title"><i class="fas fa-bullseye"></i> 🎯 TUJUAN AKTIVITAS 1</h3>
+                <p>Setelah mengikuti aktivitas ini dan membaca materi yang tersedia, peserta didik diharapkan mampu:</p>
+                <ol style="margin-left: 20px; margin-top: 10px;">
+                    <li>Menjelaskan pengertian algoritma dan struktur data.</li>
+                    <li>Mengidentifikasi contoh algoritma dalam kehidupan sehari-hari.</li>
+                    <li>Menyusun langkah-langkah algoritma sederhana.</li>
+                    <li>Memahami pentingnya algoritma dalam pemrograman.</li>
+                </ol>
+                <div style="margin-top: 15px; background: #f0f9ff; padding: 10px; border-radius: 8px;">
+                    <i class="fas fa-hourglass-half"></i> <strong>⏰ ALOKASI WAKTU:</strong> Total 4 JP (2 × 45 menit) - Membaca Materi (15 menit), Kegiatan Inti (65 menit), Penutup (10 menit)
+                </div>
+            </div>
+
+            <!-- ===== BAGIAN A: PEMAHAMAN MATERI ===== -->
+            <div class="section-card">
+                <h3 class="section-title"><i class="fas fa-book-reader"></i> 📖 BAGIAN A: PEMAHAMAN MATERI (INDIVIDU) – 15 menit</h3>
+                <div class="instruction-box">
+                    <i class="fas fa-exclamation-triangle"></i> "Pastikan kamu sudah membaca materi sebelum mengerjakan!"<br>
+                    Instruksi: Sebelum menjawab pertanyaan berikut, pastikan kamu sudah membaca materi <strong>"Konsep Algoritma"</strong> di menu Daftar Materi. Jawablah pertanyaan berdasarkan pemahamanmu dari materi tersebut!
+                </div>
+
+                <table class="qa-table" id="tabelReview">
+                    <thead>
+                        <tr><th class="no-col">No</th><th class="question-col">Pertanyaan</th><th class="answer-col">Jawaban</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="no-col">1</td><td>Jelaskan pengertian algoritma dan berikan 3 karakteristik algoritma yang baik!</td>
+                            <td><textarea class="answer-field" id="review1" placeholder="Tulis jawabanmu..." oninput="saveToLocalStorage();"></textarea></td>
+                        </tr>
+                        <tr><td class="no-col">2</td><td>Apa yang dimaksud dengan struktur data? Berikan contoh sederhana yang kamu pahami!</td>
+                            <td><textarea class="answer-field" id="review2" placeholder="Tulis jawabanmu..." oninput="saveToLocalStorage();"></textarea></td>
+                        </tr>
+                        <tr><td class="no-col">3</td><td>Mengapa algoritma penting dalam pemrograman?</td>
+                            <td><textarea class="answer-field" id="review3" placeholder="Tulis jawabanmu..." oninput="saveToLocalStorage();"></textarea></td>
+                        </tr>
+                        <tr><td class="no-col">4</td><td>Jelaskan perbedaan antara algoritma dan program!</td>
+                            <td><textarea class="answer-field" id="review4" placeholder="Tulis jawabanmu..." oninput="saveToLocalStorage();"></textarea></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="checkbox-grid">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="bacaMateri" onchange="saveToLocalStorage();">
+                        <label for="bacaMateri"><strong>☐ Ya, saya sudah membaca materi "Konsep Algoritma"</strong></label>
+                    </div>
+                    <div class="checkbox-item">
+                        <label for="tanggalBaca">Saya membaca materi pada tanggal: </label>
+                        <input type="date" id="tanggalBaca" class="answer-field" style="width: auto; max-width: 200px;" onchange="saveToLocalStorage();">
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== BAGIAN B: ALGORITMA DALAM KEHIDUPAN SEHARI-HARI ===== -->
+            <div class="section-card">
+                <h3 class="section-title"><i class="fas fa-utensils"></i> 🧠 BAGIAN B: ALGORITMA DALAM KEHIDUPAN SEHARI-HARI (INDIVIDU) – 10 menit</h3>
+                <div class="instruction-box">
+                    <i class="fas fa-lightbulb"></i> "Algoritma tidak hanya ada di komputer!"
+                </div>
+
+                <h4 class="section-subtitle">Kegiatan 1: Mengenali Algoritma di Sekitar Kita</h4>
+                <p>Instruksi: Tuliskan langkah-langkah (algoritma) dari kegiatan sehari-hari berikut!</p>
+
+                <table class="qa-table" id="tabelAlgoritma">
+                    <thead>
+                        <tr><th class="no-col">No</th><th class="question-col">Kegiatan</th><th class="answer-col">Langkah-Langkah (Algoritma)</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="no-col">1</td><td>Resep membuat mie instan</td>
+                            <td><textarea class="answer-field" id="algoritma_mie" placeholder="1.&#10;2.&#10;3.&#10;4.&#10;5." oninput="saveToLocalStorage();"></textarea></td>
+                        </tr>
+                        <tr><td class="no-col">2</td><td>Langkah mencuci tangan yang benar</td>
+                            <td><textarea class="answer-field" id="algoritma_cuci" placeholder="1.&#10;2.&#10;3.&#10;4.&#10;5.&#10;6." oninput="saveToLocalStorage();"></textarea></td>
+                        </tr>
+                        <tr><td class="no-col">3</td><td>Langkah mengirim pesan di WhatsApp</td>
+                            <td><textarea class="answer-field" id="algoritma_wa" placeholder="1.&#10;2.&#10;3.&#10;4.&#10;5." oninput="saveToLocalStorage();"></textarea></td>
+                        </tr>
+                        <tr><td class="no-col">4</td><td>Langkah meminjam buku di perpustakaan</td>
+                            <td><textarea class="answer-field" id="algoritma_buku" placeholder="1.&#10;2.&#10;3.&#10;4.&#10;5." oninput="saveToLocalStorage();"></textarea></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- ===== BAGIAN C: DISKUSI KELOMPOK ===== -->
+            <div class="section-card">
+                <h3 class="section-title"><i class="fas fa-users"></i> 💬 BAGIAN C: DISKUSI KELOMPOK – 20 menit</h3>
+                <div class="instruction-box">
+                    <i class="fas fa-comments"></i> "Diskusikan dengan kelompokmu!"
+                </div>
+
+                <h4 class="section-subtitle">Kegiatan 2: Menyusun Algoritma Bersama</h4>
+                <p>Instruksi: Diskusikan dengan kelompok, lalu tuliskan algoritma untuk kasus-kasus berikut!</p>
+
+                <!-- KASUS 1: MEMBUAT KOPI INSTAN -->
+                <p><strong>Kasus 1: Membuat Kopi Instan</strong></p>
+                <div style="margin-bottom: 10px;">
+                    <button type="button" class="btn-add-row" onclick="tambahBaris('tabelKopi')">
+                        <i class="fas fa-plus"></i> Tambah Langkah
+                    </button>
+                    <button type="button" class="btn-add-row btn-danger" onclick="hapusBaris('tabelKopi')">
+                        <i class="fas fa-minus"></i> Hapus Langkah Terakhir
+                    </button>
+                    <span class="row-counter">(Jumlah langkah: <span id="tabelKopi_count">6</span>)</span>
+                </div>
+                <table class="qa-table" id="tabelKopi">
+                    <thead><tr><th class="no-col">Langkah ke-</th><th class="answer-col">Deskripsi Langkah</th></tr></thead>
+                    <tbody id="tabelKopiBody"></tbody>
+                </table>
+
+                <!-- KASUS 2: MENGHITUNG RATA-RATA -->
+                <p><strong>Kasus 2: Menghitung Rata-rata 3 Nilai Ulangan</strong></p>
+                <div style="margin-bottom: 10px;">
+                    <button type="button" class="btn-add-row" onclick="tambahBaris('tabelRata')">
+                        <i class="fas fa-plus"></i> Tambah Langkah
+                    </button>
+                    <button type="button" class="btn-add-row btn-danger" onclick="hapusBaris('tabelRata')">
+                        <i class="fas fa-minus"></i> Hapus Langkah Terakhir
+                    </button>
+                    <span class="row-counter">(Jumlah langkah: <span id="tabelRata_count">5</span>)</span>
+                </div>
+                <table class="qa-table" id="tabelRata">
+                    <thead><tr><th class="no-col">Langkah ke-</th><th class="answer-col">Deskripsi Langkah</th></tr></thead>
+                    <tbody id="tabelRataBody"></tbody>
+                </table>
+
+                <!-- ANALISIS ALGORITMA -->
+                <h4 class="section-subtitle">Kegiatan 3: Analisis Algoritma</h4>
+                <p><em>Petunjuk: Diskusikan dan jawab pertanyaan berikut berdasarkan kasus yang sudah kalian buat!</em></p>
+                <table class="qa-table" id="tabelAnalisis">
+                    <thead><tr><th class="no-col">No</th><th class="question-col">Pertanyaan</th><th class="answer-col">Jawaban Kelompok</th></tr></thead>
+                    <tbody>
+                        <tr><td class="no-col">1</td><td>Dari kedua algoritma di atas, mana yang menurut kalian lebih mudah? Mengapa?</td>
+                            <td><textarea class="answer-field" id="analisis1" oninput="saveToLocalStorage();"></textarea></td>
+                        </tr>
+                        <tr><td class="no-col">2</td><td>Apakah ada langkah yang bisa dihilangkan atau digabung pada salah satu kasus?</td>
+                            <td><textarea class="answer-field" id="analisis2" oninput="saveToLocalStorage();"></textarea></td>
+                        </tr>
+                        <tr><td class="no-col">3</td><td>Apa yang terjadi jika urutan langkah pada Kasus 2 diubah? Berikan contoh!</td>
+                            <td><textarea class="answer-field" id="analisis3" oninput="saveToLocalStorage();"></textarea></td>
+                        </tr>
+                        <tr><td class="no-col">4</td><td>Mengapa urutan langkah dalam algoritma sangat penting?</td>
+                            <td><textarea class="answer-field" id="analisis4" oninput="saveToLocalStorage();"></textarea></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- ===== BAGIAN D: PENGENALAN STRUKTUR DATA SEDERHANA ===== -->
+            <div class="section-card">
+                <h3 class="section-title"><i class="fas fa-database"></i> 📊 BAGIAN D: PENGENALAN STRUKTUR DATA SEDERHANA (KELOMPOK) – 20 menit</h3>
+                <div class="instruction-box">
+                    <i class="fas fa-cubes"></i> "Data perlu disusun agar mudah diolah!"
+                </div>
+
+                <h4 class="section-subtitle">Kegiatan 4: Mengenal Tipe Data</h4>
+                <p>Instruksi: Diskusikan dan isi tabel berikut dengan contoh data sesuai tipe datanya!</p>
+
+                <table class="qa-table" id="tabelTipeData">
+                    <thead><tr><th class="no-col">No</th><th class="question-col">Tipe Data</th><th class="question-col">Penjelasan</th><th class="answer-col">Contoh Data</th></tr></thead>
+                    <tbody>
+                        <tr><td class="no-col">1</td><td>Angka (Integer)</td><td>Bilangan bulat</td>
+                            <td><input type="text" class="answer-field" id="tipe_integer" placeholder="Contoh: 10, 25, -5" oninput="saveToLocalStorage();"></td>
+                        </tr>
+                        <tr><td class="no-col">2</td><td>Angka Desimal (Float)</td><td>Bilangan pecahan</td>
+                            <td><input type="text" class="answer-field" id="tipe_float" placeholder="Contoh: 3.14, 2.5" oninput="saveToLocalStorage();"></td>
+                        </tr>
+                        <tr><td class="no-col">3</td><td>Teks (String)</td><td>Kumpulan huruf/kata</td>
+                            <td><input type="text" class="answer-field" id="tipe_string" placeholder="Contoh: 'Halo', 'Informatika'" oninput="saveToLocalStorage();"></td>
+                        </tr>
+                        <tr><td class="no-col">4</td><td>Boolean</td><td>Benar/Salah (True/False)</td>
+                            <td><input type="text" class="answer-field" id="tipe_boolean" placeholder="Contoh: True, False" oninput="saveToLocalStorage();"></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4 class="section-subtitle">Kegiatan 5: Membuat Tabel Data Sederhana</h4>
+                <p>Instruksi: Buatlah tabel data sederhana untuk menyimpan data 5 orang teman sekelas dengan struktur berikut!</p>
+
+                <table class="qa-table" id="tabelDataSiswa">
+                    <thead><tr><th class="no-col">No</th><th class="question-col">Nama</th><th class="question-col">Usia</th><th class="question-col">Kelas</th><th class="answer-col">Apakah Anggota Kelompok? (Ya/Tidak)</th></tr></thead>
+                    <tbody id="tabelDataBody">
+                        <!-- Baris akan diisi dengan JavaScript -->
+                    </tbody>
+                </table>
+
+                <button type="button" class="btn-add-row" onclick="tambahBarisData()">
+                    <i class="fas fa-plus"></i> Tambah Baris Data
+                </button>
+                <button type="button" class="btn-add-row btn-danger" onclick="hapusBarisData()">
+                    <i class="fas fa-minus"></i> Hapus Baris Terakhir
+                </button>
+                <span class="row-counter">(Jumlah siswa: <span id="tabelData_count">5</span>)</span>
+
+                <p><strong>Pertanyaan:</strong></p>
+                <p>Sebutkan tipe data untuk setiap kolom pada tabel di atas!</p>
+                <ul style="margin-left: 20px;">
+                    <li>Kolom Nama : <input type="text" class="answer-field" id="tipe_kolom_nama" style="width:200px" oninput="saveToLocalStorage();"></li>
+                    <li>Kolom Usia : <input type="text" class="answer-field" id="tipe_kolom_usia" style="width:200px" oninput="saveToLocalStorage();"></li>
+                    <li>Kolom Kelas : <input type="text" class="answer-field" id="tipe_kolom_kelas" style="width:200px" oninput="saveToLocalStorage();"></li>
+                    <li>Kolom "Apakah Anggota Kelompok?" : <input type="text" class="answer-field" id="tipe_kolom_anggota" style="width:200px" oninput="saveToLocalStorage();"></li>
+                </ul>
+            </div>
+
+            <!-- ===== BAGIAN E: ALGORITMA DAN STRUKTUR DATA DALAM PROGRAM ===== -->
+            <div class="section-card">
+                <h3 class="section-title"><i class="fas fa-code"></i> 🔍 BAGIAN E: ALGORITMA DAN STRUKTUR DATA DALAM PROGRAM – 10 menit</h3>
+                <div class="instruction-box">
+                    <i class="fas fa-laptop-code"></i> "Bagaimana algoritma dan data bekerja dalam program?"
+                </div>
+
+                <h4 class="section-subtitle">Kegiatan 6: Menganalisis Program Sederhana</h4>
+                <p>Instruksi: Perhatikan program sederhana berikut (dalam bahasa manusia/pseudocode):</p>
+
+                <div class="pseudocode-box">
+                    PROGRAM Menghitung Luas Persegi Panjang<br><br>
+                    DATA:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;panjang = 10<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;lebar = 5<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;luas = 0<br><br>
+                    ALGORITMA:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;1. Mulai<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;2. Siapkan data panjang dan lebar<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;3. Hitung luas dengan rumus: luas = panjang × lebar<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;4. Tampilkan hasil luas<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;5. Selesai
+                </div>
+
+                <table class="qa-table" id="tabelProgram">
+                    <thead><tr><th class="no-col">No</th><th class="question-col">Pertanyaan</th><th class="answer-col">Jawaban Kelompok</th></tr></thead>
+                    <tbody>
+                        <tr><td class="no-col">1</td><td>Sebutkan struktur data yang digunakan dalam program di atas!</td>
+                            <td><textarea class="answer-field" id="program1" oninput="saveToLocalStorage();"></textarea></td>
+                        </tr>
+                        <tr><td class="no-col">2</td><td>Sebutkan algoritma/langkah-langkah dalam program di atas!</td>
+                            <td><textarea class="answer-field" id="program2" oninput="saveToLocalStorage();"></textarea></td>
+                        </tr>
+                        <tr><td class="no-col">3</td><td>Apa output/hasil dari program tersebut?</td>
+                            <td><textarea class="answer-field" id="program3" oninput="saveToLocalStorage();"></textarea></td>
+                        </tr>
+                        <tr><td class="no-col">4</td><td>Jika panjang diubah menjadi 15, apa yang terjadi?</td>
+                            <td><textarea class="answer-field" id="program4" oninput="saveToLocalStorage();"></textarea></td>
+                        </tr>
+                        <tr><td class="no-col">5</td><td>Apa yang akan terjadi jika langkah 3 dan 4 ditukar?</td>
+                            <td><textarea class="answer-field" id="program5" oninput="saveToLocalStorage();"></textarea></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- ===== BAGIAN F: MEMBUAT ALGORITMA SEDERHANA ===== -->
+            <div class="section-card">
+                <h3 class="section-title"><i class="fas fa-pencil-alt"></i> 🎯 BAGIAN F: MEMBUAT ALGORITMA SEDERHANA (KELOMPOK) – 5 menit</h3>
+                <div class="instruction-box">
+                    <i class="fas fa-lightbulb"></i> "Coba buat algoritmamu sendiri!"
+                </div>
+
+                <p>Instruksi: Buatlah algoritma untuk salah satu kasus berikut:</p>
+                <ul style="margin-left: 20px; margin-bottom: 15px;">
+                    <li>A. Menentukan apakah seorang siswa lulus atau tidak (nilai ≥ 75 = lulus)</li>
+                    <li>B. Menghitung luas segitiga (alas × tinggi ÷ 2)</li>
+                    <li>C. Menukar isi dua gelas (gelas A berisi kopi, gelas B berisi teh)</li>
+                </ul>
+
+                <p><strong>Judul Program:</strong> <input type="text" class="answer-field" id="judul_algoritma" style="width:400px" oninput="saveToLocalStorage();"></p>
+
+                <div style="margin-bottom: 10px;">
+                    <button type="button" class="btn-add-row" onclick="tambahBaris('tabelAlgoritma')">
+                        <i class="fas fa-plus"></i> Tambah Langkah
+                    </button>
+                    <button type="button" class="btn-add-row btn-danger" onclick="hapusBaris('tabelAlgoritma')">
+                        <i class="fas fa-minus"></i> Hapus Langkah Terakhir
+                    </button>
+                    <span class="row-counter">(Jumlah langkah: <span id="tabelAlgoritma_count">7</span>)</span>
+                </div>
+                <table class="qa-table" id="tabelAlgoritma">
+                    <thead><tr><th class="no-col">Langkah ke-</th><th class="answer-col">Deskripsi Langkah</th></tr></thead>
+                    <tbody id="tabelAlgoritmaBody"></tbody>
+                </table>
+            </div>
+
+            <!-- ===== BAGIAN G: REFLEKSI INDIVIDU ===== -->
+            <div class="section-card">
+                <h3 class="section-title"><i class="fas fa-pen"></i> 📝 BAGIAN G: REFLEKSI INDIVIDU – 5 menit</h3>
+                <div class="instruction-box">
+                    <i class="fas fa-question-circle"></i> "Apa yang aku pelajari hari ini?"
+                </div>
+
+                <table class="qa-table" id="tabelRefleksi">
+                    <thead><tr><th class="no-col">No</th><th class="question-col">Pertanyaan</th><th class="answer-col">Jawabanku</th></tr></thead>
+                    <tbody>
+                        <tr><td class="no-col">1</td><td>Hal baru apa yang aku pelajari tentang algoritma hari ini? Berikan contoh!</td>
+                            <td><textarea class="answer-field" id="ref1" oninput="saveToLocalStorage();"></textarea></td>
+                        </tr>
+                        <tr><td class="no-col">2</td><td>Apakah aku merasa kesulitan memahami konsep algoritma? Jelaskan!</td>
+                            <td><textarea class="answer-field" id="ref2" oninput="saveToLocalStorage();"></textarea></td>
+                        </tr>
+                        <tr><td class="no-col">3</td><td>Apa hubungan algoritma dengan pemrograman?</td>
+                            <td><textarea class="answer-field" id="ref3" oninput="saveToLocalStorage();"></textarea></td>
+                        </tr>
+                        <tr><td class="no-col">4</td><td>Apa yang ingin aku pelajari lebih lanjut tentang algoritma?</td>
+                            <td><textarea class="answer-field" id="ref4" oninput="saveToLocalStorage();"></textarea></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div style="margin-top: 1rem; background: #f8fafc; border-radius: 10px; padding: 1rem; border: 1px dashed var(--informatika-primary);">
+                    <p><strong>Checklist Pemahaman:</strong></p>
+                    <div class="checkbox-grid">
+                        <div class="checkbox-item"><input type="checkbox" id="chk1" onchange="saveToLocalStorage();"><label for="chk1">Saya sudah membaca materi "Konsep Algoritma"</label></div>
+                        <div class="checkbox-item"><input type="checkbox" id="chk2" onchange="saveToLocalStorage();"><label for="chk2">Saya sudah bisa menyusun algoritma sederhana</label></div>
+                        <div class="checkbox-item"><input type="checkbox" id="chk3" onchange="saveToLocalStorage();"><label for="chk3">Saya sudah memahami tipe data dasar</label></div>
+                        <div class="checkbox-item"><input type="checkbox" id="chk4" onchange="saveToLocalStorage();"><label for="chk4">Saya siap untuk aktivitas berikutnya</label></div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn-submit" id="submitBtn" onclick="submitData()" disabled>
+                <i class="fas fa-paper-plane"></i> Kumpulkan LKPD
+            </button>
+
+            <div id="successMessage" class="alert alert-success" style="display:none;">
+                <i class="fas fa-check-circle"></i> LKPD berhasil dikumpulkan!
+            </div>
+        </div>
+
+        <div class="activity-navigation">
+            <a href="../index-aktivitas-informatika.html" class="nav-btn"><i class="fas fa-arrow-left"></i> Kembali ke Daftar Aktivitas</a>
+            <a href="s2p6a2.html" class="nav-btn primary">Lanjut ke Aktivitas 2 <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </section>
+
+    <!-- ===== MODAL KONFIRMASI RESET (SUKSES) ===== -->
+    <div id="resetModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-icon icon-success">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3>✅ LKPD Berhasil Dikirim!</h3>
+            <p class="sub-text">Data Anda telah berhasil disimpan di Google Spreadsheet.</p>
+            <div class="modal-buttons">
+                <button class="modal-btn yes" onclick="confirmReset()">
+                    <i class="fas fa-undo"></i> Ya, Reset Form
+                </button>
+                <button class="modal-btn secondary" onclick="closeModal()">
+                    <i class="fas fa-times"></i> Tutup
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== MODAL KONFIRMASI GANTI TUGAS ===== -->
+    <div id="confirmModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-icon icon-warning">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <h3>⚠️ Data Sudah Ada!</h3>
+            <p class="sub-text">
+                Data dengan kombinasi <br>
+                <strong id="confirmKeyDisplay"></strong> <br>
+                sudah ada di spreadsheet.<br><br>
+                Apakah Anda yakin ingin <strong>mengganti</strong> tugas yang lama dengan data yang baru?
+            </p>
+            <div class="modal-buttons">
+                <button class="modal-btn danger" id="confirmGantiBtn" onclick="confirmGantiTugas()">
+                    <i class="fas fa-exchange-alt"></i> Ya, Ganti Data
+                </button>
+                <button class="modal-btn secondary" onclick="closeConfirmModal()">
+                    <i class="fas fa-times"></i> Tidak, Batal
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ==================== KONFIGURASI URL ====================
+        const URL_DATA_SISWA = 'https://script.google.com/macros/s/AKfycbxZMS_o6xWMAQAkjBzzEMR9tJmHOnHCX13KJX2xZMn7WIr-A9pwVK_3DDHnMg7y_rD29Q/exec';
+        const URL_PEREKAPAN = 'https://script.google.com/macros/s/AKfycbwRlLJQQ5ypD1jzsHICPZH6kfrSFHKHGXo0hPKjzwtHH04EDrAid7dqtDv7q6TCbDRj/exec';
+        const STORAGE_KEY = 'proyek6_aktivitas1_draft';
+        const AKTIVITAS_NAMA = 'AKTIVITAS 1 - Mengenal Algoritma & Struktur Data';
+        const SHEET_NAME = 'data_aktivitas';
+
+        let dataKelas = [];
+        let dataSiswa = {};
+        let isLoading = true;
+        let isOnline = true;
+        let autoSaveTimeout;
+        let isSubmitting = false;
+        let pendingSubmitData = null;
+
+        // ==================== FUNGSI UTILITY ====================
+        function getValue(id) { const el = document.getElementById(id); return el ? el.value : ''; }
+        function getChecked(id) { const el = document.getElementById(id); return el ? el.checked : false; }
+
+        function getFormattedTimestamp() {
+            const now = new Date();
+            const hari = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+            const bulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 
+                           'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+            
+            const hariName = hari[now.getDay()];
+            const tanggal = now.getDate().toString().padStart(2, '0');
+            const bulanName = bulan[now.getMonth()];
+            const tahun = now.getFullYear();
+            const jam = now.getHours().toString().padStart(2, '0');
+            const menit = now.getMinutes().toString().padStart(2, '0');
+            const detik = now.getSeconds().toString().padStart(2, '0');
+            
+            return `${hariName}, ${tanggal} ${bulanName} ${tahun} - ${jam}:${menit}:${detik}`;
+        }
+
+        // ==================== LOCAL STORAGE ====================
+        function saveToLocalStorage() {
+            if (!isOnline) return;
+            
+            if (autoSaveTimeout) clearTimeout(autoSaveTimeout);
+            
+            autoSaveTimeout = setTimeout(() => {
+                const formData = collectAllFormData();
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
+                console.log('Data tersimpan otomatis', new Date().toLocaleTimeString());
+            }, 1000);
+        }
+
+        function loadFromLocalStorage() {
+            const savedData = localStorage.getItem(STORAGE_KEY);
+            if (savedData) {
+                try {
+                    const data = JSON.parse(savedData);
+                    populateFormData(data);
+                } catch (e) {
+                    console.error('Error loading saved data:', e);
+                }
+            }
+        }
+
+        function clearLocalStorage() {
+            localStorage.removeItem(STORAGE_KEY);
+        }
+
+        // ==================== FUNGSI TABEL DINAMIS ====================
+        function initTabelDinamis() {
+            // Tabel Data Siswa (Bagian D) - 5 baris default
+            const tbodyData = document.getElementById('tabelDataBody');
+            if (tbodyData) {
+                tbodyData.innerHTML = '';
+                for (let i = 1; i <= 5; i++) {
+                    tambahBarisData();
+                }
+                updateCount('tabelData');
+            }
+
+            // Tabel Kopi (Bagian C) - 6 baris default
+            const tbodyKopi = document.getElementById('tabelKopiBody');
+            if (tbodyKopi) {
+                tbodyKopi.innerHTML = '';
+                for (let i = 1; i <= 6; i++) {
+                    tambahBarisLangkah('tabelKopi', i);
+                }
+                updateCount('tabelKopi');
+            }
+
+            // Tabel Rata-rata (Bagian C) - 5 baris default
+            const tbodyRata = document.getElementById('tabelRataBody');
+            if (tbodyRata) {
+                tbodyRata.innerHTML = '';
+                for (let i = 1; i <= 5; i++) {
+                    tambahBarisLangkah('tabelRata', i);
+                }
+                updateCount('tabelRata');
+            }
+
+            // Tabel Algoritma (Bagian F) - 7 baris default
+            const tbodyAlgoritma = document.getElementById('tabelAlgoritmaBody');
+            if (tbodyAlgoritma) {
+                tbodyAlgoritma.innerHTML = '';
+                for (let i = 1; i <= 7; i++) {
+                    tambahBarisLangkah('tabelAlgoritma', i);
+                }
+                updateCount('tabelAlgoritma');
+            }
+        }
+
+        function tambahBarisLangkah(tableId, no) {
+            const tbody = document.getElementById(tableId + 'Body');
+            if (!tbody) return;
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td class="no-col">${no}</td>
+                <td><input type="text" class="answer-field" id="${tableId}_${no}" placeholder="Langkah ${no}" oninput="saveToLocalStorage();"></td>
+            `;
+            tbody.appendChild(row);
+        }
+
+        function tambahBaris(tableId) {
+            const tbody = document.getElementById(tableId + 'Body');
+            if (!tbody) return;
+            const no = tbody.children.length + 1;
+            tambahBarisLangkah(tableId, no);
+            updateCount(tableId);
+            saveToLocalStorage();
+        }
+
+        function hapusBaris(tableId) {
+            const tbody = document.getElementById(tableId + 'Body');
+            if (!tbody) return;
+            if (tbody.children.length <= 1) {
+                alert('Minimal harus ada 1 langkah!');
+                return;
+            }
+            tbody.removeChild(tbody.lastChild);
+            renumberTable(tableId);
+            updateCount(tableId);
+            saveToLocalStorage();
+        }
+
+        function renumberTable(tableId) {
+            const tbody = document.getElementById(tableId + 'Body');
+            if (!tbody) return;
+            const rows = tbody.children;
+            for (let i = 0; i < rows.length; i++) {
+                const noCol = rows[i].querySelector('.no-col');
+                if (noCol) {
+                    noCol.textContent = i + 1;
+                }
+                const input = rows[i].querySelector('input');
+                if (input && input.id) {
+                    input.id = tableId + '_' + (i + 1);
+                    input.placeholder = 'Langkah ' + (i + 1);
+                }
+            }
+        }
+
+        function updateCount(tableId) {
+            const tbody = document.getElementById(tableId + 'Body');
+            if (!tbody) return;
+            const count = tbody.children.length;
+            const countSpan = document.getElementById(tableId + '_count');
+            if (countSpan) {
+                countSpan.textContent = count;
+            }
+        }
+
+        // ==================== FUNGSI TABEL DATA SISWA ====================
+        function tambahBarisData() {
+            const tbody = document.getElementById('tabelDataBody');
+            if (!tbody) return;
+            const no = tbody.children.length + 1;
+
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td class="no-col">${no}</td>
+                <td><input type="text" class="answer-field" id="data_nama_${no}" oninput="saveToLocalStorage();"></td>
+                <td><input type="text" class="answer-field" id="data_usia_${no}" oninput="saveToLocalStorage();"></td>
+                <td><input type="text" class="answer-field" id="data_kelas_${no}" oninput="saveToLocalStorage();"></td>
+                <td>
+                    <select class="answer-field" id="data_anggota_${no}" onchange="saveToLocalStorage();">
+                        <option value="">Pilih</option>
+                        <option value="Ya">Ya</option>
+                        <option value="Tidak">Tidak</option>
+                    </select>
+                </td>
+            `;
+            tbody.appendChild(row);
+            updateCount('tabelData');
+            saveToLocalStorage();
+        }
+
+        function hapusBarisData() {
+            const tbody = document.getElementById('tabelDataBody');
+            if (!tbody) return;
+            if (tbody.children.length <= 1) {
+                alert('Minimal harus ada 1 data siswa!');
+                return;
+            }
+            tbody.removeChild(tbody.lastChild);
+            renumberDataTable();
+            updateCount('tabelData');
+            saveToLocalStorage();
+        }
+
+        function renumberDataTable() {
+            const tbody = document.getElementById('tabelDataBody');
+            if (!tbody) return;
+            const rows = tbody.children;
+            for (let i = 0; i < rows.length; i++) {
+                const noCol = rows[i].querySelector('.no-col');
+                if (noCol) {
+                    noCol.textContent = i + 1;
+                }
+                const inputs = rows[i].querySelectorAll('input, select');
+                inputs.forEach(input => {
+                    if (input.id) {
+                        const parts = input.id.split('_');
+                        if (parts.length >= 2) {
+                            input.id = parts[0] + '_' + parts[1] + '_' + (i + 1);
+                        }
+                    }
+                });
+            }
+        }
+
+        // ==================== COLLECT ALL FORM DATA ====================
+        function collectAllFormData() {
+            const timestamp = getFormattedTimestamp();
+            
+            return {
+                "timestamp": timestamp,
+                "identitas": {
+                    "kelas": document.getElementById('kelas').value || '',
+                    "nama": document.getElementById('nama').value || '',
+                    "kelompok": document.getElementById('kelompok').value || '',
+                    "peran": document.getElementById('peran').value || ''
+                },
+                "bagian_a": {
+                    "review1": document.getElementById('review1')?.value || '',
+                    "review2": document.getElementById('review2')?.value || '',
+                    "review3": document.getElementById('review3')?.value || '',
+                    "review4": document.getElementById('review4')?.value || '',
+                    "bacaMateri": getChecked('bacaMateri'),
+                    "tanggalBaca": document.getElementById('tanggalBaca')?.value || ''
+                },
+                "bagian_b": {
+                    "algoritma_mie": document.getElementById('algoritma_mie')?.value || '',
+                    "algoritma_cuci": document.getElementById('algoritma_cuci')?.value || '',
+                    "algoritma_wa": document.getElementById('algoritma_wa')?.value || '',
+                    "algoritma_buku": document.getElementById('algoritma_buku')?.value || ''
+                },
+                "bagian_c": {
+                    "kopi": getTableLangkah('tabelKopi'),
+                    "rata": getTableLangkah('tabelRata'),
+                    "analisis1": document.getElementById('analisis1')?.value || '',
+                    "analisis2": document.getElementById('analisis2')?.value || '',
+                    "analisis3": document.getElementById('analisis3')?.value || '',
+                    "analisis4": document.getElementById('analisis4')?.value || ''
+                },
+                "bagian_d": {
+                    "tipe_integer": document.getElementById('tipe_integer')?.value || '',
+                    "tipe_float": document.getElementById('tipe_float')?.value || '',
+                    "tipe_string": document.getElementById('tipe_string')?.value || '',
+                    "tipe_boolean": document.getElementById('tipe_boolean')?.value || '',
+                    "data_siswa": getTableDataSiswa(),
+                    "tipe_kolom_nama": document.getElementById('tipe_kolom_nama')?.value || '',
+                    "tipe_kolom_usia": document.getElementById('tipe_kolom_usia')?.value || '',
+                    "tipe_kolom_kelas": document.getElementById('tipe_kolom_kelas')?.value || '',
+                    "tipe_kolom_anggota": document.getElementById('tipe_kolom_anggota')?.value || ''
+                },
+                "bagian_e": {
+                    "program1": document.getElementById('program1')?.value || '',
+                    "program2": document.getElementById('program2')?.value || '',
+                    "program3": document.getElementById('program3')?.value || '',
+                    "program4": document.getElementById('program4')?.value || '',
+                    "program5": document.getElementById('program5')?.value || ''
+                },
+                "bagian_f": {
+                    "judul_algoritma": document.getElementById('judul_algoritma')?.value || '',
+                    "algoritma": getTableLangkah('tabelAlgoritma')
+                },
+                "bagian_g": {
+                    "ref1": document.getElementById('ref1')?.value || '',
+                    "ref2": document.getElementById('ref2')?.value || '',
+                    "ref3": document.getElementById('ref3')?.value || '',
+                    "ref4": document.getElementById('ref4')?.value || '',
+                    "checklist": {
+                        "chk1": getChecked('chk1'),
+                        "chk2": getChecked('chk2'),
+                        "chk3": getChecked('chk3'),
+                        "chk4": getChecked('chk4')
+                    }
+                }
+            };
+        }
+
+        function getTableLangkah(tableId) {
+            const tbody = document.getElementById(tableId + 'Body');
+            if (!tbody) return [];
+            const data = [];
+            const rows = tbody.children;
+            for (let i = 0; i < rows.length; i++) {
+                const input = rows[i].querySelector('input');
+                if (input) {
+                    data.push(input.value || '');
+                }
+            }
+            return data;
+        }
+
+        function getTableDataSiswa() {
+            const tbody = document.getElementById('tabelDataBody');
+            if (!tbody) return [];
+            const data = [];
+            const rows = tbody.children;
+            for (let i = 0; i < rows.length; i++) {
+                const nama = rows[i].querySelector('input[id^="data_nama_"]');
+                const usia = rows[i].querySelector('input[id^="data_usia_"]');
+                const kelas = rows[i].querySelector('input[id^="data_kelas_"]');
+                const anggota = rows[i].querySelector('select[id^="data_anggota_"]');
+                data.push({
+                    nama: nama ? nama.value : '',
+                    usia: usia ? usia.value : '',
+                    kelas: kelas ? kelas.value : '',
+                    anggota: anggota ? anggota.value : ''
+                });
+            }
+            return data;
+        }
+
+        // ==================== POPULATE FORM DATA ====================
+        function populateFormData(savedData) {
+            if (!savedData) return;
+            
+            // Identitas
+            if (savedData.identitas) {
+                const kelasEl = document.getElementById('kelas');
+                const namaEl = document.getElementById('nama');
+                if (kelasEl) {
+                    for (let option of kelasEl.options) {
+                        if (option.value === savedData.identitas.kelas) {
+                            option.selected = true;
+                            break;
+                        }
+                    }
+                    updateNamaDropdown();
+                }
+                if (namaEl) {
+                    for (let option of namaEl.options) {
+                        if (option.value === savedData.identitas.nama) {
+                            option.selected = true;
+                            break;
+                        }
+                    }
+                }
+                document.getElementById('kelompok').value = savedData.identitas.kelompok || '';
+                document.getElementById('peran').value = savedData.identitas.peran || '';
+            }
+
+            // Bagian A
+            if (savedData.bagian_a) {
+                const a = savedData.bagian_a;
+                document.getElementById('review1').value = a.review1 || '';
+                document.getElementById('review2').value = a.review2 || '';
+                document.getElementById('review3').value = a.review3 || '';
+                document.getElementById('review4').value = a.review4 || '';
+                document.getElementById('bacaMateri').checked = a.bacaMateri || false;
+                document.getElementById('tanggalBaca').value = a.tanggalBaca || '';
+            }
+
+            // Bagian B
+            if (savedData.bagian_b) {
+                const b = savedData.bagian_b;
+                document.getElementById('algoritma_mie').value = b.algoritma_mie || '';
+                document.getElementById('algoritma_cuci').value = b.algoritma_cuci || '';
+                document.getElementById('algoritma_wa').value = b.algoritma_wa || '';
+                document.getElementById('algoritma_buku').value = b.algoritma_buku || '';
+            }
+
+            // Bagian C
+            if (savedData.bagian_c) {
+                const c = savedData.bagian_c;
+                document.getElementById('analisis1').value = c.analisis1 || '';
+                document.getElementById('analisis2').value = c.analisis2 || '';
+                document.getElementById('analisis3').value = c.analisis3 || '';
+                document.getElementById('analisis4').value = c.analisis4 || '';
+                
+                // Populate dynamic tables
+                if (c.kopi && Array.isArray(c.kopi)) {
+                    const tbody = document.getElementById('tabelKopiBody');
+                    if (tbody) {
+                        tbody.innerHTML = '';
+                        c.kopi.forEach((langkah, index) => {
+                            const no = index + 1;
+                            tambahBarisLangkah('tabelKopi', no);
+                            const input = document.getElementById(`tabelKopi_${no}`);
+                            if (input) input.value = langkah;
+                        });
+                        updateCount('tabelKopi');
+                    }
+                }
+                if (c.rata && Array.isArray(c.rata)) {
+                    const tbody = document.getElementById('tabelRataBody');
+                    if (tbody) {
+                        tbody.innerHTML = '';
+                        c.rata.forEach((langkah, index) => {
+                            const no = index + 1;
+                            tambahBarisLangkah('tabelRata', no);
+                            const input = document.getElementById(`tabelRata_${no}`);
+                            if (input) input.value = langkah;
+                        });
+                        updateCount('tabelRata');
+                    }
+                }
+            }
+
+            // Bagian D
+            if (savedData.bagian_d) {
+                const d = savedData.bagian_d;
+                document.getElementById('tipe_integer').value = d.tipe_integer || '';
+                document.getElementById('tipe_float').value = d.tipe_float || '';
+                document.getElementById('tipe_string').value = d.tipe_string || '';
+                document.getElementById('tipe_boolean').value = d.tipe_boolean || '';
+                document.getElementById('tipe_kolom_nama').value = d.tipe_kolom_nama || '';
+                document.getElementById('tipe_kolom_usia').value = d.tipe_kolom_usia || '';
+                document.getElementById('tipe_kolom_kelas').value = d.tipe_kolom_kelas || '';
+                document.getElementById('tipe_kolom_anggota').value = d.tipe_kolom_anggota || '';
+                
+                if (d.data_siswa && Array.isArray(d.data_siswa)) {
+                    const tbody = document.getElementById('tabelDataBody');
+                    if (tbody) {
+                        tbody.innerHTML = '';
+                        d.data_siswa.forEach((siswa, index) => {
+                            const no = index + 1;
+                            const row = document.createElement('tr');
+                            row.innerHTML = `
+                                <td class="no-col">${no}</td>
+                                <td><input type="text" class="answer-field" id="data_nama_${no}" value="${siswa.nama || ''}" oninput="saveToLocalStorage();"></td>
+                                <td><input type="text" class="answer-field" id="data_usia_${no}" value="${siswa.usia || ''}" oninput="saveToLocalStorage();"></td>
+                                <td><input type="text" class="answer-field" id="data_kelas_${no}" value="${siswa.kelas || ''}" oninput="saveToLocalStorage();"></td>
+                                <td>
+                                    <select class="answer-field" id="data_anggota_${no}" onchange="saveToLocalStorage();">
+                                        <option value="">Pilih</option>
+                                        <option value="Ya" ${siswa.anggota === 'Ya' ? 'selected' : ''}>Ya</option>
+                                        <option value="Tidak" ${siswa.anggota === 'Tidak' ? 'selected' : ''}>Tidak</option>
+                                    </select>
+                                </td>
+                            `;
+                            tbody.appendChild(row);
+                        });
+                        updateCount('tabelData');
+                    }
+                }
+            }
+
+            // Bagian E
+            if (savedData.bagian_e) {
+                const e = savedData.bagian_e;
+                document.getElementById('program1').value = e.program1 || '';
+                document.getElementById('program2').value = e.program2 || '';
+                document.getElementById('program3').value = e.program3 || '';
+                document.getElementById('program4').value = e.program4 || '';
+                document.getElementById('program5').value = e.program5 || '';
+            }
+
+            // Bagian F
+            if (savedData.bagian_f) {
+                const f = savedData.bagian_f;
+                document.getElementById('judul_algoritma').value = f.judul_algoritma || '';
+                if (f.algoritma && Array.isArray(f.algoritma)) {
+                    const tbody = document.getElementById('tabelAlgoritmaBody');
+                    if (tbody) {
+                        tbody.innerHTML = '';
+                        f.algoritma.forEach((langkah, index) => {
+                            const no = index + 1;
+                            tambahBarisLangkah('tabelAlgoritma', no);
+                            const input = document.getElementById(`tabelAlgoritma_${no}`);
+                            if (input) input.value = langkah;
+                        });
+                        updateCount('tabelAlgoritma');
+                    }
+                }
+            }
+
+            // Bagian G
+            if (savedData.bagian_g) {
+                const g = savedData.bagian_g;
+                document.getElementById('ref1').value = g.ref1 || '';
+                document.getElementById('ref2').value = g.ref2 || '';
+                document.getElementById('ref3').value = g.ref3 || '';
+                document.getElementById('ref4').value = g.ref4 || '';
+                if (g.checklist) {
+                    document.getElementById('chk1').checked = g.checklist.chk1 || false;
+                    document.getElementById('chk2').checked = g.checklist.chk2 || false;
+                    document.getElementById('chk3').checked = g.checklist.chk3 || false;
+                    document.getElementById('chk4').checked = g.checklist.chk4 || false;
+                }
+            }
+        }
+
+        // ==================== RESET FORM ====================
+        function resetAllForm() {
+            document.querySelectorAll('input, select, textarea').forEach(el => {
+                if (el.type === 'checkbox') el.checked = false;
+                else if (el.type === 'radio') el.checked = false;
+                else if (el.tagName === 'SELECT') el.selectedIndex = 0;
+                else if (el.tagName !== 'SELECT') el.value = '';
+            });
+            
+            const kelasEl = document.getElementById('kelas');
+            const namaEl = document.getElementById('nama');
+            if (kelasEl) kelasEl.value = '';
+            if (namaEl) namaEl.innerHTML = '<option value="">-- Pilih Nama --</option>';
+            document.getElementById('kelompok').value = '';
+            document.getElementById('peran').value = '';
+            
+            clearLocalStorage();
+            initTabelDinamis();
+        }
+
+        // ==================== MODAL FUNCTIONS ====================
+        function showModal() { 
+            const modal = document.getElementById('resetModal');
+            modal.style.display = 'block'; 
+            document.body.classList.add('modal-open');
+        }
+
+        function closeModal() { 
+            const modal = document.getElementById('resetModal');
+            modal.style.display = 'none'; 
+            document.body.classList.remove('modal-open');
+        }
+
+        function showConfirmModal(key) {
+            document.getElementById('confirmKeyDisplay').textContent = key;
+            const modal = document.getElementById('confirmModal');
+            modal.style.display = 'block';
+            document.body.classList.add('modal-open');
+        }
+
+        function closeConfirmModal() {
+            const modal = document.getElementById('confirmModal');
+            modal.style.display = 'none';
+            document.body.classList.remove('modal-open');
+            pendingSubmitData = null;
+        }
+
+        function confirmReset() {
+            closeModal();
+            resetAllForm();
+            const successMsg = document.getElementById('successMessage');
+            successMsg.style.display = 'block';
+            successMsg.innerHTML = '<i class="fas fa-check-circle"></i> Form berhasil direset! Anda dapat mengisi ulang data.';
+            setTimeout(() => {
+                successMsg.style.display = 'none';
+                successMsg.innerHTML = '<i class="fas fa-check-circle"></i> LKPD berhasil dikumpulkan!';
+            }, 3000);
+        }
+
+        function confirmGantiTugas() {
+            const confirmBtn = document.getElementById('confirmGantiBtn');
+            confirmBtn.disabled = true;
+            confirmBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengirim...';
+            
+            if (pendingSubmitData) {
+                doSubmit(pendingSubmitData, true);
+            }
+        }
+
+        // Tutup modal jika klik di luar
+        document.addEventListener('click', function(event) {
+            const resetModal = document.getElementById('resetModal');
+            const confirmModal = document.getElementById('confirmModal');
+            
+            if (event.target === resetModal) {
+                closeModal();
+            }
+            if (event.target === confirmModal) {
+                closeConfirmModal();
+            }
+        });
+
+        // Tutup modal dengan tombol ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const resetModal = document.getElementById('resetModal');
+                const confirmModal = document.getElementById('confirmModal');
+                
+                if (resetModal.style.display === 'block') {
+                    closeModal();
+                }
+                if (confirmModal.style.display === 'block') {
+                    closeConfirmModal();
+                }
+            }
+        });
+
+        // ==================== KONEKSI ====================
+        function updateConnectionStatus() {
+            const statusEl = document.getElementById('connectionStatus');
+            if (navigator.onLine) {
+                isOnline = true;
+                statusEl.className = 'connection-status online';
+                statusEl.innerHTML = '<i class="fas fa-wifi"></i> Online';
+                document.getElementById('errorMessage').style.display = 'none';
+            } else {
+                isOnline = false;
+                statusEl.className = 'connection-status offline';
+                statusEl.innerHTML = '<i class="fas fa-plug"></i> Offline';
+                showError('Koneksi internet terputus.');
+            }
+        }
+
+        function showError(message) {
+            document.getElementById('errorText').innerHTML = message;
+            document.getElementById('errorMessage').style.display = 'block';
+        }
+
+        function disableForm() {
+            document.querySelectorAll('input, select, textarea, button').forEach(el => el.disabled = true);
+            document.getElementById('worksheetForm').classList.add('form-disabled');
+        }
+
+        function enableForm() {
+            if (!isOnline) return;
+            document.querySelectorAll('input, select, textarea').forEach(el => {
+                if (el.id !== 'kelas' && el.id !== 'nama' && el.id !== 'kelompok' && el.id !== 'peran') el.disabled = false;
+            });
+            ['kelas', 'nama', 'kelompok', 'peran', 'submitBtn', 'exportBtn'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.disabled = false;
+            });
+            document.getElementById('worksheetForm').classList.remove('form-disabled');
+        }
+
+        // ==================== LOAD DATA SISWA ====================
+        function loadDataFromGoogleSheets() {
+            if (!navigator.onLine) { updateConnectionStatus(); return; }
+
+            const loadingEl = document.getElementById('loadingMessage');
+            loadingEl.style.display = 'block';
+
+            const callbackName = 'jsonp_callback_' + Date.now();
+
+            window[callbackName] = function(result) {
+                const script = document.querySelector(`script[src*="${callbackName}"]`);
+                if (script) script.remove();
+                delete window[callbackName];
+
+                loadingEl.style.display = 'none';
+
+                if (result && result.success) {
+                    dataKelas = result.kelasList || [];
+                    dataSiswa = result.siswaPerKelas || {};
+
+                    const kelasSelect = document.getElementById('kelas');
+                    kelasSelect.innerHTML = '<option value="">-- Pilih Kelas --</option>';
+                    dataKelas.forEach(kelas => {
+                        const opt = document.createElement('option');
+                        opt.value = kelas;
+                        opt.textContent = kelas;
+                        kelasSelect.appendChild(opt);
+                    });
+
+                    enableForm();
+                    document.getElementById('errorMessage').style.display = 'none';
+                    
+                    loadFromLocalStorage();
+                } else {
+                    showError('Gagal memuat data siswa: ' + (result?.error || 'Unknown error'));
+                    disableForm();
+                }
+                isLoading = false;
+            };
+
+            const script = document.createElement('script');
+            script.src = URL_DATA_SISWA + '?callback=' + callbackName + '&_=' + Date.now();
+            script.onerror = function() {
+                loadingEl.style.display = 'none';
+                showError('Gagal terhubung ke server.');
+                disableForm();
+                isLoading = false;
+            };
+            document.head.appendChild(script);
+
+            setTimeout(() => {
+                if (isLoading) {
+                    loadingEl.style.display = 'none';
+                    showError('Waktu tunggu habis. Server tidak merespons.');
+                    disableForm();
+                    isLoading = false;
+                }
+            }, 10000);
+        }
+
+        function updateNamaDropdown() {
+            const kelas = document.getElementById('kelas').value;
+            const namaSelect = document.getElementById('nama');
+            if (!kelas || !dataSiswa[kelas]) {
+                namaSelect.innerHTML = '<option value="">-- Pilih Nama --</option>';
+                return;
+            }
+            namaSelect.innerHTML = '<option value="">-- Pilih Nama --</option>';
+            (dataSiswa[kelas] || []).sort().forEach(nama => {
+                const opt = document.createElement('option');
+                opt.value = nama;
+                opt.textContent = nama;
+                namaSelect.appendChild(opt);
+            });
+        }
+
+        // ==================== CEK DATA DI SPREADSHEET ====================
+        async function cekDataDiSpreadsheet(kelas, nama, aktivitas) {
+            try {
+                const url = `${URL_PEREKAPAN}?action=getDataSiswa&kelas=${encodeURIComponent(kelas)}&nama=${encodeURIComponent(nama)}&aktivitas=${encodeURIComponent(aktivitas)}`;
+                
+                const response = await fetch(url);
+                const result = await response.json();
+                
+                if (result.success && result.data) {
+                    return {
+                        found: true,
+                        key: `${kelas}_${nama}_${aktivitas}_AKTIF`,
+                        data: result.data
+                    };
+                }
+                
+                return { found: false };
+            } catch (error) {
+                console.error('Error cek data:', error);
+                return { found: false, error: error.message };
+            }
+        }
+
+        // ==================== SUBMIT DATA ====================
+        async function submitData() {
+            if (isLoading) { alert('Data masih dimuat. Silakan tunggu.'); return; }
+            if (!navigator.onLine) { alert('Tidak ada koneksi internet.'); return; }
+            if (isSubmitting) { alert('Proses pengiriman sedang berlangsung. Mohon tunggu...'); return; }
+
+            // ===== VALIDASI: Apakah sudah membaca materi? =====
+            const sudahBaca = confirm(
+                '📖 Apakah kamu sudah membaca materi "Konsep Algoritma & Struktur Data"?\n\n' +
+                'Jika belum, klik "Batal" untuk membaca materi terlebih dahulu.\n' +
+                'Klik "OK" jika sudah membaca dan siap mengerjakan LKPD.'
+            );
+            
+            if (!sudahBaca) {
+                alert('📖 Silakan baca materi terlebih dahulu sebelum mengerjakan LKPD.\n\n' +
+                      'Klik tombol "Baca Materi Sekarang" di bagian atas halaman.');
+                return;
+            }
+            // ===== END VALIDASI =====
+
+            const kelas = document.getElementById('kelas').value;
+            const nama = document.getElementById('nama').value;
+            const kelompok = document.getElementById('kelompok').value;
+            const peran = document.getElementById('peran').value;
+
+            if (!kelas) {
+                alert('Silakan isi kelas terlebih dahulu');
+                return;
+            }
+            if (!nama) {
+                alert('Silakan isi nama terlebih dahulu');
+                return;
+            }
+            if (!kelompok) {
+                alert('Silakan isi nama kelompok');
+                return;
+            }
+
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memeriksa data...';
+
+            try {
+                const allData = collectAllFormData();
+                pendingSubmitData = {
+                    allData: allData,
+                    kelas: kelas,
+                    nama: nama,
+                    kelompok: kelompok,
+                    peran: peran
+                };
+
+                const result = await cekDataDiSpreadsheet(kelas, nama, AKTIVITAS_NAMA);
+                
+                if (result.found) {
+                    submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Kumpulkan LKPD';
+                    submitBtn.disabled = false;
+                    showConfirmModal(result.key);
+                    return;
+                }
+                
+                await doSubmit(pendingSubmitData, false);
+                
+            } catch (error) {
+                alert('❌ Gagal memeriksa data: ' + error.message);
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Kumpulkan LKPD';
+                submitBtn.disabled = false;
+                pendingSubmitData = null;
+            }
+        }
+
+        async function doSubmit(data, isReplace = false) {
+            isSubmitting = true;
+            
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> ' + (isReplace ? 'Mengganti data...' : 'Mengirim...');
+
+            try {
+                const { allData, kelas, nama } = data;
+                
+                const formData = new URLSearchParams();
+                
+                formData.append('sheetName', SHEET_NAME);
+                formData.append('data', JSON.stringify(allData));
+                formData.append('kelas', kelas);
+                formData.append('nama', nama);
+                formData.append('aktivitas', AKTIVITAS_NAMA);
+                if (isReplace) {
+                    formData.append('replace', 'true');
+                }
+
+                const response = await fetch(URL_PEREKAPAN, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: formData
+                });
+
+                const result = await response.json();
+                
+                if (result.success) {
+                    document.getElementById('confirmGantiBtn').disabled = false;
+                    document.getElementById('confirmGantiBtn').innerHTML = '<i class="fas fa-exchange-alt"></i> Ya, Ganti Data';
+                    
+                    const successMsg = document.getElementById('successMessage');
+                    successMsg.style.display = 'block';
+                    successMsg.innerHTML = '<i class="fas fa-check-circle"></i> ✅ LKPD berhasil ' + (isReplace ? 'diganti' : 'dikirim') + '!<br>' +
+                        'Key: ' + result.key + '<br>' +
+                        'Status: ' + (result.status || 'Berhasil');
+                    
+                    clearLocalStorage();
+                    
+                    setTimeout(() => {
+                        successMsg.style.display = 'none';
+                        successMsg.innerHTML = '<i class="fas fa-check-circle"></i> LKPD berhasil dikumpulkan!';
+                    }, 5000);
+
+                    closeConfirmModal();
+                    showModal();
+                } else {
+                    alert('❌ Gagal ' + (isReplace ? 'mengganti' : 'mengirim') + ': ' + (result.error || 'Terjadi kesalahan pada server.'));
+                }
+
+            } catch (error) {
+                alert('❌ Terjadi kesalahan: ' + error.message);
+                showError('Gagal ' + (isReplace ? 'mengganti' : 'mengirim') + ': ' + error.message);
+                setTimeout(() => {
+                    document.getElementById('errorMessage').style.display = 'none';
+                }, 5000);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Kumpulkan LKPD';
+                isSubmitting = false;
+                pendingSubmitData = null;
+                
+                document.getElementById('confirmGantiBtn').disabled = false;
+                document.getElementById('confirmGantiBtn').innerHTML = '<i class="fas fa-exchange-alt"></i> Ya, Ganti Data';
+            }
+        }
+
+        // ==================== EXPORT TEMPLATE LEMBAR AKTIVITAS (KOSONG) ====================
+        function exportToDocx() {
+            const exportBtn = document.getElementById('exportBtn');
+            exportBtn.disabled = true;
+            exportBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memproses...';
+
+            try {
+                // === BANGUN HTML TEMPLATE KOSONG UNTUK WORD ===
+                const now = new Date();
+                const dateStr = now.toLocaleDateString('id-ID', {
+                    day: 'numeric', month: 'long', year: 'numeric'
+                });
+                
+                let htmlContent = `
+                    <html xmlns:o='urn:schemas-microsoft-com:office:office' 
+                          xmlns:w='urn:schemas-microsoft-com:office:word' 
+                          xmlns='http://www.w3.org/TR/REC-html40'>
+                    <head>
+                        <meta charset="UTF-8">
+                        <title>LKPD - Proyek 6 Aktivitas 1</title>
+                        <!--[if gte mso 9]>
+                        <xml>
+                            <w:WordDocument>
+                                <w:View>Print</w:View>
+                                <w:Zoom>100</w:Zoom>
+                            </w:WordDocument>
+                        </xml>
+                        <![endif]-->
+                        <style>
+                            /* ===== STYLE UNTUK TEMPLATE ===== */
+                            body {
+                                font-family: 'Calibri', 'Segoe UI', Arial, sans-serif;
+                                font-size: 11pt;
+                                line-height: 1.5;
+                                color: #222;
+                                padding: 30px 40px;
+                                margin: 0;
+                            }
+                            
+                            .worksheet-title {
+                                color: #21618c;
+                                font-size: 18pt;
+                                text-align: center;
+                                font-weight: bold;
+                                border-bottom: 2px solid #d5f4e6;
+                                padding-bottom: 8px;
+                                margin: 0 0 15px 0;
+                            }
+                            
+                            .section-title {
+                                color: #21618c;
+                                font-size: 12pt;
+                                font-weight: 600;
+                                border-bottom: 2px solid #ebf5fb;
+                                padding-bottom: 6px;
+                                margin: 15px 0 8px 0;
+                            }
+                            
+                            .section-subtitle {
+                                color: #2980b9;
+                                font-size: 11pt;
+                                font-weight: 600;
+                                margin: 12px 0 6px 0;
+                            }
+                            
+                            .subtitle {
+                                color: #666;
+                                font-size: 10pt;
+                                margin-bottom: 12px;
+                            }
+                            .subtitle span {
+                                margin-right: 15px;
+                            }
+                            
+                            .identitas-box {
+                                background: #f0f8f0;
+                                padding: 12px 15px;
+                                margin-bottom: 15px;
+                                border-radius: 4px;
+                            }
+                            .identitas-box table {
+                                width: 100%;
+                                border: none;
+                            }
+                            .identitas-box td {
+                                padding: 4px 8px;
+                                border: none;
+                                vertical-align: middle;
+                            }
+                            .identitas-box .label {
+                                font-weight: 600;
+                                color: #21618c;
+                                width: 80px;
+                            }
+                            .identitas-box .kosong {
+                                border-bottom: 1px solid #999;
+                                min-width: 150px;
+                                display: inline-block;
+                                padding: 0 20px 0 5px;
+                                color: #999;
+                                font-style: italic;
+                            }
+                            
+                            table {
+                                width: 100%;
+                                border-collapse: collapse;
+                                margin: 8px 0;
+                                font-size: 10pt;
+                            }
+                            
+                            th {
+                                background: #3498db;
+                                color: white;
+                                padding: 6px 8px;
+                                text-align: left;
+                                font-weight: 600;
+                                border: 1px solid #3498db;
+                            }
+                            
+                            td {
+                                padding: 6px 8px;
+                                border: 1px solid #ddd;
+                                vertical-align: top;
+                            }
+                            
+                            .checkbox-grid {
+                                display: flex;
+                                flex-wrap: wrap;
+                                gap: 8px 20px;
+                                margin: 8px 0;
+                            }
+                            .checkbox-item {
+                                display: flex;
+                                align-items: center;
+                                gap: 6px;
+                            }
+                            .checkbox-item .kotak-cek {
+                                display: inline-block;
+                                width: 14px;
+                                height: 14px;
+                                border: 2px solid #999;
+                                background: white;
+                                margin-right: 5px;
+                            }
+                            
+                            .tempat-jawaban {
+                                background: #fafafa;
+                                padding: 4px 8px;
+                                border-radius: 3px;
+                                border: 1px dashed #ccc;
+                                display: block;
+                                min-height: 35px;
+                                color: #999;
+                                font-style: italic;
+                            }
+                            
+                            .instruction-box {
+                                background: #ebf5fb;
+                                padding: 8px 12px;
+                                border-left: 4px solid #3498db;
+                                margin: 8px 0;
+                                border-radius: 4px;
+                            }
+                            
+                            .section-card {
+                                border: 1px solid #e0e7ff;
+                                border-radius: 8px;
+                                padding: 12px 15px;
+                                margin-bottom: 15px;
+                            }
+                            
+                            .qa-table .no-col { width: 6%; text-align: center; }
+                            .qa-table .question-col { width: 34%; }
+                            .qa-table .answer-col { width: 60%; }
+                            
+                            .pseudocode-box {
+                                background: #1e1e2f;
+                                color: #fff;
+                                padding: 8px 12px;
+                                border-radius: 6px;
+                                font-family: 'Courier New', monospace;
+                                margin: 8px 0;
+                                overflow-x: auto;
+                            }
+                            
+                            .btn-add-row {
+                                display: none !important;
+                            }
+                            
+                            .footer-text {
+                                text-align: center;
+                                color: #999;
+                                font-size: 9pt;
+                                margin-top: 20px;
+                                border-top: 1px solid #eee;
+                                padding-top: 10px;
+                            }
+                            
+                            .btn, .btn-submit, .export-wrapper, 
+                            .connection-status, .success-message, .error-message,
+                            .loading-message, .activity-navigation, .nav-btn,
+                            .modal, .modal-content, #confirmModal, #resetModal,
+                            .reset-button, .hamburger, .navbar, header,
+                            .alert, .refresh-btn, .materi-section,
+                            .table-actions, .action-cell {
+                                display: none !important;
+                            }
+                            
+                            .informatika-content-card {
+                                padding: 15px;
+                                border-left: 5px solid #3498db;
+                                margin-bottom: 15px;
+                            }
+                            
+                            .informatika-content-card h2 {
+                                color: #21618c;
+                                font-size: 18pt;
+                            }
+                            
+                            .informatika-content-card > p {
+                                font-size: 11pt;
+                                padding: 8px 12px;
+                                background: #ebf5fb;
+                                border-radius: 6px;
+                                border-left: 4px solid #3498db;
+                            }
+                            
+                            ol {
+                                margin-left: 20px;
+                                color: #555;
+                            }
+                            
+                            .worksheet-container {
+                                padding: 0;
+                                margin: 0;
+                                border: none;
+                                box-shadow: none;
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        <!-- ===== HEADER ===== -->
+                        <div class="informatika-content-card">
+                            <h2>Proyek 6 Aktivitas 1: Mengenal Algoritma & Struktur Data</h2>
+                            <div class="subtitle">
+                                <span>📅 Pertemuan 1 • Proyek 6: Pemrograman Dasar</span>
+                                <span>⏰ 4 JP</span>
+                            </div>
+                            <p><i>"Memahami konsep dasar struktur data dan algoritma standar."</i></p>
+                        </div>
+                        
+                        <div class="instruction-box" style="background:#e8f5e9; border-left-color: #3498db;">
+                            <strong>HALO, KELOMPOK HEBAT! 👋</strong><br>
+                            Silakan isi lembar kerja ini untuk mempelajari algoritma dan struktur data.
+                        </div>
+
+                        <h1 class="worksheet-title">LEMBAR KERJA PESERTA DIDIK (LKPD) PROYEK 6 – AKTIVITAS 1</h1>
+                        <p style="text-align: center; margin-bottom: 1.5rem; font-size: 12pt; color: #9b59b6;">
+                            <strong>MENGENAL ALGORITMA & STRUKTUR DATA</strong>
+                        </p>
+                        <div style="text-align: center; margin-bottom: 1.5rem; background: #ebf5fb; padding: 0.8rem; border-radius: 8px;">
+                            <p><strong>Tujuan Pembelajaran (TP 1.1):</strong> Memahami konsep dasar struktur data dan algoritma standar.</p>
+                        </div>
+
+                        <!-- ===== IDENTITAS ===== -->
+                        <h3 style="color: #21618c; margin: 20px 0 10px 0; font-size: 13pt;">Identitas Kelompok</h3>
+                        <div class="identitas-box">
+                            <table>
+                                <tr><td class="label">Kelas</td><td>: <span class="kosong">_________________</span></td></tr>
+                                <tr><td class="label">Nama Lengkap</td><td>: <span class="kosong">_________________</span></td></tr>
+                                <tr><td class="label">Nama Kelompok</td><td>: <span class="kosong">_________________</span></td></tr>
+                                <tr><td class="label">Peran dalam Kelompok</td><td>: <span class="kosong">_________________</span></td></tr>
+                            </table>
+                        </div>
+
+                        <!-- ===== PETUNJUK ===== -->
+                        <div class="instruction-box">
+                            <strong>📚 PETUNJUK PENGGUNAAN LKPD</strong><br><br>
+                            <ol>
+                                <li>Membaca materi <strong>"Konsep Algoritma"</strong> yang tersedia di menu Daftar Materi pada website pembelajaran.</li>
+                                <li>Memahami pengertian algoritma dan contohnya dalam kehidupan sehari-hari.</li>
+                                <li>Menyiapkan alat tulis atau perangkat digital untuk mencatat.</li>
+                            </ol>
+                        </div>
+
+                        <!-- ===== TUJUAN AKTIVITAS ===== -->
+                        <div class="section-card">
+                            <h3 class="section-title">🎯 TUJUAN AKTIVITAS 1</h3>
+                            <p>Setelah mengikuti aktivitas ini dan membaca materi yang tersedia, peserta didik diharapkan mampu:</p>
+                            <ol style="margin-left: 20px; margin-top: 10px;">
+                                <li>Menjelaskan pengertian algoritma dan struktur data.</li>
+                                <li>Mengidentifikasi contoh algoritma dalam kehidupan sehari-hari.</li>
+                                <li>Menyusun langkah-langkah algoritma sederhana.</li>
+                                <li>Memahami pentingnya algoritma dalam pemrograman.</li>
+                            </ol>
+                            <div style="margin-top: 15px; background: #f0f9ff; padding: 10px; border-radius: 8px;">
+                                <strong>⏰ ALOKASI WAKTU:</strong> Total 4 JP (2 × 45 menit)
+                            </div>
+                        </div>
+
+                        <!-- ===== BAGIAN A ===== -->
+                        <div class="section-card">
+                            <h3 class="section-title">📖 BAGIAN A: PEMAHAMAN MATERI (INDIVIDU)</h3>
+                            <div class="instruction-box">
+                                "Pastikan kamu sudah membaca materi sebelum mengerjakan!"
+                            </div>
+
+                            <table class="qa-table">
+                                <thead>
+                                    <tr><th class="no-col">No</th><th class="question-col">Pertanyaan</th><th class="answer-col">Jawaban</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td class="no-col">1</td><td>Jelaskan pengertian algoritma dan berikan 3 karakteristik algoritma yang baik!</td>
+                                        <td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
+                                    <tr><td class="no-col">2</td><td>Apa yang dimaksud dengan struktur data? Berikan contoh sederhana yang kamu pahami!</td>
+                                        <td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
+                                    <tr><td class="no-col">3</td><td>Mengapa algoritma penting dalam pemrograman?</td>
+                                        <td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
+                                    <tr><td class="no-col">4</td><td>Jelaskan perbedaan antara algoritma dan program!</td>
+                                        <td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
+                                </tbody>
+                            </table>
+
+                            <div class="checkbox-grid">
+                                <div class="checkbox-item">
+                                    <span class="kotak-cek"></span> <strong>Ya, saya sudah membaca materi "Konsep Algoritma"</strong>
+                                </div>
+                                <div class="checkbox-item">
+                                    Saya membaca materi pada tanggal: <span class="tempat-jawaban">[Tanggal]</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ===== BAGIAN B ===== -->
+                        <div class="section-card">
+                            <h3 class="section-title">🧠 BAGIAN B: ALGORITMA DALAM KEHIDUPAN SEHARI-HARI (INDIVIDU)</h3>
+                            <div class="instruction-box">
+                                "Algoritma tidak hanya ada di komputer!"
+                            </div>
+
+                            <h4 class="section-subtitle">Kegiatan 1: Mengenali Algoritma di Sekitar Kita</h4>
+
+                            <table class="qa-table">
+                                <thead>
+                                    <tr><th class="no-col">No</th><th class="question-col">Kegiatan</th><th class="answer-col">Langkah-Langkah (Algoritma)</th></tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td class="no-col">1</td><td>Resep membuat mie instan</td><td><span class="tempat-jawaban">[Tulis langkah-langkah]</span></td></tr>
+                                    <tr><td class="no-col">2</td><td>Langkah mencuci tangan yang benar</td><td><span class="tempat-jawaban">[Tulis langkah-langkah]</span></td></tr>
+                                    <tr><td class="no-col">3</td><td>Langkah mengirim pesan di WhatsApp</td><td><span class="tempat-jawaban">[Tulis langkah-langkah]</span></td></tr>
+                                    <tr><td class="no-col">4</td><td>Langkah meminjam buku di perpustakaan</td><td><span class="tempat-jawaban">[Tulis langkah-langkah]</span></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- ===== BAGIAN C ===== -->
+                        <div class="section-card">
+                            <h3 class="section-title">💬 BAGIAN C: DISKUSI KELOMPOK</h3>
+                            <div class="instruction-box">
+                                "Diskusikan dengan kelompokmu!"
+                            </div>
+
+                            <h4 class="section-subtitle">Kegiatan 2: Menyusun Algoritma Bersama</h4>
+
+                            <p><strong>Kasus 1: Membuat Kopi Instan</strong></p>
+                            <table class="qa-table">
+                                <thead><tr><th class="no-col">Langkah ke-</th><th class="answer-col">Deskripsi Langkah</th></tr></thead>
+                                <tbody>
+                                    <tr><td class="no-col">1</td><td><span class="tempat-jawaban">[Tulis langkah]</span></td></tr>
+                                    <tr><td class="no-col">2</td><td><span class="tempat-jawaban">[Tulis langkah]</span></td></tr>
+                                    <tr><td class="no-col">3</td><td><span class="tempat-jawaban">[Tulis langkah]</span></td></tr>
+                                    <tr><td class="no-col">4</td><td><span class="tempat-jawaban">[Tulis langkah]</span></td></tr>
+                                    <tr><td class="no-col">5</td><td><span class="tempat-jawaban">[Tulis langkah]</span></td></tr>
+                                    <tr><td class="no-col">6</td><td><span class="tempat-jawaban">[Tulis langkah]</span></td></tr>
+                                </tbody>
+                            </table>
+
+                            <p><strong>Kasus 2: Menghitung Rata-rata 3 Nilai Ulangan</strong></p>
+                            <table class="qa-table">
+                                <thead><tr><th class="no-col">Langkah ke-</th><th class="answer-col">Deskripsi Langkah</th></tr></thead>
+                                <tbody>
+                                    <tr><td class="no-col">1</td><td><span class="tempat-jawaban">[Tulis langkah]</span></td></tr>
+                                    <tr><td class="no-col">2</td><td><span class="tempat-jawaban">[Tulis langkah]</span></td></tr>
+                                    <tr><td class="no-col">3</td><td><span class="tempat-jawaban">[Tulis langkah]</span></td></tr>
+                                    <tr><td class="no-col">4</td><td><span class="tempat-jawaban">[Tulis langkah]</span></td></tr>
+                                    <tr><td class="no-col">5</td><td><span class="tempat-jawaban">[Tulis langkah]</span></td></tr>
+                                </tbody>
+                            </table>
+
+                            <h4 class="section-subtitle">Kegiatan 3: Analisis Algoritma</h4>
+                            <table class="qa-table">
+                                <thead><tr><th class="no-col">No</th><th class="question-col">Pertanyaan</th><th class="answer-col">Jawaban Kelompok</th></tr></thead>
+                                <tbody>
+                                    <tr><td class="no-col">1</td><td>Dari kedua algoritma di atas, mana yang menurut kalian lebih mudah? Mengapa?</td><td><span class="tempat-jawaban">[Tulis jawaban]</span></td></tr>
+                                    <tr><td class="no-col">2</td><td>Apakah ada langkah yang bisa dihilangkan atau digabung pada salah satu kasus?</td><td><span class="tempat-jawaban">[Tulis jawaban]</span></td></tr>
+                                    <tr><td class="no-col">3</td><td>Apa yang terjadi jika urutan langkah pada Kasus 2 diubah? Berikan contoh!</td><td><span class="tempat-jawaban">[Tulis jawaban]</span></td></tr>
+                                    <tr><td class="no-col">4</td><td>Mengapa urutan langkah dalam algoritma sangat penting?</td><td><span class="tempat-jawaban">[Tulis jawaban]</span></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- ===== BAGIAN D ===== -->
+                        <div class="section-card">
+                            <h3 class="section-title">📊 BAGIAN D: PENGENALAN STRUKTUR DATA SEDERHANA (KELOMPOK)</h3>
+                            <div class="instruction-box">
+                                "Data perlu disusun agar mudah diolah!"
+                            </div>
+
+                            <h4 class="section-subtitle">Kegiatan 4: Mengenal Tipe Data</h4>
+
+                            <table class="qa-table">
+                                <thead><tr><th class="no-col">No</th><th class="question-col">Tipe Data</th><th class="question-col">Penjelasan</th><th class="answer-col">Contoh Data</th></tr></thead>
+                                <tbody>
+                                    <tr><td class="no-col">1</td><td>Angka (Integer)</td><td>Bilangan bulat</td><td><span class="tempat-jawaban">[Contoh]</span></td></tr>
+                                    <tr><td class="no-col">2</td><td>Angka Desimal (Float)</td><td>Bilangan pecahan</td><td><span class="tempat-jawaban">[Contoh]</span></td></tr>
+                                    <tr><td class="no-col">3</td><td>Teks (String)</td><td>Kumpulan huruf/kata</td><td><span class="tempat-jawaban">[Contoh]</span></td></tr>
+                                    <tr><td class="no-col">4</td><td>Boolean</td><td>Benar/Salah (True/False)</td><td><span class="tempat-jawaban">[Contoh]</span></td></tr>
+                                </tbody>
+                            </table>
+
+                            <h4 class="section-subtitle">Kegiatan 5: Membuat Tabel Data Sederhana</h4>
+
+                            <table class="qa-table">
+                                <thead><tr><th class="no-col">No</th><th class="question-col">Nama</th><th class="question-col">Usia</th><th class="question-col">Kelas</th><th class="answer-col">Apakah Anggota Kelompok? (Ya/Tidak)</th></tr></thead>
+                                <tbody>
+                                    <tr><td class="no-col">1</td><td><span class="tempat-jawaban">[Nama]</span></td><td><span class="tempat-jawaban">[Usia]</span></td><td><span class="tempat-jawaban">[Kelas]</span></td><td><span class="tempat-jawaban">[Ya/Tidak]</span></td></tr>
+                                    <tr><td class="no-col">2</td><td><span class="tempat-jawaban">[Nama]</span></td><td><span class="tempat-jawaban">[Usia]</span></td><td><span class="tempat-jawaban">[Kelas]</span></td><td><span class="tempat-jawaban">[Ya/Tidak]</span></td></tr>
+                                    <tr><td class="no-col">3</td><td><span class="tempat-jawaban">[Nama]</span></td><td><span class="tempat-jawaban">[Usia]</span></td><td><span class="tempat-jawaban">[Kelas]</span></td><td><span class="tempat-jawaban">[Ya/Tidak]</span></td></tr>
+                                    <tr><td class="no-col">4</td><td><span class="tempat-jawaban">[Nama]</span></td><td><span class="tempat-jawaban">[Usia]</span></td><td><span class="tempat-jawaban">[Kelas]</span></td><td><span class="tempat-jawaban">[Ya/Tidak]</span></td></tr>
+                                    <tr><td class="no-col">5</td><td><span class="tempat-jawaban">[Nama]</span></td><td><span class="tempat-jawaban">[Usia]</span></td><td><span class="tempat-jawaban">[Kelas]</span></td><td><span class="tempat-jawaban">[Ya/Tidak]</span></td></tr>
+                                </tbody>
+                            </table>
+
+                            <p><strong>Pertanyaan:</strong></p>
+                            <p>Sebutkan tipe data untuk setiap kolom pada tabel di atas!</p>
+                            <ul style="margin-left: 20px;">
+                                <li>Kolom Nama : <span class="tempat-jawaban">[Tipe data]</span></li>
+                                <li>Kolom Usia : <span class="tempat-jawaban">[Tipe data]</span></li>
+                                <li>Kolom Kelas : <span class="tempat-jawaban">[Tipe data]</span></li>
+                                <li>Kolom "Apakah Anggota Kelompok?" : <span class="tempat-jawaban">[Tipe data]</span></li>
+                            </ul>
+                        </div>
+
+                        <!-- ===== BAGIAN E ===== -->
+                        <div class="section-card">
+                            <h3 class="section-title">🔍 BAGIAN E: ALGORITMA DAN STRUKTUR DATA DALAM PROGRAM</h3>
+                            <div class="instruction-box">
+                                "Bagaimana algoritma dan data bekerja dalam program?"
+                            </div>
+
+                            <h4 class="section-subtitle">Kegiatan 6: Menganalisis Program Sederhana</h4>
+
+                            <div class="pseudocode-box">
+                                PROGRAM Menghitung Luas Persegi Panjang<br><br>
+                                DATA:<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;panjang = 10<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;lebar = 5<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;luas = 0<br><br>
+                                ALGORITMA:<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;1. Mulai<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;2. Siapkan data panjang dan lebar<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;3. Hitung luas dengan rumus: luas = panjang × lebar<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;4. Tampilkan hasil luas<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;5. Selesai
+                            </div>
+
+                            <table class="qa-table">
+                                <thead><tr><th class="no-col">No</th><th class="question-col">Pertanyaan</th><th class="answer-col">Jawaban Kelompok</th></tr></thead>
+                                <tbody>
+                                    <tr><td class="no-col">1</td><td>Sebutkan struktur data yang digunakan dalam program di atas!</td><td><span class="tempat-jawaban">[Tulis jawaban]</span></td></tr>
+                                    <tr><td class="no-col">2</td><td>Sebutkan algoritma/langkah-langkah dalam program di atas!</td><td><span class="tempat-jawaban">[Tulis jawaban]</span></td></tr>
+                                    <tr><td class="no-col">3</td><td>Apa output/hasil dari program tersebut?</td><td><span class="tempat-jawaban">[Tulis jawaban]</span></td></tr>
+                                    <tr><td class="no-col">4</td><td>Jika panjang diubah menjadi 15, apa yang terjadi?</td><td><span class="tempat-jawaban">[Tulis jawaban]</span></td></tr>
+                                    <tr><td class="no-col">5</td><td>Apa yang akan terjadi jika langkah 3 dan 4 ditukar?</td><td><span class="tempat-jawaban">[Tulis jawaban]</span></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- ===== BAGIAN F ===== -->
+                        <div class="section-card">
+                            <h3 class="section-title">🎯 BAGIAN F: MEMBUAT ALGORITMA SEDERHANA (KELOMPOK)</h3>
+                            <div class="instruction-box">
+                                "Coba buat algoritmamu sendiri!"
+                            </div>
+
+                            <p><strong>Judul Program:</strong> <span class="tempat-jawaban">[Tulis judul]</span></p>
+
+                            <table class="qa-table">
+                                <thead><tr><th class="no-col">Langkah ke-</th><th class="answer-col">Deskripsi Langkah</th></tr></thead>
+                                <tbody>
+                                    <tr><td class="no-col">1</td><td><span class="tempat-jawaban">[Tulis langkah]</span></td></tr>
+                                    <tr><td class="no-col">2</td><td><span class="tempat-jawaban">[Tulis langkah]</span></td></tr>
+                                    <tr><td class="no-col">3</td><td><span class="tempat-jawaban">[Tulis langkah]</span></td></tr>
+                                    <tr><td class="no-col">4</td><td><span class="tempat-jawaban">[Tulis langkah]</span></td></tr>
+                                    <tr><td class="no-col">5</td><td><span class="tempat-jawaban">[Tulis langkah]</span></td></tr>
+                                    <tr><td class="no-col">6</td><td><span class="tempat-jawaban">[Tulis langkah]</span></td></tr>
+                                    <tr><td class="no-col">7</td><td><span class="tempat-jawaban">[Tulis langkah]</span></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- ===== BAGIAN G ===== -->
+                        <div class="section-card">
+                            <h3 class="section-title">📝 BAGIAN G: REFLEKSI INDIVIDU</h3>
+                            <div class="instruction-box">
+                                "Apa yang aku pelajari hari ini?"
+                            </div>
+
+                            <table class="qa-table">
+                                <thead><tr><th class="no-col">No</th><th class="question-col">Pertanyaan</th><th class="answer-col">Jawabanku</th></tr></thead>
+                                <tbody>
+                                    <tr><td class="no-col">1</td><td>Hal baru apa yang aku pelajari tentang algoritma hari ini? Berikan contoh!</td><td><span class="tempat-jawaban">[Tulis jawaban]</span></td></tr>
+                                    <tr><td class="no-col">2</td><td>Apakah aku merasa kesulitan memahami konsep algoritma? Jelaskan!</td><td><span class="tempat-jawaban">[Tulis jawaban]</span></td></tr>
+                                    <tr><td class="no-col">3</td><td>Apa hubungan algoritma dengan pemrograman?</td><td><span class="tempat-jawaban">[Tulis jawaban]</span></td></tr>
+                                    <tr><td class="no-col">4</td><td>Apa yang ingin aku pelajari lebih lanjut tentang algoritma?</td><td><span class="tempat-jawaban">[Tulis jawaban]</span></td></tr>
+                                </tbody>
+                            </table>
+
+                            <div style="margin-top: 1rem; background: #f8fafc; border-radius: 8px; padding: 1rem; border: 1px dashed #3498db;">
+                                <p><strong>Checklist Pemahaman:</strong></p>
+                                <div class="checkbox-grid">
+                                    <div class="checkbox-item"><span class="kotak-cek"></span> Saya sudah membaca materi "Konsep Algoritma"</div>
+                                    <div class="checkbox-item"><span class="kotak-cek"></span> Saya sudah bisa menyusun algoritma sederhana</div>
+                                    <div class="checkbox-item"><span class="kotak-cek"></span> Saya sudah memahami tipe data dasar</div>
+                                    <div class="checkbox-item"><span class="kotak-cek"></span> Saya siap untuk aktivitas berikutnya</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ===== FOOTER ===== -->
+                        <div class="footer-text">
+                            LKPD Proyek 6 Aktivitas 1 - Mengenal Algoritma & Struktur Data | ${dateStr}
+                        </div>
+                    </body>
+                    </html>
+                `;
+
+                // === BUAT FILE .doc ===
+                const blob = new Blob([htmlContent], {
+                    type: 'application/msword;charset=utf-8'
+                });
+
+                // === DOWNLOAD ===
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                const today = new Date();
+                const dateStr2 = today.getFullYear() + '-' + 
+                               String(today.getMonth()+1).padStart(2,'0') + '-' + 
+                               String(today.getDate()).padStart(2,'0');
+                link.download = `LKPD_Proyek6_Aktivitas1_Template_${dateStr2}.doc`;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                setTimeout(() => {
+                    URL.revokeObjectURL(link.href);
+                }, 1000);
+
+                exportBtn.innerHTML = '<i class="fas fa-file-word"></i> Export Template DOCX';
+                exportBtn.disabled = false;
+
+            } catch (error) {
+                console.error('Error export:', error);
+                alert('❌ Gagal mengekspor template: ' + error.message);
+                exportBtn.innerHTML = '<i class="fas fa-file-word"></i> Export Template DOCX';
+                exportBtn.disabled = false;
+            }
+        }
+
+        // ==================== INIT ====================
+        document.addEventListener('DOMContentLoaded', function() {
+            initTabelDinamis();
+
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            if (hamburger) {
+                hamburger.addEventListener('click', () => navMenu.classList.toggle('active'));
+            }
+
+            document.querySelectorAll('input, select, textarea').forEach(el => {
+                el.addEventListener('input', saveToLocalStorage);
+                el.addEventListener('change', saveToLocalStorage);
+            });
+
+            window.addEventListener('online', () => { 
+                isOnline = true; 
+                updateConnectionStatus(); 
+                loadDataFromGoogleSheets(); 
+            });
+            window.addEventListener('offline', () => { 
+                isOnline = false; 
+                updateConnectionStatus(); 
+            });
+
+            loadDataFromGoogleSheets();
+            loadFromLocalStorage();
+            updateConnectionStatus();
+            setInterval(checkConnection, 5000);
+        });
+
+        function checkConnection() {
+            updateConnectionStatus();
+        }
+    </script>
+</body>
+</html>

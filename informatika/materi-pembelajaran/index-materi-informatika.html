@@ -1,0 +1,1198 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi Pembelajaran Informatika - Kelas X</title>
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* INFORMATIKA THEME COLORS */
+        :root {
+            --informatika-primary: #3498db;
+            --informatika-secondary: #2980b9;
+            --informatika-light: #ebf5fb;
+            --informatika-dark: #21618c;
+            --informatika-accent: #9b59b6;
+            --informatika-semester1: #3498db;
+            --informatika-semester2: #e74c3c;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+
+        /* ===== LOGO ZOOM EFFECT ===== */
+        .logo img {
+            transition: transform 0.3s ease;
+        }
+        .logo:hover img {
+            transform: scale(1.2);
+        }
+        
+        /* MAIN CONTENT */
+        .materials-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* HEADER STYLE */
+        .materials-header-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(52, 152, 219, 0.1);
+            border-left: 5px solid var(--informatika-primary);
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+        
+        .materials-header-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(52, 152, 219, 0.1) 0%, transparent 70%);
+            z-index: 0;
+        }
+        
+        .materials-header-card h1 {
+            color: var(--informatika-dark);
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        
+        .materials-header-card h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--informatika-primary), var(--informatika-secondary));
+            border-radius: 2px;
+        }
+        
+        .materials-header-card > p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #555;
+            padding: 1rem 1.5rem;
+            background: var(--informatika-light);
+            border-radius: 10px;
+            border-left: 4px solid var(--informatika-primary);
+        }
+        
+        /* SEMESTER NAVIGATION */
+        .semester-nav-simple {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0 3rem 0;
+        }
+        
+        .semester-btn {
+            background: white;
+            border: 2px solid var(--informatika-light);
+            color: var(--informatika-dark);
+            padding: 1rem 2.5rem;
+            border-radius: 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        
+        .semester-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.15);
+        }
+        
+        .semester-btn.active {
+            background: var(--informatika-primary);
+            color: white;
+            border-color: var(--informatika-primary);
+        }
+        
+        .semester-btn.semester1.active {
+            background: var(--informatika-semester1);
+            border-color: var(--informatika-semester1);
+        }
+        
+        .semester-btn.semester2.active {
+            background: var(--informatika-semester2);
+            border-color: var(--informatika-semester2);
+        }
+        
+        /* PROYEK SECTION CARD */
+        .proyek-section-card {
+            background: white;
+            border-radius: 20px;
+            padding: 1.8rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+            border: 1px solid rgba(52, 152, 219, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .proyek-section-card:hover {
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.1);
+            border-color: var(--informatika-light);
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid var(--informatika-light);
+            flex-wrap: wrap;
+        }
+        
+        .section-title i {
+            width: 45px;
+            height: 45px;
+            background: var(--informatika-light);
+            color: var(--informatika-primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 1.5rem;
+            color: var(--informatika-dark);
+            font-weight: 600;
+        }
+        
+        .section-title .proyek-durasi {
+            margin-left: auto;
+            background: var(--informatika-light);
+            color: var(--informatika-dark);
+            padding: 0.4rem 1rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        .section-title .proyek-semester-badge {
+            background: var(--informatika-semester1);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .section-title .proyek-semester-badge.genap {
+            background: var(--informatika-semester2);
+        }
+        
+        /* GRID MATERI */
+        .materi-grid-simple {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.2rem;
+        }
+        
+        .materi-item-simple {
+            background: #f5f7fa;
+            border-radius: 16px;
+            padding: 1.2rem;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        
+        .materi-item-simple:hover {
+            background: white;
+            border-color: var(--informatika-primary);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.1);
+        }
+        
+        .materi-item-simple.semester1:hover {
+            border-color: var(--informatika-semester1);
+        }
+        
+        .materi-item-simple.semester2:hover {
+            border-color: var(--informatika-semester2);
+        }
+        
+        .materi-header-simple {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.8rem;
+        }
+        
+        .materi-header-simple h4 {
+            color: var(--informatika-dark);
+            font-size: 1rem;
+            font-weight: 600;
+            line-height: 1.4;
+            flex: 1;
+        }
+        
+        .materi-badge {
+            background: white;
+            color: var(--informatika-primary);
+            padding: 4px 10px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            border: 1px solid var(--informatika-light);
+            white-space: nowrap;
+            margin-left: 8px;
+        }
+        
+        .materi-item-simple.semester1 .materi-badge {
+            color: var(--informatika-semester1);
+        }
+        
+        .materi-item-simple.semester2 .materi-badge {
+            color: var(--informatika-semester2);
+        }
+        
+        .materi-proyek-tag {
+            display: inline-block;
+            background: var(--informatika-light);
+            color: var(--informatika-dark);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            width: fit-content;
+        }
+        
+        .materi-desc-simple {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+            flex: 1;
+        }
+        
+        .materi-meta-simple {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.8rem;
+            color: #888;
+            flex-wrap: wrap;
+        }
+        
+        .materi-meta-simple i {
+            margin-right: 4px;
+            color: var(--informatika-primary);
+        }
+        
+        .materi-item-simple.semester1 .materi-meta-simple i {
+            color: var(--informatika-semester1);
+        }
+        
+        .materi-item-simple.semester2 .materi-meta-simple i {
+            color: var(--informatika-semester2);
+        }
+        
+        .materi-tp-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin: 0.5rem 0 1rem 0;
+        }
+        
+        .materi-tp-item {
+            background: white;
+            color: var(--informatika-primary);
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            border: 1px solid var(--informatika-light);
+        }
+        
+        .materi-item-simple.semester1 .materi-tp-item {
+            color: var(--informatika-semester1);
+        }
+        
+        .materi-item-simple.semester2 .materi-tp-item {
+            color: var(--informatika-semester2);
+        }
+        
+        .materi-btn-simple {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: transparent;
+            color: var(--informatika-primary);
+            text-decoration: none;
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 1px solid var(--informatika-primary);
+            transition: all 0.3s ease;
+            margin-top: auto;
+        }
+        
+        .materi-item-simple.semester1 .materi-btn-simple {
+            color: var(--informatika-semester1);
+            border-color: var(--informatika-semester1);
+        }
+        
+        .materi-item-simple.semester2 .materi-btn-simple {
+            color: var(--informatika-semester2);
+            border-color: var(--informatika-semester2);
+        }
+        
+        .materi-btn-simple:hover {
+            background: var(--informatika-primary);
+            color: white;
+        }
+        
+        .materi-item-simple.semester1 .materi-btn-simple:hover {
+            background: var(--informatika-semester1);
+            border-color: var(--informatika-semester1);
+            color: white;
+        }
+        
+        .materi-item-simple.semester2 .materi-btn-simple:hover {
+            background: var(--informatika-semester2);
+            border-color: var(--informatika-semester2);
+            color: white;
+        }
+        
+        /* BACK BUTTON */
+        .back-nav-simple {
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        .back-btn-simple {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: white;
+            color: var(--informatika-dark);
+            padding: 0.8rem 2rem;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 1px solid var(--informatika-light);
+        }
+        
+        .back-btn-simple:hover {
+            background: var(--informatika-primary);
+            color: white;
+            transform: translateX(-5px);
+        }
+        
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .materials-container {
+                padding: 1rem;
+            }
+            
+            .materials-header-card h1 {
+                font-size: 1.8rem;
+            }
+            
+            .semester-nav-simple {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .semester-btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                flex-wrap: wrap;
+            }
+            
+            .section-title .proyek-durasi {
+                margin-left: 0;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .section-title .proyek-semester-badge {
+                margin-left: 0;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .materi-grid-simple {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title h2 {
+                font-size: 1.3rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .materials-header-card {
+                padding: 1.5rem;
+            }
+            
+            .materials-header-card h1 {
+                font-size: 1.5rem;
+            }
+            
+            .materi-header-simple {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .materi-badge {
+                margin-left: 0;
+                margin-top: 5px;
+            }
+            
+            .proyek-section-card {
+                padding: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="../../assets/images/logo.png" alt="Logo Sekolah">
+                    <h1>INFORMATIKA - MATERI PEMBELAJARAN</h1>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="../../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="../index-informatika.html" class="nav-link"><i class="fas fa-laptop-code"></i> Beranda Informatika</a></li>
+                    <li><a href="../aktivitas-pembelajaran/index-aktivitas-informatika.html" class="nav-link"><i class="fas fa-tasks"></i> Daftar Aktivitas</a></li>
+                    <li><a href="index-materi-informatika.html" class="nav-link active"><i class="fas fa-book-open"></i> Daftar Materi</a></li>
+                    <li><a href="../penilaian/index-penilaian-informatika.html" class="nav-link"><i class="fas fa-chart-line"></i> Penilaian</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Materials Content -->
+    <section class="materials-container">
+        <!-- Header Card -->
+        <div class="materials-header-card">
+            <h1>Materi Pembelajaran Informatika</h1>
+            <p>Kumpulan materi pembelajaran Informatika untuk Kelas X yang disusun berdasarkan proyek-proyek pembelajaran. Setiap materi dilengkapi dengan tujuan pembelajaran, contoh kode, dan latihan untuk mengembangkan kemampuan berpikir komputasional dan literasi digital.</p>
+        </div>
+
+        <!-- Semester Navigation -->
+        <div class="semester-nav-simple">
+            <button class="semester-btn semester1 active" data-semester="semester1">
+                <i class="fas fa-sun"></i> Semester Ganjil
+            </button>
+            <button class="semester-btn semester2" data-semester="semester2">
+                <i class="fas fa-cloud-rain"></i> Semester Genap
+            </button>
+        </div>
+
+        <!-- Semester Ganjil Content -->
+        <div id="semester1-materials" class="semester-content">
+            <!-- Proyek 1: Saya Siap Jadi Kreator Digital -->
+            <div class="proyek-section-card">
+                <div class="section-title">
+                    <i class="fas fa-paint-brush"></i>
+                    <h2>Proyek 1: Saya Siap Jadi Kreator Digital</h2>
+                    <span class="proyek-semester-badge">Semester Ganjil</span>
+                    <span class="proyek-durasi">Minggu 1-3 (12 JP)</span>
+                </div>
+                
+                <div class="materi-grid-simple">
+                    <!-- Materi 1.1 -->
+                    <div class="materi-item-simple semester1">
+                        <span class="materi-proyek-tag">Proyek 1 - Aktivitas 1</span>
+                        <div class="materi-header-simple">
+                            <h4>Pengenalan Google Workspace &amp; Keamanan Akun</h4>
+                            <span class="materi-badge">4 JP</span>
+                        </div>
+                        <p class="materi-desc-simple">Mengenal Google Workspace (Docs, Sheets, Slides) dan praktik pengamanan akun Google.</p>
+                        <div class="materi-meta-simple">
+                            <span><i class="fab fa-google"></i> Google Workspace</span>
+                            <span><i class="fas fa-lock"></i> Keamanan</span>
+                        </div>
+                        <div class="materi-tp-list">
+                            <span class="materi-tp-item">TP 2.4</span>
+                            <span class="materi-tp-item">TP 2.11</span>
+                        </div>
+                        <a href="materi-proyek1/materi1-1.html" class="materi-btn-simple">
+                            <i class="fas fa-book-open"></i> Baca Materi
+                        </a>
+                    </div>
+
+                    <!-- Materi 1.2 -->
+                    <div class="materi-item-simple semester1">
+                        <span class="materi-proyek-tag">Proyek 1 - Aktivitas 2</span>
+                        <div class="materi-header-simple">
+                            <h4>Praktik Produktivitas &amp; Kolaborasi</h4>
+                            <span class="materi-badge">4 JP</span>
+                        </div>
+                        <p class="materi-desc-simple">Latihan membuat dokumen, spreadsheet, dan presentasi secara kolaboratif dengan fitur sharing.</p>
+                        <div class="materi-meta-simple">
+                            <span><i class="fas fa-file-alt"></i> Dokumen</span>
+                            <span><i class="fas fa-users"></i> Kolaborasi</span>
+                        </div>
+                        <div class="materi-tp-list">
+                            <span class="materi-tp-item">TP 2.4</span>
+                        </div>
+                        <a href="materi-proyek1/materi1-2.html" class="materi-btn-simple">
+                            <i class="fas fa-book-open"></i> Baca Materi
+                        </a>
+                    </div>
+
+                    <!-- Materi 1.3 -->
+                    <div class="materi-item-simple semester1">
+                        <span class="materi-proyek-tag">Proyek 1 - Aktivitas 3</span>
+                        <div class="materi-header-simple">
+                            <h4>Pengamanan &amp; Portofolio Digital</h4>
+                            <span class="materi-badge">4 JP</span>
+                        </div>
+                        <p class="materi-desc-simple">Menyusun portofolio digital awal dan praktik keamanan akun secara menyeluruh.</p>
+                        <div class="materi-meta-simple">
+                            <span><i class="fas fa-folder-open"></i> Portofolio</span>
+                            <span><i class="fas fa-shield-alt"></i> Keamanan</span>
+                        </div>
+                        <div class="materi-tp-list">
+                            <span class="materi-tp-item">TP 2.4</span>
+                            <span class="materi-tp-item">TP 2.5</span>
+                            <span class="materi-tp-item">TP 2.11</span>
+                        </div>
+                        <a href="materi-proyek1/materi1-3.html" class="materi-btn-simple">
+                            <i class="fas fa-book-open"></i> Baca Materi
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Proyek 2: Budaya Kita di Dunia Digital -->
+            <div class="proyek-section-card">
+                <div class="section-title">
+                    <i class="fas fa-globe-asia"></i>
+                    <h2>Proyek 2: Budaya Kita di Dunia Digital</h2>
+                    <span class="proyek-semester-badge">Semester Ganjil</span>
+                    <span class="proyek-durasi">Minggu 4-6 (12 JP)</span>
+                </div>
+                
+                <div class="materi-grid-simple">
+                    <!-- Materi 2.1 -->
+                    <div class="materi-item-simple semester1">
+                        <span class="materi-proyek-tag">Proyek 2 - Aktivitas 1</span>
+                        <div class="materi-header-simple">
+                            <h4>Mengenal Budaya &amp; Dunia Digital</h4>
+                            <span class="materi-badge">4 JP</span>
+                        </div>
+                        <p class="materi-desc-simple">Diskusi kekayaan budaya Indonesia, menonton video promosi budaya, brainstorming budaya lokal.</p>
+                        <div class="materi-meta-simple">
+                            <span><i class="fas fa-users"></i> Diskusi</span>
+                            <span><i class="fas fa-lightbulb"></i> Brainstorming</span>
+                        </div>
+                        <div class="materi-tp-list">
+                            <span class="materi-tp-item">TP 2.9</span>
+                        </div>
+                        <a href="materi-proyek2/materi2-1.html" class="materi-btn-simple">
+                            <i class="fas fa-book-open"></i> Baca Materi
+                        </a>
+                    </div>
+
+                    <!-- Materi 2.2 -->
+                    <div class="materi-item-simple semester1">
+                        <span class="materi-proyek-tag">Proyek 2 - Aktivitas 2</span>
+                        <div class="materi-header-simple">
+                            <h4>Profesi Digital &amp; Peran Informatika</h4>
+                            <span class="materi-badge">4 JP</span>
+                        </div>
+                        <p class="materi-desc-simple">Mengenali profesi di bidang informatika dan diskusi kontribusinya bagi pelestarian budaya.</p>
+                        <div class="materi-meta-simple">
+                            <span><i class="fas fa-briefcase"></i> Profesi</span>
+                            <span><i class="fas fa-users"></i> Diskusi</span>
+                        </div>
+                        <div class="materi-tp-list">
+                            <span class="materi-tp-item">TP 2.8</span>
+                        </div>
+                        <a href="materi-proyek2/materi2-2.html" class="materi-btn-simple">
+                            <i class="fas fa-book-open"></i> Baca Materi
+                        </a>
+                    </div>
+
+                    <!-- Materi 2.3 -->
+                    <div class="materi-item-simple semester1">
+                        <span class="materi-proyek-tag">Proyek 2 - Aktivitas 3</span>
+                        <div class="materi-header-simple">
+                            <h4>Produksi Konten Budaya Digital</h4>
+                            <span class="materi-badge">4 JP</span>
+                        </div>
+                        <p class="materi-desc-simple">Membuat poster/video digital untuk promosi budaya lokal, peer review, dan publikasi.</p>
+                        <div class="materi-meta-simple">
+                            <span><i class="fas fa-video"></i> Produksi</span>
+                            <span><i class="fas fa-star"></i> Penilaian</span>
+                        </div>
+                        <div class="materi-tp-list">
+                            <span class="materi-tp-item">TP 2.6</span>
+                        </div>
+                        <a href="materi-proyek2/materi2-3.html" class="materi-btn-simple">
+                            <i class="fas fa-book-open"></i> Baca Materi
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Proyek 3: Jejak Digital Aman -->
+            <div class="proyek-section-card">
+                <div class="section-title">
+                    <i class="fas fa-shield-alt"></i>
+                    <h2>Proyek 3: Jejak Digital Aman</h2>
+                    <span class="proyek-semester-badge">Semester Ganjil</span>
+                    <span class="proyek-durasi">Minggu 7-10 (16 JP)</span>
+                </div>
+                
+                <div class="materi-grid-simple">
+                    <!-- Materi 3.1 -->
+                    <div class="materi-item-simple semester1">
+                        <span class="materi-proyek-tag">Proyek 3 - Aktivitas 1</span>
+                        <div class="materi-header-simple">
+                            <h4>Hak Digital &amp; Jejak Digital</h4>
+                            <span class="materi-badge">4 JP</span>
+                        </div>
+                        <p class="materi-desc-simple">Diskusi jejak digital, hak kekayaan intelektual, dan menonton video pelanggaran hak digital.</p>
+                        <div class="materi-meta-simple">
+                            <span><i class="fas fa-users"></i> Diskusi</span>
+                            <span><i class="fas fa-pencil-alt"></i> Refleksi</span>
+                        </div>
+                        <div class="materi-tp-list">
+                            <span class="materi-tp-item">TP 2.7</span>
+                        </div>
+                        <a href="materi-proyek3/materi3-1.html" class="materi-btn-simple">
+                            <i class="fas fa-book-open"></i> Baca Materi
+                        </a>
+                    </div>
+
+                    <!-- Materi 3.2 -->
+                    <div class="materi-item-simple semester1">
+                        <span class="materi-proyek-tag">Proyek 3 - Aktivitas 2</span>
+                        <div class="materi-header-simple">
+                            <h4>Kelola Akun &amp; Keamanan Digital</h4>
+                            <span class="materi-badge">4 JP</span>
+                        </div>
+                        <p class="materi-desc-simple">Praktik audit akun pribadi dan menganalisis pengaturan privasi.</p>
+                        <div class="materi-meta-simple">
+                            <span><i class="fas fa-search"></i> Audit</span>
+                            <span><i class="fas fa-tasks"></i> Lembar Kerja</span>
+                        </div>
+                        <div class="materi-tp-list">
+                            <span class="materi-tp-item">TP 2.11</span>
+                            <span class="materi-tp-item">TP 2.13</span>
+                        </div>
+                        <a href="materi-proyek3/materi3-2.html" class="materi-btn-simple">
+                            <i class="fas fa-book-open"></i> Baca Materi
+                        </a>
+                    </div>
+
+                    <!-- Materi 3.3 -->
+                    <div class="materi-item-simple semester1">
+                        <span class="materi-proyek-tag">Proyek 3 - Aktivitas 3</span>
+                        <div class="materi-header-simple">
+                            <h4>Praktik Pengamanan Digital (2FA)</h4>
+                            <span class="materi-badge">4 JP</span>
+                        </div>
+                        <p class="materi-desc-simple">Simulasi membuat password kuat, aktivasi 2FA, dan diskusi manajer kata sandi.</p>
+                        <div class="materi-meta-simple">
+                            <span><i class="fas fa-lock"></i> Praktik</span>
+                            <span><i class="fas fa-users"></i> Diskusi</span>
+                        </div>
+                        <div class="materi-tp-list">
+                            <span class="materi-tp-item">TP 2.11</span>
+                            <span class="materi-tp-item">TP 2.12</span>
+                        </div>
+                        <a href="materi-proyek3/materi3-3.html" class="materi-btn-simple">
+                            <i class="fas fa-book-open"></i> Baca Materi
+                        </a>
+                    </div>
+
+                    <!-- Materi 3.4 -->
+                    <div class="materi-item-simple semester1">
+                        <span class="materi-proyek-tag">Proyek 3 - Aktivitas 4</span>
+                        <div class="materi-header-simple">
+                            <h4>Edukasi Publik tentang Jejak Digital</h4>
+                            <span class="materi-badge">4 JP</span>
+                        </div>
+                        <p class="materi-desc-simple">Membuat video edukatif kampanye digital aman, presentasi, dan refleksi.</p>
+                        <div class="materi-meta-simple">
+                            <span><i class="fas fa-video"></i> Produksi</span>
+                            <span><i class="fas fa-star"></i> Penilaian</span>
+                        </div>
+                        <div class="materi-tp-list">
+                            <span class="materi-tp-item">TP 2.7</span>
+                            <span class="materi-tp-item">TP 2.13</span>
+                        </div>
+                        <a href="materi-proyek3/materi3-4.html" class="materi-btn-simple">
+                            <i class="fas fa-book-open"></i> Baca Materi
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Proyek 4: Fakta atau Hoaks? -->
+            <div class="proyek-section-card">
+                <div class="section-title">
+                    <i class="fas fa-search"></i>
+                    <h2>Proyek 4: Fakta atau Hoaks?</h2>
+                    <span class="proyek-semester-badge">Semester Ganjil</span>
+                    <span class="proyek-durasi">Minggu 11-16 (24 JP)</span>
+                </div>
+                
+                <div class="materi-grid-simple">
+                    <!-- Materi 4.1 -->
+                    <div class="materi-item-simple semester1">
+                        <span class="materi-proyek-tag">Proyek 4 - Aktivitas 1</span>
+                        <div class="materi-header-simple">
+                            <h4>Pengantar Literasi Informasi</h4>
+                            <span class="materi-badge">4 JP</span>
+                        </div>
+                        <p class="materi-desc-simple">Diskusi fenomena hoaks, menonton video edukatif, dan brainstorming isu viral yang akan diselidiki.</p>
+                        <div class="materi-meta-simple">
+                            <span><i class="fas fa-users"></i> Diskusi</span>
+                            <span><i class="fas fa-video"></i> Video</span>
+                        </div>
+                        <div class="materi-tp-list">
+                            <span class="materi-tp-item">TP 2.1</span>
+                            <span class="materi-tp-item">TP 2.10</span>
+                        </div>
+                        <a href="materi-proyek4/materi4-1.html" class="materi-btn-simple">
+                            <i class="fas fa-book-open"></i> Baca Materi
+                        </a>
+                    </div>
+
+                    <!-- Materi 4.2 -->
+                    <div class="materi-item-simple semester1">
+                        <span class="materi-proyek-tag">Proyek 4 - Aktivitas 2</span>
+                        <div class="materi-header-simple">
+                            <h4>Strategi Mencari Informasi</h4>
+                            <span class="materi-badge">4 JP</span>
+                        </div>
+                        <p class="materi-desc-simple">Praktik menggunakan mesin pencari secara efektif (operator pencarian, filter) dan diskusi sumber kredibel.</p>
+                        <div class="materi-meta-simple">
+                            <span><i class="fas fa-search"></i> Praktik</span>
+                            <span><i class="fas fa-tasks"></i> Lembar Kerja</span>
+                        </div>
+                        <div class="materi-tp-list">
+                            <span class="materi-tp-item">TP 2.1</span>
+                        </div>
+                        <a href="materi-proyek4/materi4-2.html" class="materi-btn-simple">
+                            <i class="fas fa-book-open"></i> Baca Materi
+                        </a>
+                    </div>
+
+                    <!-- Materi 4.3 -->
+                    <div class="materi-item-simple semester1">
+                        <span class="materi-proyek-tag">Proyek 4 - Aktivitas 3</span>
+                        <div class="materi-header-simple">
+                            <h4>Analisis Fakta &amp; Cek Kebenaran</h4>
+                            <span class="materi-badge">4 JP</span>
+                        </div>
+                        <p class="materi-desc-simple">Menyelidiki isu viral menggunakan situs cek fakta dan mencatat temuan dalam format tabel analisis.</p>
+                        <div class="materi-meta-simple">
+                            <span><i class="fas fa-check-double"></i> Verifikasi</span>
+                            <span><i class="fas fa-table"></i> Analisis</span>
+                        </div>
+                        <div class="materi-tp-list">
+                            <span class="materi-tp-item">TP 2.2</span>
+                            <span class="materi-tp-item">TP 2.3</span>
+                        </div>
+                        <a href="materi-proyek4/materi4-3.html" class="materi-btn-simple">
+                            <i class="fas fa-book-open"></i> Baca Materi
+                        </a>
+                    </div>
+
+                    <!-- Materi 4.4 -->
+                    <div class="materi-item-simple semester1">
+                        <span class="materi-proyek-tag">Proyek 4 - Aktivitas 4</span>
+                        <div class="materi-header-simple">
+                            <h4>Merancang Poster Edukatif</h4>
+                            <span class="materi-badge">4 JP</span>
+                        </div>
+                        <p class="materi-desc-simple">Menyusun pesan edukatif dan mendesain poster digital menggunakan Canva atau Google Slides.</p>
+                        <div class="materi-meta-simple">
+                            <span><i class="fas fa-paint-brush"></i> Desain</span>
+                            <span><i class="fas fa-users"></i> Peer Review</span>
+                        </div>
+                        <div class="materi-tp-list">
+                            <span class="materi-tp-item">TP 2.6</span>
+                            <span class="materi-tp-item">TP 2.10</span>
+                        </div>
+                        <a href="materi-proyek4/materi4-4.html" class="materi-btn-simple">
+                            <i class="fas fa-book-open"></i> Baca Materi
+                        </a>
+                    </div>
+
+                    <!-- Materi 4.5 -->
+                    <div class="materi-item-simple semester1">
+                        <span class="materi-proyek-tag">Proyek 4 - Aktivitas 5</span>
+                        <div class="materi-header-simple">
+                            <h4>Presentasi &amp; Refleksi</h4>
+                            <span class="materi-badge">4 JP</span>
+                        </div>
+                        <p class="materi-desc-simple">Presentasi karya, refleksi proses pembelajaran, dan diskusi etika berbagi informasi.</p>
+                        <div class="materi-meta-simple">
+                            <span><i class="fas fa-presentation"></i> Presentasi</span>
+                            <span><i class="fas fa-star"></i> Penilaian</span>
+                        </div>
+                        <div class="materi-tp-list">
+                            <span class="materi-tp-item">TP 2.10</span>
+                            <span class="materi-tp-item">TP 2.13</span>
+                        </div>
+                        <a href="materi-proyek4/materi4-5.html" class="materi-btn-simple">
+                            <i class="fas fa-book-open"></i> Baca Materi
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Semester Genap Content -->
+        <div id="semester2-materials" class="semester-content" style="display: none;">
+            <!-- Proyek 5: Rancang Mesin Pintar Mini -->
+            <div class="proyek-section-card">
+                <div class="section-title">
+                    <i class="fas fa-microchip"></i>
+                    <h2>Proyek 5: Rancang Mesin Pintar Mini</h2>
+                    <span class="proyek-semester-badge genap">Semester Genap</span>
+                    <span class="proyek-durasi">Minggu 1-5 (20 JP)</span>
+                </div>
+                
+                <div class="materi-grid-simple">
+                    <!-- Materi 5.1 -->
+                    <div class="materi-item-simple semester2">
+                        <span class="materi-proyek-tag">Proyek 5 - Aktivitas 1</span>
+                        <div class="materi-header-simple">
+                            <h4>Mengenal Alur Komputasi &amp; IPO</h4>
+                            <span class="materi-badge">4 JP</span>
+                        </div>
+                        <p class="materi-desc-simple">Diskusi alur kerja komputer, video simulasi IPO, dan refleksi peran input-proses-output.</p>
+                        <div class="materi-meta-simple">
+                            <span><i class="fas fa-users"></i> Diskusi</span>
+                            <span><i class="fas fa-film"></i> Video</span>
+                        </div>
+                        <div class="materi-tp-list">
+                            <span class="materi-tp-item">TP 1.6</span>
+                        </div>
+                        <a href="materi-proyek5/materi5-1.html" class="materi-btn-simple">
+                            <i class="fas fa-book-open"></i> Baca Materi
+                        </a>
+                    </div>
+
+                    <!-- Materi 5.2 -->
+                    <div class="materi-item-simple semester2">
+                        <span class="materi-proyek-tag">Proyek 5 - Aktivitas 2</span>
+                        <div class="materi-header-simple">
+                            <h4>Simulasi Model IPO</h4>
+                            <span class="materi-badge">4 JP</span>
+                        </div>
+                        <p class="materi-desc-simple">Membuat diagram IPO dari kasus nyata dan diskusi kelompok.</p>
+                        <div class="materi-meta-simple">
+                            <span><i class="fas fa-project-diagram"></i> Diagram</span>
+                            <span><i class="fas fa-users"></i> Kelompok</span>
+                        </div>
+                        <div class="materi-tp-list">
+                            <span class="materi-tp-item">TP 1.6</span>
+                        </div>
+                        <a href="materi-proyek5/materi5-2.html" class="materi-btn-simple">
+                            <i class="fas fa-book-open"></i> Baca Materi
+                        </a>
+                    </div>
+
+                    <!-- Materi 5.3 -->
+                    <div class="materi-item-simple semester2">
+                        <span class="materi-proyek-tag">Proyek 5 - Aktivitas 3</span>
+                        <div class="materi-header-simple">
+                            <h4>Sistem Operasi &amp; Model Von Neumann</h4>
+                            <span class="materi-badge">4 JP</span>
+                        </div>
+                        <p class="materi-desc-simple">Penjelasan arsitektur Von Neumann, peran sistem operasi, dan studi kasus OS populer.</p>
+                        <div class="materi-meta-simple">
+                            <span><i class="fas fa-desktop"></i> Teori</span>
+                            <span><i class="fas fa-question-circle"></i> Tanya Jawab</span>
+                        </div>
+                        <div class="materi-tp-list">
+                            <span class="materi-tp-item">TP 1.6</span>
+                            <span class="materi-tp-item">TP 1.7</span>
+                        </div>
+                        <a href="materi-proyek5/materi5-3.html" class="materi-btn-simple">
+                            <i class="fas fa-book-open"></i> Baca Materi
+                        </a>
+                    </div>
+
+                    <!-- Materi 5.4 -->
+                    <div class="materi-item-simple semester2">
+                        <span class="materi-proyek-tag">Proyek 5 - Aktivitas 4</span>
+                        <div class="materi-header-simple">
+                            <h4>Rancang &amp; Uji Solusi</h4>
+                            <span class="materi-badge">4 JP</span>
+                        </div>
+                        <p class="materi-desc-simple">Menyusun rancangan solusi berbasis IPO dalam pseudocode dan implementasi HTML sederhana.</p>
+                        <div class="materi-meta-simple">
+                            <span><i class="fas fa-code"></i> Coding</span>
+                            <span><i class="fas fa-users"></i> Peer Review</span>
+                        </div>
+                        <div class="materi-tp-list">
+                            <span class="materi-tp-item">TP 1.4</span>
+                            <span class="materi-tp-item">TP 1.5</span>
+                        </div>
+                        <a href="materi-proyek5/materi5-4.html" class="materi-btn-simple">
+                            <i class="fas fa-book-open"></i> Baca Materi
+                        </a>
+                    </div>
+
+                    <!-- Materi 5.5 -->
+                    <div class="materi-item-simple semester2">
+                        <span class="materi-proyek-tag">Proyek 5 - Aktivitas 5</span>
+                        <div class="materi-header-simple">
+                            <h4>Presentasi Mesin Pintar Mini</h4>
+                            <span class="materi-badge">4 JP</span>
+                        </div>
+                        <p class="materi-desc-simple">Presentasi desain mesin pintar mini (diagram IPO + pseudocode + kode HTML).</p>
+                        <div class="materi-meta-simple">
+                            <span><i class="fas fa-presentation"></i> Presentasi</span>
+                            <span><i class="fas fa-star"></i> Penilaian</span>
+                        </div>
+                        <div class="materi-tp-list">
+                            <span class="materi-tp-item">TP 1.4</span>
+                            <span class="materi-tp-item">TP 1.6</span>
+                            <span class="materi-tp-item">TP 1.7</span>
+                        </div>
+                        <a href="materi-proyek5/materi5-5.html" class="materi-btn-simple">
+                            <i class="fas fa-book-open"></i> Baca Materi
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Proyek 6: Bisa Bikin Program? Bisa! -->
+            <div class="proyek-section-card">
+                <div class="section-title">
+                    <i class="fas fa-code"></i>
+                    <h2>Proyek 6: Bisa Bikin Program? Bisa!</h2>
+                    <span class="proyek-semester-badge genap">Semester Genap</span>
+                    <span class="proyek-durasi">Minggu 6-11 (24 JP)</span>
+                </div>
+                
+                <div class="materi-grid-simple">
+                    <!-- Materi 6.1 -->
+                    <div class="materi-item-simple semester2">
+                        <span class="materi-proyek-tag">Proyek 6 - Aktivitas 1</span>
+                        <div class="materi-header-simple">
+                            <h4>Mengenal Algoritma &amp; Struktur Data</h4>
+                            <span class="materi-badge">4 JP</span>
+                        </div>
+                        <p class="materi-desc-simple">Diskusi algoritma di kehidupan sehari-hari dan menonton video konsep algoritma.</p>
+                        <div class="materi-meta-simple">
+                            <span><i class="fas fa-users"></i> Diskusi</span>
+                            <span><i class="fas fa-film"></i> Video</span>
+                        </div>
+                        <div class="materi-tp-list">
+                            <span class="materi-tp-item">TP 1.1</span>
+                        </div>
+                        <a href="materi-proyek6/materi6-1.html" class="materi-btn-simple">
+                            <i class="fas fa-book-open"></i> Baca Materi
+                        </a>
+                    </div>
+
+                    <!-- Materi 6.2 -->
+                    <div class="materi-item-simple semester2">
+                        <span class="materi-proyek-tag">Proyek 6 - Aktivitas 2</span>
+                        <div class="materi-header-simple">
+                            <h4>Representasi Data &amp; Logika Dasar</h4>
+                            <span class="materi-badge">4 JP</span>
+                        </div>
+                        <p class="materi-desc-simple">Mengenal jenis data (angka, teks, logika) dan latihan membuat tabel data sederhana.</p>
+                        <div class="materi-meta-simple">
+                            <span><i class="fas fa-table"></i> Praktik</span>
+                            <span><i class="fas fa-tasks"></i> Lembar Kerja</span>
+                        </div>
+                        <div class="materi-tp-list">
+                            <span class="materi-tp-item">TP 1.1</span>
+                            <span class="materi-tp-item">TP 1.2</span>
+                        </div>
+                        <a href="materi-proyek6/materi6-2.html" class="materi-btn-simple">
+                            <i class="fas fa-book-open"></i> Baca Materi
+                        </a>
+                    </div>
+
+                    <!-- Materi 6.3 -->
+                    <div class="materi-item-simple semester2">
+                        <span class="materi-proyek-tag">Proyek 6 - Aktivitas 3</span>
+                        <div class="materi-header-simple">
+                            <h4>Pemecahan Masalah dengan Komputasi</h4>
+                            <span class="materi-badge">4 JP</span>
+                        </div>
+                        <p class="materi-desc-simple">Diskusi kasus nyata dan membuat alur solusi dengan diagram sederhana.</p>
+                        <div class="materi-meta-simple">
+                            <span><i class="fas fa-project-diagram"></i> Diagram</span>
+                            <span><i class="fas fa-users"></i> Kelompok</span>
+                        </div>
+                        <div class="materi-tp-list">
+                            <span class="materi-tp-item">TP 1.2</span>
+                            <span class="materi-tp-item">TP 1.3</span>
+                            <span class="materi-tp-item">TP 1.4</span>
+                        </div>
+                        <a href="materi-proyek6/materi6-3.html" class="materi-btn-simple">
+                            <i class="fas fa-book-open"></i> Baca Materi
+                        </a>
+                    </div>
+
+                    <!-- Materi 6.4 -->
+                    <div class="materi-item-simple semester2">
+                        <span class="materi-proyek-tag">Proyek 6 - Aktivitas 4</span>
+                        <div class="materi-header-simple">
+                            <h4>HTML Dasar dengan HTML Editor</h4>
+                            <span class="materi-badge">4 JP</span>
+                        </div>
+                        <p class="materi-desc-simple">Mengenal dasar HTML dan membuat program sederhana (kalkulator, luas bangun).</p>
+                        <div class="materi-meta-simple">
+                            <span><i class="fas fa-code"></i> Coding</span>
+                            <span><i class="fas fa-laptop"></i> Praktik</span>
+                        </div>
+                        <div class="materi-tp-list">
+                            <span class="materi-tp-item">TP 1.4</span>
+                            <span class="materi-tp-item">TP 1.5</span>
+                        </div>
+                        <a href="materi-proyek6/materi6-4.html" class="materi-btn-simple">
+                            <i class="fas fa-book-open"></i> Baca Materi
+                        </a>
+                    </div>
+
+                    <!-- Materi 6.5 -->
+                    <div class="materi-item-simple semester2">
+                        <span class="materi-proyek-tag">Proyek 6 - Aktivitas 5</span>
+                        <div class="materi-header-simple">
+                            <h4>Kondisi &amp; Perulangan Dasar</h4>
+                            <span class="materi-badge">4 JP</span>
+                        </div>
+                        <p class="materi-desc-simple">Belajar if-else dan perulangan, simulasi kasus nyata, diskusi kelompok.</p>
+                        <div class="materi-meta-simple">
+                            <span><i class="fas fa-code-branch"></i> Logika</span>
+                            <span><i class="fas fa-users"></i> Kolaborasi</span>
+                        </div>
+                        <div class="materi-tp-list">
+                            <span class="materi-tp-item">TP 1.1</span>
+                            <span class="materi-tp-item">TP 1.4</span>
+                            <span class="materi-tp-item">TP 1.5</span>
+                        </div>
+                        <a href="materi-proyek6/materi6-5.html" class="materi-btn-simple">
+                            <i class="fas fa-book-open"></i> Baca Materi
+                        </a>
+                    </div>
+
+                    <!-- Materi 6.6 -->
+                    <div class="materi-item-simple semester2">
+                        <span class="materi-proyek-tag">Proyek 6 - Aktivitas 6</span>
+                        <div class="materi-header-simple">
+                            <h4>Presentasi Program Sederhana</h4>
+                            <span class="materi-badge">4 JP</span>
+                        </div>
+                        <p class="materi-desc-simple">Presentasi hasil program HTML sederhana berbasis kasus nyata dan refleksi.</p>
+                        <div class="materi-meta-simple">
+                            <span><i class="fas fa-presentation"></i> Presentasi</span>
+                            <span><i class="fas fa-star"></i> Penilaian</span>
+                        </div>
+                        <div class="materi-tp-list">
+                            <span class="materi-tp-item">TP 1.4</span>
+                            <span class="materi-tp-item">TP 1.5</span>
+                        </div>
+                        <a href="materi-proyek6/materi6-6.html" class="materi-btn-simple">
+                            <i class="fas fa-book-open"></i> Baca Materi
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back Navigation -->
+        <div class="back-nav-simple">
+            <a href="../index-informatika.html" class="back-btn-simple">
+                <i class="fas fa-arrow-left"></i> Kembali ke Beranda Informatika
+            </a>
+        </div>
+    </section>
+
+    <script>
+        // ===== HAMBURGER MENU - SAMA PERSIS DENGAN PATOKAN =====
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                });
+            }
+            
+            // Semester tab functionality
+            const semesterBtns = document.querySelectorAll('.semester-btn');
+            const semester1Content = document.getElementById('semester1-materials');
+            const semester2Content = document.getElementById('semester2-materials');
+            
+            semesterBtns.forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    semesterBtns.forEach(function(b) {
+                        b.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                    
+                    if (this.dataset.semester === 'semester1') {
+                        semester1Content.style.display = 'block';
+                        semester2Content.style.display = 'none';
+                    } else {
+                        semester1Content.style.display = 'none';
+                        semester2Content.style.display = 'block';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi 1.3: Keamanan Digital & Portofolio - Informatika Kelas X</title>
+    <link rel="stylesheet" href="../../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --informatika-primary: #3498db;
+            --informatika-secondary: #2980b9;
+            --informatika-light: #ebf5fb;
+            --informatika-dark: #21618c;
+            --informatika-semester1: #3498db;
+            --success: #27ae60;
+            --warning: #e74c3c;
+            --info: #f39c12;
+            --purple: #9b59b6;
+            --google-blue: #4285F4;
+            --google-green: #0F9D58;
+            --google-yellow: #F4B400;
+            --google-red: #DB4437;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+        
+        .materi-container {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+        
+        .materi-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 30px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(52, 152, 219, 0.15);
+            border-left: 8px solid var(--informatika-semester1);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        .materi-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(52, 152, 219, 0.1) 0%, transparent 70%);
+            z-index: 0;
+        }
+        
+        .materi-card > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .materi-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 3px solid var(--informatika-light);
+            flex-wrap: wrap;
+        }
+        
+        .materi-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--purple), var(--informatika-primary));
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+        }
+        
+        .materi-title-wrapper {
+            flex: 1;
+        }
+        
+        .materi-title-wrapper h1 {
+            color: var(--informatika-dark);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .materi-subtitle {
+            color: var(--informatika-primary);
+            font-size: 1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .materi-badge {
+            background: var(--informatika-light);
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: var(--informatika-dark);
+        }
+        
+        .materi-badge i {
+            margin-right: 4px;
+        }
+        
+        .tujuan-card {
+            background: linear-gradient(135deg, var(--informatika-light), white);
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(52, 152, 219, 0.2);
+        }
+        
+        .tujuan-card h3 {
+            color: var(--informatika-dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .tujuan-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 0.8rem;
+        }
+        
+        .tujuan-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            padding: 0.8rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .tujuan-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .tujuan-item i {
+            color: var(--success);
+        }
+        
+        .materi-content {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid rgba(52, 152, 219, 0.1);
+        }
+        
+        .materi-content h2 {
+            color: var(--informatika-dark);
+            font-size: 1.8rem;
+            margin: 1.5rem 0 1rem 0;
+            border-bottom: 2px solid var(--informatika-light);
+            padding-bottom: 0.5rem;
+        }
+        
+        .materi-content h2:first-of-type {
+            margin-top: 0;
+        }
+        
+        .materi-content h3 {
+            color: var(--informatika-dark);
+            font-size: 1.3rem;
+            margin: 1.2rem 0 0.8rem 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .materi-content h3 i {
+            color: var(--informatika-primary);
+        }
+        
+        .materi-content p {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        
+        .materi-content ul, .materi-content ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .materi-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .quote-box {
+            margin: 1.5rem 0;
+            padding: 1rem 1.5rem;
+            background: var(--informatika-light);
+            border-left: 4px solid var(--informatika-primary);
+            border-radius: 0 12px 12px 0;
+        }
+        
+        .note-box {
+            background: #fff3e0;
+            border-left: 4px solid var(--info);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid var(--informatika-primary);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .warning-box {
+            background: #fee2e2;
+            border-left: 4px solid var(--warning);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .success-box {
+            background: #d4edda;
+            border-left: 4px solid var(--success);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .threat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .threat-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1.2rem;
+            text-align: center;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .threat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .threat-card.active {
+            border-color: var(--warning);
+            background: #fee2e2;
+        }
+        
+        .threat-card .threat-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .threat-card .threat-name {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .threat-card .threat-desc {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 0.3rem;
+        }
+        
+        .security-tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .security-tip {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 1rem;
+            border-left: 4px solid var(--google-blue);
+        }
+        
+        .security-tip .tip-icon {
+            font-size: 1.5rem;
+            color: var(--google-blue);
+            flex-shrink: 0;
+        }
+        
+        .case-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .case-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1.2rem;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+        
+        .case-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .case-card .case-title {
+            font-weight: bold;
+            color: var(--warning);
+            margin-bottom: 0.5rem;
+        }
+        
+        .case-card .case-desc {
+            color: #555;
+            font-size: 0.95rem;
+        }
+        
+        .case-card .case-solution {
+            margin-top: 0.8rem;
+            padding: 0.8rem;
+            background: #d4edda;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: #155724;
+        }
+        
+        .portfolio-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .portfolio-step {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 1.2rem;
+            text-align: center;
+            border: 1px solid #e9ecef;
+        }
+        
+        .portfolio-step .step-num {
+            width: 40px;
+            height: 40px;
+            background: var(--google-blue);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.5rem auto;
+            font-weight: bold;
+        }
+        
+        .portfolio-step .step-title {
+            font-weight: bold;
+        }
+        
+        .portfolio-step .step-desc {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 0.3rem;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+        
+        .comparison-table th {
+            background: var(--google-blue);
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .comparison-table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        
+        .comparison-table tr:hover {
+            background: var(--informatika-light);
+        }
+        
+        .comparison-table .check {
+            color: var(--success);
+        }
+        
+        .comparison-table .cross {
+            color: var(--warning);
+        }
+        
+        .materi-navigation {
+            display: flex;
+            gap: 1rem;
+            justify-content: space-between;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn.primary {
+            background: linear-gradient(135deg, var(--informatika-primary), var(--informatika-secondary));
+            color: white;
+        }
+        
+        .nav-btn.primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .nav-btn.secondary {
+            background: white;
+            color: var(--informatika-dark);
+            border: 2px solid var(--informatika-light);
+        }
+        
+        .nav-btn.secondary:hover {
+            background: var(--informatika-light);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .materi-container { padding: 1rem; }
+            .materi-card { padding: 1.5rem; }
+            .materi-header { flex-direction: column; text-align: center; }
+            .comparison-table { font-size: 0.8rem; }
+            .comparison-table th, .comparison-table td { padding: 8px; }
+            .case-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="../../../assets/images/logo.png" alt="Logo Sekolah">
+                    <h1>INFORMATIKA - MATERI PEMBELAJARAN</h1>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="../../../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="../../index-informatika.html" class="nav-link"><i class="fas fa-laptop-code"></i> Beranda Informatika</a></li>
+                    <li><a href="../../aktivitas-pembelajaran/index-aktivitas-informatika.html" class="nav-link"><i class="fas fa-tasks"></i> Daftar Aktivitas</a></li>
+                    <li><a href="../index-materi-informatika.html" class="nav-link active"><i class="fas fa-book-open"></i> Daftar Materi</a></li>
+                    <li><a href="../../penilaian/index-penilaian-informatika.html" class="nav-link"><i class="fas fa-chart-line"></i> Penilaian</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="materi-container">
+        <div class="materi-card">
+            <!-- Header -->
+            <div class="materi-header">
+                <div class="materi-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="materi-title-wrapper">
+                    <h1>Keamanan Digital &amp; Portofolio</h1>
+                    <div class="materi-subtitle">
+                        <i class="fas fa-circle"></i>
+                        <span>Proyek 1: Saya Siap Jadi Kreator Digital - Pertemuan 3</span>
+                        <span class="materi-badge"><i class="fas fa-clock"></i> 4 JP</span>
+                        <span class="materi-badge"><i class="fas fa-tag"></i> TP 2.5</span>
+                        <span class="materi-badge"><i class="fas fa-globe"></i> Online</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tujuan Pembelajaran -->
+            <div class="tujuan-card">
+                <h3><i class="fas fa-bullseye"></i> 🎯 Tujuan Pembelajaran</h3>
+                <div class="tujuan-list">
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Memahami ancaman keamanan digital dan cara menghadapinya</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Menerapkan konfigurasi keamanan dasar pada perangkat dan akun</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Mengamankan dokumen digital dengan pengaturan akses dan izin</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Menyusun portofolio digital sebagai bukti pembelajaran</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Menganalisis kasus keamanan digital dan menemukan solusinya</div>
+                </div>
+            </div>
+
+            <!-- Konten Materi -->
+            <div class="materi-content">
+                <h2>A. Ancaman Keamanan Digital</h2>
+                <p><strong>Keamanan digital</strong> adalah upaya untuk melindungi data, informasi, dan perangkat dari akses, penggunaan, atau kerusakan yang tidak sah. Dalam era digital saat ini, ancaman keamanan semakin beragam dan canggih. Memahami berbagai jenis ancaman adalah langkah pertama untuk melindungi diri.</p>
+                
+                <div class="quote-box">
+                    <i class="fas fa-quote-left"></i> <strong>Pentingnya Keamanan Digital:</strong>
+                    <ul>
+                        <li>Melindungi data pribadi dan privasi</li>
+                        <li>Mencegah kerugian finansial</li>
+                        <li>Menjaga reputasi dan identitas digital</li>
+                        <li>Memastikan kelangsungan pekerjaan dan bisnis</li>
+                    </ul>
+                </div>
+
+                <h3>Jenis-Jenis Ancaman Keamanan Digital</h3>
+                <p><strong>Klik pada setiap ancaman</strong> untuk melihat informasi lebih detail:</p>
+
+                <div class="threat-grid" id="threatGrid">
+                    <div class="threat-card" data-threat="malware">
+                        <div class="threat-icon"><i class="fas fa-bug" style="color: var(--warning);"></i></div>
+                        <div class="threat-name">Malware</div>
+                        <div class="threat-desc">Program berbahaya yang dirancang untuk merusak atau mencuri data</div>
+                    </div>
+                    <div class="threat-card" data-threat="phishing">
+                        <div class="threat-icon"><i class="fas fa-fish" style="color: var(--info);"></i></div>
+                        <div class="threat-name">Phishing</div>
+                        <div class="threat-desc">Upaya mencuri informasi dengan menyamar sebagai pihak terpercaya</div>
+                    </div>
+                    <div class="threat-card" data-threat="ransomware">
+                        <div class="threat-icon"><i class="fas fa-lock" style="color: var(--google-red);"></i></div>
+                        <div class="threat-name">Ransomware</div>
+                        <div class="threat-desc">Malware yang mengenkripsi data dan meminta tebusan</div>
+                    </div>
+                    <div class="threat-card" data-threat="hacking">
+                        <div class="threat-icon"><i class="fas fa-user-secret" style="color: var(--purple);"></i></div>
+                        <div class="threat-name">Peretasan Akun</div>
+                        <div class="threat-desc">Akses tidak sah ke akun pribadi atau organisasi</div>
+                    </div>
+                    <div class="threat-card" data-threat="wifi">
+                        <div class="threat-icon"><i class="fas fa-wifi" style="color: var(--info);"></i></div>
+                        <div class="threat-name">Wi-Fi Publik</div>
+                        <div class="threat-desc">Jaringan publik yang rentan terhadap penyadapan data</div>
+                    </div>
+                    <div class="threat-card" data-threat="identity">
+                        <div class="threat-icon"><i class="fas fa-id-card" style="color: var(--google-blue);"></i></div>
+                        <div class="threat-name">Pencurian Identitas</div>
+                        <div class="threat-desc">Penggunaan data pribadi untuk tujuan penipuan</div>
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <i class="fas fa-exclamation-triangle"></i> <strong>Ancaman Digital Bisa Datang dari Mana Saja:</strong> Email, tautan mencurigakan, aplikasi tidak resmi, jaringan Wi-Fi publik, bahkan pesan di media sosial.
+                </div>
+
+                <h2>B. Keamanan Perangkat (HP)</h2>
+                
+                <h3>Langkah-Langkah Mengamankan HP</h3>
+                <div class="security-tips-grid">
+                    <div class="security-tip">
+                        <div class="tip-icon"><i class="fas fa-fingerprint"></i></div>
+                        <div>
+                            <strong>Gunakan Kunci Keamanan</strong>
+                            <p>Kata sandi, PIN, pattern, atau sidik jari untuk membuka HP</p>
+                        </div>
+                    </div>
+                    <div class="security-tip">
+                        <div class="tip-icon"><i class="fas fa-search-location"></i></div>
+                        <div>
+                            <strong>Aktifkan Find My Device</strong>
+                            <p>Fitur untuk melacak HP jika hilang atau dicuri</p>
+                        </div>
+                    </div>
+                    <div class="security-tip">
+                        <div class="tip-icon"><i class="fas fa-sync-alt"></i></div>
+                        <div>
+                            <strong>Aktifkan Pembaruan Otomatis</strong>
+                            <p>Sistem operasi dan aplikasi selalu terbarui untuk keamanan</p>
+                        </div>
+                    </div>
+                    <div class="security-tip">
+                        <div class="tip-icon"><i class="fas fa-shield-virus"></i></div>
+                        <div>
+                            <strong>Gunakan Keamanan Bawaan</strong>
+                            <p>Google Play Protect (Android) atau iOS Security (iPhone)</p>
+                        </div>
+                    </div>
+                    <div class="security-tip">
+                        <div class="tip-icon"><i class="fas fa-lock"></i></div>
+                        <div>
+                            <strong>Kelola Izin Aplikasi</strong>
+                            <p>Periksa dan batasi izin yang diminta aplikasi</p>
+                        </div>
+                    </div>
+                    <div class="security-tip">
+                        <div class="tip-icon"><i class="fas fa-bluetooth-b"></i></div>
+                        <div>
+                            <strong>Matikan Bluetooth Saat Tidak Digunakan</strong>
+                            <p>Mencegah akses tidak sah melalui koneksi Bluetooth</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Keamanan Koneksi Jaringan</h3>
+                <div class="info-box">
+                    <i class="fas fa-wifi"></i> <strong>Tips Aman Menggunakan Jaringan:</strong>
+                    <ul>
+                        <li><strong>Hindari Wi-Fi Publik</strong> untuk transaksi penting seperti perbankan</li>
+                        <li><strong>Gunakan VPN</strong> jika harus menggunakan Wi-Fi publik</li>
+                        <li><strong>Matikan Wi-Fi dan Mobile Data</strong> saat tidak digunakan</li>
+                        <li><strong>Periksa HTTPS</strong> pada situs sebelum mengisi data pribadi</li>
+                        <li><strong>Jangan auto-connect</strong> ke jaringan Wi-Fi publik</li>
+                    </ul>
+                </div>
+
+                <h2>C. Mengamankan Dokumen Digital</h2>
+
+                <h3>Pengaturan Berbagi Dokumen (Share Settings)</h3>
+                <p>Setelah membuat produk digital dengan Google Workspace, penting untuk mengatur keamanan akses agar dokumen tidak diakses oleh orang yang tidak berkepentingan.</p>
+
+                <div class="success-box">
+                    <i class="fas fa-share-alt"></i> <strong>Langkah Mengamankan Dokumen di Google Workspace:</strong>
+                    <ol>
+                        <li>Buka dokumen (Google Docs, Sheets, atau Slides)</li>
+                        <li>Klik tombol <strong>Share</strong> di pojok kanan atas</li>
+                        <li>Atur <strong>General access</strong> menjadi <strong>"Anyone with the link"</strong> atau <strong>"Restricted"</strong></li>
+                        <li>Pilih <strong>Role/izin</strong> yang sesuai:
+                            <ul>
+                                <li><strong>Viewer:</strong> Hanya melihat</li>
+                                <li><strong>Commenter:</strong> Melihat dan memberi komentar</li>
+                                <li><strong>Editor:</strong> Melihat, komentar, dan mengedit</li>
+                            </ul>
+                        </li>
+                        <li>Klik <strong>Done</strong> untuk menyimpan pengaturan</li>
+                    </ol>
+                </div>
+
+                <div class="note-box">
+                    <i class="fas fa-lightbulb"></i> <strong>Mengapa Pengaturan Keamanan Dokumen Penting?</strong>
+                    <ul>
+                        <li>Melindungi hak cipta dan kepemilikan karya</li>
+                        <li>Mencegah perubahan atau penghapusan yang tidak sah</li>
+                        <li>Menjaga kerahasiaan informasi sensitif</li>
+                        <li>Memastikan dokumen hanya diakses oleh pihak yang berwenang</li>
+                    </ul>
+                </div>
+
+                <h2>D. Menyusun Portofolio Digital</h2>
+                <p><strong>Portofolio digital</strong> adalah kumpulan karya atau produk digital yang disusun secara sistematis untuk menunjukkan kemampuan, prestasi, dan perkembangan seseorang dalam bidang tertentu. Portofolio digital penting sebagai bukti pembelajaran dan karya kreatif.</p>
+
+                <h3>Langkah Menyusun Portofolio Digital</h3>
+                <div class="portfolio-steps">
+                    <div class="portfolio-step">
+                        <div class="step-num">1</div>
+                        <div class="step-title">Kumpulkan Produk</div>
+                        <div class="step-desc">Kumpulkan semua produk yang telah dibuat (Docs, Sheets, Slides)</div>
+                    </div>
+                    <div class="portfolio-step">
+                        <div class="step-num">2</div>
+                        <div class="step-title">Simpan dalam Folder</div>
+                        <div class="step-desc">Buat folder di Google Drive untuk menyimpan semua produk</div>
+                    </div>
+                    <div class="portfolio-step">
+                        <div class="step-num">3</div>
+                        <div class="step-title">Atur Akses</div>
+                        <div class="step-desc">Atur izin "Siapa pun dengan tautan dapat melihat"</div>
+                    </div>
+                    <div class="portfolio-step">
+                        <div class="step-num">4</div>
+                        <div class="step-title">Bagikan Link</div>
+                        <div class="step-desc">Bagikan link portofolio ke guru untuk penilaian</div>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <i class="fas fa-folder-open"></i> <strong>Komponen Portofolio Digital:</strong>
+                    <ul>
+                        <li><strong>Google Docs:</strong> Dokumen teks tentang budaya Indonesia</li>
+                        <li><strong>Google Sheets:</strong> Lembar kerja data budaya Indonesia</li>
+                        <li><strong>Google Slides:</strong> Presentasi tentang budaya Indonesia</li>
+                        <li><strong>Folder Portofolio:</strong> Berisi semua produk di Google Drive</li>
+                    </ul>
+                    <p style="margin-top: 0.5rem;"><strong>Catatan:</strong> Pastikan semua link diatur ke <strong>"Siapa pun dengan tautan dapat melihat"</strong> agar guru dapat mengaksesnya.</p>
+                </div>
+
+                <h2>E. Studi Kasus Keamanan Digital</h2>
+                
+                <div class="case-grid">
+                    <div class="case-card">
+                        <div class="case-title">Kasus 1: Email Phishing</div>
+                        <div class="case-desc">Andi menerima email yang mengaku dari bank, meminta dia mengklik tautan untuk verifikasi akun. Padahal Andi tidak memiliki rekening di bank tersebut.</div>
+                        <div class="case-solution">
+                            <strong>Solusi:</strong> Jangan klik tautan! Ini adalah phishing. Laporkan email sebagai spam dan hapus email tersebut. Jangan pernah membagikan data pribadi melalui email.
+                        </div>
+                    </div>
+                    <div class="case-card">
+                        <div class="case-title">Kasus 2: Wi-Fi Publik</div>
+                        <div class="case-desc">Fina menggunakan Wi-Fi publik di kafe untuk melakukan transaksi perbankan melalui HP-nya.</div>
+                        <div class="case-solution">
+                            <strong>Solusi:</strong> Risiko: data bisa disadap. Sebaiknya gunakan data pribadi atau VPN. Jika terpaksa, hindari transaksi keuangan di Wi-Fi publik.
+                        </div>
+                    </div>
+                    <div class="case-card">
+                        <div class="case-title">Kasus 3: HP Hilang</div>
+                        <div class="case-desc">Dewi kehilangan HP-nya. HP tersebut tidak dilindungi kata sandi dan berisi banyak dokumen penting.</div>
+                        <div class="case-solution">
+                            <strong>Solusi:</strong> Gunakan Find My Device untuk melacak. Jika tidak ditemukan, segera hapus data dari jarak jauh dan ganti password akun-akun penting. Selalu gunakan kunci keamanan.
+                        </div>
+                    </div>
+                    <div class="case-card">
+                        <div class="case-title">Kasus 4: Aplikasi Tidak Resmi</div>
+                        <div class="case-desc">Edo mengunduh aplikasi dari sumber tidak resmi. HP-nya menjadi lambat dan muncul iklan pop-up yang mengganggu.</div>
+                        <div class="case-solution">
+                            <strong>Solusi:</strong> Ini adalah malware. Segera hapus aplikasi tersebut, scan dengan antivirus, dan hanya unduh aplikasi dari toko resmi (Google Play Store / App Store).
+                        </div>
+                    </div>
+                </div>
+
+                <h2>F. Tips Keamanan Digital</h2>
+                <div class="security-tips-grid">
+                    <div class="security-tip">
+                        <div class="tip-icon"><i class="fas fa-key" style="color: var(--google-blue);"></i></div>
+                        <div>
+                            <strong>Password Kuat</strong>
+                            <p>Gunakan kombinasi huruf besar, kecil, angka, dan simbol. Minimal 8 karakter.</p>
+                        </div>
+                    </div>
+                    <div class="security-tip">
+                        <div class="tip-icon"><i class="fas fa-check-double" style="color: var(--success);"></i></div>
+                        <div>
+                            <strong>Verifikasi 2 Langkah (2FA)</strong>
+                            <p>Aktifkan 2FA untuk menambah lapisan keamanan pada akun Google.</p>
+                        </div>
+                    </div>
+                    <div class="security-tip">
+                        <div class="tip-icon"><i class="fas fa-phone-alt" style="color: var(--info);"></i></div>
+                        <div>
+                            <strong>Nomor HP Pemulihan</strong>
+                            <p>Atur nomor HP cadangan untuk memulihkan akun jika lupa password.</p>
+                        </div>
+                    </div>
+                    <div class="security-tip">
+                        <div class="tip-icon"><i class="fas fa-envelope" style="color: var(--google-red);"></i></div>
+                        <div>
+                            <strong>Email Pemulihan</strong>
+                            <p>Atur email cadangan untuk menerima informasi reset password.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h2>G. Rangkuman</h2>
+                <ul>
+                    <li><strong>Ancaman Digital:</strong> Malware, phishing, ransomware, peretasan, Wi-Fi publik, pencurian identitas.</li>
+                    <li><strong>Keamanan HP:</strong> Gunakan kunci keamanan, aktifkan Find My Device, pembaruan otomatis, kelola izin aplikasi.</li>
+                    <li><strong>Keamanan Koneksi:</strong> Hindari Wi-Fi publik untuk transaksi penting, gunakan VPN, periksa HTTPS.</li>
+                    <li><strong>Pengamanan Dokumen:</strong> Atur share settings (Viewer/Commenter/Editor), batasi akses hanya yang berwenang.</li>
+                    <li><strong>Portofolio Digital:</strong> Kumpulkan produk, simpan di folder, atur akses, bagikan link.</li>
+                    <li><strong>Tips Keamanan:</strong> Password kuat, verifikasi 2 langkah, nomor HP pemulihan, email pemulihan.</li>
+                </ul>
+
+                <div class="warning-box">
+                    <i class="fas fa-exclamation-triangle"></i> <strong>Ingat!</strong> Keamanan digital adalah tanggung jawab bersama. Lindungi data pribadi dan karya digital Anda. Selalu waspada terhadap ancaman digital!
+                </div>
+
+                <div class="quote-box" style="margin-top: 1.5rem; text-align: center;">
+                    <i class="fas fa-shield-alt"></i> Aman Digital, Karya Terjaga, Portofolio Terkelola! 🔒
+                </div>
+            </div>
+
+            <!-- Navigasi -->
+            <div class="materi-navigation">
+                <a href="materi1-2.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i> Kembali ke Materi 1.2
+                </a>
+                <a href="../index-materi-informatika.html" class="nav-btn primary">
+                    <i class="fas fa-check"></i> Selesai Proyek 1
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script src="../../../script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                });
+            }
+            
+            // Threat Cards Interaktif
+            const threatCards = document.querySelectorAll('.threat-card');
+            threatCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
