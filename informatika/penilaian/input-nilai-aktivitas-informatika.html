@@ -1305,8 +1305,7 @@
             </div>
         </div>
     </div>
-
-    <script>
+<script>
     // ==================== PROTEKSI LOGIN ====================
     (function() {
         const isLoggedIn = sessionStorage.getItem('isAdminLoggedIn');
@@ -1575,6 +1574,25 @@
     function formatTanggalDetail(timestamp) {
         if (!timestamp) return '-';
         try {
+            let cleaned = timestamp.replace('pukul', '').replace(/\./g, ':');
+            const parts = cleaned.match(/(\d+)\s+(\w+)\s+(\d+)\s*[-:]\s*(\d+):(\d+):(\d+)/);
+            if (parts) {
+                const day = parseInt(parts[1]);
+                const monthName = parts[2];
+                const year = parseInt(parts[3]);
+                const hours = parseInt(parts[4]);
+                const minutes = parseInt(parts[5]);
+                const seconds = parseInt(parts[6]);
+                
+                const monthMap = {
+                    'Januari': 0, 'Februari': 1, 'Maret': 2, 'April': 3, 'Mei': 4, 'Juni': 5,
+                    'Juli': 6, 'Agustus': 7, 'September': 8, 'Oktober': 9, 'November': 10, 'Desember': 11
+                };
+                const month = monthMap[monthName];
+                if (month !== undefined) {
+                    return `${day} ${monthName} ${year} ${hours.toString().padStart(2,'0')}:${minutes.toString().padStart(2,'0')}:${seconds.toString().padStart(2,'0')}`;
+                }
+            }
             const date = new Date(timestamp);
             if (!isNaN(date.getTime())) {
                 const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
@@ -1588,8 +1606,10 @@
                 const seconds = date.getSeconds().toString().padStart(2, '0');
                 return `${dayName}, ${day} ${month} ${year} ${hours}:${minutes}:${seconds}`;
             }
-        } catch (e) {}
-        return String(timestamp).split(' ')[0] || '-';
+            return String(timestamp);
+        } catch (e) {
+            return String(timestamp);
+        }
     }
 
     // ===== FUNGSI DETEKSI LINK =====
@@ -1805,7 +1825,6 @@
                              driveInfo.type === 'presentation' ? 'presentation' :
                              driveInfo.type === 'pdf' ? 'pdf' : '';
 
-            // Untuk folder, gunakan embedded view
             if (driveInfo.type === 'folder') {
                 const embedUrl = `https://drive.google.com/embeddedfolderview?id=${driveInfo.fileId}#grid`;
                 return `
@@ -1818,7 +1837,6 @@
                 `;
             }
 
-            // Untuk file lainnya
             const embedUrl = `https://drive.google.com/file/d/${driveInfo.fileId}/preview`;
             return `
                 <div class="file-info-card">
@@ -1888,48 +1906,38 @@
 
     // ===== RENDER VALUE UNIVERSAL =====
     function renderValueUniversal(value) {
-        // ===== NULL / UNDEFINED / KOSONG =====
         if (value === null || value === undefined || value === '') {
             return `<div class="field-value-box"><span class="empty-value">(kosong)</span></div>`;
         }
 
-        // ===== NUMBER =====
         if (typeof value === 'number') {
             return `<div class="field-value-box">${escapeHtml(String(value))}</div>`;
         }
 
-        // ===== BOOLEAN =====
         if (typeof value === 'boolean') {
             return `<div class="field-value-box">${value ? '✅ Ya' : '❌ Tidak'}</div>`;
         }
 
-        // ===== STRING =====
         if (typeof value === 'string') {
-            // Cek apakah ini link
             if (isLink(value)) {
                 return renderLinkPreviewUniversal(value);
             }
             
-            // Cek apakah ini JSON string
             if ((value.startsWith('{') || value.startsWith('[')) && (value.endsWith('}') || value.endsWith(']'))) {
                 try {
                     const parsed = JSON.parse(value);
                     return renderValueUniversal(parsed);
-                } catch (e) {
-                    // Bukan JSON valid, tampilkan sebagai string biasa
-                }
+                } catch (e) {}
             }
             
             return `<div class="field-value-box">${escapeHtml(value)}</div>`;
         }
 
-        // ===== ARRAY =====
         if (Array.isArray(value)) {
             if (value.length === 0) {
                 return `<div class="field-value-box"><span class="empty-value">(kosong)</span></div>`;
             }
 
-            // Cek apakah semua elemen adalah string (checklist)
             if (value.every(item => typeof item === 'string')) {
                 let listHtml = `<div class="field-value-box">`;
                 value.forEach((item, idx) => {
@@ -1939,9 +1947,7 @@
                 return listHtml;
             }
 
-            // Array of objects (tabel)
             if (value.every(item => typeof item === 'object' && item !== null)) {
-                // Kumpulkan semua key yang mungkin ada
                 const allKeys = new Set();
                 value.forEach(item => {
                     Object.keys(item).forEach(k => allKeys.add(k));
@@ -1975,7 +1981,6 @@
                 return tableHtml;
             }
 
-            // Array campuran
             let listHtml = `<div class="field-value-box">`;
             value.forEach((item, idx) => {
                 if (typeof item === 'object' && item !== null) {
@@ -1991,14 +1996,12 @@
             return listHtml;
         }
 
-        // ===== OBJECT =====
         if (typeof value === 'object') {
             const keys = Object.keys(value);
             if (keys.length === 0) {
                 return `<div class="field-value-box"><span class="empty-value">(kosong)</span></div>`;
             }
 
-            // Prioritaskan link folder
             const linkKeys = keys.filter(k => 
                 k.toLowerCase().includes('link') || 
                 k.toLowerCase().includes('folder') || 
@@ -2012,7 +2015,6 @@
                 const val = value[key];
                 const label = formatLabel(key);
                 
-                // Cek apakah ini link
                 const isLinkValue = typeof val === 'string' && isLink(val);
                 
                 if (isLinkValue) {
@@ -2036,7 +2038,6 @@
             return objHtml;
         }
 
-        // ===== FALLBACK =====
         return `<div class="field-value-box">${escapeHtml(String(value))}</div>`;
     }
 
@@ -2090,7 +2091,7 @@
         return 'fa-file-alt';
     }
 
-    // ===== RENDER PREVIEW UNIVERSAL (TANPA SORTING - SESUAI URUTAN JSON ASLI) =====
+    // ===== RENDER PREVIEW UNIVERSAL (DIPERBAIKI - KELAS TIDAK KOSONG) =====
     function renderPreviewUniversal(data, namaSiswa, kelasSiswa) {
         if (!data || typeof data !== 'object' || Object.keys(data).length === 0) {
             return `<div class="empty-message" style="display:block;"><i class="fas fa-info-circle"></i> Tidak ada data jawaban</div>`;
@@ -2098,10 +2099,35 @@
 
         let html = '';
 
-        // ===== INFO SISWA =====
-        const nama = namaSiswa || data.Nama || data.nama || data['Nama Lengkap'] || data.identitas?.Nama || '-';
-        const kelas = kelasSiswa || data.Kelas || data.kelas || data['Kelas'] || data.identitas?.Kelas || '-';
-        const timestamp = data.Timestamp || data.timestamp || data['Timestamp Pengisian'] || '';
+        // ===== AMBIL DATA IDENTITAS DARI BEBERAPA KEMUNGKINAN =====
+        let identitasData = data['A. Identitas Kelompok'] || 
+                            data['Identitas Kelompok'] || 
+                            data.identitas || 
+                            data.Identitas || 
+                            {};
+
+        // ===== INFO SISWA - DIPERBAIKI =====
+        const nama = namaSiswa || 
+                     data.Nama || 
+                     data.nama || 
+                     data['Nama Lengkap'] || 
+                     identitasData['Nama Lengkap'] || 
+                     identitasData.Nama || 
+                     identitasData.nama || 
+                     '-';
+                     
+        const kelas = kelasSiswa || 
+                      data.Kelas || 
+                      data.kelas || 
+                      data['Kelas'] || 
+                      identitasData.Kelas || 
+                      identitasData.kelas || 
+                      '-';
+                      
+        const timestamp = data.Timestamp || 
+                          data.timestamp || 
+                          data['Timestamp Pengisian'] || 
+                          '';
 
         html += `<div class="jawaban-info">
             <span><strong>👤 Nama:</strong> ${escapeHtml(nama)}</span>
@@ -2109,10 +2135,11 @@
             ${timestamp ? `<span><strong>📅 Waktu:</strong> ${escapeHtml(formatTanggalDetail(timestamp))}</span>` : ''}
         </div>`;
 
-        // ===== AMBIL SEMUA KEY (HANYA EXCLUDE SANGAT MINIMAL) =====
+        // ===== AMBIL SEMUA KEY =====
         const excludeKeys = ['Nama', 'nama', 'Kelas', 'kelas', 'Semester', 'semester', 
                              'Status', 'status', 'Key', 'key', '_status', '_key',
-                             'Timestamp', 'timestamp', 'Waktu', 'waktu'];
+                             'Timestamp', 'timestamp', 'Waktu', 'waktu',
+                             'aktivitas', 'identitas', 'Identitas'];
         
         let keys = Object.keys(data).filter(key => {
             if (key.startsWith('_')) return false;
@@ -2120,9 +2147,6 @@
             if (excludeKeys.includes(key.toLowerCase())) return false;
             return true;
         });
-
-        // ===== PERTAHANKAN URUTAN ASLI JSON (TIDAK DISORTING) =====
-        // keys.sort((a, b) => a.localeCompare(b)); // <-- DIHAPUS - GURU INGIN URUTAN ASLI JSON
 
         if (keys.length === 0) {
             return '<div class="empty-message" style="display:block;"><i class="fas fa-info-circle"></i> Tidak ada data untuk ditampilkan</div>';
@@ -2918,5 +2942,6 @@
     
     document.addEventListener('DOMContentLoaded', init);
     </script>
+
 </body>
 </html>

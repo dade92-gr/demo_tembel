@@ -29,113 +29,6 @@
             line-height: 1.6;
         }
 
-        /* ============ NAVBAR ============ */
-        .navbar {
-            background: linear-gradient(135deg, #1a252f, #2c3e50);
-            padding: 0.8rem 2rem;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: white;
-            text-decoration: none;
-        }
-
-        .logo img {
-            height: 40px;
-            width: 40px;
-            border-radius: 8px;
-            object-fit: cover;
-        }
-
-        .logo h1 {
-            font-size: 1rem;
-            font-weight: 600;
-            margin: 0;
-            color: white;
-            line-height: 1.2;
-        }
-
-        .logo h1 span {
-            color: var(--informatika-primary);
-        }
-
-        /* ===== NAV MENU ===== */
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 5px;
-            align-items: center;
-            margin: 0;
-            padding: 0;
-        }
-
-        .nav-menu li {
-            margin: 0;
-        }
-
-        .nav-link {
-            color: rgba(255,255,255,0.8);
-            text-decoration: none;
-            font-size: 0.9rem;
-            padding: 8px 14px;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .nav-link:hover {
-            color: white;
-            background: rgba(255,255,255,0.1);
-        }
-
-        .nav-link.active {
-            color: white;
-            background: var(--informatika-primary);
-        }
-
-        .nav-link i {
-            font-size: 0.9rem;
-            width: 18px;
-            text-align: center;
-        }
-
-        /* ===== HAMBURGER ===== */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-            padding: 8px;
-            background: transparent;
-            border: none;
-            z-index: 1001;
-        }
-
-        .hamburger .bar {
-            width: 26px;
-            height: 3px;
-            background: white;
-            border-radius: 3px;
-            transition: all 0.3s ease;
-        }
-
         /* ============ MAIN CONTENT ============ */
         .activity-detail-container {
             max-width: 1000px;
@@ -928,41 +821,6 @@
 
         /* ============ RESPONSIVE ============ */
         @media (max-width: 768px) {
-            .navbar { padding: 0.7rem 1rem; }
-            .logo h1 { font-size: 0.8rem; }
-            .logo img { height: 32px; width: 32px; }
-            .hamburger { display: flex; }
-
-            .nav-menu {
-                position: fixed;
-                top: 0;
-                right: -320px;
-                width: 300px;
-                height: 100vh;
-                background: linear-gradient(180deg, #1a252f, #2c3e50);
-                flex-direction: column;
-                padding: 80px 20px 20px 20px;
-                gap: 2px;
-                transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-                box-shadow: -10px 0 30px rgba(0,0,0,0.4);
-                overflow-y: auto;
-                z-index: 999;
-                border-left: 3px solid var(--informatika-primary);
-            }
-
-            .nav-menu.active { right: 0; }
-            .nav-menu li { width: 100%; }
-            .nav-link {
-                padding: 14px 18px;
-                font-size: 1rem;
-                width: 100%;
-                border-radius: 10px;
-                justify-content: flex-start;
-            }
-            .nav-link i { width: 28px; font-size: 1.1rem; text-align: center; }
-            .nav-link:hover { background: rgba(52, 152, 219, 0.2); }
-            .nav-link.active { background: var(--informatika-primary); }
-
             .activity-detail-container { padding: 1rem; }
             .worksheet-container { padding: 1rem; }
             .worksheet-title { font-size: 1.5rem; }
@@ -1000,16 +858,10 @@
             .qa-table td, .qa-table th { padding: 6px 8px; }
             .materi-section { padding: 1.2rem !important; }
             .materi-card { padding: 1rem !important; }
-            .navbar { padding: 0.5rem 0.7rem; }
-            .logo h1 { font-size: 0.7rem; }
-            .logo img { height: 28px; width: 28px; }
-            .nav-menu { width: 280px; right: -280px; padding: 70px 15px 15px 15px; }
-            .nav-link { padding: 12px 14px; font-size: 0.9rem; }
         }
 
         @media print {
             .materi-section { display: none !important; }
-            .navbar { display: none !important; }
         }
     </style>
 </head>
@@ -1018,22 +870,22 @@
     <header>
         <nav class="navbar">
             <div class="nav-container">
-                <a href="../../../index.html" class="logo" style="text-decoration:none;">
-                    <img src="../../../assets/images/logo.png" alt="Logo Sekolah" onerror="this.style.display='none'">
-                    <h1>INFORMATIKA</h1>
-                </a>
-                <button class="hamburger" id="hamburger" aria-label="Toggle Menu">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                </button>
+                <div class="logo">
+                    <img src="../../../assets/images/logo.png" alt="Logo Sekolah">
+                    <h1>INFORMATIKA - PROJEK 1</h1>
+                </div>
                 <ul class="nav-menu" id="nav-menu">
                     <li><a href="../../../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
                     <li><a href="../../index-informatika.html" class="nav-link"><i class="fas fa-laptop-code"></i> Beranda Informatika</a></li>
-                    <li><a href="../index-aktivitas-informatika.html" class="nav-link active"><i class="fas fa-tasks"></i> Daftar Aktivitas</a></li>
+                    <li><a href="../index-aktivitas-informatika.html" class="nav-link active"><i class="fas fa-tasks"></i> Daftar Kegiatan</a></li>
                     <li><a href="../../materi-pembelajaran/index-materi-informatika.html" class="nav-link"><i class="fas fa-book-open"></i> Daftar Materi</a></li>
                     <li><a href="../../penilaian/index-penilaian-informatika.html" class="nav-link"><i class="fas fa-chart-line"></i> Penilaian</a></li>
                 </ul>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
             </div>
         </nav>
     </header>
@@ -1398,7 +1250,7 @@
                 <h3 class="section-title"><i class="fas fa-users"></i> 💬 DISKUSI KELOMPOK</h3>
                 <div class="instruction-box"><i class="fas fa-comments"></i> Diskusikan bersama kelompokmu, lalu tulis jawaban singkat!</div>
 
-                <table class="qa-table">
+                <table class="qa-table" id="tabelDiskusi">
                     <thead>
                         <tr><th class="question-col">Pertanyaan</th><th class="answer-col">Jawaban Kelompok</th></tr>
                     </thead>
@@ -1428,7 +1280,7 @@
                 <h3 class="section-title"><i class="fas fa-pen"></i> 📝 REFLEKSI INDIVIDU</h3>
                 <div class="instruction-box"><i class="fas fa-question-circle"></i> Tulis dengan jujur (cukup 1-2 kalimat)!</div>
 
-                <table class="qa-table">
+                <table class="qa-table" id="tabelRefleksi">
                     <thead>
                         <tr><th class="question-col">Pertanyaan</th><th class="answer-col">Jawabanku</th></tr>
                     </thead>
@@ -1453,7 +1305,7 @@
             <div class="section-card">
                 <h3 class="section-title"><i class="fas fa-list-check"></i> 📋 PEMBAGIAN TUGAS KELOMPOK</h3>
                 
-                <table class="qa-table">
+                <table class="qa-table" id="tabelTugas">
                     <thead>
                         <tr><th style="width:45%;">Tugas</th><th style="width:35%;">Penanggung Jawab</th><th style="width:20%;">Sudah Selesai?</th></tr>
                     </thead>
@@ -1676,7 +1528,7 @@
                 localStorage.removeItem(STORAGE_KEY);
             }
 
-            // ==================== COLLECT ALL FORM DATA ====================
+            // ==================== COLLECT ALL FORM DATA (STRUKTUR TABEL/ARRAY) ====================
             function collectAllFormData() {
                 const timestamp = getFormattedTimestamp();
                 
@@ -1690,61 +1542,58 @@
                     },
                     "B. Produk Google Docs": {
                         "Link": document.getElementById('docsLink').value || '',
-                        "Checklist": {
-                            "Judul Heading 1": getChecked('docs_f1'),
-                            "Subjudul Heading 2": getChecked('docs_f2'),
-                            "Paragraf deskripsi": getChecked('docs_f3'),
-                            "Gambar": getChecked('docs_f4'),
-                            "Daftar bullet": getChecked('docs_f5'),
-                            "Link referensi": getChecked('docs_f6'),
-                            "Dibagikan": getChecked('docs_f7')
-                        }
+                        "Checklist": [
+                            ["Judul (Heading 1)", getChecked('docs_f1')],
+                            ["Subjudul (Heading 2)", getChecked('docs_f2')],
+                            ["Paragraf deskripsi", getChecked('docs_f3')],
+                            ["Gambar/ilustrasi", getChecked('docs_f4')],
+                            ["Daftar bullet/numbered", getChecked('docs_f5')],
+                            ["Link referensi", getChecked('docs_f6')],
+                            ["Dibagikan ke anggota kelompok", getChecked('docs_f7')]
+                        ]
                     },
                     "C. Produk Google Sheets": {
                         "Link": document.getElementById('sheetsLink').value || '',
-                        "Checklist": {
-                            "Judul tabel": getChecked('sheets_f1'),
-                            "Header kolom": getChecked('sheets_f2'),
-                            "10 data budaya": getChecked('sheets_f3'),
-                            "Filter data": getChecked('sheets_f4'),
-                            "Rumus COUNT": getChecked('sheets_f5'),
-                            "Grafik": getChecked('sheets_f6'),
-                            "Dibagikan": getChecked('sheets_f7')
-                        }
+                        "Checklist": [
+                            ["Judul tabel (merge cells)", getChecked('sheets_f1')],
+                            ["Header kolom (No, Nama, Jenis, Asal, Tahun)", getChecked('sheets_f2')],
+                            ["10 data budaya", getChecked('sheets_f3')],
+                            ["Filter data", getChecked('sheets_f4')],
+                            ["Rumus COUNT", getChecked('sheets_f5')],
+                            ["Grafik/chart", getChecked('sheets_f6')],
+                            ["Dibagikan ke anggota kelompok", getChecked('sheets_f7')]
+                        ]
                     },
                     "D. Produk Google Slides": {
                         "Link": document.getElementById('slidesLink').value || '',
-                        "Checklist": {
-                            "Cover slide": getChecked('slides_f1'),
-                            "Slide isi": getChecked('slides_f2'),
-                            "Gambar": getChecked('slides_f3'),
-                            "Tema/warna": getChecked('slides_f4'),
-                            "Penutup": getChecked('slides_f5'),
-                            "Dibagikan": getChecked('slides_f6')
-                        }
+                        "Checklist": [
+                            ["Cover slide", getChecked('slides_f1')],
+                            ["Slide isi (minimal 5)", getChecked('slides_f2')],
+                            ["Gambar di slide", getChecked('slides_f3')],
+                            ["Tema/warna", getChecked('slides_f4')],
+                            ["Penutup/terima kasih", getChecked('slides_f5')],
+                            ["Dibagikan ke anggota kelompok", getChecked('slides_f6')]
+                        ]
                     },
-                    "E. Diskusi Kelompok": {
-                        "Pengalaman kolaborasi": document.getElementById('diskusi1').value || '',
-                        "Kesulitan mengedit bersama": document.getElementById('diskusi2').value || '',
-                        "Pembagian tugas": document.getElementById('diskusi3').value || '',
-                        "Fitur membantu": document.getElementById('diskusi4').value || ''
-                    },
-                    "F. Refleksi Individu": {
-                        "Hal baru dipelajari": document.getElementById('ref1').value || '',
-                        "Kontribusi": document.getElementById('ref2').value || '',
-                        "Aplikasi favorit": document.getElementById('ref3').value || ''
-                    },
-                    "G. Pembagian Tugas": {
-                        "Docs - Penanggung Jawab": document.getElementById('tugas_docs').value || '',
-                        "Docs - Selesai": getChecked('tugas_docs_selesai'),
-                        "Sheets - Penanggung Jawab": document.getElementById('tugas_sheets').value || '',
-                        "Sheets - Selesai": getChecked('tugas_sheets_selesai'),
-                        "Slides - Penanggung Jawab": document.getElementById('tugas_slides').value || '',
-                        "Slides - Selesai": getChecked('tugas_slides_selesai'),
-                        "Isi Docs - Selesai": getChecked('tugas_docs_isi'),
-                        "Isi Sheets - Selesai": getChecked('tugas_sheets_isi'),
-                        "Isi Slides - Selesai": getChecked('tugas_slides_isi')
-                    }
+                    "E. Diskusi Kelompok": [
+                        ["Bagaimana pengalaman kalian bekerja bersama (kolaborasi) menggunakan Google Workspace?", document.getElementById('diskusi1').value || ''],
+                        ["Apa kesulitan saat mengedit dokumen secara bersamaan?", document.getElementById('diskusi2').value || ''],
+                        ["Bagaimana cara kelompokmu membagi tugas agar semua anggota berkontribusi?", document.getElementById('diskusi3').value || ''],
+                        ["Fitur apa yang paling membantu saat bekerja bersama?", document.getElementById('diskusi4').value || '']
+                    ],
+                    "F. Refleksi Individu": [
+                        ["Hal baru yang aku pelajari dari kolaborasi hari ini:", document.getElementById('ref1').value || ''],
+                        ["Kontribusiku dalam kelompok:", document.getElementById('ref2').value || ''],
+                        ["Aplikasi Google Workspace yang paling aku sukai, karena:", document.getElementById('ref3').value || '']
+                    ],
+                    "G. Pembagian Tugas": [
+                        ["Membuat & membagikan Google Docs", document.getElementById('tugas_docs').value || '', getChecked('tugas_docs_selesai')],
+                        ["Membuat & membagikan Google Sheets", document.getElementById('tugas_sheets').value || '', getChecked('tugas_sheets_selesai')],
+                        ["Membuat & membagikan Google Slides", document.getElementById('tugas_slides').value || '', getChecked('tugas_slides_selesai')],
+                        ["Mengisi dokumen bersama", "SEMUA", getChecked('tugas_docs_isi')],
+                        ["Mengisi data Sheets bersama", "SEMUA", getChecked('tugas_sheets_isi')],
+                        ["Membuat presentasi bersama", "SEMUA", getChecked('tugas_slides_isi')]
+                    ]
                 };
             }
 
@@ -1783,15 +1632,13 @@
                 if (savedData["B. Produk Google Docs"]) {
                     const b = savedData["B. Produk Google Docs"];
                     document.getElementById('docsLink').value = b["Link"] || '';
-                    if (b["Checklist"]) {
-                        const cl = b["Checklist"];
-                        document.getElementById('docs_f1').checked = cl["Judul Heading 1"] || false;
-                        document.getElementById('docs_f2').checked = cl["Subjudul Heading 2"] || false;
-                        document.getElementById('docs_f3').checked = cl["Paragraf deskripsi"] || false;
-                        document.getElementById('docs_f4').checked = cl["Gambar"] || false;
-                        document.getElementById('docs_f5').checked = cl["Daftar bullet"] || false;
-                        document.getElementById('docs_f6').checked = cl["Link referensi"] || false;
-                        document.getElementById('docs_f7').checked = cl["Dibagikan"] || false;
+                    if (b["Checklist"] && Array.isArray(b["Checklist"])) {
+                        const checklistIds = ['docs_f1', 'docs_f2', 'docs_f3', 'docs_f4', 'docs_f5', 'docs_f6', 'docs_f7'];
+                        b["Checklist"].forEach((item, index) => {
+                            if (index < checklistIds.length) {
+                                document.getElementById(checklistIds[index]).checked = item[1] || false;
+                            }
+                        });
                     }
                 }
 
@@ -1799,15 +1646,13 @@
                 if (savedData["C. Produk Google Sheets"]) {
                     const c = savedData["C. Produk Google Sheets"];
                     document.getElementById('sheetsLink').value = c["Link"] || '';
-                    if (c["Checklist"]) {
-                        const cl = c["Checklist"];
-                        document.getElementById('sheets_f1').checked = cl["Judul tabel"] || false;
-                        document.getElementById('sheets_f2').checked = cl["Header kolom"] || false;
-                        document.getElementById('sheets_f3').checked = cl["10 data budaya"] || false;
-                        document.getElementById('sheets_f4').checked = cl["Filter data"] || false;
-                        document.getElementById('sheets_f5').checked = cl["Rumus COUNT"] || false;
-                        document.getElementById('sheets_f6').checked = cl["Grafik"] || false;
-                        document.getElementById('sheets_f7').checked = cl["Dibagikan"] || false;
+                    if (c["Checklist"] && Array.isArray(c["Checklist"])) {
+                        const checklistIds = ['sheets_f1', 'sheets_f2', 'sheets_f3', 'sheets_f4', 'sheets_f5', 'sheets_f6', 'sheets_f7'];
+                        c["Checklist"].forEach((item, index) => {
+                            if (index < checklistIds.length) {
+                                document.getElementById(checklistIds[index]).checked = item[1] || false;
+                            }
+                        });
                     }
                 }
 
@@ -1815,46 +1660,50 @@
                 if (savedData["D. Produk Google Slides"]) {
                     const d = savedData["D. Produk Google Slides"];
                     document.getElementById('slidesLink').value = d["Link"] || '';
-                    if (d["Checklist"]) {
-                        const cl = d["Checklist"];
-                        document.getElementById('slides_f1').checked = cl["Cover slide"] || false;
-                        document.getElementById('slides_f2').checked = cl["Slide isi"] || false;
-                        document.getElementById('slides_f3').checked = cl["Gambar"] || false;
-                        document.getElementById('slides_f4').checked = cl["Tema/warna"] || false;
-                        document.getElementById('slides_f5').checked = cl["Penutup"] || false;
-                        document.getElementById('slides_f6').checked = cl["Dibagikan"] || false;
+                    if (d["Checklist"] && Array.isArray(d["Checklist"])) {
+                        const checklistIds = ['slides_f1', 'slides_f2', 'slides_f3', 'slides_f4', 'slides_f5', 'slides_f6'];
+                        d["Checklist"].forEach((item, index) => {
+                            if (index < checklistIds.length) {
+                                document.getElementById(checklistIds[index]).checked = item[1] || false;
+                            }
+                        });
                     }
                 }
 
-                // E. Diskusi
-                if (savedData["E. Diskusi Kelompok"]) {
-                    const e = savedData["E. Diskusi Kelompok"];
-                    document.getElementById('diskusi1').value = e["Pengalaman kolaborasi"] || '';
-                    document.getElementById('diskusi2').value = e["Kesulitan mengedit bersama"] || '';
-                    document.getElementById('diskusi3').value = e["Pembagian tugas"] || '';
-                    document.getElementById('diskusi4').value = e["Fitur membantu"] || '';
+                // E. Diskusi Kelompok
+                if (savedData["E. Diskusi Kelompok"] && Array.isArray(savedData["E. Diskusi Kelompok"])) {
+                    const diskusiIds = ['diskusi1', 'diskusi2', 'diskusi3', 'diskusi4'];
+                    savedData["E. Diskusi Kelompok"].forEach((item, index) => {
+                        if (index < diskusiIds.length) {
+                            document.getElementById(diskusiIds[index]).value = item[1] || '';
+                        }
+                    });
                 }
 
-                // F. Refleksi
-                if (savedData["F. Refleksi Individu"]) {
-                    const f = savedData["F. Refleksi Individu"];
-                    document.getElementById('ref1').value = f["Hal baru dipelajari"] || '';
-                    document.getElementById('ref2').value = f["Kontribusi"] || '';
-                    document.getElementById('ref3').value = f["Aplikasi favorit"] || '';
+                // F. Refleksi Individu
+                if (savedData["F. Refleksi Individu"] && Array.isArray(savedData["F. Refleksi Individu"])) {
+                    const refIds = ['ref1', 'ref2', 'ref3'];
+                    savedData["F. Refleksi Individu"].forEach((item, index) => {
+                        if (index < refIds.length) {
+                            document.getElementById(refIds[index]).value = item[1] || '';
+                        }
+                    });
                 }
 
                 // G. Pembagian Tugas
-                if (savedData["G. Pembagian Tugas"]) {
-                    const g = savedData["G. Pembagian Tugas"];
-                    document.getElementById('tugas_docs').value = g["Docs - Penanggung Jawab"] || '';
-                    document.getElementById('tugas_docs_selesai').checked = g["Docs - Selesai"] || false;
-                    document.getElementById('tugas_sheets').value = g["Sheets - Penanggung Jawab"] || '';
-                    document.getElementById('tugas_sheets_selesai').checked = g["Sheets - Selesai"] || false;
-                    document.getElementById('tugas_slides').value = g["Slides - Penanggung Jawab"] || '';
-                    document.getElementById('tugas_slides_selesai').checked = g["Slides - Selesai"] || false;
-                    document.getElementById('tugas_docs_isi').checked = g["Isi Docs - Selesai"] || false;
-                    document.getElementById('tugas_sheets_isi').checked = g["Isi Sheets - Selesai"] || false;
-                    document.getElementById('tugas_slides_isi').checked = g["Isi Slides - Selesai"] || false;
+                if (savedData["G. Pembagian Tugas"] && Array.isArray(savedData["G. Pembagian Tugas"])) {
+                    const tugasData = savedData["G. Pembagian Tugas"];
+                    if (tugasData.length >= 6) {
+                        document.getElementById('tugas_docs').value = tugasData[0][1] || '';
+                        document.getElementById('tugas_docs_selesai').checked = tugasData[0][2] || false;
+                        document.getElementById('tugas_sheets').value = tugasData[1][1] || '';
+                        document.getElementById('tugas_sheets_selesai').checked = tugasData[1][2] || false;
+                        document.getElementById('tugas_slides').value = tugasData[2][1] || '';
+                        document.getElementById('tugas_slides_selesai').checked = tugasData[2][2] || false;
+                        document.getElementById('tugas_docs_isi').checked = tugasData[3][2] || false;
+                        document.getElementById('tugas_sheets_isi').checked = tugasData[4][2] || false;
+                        document.getElementById('tugas_slides_isi').checked = tugasData[5][2] || false;
+                    }
                 }
             }
 
@@ -2230,7 +2079,7 @@
                 }
             }
 
-            // ==================== EXPORT TEMPLATE LEMBAR AKTIVITAS (KOSONG) ====================
+            // ==================== EXPORT TEMPLATE ====================
             function exportToDocx() {
                 const exportBtn = document.getElementById('exportBtn');
                 exportBtn.disabled = true;
@@ -2309,7 +2158,6 @@
                                     <span>⏰ 4 JP</span>
                                 </div>
                             </div>
-                        
 
                             <h1 class="worksheet-title">LEMBAR KERJA PESERTA DIDIK (LKPD) PROYEK 1 – AKTIVITAS 2 (PRAKTIK PRODUKTIVITAS & KOLABORASI)</h1>
                             <div style="text-align: center; margin-bottom: 1.5rem; background: #ebf5fb; padding: 0.8rem; border-radius: 8px;">
