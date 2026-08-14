@@ -3,8 +3,7 @@ chcp 65001 > nul
 setlocal enabledelayedexpansion
 
 cd /d "D:\proyek website\website\LMS pembelajaran" || (
-    echo ❌ ERROR: Gagal pindah ke direktori "D:\proyek website\website\LMS pembelajaran"
-    echo    Pastikan folder tersebut ada.
+    echo ❌ ERROR: Gagal pindah ke direktori
     pause
     exit /b 1
 )
@@ -15,11 +14,9 @@ echo     PROSES UPDATE KE GITHUB (DEMO_TEMBEL)
 echo ========================================
 echo.
 
-REM --- CEK GIT TERINSTALL ---
 where git > nul 2>&1
 if errorlevel 1 (
     echo ❌ ERROR: Git tidak ditemukan.
-    echo    Pastikan Git sudah terinstall dan terdaftar di PATH.
     pause
     exit /b 1
 )
@@ -34,32 +31,26 @@ if errorlevel 1 (
 echo ✅ Berhasil menambahkan file.
 echo.
 
-REM --- CEK APAKAH ADA PERUBAHAN YANG AKAN DI-COMMIT ---
-for /f "delims=" %%i in ('git status --porcelain') do set "ada_perubahan=1"
-if not defined ada_perubahan (
+git status --porcelain | findstr . > nul
+if errorlevel 1 (
     echo ℹ️  Tidak ada perubahan yang perlu di-commit.
-    echo    Proses selesai.
     pause
     exit /b 0
 )
 
-REM --- FORMAT TANGGAL AMAN (YYYY-MM-DD_HH-MM-SS) ---
 for /f "tokens=1-3 delims=/" %%a in ("%date%") do (
     set "dd=%%a"
     set "mm=%%b"
     set "yyyy=%%c"
 )
 
-REM Ambil jam dari %time% (format: HH:MM:SS,XX)
 for /f "tokens=1-3 delims=:." %%a in ("%time%") do (
     set "hh=%%a"
     set "min=%%b"
     set "ss=%%c"
 )
 
-REM Hapus spasi jika jam < 10
 set "hh=%hh: =0%"
-
 set "tanggal_aman=%yyyy%-%mm%-%dd%_%hh%-%min%-%ss%"
 
 echo [2] Menyimpan perubahan...
@@ -73,12 +64,16 @@ echo ✅ Berhasil commit.
 echo.
 
 echo [3] Mengirim ke GitHub...
-git push origin main
+git push origin master
 if errorlevel 1 (
     echo ❌ ERROR: Gagal push ke GitHub.
-    echo    Periksa koneksi internet dan pastikan Anda memiliki akses ke repository.
-    pause
-    exit /b 1
+    echo    Mencoba force push...
+    git push origin master --force
+    if errorlevel 1 (
+        echo ❌ ERROR: Gagal push juga.
+        pause
+        exit /b 1
+    )
 )
 echo ✅ Berhasil push ke GitHub.
 echo.
@@ -92,5 +87,4 @@ echo 📁 File yang baru saja diupdate:
 git diff --name-only HEAD~1 HEAD
 echo.
 
-echo ========================================
 pause
