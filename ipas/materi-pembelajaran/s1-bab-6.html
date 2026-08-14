@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 6: Interaksi, Komunikasi, Sosialisasi, Institusi Sosial, dan Dinamika Sosial - Kelas X</title>
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* IPAS THEME COLORS - HANYA UNTUK KONTEN */
+        :root {
+            --ipas-primary: #2ecc71;
+            --ipas-secondary: #27ae60;
+            --ipas-light: #d5f4e6;
+            --ipas-dark: #229954;
+            --ipas-accent: #3498db;
+            --ipas-semester1: #3498db;
+            --ipas-social: #e67e22;
+            --ipas-gray: #f5f7fa;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f5f7fa; color: #2c3e50; line-height: 1.6; }
+
+        /* ===== LOGO ZOOM EFFECT ===== */
+        .logo img { transition: transform 0.3s ease; }
+        .logo:hover img { transform: scale(1.2); }
+        
+        /* MAIN CONTENT */
+        .bab-container { padding: 2rem; max-width: 1200px; margin: 0 auto; min-height: calc(100vh - 80px); display: flex; align-items: flex-start; justify-content: center; }
+        
+        .bab-card { background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%); border-radius: 30px; padding: 3rem; box-shadow: 0 20px 40px rgba(230, 126, 34, 0.15); border-left: 8px solid var(--ipas-social); position: relative; overflow: hidden; width: 100%; animation: fadeInUp 0.6s ease-out; }
+        .bab-card::before { content: ''; position: absolute; top: 0; right: 0; width: 250px; height: 250px; background: radial-gradient(circle, rgba(230, 126, 34, 0.1) 0%, transparent 70%); z-index: 0; }
+        .bab-card > * { position: relative; z-index: 1; }
+        
+        .bab-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 3px solid var(--ipas-light); }
+        .bab-icon { width: 80px; height: 80px; background: linear-gradient(135deg, var(--ipas-social), #f39c12); border-radius: 25px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2.5rem; box-shadow: 0 10px 20px rgba(230, 126, 34, 0.3); }
+        .bab-title-wrapper h1 { color: var(--ipas-dark); font-size: 2.5rem; margin-bottom: 0.5rem; line-height: 1.2; }
+        .bab-subtitle { color: var(--ipas-social); font-size: 1.1rem; font-weight: 600; display: flex; align-items: center; gap: 8px; }
+        .bab-subtitle i { font-size: 0.8rem; }
+        
+        .bab-info { display: flex; gap: 2rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+        .info-item { display: flex; align-items: center; gap: 10px; background: var(--ipas-light); padding: 0.8rem 1.5rem; border-radius: 50px; color: var(--ipas-dark); font-weight: 600; }
+        .info-item i { color: var(--ipas-social); font-size: 1.2rem; }
+        
+        .bab-description { background: white; border-radius: 20px; padding: 2rem; margin-bottom: 2rem; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 1px solid rgba(230, 126, 34, 0.1); }
+        .bab-description h2, .bab-description h3, .bab-description h4, .bab-description p, .bab-description ul, .bab-description ol, .bab-description li, .bab-description table, .bab-description .note-box, .bab-description .reflection-box, .bab-description .quote-box, .bab-description blockquote { text-align: justify; }
+        
+        .bab-description h2 { color: var(--ipas-dark); font-size: 2rem; margin: 1.5rem 0 1rem 0; border-bottom: 2px solid var(--ipas-light); padding-bottom: 0.5rem; }
+        .bab-description h3 { color: var(--ipas-dark); font-size: 1.3rem; margin: 1.5rem 0 1rem 0; display: flex; align-items: center; gap: 10px; }
+        .bab-description h4 { color: var(--ipas-dark); font-size: 1.2rem; margin: 1.2rem 0 0.8rem 0; font-weight: 600; }
+        .bab-description h3 i { color: var(--ipas-social); }
+        .bab-description p { color: #555; font-size: 1.1rem; line-height: 1.8; margin-bottom: 1rem; text-align: justify; }
+        .bab-description ul, .bab-description ol { margin-left: 2rem; margin-bottom: 1rem; color: #555; text-align: justify; }
+        .bab-description li { margin-bottom: 0.5rem; text-align: justify; }
+        .bab-description strong { color: var(--ipas-dark); }
+        .bab-description blockquote { margin: 1.5rem 0; padding: 1rem 2rem; background: var(--ipas-light); border-left: 5px solid var(--ipas-social); font-style: italic; font-size: 1.1rem; color: var(--ipas-dark); border-radius: 0 15px 15px 0; }
+        
+        .custom-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 1rem; box-shadow: 0 0 20px rgba(0, 0, 0, 0.05); border-radius: 10px; overflow: hidden; }
+        .custom-table th { background-color: var(--ipas-social); color: white; font-weight: 600; padding: 12px 15px; text-align: left; }
+        .custom-table td { padding: 12px 15px; border-bottom: 1px solid #dddddd; text-align: justify; }
+        .custom-table tr:nth-child(even) { background-color: #f8f8f8; }
+        .custom-table tr:hover { background-color: var(--ipas-light); }
+        
+        .note-box { background: var(--ipas-light); border-left: 5px solid var(--ipas-social); padding: 1.5rem; margin: 1.5rem 0; border-radius: 10px; font-style: italic; }
+        
+        .reflection-box { background: linear-gradient(135deg, #fef5e7, #fef9e7); border-left: 5px solid var(--ipas-social); padding: 1.5rem; margin: 1.5rem 0; border-radius: 10px; border: 1px solid rgba(230, 126, 34, 0.2); }
+        .reflection-box h4 { color: var(--ipas-dark); margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; }
+        .reflection-box h4 i { color: var(--ipas-social); }
+        .reflection-box ul, .reflection-box ol { margin-left: 1.5rem; }
+        
+        .quote-box { background: #f9f9f9; border-left: 5px solid var(--ipas-social); padding: 1.5rem; margin: 1.5rem 0; border-radius: 10px; font-style: italic; font-size: 1.1rem; color: #2c3e50; box-shadow: 0 3px 10px rgba(0,0,0,0.05); }
+        .quote-box i { color: var(--ipas-social); margin-right: 10px; }
+        
+        .institution-card { background: white; border-radius: 15px; padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 1px solid var(--ipas-light); transition: transform 0.3s ease; }
+        .institution-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(230, 126, 34, 0.15); }
+        .institution-card h4 { color: var(--ipas-social); border-bottom: 2px solid var(--ipas-light); padding-bottom: 0.5rem; margin-bottom: 1rem; }
+        
+        .image-container { margin: 2rem 0; text-align: center; width: 100%; }
+        .image-container img { max-width: 100%; max-height: 400px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); border: 3px solid white; display: block; margin: 0 auto; }
+        .image-caption { font-style: italic; color: #6c757d; margin-top: 0.5rem; font-size: 0.95rem; text-align: center; width: 100%; }
+        .image-placeholder { background: #e9ecef; border: 2px dashed var(--ipas-social); border-radius: 15px; padding: 2rem; margin: 2rem 0; text-align: center; color: #6c757d; font-weight: 600; transition: all 0.3s ease; width: 100%; }
+        .image-placeholder i { font-size: 3rem; color: var(--ipas-social); margin-bottom: 1rem; display: block; }
+        .image-placeholder:hover { background: #dee2e6; border-color: var(--ipas-primary); color: #495057; }
+        
+        .bab-navigation { display: flex; gap: 1rem; justify-content: space-between; margin-top: 2rem; }
+        .nav-btn { display: inline-flex; align-items: center; gap: 10px; padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; border: none; cursor: pointer; }
+        .nav-btn.primary { background: linear-gradient(135deg, var(--ipas-social), #f39c12); color: white; box-shadow: 0 5px 15px rgba(230, 126, 34, 0.3); }
+        .nav-btn.primary:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(230, 126, 34, 0.4); }
+        .nav-btn.secondary { background: white; color: var(--ipas-dark); border: 2px solid var(--ipas-light); }
+        .nav-btn.secondary:hover { background: var(--ipas-light); transform: translateX(-5px); }
+        
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
+        @media (max-width: 768px) {
+            .bab-container { padding: 1rem; }
+            .bab-card { padding: 2rem; }
+            .bab-header { flex-direction: column; text-align: center; }
+            .bab-title-wrapper h1 { font-size: 2rem; }
+            .bab-info { justify-content: center; }
+            .bab-navigation { flex-direction: column; }
+            .nav-btn { justify-content: center; }
+        }
+        
+        @media (max-width: 480px) {
+            .bab-card { padding: 1.5rem; }
+            .bab-title-wrapper h1 { font-size: 1.8rem; }
+            .bab-icon { width: 60px; height: 60px; font-size: 2rem; }
+            .info-item { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="../../assets/images/logo.png" alt="Logo Sekolah">
+                    <h1>TEMBOK BELAJAR - PROJEK IPAS</h1>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="../../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="../index-ipas.html" class="nav-link"><i class="fas fa-flask"></i> Beranda IPAS</a></li>
+                    <li><a href="../aktivitas-pembelajaran/index-aktifitas-ipas.html" class="nav-link"><i class="fas fa-tasks"></i> Daftar Aktivitas</a></li>
+                    <li><a href="index-materi-ipas.html" class="nav-link active"><i class="fas fa-book-open"></i> Daftar Materi</a></li>
+                    <li><a href="../penilaian/index-penilaian-ipas.html" class="nav-link"><i class="fas fa-chart-line"></i> Penilaian</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="bab-container">
+        <div class="bab-card">
+            <div class="bab-header">
+                <div class="bab-icon"><i class="fas fa-users"></i></div>
+                <div class="bab-title-wrapper">
+                    <h1>Bab 6: Interaksi, Komunikasi, Sosialisasi, Institusi Sosial, dan Dinamika Sosial</h1>
+                    <div class="bab-subtitle"><i class="fas fa-circle"></i> <span>Semester Ganjil - Kelas X</span></div>
+                </div>
+            </div>
+
+            <div class="bab-description">
+                <h2>A. Pengantar Konseptual: Manusia sebagai Makhluk Sosial</h2>
+                
+                <p>Sejak awal keberadaannya, manusia tidak pernah hidup dalam kesendirian. Setiap individu dilahirkan, tumbuh, dan belajar dalam ruang sosial—dikelilingi oleh orang lain yang turut membentuk cara berpikir, berperilaku, dan merasa. Dalam pandangan sosiologi klasik, manusia disebut sebagai homo socius—makhluk yang hanya dapat mewujudkan dirinya sepenuhnya melalui kehidupan bersama orang lain.</p>
+
+                <div class="image-container" id="gambar1-container">
+                    <img src="s1-bab-6/gambar1.jpg" alt="Ilustrasi Manusia sebagai Makhluk Sosial" 
+                         onerror="this.style.display='none'; document.getElementById('gambar1-placeholder').style.display='block';"
+                         onload="this.style.display='block'; document.getElementById('gambar1-placeholder').style.display='none';">
+                    <div class="image-placeholder" id="gambar1-placeholder" style="display:block;">
+                        <i class="fas fa-image"></i>
+                        <span>[Gambar 1: Ilustrasi Manusia sebagai Makhluk Sosial]</span>
+                        <p style="font-size:0.9rem; margin-top:1rem;">Letakkan file gambar dengan nama "gambar1" di folder "s1-bab-6"</p>
+                    </div>
+                    <div class="image-caption">Gambar 1: Ilustrasi Manusia sebagai Makhluk Sosial</div>
+                </div>
+
+                <h3>1. Hakikat Manusia sebagai Makhluk Sosial</h3>
+                <p>Kebutuhan untuk berinteraksi bukan sekadar dorongan biologis, melainkan kebutuhan eksistensial. Seorang anak belajar bahasa dari keluarganya, nilai dari lingkungannya, dan identitas dari kelompok sosial tempat ia tumbuh.</p>
+
+                <h3>2. Komunikasi sebagai Jembatan Sosial</h3>
+                <p>Interaksi tidak mungkin terjadi tanpa komunikasi. Melalui bahasa, simbol, dan ekspresi, manusia membangun jembatan pengertian.</p>
+
+                <h3>3. Keterhubungan antara Individu, Kelompok, dan Masyarakat</h3>
+                <p>Struktur sosial terbentuk dari interaksi berulang antara individu dan kelompok. Individu memengaruhi masyarakat melalui gagasan dan tindakan; masyarakat membentuk individu melalui norma dan nilai.</p>
+
+                <h3>4. Nilai Universal dalam Kehidupan Sosial</h3>
+                <ul>
+                    <li><strong>Empati</strong> menumbuhkan kemampuan memahami perasaan orang lain.</li>
+                    <li><strong>Gotong royong</strong> mencerminkan semangat kolaborasi khas budaya Indonesia.</li>
+                    <li><strong>Toleransi</strong> menjaga ruang damai di tengah perbedaan.</li>
+                </ul>
+
+                <div class="reflection-box">
+                    <h4><i class="fas fa-question-circle"></i> Refleksi A: Dari Individu Menuju Kesadaran Sosial</h4>
+                    <p>Manusia sebagai makhluk sosial tidak hanya berarti "butuh orang lain," tetapi juga "bertanggung jawab atas orang lain." Setiap tindakan pribadi memiliki dimensi sosial.</p>
+                </div>
+
+                <h2>B. Proses Interaksi dan Komunikasi Sosial</h2>
+
+                <h3>1. Pengertian Interaksi Sosial</h3>
+                <p>Interaksi sosial adalah hubungan timbal balik antara individu, kelompok, atau antar-kelompok yang saling memengaruhi.</p>
+
+                <div class="image-container" id="gambar2-container">
+                    <img src="s1-bab-6/gambar2.jpg" alt="Bentuk-Bentuk Interaksi Sosial" 
+                         onerror="this.style.display='none'; document.getElementById('gambar2-placeholder').style.display='block';"
+                         onload="this.style.display='block'; document.getElementById('gambar2-placeholder').style.display='none';">
+                    <div class="image-placeholder" id="gambar2-placeholder" style="display:block;">
+                        <i class="fas fa-image"></i>
+                        <span>[Gambar 2: Bentuk-Bentuk Interaksi Sosial]</span>
+                        <p style="font-size:0.9rem; margin-top:1rem;">Letakkan file gambar dengan nama "gambar2" di folder "s1-bab-6"</p>
+                    </div>
+                    <div class="image-caption">Gambar 2: Bentuk-Bentuk Interaksi Sosial</div>
+                </div>
+
+                <h3>2. Syarat Terjadinya Interaksi</h3>
+                <ul>
+                    <li><strong>Kontak sosial</strong> — ada bentuk hubungan, baik langsung maupun tidak langsung.</li>
+                    <li><strong>Komunikasi</strong> — ada penyampaian dan penerimaan pesan yang memiliki makna sosial.</li>
+                </ul>
+
+                <h3>3. Bentuk-Bentuk Interaksi Sosial</h3>
+                <ul>
+                    <li><strong>Kerja sama (cooperation)</strong> – individu atau kelompok bekerja bersama mencapai tujuan bersama.</li>
+                    <li><strong>Persaingan (competition)</strong> – dorongan untuk mencapai tujuan tanpa menjatuhkan pihak lain.</li>
+                    <li><strong>Konflik (conflict)</strong> – benturan kepentingan yang dapat memecah atau justru memperkuat solidaritas.</li>
+                    <li><strong>Akomodasi (accommodation)</strong> – proses mencapai keseimbangan setelah konflik.</li>
+                    <li><strong>Asimilasi</strong> – penyatuan dua budaya menjadi pola baru yang disepakati bersama.</li>
+                </ul>
+
+                <h2>C. Sosialisasi dan Pembentukan Identitas Diri</h2>
+
+                <h3>1. Pengertian dan Makna Sosialisasi</h3>
+                <p>Sosialisasi adalah proses pembelajaran sepanjang hayat, di mana individu memperoleh pengetahuan, sikap, nilai, dan keterampilan yang diperlukan agar dapat berpartisipasi efektif dalam masyarakat.</p>
+
+                <h3>2. Agen-Agen Sosialisasi</h3>
+                <ul>
+                    <li><strong>Keluarga:</strong> agen pertama dan utama.</li>
+                    <li><strong>Sekolah:</strong> memperluas dunia sosial anak.</li>
+                    <li><strong>Teman sebaya:</strong> membantu individu belajar menegosiasikan peran sosial.</li>
+                    <li><strong>Media massa dan media digital:</strong> membentuk pandangan global dan gaya hidup.</li>
+                    <li><strong>Masyarakat luas:</strong> menjadi ruang praktik nilai-nilai sosial.</li>
+                </ul>
+
+                <div class="image-container" id="gambar3-container">
+                    <img src="s1-bab-6/gambar3.jpg" alt="Identitas Diri dan Identitas Sosial" 
+                         onerror="this.style.display='none'; document.getElementById('gambar3-placeholder').style.display='block';"
+                         onload="this.style.display='block'; document.getElementById('gambar3-placeholder').style.display='none';">
+                    <div class="image-placeholder" id="gambar3-placeholder" style="display:block;">
+                        <i class="fas fa-image"></i>
+                        <span>[Gambar 3: Identitas Diri dan Identitas Sosial]</span>
+                        <p style="font-size:0.9rem; margin-top:1rem;">Letakkan file gambar dengan nama "gambar3" di folder "s1-bab-6"</p>
+                    </div>
+                    <div class="image-caption">Gambar 3: Identitas Diri dan Identitas Sosial</div>
+                </div>
+
+                <h2>D. Institusi Sosial dan Peranannya dalam Kehidupan Masyarakat</h2>
+
+                <h3>1. Pengertian dan Fungsi Institusi Sosial</h3>
+                <p>Institusi sosial dapat didefinisikan sebagai pola perilaku sosial yang telah mengakar dan diakui oleh masyarakat sebagai cara yang sah untuk memenuhi kebutuhan hidup tertentu.</p>
+
+                <div class="institution-card">
+                    <h4>a. Keluarga</h4>
+                    <p>Keluarga adalah institusi sosial paling dasar. Ia menjadi tempat pertama seseorang belajar nilai, norma, dan kasih sayang.</p>
+                </div>
+
+                <div class="institution-card">
+                    <h4>b. Pendidikan</h4>
+                    <p>Sekolah dan lembaga pendidikan menjadi wahana formal untuk mentransmisikan pengetahuan dan nilai sosial.</p>
+                </div>
+
+                <div class="institution-card">
+                    <h4>c. Ekonomi</h4>
+                    <p>Institusi ekonomi mengatur produksi, distribusi, dan konsumsi barang serta jasa.</p>
+                </div>
+
+                <div class="institution-card">
+                    <h4>d. Politik</h4>
+                    <p>Institusi politik mengatur kekuasaan dan pengambilan keputusan dalam masyarakat.</p>
+                </div>
+
+                <div class="institution-card">
+                    <h4>e. Agama</h4>
+                    <p>Agama berfungsi memberikan makna hidup, arah moral, dan rasa kebersamaan spiritual.</p>
+                </div>
+
+                <div class="institution-card">
+                    <h4>f. Budaya</h4>
+                    <p>Budaya adalah wadah ekspresi identitas kolektif dan hasil kreativitas manusia.</p>
+                </div>
+
+                <div class="image-container" id="gambar4-container">
+                    <img src="s1-bab-6/gambar4.jpg" alt="Hubungan Antar-Institusi Sosial" 
+                         onerror="this.style.display='none'; document.getElementById('gambar4-placeholder').style.display='block';"
+                         onload="this.style.display='block'; document.getElementById('gambar4-placeholder').style.display='none';">
+                    <div class="image-placeholder" id="gambar4-placeholder" style="display:block;">
+                        <i class="fas fa-image"></i>
+                        <span>[Gambar 4: Hubungan Antar-Institusi Sosial]</span>
+                        <p style="font-size:0.9rem; margin-top:1rem;">Letakkan file gambar dengan nama "gambar4" di folder "s1-bab-6"</p>
+                    </div>
+                    <div class="image-caption">Gambar 4: Hubungan Antar-Institusi Sosial</div>
+                </div>
+
+                <h2>E. Dinamika dan Problematika Sosial</h2>
+
+                <h3>1. Faktor Penyebab Dinamika Sosial</h3>
+                
+                <h4>a. Faktor Internal:</h4>
+                <ul>
+                    <li><strong>Inovasi dan penemuan baru</strong></li>
+                    <li><strong>Konflik sosial</strong></li>
+                    <li><strong>Pertumbuhan penduduk</strong></li>
+                </ul>
+                
+                <h4>b. Faktor Eksternal:</h4>
+                <ul>
+                    <li><strong>Kontak dengan kebudayaan lain</strong></li>
+                    <li><strong>Perubahan lingkungan alam</strong></li>
+                    <li><strong>Kemajuan ilmu pengetahuan dan teknologi global</strong></li>
+                </ul>
+
+                <h3>2. Bentuk-Bentuk Perubahan Sosial</h3>
+                <ul>
+                    <li><strong>Evolusi Sosial</strong> – perubahan lambat dan bertahap.</li>
+                    <li><strong>Revolusi Sosial</strong> – perubahan cepat dan menyeluruh.</li>
+                    <li><strong>Difusi Budaya</strong> – penyebaran unsur kebudayaan dari satu wilayah ke wilayah lain.</li>
+                    <li><strong>Modernisasi dan Globalisasi</strong></li>
+                </ul>
+
+                <h3>3. Problematika Sosial dalam Masyarakat Modern</h3>
+                <ul>
+                    <li><strong>Kemiskinan dan Kesenjangan Sosial</strong></li>
+                    <li><strong>Pengangguran dan Ketidakpastian Ekonomi</strong></li>
+                    <li><strong>Intoleransi dan Disintegrasi Sosial</strong></li>
+                    <li><strong>Disinformasi dan Krisis Kepercayaan</strong></li>
+                    <li><strong>Kerusakan Lingkungan Sosial dan Alam</strong></li>
+                </ul>
+
+                <div class="image-container" id="gambar5-container">
+                    <img src="s1-bab-6/gambar5.jpg" alt="Problematika Sosial dalam Masyarakat Modern" 
+                         onerror="this.style.display='none'; document.getElementById('gambar5-placeholder').style.display='block';"
+                         onload="this.style.display='block'; document.getElementById('gambar5-placeholder').style.display='none';">
+                    <div class="image-placeholder" id="gambar5-placeholder" style="display:block;">
+                        <i class="fas fa-image"></i>
+                        <span>[Gambar 5: Problematika Sosial dalam Masyarakat Modern]</span>
+                        <p style="font-size:0.9rem; margin-top:1rem;">Letakkan file gambar dengan nama "gambar5" di folder "s1-bab-6"</p>
+                    </div>
+                    <div class="image-caption">Gambar 5: Problematika Sosial dalam Masyarakat Modern</div>
+                </div>
+
+                <h3>4. Upaya Mengatasi Problematika Sosial</h3>
+                <ul>
+                    <li><strong>Pendidikan kritis dan etis</strong></li>
+                    <li><strong>Pemberdayaan ekonomi lokal</strong></li>
+                    <li><strong>Dialog antarbudaya dan agama</strong></li>
+                    <li><strong>Pemanfaatan teknologi secara etis</strong></li>
+                    <li><strong>Pemerintahan yang transparan dan partisipatif</strong></li>
+                </ul>
+
+                <h2>F. Membangun Masyarakat Berkelanjutan dan Global yang Inklusif</h2>
+
+                <h3>1. Pengertian Pembangunan Berkelanjutan</h3>
+                <ul>
+                    <li><strong>Ekonomi berkelanjutan:</strong> sistem produksi dan konsumsi yang efisien.</li>
+                    <li><strong>Sosial berkeadilan:</strong> distribusi kesejahteraan yang merata.</li>
+                    <li><strong>Lingkungan lestari:</strong> pelestarian sumber daya alam.</li>
+                </ul>
+
+                <div class="image-container" id="gambar6-container">
+                    <img src="s1-bab-6/gambar6.jpg" alt="Masyarakat Global dan Solidaritas Kemanusiaan" 
+                         onerror="this.style.display='none'; document.getElementById('gambar6-placeholder').style.display='block';"
+                         onload="this.style.display='block'; document.getElementById('gambar6-placeholder').style.display='none';">
+                    <div class="image-placeholder" id="gambar6-placeholder" style="display:block;">
+                        <i class="fas fa-image"></i>
+                        <span>[Gambar 6: Masyarakat Global dan Solidaritas Kemanusiaan]</span>
+                        <p style="font-size:0.9rem; margin-top:1rem;">Letakkan file gambar dengan nama "gambar6" di folder "s1-bab-6"</p>
+                    </div>
+                    <div class="image-caption">Gambar 6: Masyarakat Global dan Solidaritas Kemanusiaan</div>
+                </div>
+
+                <div class="quote-box">
+                    <i class="fas fa-quote-left"></i> Masyarakat beradab tidak lahir dari sistem, tetapi dari kesadaran. Kesadaran bahwa kita hidup di dunia yang rapuh, dan satu-satunya cara menjaganya adalah dengan hidup bersama dalam pengertian yang sesungguhnya.
+                </div>
+
+                <div class="reflection-box">
+                    <h4><i class="fas fa-question-circle"></i> Refleksi F: Menjadi Manusia Global yang Lestari</h4>
+                    <p>Menjadi manusia global yang berkelanjutan berarti mampu hidup di antara dua kesadaran: kesadaran lokal yang menjaga akar, dan kesadaran universal yang menumbuhkan cabang.</p>
+                </div>
+            </div>
+
+            <div class="bab-navigation">
+                <a href="s1-bab-5.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i> Kembali ke Bab 5
+                </a>
+                <a href="s1-bab-7.html" class="nav-btn primary">
+                    Lanjut ke Bab 7 <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // ===== HAMBURGER MENU - SAMA PERSIS DENGAN REFERENSI =====
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

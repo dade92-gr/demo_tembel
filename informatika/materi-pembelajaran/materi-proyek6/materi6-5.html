@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi 6.5: Kondisi & Perulangan Dasar - Informatika Kelas X</title>
+    <link rel="stylesheet" href="../../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --informatika-primary: #3498db;
+            --informatika-secondary: #2980b9;
+            --informatika-light: #ebf5fb;
+            --informatika-dark: #21618c;
+            --informatika-semester1: #3498db;
+            --success: #27ae60;
+            --warning: #e74c3c;
+            --info: #f39c12;
+            --purple: #9b59b6;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+        
+        .materi-container {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+        
+        .materi-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 30px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(52, 152, 219, 0.15);
+            border-left: 8px solid var(--informatika-semester1);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        .materi-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(52, 152, 219, 0.1) 0%, transparent 70%);
+            z-index: 0;
+        }
+        
+        .materi-card > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .materi-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 3px solid var(--informatika-light);
+            flex-wrap: wrap;
+        }
+        
+        .materi-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--informatika-semester1), var(--informatika-primary));
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+        }
+        
+        .materi-title-wrapper {
+            flex: 1;
+        }
+        
+        .materi-title-wrapper h1 {
+            color: var(--informatika-dark);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .materi-subtitle {
+            color: var(--informatika-primary);
+            font-size: 1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .materi-badge {
+            background: var(--informatika-light);
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: var(--informatika-dark);
+        }
+        
+        .materi-badge i {
+            margin-right: 4px;
+        }
+        
+        .tujuan-card {
+            background: linear-gradient(135deg, var(--informatika-light), white);
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(52, 152, 219, 0.2);
+        }
+        
+        .tujuan-card h3 {
+            color: var(--informatika-dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .tujuan-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 0.8rem;
+        }
+        
+        .tujuan-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            padding: 0.8rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .tujuan-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .tujuan-item i {
+            color: var(--success);
+        }
+        
+        .materi-content {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid rgba(52, 152, 219, 0.1);
+        }
+        
+        .materi-content h2 {
+            color: var(--informatika-dark);
+            font-size: 1.8rem;
+            margin: 1.5rem 0 1rem 0;
+            border-bottom: 2px solid var(--informatika-light);
+            padding-bottom: 0.5rem;
+        }
+        
+        .materi-content h2:first-of-type {
+            margin-top: 0;
+        }
+        
+        .materi-content h3 {
+            color: var(--informatika-dark);
+            font-size: 1.3rem;
+            margin: 1.2rem 0 0.8rem 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .materi-content h3 i {
+            color: var(--informatika-primary);
+        }
+        
+        .materi-content p {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        
+        .materi-content ul, .materi-content ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .materi-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .quote-box {
+            margin: 1.5rem 0;
+            padding: 1rem 1.5rem;
+            background: var(--informatika-light);
+            border-left: 4px solid var(--informatika-primary);
+            border-radius: 0 12px 12px 0;
+        }
+        
+        .note-box {
+            background: #fff3e0;
+            border-left: 4px solid var(--info);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid var(--informatika-primary);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .warning-box {
+            background: #fee2e2;
+            border-left: 4px solid var(--warning);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .success-box {
+            background: #d4edda;
+            border-left: 4px solid var(--success);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .code-block {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 1rem;
+            border-radius: 12px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+            line-height: 1.8;
+        }
+        
+        .code-block .comment { color: #7f8c8d; }
+        .code-block .keyword { color: #f39c12; }
+        .code-block .string { color: #2ecc71; }
+        .code-block .variable { color: #3498db; }
+        
+        .if-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .if-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1.2rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #e9ecef;
+        }
+        
+        .if-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .if-card.active {
+            border: 2px solid var(--info);
+            background: #fff3e0;
+        }
+        
+        .if-title {
+            font-weight: bold;
+            color: var(--info);
+            margin-bottom: 0.5rem;
+        }
+        
+        .loop-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .loop-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1.2rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #e9ecef;
+        }
+        
+        .loop-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .loop-card.active {
+            border: 2px solid var(--purple);
+            background: #f3e5f5;
+        }
+        
+        .loop-title {
+            font-weight: bold;
+            color: var(--purple);
+            margin-bottom: 0.5rem;
+        }
+        
+        .materi-navigation {
+            display: flex;
+            gap: 1rem;
+            justify-content: space-between;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn.primary {
+            background: linear-gradient(135deg, var(--informatika-primary), var(--informatika-secondary));
+            color: white;
+        }
+        
+        .nav-btn.primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .nav-btn.secondary {
+            background: white;
+            color: var(--informatika-dark);
+            border: 2px solid var(--informatika-light);
+        }
+        
+        .nav-btn.secondary:hover {
+            background: var(--informatika-light);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .materi-container { padding: 1rem; }
+            .materi-card { padding: 1.5rem; }
+            .materi-header { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="../../../assets/images/logo.png" alt="Logo Sekolah">
+                    <h1>INFORMATIKA - MATERI PEMBELAJARAN</h1>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="../../../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="../../index-informatika.html" class="nav-link"><i class="fas fa-laptop-code"></i> Beranda Informatika</a></li>
+                    <li><a href="../../aktivitas-pembelajaran/index-aktivitas-informatika.html" class="nav-link"><i class="fas fa-tasks"></i> Daftar Aktivitas</a></li>
+                    <li><a href="../index-materi-informatika.html" class="nav-link active"><i class="fas fa-book-open"></i> Daftar Materi</a></li>
+                    <li><a href="../../penilaian/index-penilaian-informatika.html" class="nav-link"><i class="fas fa-chart-line"></i> Penilaian</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="materi-container">
+        <div class="materi-card">
+            <!-- Header -->
+            <div class="materi-header">
+                <div class="materi-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <div class="materi-title-wrapper">
+                    <h1>Kondisi &amp; Perulangan Dasar</h1>
+                    <div class="materi-subtitle">
+                        <i class="fas fa-circle"></i>
+                        <span>Proyek 6: Pemrograman Dasar - Pertemuan 5</span>
+                        <span class="materi-badge"><i class="fas fa-clock"></i> 4 JP</span>
+                        <span class="materi-badge"><i class="fas fa-tag"></i> TP 1.4</span>
+                        <span class="materi-badge"><i class="fas fa-globe"></i> Online</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tujuan Pembelajaran -->
+            <div class="tujuan-card">
+                <h3><i class="fas fa-bullseye"></i> 🎯 Tujuan Pembelajaran</h3>
+                <div class="tujuan-list">
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Memahami konsep struktur kondisi (if-else) dalam pemrograman</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Memahami konsep perulangan (for, while) dalam pemrograman</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Menerapkan kondisi dan perulangan dalam program HTML</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Menyelesaikan persoalan nyata dengan algoritma yang efisien</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Mempresentasikan program dengan kondisi dan perulangan</div>
+                </div>
+            </div>
+
+            <!-- Konten Materi -->
+            <div class="materi-content">
+                <h2>A. Struktur Kondisi (If-Else)</h2>
+                <p><strong>Struktur kondisi</strong> memungkinkan program mengambil keputusan berdasarkan suatu kondisi. Program akan menjalankan blok kode tertentu jika kondisi bernilai benar (true), dan blok kode lain jika kondisi bernilai salah (false).</p>
+                
+                <div class="quote-box">
+                    <i class="fas fa-quote-left"></i> <strong>Ilustrasi Sederhana:</strong><br>
+                    "Jika hujan, saya membawa payung. Jika tidak, saya tidak membawa payung."<br>
+                    → <strong>IF (hujan) THEN bawa payung ELSE tidak bawa payung</strong>
+                </div>
+
+                <h3>Sintaks If-Else dalam JavaScript</h3>
+                <div class="code-block">
+                    <span class="keyword">if</span> (kondisi) {
+                        <span class="comment">// Kode jika kondisi true</span>
+                    } <span class="keyword">else</span> {
+                        <span class="comment">// Kode jika kondisi false</span>
+                    }
+                </div>
+
+                <h3>Contoh Kasus</h3>
+                <div class="if-grid" id="ifGrid">
+                    <div class="if-card" data-if="lulus">
+                        <div class="if-title">📘 Menentukan Kelulusan</div>
+                        <div class="code-block" style="font-size: 0.75rem; max-height: 200px; overflow-y: auto;">
+                            let nilai = 80;
+                            <span class="keyword">if</span> (nilai >= 75) {
+                                console.log(<span class="string">"Lulus"</span>);
+                            } <span class="keyword">else</span> {
+                                console.log(<span class="string">"Tidak Lulus"</span>);
+                            }
+                            <span class="comment">// Output: Lulus (karena 80 >= 75)</span>
+                        </div>
+                    </div>
+                    <div class="if-card" data-if="grade">
+                        <div class="if-title">📊 Grading Nilai</div>
+                        <div class="code-block" style="font-size: 0.75rem; max-height: 200px; overflow-y: auto;">
+                            let nilai = 85;
+                            <span class="keyword">if</span> (nilai >= 90) {
+                                console.log(<span class="string">"A (Sangat Baik)"</span>);
+                            } <span class="keyword">else if</span> (nilai >= 75) {
+                                console.log(<span class="string">"B (Baik)"</span>);
+                            } <span class="keyword">else if</span> (nilai >= 60) {
+                                console.log(<span class="string">"C (Cukup)"</span>);
+                            } <span class="keyword">else</span> {
+                                console.log(<span class="string">"D (Kurang)"</span>);
+                            }
+                            <span class="comment">// Output: B (Baik) karena 85 >= 75</span>
+                        </div>
+                    </div>
+                    <div class="if-card" data-if="diskon">
+                        <div class="if-title">🏷️ Diskon Belanja</div>
+                        <div class="code-block" style="font-size: 0.75rem; max-height: 200px; overflow-y: auto;">
+                            let total = 150000;
+                            let diskon = 0;
+                            <span class="keyword">if</span> (total >= 100000) {
+                                diskon = 0.1;  <span class="comment">// 10%</span>
+                            } <span class="keyword">else if</span> (total >= 50000) {
+                                diskon = 0.05;  <span class="comment">// 5%</span>
+                            } <span class="keyword">else</span> {
+                                diskon = 0;
+                            }
+                            let bayar = total - (total * diskon);
+                            console.log(<span class="string">"Total bayar: Rp"</span> + bayar);
+                            <span class="comment">// Output: Total bayar: Rp135000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <h2>B. Perulangan (Looping)</h2>
+                <p><strong>Perulangan</strong> memungkinkan program menjalankan blok kode berulang kali sampai kondisi tertentu terpenuhi. Ada dua jenis perulangan utama: <strong>for</strong> dan <strong>while</strong>.</p>
+
+                <div class="quote-box">
+                    <i class="fas fa-quote-left"></i> <strong>Ilustrasi Sederhana:</strong><br>
+                    "Menghitung 1 sampai 10" → <strong>FOR i = 1 TO 10</strong><br>
+                    "Terus berjalan sampai lelah" → <strong>WHILE (belum lelah)</strong>
+                </div>
+
+                <h3>Perulangan For</h3>
+                <div class="code-block">
+                    <span class="comment">// Menampilkan angka 1-10</span>
+                    <span class="keyword">for</span> (let i = 1; i <= 10; i++) {
+                        console.log(i);
+                    }
+                </div>
+
+                <h3>Perulangan While</h3>
+                <div class="code-block">
+                    <span class="comment">// Menampilkan angka 1-10</span>
+                    let i = 1;
+                    <span class="keyword">while</span> (i <= 10) {
+                        console.log(i);
+                        i++;
+                    }
+                </div>
+
+                <h3>Contoh Kasus</h3>
+                <div class="loop-grid" id="loopGrid">
+                    <div class="loop-card" data-loop="for">
+                        <div class="loop-title">🔄 Perulangan For</div>
+                        <div class="code-block" style="font-size: 0.75rem; max-height: 200px; overflow-y: auto;">
+                            <span class="comment">// Tabel perkalian 5</span>
+                            let angka = 5;
+                            <span class="keyword">for</span> (let i = 1; i <= 10; i++) {
+                                let hasil = i * angka;
+                                console.log(i + <span class="string">" x "</span> + angka + <span class="string">" = "</span> + hasil);
+                            }
+                            <span class="comment">// 1 x 5 = 5, 2 x 5 = 10, ... 10 x 5 = 50</span>
+                        </div>
+                    </div>
+                    <div class="loop-card" data-loop="while">
+                        <div class="loop-title">🔄 Perulangan While</div>
+                        <div class="code-block" style="font-size: 0.75rem; max-height: 200px; overflow-y: auto;">
+                            <span class="comment">// Menampilkan angka genap 2-20</span>
+                            let i = 2;
+                            <span class="keyword">while</span> (i <= 20) {
+                                console.log(i);
+                                i = i + 2;
+                            }
+                            <span class="comment">// Output: 2, 4, 6, 8, 10, 12, 14, 16, 18, 20</span>
+                        </div>
+                    </div>
+                    <div class="loop-card" data-loop="perbedaan">
+                        <div class="loop-title">📌 Perbedaan For dan While</div>
+                        <div class="code-block" style="font-size: 0.75rem; max-height: 200px; overflow-y: auto;">
+                            <span class="comment">// FOR: saat jumlah perulangan sudah diketahui</span>
+                            <span class="keyword">for</span> (let i = 1; i <= 10; i++) { ... }
+                            
+                            <span class="comment">// WHILE: saat perulangan bergantung pada kondisi</span>
+                            let i = 1;
+                            <span class="keyword">while</span> (i <= 10) {
+                                <span class="comment">// Ada kemungkinan i berubah di dalam</span>
+                                i++;
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <h2>C. Menggabungkan Kondisi dan Perulangan</h2>
+                <div class="code-block">
+                    <span class="comment">// Menampilkan angka 1-20, dengan keterangan ganjil/genap</span>
+                    <span class="keyword">for</span> (let i = 1; i <= 20; i++) {
+                        <span class="keyword">if</span> (i % 2 == 0) {
+                            console.log(i + <span class="string">" adalah GENAP"</span>);
+                        } <span class="keyword">else</span> {
+                            console.log(i + <span class="string">" adalah GANJIL"</span>);
+                        }
+                    }
+                </div>
+
+                <h2>D. Program HTML dengan Kondisi dan Perulangan</h2>
+                <div class="success-box">
+                    <strong>📝 Contoh Program: Menampilkan Bilangan Genap/Ganjil</strong>
+                    <div class="code-block" style="margin-top: 0.5rem;">
+                        &lt;h1&gt;Program Ganjil/Genap 1-20&lt;/h1&gt;
+                        &lt;button onclick="tampilkan()"&gt;Tampilkan&lt;/button&gt;
+                        &lt;div id="hasil"&gt;&lt;/div&gt;
+
+                        &lt;script&gt;
+                            function tampilkan() {
+                                let output = "";
+                                for (let i = 1; i <= 20; i++) {
+                                    if (i % 2 == 0) {
+                                        output += i + " genap&lt;br&gt;";
+                                    } else {
+                                        output += i + " ganjil&lt;br&gt;";
+                                    }
+                                }
+                                document.getElementById('hasil').innerHTML = output;
+                            }
+                        &lt;/script&gt;
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <i class="fas fa-exclamation-triangle"></i> <strong>Ingat!</strong> Perulangan tanpa kondisi berhenti akan menyebabkan <strong>infinite loop</strong> (perulangan tak terbatas) yang membuat program hang!
+                </div>
+
+                <div class="quote-box" style="margin-top: 1.5rem; text-align: center;">
+                    <i class="fas fa-code"></i> Kuasai Kondisi & Perulangan, Kuasai Logika Pemrograman! 🔄
+                </div>
+            </div>
+
+            <!-- Navigasi -->
+            <div class="materi-navigation">
+                <a href="materi6-4.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i> Kembali ke Materi 6.4
+                </a>
+                <a href="materi6-6.html" class="nav-btn primary">
+                    Lanjut ke Materi 6.6: Presentasi & Refleksi
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script src="../../../script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                });
+            }
+            
+            // If-Else Interaktif
+            const ifCards = document.querySelectorAll('.if-card');
+            ifCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    ifCards.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            if(ifCards.length) ifCards[0].classList.add('active');
+            
+            // Loop Interaktif
+            const loopCards = document.querySelectorAll('.loop-card');
+            loopCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    loopCards.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            if(loopCards.length) loopCards[0].classList.add('active');
+        });
+    </script>
+</body>
+</html>

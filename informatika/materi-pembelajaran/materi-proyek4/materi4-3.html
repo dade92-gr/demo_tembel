@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi 4.3: Analisis Fakta & Cek Kebenaran - Informatika Kelas X</title>
+    <link rel="stylesheet" href="../../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --informatika-primary: #3498db;
+            --informatika-secondary: #2980b9;
+            --informatika-light: #ebf5fb;
+            --informatika-dark: #21618c;
+            --informatika-semester1: #3498db;
+            --success: #27ae60;
+            --warning: #e74c3c;
+            --info: #f39c12;
+            --purple: #9b59b6;
+            --hoax: #e74c3c;
+            --fact: #27ae60;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+        
+        .materi-container {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+        
+        .materi-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 30px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(52, 152, 219, 0.15);
+            border-left: 8px solid var(--informatika-semester1);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        .materi-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(52, 152, 219, 0.1) 0%, transparent 70%);
+            z-index: 0;
+        }
+        
+        .materi-card > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .materi-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 3px solid var(--informatika-light);
+            flex-wrap: wrap;
+        }
+        
+        .materi-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--informatika-primary), var(--informatika-secondary));
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+        }
+        
+        .materi-title-wrapper {
+            flex: 1;
+        }
+        
+        .materi-title-wrapper h1 {
+            color: var(--informatika-dark);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .materi-subtitle {
+            color: var(--informatika-primary);
+            font-size: 1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .materi-badge {
+            background: var(--informatika-light);
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: var(--informatika-dark);
+        }
+        
+        .materi-badge i {
+            margin-right: 4px;
+        }
+        
+        .tujuan-card {
+            background: linear-gradient(135deg, var(--informatika-light), white);
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(52, 152, 219, 0.2);
+        }
+        
+        .tujuan-card h3 {
+            color: var(--informatika-dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .tujuan-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 0.8rem;
+        }
+        
+        .tujuan-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            padding: 0.8rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .tujuan-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .tujuan-item i {
+            color: var(--success);
+        }
+        
+        .materi-content {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid rgba(52, 152, 219, 0.1);
+        }
+        
+        .materi-content h2 {
+            color: var(--informatika-dark);
+            font-size: 1.8rem;
+            margin: 1.5rem 0 1rem 0;
+            border-bottom: 2px solid var(--informatika-light);
+            padding-bottom: 0.5rem;
+        }
+        
+        .materi-content h2:first-of-type {
+            margin-top: 0;
+        }
+        
+        .materi-content h3 {
+            color: var(--informatika-dark);
+            font-size: 1.3rem;
+            margin: 1.2rem 0 0.8rem 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .materi-content h3 i {
+            color: var(--informatika-primary);
+        }
+        
+        .materi-content p {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        
+        .materi-content ul, .materi-content ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .materi-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .quote-box {
+            margin: 1.5rem 0;
+            padding: 1rem 1.5rem;
+            background: var(--informatika-light);
+            border-left: 4px solid var(--informatika-primary);
+            border-radius: 0 12px 12px 0;
+        }
+        
+        .note-box {
+            background: #fff3e0;
+            border-left: 4px solid var(--info);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid var(--informatika-primary);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .warning-box {
+            background: #fee2e2;
+            border-left: 4px solid var(--warning);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .success-box {
+            background: #d4edda;
+            border-left: 4px solid var(--success);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .eco-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .eco-item {
+            background: white;
+            border-radius: 16px;
+            padding: 1.2rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #e9ecef;
+            text-align: center;
+        }
+        
+        .eco-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .eco-item.active {
+            border: 2px solid var(--informatika-primary);
+            background: var(--informatika-light);
+        }
+        
+        .eco-icon {
+            font-size: 2rem;
+            color: var(--informatika-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .eco-title {
+            font-weight: bold;
+            color: var(--informatika-dark);
+            margin-bottom: 0.3rem;
+        }
+        
+        .eco-desc {
+            font-size: 0.85rem;
+            color: #6c757d;
+        }
+        
+        .eco-item.active .eco-desc {
+            color: var(--informatika-dark);
+            font-weight: 500;
+        }
+        
+        .sites-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .site-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1.2rem;
+            transition: all 0.3s ease;
+            border: 1px solid #e9ecef;
+            cursor: pointer;
+        }
+        
+        .site-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .site-card.active {
+            border: 2px solid var(--informatika-primary);
+            background: var(--informatika-light);
+        }
+        
+        .site-name {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--informatika-dark);
+        }
+        
+        .site-url {
+            font-family: monospace;
+            color: var(--informatika-primary);
+            font-size: 0.85rem;
+            margin: 0.3rem 0;
+        }
+        
+        .site-desc {
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        .site-card.active .site-desc {
+            color: var(--informatika-dark);
+            font-weight: 500;
+        }
+        
+        .lateral-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .lateral-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1.2rem;
+            transition: all 0.3s ease;
+            border: 1px solid #e9ecef;
+            cursor: pointer;
+        }
+        
+        .lateral-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .lateral-card.active {
+            border: 2px solid var(--purple);
+            background: #f3e5f5;
+        }
+        
+        .lateral-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--purple);
+        }
+        
+        .lateral-title {
+            font-weight: bold;
+            color: var(--informatika-dark);
+            margin: 0.3rem 0;
+        }
+        
+        .lateral-desc {
+            font-size: 0.85rem;
+            color: #6c757d;
+        }
+        
+        .lateral-card.active .lateral-desc {
+            color: var(--informatika-dark);
+            font-weight: 500;
+        }
+        
+        .lateral-example {
+            background: #f8f9fa;
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .lateral-example h4 {
+            margin-bottom: 1rem;
+        }
+        
+        .lateral-example .example-item {
+            padding: 0.8rem;
+            margin-bottom: 0.8rem;
+            background: white;
+            border-radius: 10px;
+            border-left: 4px solid var(--informatika-primary);
+        }
+        
+        .lateral-example .example-item .label {
+            font-weight: 600;
+            color: var(--informatika-dark);
+        }
+        
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .status-card {
+            padding: 1rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+        
+        .status-card.fact { background: #d4edda; border-color: #27ae60; }
+        .status-card.hoax { background: #fee2e2; border-color: #e74c3c; }
+        .status-card.misinformasi { background: #fff3e0; border-color: #f39c12; }
+        .status-card.disinformasi { background: #f8d7da; border-color: #e74c3c; }
+        .status-card.menyesatkan { background: #e3f2fd; border-color: #3498db; }
+        
+        .status-card.active {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+        
+        .status-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .status-label {
+            font-weight: bold;
+            display: block;
+        }
+        
+        .materi-navigation {
+            display: flex;
+            gap: 1rem;
+            justify-content: space-between;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn.primary {
+            background: linear-gradient(135deg, var(--informatika-primary), var(--informatika-secondary));
+            color: white;
+        }
+        
+        .nav-btn.primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .nav-btn.secondary {
+            background: white;
+            color: var(--informatika-dark);
+            border: 2px solid var(--informatika-light);
+        }
+        
+        .nav-btn.secondary:hover {
+            background: var(--informatika-light);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .materi-container { padding: 1rem; }
+            .materi-card { padding: 1.5rem; }
+            .materi-header { flex-direction: column; text-align: center; }
+            .sites-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="../../../assets/images/logo.png" alt="Logo Sekolah">
+                    <h1>INFORMATIKA - MATERI PEMBELAJARAN</h1>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="../../../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="../../index-informatika.html" class="nav-link"><i class="fas fa-laptop-code"></i> Beranda Informatika</a></li>
+                    <li><a href="../../aktivitas-pembelajaran/index-aktivitas-informatika.html" class="nav-link"><i class="fas fa-tasks"></i> Daftar Aktivitas</a></li>
+                    <li><a href="../index-materi-informatika.html" class="nav-link active"><i class="fas fa-book-open"></i> Daftar Materi</a></li>
+                    <li><a href="../../penilaian/index-penilaian-informatika.html" class="nav-link"><i class="fas fa-chart-line"></i> Penilaian</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="materi-container">
+        <div class="materi-card">
+            <!-- Header -->
+            <div class="materi-header">
+                <div class="materi-icon">
+                    <i class="fas fa-check-double"></i>
+                </div>
+                <div class="materi-title-wrapper">
+                    <h1>Analisis Fakta &amp; Cek Kebenaran</h1>
+                    <div class="materi-subtitle">
+                        <i class="fas fa-circle"></i>
+                        <span>Proyek 4: Fakta atau Hoaks? - Pertemuan 3</span>
+                        <span class="materi-badge"><i class="fas fa-clock"></i> 4 JP</span>
+                        <span class="materi-badge"><i class="fas fa-tag"></i> TP 2.2 &amp; 2.3</span>
+                        <span class="materi-badge"><i class="fas fa-globe"></i> Online</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tujuan Pembelajaran -->
+            <div class="tujuan-card">
+                <h3><i class="fas fa-bullseye"></i> 🎯 Tujuan Pembelajaran</h3>
+                <div class="tujuan-list">
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Memahami pengertian dan fungsi ekosistem periksa fakta</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Mengenal berbagai situs cek fakta di Indonesia</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Memahami dan menerapkan strategi membaca lateral</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Melakukan verifikasi silang (cross-check) informasi</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Menarik kesimpulan berdasarkan bukti yang ditemukan</div>
+                </div>
+            </div>
+
+            <!-- Konten Materi -->
+            <div class="materi-content">
+                <h2>A. Ekosistem Periksa Fakta</h2>
+                <p><strong>Ekosistem periksa fakta (fact-checking ecosystem)</strong> adalah jaringan yang terdiri dari berbagai organisasi, platform, dan individu yang bekerja sama untuk memverifikasi kebenaran informasi yang beredar di masyarakat, terutama di dunia digital.</p>
+                
+                <div class="quote-box">
+                    <i class="fas fa-quote-left"></i> Ekosistem periksa fakta melibatkan organisasi cek fakta, media partner, platform digital, dan masyarakat yang saling bekerja sama memilah informasi yang benar dan salah.
+                </div>
+
+                <div class="eco-grid" id="ecoGrid">
+                    <div class="eco-item" data-eco="organisasi">
+                        <div class="eco-icon"><i class="fas fa-building"></i></div>
+                        <div class="eco-title">Organisasi Cek Fakta</div>
+                        <div class="eco-desc">Memverifikasi informasi secara profesional. Contoh: MAFINDO, TurnBackHoax.</div>
+                    </div>
+                    <div class="eco-item" data-eco="media">
+                        <div class="eco-icon"><i class="fas fa-newspaper"></i></div>
+                        <div class="eco-title">Media Partner</div>
+                        <div class="eco-desc">Mempublikasikan hasil cek fakta. Contoh: Kompas, Tempo, Detik.</div>
+                    </div>
+                    <div class="eco-item" data-eco="platform">
+                        <div class="eco-icon"><i class="fas fa-globe"></i></div>
+                        <div class="eco-title">Platform Digital</div>
+                        <div class="eco-desc">Menyediakan fitur pelaporan hoaks. Contoh: Google, Facebook, TikTok.</div>
+                    </div>
+                    <div class="eco-item" data-eco="masyarakat">
+                        <div class="eco-icon"><i class="fas fa-users"></i></div>
+                        <div class="eco-title">Masyarakat</div>
+                        <div class="eco-desc">Melaporkan informasi mencurigakan dan menjadi pengguna cerdas.</div>
+                    </div>
+                </div>
+
+                <h2>B. Situs Cek Fakta di Indonesia</h2>
+                <p>Berikut adalah situs-situs yang dapat digunakan untuk memverifikasi kebenaran informasi. <strong>Klik pada setiap situs</strong> untuk melihat detailnya:</p>
+                
+                <div class="sites-grid" id="sitesGrid">
+                    <div class="site-card" data-site="turnbackhoax">
+                        <div class="site-name"><i class="fas fa-shield-alt"></i> TurnBackHoax</div>
+                        <div class="site-url">turnbackhoax.id</div>
+                        <div class="site-desc"><strong>Pengelola:</strong> MAFINDO<br><strong>Keunggulan:</strong> Database hoaks terbesar di Indonesia, update setiap hari, bisa lapor via WhatsApp</div>
+                    </div>
+                    <div class="site-card" data-site="mafindo">
+                        <div class="site-name"><i class="fas fa-handshake"></i> MAFINDO</div>
+                        <div class="site-url">mafindo.or.id</div>
+                        <div class="site-desc"><strong>Pengelola:</strong> Masyarakat Anti Fitnah Indonesia<br><strong>Keunggulan:</strong> Edukasi dan riset hoaks, pelatihan literasi digital</div>
+                    </div>
+                    <div class="site-card" data-site="cekfakta">
+                        <div class="site-name"><i class="fas fa-check-double"></i> CekFakta.com</div>
+                        <div class="site-url">cekfakta.com</div>
+                        <div class="site-desc"><strong>Pengelola:</strong> Kolaborasi 21 media Indonesia<br><strong>Keunggulan:</strong> Hasil verifikasi dari berbagai media terpercaya</div>
+                    </div>
+                    <div class="site-card" data-site="kompas">
+                        <div class="site-name"><i class="fas fa-newspaper"></i> Kompas Cek Fakta</div>
+                        <div class="site-url">kompas.com/cek-fakta</div>
+                        <div class="site-desc"><strong>Pengelola:</strong> Kompas<br><strong>Keunggulan:</strong> Media nasional terpercaya, verifikasi cepat</div>
+                    </div>
+                    <div class="site-card" data-site="tempo">
+                        <div class="site-name"><i class="fas fa-clock"></i> Tempo Cek Fakta</div>
+                        <div class="site-url">tempo.co/tag/cek-fakta</div>
+                        <div class="site-desc"><strong>Pengelola:</strong> Tempo<br><strong>Keunggulan:</strong> Investigasi mendalam, akurat</div>
+                    </div>
+                    <div class="site-card" data-site="liputan6">
+                        <div class="site-name"><i class="fas fa-video"></i> Liputan6 Cek Fakta</div>
+                        <div class="site-url">liputan6.com/cek-fakta</div>
+                        <div class="site-desc"><strong>Pengelola:</strong> Liputan6<br><strong>Keunggulan:</strong> Update cepat, multimedia</div>
+                    </div>
+                </div>
+
+                <div class="success-box">
+                    <i class="fas fa-whatsapp"></i> <strong>Cara Melaporkan Hoaks:</strong><br>
+                    • TurnBackHoax: Kirim ke chatbot WhatsApp di <strong>0821-123-242-87</strong><br>
+                    • MAFINDO: Lapor via website mafindo.or.id<br>
+                    • Facebook/Instagram: Klik tiga titik → Report post<br>
+                    • TikTok: Klik Share → Report
+                </div>
+
+                <h2>C. Strategi Membaca Lateral</h2>
+                <p><strong>Membaca lateral (lateral reading)</strong> adalah strategi verifikasi informasi dengan membuka tab baru di browser untuk mencari informasi tentang sumber, penulis, atau klaim yang sedang dibaca, daripada hanya membaca konten secara vertikal (dari atas ke bawah).</p>
+
+                <div class="info-box">
+                    <i class="fas fa-lightbulb"></i> <strong>Perbedaan Membaca Vertikal vs Lateral:</strong><br>
+                    • <strong>Membaca Vertikal:</strong> Membaca satu artikel dari atas ke bawah, mempercayai apa yang tertulis di dalamnya<br>
+                    • <strong>Membaca Lateral:</strong> Membuka tab lain untuk mencari informasi tentang sumber dan klaim yang dibaca
+                </div>
+
+                <p><strong>Klik pada setiap langkah</strong> untuk melihat penjelasan detail:</p>
+                
+                <div class="lateral-grid" id="lateralGrid">
+                    <div class="lateral-card" data-lateral="1">
+                        <div class="lateral-number">1</div>
+                        <div class="lateral-title">Cari Nama Sumber/Penulis</div>
+                        <div class="lateral-desc">Buka tab baru dan cari nama sumber atau penulis. Apakah mereka dikenal kredibel? Apa reputasi mereka?</div>
+                    </div>
+                    <div class="lateral-card" data-lateral="2">
+                        <div class="lateral-number">2</div>
+                        <div class="lateral-title">Cek Riwayat Sumber</div>
+                        <div class="lateral-desc">Cari tahu apakah sumber pernah terlibat kontroversi atau menyebarkan hoaks sebelumnya. Cek di situs cek fakta.</div>
+                    </div>
+                    <div class="lateral-card" data-lateral="3">
+                        <div class="lateral-number">3</div>
+                        <div class="lateral-title">Bandingkan dengan Sumber Lain</div>
+                        <div class="lateral-desc">Cari sumber terpercaya lain yang membahas topik yang sama. Apakah informasinya konsisten?</div>
+                    </div>
+                    <div class="lateral-card" data-lateral="4">
+                        <div class="lateral-number">4</div>
+                        <div class="lateral-title">Buat Kesimpulan</div>
+                        <div class="lateral-desc">Berdasarkan temuan, tentukan apakah sumber tersebut kredibel dan informasinya dapat dipercaya.</div>
+                    </div>
+                </div>
+
+                <div id="lateralDetail" class="note-box" style="margin-top: 1rem;">
+                    <strong>📌 Klik pada langkah 1, 2, 3, atau 4 di atas untuk melihat penjelasan detail!</strong>
+                </div>
+
+                <h3>Contoh Membaca Lateral</h3>
+                <div class="lateral-example">
+                    <h4><i class="fas fa-search"></i> Kasus: Informasi tentang "Vaksin COVID-19 berbahaya"</h4>
+                    <div class="example-item">
+                        <span class="label">🔍 Sumber:</span> Situs "infovaksin.co.id" (tidak dikenal)<br>
+                        <span class="label">📌 Langkah 1 - Cari Sumber:</span> Cari "infovaksin.co.id" di Google → Ditemukan bahwa situs ini baru dibuat 2 bulan lalu, tidak ada informasi tentang redaksi<br>
+                        <span class="label">📌 Langkah 2 - Cek Riwayat:</span> Cari "infovaksin.co.id hoaks" → Ditemukan di TurnBackHoax bahwa situs ini sudah terindikasi menyebarkan hoaks<br>
+                        <span class="label">📌 Langkah 3 - Bandingkan:</span> Cari "vaksin covid-19" site:who.int → WHO menyatakan vaksin aman dan efektif<br>
+                        <span class="label">✅ Kesimpulan:</span> Sumber tidak kredibel, informasi adalah HOAKS
+                    </div>
+                </div>
+
+                <h2>D. Status Verifikasi Fakta</h2>
+                <p>Berikut adalah status yang mungkin muncul saat melakukan verifikasi fakta. <strong>Klik pada setiap status</strong> untuk melihat penjelasan:</p>
+                
+                <div class="status-grid" id="statusGrid">
+                    <div class="status-card fact" data-status="fakta">
+                        <div class="status-icon"><i class="fas fa-check-circle" style="color: #27ae60;"></i></div>
+                        <span class="status-label">FAKTA</span>
+                        <span style="font-size: 0.8rem;">Informasi benar dan dapat dipertanggungjawabkan</span>
+                    </div>
+                    <div class="status-card hoax" data-status="hoaks">
+                        <div class="status-icon"><i class="fas fa-times-circle" style="color: #e74c3c;"></i></div>
+                        <span class="status-label">HOAKS</span>
+                        <span style="font-size: 0.8rem;">Informasi palsu, sengaja dibuat menyesatkan</span>
+                    </div>
+                    <div class="status-card misinformasi" data-status="misinformasi">
+                        <div class="status-icon"><i class="fas fa-question-circle" style="color: #f39c12;"></i></div>
+                        <span class="status-label">MISINFORMASI</span>
+                        <span style="font-size: 0.8rem;">Informasi salah tapi tidak sengaja disebar</span>
+                    </div>
+                    <div class="status-card disinformasi" data-status="disinformasi">
+                        <div class="status-icon"><i class="fas fa-bullhorn" style="color: #e74c3c;"></i></div>
+                        <span class="status-label">DISINFORMASI</span>
+                        <span style="font-size: 0.8rem;">Informasi sengaja dibuat dan disebarkan untuk menipu</span>
+                    </div>
+                    <div class="status-card menyesatkan" data-status="menyesatkan">
+                        <div class="status-icon"><i class="fas fa-exclamation-triangle" style="color: #3498db;"></i></div>
+                        <span class="status-label">MENYESATKAN</span>
+                        <span style="font-size: 0.8rem;">Ada unsur kebenaran tapi dipelintir</span>
+                    </div>
+                </div>
+
+                <h2>E. Verifikasi Silang (Cross-Check)</h2>
+                <p><strong>Verifikasi silang</strong> adalah proses membandingkan informasi dari beberapa sumber yang berbeda untuk memastikan kebenarannya. Semakin banyak sumber kredibel yang mendukung suatu informasi, semakin besar kemungkinan informasi tersebut benar.</p>
+
+                <div class="success-box">
+                    <i class="fas fa-check-circle"></i> <strong>Tips Verifikasi Silang:</strong><br>
+                    • Cari <strong>minimal 3 sumber</strong> berbeda<br>
+                    • Utamakan sumber dari <strong>domain kredibel</strong> (.go.id, .ac.id, media ternama)<br>
+                    • Perhatikan <strong>konsistensi</strong> informasi antar sumber<br>
+                    • Perhatikan <strong>tanggal publikasi</strong> (informasi lama bisa tidak relevan)<br>
+                    • Waspada jika semua sumber <strong>mengutip sumber yang sama</strong>
+                </div>
+
+                <div class="warning-box">
+                    <i class="fas fa-exclamation-triangle"></i> <strong>Ingat!</strong> Menjadi pemeriksa fakta adalah tanggung jawab kita bersama. Selalu cek fakta sebelum membagikan informasi. Satu klik bisa berdampak luas!
+                </div>
+
+                <div class="quote-box" style="margin-top: 1.5rem; text-align: center;">
+                    <i class="fas fa-check-double"></i> Verifikasi Fakta, Lawan Hoaks! ✅
+                </div>
+            </div>
+
+            <!-- Navigasi -->
+            <div class="materi-navigation">
+                <a href="materi4-2.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i> Kembali ke Materi 4.2
+                </a>
+                <a href="materi4-4.html" class="nav-btn primary">
+                    Lanjut ke Materi 4.4: Kampanye Literasi Digital
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script src="../../../script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                });
+            }
+            
+            // Ekosistem Grid Interaktif
+            const ecoItems = document.querySelectorAll('.eco-item');
+            ecoItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    ecoItems.forEach(i => i.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            if(ecoItems.length) ecoItems[0].classList.add('active');
+            
+            // Situs Cek Fakta Grid Interaktif
+            const siteCards = document.querySelectorAll('.site-card');
+            siteCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    siteCards.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            if(siteCards.length) siteCards[0].classList.add('active');
+            
+            // Lateral Grid Interaktif
+            const lateralCards = document.querySelectorAll('.lateral-card');
+            const lateralDetail = document.getElementById('lateralDetail');
+            const lateralDetails = {
+                1: '<strong>📌 Langkah 1: Cari Nama Sumber/Penulis</strong><br>Cari nama sumber atau penulis di mesin pencari. Cek apakah mereka dikenal sebagai sumber kredibel atau pernah terlibat kontroversi. Perhatikan juga apakah ada informasi tentang latar belakang mereka.',
+                2: '<strong>📌 Langkah 2: Cek Riwayat Sumber</strong><br>Cari tahu apakah sumber pernah terlibat kontroversi atau menyebarkan hoaks sebelumnya. Gunakan situs cek fakta seperti TurnBackHoax untuk mencari tahu. Jika sumber pernah terindikasi hoaks, hati-hati.',
+                3: '<strong>📌 Langkah 3: Bandingkan dengan Sumber Lain</strong><br>Cari sumber terpercaya lain yang membahas topik yang sama. Apakah informasinya konsisten? Bandingkan fakta-fakta penting. Jika berbeda, cari tahu mana yang benar.',
+                4: '<strong>📌 Langkah 4: Buat Kesimpulan</strong><br>Berdasarkan semua temuan, tentukan apakah sumber tersebut kredibel dan informasinya dapat dipercaya. Jika meragukan, jangan bagikan informasi tersebut.'
+            };
+            
+            lateralCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    lateralCards.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                    const num = this.dataset.lateral;
+                    lateralDetail.innerHTML = lateralDetails[num];
+                });
+            });
+            if(lateralCards.length) lateralCards[0].classList.add('active');
+            lateralDetail.innerHTML = lateralDetails['1'];
+            
+            // Status Grid Interaktif
+            const statusCards = document.querySelectorAll('.status-card');
+            statusCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    statusCards.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

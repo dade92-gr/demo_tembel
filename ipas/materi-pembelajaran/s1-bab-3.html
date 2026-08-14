@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 3: Zat dan Perubahannya - Kelas X</title>
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* IPAS THEME COLORS - HANYA UNTUK KONTEN */
+        :root {
+            --ipas-primary: #2ecc71;
+            --ipas-secondary: #27ae60;
+            --ipas-light: #d5f4e6;
+            --ipas-dark: #229954;
+            --ipas-accent: #3498db;
+            --ipas-semester1: #3498db;
+            --ipas-gray: #f5f7fa;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f5f7fa; color: #2c3e50; line-height: 1.6; }
+
+        /* ===== LOGO ZOOM EFFECT ===== */
+        .logo img { transition: transform 0.3s ease; }
+        .logo:hover img { transform: scale(1.2); }
+        
+        /* MAIN CONTENT */
+        .bab-container { padding: 2rem; max-width: 1200px; margin: 0 auto; min-height: calc(100vh - 80px); display: flex; align-items: flex-start; justify-content: center; }
+        
+        .bab-card { background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%); border-radius: 30px; padding: 3rem; box-shadow: 0 20px 40px rgba(46, 204, 113, 0.15); border-left: 8px solid var(--ipas-semester1); position: relative; overflow: hidden; width: 100%; animation: fadeInUp 0.6s ease-out; }
+        .bab-card::before { content: ''; position: absolute; top: 0; right: 0; width: 250px; height: 250px; background: radial-gradient(circle, rgba(52, 152, 219, 0.1) 0%, transparent 70%); z-index: 0; }
+        .bab-card > * { position: relative; z-index: 1; }
+        
+        .bab-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 3px solid var(--ipas-light); }
+        .bab-icon { width: 80px; height: 80px; background: linear-gradient(135deg, var(--ipas-semester1), var(--ipas-primary)); border-radius: 25px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2.5rem; box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3); }
+        .bab-title-wrapper h1 { color: var(--ipas-dark); font-size: 2.5rem; margin-bottom: 0.5rem; line-height: 1.2; }
+        .bab-subtitle { color: var(--ipas-semester1); font-size: 1.1rem; font-weight: 600; display: flex; align-items: center; gap: 8px; }
+        .bab-subtitle i { font-size: 0.8rem; }
+        
+        .bab-info { display: flex; gap: 2rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+        .info-item { display: flex; align-items: center; gap: 10px; background: var(--ipas-light); padding: 0.8rem 1.5rem; border-radius: 50px; color: var(--ipas-dark); font-weight: 600; }
+        .info-item i { color: var(--ipas-semester1); font-size: 1.2rem; }
+        
+        .bab-description { background: white; border-radius: 20px; padding: 2rem; margin-bottom: 2rem; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 1px solid rgba(52, 152, 219, 0.1); }
+        .bab-description h2, .bab-description h3, .bab-description h4, .bab-description p, .bab-description ul, .bab-description ol, .bab-description li, .bab-description table, .bab-description .note-box, .bab-description blockquote { text-align: justify; }
+        
+        .bab-description h2 { color: var(--ipas-dark); font-size: 2rem; margin: 1.5rem 0 1rem 0; border-bottom: 2px solid var(--ipas-light); padding-bottom: 0.5rem; }
+        .bab-description h3 { color: var(--ipas-dark); font-size: 1.3rem; margin: 1.5rem 0 1rem 0; display: flex; align-items: center; gap: 10px; }
+        .bab-description h4 { color: var(--ipas-dark); font-size: 1.2rem; margin: 1.2rem 0 0.8rem 0; font-weight: 600; }
+        .bab-description h3 i { color: var(--ipas-semester1); }
+        .bab-description p { color: #555; font-size: 1.1rem; line-height: 1.8; margin-bottom: 1rem; text-align: justify; }
+        .bab-description ul, .bab-description ol { margin-left: 2rem; margin-bottom: 1rem; color: #555; text-align: justify; }
+        .bab-description li { margin-bottom: 0.5rem; text-align: justify; }
+        .bab-description strong { color: var(--ipas-dark); }
+        .bab-description blockquote { margin: 1.5rem 0; padding: 1rem 2rem; background: var(--ipas-light); border-left: 5px solid var(--ipas-semester1); font-style: italic; font-size: 1.1rem; color: var(--ipas-dark); border-radius: 0 15px 15px 0; }
+        
+        .custom-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 1rem; box-shadow: 0 0 20px rgba(0, 0, 0, 0.05); border-radius: 10px; overflow: hidden; }
+        .custom-table th { background-color: var(--ipas-semester1); color: white; font-weight: 600; padding: 12px 15px; text-align: left; }
+        .custom-table td { padding: 12px 15px; border-bottom: 1px solid #dddddd; text-align: justify; }
+        .custom-table tr:nth-child(even) { background-color: #f8f8f8; }
+        .custom-table tr:hover { background-color: var(--ipas-light); }
+        
+        .note-box { background: var(--ipas-light); border-left: 5px solid var(--ipas-semester1); padding: 1.5rem; margin: 1.5rem 0; border-radius: 10px; font-style: italic; }
+        
+        .image-container { margin: 2rem 0; text-align: center; width: 100%; }
+        .image-container img { max-width: 100%; max-height: 400px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); border: 3px solid white; display: block; margin: 0 auto; }
+        .image-caption { font-style: italic; color: #6c757d; margin-top: 0.5rem; font-size: 0.95rem; text-align: center; width: 100%; }
+        .image-placeholder { background: #e9ecef; border: 2px dashed var(--ipas-semester1); border-radius: 15px; padding: 2rem; margin: 2rem 0; text-align: center; color: #6c757d; font-weight: 600; transition: all 0.3s ease; width: 100%; }
+        .image-placeholder i { font-size: 3rem; color: var(--ipas-semester1); margin-bottom: 1rem; display: block; }
+        .image-placeholder:hover { background: #dee2e6; border-color: var(--ipas-primary); color: #495057; }
+        
+        .level-list { list-style-type: none; padding-left: 1rem; }
+        .level-list li { margin-bottom: 0.5rem; position: relative; padding-left: 1.5rem; }
+        .level-list li:before { content: "→"; color: var(--ipas-semester1); font-weight: bold; position: absolute; left: 0; }
+        
+        .bab-navigation { display: flex; gap: 1rem; justify-content: space-between; margin-top: 2rem; }
+        .nav-btn { display: inline-flex; align-items: center; gap: 10px; padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; border: none; cursor: pointer; }
+        .nav-btn.primary { background: linear-gradient(135deg, var(--ipas-semester1), var(--ipas-primary)); color: white; box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3); }
+        .nav-btn.primary:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4); }
+        .nav-btn.secondary { background: white; color: var(--ipas-dark); border: 2px solid var(--ipas-light); }
+        .nav-btn.secondary:hover { background: var(--ipas-light); transform: translateX(-5px); }
+        
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
+        @media (max-width: 768px) {
+            .bab-container { padding: 1rem; }
+            .bab-card { padding: 2rem; }
+            .bab-header { flex-direction: column; text-align: center; }
+            .bab-title-wrapper h1 { font-size: 2rem; }
+            .bab-info { justify-content: center; }
+            .bab-navigation { flex-direction: column; }
+            .nav-btn { justify-content: center; }
+        }
+        
+        @media (max-width: 480px) {
+            .bab-card { padding: 1.5rem; }
+            .bab-title-wrapper h1 { font-size: 1.8rem; }
+            .bab-icon { width: 60px; height: 60px; font-size: 2rem; }
+            .info-item { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="../../assets/images/logo.png" alt="Logo Sekolah">
+                    <h1>TEMBOK BELAJAR - PROJEK IPAS</h1>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="../../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="../index-ipas.html" class="nav-link"><i class="fas fa-flask"></i> Beranda IPAS</a></li>
+                    <li><a href="../aktivitas-pembelajaran/index-aktifitas-ipas.html" class="nav-link"><i class="fas fa-tasks"></i> Daftar Aktivitas</a></li>
+                    <li><a href="index-materi-ipas.html" class="nav-link active"><i class="fas fa-book-open"></i> Daftar Materi</a></li>
+                    <li><a href="../penilaian/index-penilaian-ipas.html" class="nav-link"><i class="fas fa-chart-line"></i> Penilaian</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="bab-container">
+        <div class="bab-card">
+            <div class="bab-header">
+                <div class="bab-icon"><i class="fas fa-flask"></i></div>
+                <div class="bab-title-wrapper">
+                    <h1>Bab 3: Zat dan Perubahannya</h1>
+                    <div class="bab-subtitle"><i class="fas fa-circle"></i> <span>Semester Ganjil - Kelas X</span></div>
+                </div>
+            </div>
+
+            <div class="bab-description">
+                <h2>A. Pengantar</h2>
+                <p>Setiap benda di sekitar kita — dari air yang kita minum, udara yang kita hirup, hingga meja tempat kita menulis — semuanya tersusun dari zat. Zat adalah segala sesuatu yang memiliki massa dan menempati ruang. Tanpa disadari, seluruh kehidupan manusia bergantung pada pemahaman tentang zat dan bagaimana zat itu berubah.</p>
+                
+                <div class="image-container" id="gambar1-container">
+                    <img src="s1-bab-3/gambar1.JPG" alt="Ilustrasi berbagai zat di sekitar kita" 
+                         onerror="this.style.display='none'; document.getElementById('gambar1-placeholder').style.display='block';"
+                         onload="this.style.display='block'; document.getElementById('gambar1-placeholder').style.display='none';">
+                    <div class="image-placeholder" id="gambar1-placeholder" style="display:block;">
+                        <i class="fas fa-image"></i>
+                        <span>[Gambar 1: Ilustrasi berbagai zat di sekitar kita]</span>
+                        <p style="font-size:0.9rem; margin-top:1rem;">Letakkan file gambar dengan nama "gambar1" (format: jpg, png, webp, gif, dll) di folder "s1-bab-3"</p>
+                    </div>
+                    <div class="image-caption">Gambar 1: Berbagai zat di sekitar kita</div>
+                </div>
+                
+                <p>Ilmu tentang zat dan perubahannya membantu kita mengenali sifat-sifat alam dan memahami mengapa sesuatu bisa terjadi. Misalnya, mengapa es bisa mencair saat dikeluarkan dari freezer? Mengapa besi bisa berkarat? Mengapa makanan bisa basi? Semua itu terjadi karena adanya perubahan pada zat, baik secara fisika, kimia, maupun biologis. Belajar tentang zat bukan sekadar menghafal rumus, tetapi memahami bagaimana dunia bekerja. Dari dapur rumah tangga hingga laboratorium riset, dari proses memasak hingga pembuatan bahan bakar, semuanya melibatkan zat dan perubahan zat.</p>
+                
+                <h4>Contoh Aplikasi:</h4>
+                <p>Pengetahuan ini juga memiliki nilai ekonomi dan sosial. Inovasi seperti sabun organik, kemasan ramah lingkungan, dan bahan bangunan ringan berasal dari pemahaman mendalam tentang sifat dan perubahan zat. Dengan kata lain, ilmu ini menjadi jembatan antara sains dan kehidupan nyata.</p>
+
+                <h2>B. Jenis dan Sifat Zat</h2>
+                <p>Segala sesuatu yang dapat kita lihat, sentuh, hirup, bahkan yang tak kasat mata seperti udara, semuanya tersusun dari zat. Zat adalah materi penyusun alam semesta yang memiliki massa dan menempati ruang. Walaupun tampak beragam, seluruh zat di dunia ini dapat diklasifikasikan berdasarkan wujud fisiknya menjadi tiga kelompok besar: padat, cair, dan gas. Setiap wujud memiliki ciri khas dalam hal bentuk, volume, serta gerak partikel di dalamnya. Selain itu, zat juga memiliki sifat-sifat fisika dan kimia yang membuat setiap zat unik.</p>
+                
+                <div class="image-container" id="gambar2-container">
+                    <img src="s1-bab-3/gambar2.jpg" alt="Tiga wujud zat: padat, cair, dan gas" 
+                         onerror="this.style.display='none'; document.getElementById('gambar2-placeholder').style.display='block';"
+                         onload="this.style.display='block'; document.getElementById('gambar2-placeholder').style.display='none';">
+                    <div class="image-placeholder" id="gambar2-placeholder" style="display:block;">
+                        <i class="fas fa-image"></i>
+                        <span>[Gambar 2: Tiga wujud zat: padat, cair, dan gas]</span>
+                        <p style="font-size:0.9rem; margin-top:1rem;">Letakkan file gambar dengan nama "gambar2" (format: jpg, png, webp, gif, dll) di folder "s1-bab-3"</p>
+                    </div>
+                    <div class="image-caption">Gambar 2: Tiga wujud zat - padat, cair, dan gas</div>
+                </div>
+
+                <h3>a. Zat Padat</h3>
+                <p>Zat padat adalah bentuk zat yang memiliki bentuk dan volume tetap. Partikel-partikel penyusunnya tersusun rapat dan teratur, sehingga hanya mampu bergetar di tempatnya tanpa berpindah posisi. Karena kerapatan partikel yang tinggi, zat padat cenderung tidak mudah dimampatkan. Contoh paling sederhana adalah batu, es, atau meja kayu — semua memiliki bentuk yang tetap, tidak berubah meski dipindahkan wadahnya.</p>
+                
+                <h4>Fenomena Menarik:</h4>
+                <p>Fenomena menarik dari zat padat dapat diamati pada logam. Ketika logam dipanaskan, partikel-partikelnya bergetar lebih cepat dan jaraknya sedikit bertambah, sehingga logam memuai. Prinsip sederhana ini digunakan pada rel kereta api yang dipasang dengan celah sambungan untuk menghindari pemuaian berlebih.</p>
+
+                <h3>b. Zat Cair</h3>
+                <p>Zat cair memiliki volume tetap, tetapi bentuknya berubah mengikuti wadah. Partikel-partikel zat cair lebih renggang dan bergerak bebas dibanding zat padat, namun tetap saling berdekatan. Karena itu, zat cair dapat mengalir, menetes, dan menyesuaikan bentuk wadahnya, seperti air dalam gelas atau minyak di panci.</p>
+
+                <h3>c. Zat Gas</h3>
+                <p>Berbeda jauh dari dua wujud sebelumnya, zat gas memiliki bentuk dan volume yang tidak tetap. Partikel-partikelnya sangat renggang dan bergerak bebas ke segala arah. Karena jarak antarpartikel yang jauh, gas mudah dimampatkan dan dapat mengembang memenuhi seluruh ruang yang ditempatinya. Contohnya adalah udara yang kita hirup.</p>
+
+                <h3>d. Sifat Fisika dan Sifat Kimia Zat</h3>
+                <p>Setiap zat dapat diidentifikasi dari sifat fisika dan sifat kimianya. Sifat fisika mencakup karakteristik yang dapat diamati tanpa mengubah zat menjadi zat lain, seperti warna, massa jenis, titik leleh, titik didih, bau, dan konduktivitas listrik. Sebaliknya, sifat kimia menggambarkan kemampuan zat untuk bereaksi dan berubah menjadi zat baru.</p>
+
+                <h2>C. Perubahan Zat</h2>
+                <p>Segala sesuatu di alam tidak pernah benar-benar diam. Es mencair, besi berkarat, buah membusuk, kertas terbakar, dan tubuh kita mencerna makanan—semuanya adalah bentuk perubahan zat. Dalam ilmu IPAS, perubahan zat dibedakan menjadi perubahan fisika, perubahan kimia, dan perubahan biologi.</p>
+                
+                <div class="image-container" id="gambar3-container">
+                    <img src="s1-bab-3/gambar3.jpg" alt="Ilustrasi perubahan zat" 
+                         onerror="this.style.display='none'; document.getElementById('gambar3-placeholder').style.display='block';"
+                         onload="this.style.display='block'; document.getElementById('gambar3-placeholder').style.display='none';">
+                    <div class="image-placeholder" id="gambar3-placeholder" style="display:block;">
+                        <i class="fas fa-image"></i>
+                        <span>[Gambar 3: Ilustrasi perubahan zat]</span>
+                        <p style="font-size:0.9rem; margin-top:1rem;">Letakkan file gambar dengan nama "gambar3" (format: jpg, png, webp, gif, dll) di folder "s1-bab-3"</p>
+                    </div>
+                    <div class="image-caption">Gambar 3: Berbagai jenis perubahan zat</div>
+                </div>
+
+                <h3>a. Perubahan Fisika</h3>
+                <p>Perubahan fisika adalah perubahan yang tidak menghasilkan zat baru. Dalam perubahan ini, partikel penyusun zat tetap sama, hanya susunan atau jaraknya yang berubah. Contoh: es mencair menjadi air, air menguap menjadi uap air, lilin meleleh saat dibakar namun membeku kembali ketika dingin.</p>
+
+                <h3>b. Perubahan Kimia</h3>
+                <p>Berbeda dengan perubahan fisika, perubahan kimia menghasilkan zat baru dengan sifat yang berbeda dari zat asalnya. Ini terjadi karena ikatan antaratom atau molekul berubah, membentuk struktur kimia baru. Contoh: kertas yang dibakar menjadi abu dan gas, besi yang berkarat, makanan yang basi.</p>
+
+                <h3>c. Perubahan Biologi</h3>
+                <p>Perubahan biologi adalah perubahan zat yang terjadi melalui proses kehidupan makhluk hidup. Proses ini melibatkan enzim, mikroorganisme, atau reaksi biokimia yang kompleks. Contoh: pembusukan buah, pencernaan makanan, fermentasi tempe atau tape, dan fotosintesis.</p>
+
+                <h3>d. Perbandingan Perubahan Fisika, Kimia, dan Biologi</h3>
+                <table class="custom-table">
+                    <thead>
+                        <tr>
+                            <th>Jenis Perubahan</th>
+                            <th>Ciri Utama</th>
+                            <th>Contoh</th>
+                            <th>Dapat Kembali ke Bentuk Semula?</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Fisika</td>
+                            <td>Tidak terbentuk zat baru</td>
+                            <td>Air menjadi uap, logam memuai</td>
+                            <td>Ya</td>
+                        </tr>
+                        <tr>
+                            <td>Kimia</td>
+                            <td>Terbentuk zat baru</td>
+                            <td>Kertas terbakar, besi berkarat</td>
+                            <td>Tidak</td>
+                        </tr>
+                        <tr>
+                            <td>Biologi</td>
+                            <td>Terjadi karena aktivitas makhluk hidup</td>
+                            <td>Fermentasi, pencernaan, fotosintesis</td>
+                            <td>Tidak sepenuhnya</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h2>D. Unsur, Senyawa, dan Campuran</h2>
+                <p>Alam semesta di sekitar kita tersusun dari miliaran jenis benda, tetapi sesungguhnya semuanya berasal dari penyusunan zat yang sangat sederhana. Dalam ilmu IPAS, seluruh zat dapat digolongkan menjadi unsur, senyawa, dan campuran.</p>
+                
+                <div class="image-container" id="gambar4-container">
+                    <img src="s1-bab-3/gambar4.jpg" alt="Ilustrasi unsur, senyawa, dan campuran" 
+                         onerror="this.style.display='none'; document.getElementById('gambar4-placeholder').style.display='block';"
+                         onload="this.style.display='block'; document.getElementById('gambar4-placeholder').style.display='none';">
+                    <div class="image-placeholder" id="gambar4-placeholder" style="display:block;">
+                        <i class="fas fa-image"></i>
+                        <span>[Gambar 4: Ilustrasi unsur, senyawa, dan campuran]</span>
+                        <p style="font-size:0.9rem; margin-top:1rem;">Letakkan file gambar dengan nama "gambar4" (format: jpg, png, webp, gif, dll) di folder "s1-bab-3"</p>
+                    </div>
+                    <div class="image-caption">Gambar 4: Unsur, senyawa, dan campuran</div>
+                </div>
+
+                <h3>a. Unsur</h3>
+                <p>Unsur adalah zat tunggal yang tidak dapat diuraikan lagi menjadi zat lain dengan cara kimia biasa. Setiap unsur tersusun dari satu jenis atom saja, dan menjadi "batu bata" penyusun segala materi di alam. Contoh unsur: oksigen (O), hidrogen (H), karbon (C), besi (Fe), dan emas (Au).</p>
+
+                <h3>b. Senyawa</h3>
+                <p>Jika dua atau lebih unsur bereaksi secara kimia, maka terbentuklah senyawa — zat baru dengan sifat yang berbeda dari unsur-unsur penyusunnya. Contoh: air (H₂O), garam dapur (NaCl), karbon dioksida (CO₂).</p>
+
+                <h3>c. Campuran</h3>
+                <p>Berbeda dengan senyawa, campuran terbentuk ketika dua atau lebih zat bergabung tanpa reaksi kimia. Artinya, masing-masing zat tetap mempertahankan sifat aslinya. Campuran bisa homogen (merata) atau heterogen (tidak merata). Contoh: udara, air laut, pasir dan air.</p>
+
+                <h3>d. Perbedaan Antara Unsur, Senyawa, dan Campuran</h3>
+                <table class="custom-table">
+                    <thead>
+                        <tr>
+                            <th>Jenis Zat</th>
+                            <th>Penyusun</th>
+                            <th>Terjadi Reaksi Kimia?</th>
+                            <th>Dapat Dipisahkan Secara Fisika?</th>
+                            <th>Contoh</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Unsur</td>
+                            <td>1 jenis atom</td>
+                            <td>Tidak</td>
+                            <td>Tidak</td>
+                            <td>Oksigen (O₂), Besi (Fe)</td>
+                        </tr>
+                        <tr>
+                            <td>Senyawa</td>
+                            <td>2 atau lebih unsur dengan perbandingan tetap</td>
+                            <td>Ya</td>
+                            <td>Tidak</td>
+                            <td>Air (H₂O), Garam (NaCl)</td>
+                        </tr>
+                        <tr>
+                            <td>Campuran</td>
+                            <td>2 atau lebih zat tanpa perbandingan tetap</td>
+                            <td>Tidak</td>
+                            <td>Ya</td>
+                            <td>Udara, Air Laut, Pasir dan Air</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h2>E. Keterkaitan Zat dan Kehidupan Sehari-hari</h2>
+                <p>Ilmu tentang zat bukan sekadar teori di laboratorium. Ia menembus dapur, pasar, pabrik, bahkan sistem ekonomi dunia. Setiap benda yang digunakan manusia — dari sabun, pupuk, hingga bahan bakar — berasal dari pemahaman tentang sifat zat dan cara mengolahnya.</p>
+                
+                <div class="image-container" id="gambar5-container">
+                    <img src="s1-bab-3/gambar5.jpg" alt="Ilustrasi zat dalam kehidupan sehari-hari" 
+                         onerror="this.style.display='none'; document.getElementById('gambar5-placeholder').style.display='block';"
+                         onload="this.style.display='block'; document.getElementById('gambar5-placeholder').style.display='none';">
+                    <div class="image-placeholder" id="gambar5-placeholder" style="display:block;">
+                        <i class="fas fa-image"></i>
+                        <span>[Gambar 5: Ilustrasi zat dalam kehidupan sehari-hari]</span>
+                        <p style="font-size:0.9rem; margin-top:1rem;">Letakkan file gambar dengan nama "gambar5" (format: jpg, png, webp, gif, dll) di folder "s1-bab-3"</p>
+                    </div>
+                    <div class="image-caption">Gambar 5: Zat dalam kehidupan sehari-hari</div>
+                </div>
+
+                <h3>a. Zat dan Kebutuhan Dasar Manusia</h3>
+                <p>Tiga kebutuhan pokok manusia — pangan, sandang, papan — seluruhnya bergantung pada kemampuan manusia mengolah zat.</p>
+
+                <h4>1. Pangan (makanan):</h4>
+                <p>Makanan terdiri dari campuran senyawa organik seperti karbohidrat, protein, dan lemak. Di dalam tubuh, senyawa ini diuraikan melalui reaksi kimia untuk menghasilkan energi.</p>
+
+                <h4>2. Sandang (pakaian):</h4>
+                <p>Bahan pakaian berasal dari serat alami (kapas, wol, sutra) atau serat sintetis (nilon, poliester) yang merupakan hasil rekayasa kimia dari senyawa karbon.</p>
+
+                <h4>3. Papan (tempat tinggal):</h4>
+                <p>Dari semen, kaca, hingga cat, semua merupakan hasil reaksi kimia yang terencana.</p>
+
+                <h3>b. Zat dan Ekonomi: Dari Bahan Alam ke Industri</h3>
+                <p>Sains dan ekonomi selalu berjalan beriringan. Pemahaman tentang zat melahirkan industri kimia, energi, dan teknologi material, yang kini menjadi tulang punggung perekonomian global.</p>
+
+                <h3>c. Dampak Sosial dan Lingkungan</h3>
+                <p>Namun, pengolahan zat tidak selalu membawa dampak positif. Ketidakhati-hatian dalam penggunaan dan pembuangan zat kimia menimbulkan masalah sosial dan lingkungan yang serius seperti pencemaran air dan udara, sampah plastik, dan kesehatan masyarakat.</p>
+
+                <h2>Penutup: Belajar dengan Menyelidiki</h2>
+                <p>Eksperimen dan aktivitas IPAS bukan sekadar bermain dengan bahan-bahan dapur. Di balik setiap pengamatan sederhana tersembunyi prinsip ilmiah besar: bagaimana partikel berinteraksi, bagaimana energi bekerja, dan bagaimana pengetahuan dapat mengubah kehidupan.</p>
+
+                <blockquote>
+                    "Setiap zat menyimpan rahasia alam. Dengan mempelajarinya, kita belajar membaca bahasa semesta."
+                </blockquote>
+            </div>
+
+            <div class="bab-navigation">
+                <a href="s1-bab-2.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i> Kembali ke Bab 2
+                </a>
+                <a href="s1-bab-4.html" class="nav-btn primary">
+                    Lanjut ke Bab 4 <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // ===== HAMBURGER MENU - SAMA PERSIS DENGAN REFERENSI =====
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

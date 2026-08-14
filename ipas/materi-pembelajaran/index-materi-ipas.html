@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi Pembelajaran IPAS - PROJEK IPAS</title>
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* IPAS THEME COLORS - Mengikuti patokan dari aktivitas */
+        :root {
+            --ipas-primary: #2ecc71;
+            --ipas-secondary: #27ae60;
+            --ipas-light: #d5f4e6;
+            --ipas-dark: #229954;
+            --ipas-accent: #3498db;
+            --ipas-semester1: #3498db;
+            --ipas-semester2: #e74c3c;
+            --ipas-gray: #f5f7fa;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f5f7fa; color: #2c3e50; line-height: 1.6; }
+        
+        /* ===== LOGO ZOOM EFFECT ===== */
+        .logo img { transition: transform 0.3s ease; }
+        .logo:hover img { transform: scale(1.2); }
+        
+        /* MAIN CONTENT */
+        .materials-container { padding: 2rem; max-width: 1200px; margin: 0 auto; }
+        
+        /* CARD STYLE */
+        .ipas-content-card { background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%); border-radius: 20px; padding: 2.5rem; box-shadow: 0 10px 30px rgba(46, 204, 113, 0.1); border-left: 5px solid var(--ipas-primary); margin-bottom: 2rem; }
+        .ipas-content-card h2 { color: var(--ipas-dark); font-size: 2.2rem; margin-bottom: 1.5rem; display: inline-block; padding-bottom: 10px; position: relative; }
+        .ipas-content-card h2::after { content: ''; position: absolute; bottom: 0; left: 0; width: 60px; height: 4px; background: linear-gradient(90deg, var(--ipas-primary), var(--ipas-secondary)); border-radius: 2px; }
+        .ipas-content-card > p { font-size: 1.1rem; line-height: 1.7; color: #555; margin-bottom: 2.5rem; padding: 1rem 1.5rem; background: var(--ipas-light); border-radius: 10px; border-left: 4px solid var(--ipas-primary); }
+        
+        /* SIMPLE CARD */
+        .simple-card { background: white; border-radius: 20px; padding: 1.8rem; margin-bottom: 2rem; border: 1px solid rgba(46, 204, 113, 0.1); }
+        .section-title { display: flex; align-items: center; gap: 10px; margin-bottom: 1.5rem; padding-bottom: 0.8rem; border-bottom: 2px solid var(--ipas-light); }
+        .section-title i { width: 40px; height: 40px; background: var(--ipas-light); color: var(--ipas-primary); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+        .section-title h3 { font-size: 1.2rem; color: var(--ipas-dark); font-weight: 600; }
+        
+        /* SEMESTER NAVIGATION */
+        .semester-nav-simple { display: flex; justify-content: center; gap: 1rem; margin: 2rem 0; }
+        .semester-btn { background: white; border: 2px solid var(--ipas-light); color: var(--ipas-dark); padding: 0.8rem 2rem; border-radius: 40px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; gap: 8px; }
+        .semester-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(46, 204, 113, 0.1); }
+        .semester-btn.active { background: var(--ipas-primary); color: white; border-color: var(--ipas-primary); }
+        .semester-btn.ganjil.active { background: var(--ipas-semester1); border-color: var(--ipas-semester1); }
+        .semester-btn.genap.active { background: var(--ipas-semester2); border-color: var(--ipas-semester2); }
+        
+        /* BAB GRID */
+        .bab-grid-simple { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.2rem; margin: 1.5rem 0; }
+        .bab-item-simple { background: #f5f7fa; border-radius: 16px; padding: 1.5rem; transition: all 0.3s ease; border: 1px solid transparent; display: flex; flex-direction: column; }
+        .bab-item-simple:hover { background: white; border-color: var(--ipas-primary); transform: translateY(-5px); box-shadow: 0 8px 20px rgba(46, 204, 113, 0.1); }
+        .bab-item-simple.ganjil:hover { border-color: var(--ipas-semester1); }
+        .bab-item-simple.genap:hover { border-color: var(--ipas-semester2); }
+        .bab-header-simple { margin-bottom: 1rem; }
+        .bab-header-simple h4 { color: var(--ipas-dark); font-size: 1.2rem; font-weight: 600; margin-bottom: 0.3rem; }
+        .bab-subtitle { color: #888; font-size: 0.85rem; display: flex; align-items: center; gap: 5px; }
+        .bab-subtitle i { font-size: 0.7rem; color: var(--ipas-primary); }
+        .bab-item-simple.ganjil .bab-subtitle i { color: var(--ipas-semester1); }
+        .bab-item-simple.genap .bab-subtitle i { color: var(--ipas-semester2); }
+        .bab-desc-simple { color: #666; font-size: 0.9rem; margin-bottom: 1.2rem; line-height: 1.5; flex: 1; }
+        
+        /* TOMBOL MASUK */
+        .bab-btn-masuk { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: var(--ipas-primary); color: white; text-decoration: none; padding: 0.7rem 1rem; border-radius: 8px; font-size: 0.9rem; font-weight: 600; transition: all 0.3s ease; border: none; cursor: pointer; width: 100%; margin-top: 0.5rem; }
+        .bab-item-simple.ganjil .bab-btn-masuk { background: var(--ipas-semester1); }
+        .bab-item-simple.genap .bab-btn-masuk { background: var(--ipas-semester2); }
+        .bab-btn-masuk:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.2); filter: brightness(1.05); }
+        
+        /* BACK BUTTON */
+        .back-nav-simple { text-align: center; margin-top: 2rem; }
+        .back-btn-simple { display: inline-flex; align-items: center; gap: 8px; background: white; color: var(--ipas-dark); padding: 0.8rem 2rem; border-radius: 40px; text-decoration: none; font-weight: 600; border: 1px solid var(--ipas-light); }
+        .back-btn-simple:hover { background: var(--ipas-primary); color: white; }
+        
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        
+        @media (max-width: 768px) {
+            .materials-container { padding: 1rem; }
+            .semester-nav-simple { flex-direction: column; align-items: center; }
+            .semester-btn { width: 100%; max-width: 300px; justify-content: center; }
+            .bab-grid-simple { grid-template-columns: 1fr; }
+            .ipas-content-card { padding: 1.5rem; }
+            .ipas-content-card h2 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="../../assets/images/logo.png" alt="Logo Sekolah">
+                    <h1>TEMBOK BELAJAR - PROJEK IPAS</h1>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="../../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="../index-ipas.html" class="nav-link"><i class="fas fa-flask"></i> Beranda IPAS</a></li>
+                    <li><a href="../aktivitas-pembelajaran/index-aktifitas-ipas.html" class="nav-link"><i class="fas fa-tasks"></i> Daftar Aktivitas</a></li>
+                    <li><a href="index-materi-ipas.html" class="nav-link active"><i class="fas fa-book-open"></i> Daftar Materi</a></li>
+                    <li><a href="../penilaian/index-penilaian-ipas.html" class="nav-link"><i class="fas fa-chart-line"></i> Penilaian</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="materials-container">
+
+        <!-- Semester Navigation -->
+        <div class="semester-nav-simple">
+            <button class="semester-btn ganjil active" data-semester="ganjil">
+                <i class="fas fa-sun"></i> Semester Ganjil
+            </button>
+            <button class="semester-btn genap" data-semester="genap">
+                <i class="fas fa-cloud-rain"></i> Semester Genap
+            </button>
+        </div>
+
+        <!-- Semester Ganjil Content -->
+        <div id="ganjil-content" class="semester-content">
+            <div class="simple-card">
+                <div class="section-title">
+                    <i class="fas fa-book-open"></i>
+                    <h3>Daftar Bab Semester Ganjil</h3>
+                </div>
+                
+                <div class="bab-grid-simple">
+                    <div class="bab-item-simple ganjil">
+                        <div class="bab-header-simple">
+                            <h4>Bab 1: Pengenalan IPAS</h4>
+                            <div class="bab-subtitle"><i class="fas fa-circle"></i> Semester Ganjil</div>
+                        </div>
+                        <div class="bab-desc-simple">Pengantar pembelajaran IPAS, metode ilmiah, dan pengenalan proyek semester.</div>
+                        <a href="s1-bab-1.html" class="bab-btn-masuk"><i class="fas fa-arrow-right"></i> Masuk</a>
+                    </div>
+                    
+                    <div class="bab-item-simple ganjil">
+                        <div class="bab-header-simple">
+                            <h4>Bab 2: Makhluk Hidup & Lingkungan</h4>
+                            <div class="bab-subtitle"><i class="fas fa-circle"></i> Semester Ganjil</div>
+                        </div>
+                        <div class="bab-desc-simple">Eksplorasi ekosistem, rantai makanan, dan interaksi makhluk hidup dengan lingkungan.</div>
+                        <a href="s1-bab-2.html" class="bab-btn-masuk"><i class="fas fa-arrow-right"></i> Masuk</a>
+                    </div>
+                    
+                    <div class="bab-item-simple ganjil">
+                        <div class="bab-header-simple">
+                            <h4>Bab 3: Zat & Perubahannya</h4>
+                            <div class="bab-subtitle"><i class="fas fa-circle"></i> Semester Ganjil</div>
+                        </div>
+                        <div class="bab-desc-simple">Sifat zat, perubahan fisika dan kimia, serta pencampuran sederhana.</div>
+                        <a href="s1-bab-3.html" class="bab-btn-masuk"><i class="fas fa-arrow-right"></i> Masuk</a>
+                    </div>
+                    
+                    <div class="bab-item-simple ganjil">
+                        <div class="bab-header-simple">
+                            <h4>Bab 4: Energi & Perubahannya</h4>
+                            <div class="bab-subtitle"><i class="fas fa-circle"></i> Semester Ganjil</div>
+                        </div>
+                        <div class="bab-desc-simple">Bentuk energi, perubahan energi, dan energi terbarukan.</div>
+                        <a href="s1-bab-4.html" class="bab-btn-masuk"><i class="fas fa-arrow-right"></i> Masuk</a>
+                    </div>
+                    
+                    <div class="bab-item-simple ganjil">
+                        <div class="bab-header-simple">
+                            <h4>Bab 5: Keruangan & Konektivitas</h4>
+                            <div class="bab-subtitle"><i class="fas fa-circle"></i> Semester Ganjil</div>
+                        </div>
+                        <div class="bab-desc-simple">Geografi Indonesia, mitigasi bencana, tata ruang, dan konektivitas antar wilayah.</div>
+                        <a href="s1-bab-5.html" class="bab-btn-masuk"><i class="fas fa-arrow-right"></i> Masuk</a>
+                    </div>
+                    
+                    <div class="bab-item-simple ganjil">
+                        <div class="bab-header-simple">
+                            <h4>Bab 6: Interaksi & Dinamika Sosial</h4>
+                            <div class="bab-subtitle"><i class="fas fa-circle"></i> Semester Ganjil</div>
+                        </div>
+                        <div class="bab-desc-simple">Identitas diri, keberagaman, institusi sosial, dan dinamika masyarakat.</div>
+                        <a href="s1-bab-6.html" class="bab-btn-masuk"><i class="fas fa-arrow-right"></i> Masuk</a>
+                    </div>
+                    
+                    <div class="bab-item-simple ganjil">
+                        <div class="bab-header-simple">
+                            <h4>Bab 7: Perilaku Ekonomi</h4>
+                            <div class="bab-subtitle"><i class="fas fa-circle"></i> Semester Ganjil</div>
+                        </div>
+                        <div class="bab-desc-simple">Kebutuhan, kelangkaan, permintaan, penawaran, pasar, dan lembaga keuangan.</div>
+                        <a href="s1-bab-7.html" class="bab-btn-masuk"><i class="fas fa-arrow-right"></i> Masuk</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Semester Genap Content -->
+        <div id="genap-content" class="semester-content" style="display: none;">
+            <div class="simple-card">
+                <div class="section-title">
+                    <i class="fas fa-book-open"></i>
+                    <h3>Daftar Bab Semester Genap</h3>
+                </div>
+                
+                <div class="bab-grid-simple">
+                    <div class="bab-item-simple genap">
+                        <div class="bab-header-simple">
+                            <h4>Bab 1: Identifikasi Masalah</h4>
+                            <div class="bab-subtitle"><i class="fas fa-circle"></i> Semester Genap</div>
+                        </div>
+                        <div class="bab-desc-simple">Mengidentifikasi masalah nyata di lingkungan sekitar yang dapat diselesaikan melalui proyek IPAS.</div>
+                        <a href="s2-bab-1.html" class="bab-btn-masuk"><i class="fas fa-arrow-right"></i> Masuk</a>
+                    </div>
+                    
+                    <div class="bab-item-simple genap">
+                        <div class="bab-header-simple">
+                            <h4>Bab 2: Penentuan Solusi</h4>
+                            <div class="bab-subtitle"><i class="fas fa-circle"></i> Semester Genap</div>
+                        </div>
+                        <div class="bab-desc-simple">Merumuskan alternatif solusi dan memilih solusi terbaik untuk masalah yang diidentifikasi.</div>
+                        <a href="s2-bab-2.html" class="bab-btn-masuk"><i class="fas fa-arrow-right"></i> Masuk</a>
+                    </div>
+                    
+                    <div class="bab-item-simple genap">
+                        <div class="bab-header-simple">
+                            <h4>Bab 3: Perancangan Proyek</h4>
+                            <div class="bab-subtitle"><i class="fas fa-circle"></i> Semester Genap</div>
+                        </div>
+                        <div class="bab-desc-simple">Menyusun rencana proyek, timeline, pembagian tugas, dan metode yang akan digunakan.</div>
+                        <a href="s2-bab-3.html" class="bab-btn-masuk"><i class="fas fa-arrow-right"></i> Masuk</a>
+                    </div>
+                    
+                    <div class="bab-item-simple genap">
+                        <div class="bab-header-simple">
+                            <h4>Bab 4: Pengembangan Proyek</h4>
+                            <div class="bab-subtitle"><i class="fas fa-circle"></i> Semester Genap</div>
+                        </div>
+                        <div class="bab-desc-simple">Melaksanakan proyek sesuai rancangan, mengumpulkan data, dan melakukan eksperimen.</div>
+                        <a href="s2-bab-4.html" class="bab-btn-masuk"><i class="fas fa-arrow-right"></i> Masuk</a>
+                    </div>
+                    
+                    <div class="bab-item-simple genap">
+                        <div class="bab-header-simple">
+                            <h4>Bab 5: Pengolahan Data & Pelaporan</h4>
+                            <div class="bab-subtitle"><i class="fas fa-circle"></i> Semester Genap</div>
+                        </div>
+                        <div class="bab-desc-simple">Menganalisis data, menarik kesimpulan, dan menyusun laporan proyek.</div>
+                        <a href="s2-bab-5.html" class="bab-btn-masuk"><i class="fas fa-arrow-right"></i> Masuk</a>
+                    </div>
+                    
+                    <div class="bab-item-simple genap">
+                        <div class="bab-header-simple">
+                            <h4>Bab 6: Diseminasi Proyek</h4>
+                            <div class="bab-subtitle"><i class="fas fa-circle"></i> Semester Genap</div>
+                        </div>
+                        <div class="bab-desc-simple">Mempresentasikan hasil proyek dan melakukan refleksi terhadap proses pembelajaran.</div>
+                        <a href="s2-bab-6.html" class="bab-btn-masuk"><i class="fas fa-arrow-right"></i> Masuk</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="back-nav-simple">
+            <a href="../index-ipas.html" class="back-btn-simple"><i class="fas fa-arrow-left"></i> Kembali ke Beranda IPAS</a>
+        </div>
+    </section>
+
+    <script>
+        // ===== HAMBURGER MENU - SAMA PERSIS DENGAN YANG BERHASIL =====
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                });
+            }
+            
+            // ===== SEMESTER TAB =====
+            const semesterBtns = document.querySelectorAll('.semester-btn');
+            const ganjilContent = document.getElementById('ganjil-content');
+            const genapContent = document.getElementById('genap-content');
+            
+            semesterBtns.forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    semesterBtns.forEach(function(b) {
+                        b.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                    
+                    if (this.dataset.semester === 'ganjil') {
+                        ganjilContent.style.display = 'block';
+                        genapContent.style.display = 'none';
+                    } else {
+                        ganjilContent.style.display = 'none';
+                        genapContent.style.display = 'block';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

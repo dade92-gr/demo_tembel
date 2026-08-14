@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi 6.2: Representasi Data & Logika Dasar - Informatika Kelas X</title>
+    <link rel="stylesheet" href="../../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --informatika-primary: #3498db;
+            --informatika-secondary: #2980b9;
+            --informatika-light: #ebf5fb;
+            --informatika-dark: #21618c;
+            --informatika-semester1: #3498db;
+            --success: #27ae60;
+            --warning: #e74c3c;
+            --info: #f39c12;
+            --purple: #9b59b6;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+        
+        .materi-container {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+        
+        .materi-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 30px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(52, 152, 219, 0.15);
+            border-left: 8px solid var(--informatika-semester1);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        .materi-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(52, 152, 219, 0.1) 0%, transparent 70%);
+            z-index: 0;
+        }
+        
+        .materi-card > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .materi-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 3px solid var(--informatika-light);
+            flex-wrap: wrap;
+        }
+        
+        .materi-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--informatika-semester1), var(--informatika-primary));
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+        }
+        
+        .materi-title-wrapper {
+            flex: 1;
+        }
+        
+        .materi-title-wrapper h1 {
+            color: var(--informatika-dark);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .materi-subtitle {
+            color: var(--informatika-primary);
+            font-size: 1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .materi-badge {
+            background: var(--informatika-light);
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: var(--informatika-dark);
+        }
+        
+        .materi-badge i {
+            margin-right: 4px;
+        }
+        
+        .tujuan-card {
+            background: linear-gradient(135deg, var(--informatika-light), white);
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(52, 152, 219, 0.2);
+        }
+        
+        .tujuan-card h3 {
+            color: var(--informatika-dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .tujuan-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 0.8rem;
+        }
+        
+        .tujuan-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            padding: 0.8rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .tujuan-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .tujuan-item i {
+            color: var(--success);
+        }
+        
+        .materi-content {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid rgba(52, 152, 219, 0.1);
+        }
+        
+        .materi-content h2 {
+            color: var(--informatika-dark);
+            font-size: 1.8rem;
+            margin: 1.5rem 0 1rem 0;
+            border-bottom: 2px solid var(--informatika-light);
+            padding-bottom: 0.5rem;
+        }
+        
+        .materi-content h2:first-of-type {
+            margin-top: 0;
+        }
+        
+        .materi-content h3 {
+            color: var(--informatika-dark);
+            font-size: 1.3rem;
+            margin: 1.2rem 0 0.8rem 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .materi-content h3 i {
+            color: var(--informatika-primary);
+        }
+        
+        .materi-content p {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        
+        .materi-content ul, .materi-content ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .materi-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .quote-box {
+            margin: 1.5rem 0;
+            padding: 1rem 1.5rem;
+            background: var(--informatika-light);
+            border-left: 4px solid var(--informatika-primary);
+            border-radius: 0 12px 12px 0;
+        }
+        
+        .note-box {
+            background: #fff3e0;
+            border-left: 4px solid var(--info);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid var(--informatika-primary);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .warning-box {
+            background: #fee2e2;
+            border-left: 4px solid var(--warning);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .success-box {
+            background: #d4edda;
+            border-left: 4px solid var(--success);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .code-block {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 1rem;
+            border-radius: 12px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+            line-height: 1.8;
+        }
+        
+        .tipe-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .tipe-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1.2rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #e9ecef;
+        }
+        
+        .tipe-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .tipe-card.active {
+            border: 2px solid var(--informatika-primary);
+            background: var(--informatika-light);
+        }
+        
+        .tipe-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tipe-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--informatika-dark);
+            margin-bottom: 0.3rem;
+        }
+        
+        .tipe-desc {
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid #e9ecef;
+            line-height: 1.4;
+        }
+        
+        .tipe-card.active .tipe-desc {
+            color: var(--informatika-dark);
+            font-weight: 500;
+            border-top-color: var(--informatika-primary);
+        }
+        
+        .rangkuman-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+        
+        .rangkuman-table th {
+            background: var(--informatika-primary);
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .rangkuman-table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .rangkuman-table tr:hover {
+            background: var(--informatika-light);
+        }
+        
+        .operator-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .operator-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #e9ecef;
+        }
+        
+        .operator-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .operator-card.active {
+            border: 2px solid var(--info);
+            background: #fff3e0;
+        }
+        
+        .operator-simbol {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--informatika-primary);
+        }
+        
+        .operator-arti {
+            font-size: 0.85rem;
+            margin-top: 0.3rem;
+        }
+        
+        .operator-desc {
+            font-size: 0.8rem;
+            color: #6c757d;
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        .operator-card.active .operator-desc {
+            color: var(--informatika-dark);
+            font-weight: 500;
+        }
+        
+        .tabel-kebenaran {
+            display: inline-block;
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .tabel-kebenaran table {
+            border-collapse: collapse;
+        }
+        
+        .tabel-kebenaran th, .tabel-kebenaran td {
+            padding: 8px 16px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+        
+        .tabel-kebenaran th {
+            background: var(--informatika-primary);
+            color: white;
+        }
+        
+        .contoh-tabel {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        
+        .contoh-tabel th {
+            background: var(--informatika-primary);
+            color: white;
+            padding: 10px;
+        }
+        
+        .contoh-tabel td {
+            padding: 8px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        
+        .contoh-tabel tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        
+        .materi-navigation {
+            display: flex;
+            gap: 1rem;
+            justify-content: space-between;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn.primary {
+            background: linear-gradient(135deg, var(--informatika-primary), var(--informatika-secondary));
+            color: white;
+        }
+        
+        .nav-btn.primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .nav-btn.secondary {
+            background: white;
+            color: var(--informatika-dark);
+            border: 2px solid var(--informatika-light);
+        }
+        
+        .nav-btn.secondary:hover {
+            background: var(--informatika-light);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .materi-container { padding: 1rem; }
+            .materi-card { padding: 1.5rem; }
+            .materi-header { flex-direction: column; text-align: center; }
+            .rangkuman-table, .contoh-tabel { font-size: 0.8rem; }
+            .tipe-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="../../../assets/images/logo.png" alt="Logo Sekolah">
+                    <h1>INFORMATIKA - MATERI PEMBELAJARAN</h1>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="../../../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="../../index-informatika.html" class="nav-link"><i class="fas fa-laptop-code"></i> Beranda Informatika</a></li>
+                    <li><a href="../../aktivitas-pembelajaran/index-aktivitas-informatika.html" class="nav-link"><i class="fas fa-tasks"></i> Daftar Aktivitas</a></li>
+                    <li><a href="../index-materi-informatika.html" class="nav-link active"><i class="fas fa-book-open"></i> Daftar Materi</a></li>
+                    <li><a href="../../penilaian/index-penilaian-informatika.html" class="nav-link"><i class="fas fa-chart-line"></i> Penilaian</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="materi-container">
+        <div class="materi-card">
+            <!-- Header -->
+            <div class="materi-header">
+                <div class="materi-icon">
+                    <i class="fas fa-database"></i>
+                </div>
+                <div class="materi-title-wrapper">
+                    <h1>Representasi Data &amp; Logika Dasar</h1>
+                    <div class="materi-subtitle">
+                        <i class="fas fa-circle"></i>
+                        <span>Proyek 6: Pemrograman Dasar - Pertemuan 2</span>
+                        <span class="materi-badge"><i class="fas fa-clock"></i> 4 JP</span>
+                        <span class="materi-badge"><i class="fas fa-tag"></i> TP 1.1</span>
+                        <span class="materi-badge"><i class="fas fa-globe"></i> Online</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tujuan Pembelajaran -->
+            <div class="tujuan-card">
+                <h3><i class="fas fa-bullseye"></i> 🎯 Tujuan Pembelajaran</h3>
+                <div class="tujuan-list">
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Memahami pengertian tipe data dan jenis-jenisnya</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Mengenal berbagai tipe data dasar (integer, float, string, boolean)</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Memahami cara merepresentasikan data dalam bentuk tabel</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Menerapkan logika dasar dalam pengolahan data</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Membuat tabel data sederhana untuk menyelesaikan masalah</div>
+                </div>
+            </div>
+
+            <!-- Konten Materi -->
+            <div class="materi-content">
+                <h2>A. Apa Itu Tipe Data?</h2>
+                <p><strong>Tipe data</strong> adalah jenis nilai yang dapat disimpan dan diolah dalam program. Pemilihan tipe data yang tepat sangat penting agar program berjalan dengan benar dan efisien.</p>
+                
+                <div class="quote-box">
+                    <i class="fas fa-quote-left"></i> <strong>Niklaus Wirth:</strong> "Program = Algoritma + Struktur Data" (Program = Algoritma + Struktur Data)
+                </div>
+
+                <div class="info-box">
+                    <i class="fas fa-lightbulb"></i> <strong>Ilustrasi Sederhana:</strong><br>
+                    Bayangkan kamu memiliki beberapa kotak untuk menyimpan barang:<br>
+                    • Kotak kecil (Integer) → hanya untuk benda kecil seperti buku<br>
+                    • Kotak sedang (Float) → untuk benda berukuran sedang<br>
+                    • Kotak besar (String) → untuk benda besar<br>
+                    • Kotak khusus (Boolean) → hanya untuk barang ON/OFF<br>
+                    <strong>Memilih tipe data = memilih kotak yang tepat!</strong>
+                </div>
+
+                <h2>B. Empat Tipe Data Dasar</h2>
+                <p><strong>Klik pada setiap tipe data</strong> untuk memperjelas tampilan:</p>
+                
+                <div class="tipe-grid" id="tipeGrid">
+                    <div class="tipe-card" data-tipe="integer">
+                        <div class="tipe-icon"><i class="fas fa-hashtag"></i></div>
+                        <div class="tipe-title">Integer</div>
+                        <div class="tipe-desc"><strong>Bilangan Bulat</strong><br>Contoh: 10, -5, 0, 1000, 2024, 85<br>Penggunaan: Usia, jumlah, tahun, NIS, nilai<br>⚠️ Hati-hati: 3/2 = 1 (pembagian bulat)</div>
+                    </div>
+                    <div class="tipe-card" data-tipe="float">
+                        <div class="tipe-icon"><i class="fas fa-chart-line"></i></div>
+                        <div class="tipe-title">Float</div>
+                        <div class="tipe-desc"><strong>Bilangan Desimal</strong><br>Contoh: 3.14, 2.5, -0.75, 17.85, 85.5<br>Penggunaan: Nilai rata-rata, harga, suhu, tinggi<br>✅ 3/2 = 1.5 (pembagian desimal)</div>
+                    </div>
+                    <div class="tipe-card" data-tipe="string">
+                        <div class="tipe-icon"><i class="fas fa-font"></i></div>
+                        <div class="tipe-title">String</div>
+                        <div class="tipe-desc"><strong>Teks</strong><br>Contoh: "Halo", "Informatika", "X TKJ 1", "2024"<br>Penggunaan: Nama, alamat, kelas, teks<br>⚠️ "10" + "5" = "105" (bukan 15!)</div>
+                    </div>
+                    <div class="tipe-card" data-tipe="boolean">
+                        <div class="tipe-icon"><i class="fas fa-toggle-on"></i></div>
+                        <div class="tipe-title">Boolean</div>
+                        <div class="tipe-desc"><strong>Logika (Benar/Salah)</strong><br>Contoh: true, false, (5 > 3) → true<br>Penggunaan: Status aktif, kondisi, keputusan<br>✅ Hanya 2 nilai: True atau False</div>
+                    </div>
+                </div>
+
+                <h3>Rangkuman Tipe Data</h3>
+                <table class="rangkuman-table">
+                    <thead>
+                        <tr><th>Tipe Data</th><th>Simbol</th><th>Contoh Nilai</th><th>Penggunaan</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Integer</td><td>integer</td><td>25, -10, 0</td><td>Usia, jumlah, NIS</td></tr>
+                        <tr><td>Float</td><td>float / real</td><td>3.14, 17.5</td><td>Nilai rata-rata, harga</td></tr>
+                        <tr><td>String</td><td>string</td><td>"John", "X IPA 1"</td><td>Nama, alamat, kelas</td></tr>
+                        <tr><td>Boolean</td><td>boolean</td><td>true, false</td><td>Status, kondisi</td></tr>
+                    </tbody>
+                </table>
+
+                <h2>C. Variabel: Tempat Menyimpan Data</h2>
+                <p><strong>Variabel</strong> adalah tempat penyimpanan data di memori komputer yang memiliki nama, tipe data, dan nilai.</p>
+                
+                <div class="code-block">
+                    // Deklarasi variabel dalam pseudocode
+                    DEKLARASI
+                        nama : string
+                        usia : integer
+                        tinggi : float
+                        statusAktif : boolean
+                    
+                    // Mengisi nilai (assignment)
+                    nama ← "Budi"
+                    usia ← 16
+                    tinggi ← 165.5
+                    statusAktif ← true
+                </div>
+
+                <div class="success-box">
+                    <i class="fas fa-check-circle"></i> <strong>Tips Penamaan Variabel:</strong><br>
+                    • Gunakan nama yang deskriptif: <strong>namaSiswa</strong> bukan <strong>a</strong><br>
+                    • Awali dengan huruf atau underscore: <strong>_usia</strong> atau <strong>jumlahSiswa</strong><br>
+                    • Hindari spasi dan karakter khusus<br>
+                    • Jangan gunakan kata kunci (if, for, while, dll)
+                </div>
+
+                <h2>D. Representasi Data dalam Tabel</h2>
+                <p><strong>Tabel</strong> adalah cara menyajikan data dalam baris dan kolom. Setiap kolom memiliki tipe data yang sesuai.</p>
+
+                <h3>Contoh Tabel Data Siswa</h3>
+                <table class="contoh-tabel">
+                    <thead>
+                        <tr><th>No</th><th>Nama</th><th>Usia</th><th>Kelas</th><th>Nilai Rata-rata</th><th>Aktif</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1</td><td>Andi</td><td>16</td><td>X IPA 1</td><td>85.5</td><td>✅</td></tr>
+                        <tr><td>2</td><td>Budi</td><td>17</td><td>X IPA 2</td><td>78.0</td><td>✅</td></tr>
+                        <tr><td>3</td><td>Cici</td><td>16</td><td>X IPS 1</td><td>92.3</td><td>✅</td></tr>
+                        <tr><td>4</td><td>Dedi</td><td>17</td><td>X IPA 1</td><td>67.5</td><td>❌</td></tr>
+                        <tr><td>5</td><td>Euis</td><td>16</td><td>X IPS 2</td><td>88.7</td><td>✅</td></tr>
+                    </tbody>
+                </table>
+
+                <div class="info-box">
+                    <i class="fas fa-table"></i> <strong>Struktur Tabel di Atas:</strong><br>
+                    • No → Integer<br>
+                    • Nama → String<br>
+                    • Usia → Integer<br>
+                    • Kelas → String<br>
+                    • Nilai Rata-rata → Float<br>
+                    • Aktif → Boolean
+                </div>
+
+                <h2>E. Logika Dasar dengan Boolean</h2>
+                
+                <h3>Operator Perbandingan</h3>
+                <div class="operator-grid" id="operatorGrid">
+                    <div class="operator-card" data-op="lebih">
+                        <div class="operator-simbol">></div>
+                        <div class="operator-arti">Lebih besar</div>
+                        <div class="operator-desc">5 > 3 → <strong>true</strong><br>5 > 7 → <strong>false</strong></div>
+                    </div>
+                    <div class="operator-card" data-op="kurang">
+                        <div class="operator-simbol"><</div>
+                        <div class="operator-arti">Lebih kecil</div>
+                        <div class="operator-desc">5 < 7 → <strong>true</strong><br>5 < 3 → <strong>false</strong></div>
+                    </div>
+                    <div class="operator-card" data-op="lebihsama">
+                        <div class="operator-simbol">>=</div>
+                        <div class="operator-arti">Lebih besar atau sama</div>
+                        <div class="operator-desc">5 >= 5 → <strong>true</strong><br>5 >= 3 → <strong>true</strong></div>
+                    </div>
+                    <div class="operator-card" data-op="kurangsama">
+                        <div class="operator-simbol"><=</div>
+                        <div class="operator-arti">Lebih kecil atau sama</div>
+                        <div class="operator-desc">5 <= 5 → <strong>true</strong><br>5 <= 7 → <strong>true</strong></div>
+                    </div>
+                    <div class="operator-card" data-op="sama">
+                        <div class="operator-simbol">==</div>
+                        <div class="operator-arti">Sama dengan</div>
+                        <div class="operator-desc">5 == 5 → <strong>true</strong><br>5 == 3 → <strong>false</strong></div>
+                    </div>
+                    <div class="operator-card" data-op="tidak">
+                        <div class="operator-simbol">!=</div>
+                        <div class="operator-arti">Tidak sama</div>
+                        <div class="operator-desc">5 != 3 → <strong>true</strong><br>5 != 5 → <strong>false</strong></div>
+                    </div>
+                </div>
+
+                <h3>Operator Logika</h3>
+                <div class="operator-grid">
+                    <div class="operator-card" data-op="and">
+                        <div class="operator-simbol">&& (AND)</div>
+                        <div class="operator-arti">Dan</div>
+                        <div class="operator-desc">Bernilai true jika <strong>keduanya true</strong><br>(5>3) && (3<5) → <strong>true</strong></div>
+                    </div>
+                    <div class="operator-card" data-op="or">
+                        <div class="operator-simbol">|| (OR)</div>
+                        <div class="operator-arti">Atau</div>
+                        <div class="operator-desc">Bernilai true jika <strong>salah satu true</strong><br>(5>3) || (3>5) → <strong>true</strong></div>
+                    </div>
+                    <div class="operator-card" data-op="not">
+                        <div class="operator-simbol">! (NOT)</div>
+                        <div class="operator-arti">Tidak/Balik</div>
+                        <div class="operator-desc">Membalikkan nilai<br>!(5>3) → <strong>false</strong></div>
+                    </div>
+                </div>
+
+                <h3>Tabel Kebenaran</h3>
+                <div class="tabel-kebenaran">
+                    <h4>Tabel AND (&&)</h4>
+                    <table>
+                        <tr><th>A</th><th>B</th><th>A && B</th></tr>
+                        <tr><td>true</td><td>true</td><td>true</td></tr>
+                        <tr><td>true</td><td>false</td><td>false</td></tr>
+                        <tr><td>false</td><td>true</td><td>false</td></tr>
+                        <tr><td>false</td><td>false</td><td>false</td></tr>
+                    </table>
+                </div>
+                
+                <div class="tabel-kebenaran">
+                    <h4>Tabel OR (||)</h4>
+                    <table>
+                        <tr><th>A</th><th>B</th><th>A || B</th></tr>
+                        <tr><td>true</td><td>true</td><td>true</td></tr>
+                        <tr><td>true</td><td>false</td><td>true</td></tr>
+                        <tr><td>false</td><td>true</td><td>true</td></tr>
+                        <tr><td>false</td><td>false</td><td>false</td></tr>
+                    </table>
+                </div>
+
+                <div class="warning-box">
+                    <i class="fas fa-exclamation-triangle"></i> <strong>Ingat!</strong> Memilih tipe data yang tepat sangat penting. Menyimpan angka sebagai string akan membuat operasi matematika tidak berjalan dengan benar!
+                </div>
+
+                <div class="quote-box" style="margin-top: 1.5rem; text-align: center;">
+                    <i class="fas fa-database"></i> Pahami Data, Kuasai Logika! 📊
+                </div>
+            </div>
+
+            <!-- Navigasi -->
+            <div class="materi-navigation">
+                <a href="materi6-1.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i> Kembali ke Materi 6.1
+                </a>
+                <a href="materi6-3.html" class="nav-btn primary">
+                    Lanjut ke Materi 6.3: Pseudocode & Flowchart
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script src="../../../script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                });
+            }
+            
+            // Tipe Data Interaktif
+            const tipeCards = document.querySelectorAll('.tipe-card');
+            tipeCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    tipeCards.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            if(tipeCards.length) tipeCards[0].classList.add('active');
+            
+            // Operator Interaktif
+            const operatorCards = document.querySelectorAll('.operator-card');
+            operatorCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    operatorCards.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            if(operatorCards.length) operatorCards[0].classList.add('active');
+        });
+    </script>
+</body>
+</html>

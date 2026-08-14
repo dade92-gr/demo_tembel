@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi 4.5: Presentasi & Refleksi - Informatika Kelas X</title>
+    <link rel="stylesheet" href="../../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --informatika-primary: #3498db;
+            --informatika-secondary: #2980b9;
+            --informatika-light: #ebf5fb;
+            --informatika-dark: #21618c;
+            --informatika-semester1: #3498db;
+            --success: #27ae60;
+            --warning: #e74c3c;
+            --info: #f39c12;
+            --purple: #9b59b6;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+        
+        .materi-container {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+        
+        .materi-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 30px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(52, 152, 219, 0.15);
+            border-left: 8px solid var(--informatika-semester1);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        .materi-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(52, 152, 219, 0.1) 0%, transparent 70%);
+            z-index: 0;
+        }
+        
+        .materi-card > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .materi-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 3px solid var(--informatika-light);
+            flex-wrap: wrap;
+        }
+        
+        .materi-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--purple), var(--informatika-primary));
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+        }
+        
+        .materi-title-wrapper {
+            flex: 1;
+        }
+        
+        .materi-title-wrapper h1 {
+            color: var(--informatika-dark);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .materi-subtitle {
+            color: var(--informatika-primary);
+            font-size: 1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .materi-badge {
+            background: var(--informatika-light);
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: var(--informatika-dark);
+        }
+        
+        .materi-badge i {
+            margin-right: 4px;
+        }
+        
+        .tujuan-card {
+            background: linear-gradient(135deg, var(--informatika-light), white);
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(52, 152, 219, 0.2);
+        }
+        
+        .tujuan-card h3 {
+            color: var(--informatika-dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .tujuan-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 0.8rem;
+        }
+        
+        .tujuan-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            padding: 0.8rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .tujuan-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .tujuan-item i {
+            color: var(--success);
+        }
+        
+        .materi-content {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid rgba(52, 152, 219, 0.1);
+        }
+        
+        .materi-content h2 {
+            color: var(--informatika-dark);
+            font-size: 1.8rem;
+            margin: 1.5rem 0 1rem 0;
+            border-bottom: 2px solid var(--informatika-light);
+            padding-bottom: 0.5rem;
+        }
+        
+        .materi-content h2:first-of-type {
+            margin-top: 0;
+        }
+        
+        .materi-content h3 {
+            color: var(--informatika-dark);
+            font-size: 1.3rem;
+            margin: 1.2rem 0 0.8rem 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .materi-content h3 i {
+            color: var(--informatika-primary);
+        }
+        
+        .materi-content p {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        
+        .materi-content ul, .materi-content ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .materi-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .quote-box {
+            margin: 1.5rem 0;
+            padding: 1rem 1.5rem;
+            background: var(--informatika-light);
+            border-left: 4px solid var(--informatika-primary);
+            border-radius: 0 12px 12px 0;
+        }
+        
+        .note-box {
+            background: #fff3e0;
+            border-left: 4px solid var(--info);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid var(--informatika-primary);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .warning-box {
+            background: #fee2e2;
+            border-left: 4px solid var(--warning);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .success-box {
+            background: #d4edda;
+            border-left: 4px solid var(--success);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .jenis-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .jenis-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #e9ecef;
+            text-align: center;
+            border-top: 4px solid var(--warning);
+        }
+        
+        .jenis-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .jenis-card.active {
+            border: 2px solid var(--warning);
+            background: #fee2e2;
+        }
+        
+        .jenis-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .jenis-title {
+            font-weight: bold;
+            color: var(--informatika-dark);
+        }
+        
+        .jenis-desc {
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin-top: 0.3rem;
+        }
+        
+        .presentation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .presentation-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1.2rem;
+            transition: all 0.3s ease;
+            border: 1px solid #e9ecef;
+            text-align: center;
+        }
+        
+        .presentation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .presentation-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .presentation-title {
+            font-weight: bold;
+            color: var(--informatika-dark);
+        }
+        
+        .presentation-desc {
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin-top: 0.3rem;
+        }
+        
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .tips-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: white;
+            border-radius: 12px;
+            padding: 0.8rem;
+            transition: all 0.3s ease;
+            border: 1px solid #e9ecef;
+        }
+        
+        .tips-item:hover {
+            transform: translateX(5px);
+            background: var(--informatika-light);
+        }
+        
+        .tips-number {
+            width: 35px;
+            height: 35px;
+            background: var(--success);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        
+        .strategi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .strategi-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1rem;
+            transition: all 0.3s ease;
+            border: 1px solid #e9ecef;
+            cursor: pointer;
+        }
+        
+        .strategi-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .strategi-card.active {
+            border: 2px solid var(--success);
+            background: #d4edda;
+        }
+        
+        .strategi-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .strategi-title {
+            font-weight: bold;
+            color: var(--informatika-dark);
+        }
+        
+        .strategi-desc {
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin-top: 0.3rem;
+        }
+        
+        .commitment-box {
+            background: linear-gradient(135deg, var(--purple), #8e44ad);
+            color: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+        
+        .commitment-box h3 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .commitment-box ul {
+            text-align: left;
+            margin-left: 1.5rem;
+        }
+        
+        .materi-navigation {
+            display: flex;
+            gap: 1rem;
+            justify-content: space-between;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn.primary {
+            background: linear-gradient(135deg, var(--informatika-primary), var(--informatika-secondary));
+            color: white;
+        }
+        
+        .nav-btn.primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .nav-btn.secondary {
+            background: white;
+            color: var(--informatika-dark);
+            border: 2px solid var(--informatika-light);
+        }
+        
+        .nav-btn.secondary:hover {
+            background: var(--informatika-light);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .materi-container { padding: 1rem; }
+            .materi-card { padding: 1.5rem; }
+            .materi-header { flex-direction: column; text-align: center; }
+            .tips-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="../../../assets/images/logo.png" alt="Logo Sekolah">
+                    <h1>INFORMATIKA - MATERI PEMBELAJARAN</h1>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="../../../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="../../index-informatika.html" class="nav-link"><i class="fas fa-laptop-code"></i> Beranda Informatika</a></li>
+                    <li><a href="../../aktivitas-pembelajaran/index-aktivitas-informatika.html" class="nav-link"><i class="fas fa-tasks"></i> Daftar Aktivitas</a></li>
+                    <li><a href="../index-materi-informatika.html" class="nav-link active"><i class="fas fa-book-open"></i> Daftar Materi</a></li>
+                    <li><a href="../../penilaian/index-penilaian-informatika.html" class="nav-link"><i class="fas fa-chart-line"></i> Penilaian</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="materi-container">
+        <div class="materi-card">
+            <!-- Header -->
+            <div class="materi-header">
+                <div class="materi-icon">
+                    <i class="fas fa-presentation"></i>
+                </div>
+                <div class="materi-title-wrapper">
+                    <h1>Presentasi &amp; Refleksi</h1>
+                    <div class="materi-subtitle">
+                        <i class="fas fa-circle"></i>
+                        <span>Proyek 4: Fakta atau Hoaks? - Pertemuan 5</span>
+                        <span class="materi-badge"><i class="fas fa-clock"></i> 4 JP</span>
+                        <span class="materi-badge"><i class="fas fa-tag"></i> TP 2.10</span>
+                        <span class="materi-badge"><i class="fas fa-globe"></i> Online</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tujuan Pembelajaran -->
+            <div class="tujuan-card">
+                <h3><i class="fas fa-bullseye"></i> 🎯 Tujuan Pembelajaran</h3>
+                <div class="tujuan-list">
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Memahami pengertian dan jenis-jenis konten negatif di dunia digital</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Mengetahui cara menyaring dan menghindari konten negatif</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Mempresentasikan hasil investigasi dan poster edukatif</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Memberikan dan menerima masukan melalui observasi presentasi</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Mengembangkan komitmen sebagai warga digital yang bertanggung jawab</div>
+                </div>
+            </div>
+
+            <!-- Konten Materi -->
+            <div class="materi-content">
+                <h2>A. Review: Konten Negatif di Dunia Digital</h2>
+                <p><strong>Konten negatif</strong> adalah semua jenis informasi, gambar, video, atau materi digital lainnya yang dapat memberikan dampak buruk bagi pengguna, baik secara psikologis, sosial, maupun keamanan. Memahami konten negatif adalah langkah awal untuk menjadi warga digital yang bertanggung jawab.</p>
+                
+                <div class="quote-box">
+                    <i class="fas fa-quote-left"></i> <strong>Menurut Kominfo:</strong> Konten negatif adalah konten yang melanggar peraturan perundang-undangan, mengganggu ketertiban umum, dan meresahkan masyarakat.
+                </div>
+
+                <h3>Jenis-Jenis Konten Negatif</h3>
+                <p><strong>Klik pada setiap jenis konten</strong> untuk memperjelas tampilan:</p>
+                
+                <div class="jenis-grid" id="jenisGrid">
+                    <div class="jenis-card" data-jenis="pornografi">
+                        <div class="jenis-icon"><i class="fas fa-eye-slash"></i></div>
+                        <div class="jenis-title">Pornografi</div>
+                        <div class="jenis-desc">Konten bermuatan seksual yang tidak layak dikonsumsi</div>
+                    </div>
+                    <div class="jenis-card" data-jenis="kekerasan">
+                        <div class="jenis-icon"><i class="fas fa-fist-raised"></i></div>
+                        <div class="jenis-title">Kekerasan</div>
+                        <div class="jenis-desc">Konten yang menampilkan adegan kekerasan berlebihan</div>
+                    </div>
+                    <div class="jenis-card" data-jenis="ujaran">
+                        <div class="jenis-icon"><i class="fas fa-comment-dots"></i></div>
+                        <div class="jenis-title">Ujaran Kebencian</div>
+                        <div class="jenis-desc">Konten yang memicu kebencian terhadap individu/kelompok</div>
+                    </div>
+                    <div class="jenis-card" data-jenis="hoaks">
+                        <div class="jenis-icon"><i class="fas fa-newspaper"></i></div>
+                        <div class="jenis-title">Hoaks</div>
+                        <div class="jenis-desc">Informasi palsu yang menyesatkan</div>
+                    </div>
+                    <div class="jenis-card" data-jenis="perundungan">
+                        <div class="jenis-icon"><i class="fas fa-users-slash"></i></div>
+                        <div class="jenis-title">Perundungan Siber</div>
+                        <div class="jenis-desc">Tindakan intimidasi atau pelecehan di dunia maya</div>
+                    </div>
+                    <div class="jenis-card" data-jenis="penipuan">
+                        <div class="jenis-icon"><i class="fas fa-hand-holding-usd"></i></div>
+                        <div class="jenis-title">Penipuan</div>
+                        <div class="jenis-desc">Konten yang bertujuan menipu korban</div>
+                    </div>
+                </div>
+
+                <h2>B. Strategi Menyaring Konten Negatif</h2>
+                <div class="strategi-grid" id="strategiGrid">
+                    <div class="strategi-card" data-strategi="1">
+                        <div class="strategi-icon"><i class="fas fa-user-check"></i></div>
+                        <div class="strategi-title">Pilih yang Diikuti</div>
+                        <div class="strategi-desc">Hanya follow akun-akun positif yang memberikan edukasi atau hiburan sehat</div>
+                    </div>
+                    <div class="strategi-card" data-strategi="2">
+                        <div class="strategi-icon"><i class="fas fa-ban"></i></div>
+                        <div class="strategi-title">Unfollow dengan Bijak</div>
+                        <div class="strategi-desc">Jangan ragu unfollow akun yang menyebar konten negatif atau provokatif</div>
+                    </div>
+                    <div class="strategi-card" data-strategi="3">
+                        <div class="strategi-icon"><i class="fas fa-brain"></i></div>
+                        <div class="strategi-title">Kritis Sebelum Klik</div>
+                        <div class="strategi-desc">Cek sumber sebelum klik link mencurigakan</div>
+                    </div>
+                    <div class="strategi-card" data-strategi="4">
+                        <div class="strategi-icon"><i class="fas fa-shield-alt"></i></div>
+                        <div class="strategi-title">Gunakan Mode Aman</div>
+                        <div class="strategi-desc">Aktifkan fitur keamanan di semua platform (SafeSearch, Restricted Mode)</div>
+                    </div>
+                    <div class="strategi-card" data-strategi="5">
+                        <div class="strategi-icon"><i class="fas fa-flag"></i></div>
+                        <div class="strategi-title">Laporkan Konten Negatif</div>
+                        <div class="strategi-desc">Gunakan fitur report di setiap platform untuk melaporkan konten berbahaya</div>
+                    </div>
+                </div>
+
+                <h2>C. Tips Presentasi yang Efektif</h2>
+                <div class="tips-grid">
+                    <div class="tips-item">
+                        <div class="tips-number">1</div>
+                        <div><strong>Persiapan Matang</strong><br>Latih presentasi, pastikan semua anggota siap</div>
+                    </div>
+                    <div class="tips-item">
+                        <div class="tips-number">2</div>
+                        <div><strong>Visual Menarik</strong><br>Gunakan poster sebagai media visual yang mendukung</div>
+                    </div>
+                    <div class="tips-item">
+                        <div class="tips-number">3</div>
+                        <div><strong>Sampaikan dengan Jelas</strong><br>Gunakan intonasi yang jelas, bicara dengan percaya diri</div>
+                    </div>
+                    <div class="tips-item">
+                        <div class="tips-number">4</div>
+                        <div><strong>Cerita Singkat</strong><br>Jelaskan proses investigasi secara singkat dan menarik</div>
+                    </div>
+                    <div class="tips-item">
+                        <div class="tips-number">5</div>
+                        <div><strong>Pesan Edukatif</strong><br>Sampaikan pesan yang bermanfaat dan menginspirasi</div>
+                    </div>
+                    <div class="tips-item">
+                        <div class="tips-number">6</div>
+                        <div><strong>Interaksi dengan Audiens</strong><br>Ajak audiens terlibat, tanyakan pendapat mereka</div>
+                    </div>
+                </div>
+
+                <h2>D. Observasi Presentasi</h2>
+                <p>Saat kelompok lain presentasi, perhatikan hal-hal berikut untuk memberi masukan yang konstruktif:</p>
+
+                <div class="presentation-grid">
+                    <div class="presentation-card">
+                        <div class="presentation-icon"><i class="fas fa-search"></i></div>
+                        <div class="presentation-title">Isu yang Diselidiki</div>
+                        <div class="presentation-desc">Apa isu yang mereka selidiki? Bagaimana proses investigasinya?</div>
+                    </div>
+                    <div class="presentation-card">
+                        <div class="presentation-icon"><i class="fas fa-check-circle"></i></div>
+                        <div class="presentation-title">Kesimpulan</div>
+                        <div class="presentation-desc">Apakah isu tersebut fakta atau hoaks? Apa buktinya?</div>
+                    </div>
+                    <div class="presentation-card">
+                        <div class="presentation-icon"><i class="fas fa-bullhorn"></i></div>
+                        <div class="presentation-title">Pesan Edukatif</div>
+                        <div class="presentation-desc">Apa pesan edukatif yang disampaikan kepada audiens?</div>
+                    </div>
+                    <div class="presentation-card">
+                        <div class="presentation-icon"><i class="fas fa-star"></i></div>
+                        <div class="presentation-title">Hal Menarik</div>
+                        <div class="presentation-desc">Apa yang paling berkesan dari presentasi mereka?</div>
+                    </div>
+                </div>
+
+                <div class="success-box">
+                    <i class="fas fa-check-circle"></i> <strong>Tips Memberi Masukan yang Baik:</strong><br>
+                    • <strong>Spesifik:</strong> Berikan masukan yang jelas dan terarah<br>
+                    • <strong>Konstruktif:</strong> Fokus pada perbaikan, bukan kritik<br>
+                    • <strong>Seimbang:</strong> Sebutkan kelebihan dan kekurangan<br>
+                    • <strong>Santun:</strong> Sampaikan dengan bahasa yang sopan
+                </div>
+
+                <h2>E. Komitmen Warga Digital</h2>
+                <div class="commitment-box">
+                    <h3><i class="fas fa-star"></i> KOMITMEN WARGA DIGITAL</h3>
+                    <ul>
+                        <li><strong>Sebelum Membagikan:</strong> Cek fakta, verifikasi sumber, pastikan informasi benar</li>
+                        <li><strong>Jika Menerima Hoaks:</strong> Jangan bagikan, laporkan konten negatif, edukasi pengirim</li>
+                        <li><strong>Sebagai Warga Digital:</strong> Berkontribusi positif, menjadi teladan, sebarkan kebaikan</li>
+                    </ul>
+                </div>
+
+                <div class="warning-box">
+                    <i class="fas fa-exclamation-triangle"></i> <strong>Ingat!</strong> Setiap dari kita memiliki peran penting dalam menciptakan ruang digital yang aman dan positif. Jadilah warga digital yang bertanggung jawab!
+                </div>
+
+                <div class="quote-box" style="margin-top: 1.5rem; text-align: center;">
+                    <i class="fas fa-presentation"></i> Presentasi dengan Percaya Diri, Refleksi untuk Perbaikan! 🎤
+                </div>
+            </div>
+
+            <!-- Navigasi -->
+            <div class="materi-navigation">
+                <a href="materi4-4.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i> Kembali ke Materi 4.4
+                </a>
+                <a href="../index-materi-informatika.html" class="nav-btn primary">
+                    <i class="fas fa-check-circle"></i> Selesai! Kembali ke Daftar Materi
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script src="../../../script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                });
+            }
+            
+            // Jenis Konten Negatif Interaktif
+            const jenisCards = document.querySelectorAll('.jenis-card');
+            jenisCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    jenisCards.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            if(jenisCards.length) jenisCards[0].classList.add('active');
+            
+            // Strategi Interaktif
+            const strategiCards = document.querySelectorAll('.strategi-card');
+            strategiCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    strategiCards.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            if(strategiCards.length) strategiCards[0].classList.add('active');
+        });
+    </script>
+</body>
+</html>

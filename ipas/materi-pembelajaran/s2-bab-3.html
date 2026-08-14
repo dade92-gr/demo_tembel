@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semester Genap - Bab 3: Perancangan Proyek - Kelas X</title>
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* IPAS THEME COLORS - Semester Genap - HANYA UNTUK KONTEN */
+        :root {
+            --ipas-primary: #3498db;
+            --ipas-secondary: #2980b9;
+            --ipas-light: #d4e6f1;
+            --ipas-dark: #1f618d;
+            --ipas-accent: #f39c12;
+            --ipas-semester2: #e67e22;
+            --ipas-gray: #f5f7fa;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f5f7fa; color: #2c3e50; line-height: 1.6; }
+
+        /* ===== LOGO ZOOM EFFECT ===== */
+        .logo img { transition: transform 0.3s ease; }
+        .logo:hover img { transform: scale(1.2); }
+        
+        /* MAIN CONTENT */
+        .bab-container { padding: 2rem; max-width: 1200px; margin: 0 auto; min-height: calc(100vh - 80px); display: flex; align-items: flex-start; justify-content: center; }
+        
+        .bab-card { background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%); border-radius: 30px; padding: 3rem; box-shadow: 0 20px 40px rgba(52, 152, 219, 0.15); border-left: 8px solid var(--ipas-semester2); position: relative; overflow: hidden; width: 100%; animation: fadeInUp 0.6s ease-out; }
+        .bab-card::before { content: ''; position: absolute; top: 0; right: 0; width: 250px; height: 250px; background: radial-gradient(circle, rgba(230, 126, 34, 0.1) 0%, transparent 70%); z-index: 0; }
+        .bab-card > * { position: relative; z-index: 1; }
+        
+        .bab-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 3px solid var(--ipas-light); }
+        .bab-icon { width: 80px; height: 80px; background: linear-gradient(135deg, var(--ipas-semester2), #f39c12); border-radius: 25px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2.5rem; box-shadow: 0 10px 20px rgba(230, 126, 34, 0.3); }
+        .bab-title-wrapper h1 { color: var(--ipas-dark); font-size: 2.5rem; margin-bottom: 0.5rem; line-height: 1.2; }
+        .bab-subtitle { color: var(--ipas-semester2); font-size: 1.1rem; font-weight: 600; display: flex; align-items: center; gap: 8px; }
+        .bab-subtitle i { font-size: 0.8rem; }
+        .semester-badge { display: inline-block; background: var(--ipas-semester2); color: white; padding: 0.3rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600; margin-left: 1rem; }
+        
+        .bab-info { display: flex; gap: 2rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+        .info-item { display: flex; align-items: center; gap: 10px; background: var(--ipas-light); padding: 0.8rem 1.5rem; border-radius: 50px; color: var(--ipas-dark); font-weight: 600; }
+        .info-item i { color: var(--ipas-semester2); font-size: 1.2rem; }
+        
+        .bab-description { background: white; border-radius: 20px; padding: 2rem; margin-bottom: 2rem; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 1px solid rgba(230, 126, 34, 0.1); }
+        .bab-description h2, .bab-description h3, .bab-description h4, .bab-description p, .bab-description ul, .bab-description ol, .bab-description li, .bab-description table, .bab-description .note-box, .bab-description .activity-box, .bab-description .example-box, .bab-description .plan-box, .bab-description .role-box, .bab-description blockquote { text-align: justify; }
+        
+        .bab-description h2 { color: var(--ipas-dark); font-size: 2rem; margin: 1.5rem 0 1rem 0; border-bottom: 2px solid var(--ipas-light); padding-bottom: 0.5rem; }
+        .bab-description h3 { color: var(--ipas-dark); font-size: 1.3rem; margin: 1.5rem 0 1rem 0; display: flex; align-items: center; gap: 10px; }
+        .bab-description h4 { color: var(--ipas-dark); font-size: 1.2rem; margin: 1.2rem 0 0.8rem 0; font-weight: 600; }
+        .bab-description h3 i { color: var(--ipas-semester2); }
+        .bab-description p { color: #555; font-size: 1.1rem; line-height: 1.8; margin-bottom: 1rem; text-align: justify; }
+        .bab-description ul, .bab-description ol { margin-left: 2rem; margin-bottom: 1rem; color: #555; text-align: justify; }
+        .bab-description li { margin-bottom: 0.5rem; text-align: justify; }
+        .bab-description strong { color: var(--ipas-dark); }
+        .bab-description blockquote { margin: 1.5rem 0; padding: 1rem 2rem; background: var(--ipas-light); border-left: 5px solid var(--ipas-semester2); font-style: italic; font-size: 1.1rem; color: var(--ipas-dark); border-radius: 0 15px 15px 0; }
+        
+        .activity-box { background: linear-gradient(135deg, #fef5e7, #fef9e7); border-left: 5px solid var(--ipas-semester2); padding: 1.5rem; margin: 1.5rem 0; border-radius: 10px; border: 1px solid rgba(230, 126, 34, 0.2); }
+        .activity-box h4 { color: var(--ipas-dark); margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; }
+        .activity-box h4 i { color: var(--ipas-semester2); }
+        .activity-box ul, .activity-box ol { margin-left: 1.5rem; }
+        
+        .example-box { background: #f0f9ff; border-left: 5px solid var(--ipas-primary); padding: 1.5rem; margin: 1.5rem 0; border-radius: 10px; border: 1px solid rgba(52, 152, 219, 0.2); }
+        .example-box h4 { color: var(--ipas-dark); margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; }
+        .example-box h4 i { color: var(--ipas-primary); }
+        
+        .plan-box { background: #e8f5e9; border-left: 5px solid #388e3c; padding: 1.5rem; margin: 1.5rem 0; border-radius: 10px; border: 1px solid rgba(56, 142, 60, 0.2); }
+        .plan-box h4 { color: var(--ipas-dark); margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; }
+        .plan-box h4 i { color: #388e3c; }
+        .plan-box ul, .plan-box ol { margin-left: 1.5rem; }
+        
+        .role-box { background: #e1f5fe; border-left: 5px solid #0288d1; padding: 1.5rem; margin: 1.5rem 0; border-radius: 10px; border: 1px solid rgba(2, 136, 209, 0.2); }
+        .role-box h4 { color: var(--ipas-dark); margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; }
+        .role-box h4 i { color: #0288d1; }
+        .role-box ul { list-style-type: none; padding-left: 0; }
+        .role-box li { margin-bottom: 1rem; padding-left: 1.5rem; position: relative; }
+        .role-box li:before { content: "→"; color: #0288d1; font-weight: bold; position: absolute; left: 0; }
+        
+        .note-box { background: var(--ipas-light); border-left: 5px solid var(--ipas-semester2); padding: 1.5rem; margin: 1.5rem 0; border-radius: 10px; font-style: italic; }
+        
+        .timeline-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.95rem; box-shadow: 0 0 20px rgba(0, 0, 0, 0.05); border-radius: 10px; overflow: hidden; }
+        .timeline-table th { background-color: var(--ipas-semester2); color: white; font-weight: 600; padding: 12px 15px; text-align: center; }
+        .timeline-table td { padding: 10px 12px; border-bottom: 1px solid #dddddd; text-align: center; }
+        .timeline-table tr:nth-child(even) { background-color: #f8f8f8; }
+        .timeline-table tr:hover { background-color: var(--ipas-light); }
+        .timeline-table .activity-cell { text-align: left; font-weight: 500; }
+        .week-active { background-color: var(--ipas-semester2); color: white; font-weight: 600; border-radius: 4px; padding: 4px 8px; display: inline-block; }
+        
+        .materials-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 1rem; box-shadow: 0 0 20px rgba(0, 0, 0, 0.05); border-radius: 10px; overflow: hidden; }
+        .materials-table th { background-color: #388e3c; color: white; font-weight: 600; padding: 12px 15px; text-align: left; }
+        .materials-table td { padding: 10px 15px; border-bottom: 1px solid #dddddd; }
+        .materials-table tr:nth-child(even) { background-color: #f8f8f8; }
+        
+        .step-list { counter-reset: step-counter; list-style-type: none; padding-left: 0; }
+        .step-list li { counter-increment: step-counter; margin-bottom: 1rem; padding-left: 2.5rem; position: relative; }
+        .step-list li:before { content: "Langkah " counter(step-counter) ":"; color: var(--ipas-semester2); font-weight: 600; position: absolute; left: 0; }
+        
+        .bab-navigation { display: flex; gap: 1rem; justify-content: space-between; margin-top: 2rem; }
+        .nav-btn { display: inline-flex; align-items: center; gap: 10px; padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; border: none; cursor: pointer; }
+        .nav-btn.primary { background: linear-gradient(135deg, var(--ipas-semester2), #f39c12); color: white; box-shadow: 0 5px 15px rgba(230, 126, 34, 0.3); }
+        .nav-btn.primary:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(230, 126, 34, 0.4); }
+        .nav-btn.secondary { background: white; color: var(--ipas-dark); border: 2px solid var(--ipas-light); }
+        .nav-btn.secondary:hover { background: var(--ipas-light); transform: translateX(-5px); }
+        
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
+        @media (max-width: 768px) {
+            .bab-container { padding: 1rem; }
+            .bab-card { padding: 2rem; }
+            .bab-header { flex-direction: column; text-align: center; }
+            .bab-title-wrapper h1 { font-size: 2rem; }
+            .bab-info { justify-content: center; }
+            .bab-navigation { flex-direction: column; }
+            .nav-btn { justify-content: center; }
+            .timeline-table, .materials-table { font-size: 0.85rem; }
+            .timeline-table th, .timeline-table td, .materials-table th, .materials-table td { padding: 6px 4px; }
+        }
+        
+        @media (max-width: 480px) {
+            .bab-card { padding: 1.5rem; }
+            .bab-title-wrapper h1 { font-size: 1.8rem; }
+            .bab-icon { width: 60px; height: 60px; font-size: 2rem; }
+            .info-item { width: 100%; justify-content: center; }
+            .timeline-table { font-size: 0.75rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="../../assets/images/logo.png" alt="Logo Sekolah">
+                    <h1>TEMBOK BELAJAR - PROJEK IPAS</h1>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="../../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="../index-ipas.html" class="nav-link"><i class="fas fa-flask"></i> Beranda IPAS</a></li>
+                    <li><a href="../aktivitas-pembelajaran/index-aktifitas-ipas.html" class="nav-link"><i class="fas fa-tasks"></i> Daftar Aktivitas</a></li>
+                    <li><a href="index-materi-ipas.html" class="nav-link active"><i class="fas fa-book-open"></i> Daftar Materi</a></li>
+                    <li><a href="../penilaian/index-penilaian-ipas.html" class="nav-link"><i class="fas fa-chart-line"></i> Penilaian</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="bab-container">
+        <div class="bab-card">
+            <div class="bab-header">
+                <div class="bab-icon"><i class="fas fa-draw-polygon"></i></div>
+                <div class="bab-title-wrapper">
+                    <h1>Bab 3 : Perancangan Proyek <span class="semester-badge">Semester Genap</span></h1>
+                    <div class="bab-subtitle"><i class="fas fa-circle"></i> <span>"Menyusun Peta Perjalanan Proyek Kita"</span></div>
+                </div>
+            </div>
+
+            <div class="bab-description">
+                <h2>A. Pendahuluan: Mimpi Besar dengan Rencana Kecil</h2>
+                
+                <p>Bayangkan kalian ingin membangun sebuah istana pasir yang megah. Tanpa rencana, kalian mungkin hanya akan asyik menumpuk pasir dan hasilnya akan berantakan. Tapi jika kalian punya gambaran, menentukan siapa yang menggali, siapa yang membasahi pasir, dan di mana menaruh menara, maka istana kalian akan kokoh dan indah.</p>
+                
+                <p>Begitu pula dengan proyek IPAS kalian. Di Bab 2, kalian sudah memilih solusi hebat. Itu adalah "gambaran istana" kalian. Sekarang, di Bab 3, kalian akan membuat gambar teknik dan jadwal pembangunannya. Bab ini adalah jantung dari perencanaan proyek. Semakin matang rencana kalian, semakin lancar pula pelaksanaan proyek nanti.</p>
+
+                <h2>B. Tujuan Pembelajaran Bab 3</h2>
+                
+                <p>Setelah mempelajari materi ini, kalian diharapkan mampu:</p>
+                <ul>
+                    <li><strong>Menjabarkan solusi</strong> menjadi langkah-langkah kerja yang detail.</li>
+                    <li><strong>Membuat daftar</strong> alat, bahan, dan sumber daya yang dibutuhkan.</li>
+                    <li><strong>Membagi tugas</strong> dan tanggung jawab secara adil dalam kelompok.</li>
+                    <li><strong>Menyusun timeline</strong> atau jadwal pelaksanaan proyek yang realistis.</li>
+                    <li><strong>Merancang metode</strong> pengumpulan data yang sesuai dengan proyek.</li>
+                </ul>
+
+                <h2>C. Komponen Utama Perancangan Proyek</h2>
+                
+                <p>Perancangan proyek yang baik ibarat sebuah peta. Peta ini akan memandu kalian dari titik awal (sekarang) menuju titik akhir (proyek selesai). Ada beberapa komponen penting yang harus ada dalam peta ini:</p>
+
+                <div class="plan-box">
+                    <h4><i class="fas fa-list-ol"></i> 1. Rincian Langkah Kerja (Apa yang akan kita lakukan?)</h4>
+                    <p>Pecahlah solusi kalian menjadi tahapan-tahapan kecil yang lebih terperinci. Semakin rinci, semakin mudah dijalankan.</p>
+                    
+                    <p><strong>Contoh Solusi:</strong> Membuat kompos dari sampah organik kantin.</p>
+                    
+                    <p><strong>Rincian Langkah Kerja:</strong></p>
+                    <ol class="step-list" style="list-style-type: none; padding-left: 0;">
+                        <li style="margin-bottom: 0.8rem; padding-left: 2rem; position: relative;"><span style="position: absolute; left: 0; color: #388e3c; font-weight: 600;">1.</span> Melakukan survei kecil untuk mengetahui jumlah rata-rata sampah organik per hari.</li>
+                        <li style="margin-bottom: 0.8rem; padding-left: 2rem; position: relative;"><span style="position: absolute; left: 0; color: #388e3c; font-weight: 600;">2.</span> Mencari informasi (buku/internet/wawancara) tentang cara membuat kompos yang benar.</li>
+                        <li style="margin-bottom: 0.8rem; padding-left: 2rem; position: relative;"><span style="position: absolute; left: 0; color: #388e3c; font-weight: 600;">3.</span> Menyiapkan alat dan bahan (ember bekas, tanah, sekam, EM4, dll).</li>
+                        <li style="margin-bottom: 0.8rem; padding-left: 2rem; position: relative;"><span style="position: absolute; left: 0; color: #388e3c; font-weight: 600;">4.</span> Membuat kompos sesuai prosedur yang ditemukan.</li>
+                        <li style="margin-bottom: 0.8rem; padding-left: 2rem; position: relative;"><span style="position: absolute; left: 0; color: #388e3c; font-weight: 600;">5.</span> Mengamati dan mengukur suhu serta kelembaban kompos setiap 3 hari sekali.</li>
+                        <li style="margin-bottom: 0.8rem; padding-left: 2rem; position: relative;"><span style="position: absolute; left: 0; color: #388e3c; font-weight: 600;">6.</span> Mendokumentasikan proses dengan foto dan video.</li>
+                    </ol>
+                </div>
+
+                <div class="plan-box">
+                    <h4><i class="fas fa-tools"></i> 2. Alat dan Bahan (Apa saja yang perlu kita siapkan?)</h4>
+                    <p>Buatlah daftar semua yang dibutuhkan. Ini akan membantu kalian dalam mengatur anggaran dan mencari sumber daya.</p>
+                    
+                    <table class="materials-table">
+                        <thead>
+                            <tr>
+                                <th>Alat</th>
+                                <th>Bahan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Ember bekas</td><td>Sampah organik (sisa sayur, kulit buah)</td></tr>
+                            <tr><td>Sekop kecil</td><td>Tanah</td></tr>
+                            <tr><td>Sarung tangan</td><td>Sekam padi</td></tr>
+                            <tr><td>Sprayer air</td><td>Air</td></tr>
+                            <tr><td>Kamera (HP)</td><td>Larutan EM4 (atau gula sebagai alternatif)</td></tr>
+                            <tr><td>Alat tulis</td><td>Kertas label</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="role-box">
+                    <h4><i class="fas fa-users"></i> 3. Pembagian Tugas (Siapa melakukan apa?)</h4>
+                    <p>Proyek kelompok bukan berarti semua orang mengerjakan semuanya. Pembagian tugas yang jelas akan membuat pekerjaan lebih efisien dan menghindari ada anggota yang pasif. Tugaskan berdasarkan minat dan keahlian masing-masing.</p>
+                    
+                    <ul>
+                        <li><strong>Ketua Kelompok:</strong> Mengkoordinir semua kegiatan dan memastikan semua berjalan lancar.</li>
+                        <li><strong>Sekretaris/Dokumenter:</strong> Mencatat semua proses, mengumpulkan data, dan mengambil foto/video.</li>
+                        <li><strong>Bendahara:</strong> Mengelola keuangan kelompok (jika ada) dan mencatat pengeluaran.</li>
+                        <li><strong>Pelaksana Teknis</strong> (bisa lebih dari 1 orang): Mereka yang bertanggung jawab langsung dalam pembuatan produk/eksperimen.</li>
+                        <li><strong>Koordinator Komunikasi:</strong> Menghubungi pihak-pihak yang dibutuhkan (misal: petugas kantin, guru, narasumber).</li>
+                    </ul>
+                </div>
+
+                <div class="plan-box">
+                    <h4><i class="fas fa-calendar-alt"></i> 4. Timeline atau Jadwal (Kapan kita mengerjakannya?)</h4>
+                    <p>Buatlah jadwal yang realistis. Perhatikan tenggat waktu akhir proyek dan kalender sekolah.</p>
+                    
+                    <table class="timeline-table">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Kegiatan</th>
+                                <th>Minggu 1</th>
+                                <th>Minggu 2</th>
+                                <th>Minggu 3</th>
+                                <th>Minggu 4</th>
+                                <th>Penanggung Jawab</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td class="activity-cell">Survei awal sampah kantin</td>
+                                <td><span class="week-active">█████</span></td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>Tim Survei</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td class="activity-cell">Mencari informasi & menyiapkan alat/bahan</td>
+                                <td>-</td>
+                                <td><span class="week-active">█████</span></td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>Semua</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td class="activity-cell">Proses pembuatan kompos</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td><span class="week-active">█████</span></td>
+                                <td>-</td>
+                                <td>Tim Teknis</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td class="activity-cell">Pengamatan & perawatan</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td><span class="week-active">█████</span></td>
+                                <td>Tim Teknis</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td class="activity-cell">Dokumentasi (berkelanjutan)</td>
+                                <td><span class="week-active">█████</span></td>
+                                <td><span class="week-active">█████</span></td>
+                                <td><span class="week-active">█████</span></td>
+                                <td><span class="week-active">█████</span></td>
+                                <td>Sekretaris</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="plan-box">
+                    <h4><i class="fas fa-chart-bar"></i> 5. Metode Pengumpulan Data (Bagaimana kita tahu proyek kita berhasil?)</h4>
+                    <p>Proyek IPAS tidak hanya menghasilkan produk, tetapi juga data. Data ini akan membuktikan apakah solusi kita berhasil atau tidak. Tentukan sejak awal data apa yang akan dikumpulkan dan bagaimana cara mengumpulkannya.</p>
+                    
+                    <ul>
+                        <li><strong>Observasi/Pengamatan:</strong> Melihat dan mencatat perubahan.</li>
+                        <li><strong>Pengukuran:</strong> Mengumpulkan data berupa angka.</li>
+                        <li><strong>Dokumentasi:</strong> Mengambil foto dan video untuk merekam setiap tahapan.</li>
+                        <li><strong>Wawancara/Kuesioner:</strong> Bertanya kepada orang lain.</li>
+                    </ul>
+                </div>
+
+                <h2>D. Aktivitas: Menyusun Rencana Proyek Kelompok</h2>
+                
+                <div class="activity-box">
+                    <h4><i class="fas fa-tasks"></i> Aktivitas Kelompok</h4>
+                    <ol>
+                        <li><strong>Diskusikan Rincian Langkah:</strong> Ambil solusi yang sudah kalian pilih di Bab 2. Tuliskan langkah-langkah detail untuk membuat/melaksanakan solusi tersebut.</li>
+                        <li><strong>Buat Daftar Kebutuhan:</strong> Tuliskan semua alat, bahan, dan sumber daya lain yang kalian perlukan.</li>
+                        <li><strong>Bagi Tugas:</strong> Bicarakan keahlian dan minat masing-masing anggota, lalu bagilah peran dan tugas secara adil.</li>
+                        <li><strong>Buat Timeline:</strong> Buatlah jadwal kegiatan dalam bentuk tabel. Perkirakan waktu yang dibutuhkan untuk setiap langkah.</li>
+                        <li><strong>Konsultasi dengan Guru:</strong> Sebelum lanjut ke bab berikutnya, konsultasikan rencana kalian dengan guru.</li>
+                    </ol>
+                </div>
+
+                <h2>E. Kesimpulan</h2>
+                
+                <p>Perencanaan yang matang adalah kunci kesuksesan proyek. Dengan menyusun langkah kerja, menyiapkan alat bahan, membagi tugas, dan membuat jadwal yang jelas, kalian tidak hanya siap untuk bertindak, tetapi juga siap untuk menghadapi tantangan yang mungkin muncul.</p>
+                
+                <div class="note-box">
+                    <i class="fas fa-quote-left" style="color: var(--ipas-semester2); margin-right: 10px;"></i>
+                    Sekarang, kalian punya peta yang akan menuntun kalian melewati hutan belantara proyek IPAS. Selamat merencanakan, petualang muda!
+                </div>
+
+                <div class="note-box">
+                    <i class="fas fa-lightbulb" style="color: var(--ipas-semester2); margin-right: 10px;"></i>
+                    <strong>Catatan:</strong> Bab ini dirancang tanpa menggunakan gambar agar fokus pada proses perencanaan dan diskusi kelompok. Gunakan tabel-tabel di atas sebagai panduan untuk membuat rencana proyek kalian sendiri.
+                </div>
+            </div>
+
+            <div class="bab-navigation">
+                <a href="s2-bab-2.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i> Kembali ke Bab 2
+                </a>
+                <a href="s2-bab-4.html" class="nav-btn primary">
+                    Lanjut ke Bab 4 <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // ===== HAMBURGER MENU - SAMA PERSIS DENGAN REFERENSI =====
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

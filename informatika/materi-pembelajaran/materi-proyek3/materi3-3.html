@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi 3.3: Autentikasi Dua Langkah (2FA) - Informatika Kelas X</title>
+    <link rel="stylesheet" href="../../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --informatika-primary: #3498db;
+            --informatika-secondary: #2980b9;
+            --informatika-light: #ebf5fb;
+            --informatika-dark: #21618c;
+            --informatika-semester1: #3498db;
+            --success: #27ae60;
+            --warning: #e74c3c;
+            --info: #f39c12;
+            --purple: #9b59b6;
+            --2fa: #2ecc71;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+        
+        .materi-container {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+        
+        .materi-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 30px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(52, 152, 219, 0.15);
+            border-left: 8px solid var(--informatika-semester1);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        .materi-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(52, 152, 219, 0.1) 0%, transparent 70%);
+            z-index: 0;
+        }
+        
+        .materi-card > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .materi-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 3px solid var(--informatika-light);
+            flex-wrap: wrap;
+        }
+        
+        .materi-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--2fa), var(--informatika-primary));
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+        }
+        
+        .materi-title-wrapper {
+            flex: 1;
+        }
+        
+        .materi-title-wrapper h1 {
+            color: var(--informatika-dark);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .materi-subtitle {
+            color: var(--informatika-primary);
+            font-size: 1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .materi-badge {
+            background: var(--informatika-light);
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: var(--informatika-dark);
+        }
+        
+        .materi-badge i {
+            margin-right: 4px;
+        }
+        
+        .tujuan-card {
+            background: linear-gradient(135deg, var(--informatika-light), white);
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(52, 152, 219, 0.2);
+        }
+        
+        .tujuan-card h3 {
+            color: var(--informatika-dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .tujuan-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 0.8rem;
+        }
+        
+        .tujuan-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            padding: 0.8rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .tujuan-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .tujuan-item i {
+            color: var(--success);
+        }
+        
+        .materi-content {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid rgba(52, 152, 219, 0.1);
+        }
+        
+        .materi-content h2 {
+            color: var(--informatika-dark);
+            font-size: 1.8rem;
+            margin: 1.5rem 0 1rem 0;
+            border-bottom: 2px solid var(--informatika-light);
+            padding-bottom: 0.5rem;
+        }
+        
+        .materi-content h2:first-of-type {
+            margin-top: 0;
+        }
+        
+        .materi-content h3 {
+            color: var(--informatika-dark);
+            font-size: 1.3rem;
+            margin: 1.2rem 0 0.8rem 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .materi-content h3 i {
+            color: var(--informatika-primary);
+        }
+        
+        .materi-content p {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        
+        .materi-content ul, .materi-content ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .materi-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .quote-box {
+            margin: 1.5rem 0;
+            padding: 1rem 1.5rem;
+            background: var(--informatika-light);
+            border-left: 4px solid var(--informatika-primary);
+            border-radius: 0 12px 12px 0;
+        }
+        
+        .note-box {
+            background: #fff3e0;
+            border-left: 4px solid var(--info);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid var(--informatika-primary);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .warning-box {
+            background: #fee2e2;
+            border-left: 4px solid var(--warning);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .success-box {
+            background: #d4edda;
+            border-left: 4px solid var(--success);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        /* Metode 2FA Grid */
+        .metode-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .metode-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #e9ecef;
+        }
+        
+        .metode-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .metode-card.active {
+            border: 2px solid var(--info);
+            background: #fff3e0;
+        }
+        
+        .metode-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .metode-title {
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+            color: var(--informatika-dark);
+        }
+        
+        .metode-desc {
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        .metode-card.active .metode-desc {
+            color: var(--informatika-dark);
+            font-weight: 500;
+        }
+        
+        .metode-card .pros {
+            color: var(--success);
+        }
+        
+        .metode-card .cons {
+            color: var(--warning);
+        }
+        
+        /* Aplikasi Authenticator Grid */
+        .auth-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .auth-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #e9ecef;
+        }
+        
+        .auth-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .auth-card.active {
+            border: 2px solid var(--2fa);
+            background: #d4edda;
+        }
+        
+        .auth-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .auth-name {
+            font-weight: bold;
+        }
+        
+        .auth-platform {
+            font-size: 0.75rem;
+            color: #6c757d;
+        }
+        
+        /* Langkah Aktivasi */
+        .langkah-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .langkah-card {
+            background: #f8f9fa;
+            border-radius: 16px;
+            padding: 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #e9ecef;
+            text-align: center;
+        }
+        
+        .langkah-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .langkah-card.active {
+            border: 2px solid var(--success);
+            background: #d4edda;
+        }
+        
+        .langkah-number {
+            width: 35px;
+            height: 35px;
+            background: var(--success);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.5rem;
+            font-weight: bold;
+        }
+        
+        .langkah-title {
+            font-weight: bold;
+        }
+        
+        .langkah-desc {
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin-top: 0.3rem;
+        }
+        
+        /* Tabel Perbandingan */
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+        
+        .compare-table th {
+            background: var(--informatika-primary);
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .compare-table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .compare-table tr:hover {
+            background: var(--informatika-light);
+        }
+        
+        .compare-table .check {
+            color: var(--success);
+        }
+        
+        .compare-table .cross {
+            color: var(--warning);
+        }
+        
+        .materi-navigation {
+            display: flex;
+            gap: 1rem;
+            justify-content: space-between;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn.primary {
+            background: linear-gradient(135deg, var(--informatika-primary), var(--informatika-secondary));
+            color: white;
+        }
+        
+        .nav-btn.primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .nav-btn.secondary {
+            background: white;
+            color: var(--informatika-dark);
+            border: 2px solid var(--informatika-light);
+        }
+        
+        .nav-btn.secondary:hover {
+            background: var(--informatika-light);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .materi-container { padding: 1rem; }
+            .materi-card { padding: 1.5rem; }
+            .materi-header { flex-direction: column; text-align: center; }
+            .compare-table { font-size: 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="../../../assets/images/logo.png" alt="Logo Sekolah">
+                    <h1>INFORMATIKA - MATERI PEMBELAJARAN</h1>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="../../../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="../../index-informatika.html" class="nav-link"><i class="fas fa-laptop-code"></i> Beranda Informatika</a></li>
+                    <li><a href="../../aktivitas-pembelajaran/index-aktivitas-informatika.html" class="nav-link"><i class="fas fa-tasks"></i> Daftar Aktivitas</a></li>
+                    <li><a href="../index-materi-informatika.html" class="nav-link active"><i class="fas fa-book-open"></i> Daftar Materi</a></li>
+                    <li><a href="../../penilaian/index-penilaian-informatika.html" class="nav-link"><i class="fas fa-chart-line"></i> Penilaian</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="materi-container">
+        <div class="materi-card">
+            <!-- Header -->
+            <div class="materi-header">
+                <div class="materi-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="materi-title-wrapper">
+                    <h1>Autentikasi Dua Langkah (2FA)</h1>
+                    <div class="materi-subtitle">
+                        <i class="fas fa-circle"></i>
+                        <span>Proyek 3: Etika Digital - Pertemuan 3</span>
+                        <span class="materi-badge"><i class="fas fa-clock"></i> 4 JP</span>
+                        <span class="materi-badge"><i class="fas fa-tag"></i> TP 2.12</span>
+                        <span class="materi-badge"><i class="fas fa-globe"></i> Online</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tujuan Pembelajaran -->
+            <div class="tujuan-card">
+                <h3><i class="fas fa-bullseye"></i> 🎯 Tujuan Pembelajaran</h3>
+                <div class="tujuan-list">
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Memahami pengertian dan fungsi autentikasi dua langkah (2FA)</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Menjelaskan berbagai metode 2FA yang umum digunakan</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Mengaktifkan 2FA pada akun Google dan platform lainnya</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Menyimpan dan mengelola kode cadangan dengan aman</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Menerapkan 2FA untuk meningkatkan keamanan akun digital</div>
+                </div>
+            </div>
+
+            <!-- Konten Materi -->
+            <div class="materi-content">
+                <h2>A. Apa Itu Autentikasi Dua Langkah (2FA)?</h2>
+                <p><strong>Autentikasi Dua Langkah (Two-Factor Authentication / 2FA)</strong> adalah metode keamanan yang memerlukan dua langkah verifikasi untuk masuk ke akun digital. Selain kata sandi (password), pengguna juga harus memberikan kode verifikasi tambahan yang dikirim melalui SMS, aplikasi authenticator, atau kunci keamanan fisik.</p>
+                
+                <div class="quote-box">
+                    <i class="fas fa-quote-left"></i> <strong>Google:</strong> "Autentikasi dua langkah menambahkan lapisan keamanan ekstra pada akun Anda dengan memerlukan sesuatu yang Anda tahu (kata sandi) dan sesuatu yang Anda miliki (telepon/kode)."
+                </div>
+
+                <div class="info-box">
+                    <i class="fas fa-lightbulb"></i> <strong>Ilustrasi Sederhana:</strong><br>
+                    Bayangkan rumahmu memiliki 2 pintu:<br>
+                    • <strong>Pintu 1 (Password):</strong> Kunci utama yang selalu kamu bawa<br>
+                    • <strong>Pintu 2 (2FA):</strong> Gembok tambahan yang hanya bisa dibuka dengan kode dari HP-mu<br>
+                    • Pencuri harus melewati kedua pintu → <strong>Jauh lebih aman!</strong>
+                </div>
+
+                <div class="success-box">
+                    <i class="fas fa-check-circle"></i> <strong>Mengapa 2FA Penting?</strong><br>
+                    • Kata sandi bisa dicuri (phishing, kebocoran data, keylogger)<br>
+                    • 2FA membutuhkan <strong>sesuatu yang kamu miliki</strong> (HP) → sulit dicuri<br>
+                    • Melindungi akun dari peretasan meskipun password bocor<br>
+                    • Mayoritas peretasan terjadi karena tidak menggunakan 2FA
+                </div>
+
+                <h2>B. Metode Autentikasi Dua Langkah</h2>
+                <p><strong>Klik pada setiap metode</strong> untuk memperjelas tampilan:</p>
+                
+                <div class="metode-grid" id="metodeGrid">
+                    <div class="metode-card" data-metode="sms">
+                        <div class="metode-icon"><i class="fas fa-sms"></i></div>
+                        <div class="metode-title">SMS / Telepon</div>
+                        <div class="metode-desc">
+                            <span class="pros">✅ Kelebihan:</span> Mudah, semua HP bisa menerima SMS<br>
+                            <span class="cons">❌ Kekurangan:</span> Rentan SIM swapping, tidak aman untuk transaksi penting
+                        </div>
+                    </div>
+                    <div class="metode-card" data-metode="authenticator">
+                        <div class="metode-icon"><i class="fas fa-mobile-alt"></i></div>
+                        <div class="metode-title">Aplikasi Authenticator</div>
+                        <div class="metode-desc">
+                            <span class="pros">✅ Kelebihan:</span> Aman, bekerja offline, kode berubah setiap 30 detik<br>
+                            <span class="cons">❌ Kekurangan:</span> Perlu install aplikasi, jika HP hilang perlu kode cadangan
+                        </div>
+                    </div>
+                    <div class="metode-card" data-metode="fisik">
+                        <div class="metode-icon"><i class="fas fa-key"></i></div>
+                        <div class="metode-title">Kunci Keamanan Fisik</div>
+                        <div class="metode-desc">
+                            <span class="pros">✅ Kelebihan:</span> Sangat aman, tahan phishing, bisa digunakan offline<br>
+                            <span class="cons">❌ Kekurangan:</span> Berbayar, mudah hilang, butuh port USB
+                        </div>
+                    </div>
+                    <div class="metode-card" data-metode="backup">
+                        <div class="metode-icon"><i class="fas fa-save"></i></div>
+                        <div class="metode-title">Kode Cadangan (Backup Codes)</div>
+                        <div class="metode-desc">
+                            <span class="pros">✅ Kelebihan:</span> Cadangan saat HP hilang, bisa dicetak/ditulis<br>
+                            <span class="cons">❌ Kekurangan:</span> Harus disimpan aman, jika hilang tidak bisa mengganti
+                        </div>
+                    </div>
+                </div>
+
+                <h2>C. Aplikasi Authenticator Populer</h2>
+                <div class="auth-grid" id="authGrid">
+                    <div class="auth-card" data-auth="google">
+                        <div class="auth-icon"><i class="fab fa-google" style="color: #4285F4;"></i></div>
+                        <div class="auth-name">Google Authenticator</div>
+                        <div class="auth-platform">Android, iOS | Gratis</div>
+                    </div>
+                    <div class="auth-card" data-auth="microsoft">
+                        <div class="auth-icon"><i class="fab fa-microsoft" style="color: #00A4EF;"></i></div>
+                        <div class="auth-name">Microsoft Authenticator</div>
+                        <div class="auth-platform">Android, iOS | Gratis</div>
+                    </div>
+                    <div class="auth-card" data-auth="authy">
+                        <div class="auth-icon"><i class="fas fa-lock" style="color: #2ecc71;"></i></div>
+                        <div class="auth-name">Authy</div>
+                        <div class="auth-platform">Android, iOS, Desktop | Gratis</div>
+                    </div>
+                    <div class="auth-card" data-auth="lastpass">
+                        <div class="auth-icon"><i class="fas fa-key" style="color: #9b59b6;"></i></div>
+                        <div class="auth-name">LastPass Authenticator</div>
+                        <div class="auth-platform">Android, iOS | Gratis</div>
+                    </div>
+                </div>
+
+                <h2>D. Langkah-Langkah Mengaktifkan 2FA</h2>
+                <p><strong>Klik pada setiap langkah</strong> untuk memperjelas tampilan:</p>
+                
+                <div class="langkah-grid" id="langkahGrid">
+                    <div class="langkah-card" data-langkah="1">
+                        <div class="langkah-number">1</div>
+                        <div class="langkah-title">Instal Aplikasi Authenticator</div>
+                        <div class="langkah-desc">Download Google Authenticator, Microsoft Authenticator, atau Authy dari Play Store/App Store</div>
+                    </div>
+                    <div class="langkah-card" data-langkah="2">
+                        <div class="langkah-number">2</div>
+                        <div class="langkah-title">Buka Pengaturan Akun</div>
+                        <div class="langkah-desc">Buka myaccount.google.com → Keamanan → Verifikasi 2 Langkah (untuk Google)</div>
+                    </div>
+                    <div class="langkah-card" data-langkah="3">
+                        <div class="langkah-number">3</div>
+                        <div class="langkah-title">Pindai Kode QR</div>
+                        <div class="langkah-desc">Scan kode QR dengan aplikasi authenticator untuk menghubungkan akun</div>
+                    </div>
+                    <div class="langkah-card" data-langkah="4">
+                        <div class="langkah-number">4</div>
+                        <div class="langkah-title">Masukkan Kode Verifikasi</div>
+                        <div class="langkah-desc">Ketik kode 6 digit dari aplikasi authenticator untuk verifikasi</div>
+                    </div>
+                    <div class="langkah-card" data-langkah="5">
+                        <div class="langkah-number">5</div>
+                        <div class="langkah-title">Simpan Kode Cadangan</div>
+                        <div class="langkah-desc">Simpan backup codes (8-10 digit) di tempat aman untuk keadaan darurat</div>
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <i class="fas fa-exclamation-triangle"></i> <strong>Peringatan!</strong> 
+                    Kode cadangan (backup codes) adalah satu-satunya cara masuk ke akun jika HP-mu hilang. <strong>Jangan pernah membagikan kode cadangan</strong> kepada siapapun dan simpan di tempat yang aman (buku catatan, password manager, atau file terenkripsi)!
+                </div>
+
+                <h2>E. Panduan Aktivasi 2FA di Platform Populer</h2>
+                <table class="compare-table">
+                    <thead>
+                        <tr><th>Platform</th><th>Cara Aktivasi</th><th>Metode 2FA</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Google</strong></td>
+                            <td>myaccount.google.com → Keamanan → Verifikasi 2 Langkah</td>
+                            <td>Authenticator, SMS, Backup Codes</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Instagram</strong></td>
+                            <td>Pengaturan → Keamanan → Autentikasi Dua Faktor</td>
+                            <td>Authenticator, WhatsApp, Backup Codes</td>
+                        </tr>
+                        <tr>
+                            <td><strong>TikTok</strong></td>
+                            <td>Pengaturan → Keamanan → Verifikasi 2 Langkah</td>
+                            <td>Email, Authenticator, SMS</td>
+                        </tr>
+                        <tr>
+                            <td><strong>WhatsApp</strong></td>
+                            <td>Pengaturan → Akun → Verifikasi Dua Langkah</td>
+                            <td>PIN 6 digit, Email pemulihan</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Facebook</strong></td>
+                            <td>Pengaturan → Keamanan dan Login → Autentikasi Dua Faktor</td>
+                            <td>Authenticator, SMS, Kunci Keamanan</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h2>F. Perbandingan Metode 2FA</h2>
+                <table class="compare-table">
+                    <thead>
+                        <tr><th>Metode</th><th>Keamanan</th><th>Kemudahan</th><th>Ketersediaan</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>SMS</td><td><span class="cross">❌ Rendah</span></td><td><span class="check">✅ Tinggi</span></td><td><span class="check">✅ Semua HP</span></td></tr>
+                        <tr><td>Authenticator</td><td><span class="check">✅ Tinggi</span></td><td><span class="check">✅ Tinggi</span></td><td><span class="check">✅ Gratis</span></td></tr>
+                        <tr><td>Kunci Fisik</td><td><span class="check">✅ Sangat Tinggi</span></td><td><span class="cross">❌ Sedang</span></td><td><span class="cross">❌ Berbayar</span></td></tr>
+                        <tr><td>Backup Codes</td><td><span class="check">✅ Tinggi</span></td><td><span class="cross">❌ Sedang</span></td><td><span class="check">✅ Gratis</span></td></tr>
+                    </tbody>
+                </table>
+
+                <h2>G. Apa yang Harus Dilakukan Jika HP Hilang?</h2>
+                <div class="warning-box">
+                    <i class="fas fa-phone-alt"></i> <strong>Jika HP-mu Hilang atau Rusak:</strong><br>
+                    1. <strong>Gunakan Kode Cadangan</strong> - Masuk ke akun dengan backup codes yang sudah disimpan<br>
+                    2. <strong>Gunakan Metode Alternatif</strong> - Google/Instagram menyediakan opsi recovery lain<br>
+                    3. <strong>Hubungi Dukungan Platform</strong> - Jika tidak bisa akses, hubungi customer service<br>
+                    4. <strong>Nonaktifkan 2FA Sementara</strong> - Jika perlu, nonaktifkan 2FA lalu aktifkan ulang dengan perangkat baru
+                </div>
+
+                <div class="success-box">
+                    <i class="fas fa-check-circle"></i> <strong>Tips Menyimpan Kode Cadangan:</strong><br>
+                    ✔ Tulis di buku catatan (bukan di HP yang sama)<br>
+                    ✔ Simpan di Google Drive (file terenkripsi)<br>
+                    ✔ Gunakan password manager<br>
+                    ✔ Berikan salinan kepada orang tua yang dipercaya<br>
+                    ✔ Jangan screenshot dan simpan di galeri HP!
+                </div>
+
+                <div class="warning-box" style="margin-top: 1.5rem;">
+                    <i class="fas fa-exclamation-triangle"></i> <strong>Ingat!</strong> Autentikasi dua langkah adalah benteng terakhir perlindungan akunmu. Aktifkan 2FA di semua akun penting seperti email, media sosial, dan layanan keuangan!
+                </div>
+
+                <div class="quote-box" style="margin-top: 1.5rem; text-align: center;">
+                    <i class="fas fa-shield-alt"></i> Aman dengan 2FA, Tenang di Dunia Digital! 🔐
+                </div>
+            </div>
+
+            <!-- Navigasi -->
+            <div class="materi-navigation">
+                <a href="materi3-2.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i> Kembali ke Materi 3.2
+                </a>
+                <a href="materi3-4.html" class="nav-btn primary">
+                    <i class="fas fa-check-circle"></i> Lanjut ke Materi 3.4
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script src="../../../script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                });
+            }
+            
+            // Metode 2FA Interaktif
+            const metodeCards = document.querySelectorAll('.metode-card');
+            metodeCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    metodeCards.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            
+            // Auth App Interaktif
+            const authCards = document.querySelectorAll('.auth-card');
+            authCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    authCards.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            
+            // Langkah Interaktif
+            const langkahCards = document.querySelectorAll('.langkah-card');
+            langkahCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    langkahCards.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aktivitas Pembelajaran Informatika - Kelas X</title>
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* INFORMATIKA THEME COLORS - Mengikuti patokan */
+        :root {
+            --informatika-primary: #3498db;
+            --informatika-secondary: #2980b9;
+            --informatika-light: #ebf5fb;
+            --informatika-dark: #21618c;
+            --informatika-accent: #9b59b6;
+            --informatika-semester1: #3498db;
+            --informatika-semester2: #e74c3c;
+            --informatika-gray: #f5f7fa;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+
+        /* ===== LOGO ZOOM EFFECT ===== */
+        .logo img {
+            transition: transform 0.3s ease;
+        }
+        .logo:hover img {
+            transform: scale(1.2);
+        }
+        
+        /* MAIN CONTENT - Mengikuti struktur patokan */
+        .activities-container {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* CARD STYLE - Mengikuti patokan */
+        .informatika-content-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(52, 152, 219, 0.1);
+            border-left: 5px solid var(--informatika-primary);
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+        
+        .informatika-content-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(52, 152, 219, 0.1) 0%, transparent 70%);
+            z-index: 0;
+        }
+        
+        .informatika-content-card h2 {
+            color: var(--informatika-dark);
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        
+        .informatika-content-card h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--informatika-primary), var(--informatika-secondary));
+            border-radius: 2px;
+        }
+        
+        .informatika-content-card > p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #555;
+            margin-bottom: 2.5rem;
+            padding: 1rem 1.5rem;
+            background: var(--informatika-light);
+            border-radius: 10px;
+            border-left: 4px solid var(--informatika-primary);
+        }
+        
+        /* SIMPLE CARD untuk aktivitas */
+        .simple-card {
+            background: white;
+            border-radius: 20px;
+            padding: 1.8rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+            border: 1px solid rgba(52, 152, 219, 0.1);
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid var(--informatika-light);
+        }
+        
+        .section-title i {
+            width: 40px;
+            height: 40px;
+            background: var(--informatika-light);
+            color: var(--informatika-primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+        
+        .section-title h1 {
+            font-size: 1.8rem;
+            color: var(--informatika-dark);
+            font-weight: 600;
+        }
+        
+        .section-title h3 {
+            font-size: 1.2rem;
+            color: var(--informatika-dark);
+            font-weight: 600;
+        }
+        
+        /* DESKRIPSI */
+        .deskripsi p {
+            margin-bottom: 0.8rem;
+            color: #555;
+            font-size: 1rem;
+        }
+        
+        /* SEMESTER NAVIGATION */
+        .semester-nav-simple {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .semester-btn {
+            background: white;
+            border: 2px solid var(--informatika-light);
+            color: var(--informatika-dark);
+            padding: 0.8rem 2rem;
+            border-radius: 40px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .semester-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.1);
+        }
+        
+        .semester-btn.active {
+            background: var(--informatika-primary);
+            color: white;
+            border-color: var(--informatika-primary);
+        }
+        
+        .semester-btn.semester1.active {
+            background: var(--informatika-semester1);
+            border-color: var(--informatika-semester1);
+        }
+        
+        .semester-btn.semester2.active {
+            background: var(--informatika-semester2);
+            border-color: var(--informatika-semester2);
+        }
+        
+        /* PROYEK CARD */
+        .proyek-item-simple {
+            background: #f5f7fa;
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+        
+        .proyek-item-simple:hover {
+            background: white;
+            border-color: var(--informatika-primary);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.1);
+        }
+        
+        .proyek-item-simple.semester1:hover {
+            border-color: var(--informatika-semester1);
+        }
+        
+        .proyek-item-simple.semester2:hover {
+            border-color: var(--informatika-semester2);
+        }
+        
+        .proyek-header-simple {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .proyek-header-simple h4 {
+            color: var(--informatika-dark);
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+        
+        .proyek-durasi {
+            background: white;
+            color: var(--informatika-primary);
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            border: 1px solid var(--informatika-light);
+        }
+        
+        .proyek-item-simple.semester1 .proyek-durasi {
+            color: var(--informatika-semester1);
+        }
+        
+        .proyek-item-simple.semester2 .proyek-durasi {
+            color: var(--informatika-semester2);
+        }
+        
+        .proyek-desc-simple {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+        
+        .proyek-tp-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+        
+        .proyek-tp-badge {
+            background: white;
+            color: var(--informatika-primary);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border: 1px solid var(--informatika-light);
+        }
+        
+        .proyek-item-simple.semester1 .proyek-tp-badge {
+            color: var(--informatika-semester1);
+        }
+        
+        .proyek-item-simple.semester2 .proyek-tp-badge {
+            color: var(--informatika-semester2);
+        }
+        
+        /* ACTIVITIES GRID */
+        .activities-grid-simple {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.2rem;
+            margin: 1.5rem 0;
+        }
+        
+        .activity-item-simple {
+            background: #f5f7fa;
+            border-radius: 16px;
+            padding: 1.2rem;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .activity-item-simple:hover {
+            background: white;
+            border-color: var(--informatika-primary);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.1);
+        }
+        
+        .activity-item-simple.semester1:hover {
+            border-color: var(--informatika-semester1);
+        }
+        
+        .activity-item-simple.semester2:hover {
+            border-color: var(--informatika-semester2);
+        }
+        
+        .activity-header-simple {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+        
+        .activity-header-simple h4 {
+            color: var(--informatika-dark);
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        
+        .activity-jp {
+            background: white;
+            color: var(--informatika-primary);
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            border: 1px solid var(--informatika-light);
+        }
+        
+        .activity-item-simple.semester1 .activity-jp {
+            color: var(--informatika-semester1);
+        }
+        
+        .activity-item-simple.semester2 .activity-jp {
+            color: var(--informatika-semester2);
+        }
+        
+        .activity-desc-simple {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+            flex: 1;
+        }
+        
+        .activity-meta-simple {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.8rem;
+            color: #888;
+            flex-wrap: wrap;
+        }
+        
+        .activity-meta-simple i {
+            margin-right: 4px;
+            color: var(--informatika-primary);
+        }
+        
+        .activity-item-simple.semester1 .activity-meta-simple i {
+            color: var(--informatika-semester1);
+        }
+        
+        .activity-item-simple.semester2 .activity-meta-simple i {
+            color: var(--informatika-semester2);
+        }
+        
+        .activity-btn-simple {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: transparent;
+            color: var(--informatika-primary);
+            text-decoration: none;
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 1px solid var(--informatika-primary);
+            transition: all 0.3s ease;
+            margin-top: auto;
+        }
+        
+        .activity-item-simple.semester1 .activity-btn-simple {
+            color: var(--informatika-semester1);
+            border-color: var(--informatika-semester1);
+        }
+        
+        .activity-item-simple.semester2 .activity-btn-simple {
+            color: var(--informatika-semester2);
+            border-color: var(--informatika-semester2);
+        }
+        
+        .activity-btn-simple:hover {
+            background: var(--informatika-primary);
+            color: white;
+        }
+        
+        .activity-item-simple.semester1 .activity-btn-simple:hover {
+            background: var(--informatika-semester1);
+            border-color: var(--informatika-semester1);
+            color: white;
+        }
+        
+        .activity-item-simple.semester2 .activity-btn-simple:hover {
+            background: var(--informatika-semester2);
+            border-color: var(--informatika-semester2);
+            color: white;
+        }
+        
+        /* PROGRESS BADGE */
+        .progress-simple {
+            display: inline-block;
+            background: var(--informatika-light);
+            color: var(--informatika-dark);
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+        
+        /* BACK BUTTON */
+        .back-nav-simple {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        
+        .back-btn-simple {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: white;
+            color: var(--informatika-dark);
+            padding: 0.8rem 2rem;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 1px solid var(--informatika-light);
+        }
+        
+        .back-btn-simple:hover {
+            background: var(--informatika-primary);
+            color: white;
+            transform: translateX(-5px);
+        }
+        
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .semester-nav-simple {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .semester-btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+            
+            .activities-grid-simple {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title h1 {
+                font-size: 1.5rem;
+            }
+            
+            .activities-container {
+                padding: 1rem;
+            }
+            
+            .informatika-content-card {
+                padding: 1.5rem;
+            }
+            
+            .informatika-content-card h2 {
+                font-size: 1.8rem;
+            }
+            
+            .proyek-header-simple {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="../../assets/images/logo.png" alt="Logo Sekolah">
+                    <h1>INFORMATIKA - AKTIVITAS PEMBELAJARAN</h1>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="../../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="../index-informatika.html" class="nav-link"><i class="fas fa-laptop-code"></i> Beranda Informatika</a></li>
+                    <li><a href="index-aktivitas-informatika.html" class="nav-link active"><i class="fas fa-tasks"></i> Daftar Aktivitas</a></li>
+                    <li><a href="../materi-pembelajaran/index-materi-informatika.html" class="nav-link"><i class="fas fa-book-open"></i> Daftar Materi</a></li>
+                    <li><a href="../penilaian/index-penilaian-informatika.html" class="nav-link"><i class="fas fa-chart-line"></i> Penilaian</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Activities Content -->
+    <section class="activities-container">
+        <!-- Semester Navigation Simple -->
+        <div class="semester-nav-simple">
+            <button class="semester-btn semester1 active" data-semester="semester1">
+                <i class="fas fa-sun"></i> Semester Ganjil (16 Minggu / 64 JP)
+            </button>
+            <button class="semester-btn semester2" data-semester="semester2">
+                <i class="fas fa-cloud-rain"></i> Semester Genap (11 Minggu / 44 JP)
+            </button>
+        </div>
+
+        <!-- Semester Ganjil Content -->
+        <div id="semester1-content" class="semester-content">
+            <!-- Deskripsi Semester -->
+            <div class="simple-card">
+                <div class="section-title">
+                    <i class="fas fa-info-circle"></i>
+                    <h3>Semester Ganjil: Fondasi Berpikir Komputasional & Literasi Digital</h3>
+                </div>
+                <div class="deskripsi">
+                    <p>Pada semester ganjil, murid akan mempelajari dasar-dasar literasi digital (memilah fakta vs hoaks), pengenalan algoritma dan struktur data, serta keamanan jejak digital. Pembelajaran dilakukan melalui 4 proyek utama yang masing-masing terdiri dari beberapa aktivitas.</p>
+                </div>
+            </div>
+
+            <!-- Proyek 1: Saya Siap Jadi Kreator Digital -->
+            <div class="simple-card">
+                <div class="proyek-item-simple semester1">
+                    <div class="proyek-header-simple">
+                        <h4><i class="fas fa-paint-brush" style="margin-right: 8px;"></i> Proyek 1: Saya Siap Jadi Kreator Digital</h4>
+                        <span class="proyek-durasi">Minggu 1-3 (12 JP)</span>
+                    </div>
+                    <p class="proyek-desc-simple">Mengenal Google Workspace sebagai alat produktivitas, praktik kolaborasi, dan menyusun portofolio digital awal.</p>
+                    
+                    <div class="proyek-tp-list">
+                        <span class="proyek-tp-badge">TP 2.4</span>
+                        <span class="proyek-tp-badge">TP 2.5</span>
+                        <span class="proyek-tp-badge">TP 2.11</span>
+                    </div>
+                    
+                    <div style="margin-top: 1rem; font-size: 0.9rem; color: #666;">
+                        <i class="fas fa-mobile-alt"></i> Media: Google Workspace (Docs, Sheets, Slides)
+                    </div>
+                </div>
+                
+                <div class="activities-grid-simple">
+                    <!-- Aktivitas 1 -->
+                    <div class="activity-item-simple semester1">
+                        <span class="progress-simple">Pertemuan 1</span>
+                        <div class="activity-header-simple">
+                            <h4>Pengenalan Google Workspace & Keamanan Akun</h4>
+                            <span class="activity-jp">4 JP</span>
+                        </div>
+                        <div class="activity-desc-simple">Pengenalan fitur Google Workspace (Docs, Sheets, Slides) dan praktik pengamanan akun Google.</div>
+                        <div class="activity-meta-simple">
+                            <span><i class="fas fa-users"></i> Praktik</span>
+                            <span><i class="fas fa-lock"></i> Keamanan</span>
+                        </div>
+                        <a href="proyek-1/s1p1a1.html" class="activity-btn-simple">Mulai Aktivitas</a>
+                    </div>
+                    
+                    <!-- Aktivitas 2 -->
+                    <div class="activity-item-simple semester1">
+                        <span class="progress-simple">Pertemuan 2</span>
+                        <div class="activity-header-simple">
+                            <h4>Praktik Produktivitas & Kolaborasi</h4>
+                            <span class="activity-jp">4 JP</span>
+                        </div>
+                        <div class="activity-desc-simple">Latihan membuat dokumen, spreadsheet, dan presentasi secara kolaboratif dengan fitur sharing.</div>
+                        <div class="activity-meta-simple">
+                            <span><i class="fas fa-file-alt"></i> Dokumen</span>
+                            <span><i class="fas fa-users"></i> Kolaborasi</span>
+                        </div>
+                        <a href="proyek-1/s1p1a2.html" class="activity-btn-simple">Mulai Aktivitas</a>
+                    </div>
+                    
+                    <!-- Aktivitas 3 -->
+                    <div class="activity-item-simple semester1">
+                        <span class="progress-simple">Pertemuan 3</span>
+                        <div class="activity-header-simple">
+                            <h4>Pengamanan & Portofolio Digital</h4>
+                            <span class="activity-jp">4 JP</span>
+                        </div>
+                        <div class="activity-desc-simple">Menyusun portofolio digital awal dan praktik keamanan akun secara menyeluruh.</div>
+                        <div class="activity-meta-simple">
+                            <span><i class="fas fa-folder-open"></i> Portofolio</span>
+                            <span><i class="fas fa-shield-alt"></i> Keamanan</span>
+                        </div>
+                        <a href="proyek-1/s1p1a3.html" class="activity-btn-simple">Mulai Aktivitas</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Proyek 2: Budaya Kita di Dunia Digital -->
+            <div class="simple-card">
+                <div class="proyek-item-simple semester1">
+                    <div class="proyek-header-simple">
+                        <h4><i class="fas fa-globe-asia" style="margin-right: 8px;"></i> Proyek 2: Budaya Kita di Dunia Digital</h4>
+                        <span class="proyek-durasi">Minggu 4-6 (12 JP)</span>
+                    </div>
+                    <p class="proyek-desc-simple">Membuat konten digital untuk mempromosikan budaya lokal serta mengenali profesi di bidang informatika.</p>
+                    
+                    <div class="proyek-tp-list">
+                        <span class="proyek-tp-badge">TP 2.6</span>
+                        <span class="proyek-tp-badge">TP 2.8</span>
+                        <span class="proyek-tp-badge">TP 2.9</span>
+                    </div>
+                    
+                    <div style="margin-top: 1rem; font-size: 0.9rem; color: #666;">
+                        <i class="fas fa-mobile-alt"></i> Media: Canva, InShot, Google Search
+                    </div>
+                </div>
+                
+                <div class="activities-grid-simple">
+                    <!-- Aktivitas 1 -->
+                    <div class="activity-item-simple semester1">
+                        <span class="progress-simple">Pertemuan 1</span>
+                        <div class="activity-header-simple">
+                            <h4>Mengenal Budaya & Dunia Digital</h4>
+                            <span class="activity-jp">4 JP</span>
+                        </div>
+                        <div class="activity-desc-simple">Diskusi kekayaan budaya Indonesia, menonton video promosi budaya, brainstorming budaya lokal.</div>
+                        <div class="activity-meta-simple">
+                            <span><i class="fas fa-users"></i> Diskusi</span>
+                            <span><i class="fas fa-lightbulb"></i> Brainstorming</span>
+                        </div>
+                        <a href="proyek-2/s1p2a1.html" class="activity-btn-simple">Mulai Aktivitas</a>
+                    </div>
+                    
+                    <!-- Aktivitas 2 -->
+                    <div class="activity-item-simple semester1">
+                        <span class="progress-simple">Pertemuan 2</span>
+                        <div class="activity-header-simple">
+                            <h4>Profesi Digital & Peran Informatika</h4>
+                            <span class="activity-jp">4 JP</span>
+                        </div>
+                        <div class="activity-desc-simple">Mengenali profesi di bidang informatika dan diskusi kontribusinya bagi pelestarian budaya.</div>
+                        <div class="activity-meta-simple">
+                            <span><i class="fas fa-briefcase"></i> Profesi</span>
+                            <span><i class="fas fa-users"></i> Diskusi</span>
+                        </div>
+                        <a href="proyek-2/s1p2a2.html" class="activity-btn-simple">Mulai Aktivitas</a>
+                    </div>
+                    
+                    <!-- Aktivitas 3 -->
+                    <div class="activity-item-simple semester1">
+                        <span class="progress-simple">Pertemuan 3</span>
+                        <div class="activity-header-simple">
+                            <h4>Produksi Konten Budaya Digital</h4>
+                            <span class="activity-jp">4 JP</span>
+                        </div>
+                        <div class="activity-desc-simple">Membuat poster/video digital untuk promosi budaya lokal, peer review, dan publikasi.</div>
+                        <div class="activity-meta-simple">
+                            <span><i class="fas fa-video"></i> Produksi</span>
+                            <span><i class="fas fa-star"></i> Penilaian</span>
+                        </div>
+                        <a href="proyek-2/s1p2a3.html" class="activity-btn-simple">Mulai Aktivitas</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Proyek 3: Jejak Digital Aman -->
+            <div class="simple-card">
+                <div class="proyek-item-simple semester1">
+                    <div class="proyek-header-simple">
+                        <h4><i class="fas fa-shield-alt" style="margin-right: 8px;"></i> Proyek 3: Jejak Digital Aman</h4>
+                        <span class="proyek-durasi">Minggu 7-10 (16 JP)</span>
+                    </div>
+                    <p class="proyek-desc-simple">Mengevaluasi keamanan akun digital pribadi dan membuat panduan keamanan akun berbentuk video pendek.</p>
+                    
+                    <div class="proyek-tp-list">
+                        <span class="proyek-tp-badge">TP 2.7</span>
+                        <span class="proyek-tp-badge">TP 2.11</span>
+                        <span class="proyek-tp-badge">TP 2.12</span>
+                        <span class="proyek-tp-badge">TP 2.13</span>
+                    </div>
+                    
+                    <div style="margin-top: 1rem; font-size: 0.9rem; color: #666;">
+                        <i class="fas fa-mobile-alt"></i> Media: InShot, Canva, Google Search
+                    </div>
+                </div>
+                
+                <div class="activities-grid-simple">
+                    <!-- Aktivitas 1 -->
+                    <div class="activity-item-simple semester1">
+                        <span class="progress-simple">Pertemuan 1</span>
+                        <div class="activity-header-simple">
+                            <h4>Hak Digital & Jejak Digital</h4>
+                            <span class="activity-jp">4 JP</span>
+                        </div>
+                        <div class="activity-desc-simple">Diskusi jejak digital, hak kekayaan intelektual, dan menonton video pelanggaran hak digital.</div>
+                        <div class="activity-meta-simple">
+                            <span><i class="fas fa-users"></i> Diskusi</span>
+                            <span><i class="fas fa-pencil-alt"></i> Refleksi</span>
+                        </div>
+                        <a href="proyek-3/s1p3a1.html" class="activity-btn-simple">Mulai Aktivitas</a>
+                    </div>
+                    
+                    <!-- Aktivitas 2 -->
+                    <div class="activity-item-simple semester1">
+                        <span class="progress-simple">Pertemuan 2</span>
+                        <div class="activity-header-simple">
+                            <h4>Kelola Akun & Keamanan Digital</h4>
+                            <span class="activity-jp">4 JP</span>
+                        </div>
+                        <div class="activity-desc-simple">Praktik audit akun pribadi dan menganalisis pengaturan privasi.</div>
+                        <div class="activity-meta-simple">
+                            <span><i class="fas fa-search"></i> Audit</span>
+                            <span><i class="fas fa-tasks"></i> Lembar Kerja</span>
+                        </div>
+                        <a href="proyek-3/s1p3a2.html" class="activity-btn-simple">Mulai Aktivitas</a>
+                    </div>
+                    
+                    <!-- Aktivitas 3 -->
+                    <div class="activity-item-simple semester1">
+                        <span class="progress-simple">Pertemuan 3</span>
+                        <div class="activity-header-simple">
+                            <h4>Praktik Pengamanan Digital (2FA)</h4>
+                            <span class="activity-jp">4 JP</span>
+                        </div>
+                        <div class="activity-desc-simple">Simulasi membuat password kuat, aktivasi 2FA, dan diskusi manajer kata sandi.</div>
+                        <div class="activity-meta-simple">
+                            <span><i class="fas fa-lock"></i> Praktik</span>
+                            <span><i class="fas fa-users"></i> Diskusi</span>
+                        </div>
+                        <a href="proyek-3/s1p3a3.html" class="activity-btn-simple">Mulai Aktivitas</a>
+                    </div>
+                    
+                    <!-- Aktivitas 4 -->
+                    <div class="activity-item-simple semester1">
+                        <span class="progress-simple">Pertemuan 4</span>
+                        <div class="activity-header-simple">
+                            <h4>Edukasi Publik tentang Jejak Digital</h4>
+                            <span class="activity-jp">4 JP</span>
+                        </div>
+                        <div class="activity-desc-simple">Membuat video edukatif kampanye digital aman, presentasi, dan refleksi.</div>
+                        <div class="activity-meta-simple">
+                            <span><i class="fas fa-video"></i> Produksi</span>
+                            <span><i class="fas fa-star"></i> Penilaian</span>
+                        </div>
+                        <a href="proyek-3/s1p3a4.html" class="activity-btn-simple">Mulai Aktivitas</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Proyek 4: Fakta atau Hoaks? -->
+            <div class="simple-card">
+                <div class="proyek-item-simple semester1">
+                    <div class="proyek-header-simple">
+                        <h4><i class="fas fa-search" style="margin-right: 8px;"></i> Proyek 4: Fakta atau Hoaks?</h4>
+                        <span class="proyek-durasi">Minggu 11-16 (24 JP)</span>
+                    </div>
+                    <p class="proyek-desc-simple">Menyelidiki isu viral secara daring dan membuat laporan dalam bentuk presentasi/poster digital. Fokus pada pengembangan kemampuan literasi digital untuk membedakan informasi valid dan hoaks.</p>
+                    
+                    <div class="proyek-tp-list">
+                        <span class="proyek-tp-badge">TP 2.1</span>
+                        <span class="proyek-tp-badge">TP 2.2</span>
+                        <span class="proyek-tp-badge">TP 2.3</span>
+                        <span class="proyek-tp-badge">TP 2.10</span>
+                    </div>
+                    
+                    <div style="margin-top: 1rem; font-size: 0.9rem; color: #666;">
+                        <i class="fas fa-mobile-alt"></i> Media: Smartphone, Google Search, Canva
+                    </div>
+                </div>
+                
+                <div class="activities-grid-simple">
+                    <!-- Aktivitas 1 -->
+                    <div class="activity-item-simple semester1">
+                        <span class="progress-simple">Pertemuan 1</span>
+                        <div class="activity-header-simple">
+                            <h4>Pengantar Literasi Informasi</h4>
+                            <span class="activity-jp">4 JP</span>
+                        </div>
+                        <div class="activity-desc-simple">Diskusi fenomena hoaks, menonton video edukatif, dan brainstorming isu viral yang akan diselidiki.</div>
+                        <div class="activity-meta-simple">
+                            <span><i class="fas fa-users"></i> Diskusi</span>
+                            <span><i class="fas fa-video"></i> Video</span>
+                        </div>
+                        <a href="proyek-4/s1p4a1.html" class="activity-btn-simple">Mulai Aktivitas</a>
+                    </div>
+                    
+                    <!-- Aktivitas 2 -->
+                    <div class="activity-item-simple semester1">
+                        <span class="progress-simple">Pertemuan 2</span>
+                        <div class="activity-header-simple">
+                            <h4>Strategi Mencari Informasi</h4>
+                            <span class="activity-jp">4 JP</span>
+                        </div>
+                        <div class="activity-desc-simple">Praktik menggunakan mesin pencari secara efektif (operator pencarian, filter) dan diskusi sumber kredibel.</div>
+                        <div class="activity-meta-simple">
+                            <span><i class="fas fa-search"></i> Praktik</span>
+                            <span><i class="fas fa-tasks"></i> Lembar Kerja</span>
+                        </div>
+                        <a href="proyek-4/s1p4a2.html" class="activity-btn-simple">Mulai Aktivitas</a>
+                    </div>
+                    
+                    <!-- Aktivitas 3 -->
+                    <div class="activity-item-simple semester1">
+                        <span class="progress-simple">Pertemuan 3</span>
+                        <div class="activity-header-simple">
+                            <h4>Analisis Fakta & Cek Kebenaran</h4>
+                            <span class="activity-jp">4 JP</span>
+                        </div>
+                        <div class="activity-desc-simple">Menyelidiki isu viral menggunakan situs cek fakta dan mencatat temuan dalam format tabel analisis.</div>
+                        <div class="activity-meta-simple">
+                            <span><i class="fas fa-check-double"></i> Verifikasi</span>
+                            <span><i class="fas fa-table"></i> Analisis</span>
+                        </div>
+                        <a href="proyek-4/s1p4a3.html" class="activity-btn-simple">Mulai Aktivitas</a>
+                    </div>
+                    
+                    <!-- Aktivitas 4 -->
+                    <div class="activity-item-simple semester1">
+                        <span class="progress-simple">Pertemuan 4</span>
+                        <div class="activity-header-simple">
+                            <h4>Merancang Poster Edukatif</h4>
+                            <span class="activity-jp">4 JP</span>
+                        </div>
+                        <div class="activity-desc-simple">Menyusun pesan edukatif dan mendesain poster digital menggunakan Canva atau Google Slides.</div>
+                        <div class="activity-meta-simple">
+                            <span><i class="fas fa-paint-brush"></i> Desain</span>
+                            <span><i class="fas fa-users"></i> Peer Review</span>
+                        </div>
+                        <a href="proyek-4/s1p4a4.html" class="activity-btn-simple">Mulai Aktivitas</a>
+                    </div>
+                    
+                    <!-- Aktivitas 5 -->
+                    <div class="activity-item-simple semester1">
+                        <span class="progress-simple">Pertemuan 5</span>
+                        <div class="activity-header-simple">
+                            <h4>Presentasi & Refleksi</h4>
+                            <span class="activity-jp">4 JP</span>
+                        </div>
+                        <div class="activity-desc-simple">Presentasi karya, refleksi proses pembelajaran, dan diskusi etika berbagi informasi.</div>
+                        <div class="activity-meta-simple">
+                            <span><i class="fas fa-presentation"></i> Presentasi</span>
+                            <span><i class="fas fa-star"></i> Penilaian</span>
+                        </div>
+                        <a href="proyek-4/s1p4a5.html" class="activity-btn-simple">Mulai Aktivitas</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Semester Genap Content (Hidden by default) -->
+        <div id="semester2-content" class="semester-content" style="display: none;">
+            <!-- Deskripsi Semester -->
+            <div class="simple-card">
+                <div class="section-title">
+                    <i class="fas fa-info-circle"></i>
+                    <h3>Semester Genap: Penerapan Konsep Komputasi & Kreativitas Digital</h3>
+                </div>
+                <div class="deskripsi">
+                    <p>Pada semester genap, murid akan mempelajari model IPO dan sistem operasi, serta keterampilan pemrograman dasar. Pembelajaran dilakukan melalui 2 proyek utama yang masing-masing terdiri dari beberapa aktivitas.</p>
+                </div>
+            </div>
+
+            <!-- Proyek 5: Rancang Mesin Pintar Mini -->
+            <div class="simple-card">
+                <div class="proyek-item-simple semester2">
+                    <div class="proyek-header-simple">
+                        <h4><i class="fas fa-microchip" style="margin-right: 8px;"></i> Proyek 5: Rancang Mesin Pintar Mini</h4>
+                        <span class="proyek-durasi">Minggu 1-5 (20 JP)</span>
+                    </div>
+                    <p class="proyek-desc-simple">Memahami model IPO dan sistem operasi melalui simulasi alur kerja komputer menggunakan pseudocode dan HTML.</p>
+                    
+                    <div class="proyek-tp-list">
+                        <span class="proyek-tp-badge">TP 1.4</span>
+                        <span class="proyek-tp-badge">TP 1.5</span>
+                        <span class="proyek-tp-badge">TP 1.6</span>
+                        <span class="proyek-tp-badge">TP 1.7</span>
+                    </div>
+                    
+                    <div style="margin-top: 1rem; font-size: 0.9rem; color: #666;">
+                        <i class="fas fa-mobile-alt"></i> Media: HTML Editor, Lucidchart, Google Slides
+                    </div>
+                </div>
+                
+                <div class="activities-grid-simple">
+                    <!-- Aktivitas 1 -->
+                    <div class="activity-item-simple semester2">
+                        <span class="progress-simple">Pertemuan 1</span>
+                        <div class="activity-header-simple">
+                            <h4>Mengenal Alur Komputasi & IPO</h4>
+                            <span class="activity-jp">4 JP</span>
+                        </div>
+                        <div class="activity-desc-simple">Diskusi alur kerja komputer, video simulasi IPO, dan refleksi peran input-proses-output.</div>
+                        <div class="activity-meta-simple">
+                            <span><i class="fas fa-users"></i> Diskusi</span>
+                            <span><i class="fas fa-film"></i> Video</span>
+                        </div>
+                        <a href="proyek-5/s2p5a1.html" class="activity-btn-simple">Mulai Aktivitas</a>
+                    </div>
+                    
+                    <!-- Aktivitas 2 -->
+                    <div class="activity-item-simple semester2">
+                        <span class="progress-simple">Pertemuan 2</span>
+                        <div class="activity-header-simple">
+                            <h4>Simulasi Model IPO</h4>
+                            <span class="activity-jp">4 JP</span>
+                        </div>
+                        <div class="activity-desc-simple">Membuat diagram IPO dari kasus nyata dan diskusi kelompok.</div>
+                        <div class="activity-meta-simple">
+                            <span><i class="fas fa-project-diagram"></i> Diagram</span>
+                            <span><i class="fas fa-users"></i> Kelompok</span>
+                        </div>
+                        <a href="proyek-5/s2p5a2.html" class="activity-btn-simple">Mulai Aktivitas</a>
+                    </div>
+                    
+                    <!-- Aktivitas 3 -->
+                    <div class="activity-item-simple semester2">
+                        <span class="progress-simple">Pertemuan 3</span>
+                        <div class="activity-header-simple">
+                            <h4>Sistem Operasi & Model Von Neumann</h4>
+                            <span class="activity-jp">4 JP</span>
+                        </div>
+                        <div class="activity-desc-simple">Penjelasan arsitektur Von Neumann, peran sistem operasi, dan studi kasus OS populer.</div>
+                        <div class="activity-meta-simple">
+                            <span><i class="fas fa-desktop"></i> Teori</span>
+                            <span><i class="fas fa-question-circle"></i> Tanya Jawab</span>
+                        </div>
+                        <a href="proyek-5/s2p5a3.html" class="activity-btn-simple">Mulai Aktivitas</a>
+                    </div>
+                    
+                    <!-- Aktivitas 4 -->
+                    <div class="activity-item-simple semester2">
+                        <span class="progress-simple">Pertemuan 4</span>
+                        <div class="activity-header-simple">
+                            <h4>Rancang & Uji Solusi</h4>
+                            <span class="activity-jp">4 JP</span>
+                        </div>
+                        <div class="activity-desc-simple">Menyusun rancangan solusi berbasis IPO dalam pseudocode dan implementasi HTML sederhana.</div>
+                        <div class="activity-meta-simple">
+                            <span><i class="fas fa-code"></i> Coding</span>
+                            <span><i class="fas fa-users"></i> Peer Review</span>
+                        </div>
+                        <a href="proyek-5/s2p5a4.html" class="activity-btn-simple">Mulai Aktivitas</a>
+                    </div>
+                    
+                    <!-- Aktivitas 5 -->
+                    <div class="activity-item-simple semester2">
+                        <span class="progress-simple">Pertemuan 5</span>
+                        <div class="activity-header-simple">
+                            <h4>Presentasi Mesin Pintar Mini</h4>
+                            <span class="activity-jp">4 JP</span>
+                        </div>
+                        <div class="activity-desc-simple">Presentasi desain mesin pintar mini (diagram IPO + pseudocode + kode HTML).</div>
+                        <div class="activity-meta-simple">
+                            <span><i class="fas fa-presentation"></i> Presentasi</span>
+                            <span><i class="fas fa-star"></i> Penilaian</span>
+                        </div>
+                        <a href="proyek-5/s2p5a5.html" class="activity-btn-simple">Mulai Aktivitas</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Proyek 6: Bisa Bikin Program? Bisa! -->
+            <div class="simple-card">
+                <div class="proyek-item-simple semester2">
+                    <div class="proyek-header-simple">
+                        <h4><i class="fas fa-code" style="margin-right: 8px;"></i> Proyek 6: Bisa Bikin Program? Bisa!</h4>
+                        <span class="proyek-durasi">Minggu 6-11 (24 JP)</span>
+                    </div>
+                    <p class="proyek-desc-simple">Mengenal algoritma, struktur data, pseudocode, dan solusi atas masalah nyata melalui simulasi logika komputasi dan pemrograman HTML dasar.</p>
+                    
+                    <div class="proyek-tp-list">
+                        <span class="proyek-tp-badge">TP 1.1</span>
+                        <span class="proyek-tp-badge">TP 1.2</span>
+                        <span class="proyek-tp-badge">TP 1.3</span>
+                        <span class="proyek-tp-badge">TP 1.4</span>
+                        <span class="proyek-tp-badge">TP 1.5</span>
+                    </div>
+                    
+                    <div style="margin-top: 1rem; font-size: 0.9rem; color: #666;">
+                        <i class="fas fa-mobile-alt"></i> Media: HTML Editor, Draw.io, Google Docs
+                    </div>
+                </div>
+                
+                <div class="activities-grid-simple">
+                    <!-- Aktivitas 1 -->
+                    <div class="activity-item-simple semester2">
+                        <span class="progress-simple">Pertemuan 1</span>
+                        <div class="activity-header-simple">
+                            <h4>Mengenal Algoritma & Struktur Data</h4>
+                            <span class="activity-jp">4 JP</span>
+                        </div>
+                        <div class="activity-desc-simple">Diskusi algoritma di kehidupan sehari-hari dan menonton video konsep algoritma.</div>
+                        <div class="activity-meta-simple">
+                            <span><i class="fas fa-users"></i> Diskusi</span>
+                            <span><i class="fas fa-film"></i> Video</span>
+                        </div>
+                        <a href="proyek-6/s2p6a1.html" class="activity-btn-simple">Mulai Aktivitas</a>
+                    </div>
+                    
+                    <!-- Aktivitas 2 -->
+                    <div class="activity-item-simple semester2">
+                        <span class="progress-simple">Pertemuan 2</span>
+                        <div class="activity-header-simple">
+                            <h4>Representasi Data & Logika Dasar</h4>
+                            <span class="activity-jp">4 JP</span>
+                        </div>
+                        <div class="activity-desc-simple">Mengenal jenis data (angka, teks, logika) dan latihan membuat tabel data sederhana.</div>
+                        <div class="activity-meta-simple">
+                            <span><i class="fas fa-table"></i> Praktik</span>
+                            <span><i class="fas fa-tasks"></i> Lembar Kerja</span>
+                        </div>
+                        <a href="proyek-6/s2p6a2.html" class="activity-btn-simple">Mulai Aktivitas</a>
+                    </div>
+                    
+                    <!-- Aktivitas 3 -->
+                    <div class="activity-item-simple semester2">
+                        <span class="progress-simple">Pertemuan 3</span>
+                        <div class="activity-header-simple">
+                            <h4>Pemecahan Masalah dengan Komputasi</h4>
+                            <span class="activity-jp">4 JP</span>
+                        </div>
+                        <div class="activity-desc-simple">Diskusi kasus nyata dan membuat alur solusi dengan diagram sederhana.</div>
+                        <div class="activity-meta-simple">
+                            <span><i class="fas fa-project-diagram"></i> Diagram</span>
+                            <span><i class="fas fa-users"></i> Kelompok</span>
+                        </div>
+                        <a href="proyek-6/s2p6a3.html" class="activity-btn-simple">Mulai Aktivitas</a>
+                    </div>
+                    
+                    <!-- Aktivitas 4 -->
+                    <div class="activity-item-simple semester2">
+                        <span class="progress-simple">Pertemuan 4</span>
+                        <div class="activity-header-simple">
+                            <h4>HTML Dasar dengan HTML Editor</h4>
+                            <span class="activity-jp">4 JP</span>
+                        </div>
+                        <div class="activity-desc-simple">Mengenal dasar HTML dan membuat program sederhana (kalkulator, luas bangun).</div>
+                        <div class="activity-meta-simple">
+                            <span><i class="fas fa-code"></i> Coding</span>
+                            <span><i class="fas fa-laptop"></i> Praktik</span>
+                        </div>
+                        <a href="proyek-6/s2p6a4.html" class="activity-btn-simple">Mulai Aktivitas</a>
+                    </div>
+                    
+                    <!-- Aktivitas 5 -->
+                    <div class="activity-item-simple semester2">
+                        <span class="progress-simple">Pertemuan 5</span>
+                        <div class="activity-header-simple">
+                            <h4>Kondisi & Perulangan Dasar</h4>
+                            <span class="activity-jp">4 JP</span>
+                        </div>
+                        <div class="activity-desc-simple">Belajar if-else dan perulangan, simulasi kasus nyata, diskusi kelompok.</div>
+                        <div class="activity-meta-simple">
+                            <span><i class="fas fa-code-branch"></i> Logika</span>
+                            <span><i class="fas fa-users"></i> Kolaborasi</span>
+                        </div>
+                        <a href="proyek-6/s2p6a5.html" class="activity-btn-simple">Mulai Aktivitas</a>
+                    </div>
+                    
+                    <!-- Aktivitas 6 -->
+                    <div class="activity-item-simple semester2">
+                        <span class="progress-simple">Pertemuan 6</span>
+                        <div class="activity-header-simple">
+                            <h4>Presentasi Program Sederhana</h4>
+                            <span class="activity-jp">4 JP</span>
+                        </div>
+                        <div class="activity-desc-simple">Presentasi hasil program HTML sederhana berbasis kasus nyata dan refleksi.</div>
+                        <div class="activity-meta-simple">
+                            <span><i class="fas fa-presentation"></i> Presentasi</span>
+                            <span><i class="fas fa-star"></i> Penilaian</span>
+                        </div>
+                        <a href="proyek-6/s2p6a6.html" class="activity-btn-simple">Mulai Aktivitas</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back Navigation Simple -->
+        <div class="back-nav-simple">
+            <a href="../index-informatika.html" class="back-btn-simple">
+                <i class="fas fa-arrow-left"></i> Kembali ke Beranda Informatika
+            </a>
+        </div>
+    </section>
+
+    <script>
+        // ===== HAMBURGER MENU - SAMA PERSIS DENGAN PATOKAN =====
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                });
+            }
+            
+            // Semester tab functionality
+            const semesterBtns = document.querySelectorAll('.semester-btn');
+            const semester1Content = document.getElementById('semester1-content');
+            const semester2Content = document.getElementById('semester2-content');
+            
+            semesterBtns.forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    semesterBtns.forEach(function(b) {
+                        b.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                    
+                    if (this.dataset.semester === 'semester1') {
+                        semester1Content.style.display = 'block';
+                        semester2Content.style.display = 'none';
+                    } else {
+                        semester1Content.style.display = 'none';
+                        semester2Content.style.display = 'block';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

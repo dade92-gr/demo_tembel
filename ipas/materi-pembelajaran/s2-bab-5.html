@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semester Genap - Bab 5: Pengolahan Data & Pelaporan - Kelas X</title>
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* IPAS THEME COLORS - Semester Genap - HANYA UNTUK KONTEN */
+        :root {
+            --ipas-primary: #3498db;
+            --ipas-secondary: #2980b9;
+            --ipas-light: #d4e6f1;
+            --ipas-dark: #1f618d;
+            --ipas-accent: #f39c12;
+            --ipas-semester2: #e67e22;
+            --ipas-report: #9b59b6;
+            --ipas-gray: #f5f7fa;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f5f7fa; color: #2c3e50; line-height: 1.6; }
+
+        /* ===== LOGO ZOOM EFFECT ===== */
+        .logo img { transition: transform 0.3s ease; }
+        .logo:hover img { transform: scale(1.2); }
+        
+        /* MAIN CONTENT */
+        .bab-container { padding: 2rem; max-width: 1200px; margin: 0 auto; min-height: calc(100vh - 80px); display: flex; align-items: flex-start; justify-content: center; }
+        
+        .bab-card { background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%); border-radius: 30px; padding: 3rem; box-shadow: 0 20px 40px rgba(52, 152, 219, 0.15); border-left: 8px solid var(--ipas-report); position: relative; overflow: hidden; width: 100%; animation: fadeInUp 0.6s ease-out; }
+        .bab-card::before { content: ''; position: absolute; top: 0; right: 0; width: 250px; height: 250px; background: radial-gradient(circle, rgba(155, 89, 182, 0.1) 0%, transparent 70%); z-index: 0; }
+        .bab-card > * { position: relative; z-index: 1; }
+        
+        .bab-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 3px solid var(--ipas-light); }
+        .bab-icon { width: 80px; height: 80px; background: linear-gradient(135deg, var(--ipas-report), #8e44ad); border-radius: 25px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2.5rem; box-shadow: 0 10px 20px rgba(155, 89, 182, 0.3); }
+        .bab-title-wrapper h1 { color: var(--ipas-dark); font-size: 2.5rem; margin-bottom: 0.5rem; line-height: 1.2; }
+        .bab-subtitle { color: var(--ipas-report); font-size: 1.1rem; font-weight: 600; display: flex; align-items: center; gap: 8px; }
+        .bab-subtitle i { font-size: 0.8rem; }
+        .semester-badge { display: inline-block; background: var(--ipas-report); color: white; padding: 0.3rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600; margin-left: 1rem; }
+        
+        .bab-info { display: flex; gap: 2rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+        .info-item { display: flex; align-items: center; gap: 10px; background: var(--ipas-light); padding: 0.8rem 1.5rem; border-radius: 50px; color: var(--ipas-dark); font-weight: 600; }
+        .info-item i { color: var(--ipas-report); font-size: 1.2rem; }
+        
+        .bab-description { background: white; border-radius: 20px; padding: 2rem; margin-bottom: 2rem; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 1px solid rgba(155, 89, 182, 0.1); }
+        .bab-description h2, .bab-description h3, .bab-description h4, .bab-description h5, .bab-description p, .bab-description ul, .bab-description ol, .bab-description li, .bab-description table, .bab-description .note-box, .bab-description .activity-box, .bab-description .example-box, .bab-description .data-box, .bab-description .analysis-box, .bab-description .report-structure, .bab-description blockquote { text-align: justify; }
+        
+        .bab-description h2 { color: var(--ipas-dark); font-size: 2rem; margin: 1.5rem 0 1rem 0; border-bottom: 2px solid var(--ipas-light); padding-bottom: 0.5rem; }
+        .bab-description h3 { color: var(--ipas-dark); font-size: 1.3rem; margin: 1.5rem 0 1rem 0; display: flex; align-items: center; gap: 10px; }
+        .bab-description h4 { color: var(--ipas-dark); font-size: 1.2rem; margin: 1.2rem 0 0.8rem 0; font-weight: 600; }
+        .bab-description h5 { color: var(--ipas-report); font-size: 1.1rem; margin: 1rem 0 0.5rem 0; font-weight: 600; }
+        .bab-description h3 i { color: var(--ipas-report); }
+        .bab-description p { color: #555; font-size: 1.1rem; line-height: 1.8; margin-bottom: 1rem; text-align: justify; }
+        .bab-description ul, .bab-description ol { margin-left: 2rem; margin-bottom: 1rem; color: #555; text-align: justify; }
+        .bab-description li { margin-bottom: 0.5rem; text-align: justify; }
+        .bab-description strong { color: var(--ipas-dark); }
+        .bab-description blockquote { margin: 1.5rem 0; padding: 1rem 2rem; background: var(--ipas-light); border-left: 5px solid var(--ipas-report); font-style: italic; font-size: 1.1rem; color: var(--ipas-dark); border-radius: 0 15px 15px 0; }
+        
+        .activity-box { background: linear-gradient(135deg, #f3e5f5, #f3e5f5); border-left: 5px solid var(--ipas-report); padding: 1.5rem; margin: 1.5rem 0; border-radius: 10px; border: 1px solid rgba(155, 89, 182, 0.2); }
+        .activity-box h4 { color: var(--ipas-dark); margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; }
+        .activity-box h4 i { color: var(--ipas-report); }
+        .activity-box ul, .activity-box ol { margin-left: 1.5rem; }
+        
+        .example-box { background: #f0f9ff; border-left: 5px solid var(--ipas-primary); padding: 1.5rem; margin: 1.5rem 0; border-radius: 10px; border: 1px solid rgba(52, 152, 219, 0.2); }
+        .example-box h4 { color: var(--ipas-dark); margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; }
+        .example-box h4 i { color: var(--ipas-primary); }
+        
+        .data-box { background: #e8f5e9; border-left: 5px solid #388e3c; padding: 1.5rem; margin: 1.5rem 0; border-radius: 10px; border: 1px solid rgba(56, 142, 60, 0.2); }
+        .data-box h4 { color: var(--ipas-dark); margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; }
+        .data-box h4 i { color: #388e3c; }
+        
+        .analysis-box { background: #fff3e0; border-left: 5px solid #ff9800; padding: 1.5rem; margin: 1.5rem 0; border-radius: 10px; border: 1px solid rgba(255, 152, 0, 0.2); }
+        .analysis-box h4 { color: var(--ipas-dark); margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; }
+        .analysis-box h4 i { color: #ff9800; }
+        
+        .report-structure { background: #e1f5fe; border-left: 5px solid #0288d1; padding: 1.5rem; margin: 1.5rem 0; border-radius: 10px; border: 1px solid rgba(2, 136, 209, 0.2); }
+        .report-structure h4 { color: var(--ipas-dark); margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; }
+        .report-structure h4 i { color: #0288d1; }
+        .report-structure ul { list-style-type: none; padding-left: 0; }
+        .report-structure li { margin-bottom: 0.8rem; padding-left: 1.8rem; position: relative; }
+        .report-structure li:before { content: "📄"; position: absolute; left: 0; color: #0288d1; }
+        .report-structure li strong { color: #0288d1; }
+        
+        .note-box { background: var(--ipas-light); border-left: 5px solid var(--ipas-report); padding: 1.5rem; margin: 1.5rem 0; border-radius: 10px; font-style: italic; }
+        
+        .step-list { list-style-type: none; padding-left: 0; }
+        .step-list li { margin-bottom: 0.8rem; padding-left: 2rem; position: relative; }
+        .step-list li:before { content: "✓"; color: #388e3c; font-weight: bold; position: absolute; left: 0; }
+        
+        .data-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.95rem; box-shadow: 0 0 20px rgba(0, 0, 0, 0.05); border-radius: 10px; overflow: hidden; }
+        .data-table th { background-color: #388e3c; color: white; font-weight: 600; padding: 12px 15px; text-align: center; }
+        .data-table td { padding: 10px 12px; border-bottom: 1px solid #dddddd; text-align: center; }
+        .data-table tr:nth-child(even) { background-color: #f8f8f8; }
+        .data-table tr:hover { background-color: var(--ipas-light); }
+        .data-table caption { caption-side: bottom; margin-top: 10px; font-style: italic; }
+        
+        .bab-navigation { display: flex; gap: 1rem; justify-content: space-between; margin-top: 2rem; }
+        .nav-btn { display: inline-flex; align-items: center; gap: 10px; padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; border: none; cursor: pointer; }
+        .nav-btn.primary { background: linear-gradient(135deg, var(--ipas-report), #8e44ad); color: white; box-shadow: 0 5px 15px rgba(155, 89, 182, 0.3); }
+        .nav-btn.primary:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(155, 89, 182, 0.4); }
+        .nav-btn.secondary { background: white; color: var(--ipas-dark); border: 2px solid var(--ipas-light); }
+        .nav-btn.secondary:hover { background: var(--ipas-light); transform: translateX(-5px); }
+        
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
+        @media (max-width: 768px) {
+            .bab-container { padding: 1rem; }
+            .bab-card { padding: 2rem; }
+            .bab-header { flex-direction: column; text-align: center; }
+            .bab-title-wrapper h1 { font-size: 2rem; }
+            .bab-info { justify-content: center; }
+            .bab-navigation { flex-direction: column; }
+            .nav-btn { justify-content: center; }
+            .data-table { font-size: 0.85rem; }
+            .data-table th, .data-table td { padding: 6px 4px; }
+        }
+        
+        @media (max-width: 480px) {
+            .bab-card { padding: 1.5rem; }
+            .bab-title-wrapper h1 { font-size: 1.8rem; }
+            .bab-icon { width: 60px; height: 60px; font-size: 2rem; }
+            .info-item { width: 100%; justify-content: center; }
+            .data-table { font-size: 0.75rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="../../assets/images/logo.png" alt="Logo Sekolah">
+                    <h1>TEMBOK BELAJAR - PROJEK IPAS</h1>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="../../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="../index-ipas.html" class="nav-link"><i class="fas fa-flask"></i> Beranda IPAS</a></li>
+                    <li><a href="../aktivitas-pembelajaran/index-aktifitas-ipas.html" class="nav-link"><i class="fas fa-tasks"></i> Daftar Aktivitas</a></li>
+                    <li><a href="index-materi-ipas.html" class="nav-link active"><i class="fas fa-book-open"></i> Daftar Materi</a></li>
+                    <li><a href="../penilaian/index-penilaian-ipas.html" class="nav-link"><i class="fas fa-chart-line"></i> Penilaian</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="bab-container">
+        <div class="bab-card">
+            <div class="bab-header">
+                <div class="bab-icon"><i class="fas fa-chart-pie"></i></div>
+                <div class="bab-title-wrapper">
+                    <h1>Bab 5 : Pengolahan Data & Pelaporan <span class="semester-badge">Semester Genap</span></h1>
+                    <div class="bab-subtitle"><i class="fas fa-circle"></i> <span>"Membaca Cerita di Balik Angka dan Catatan"</span></div>
+                </div>
+            </div>
+
+            <div class="bab-description">
+                <h2>A. Pendahuluan: Menemukan Harta Karun dari Tumpukan Catatan</h2>
+                
+                <p>Bayangkan kalian baru pulang dari petualangan seru. Ransel kalian penuh dengan batu-batuan menarik, foto pemandangan, dan buku catatan yang berisi coretan-coretan perjalanan. Jika hanya dibiarkan menumpuk di dalam ransel, semua itu hanyalah benda mati. Tapi jika kalian mengeluarkannya, mengelompokkan batu berdasarkan warnanya, menyusun foto berdasarkan waktu, dan membaca ulang catatan, maka kalian akan bisa menceritakan kisah petualangan yang luar biasa.</p>
+                
+                <p>Nah, di Bab 4, ransel kalian telah penuh dengan data mentah: catatan observasi, angka hasil pengukuran, dan foto dokumentasi. Tugas kalian di Bab 5 adalah mengeluarkan "harta karun" dari ransel itu, mengolahnya, dan menyusunnya menjadi sebuah cerita yang utuh dan bermakna. Cerita inilah yang akan menjadi laporan proyek kalian.</p>
+
+                <h2>B. Tujuan Pembelajaran Bab 5</h2>
+                
+                <p>Setelah mempelajari materi ini, kalian diharapkan mampu:</p>
+                <ul class="step-list">
+                    <li>Mengorganisasikan data mentah (catatan, angka, gambar) ke dalam bentuk yang lebih terstruktur, seperti tabel atau grafik.</li>
+                    <li>Menganalisis data yang telah diolah untuk menemukan pola, hubungan, atau jawaban atas pertanyaan penelitian.</li>
+                    <li>Menarik kesimpulan berdasarkan analisis data yang telah dilakukan.</li>
+                    <li>Menyusun laporan proyek IPAS yang sistematis, jelas, dan menarik.</li>
+                </ul>
+
+                <h2>C. Langkah-Langkah Mengolah Data</h2>
+                
+                <p>Data kalian mungkin beragam. Ada yang berupa angka (data kuantitatif) dan ada yang berupa catatan deskripsi (data kualitatif). Keduanya sama pentingnya. Ikuti langkah-langkah berikut:</p>
+
+                <div class="data-box">
+                    <h4><i class="fas fa-sort-amount-down"></i> 1. Organisasi Data: Merapikan "Kekacauan"</h4>
+                    <p>Keluarkan semua catatan dari logbook, lembar pengukuran, dan hasil wawancara. Sekarang, rapikan.</p>
+                    
+                    <h5>Untuk Data Angka (Kuantitatif):</h5>
+                    <p>Buatlah tabel yang rapi.</p>
+                    <p><strong>Contoh:</strong> Jika kalian mengukur suhu kompos setiap hari, buat tabel seperti ini di buku laporan kalian.</p>
+                    
+                    <table class="data-table">
+                        <caption>Tabel 1. Data Perkembangan Suhu Kompos</caption>
+                        <thead>
+                            <tr>
+                                <th>Hari ke-</th>
+                                <th>Suhu (°C)</th>
+                                <th>Warna Kompos</th>
+                                <th>Catatan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1</td><td>30</td><td>Coklat muda</td><td>Awal pencampuran</td></tr>
+                            <tr><td>3</td><td>38</td><td>Coklat</td><td>Mulai hangat, bau asam</td></tr>
+                            <tr><td>5</td><td>42</td><td>Coklat gelap</td><td>Sangat hangat, muncul jamur putih</td></tr>
+                            <tr><td>7</td><td>35</td><td>Coklat kehitaman</td><td>Suhu turun, bau tanah</td></tr>
+                        </tbody>
+                    </table>
+                    
+                    <h5 style="margin-top: 1.5rem;">Untuk Data Gambar (Foto/Video):</h5>
+                    <p>Pilih foto-foto terbaik yang mewakili setiap tahap penting. Beri keterangan (caption) pada setiap foto, menjelaskan apa yang terjadi di foto itu dan kapan diambilnya.</p>
+                </div>
+
+                <div class="analysis-box">
+                    <h4><i class="fas fa-chart-line"></i> 2. Visualisasi Data: Membuat Grafik yang "Berbicara"</h4>
+                    <p>Angka dalam tabel akan lebih mudah dipahami jika disajikan dalam bentuk grafik. Grafik membantu kita melihat pola atau tren dengan cepat.</p>
+                    
+                    <ul>
+                        <li><strong>Grafik Garis:</strong> Cocok untuk menunjukkan perubahan dari waktu ke waktu.</li>
+                        <li><strong>Diagram Batang:</strong> Cocok untuk membandingkan sesuatu.</li>
+                        <li><strong>Diagram Lingkaran:</strong> Cocok untuk menunjukkan proporsi atau persentase.</li>
+                    </ul>
+                    
+                    <div style="background: #f5f5f5; padding: 1rem; border-radius: 10px; margin-top: 1rem;">
+                        <p style="text-align: center; font-weight: 600;">Simulasi Grafik Garis - Perubahan Suhu Kompos</p>
+                        <div style="display: flex; justify-content: space-around; align-items: flex-end; height: 150px; margin: 2rem 0; border-left: 2px solid #555; border-bottom: 2px solid #555; position: relative; padding-left: 20px;">
+                            <div style="position: relative; width: 100%; height: 100%;">
+                                <div style="position: absolute; bottom: 0; left: 10%; width: 2px; height: 70px; background: #ff9800;"></div>
+                                <div style="position: absolute; bottom: 0; left: 30%; width: 2px; height: 110px; background: #ff9800;"></div>
+                                <div style="position: absolute; bottom: 0; left: 50%; width: 2px; height: 140px; background: #ff9800;"></div>
+                                <div style="position: absolute; bottom: 0; left: 70%; width: 2px; height: 100px; background: #ff9800;"></div>
+                                <div style="position: absolute; bottom: 0; left: 90%; width: 2px; height: 70px; background: #ff9800;"></div>
+                                <div style="position: absolute; bottom: 70px; left: 10%; width: 8px; height: 8px; background: #ff9800; border-radius: 50%; transform: translate(-50%, 50%);"></div>
+                                <div style="position: absolute; bottom: 110px; left: 30%; width: 8px; height: 8px; background: #ff9800; border-radius: 50%; transform: translate(-50%, 50%);"></div>
+                                <div style="position: absolute; bottom: 140px; left: 50%; width: 8px; height: 8px; background: #ff9800; border-radius: 50%; transform: translate(-50%, 50%);"></div>
+                                <div style="position: absolute; bottom: 100px; left: 70%; width: 8px; height: 8px; background: #ff9800; border-radius: 50%; transform: translate(-50%, 50%);"></div>
+                                <div style="position: absolute; bottom: 70px; left: 90%; width: 8px; height: 8px; background: #ff9800; border-radius: 50%; transform: translate(-50%, 50%);"></div>
+                                <div style="position: absolute; bottom: -25px; left: 10%; transform: translateX(-50%); font-size: 0.8rem;">Hari 1</div>
+                                <div style="position: absolute; bottom: -25px; left: 30%; transform: translateX(-50%); font-size: 0.8rem;">Hari 3</div>
+                                <div style="position: absolute; bottom: -25px; left: 50%; transform: translateX(-50%); font-size: 0.8rem;">Hari 5</div>
+                                <div style="position: absolute; bottom: -25px; left: 70%; transform: translateX(-50%); font-size: 0.8rem;">Hari 7</div>
+                                <div style="position: absolute; bottom: -25px; left: 90%; transform: translateX(-50%); font-size: 0.8rem;">Hari 9</div>
+                            </div>
+                        </div>
+                        <p style="text-align: center; font-size: 0.9rem;">Suhu tertinggi terjadi pada hari ke-5 (42°C), kemudian menurun</p>
+                    </div>
+                </div>
+
+                <div class="analysis-box">
+                    <h4><i class="fas fa-search"></i> 3. Analisis Data: Menemukan Jawabannya</h4>
+                    <p>Inilah inti dari Bab 5. Amati tabel dan grafik yang sudah kalian buat. Lalu tanyakan pada diri sendiri:</p>
+                    
+                    <ul>
+                        <li><strong>Apa pola yang terlihat?</strong> Apakah suhu kompos selalu naik? Kapan suhu mencapai puncaknya?</li>
+                        <li><strong>Ada hubungan apa?</strong> Apakah ada hubungan antara suhu yang naik dengan bau yang muncul?</li>
+                        <li><strong>Apa yang mengejutkan?</strong> Apakah ada data yang tidak sesuai dengan perkiraan kalian?</li>
+                        <li><strong>Apakah data ini menjawab pertanyaan awal kita?</strong> Ingat kembali rumusan masalah di Bab 1.</li>
+                    </ul>
+                    
+                    <h5>Contoh Analisis:</h5>
+                    <div class="example-box">
+                        <p>"Berdasarkan Tabel 1 dan Grafik 1, dapat dilihat bahwa suhu kompos mengalami kenaikan signifikan dari hari ke-1 hingga hari ke-5, mencapai puncak 42°C. Hal ini menunjukkan proses fermentasi oleh mikroorganisme sedang berlangsung aktif. Setelah hari ke-5, suhu berangsur turun dan mendekati suhu ruang pada hari ke-7, yang menandakan proses pengomposan mulai matang."</p>
+                    </div>
+                </div>
+
+                <h2>D. Menarik Kesimpulan</h2>
+                
+                <p>Setelah menganalisis data, sekarang saatnya menarik kesimpulan. Kesimpulan adalah jawaban singkat dan padat atas rumusan masalah kalian di Bab 1, berdasarkan bukti dari data yang telah dianalisis.</p>
+                
+                <div class="data-box">
+                    <h4><i class="fas fa-check-double"></i> Kesimpulan yang baik:</h4>
+                    <ul>
+                        <li>Harus berdasarkan data, bukan opini.</li>
+                        <li>Menjawab pertanyaan penelitian.</li>
+                        <li>Singkat, jelas, dan padat.</li>
+                    </ul>
+                    
+                    <h5>Contoh Kesimpulan dari Proyek Kompos:</h5>
+                    <div class="example-box">
+                        <p>"Proyek pembuatan kompos dari sampah organik kantin berhasil dilaksanakan. Proses pengomposan memakan waktu sekitar 2 minggu, ditandai dengan puncak suhu 42°C pada hari ke-5. Kompos yang dihasilkan berwarna kehitaman, berbau tanah, dan memiliki tekstur yang remah, sehingga layak digunakan sebagai pupuk tanaman."</p>
+                    </div>
+                </div>
+
+                <h2>E. Menyusun Laporan Proyek</h2>
+                
+                <p>Sekarang, satukan semuanya ke dalam sebuah laporan yang rapi. Laporan ini adalah bukti tertulis dari seluruh perjalanan proyek kalian.</p>
+
+                <div class="report-structure">
+                    <h4><i class="fas fa-file-alt"></i> Struktur Laporan Proyek IPAS</h4>
+                    <ul>
+                        <li><strong>Halaman Judul:</strong> Berisi judul proyek, nama anggota kelompok, kelas, dan logo sekolah.</li>
+                        <li><strong>Kata Pengantar:</strong> Ucapan syukur dan terima kasih.</li>
+                        <li><strong>Daftar Isi</strong></li>
+                        <li><strong>Bab 1: Pendahuluan</strong> - Latar Belakang, Rumusan Masalah, Tujuan</li>
+                        <li><strong>Bab 2: Kajian Pustaka</strong> (Opsional) - Teori-teori dasar</li>
+                        <li><strong>Bab 3: Metodologi</strong> - Waktu, Tempat, Alat, Bahan, Prosedur</li>
+                        <li><strong>Bab 4: Hasil dan Pembahasan</strong> - Data, Grafik, Analisis</li>
+                        <li><strong>Bab 5: Penutup</strong> - Kesimpulan dan Saran</li>
+                        <li><strong>Daftar Pustaka</strong></li>
+                        <li><strong>Lampiran:</strong> Logbook asli, data mentah</li>
+                    </ul>
+                </div>
+
+                <h2>F. Aktivitas: Menyusun Laporan Kelompok</h2>
+                
+                <div class="activity-box">
+                    <h4><i class="fas fa-tasks"></i> Aktivitas Kelompok</h4>
+                    <ol>
+                        <li><strong>Kumpulkan Data:</strong> Kumpulkan semua catatan, tabel, foto, dan grafik dari seluruh anggota kelompok.</li>
+                        <li><strong>Diskusikan dan Analisis Bersama:</strong> Duduk bersama, lihat semua data. Diskusikan temuan-temuan menarik.</li>
+                        <li><strong>Tulis Kesimpulan:</strong> Rumuskan kesimpulan akhir proyek kalian.</li>
+                        <li><strong>Bagilah Tugas Menulis:</strong> Bagilah tugas menulis setiap bab laporan kepada anggota kelompok.</li>
+                        <li><strong>Tata Letak dan Jilid:</strong> Setelah semua terkumpul, satukan dan atur tata letaknya agar menarik.</li>
+                    </ol>
+                </div>
+
+                <h2>G. Kesimpulan</h2>
+                
+                <p>Bab 5 adalah tahap di mana kerja keras kalian selama berbulan-bulan "membuahkan hasil" dalam bentuk sebuah cerita yang utuh. Kalian telah belajar bahwa data bukan sekadar angka, tetapi alat untuk memahami dunia.</p>
+                
+                <div class="note-box">
+                    <i class="fas fa-quote-left" style="color: var(--ipas-report); margin-right: 10px;"></i>
+                    Selamat, kalian telah menjadi peneliti sejati!
+                </div>
+            </div>
+
+            <div class="bab-navigation">
+                <a href="s2-bab-4.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i> Kembali ke Bab 4
+                </a>
+                <a href="s2-bab-6.html" class="nav-btn primary">
+                    Lanjut ke Bab 6 <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // ===== HAMBURGER MENU - SAMA PERSIS DENGAN REFERENSI =====
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

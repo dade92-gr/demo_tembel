@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi 2.1: Digitalisasi Budaya Indonesia - Informatika Kelas X</title>
+    <link rel="stylesheet" href="../../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --informatika-primary: #3498db;
+            --informatika-secondary: #2980b9;
+            --informatika-light: #ebf5fb;
+            --informatika-dark: #21618c;
+            --informatika-semester1: #3498db;
+            --success: #27ae60;
+            --warning: #e74c3c;
+            --info: #f39c12;
+            --purple: #9b59b6;
+            --budaya: #c62828;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+        
+        .materi-container {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+        
+        .materi-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 30px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(52, 152, 219, 0.15);
+            border-left: 8px solid var(--informatika-semester1);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        .materi-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(52, 152, 219, 0.1) 0%, transparent 70%);
+            z-index: 0;
+        }
+        
+        .materi-card > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .materi-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 3px solid var(--informatika-light);
+            flex-wrap: wrap;
+        }
+        
+        .materi-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--budaya), var(--informatika-primary));
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+        }
+        
+        .materi-title-wrapper {
+            flex: 1;
+        }
+        
+        .materi-title-wrapper h1 {
+            color: var(--informatika-dark);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .materi-subtitle {
+            color: var(--informatika-primary);
+            font-size: 1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .materi-badge {
+            background: var(--informatika-light);
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: var(--informatika-dark);
+        }
+        
+        .tujuan-card {
+            background: linear-gradient(135deg, var(--informatika-light), white);
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(52, 152, 219, 0.2);
+        }
+        
+        .tujuan-card h3 {
+            color: var(--informatika-dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .tujuan-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 0.8rem;
+        }
+        
+        .tujuan-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            padding: 0.8rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .tujuan-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .tujuan-item i {
+            color: var(--success);
+        }
+        
+        .materi-content {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid rgba(52, 152, 219, 0.1);
+        }
+        
+        .materi-content h2 {
+            color: var(--informatika-dark);
+            font-size: 1.8rem;
+            margin: 1.5rem 0 1rem 0;
+            border-bottom: 2px solid var(--informatika-light);
+            padding-bottom: 0.5rem;
+        }
+        
+        .materi-content h2:first-of-type {
+            margin-top: 0;
+        }
+        
+        .materi-content h3 {
+            color: var(--informatika-dark);
+            font-size: 1.3rem;
+            margin: 1.2rem 0 0.8rem 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .materi-content h3 i {
+            color: var(--informatika-primary);
+        }
+        
+        .materi-content p {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        
+        .materi-content ul, .materi-content ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .materi-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .quote-box {
+            margin: 1.5rem 0;
+            padding: 1rem 1.5rem;
+            background: var(--informatika-light);
+            border-left: 4px solid var(--informatika-primary);
+            border-radius: 0 12px 12px 0;
+        }
+        
+        .note-box {
+            background: #fff3e0;
+            border-left: 4px solid var(--info);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid var(--informatika-primary);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .warning-box {
+            background: #fee2e2;
+            border-left: 4px solid var(--warning);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .success-box {
+            background: #d4edda;
+            border-left: 4px solid var(--success);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .digitalisasi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .digitalisasi-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #e9ecef;
+            text-align: center;
+        }
+        
+        .digitalisasi-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .digitalisasi-card.active {
+            border: 2px solid var(--budaya);
+            background: #fee2e2;
+        }
+        
+        .digitalisasi-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .digitalisasi-title {
+            font-weight: bold;
+            color: var(--budaya);
+            margin-bottom: 0.3rem;
+        }
+        
+        .digitalisasi-desc {
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        .contoh-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .contoh-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #e9ecef;
+        }
+        
+        .contoh-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .contoh-card.active {
+            border: 2px solid var(--success);
+            background: #d4edda;
+        }
+        
+        .contoh-title {
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+        }
+        
+        .contoh-detail {
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        .manfaat-tantangan {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .manfaat-card, .tantangan-card {
+            border-radius: 20px;
+            padding: 1.2rem;
+        }
+        
+        .manfaat-card {
+            background: #d4edda;
+            border: 2px solid var(--success);
+        }
+        
+        .tantangan-card {
+            background: #fee2e2;
+            border: 2px solid var(--warning);
+        }
+        
+        .manfaat-card h4, .tantangan-card h4 {
+            margin-bottom: 1rem;
+        }
+        
+        .peran-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .peran-card {
+            text-align: center;
+            padding: 1rem;
+            background: white;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #e9ecef;
+        }
+        
+        .peran-card:hover {
+            transform: translateY(-5px);
+            background: var(--informatika-light);
+        }
+        
+        .peran-card.active {
+            border: 2px solid var(--purple);
+            background: #f3e5f5;
+        }
+        
+        .peran-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .museum-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+        
+        .museum-table th {
+            background: var(--budaya);
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .museum-table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .museum-table tr:hover {
+            background: var(--informatika-light);
+        }
+        
+        .demo-galeri {
+            background: #f8f9fa;
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .demo-item {
+            background: white;
+            border-radius: 12px;
+            padding: 1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .demo-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .demo-icon {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .materi-navigation {
+            display: flex;
+            gap: 1rem;
+            justify-content: space-between;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn.primary {
+            background: linear-gradient(135deg, var(--informatika-primary), var(--informatika-secondary));
+            color: white;
+        }
+        
+        .nav-btn.primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .nav-btn.secondary {
+            background: white;
+            color: var(--informatika-dark);
+            border: 2px solid var(--informatika-light);
+        }
+        
+        .nav-btn.secondary:hover {
+            background: var(--informatika-light);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .materi-container { padding: 1rem; }
+            .materi-card { padding: 1.5rem; }
+            .materi-header { flex-direction: column; text-align: center; }
+            .manfaat-tantangan { grid-template-columns: 1fr; }
+            .museum-table { font-size: 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="../../../assets/images/logo.png" alt="Logo Sekolah">
+                    <h1>INFORMATIKA - MATERI PEMBELAJARAN</h1>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="../../../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="../../index-informatika.html" class="nav-link"><i class="fas fa-laptop-code"></i> Beranda Informatika</a></li>
+                    <li><a href="../../aktivitas-pembelajaran/index-aktivitas-informatika.html" class="nav-link"><i class="fas fa-tasks"></i> Daftar Aktivitas</a></li>
+                    <li><a href="../index-materi-informatika.html" class="nav-link active"><i class="fas fa-book-open"></i> Daftar Materi</a></li>
+                    <li><a href="../../penilaian/index-penilaian-informatika.html" class="nav-link"><i class="fas fa-chart-line"></i> Penilaian</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="materi-container">
+        <div class="materi-card">
+            <!-- Header -->
+            <div class="materi-header">
+                <div class="materi-icon">
+                    <i class="fas fa-landmark"></i>
+                </div>
+                <div class="materi-title-wrapper">
+                    <h1>Digitalisasi Budaya Indonesia</h1>
+                    <div class="materi-subtitle">
+                        <i class="fas fa-circle"></i>
+                        <span>Proyek 2: Digitalisasi Budaya - Pertemuan 1</span>
+                        <span class="materi-badge"><i class="fas fa-clock"></i> 4 JP</span>
+                        <span class="materi-badge"><i class="fas fa-tag"></i> TP 2.9</span>
+                        <span class="materi-badge"><i class="fas fa-globe"></i> Online</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tujuan Pembelajaran -->
+            <div class="tujuan-card">
+                <h3><i class="fas fa-bullseye"></i> 🎯 Tujuan Pembelajaran</h3>
+                <div class="tujuan-list">
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Memahami pengertian digitalisasi budaya</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Menjelaskan pentingnya digitalisasi budaya Indonesia</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Mengenal berbagai bentuk digitalisasi budaya yang sudah ada</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Memberikan contoh digitalisasi budaya di lingkungan sekitar</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Memahami manfaat dan tantangan digitalisasi budaya</div>
+                </div>
+            </div>
+
+            <!-- Konten Materi -->
+            <div class="materi-content">
+                <h2>A. Apa Itu Digitalisasi Budaya?</h2>
+                <p><strong>Digitalisasi budaya</strong> adalah proses mengubah karya, praktik, dan ekspresi budaya ke dalam format digital sehingga dapat diakses, dilestarikan, dan dipromosikan melalui teknologi digital. Ini mencakup berbagai aspek budaya seperti tarian, musik, bahasa, upacara adat, makanan tradisional, dan artefak sejarah.</p>
+                
+                <div class="quote-box">
+                    <i class="fas fa-quote-left"></i> <strong>UNESCO:</strong> "Digitalisasi budaya adalah upaya pelestarian warisan budaya melalui teknologi digital untuk memastikan aksesibilitas lintas generasi."
+                </div>
+
+                <div class="info-box">
+                    <i class="fas fa-lightbulb"></i> <strong>Ilustrasi Sederhana:</strong><br>
+                    🏛️ <strong>Budaya Tradisional:</strong> Tari Kecak (pertunjukan langsung) → <strong>Digitalisasi:</strong> Video Tari Kecak di YouTube (jutaan penonton)<br>
+                    👘 <strong>Budaya Tradisional:</strong> Batik (kain fisik) → <strong>Digitalisasi:</strong> Museum Batik Online (akses global)<br>
+                    🎭 <strong>Budaya Tradisional:</strong> Wayang Kulit (pertunjukan langsung) → <strong>Digitalisasi:</strong> Aplikasi Wayang Digital
+                </div>
+
+                <h2>B. Mengapa Budaya Perlu Didigitalisasi?</h2>
+                <div class="success-box">
+                    <strong>📌 Alasan Digitalisasi Budaya:</strong><br>
+                    • <strong>Pelestarian</strong> - Budaya yang tidak didokumentasikan bisa punah termakan waktu<br>
+                    • <strong>Aksesibilitas</strong> - Masyarakat di seluruh dunia bisa mengakses budaya Indonesia<br>
+                    • <strong>Edukasi</strong> - Generasi muda bisa belajar budaya dengan cara yang menarik<br>
+                    • <strong>Promosi</strong> - Memperkenalkan budaya Indonesia ke kancah internasional<br>
+                    • <strong>Dokumentasi</strong> - Merekam detail budaya yang mungkin hilang<br>
+                    • <strong>Ekonomi</strong> - Membuka peluang ekonomi kreatif berbasis budaya<br>
+                    • <strong>Riset</strong> - Memudahkan peneliti mempelajari budaya Indonesia
+                </div>
+
+                <h2>C. Bentuk-Bentuk Digitalisasi Budaya</h2>
+                <p><strong>Klik pada setiap bentuk</strong> untuk memperjelas tampilan:</p>
+                
+                <div class="digitalisasi-grid" id="digitalisasiGrid">
+                    <div class="digitalisasi-card" data-digital="museum">
+                        <div class="digitalisasi-icon"><i class="fas fa-building"></i></div>
+                        <div class="digitalisasi-title">Museum Digital</div>
+                        <div class="digitalisasi-desc">Museum digital memungkinkan pengunjung melihat koleksi museum secara online. Contoh: Museum Nasional Online, Google Arts &amp; Culture.</div>
+                    </div>
+                    <div class="digitalisasi-card" data-digital="arsip">
+                        <div class="digitalisasi-icon"><i class="fas fa-archive"></i></div>
+                        <div class="digitalisasi-title">Arsip Digital</div>
+                        <div class="digitalisasi-desc">Dokumen dan naskah kuno disimpan dalam format digital. Contoh: Arsip Nasional RI, Naskah Kuno Digital.</div>
+                    </div>
+                    <div class="digitalisasi-card" data-digital="video">
+                        <div class="digitalisasi-icon"><i class="fas fa-video"></i></div>
+                        <div class="digitalisasi-title">Video &amp; Dokumentasi</div>
+                        <div class="digitalisasi-desc">Tarian, upacara adat, pertunjukan tradisional direkam dan diunggah ke YouTube, TikTok, Instagram.</div>
+                    </div>
+                    <div class="digitalisasi-card" data-digital="aplikasi">
+                        <div class="digitalisasi-icon"><i class="fas fa-mobile-alt"></i></div>
+                        <div class="digitalisasi-title">Aplikasi Mobile</div>
+                        <div class="digitalisasi-desc">Aplikasi yang mengenalkan budaya Indonesia. Contoh: Aksara Bali, Kamus Bahasa Daerah.</div>
+                    </div>
+                    <div class="digitalisasi-card" data-digital="vr">
+                        <div class="digitalisasi-icon"><i class="fas fa-vr-cardboard"></i></div>
+                        <div class="digitalisasi-title">VR/AR</div>
+                        <div class="digitalisasi-desc">Teknologi imersif untuk mengalami budaya. Contoh: VR Candi Borobudur, AR Pakaian Adat.</div>
+                    </div>
+                    <div class="digitalisasi-card" data-digital="game">
+                        <div class="digitalisasi-icon"><i class="fas fa-gamepad"></i></div>
+                        <div class="digitalisasi-title">Game Bertema Budaya</div>
+                        <div class="digitalisasi-desc">Game yang mengangkat cerita dan budaya Indonesia. Contoh: Nusantara: Lost Island, Aksara, DreadOut.</div>
+                    </div>
+                </div>
+
+                <h2>D. Contoh Digitalisasi Budaya Indonesia</h2>
+                <p><strong>Klik pada setiap contoh</strong> untuk memperjelas tampilan:</p>
+                
+                <div class="contoh-grid" id="contohGrid">
+                    <div class="contoh-card" data-contoh="wayang">
+                        <div class="contoh-title">🎭 Wayang Kulit Digital</div>
+                        <div class="contoh-detail"><strong>Tradisional:</strong> Pertunjukan dengan dalang, layar, lampu.<br><strong>Digital:</strong> Aplikasi Wayang Kulit, video wayang di YouTube.<br><strong>Manfaat:</strong> Generasi muda bisa menikmati wayang di HP.</div>
+                    </div>
+                    <div class="contoh-card" data-contoh="batik">
+                        <div class="contoh-title">👘 Batik Digital</div>
+                        <div class="contoh-detail"><strong>Tradisional:</strong> Batik tulis, cap, printing.<br><strong>Digital:</strong> Museum Batik Online, motif batik dalam format digital.<br><strong>Manfaat:</strong> Motif batik bisa diakses desainer di seluruh dunia.</div>
+                    </div>
+                    <div class="contoh-card" data-contoh="tari">
+                        <div class="contoh-title">💃 Tari Tradisional di YouTube</div>
+                        <div class="contoh-detail"><strong>Tari Kecak:</strong> 5 juta+ viewers<br><strong>Tari Saman:</strong> 3 juta+ viewers<br><strong>Tari Pendet:</strong> 2 juta+ viewers</div>
+                    </div>
+                    <div class="contoh-card" data-contoh="kamus">
+                        <div class="contoh-title">📱 Aplikasi Kamus Bahasa Daerah</div>
+                        <div class="contoh-detail"><strong>Kamus Jawa:</strong> 500rb+ unduhan<br><strong>Kamus Sunda:</strong> 500rb+ unduhan<br><strong>Kamus Bali:</strong> 100rb+ unduhan</div>
+                    </div>
+                </div>
+
+                <h2>E. Museum Digital di Indonesia</h2>
+                <table class="museum-table">
+                    <thead>
+                        <tr><th>Nama Museum</th><th>Koleksi</th><th>Cara Akses</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Museum Nasional</td><td>Artefak sejarah, prasasti, arca</td><td>museumindonesia.com</td></tr>
+                        <tr><td>Museum Batik</td><td>Koleksi batik Nusantara</td><td>batikindonesia.com</td></tr>
+                        <tr><td>Museum Wayang</td><td>Koleksi wayang berbagai jenis</td><td>museumwayang.com</td></tr>
+                        <tr><td>Museum Tekstil</td><td>Kain tradisional</td><td>museumtekstil.com</td></tr>
+                        <tr><td>Google Arts &amp; Culture</td><td>Kolaborasi museum Indonesia</td><td>artsandculture.google.com</td></tr>
+                    </tbody>
+                </table>
+
+                <h2>F. Manfaat vs Tantangan Digitalisasi Budaya</h2>
+                <div class="manfaat-tantangan">
+                    <div class="manfaat-card">
+                        <h4><i class="fas fa-check-circle" style="color: var(--success);"></i> Manfaat</h4>
+                        <ul>
+                            <li>Generasi muda mudah mengakses dan mempelajari budaya</li>
+                            <li>Peneliti mendapat sumber data untuk riset budaya</li>
+                            <li>Masyarakat internasional mengenal kekayaan budaya Indonesia</li>
+                            <li>Budaya tidak punah karena terekam digital</li>
+                            <li>Industri kreatif berbasis budaya berkembang</li>
+                            <li>Promosi wisata budaya lebih luas</li>
+                            <li>Memperkuat jati diri bangsa di dunia maya</li>
+                        </ul>
+                    </div>
+                    <div class="tantangan-card">
+                        <h4><i class="fas fa-exclamation-triangle" style="color: var(--warning);"></i> Tantangan</h4>
+                        <ul>
+                            <li>Biaya digitalisasi membutuhkan peralatan dan tenaga ahli</li>
+                            <li>Hak Cipta - siapa pemilik hak cipta budaya yang didigitalisasi?</li>
+                            <li>Keaslian - konten digital bisa kehilangan nilai sakral/asli</li>
+                            <li>Akses - tidak semua daerah punya akses internet baik</li>
+                            <li>Kurang SDM - tenaga ahli digitalisasi budaya masih terbatas</li>
+                            <li>Upaya berkelanjutan - digitalisasi bukan proyek sekali jadi</li>
+                            <li>Kurasi - memastikan informasi yang didigitalisasi akurat</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h2>G. Peran Generasi Muda dalam Digitalisasi Budaya</h2>
+                <p><strong>Klik pada setiap peran</strong> untuk memperjelas tampilan:</p>
+                
+                <div class="peran-grid" id="peranGrid">
+                    <div class="peran-card" data-peran="kreator">
+                        <div class="peran-icon"><i class="fas fa-video"></i></div>
+                        <div class="peran-title">Kreator Konten</div>
+                        <div class="peran-desc" style="font-size: 0.8rem;">Membuat video tarian, musik tradisional di TikTok/YouTube</div>
+                    </div>
+                    <div class="peran-card" data-peran="penulis">
+                        <div class="peran-icon"><i class="fas fa-pen"></i></div>
+                        <div class="peran-title">Penulis</div>
+                        <div class="peran-desc" style="font-size: 0.8rem;">Menulis artikel tentang budaya di blog/media sosial</div>
+                    </div>
+                    <div class="peran-card" data-peran="desainer">
+                        <div class="peran-icon"><i class="fas fa-paintbrush"></i></div>
+                        <div class="peran-title">Desainer</div>
+                        <div class="peran-desc" style="font-size: 0.8rem;">Membuat poster, infografis tentang budaya</div>
+                    </div>
+                    <div class="peran-card" data-peran="developer">
+                        <div class="peran-icon"><i class="fas fa-code"></i></div>
+                        <div class="peran-title">Developer</div>
+                        <div class="peran-desc" style="font-size: 0.8rem;">Membuat aplikasi/game bertema budaya</div>
+                    </div>
+                    <div class="peran-card" data-peran="fotografer">
+                        <div class="peran-icon"><i class="fas fa-camera"></i></div>
+                        <div class="peran-title">Fotografer</div>
+                        <div class="peran-desc" style="font-size: 0.8rem;">Mendokumentasikan objek budaya</div>
+                    </div>
+                </div>
+
+                <h2>H. Studi Kasus: Digitalisasi Tari Tradisional</h2>
+                <div class="info-box">
+                    <strong>📊 Data Digitalisasi Tari Tradisional:</strong><br>
+                    • <strong>Sebelum Digitalisasi:</strong> Hanya bisa dilihat di pertunjukan langsung (ratusan penonton), sulit dipelajari tanpa guru<br>
+                    • <strong>Setelah Digitalisasi:</strong> Video tari di YouTube (jutaan penonton), tutorial online, go international, abadi<br>
+                    • <strong>Tari Kecak:</strong> 5 juta+ viewers | <strong>Tari Saman:</strong> 3 juta+ viewers | <strong>Tutorial Tari Pendet:</strong> 2 juta+ viewers
+                </div>
+
+                <!-- Demo Galeri Budaya Digital -->
+                <div class="demo-galeri">
+                    <h3><i class="fas fa-image"></i> Galeri Budaya Digital</h3>
+                    <p>Contoh tampilan galeri budaya digital sederhana:</p>
+                    <div class="demo-grid" id="demoGrid">
+                        <!-- Akan diisi JavaScript -->
+                    </div>
+                </div>
+
+                <div class="warning-box" style="margin-top: 1.5rem;">
+                    <i class="fas fa-exclamation-triangle"></i> <strong>Ingat!</strong> Digitalisasi bukan berarti menggantikan budaya asli, tetapi melestarikannya untuk generasi mendatang!
+                </div>
+
+                <div class="quote-box" style="margin-top: 1.5rem; text-align: center;">
+                    <i class="fas fa-landmark"></i> Selamat Belajar Digitalisasi Budaya! 🏯
+                </div>
+            </div>
+
+            <!-- Navigasi -->
+            <div class="materi-navigation">
+                <a href="../index-materi-informatika.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i> Kembali ke Daftar Materi
+                </a>
+                <a href="materi2-2.html" class="nav-btn primary">
+                    Lanjut ke Materi 2.2: Digitalisasi Budaya (Lanjutan)
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script src="../../../script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                });
+            }
+            
+            // Digitalisasi Grid Interaktif
+            const digitalCards = document.querySelectorAll('.digitalisasi-card');
+            digitalCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    digitalCards.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            
+            // Contoh Grid Interaktif
+            const contohCards = document.querySelectorAll('.contoh-card');
+            contohCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    contohCards.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            
+            // Peran Grid Interaktif
+            const peranCards = document.querySelectorAll('.peran-card');
+            peranCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    peranCards.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            
+            // Demo Galeri Budaya Digital
+            const budayaData = [
+                { nama: "Tari Kecak", region: "Bali", icon: "🕺", kategori: "Tarian" },
+                { nama: "Batik", region: "Jawa", icon: "👘", kategori: "Kerajinan" },
+                { nama: "Wayang Kulit", region: "Jawa", icon: "🎭", kategori: "Pertunjukan" },
+                { nama: "Angklung", region: "Jawa Barat", icon: "🎵", kategori: "Musik" },
+                { nama: "Rendang", region: "Sumatera Barat", icon: "🍖", kategori: "Kuliner" },
+                { nama: "Gamelan", region: "Jawa & Bali", icon: "🎼", kategori: "Musik" }
+            ];
+            
+            let demoHtml = "";
+            for (let i = 0; i < budayaData.length; i++) {
+                demoHtml += '<div class="demo-item">';
+                demoHtml += '<div class="demo-icon">' + budayaData[i].icon + '</div>';
+                demoHtml += '<div style="font-weight: bold;">' + budayaData[i].nama + '</div>';
+                demoHtml += '<div style="font-size: 0.75rem; color: #666;">' + budayaData[i].region + '</div>';
+                demoHtml += '</div>';
+            }
+            document.getElementById('demoGrid').innerHTML = demoHtml;
+        });
+    </script>
+</body>
+</html>

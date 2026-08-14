@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 7: Perilaku Ekonomi dan Kesejahteraan - Kelas X</title>
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* IPAS THEME COLORS - HANYA UNTUK KONTEN */
+        :root {
+            --ipas-primary: #2ecc71;
+            --ipas-secondary: #27ae60;
+            --ipas-light: #d5f4e6;
+            --ipas-dark: #229954;
+            --ipas-accent: #3498db;
+            --ipas-semester1: #3498db;
+            --ipas-economic: #27ae60;
+            --ipas-gray: #f5f7fa;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f5f7fa; color: #2c3e50; line-height: 1.6; }
+
+        /* ===== LOGO ZOOM EFFECT ===== */
+        .logo img { transition: transform 0.3s ease; }
+        .logo:hover img { transform: scale(1.2); }
+        
+        /* MAIN CONTENT */
+        .bab-container { padding: 2rem; max-width: 1200px; margin: 0 auto; min-height: calc(100vh - 80px); display: flex; align-items: flex-start; justify-content: center; }
+        
+        .bab-card { background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%); border-radius: 30px; padding: 3rem; box-shadow: 0 20px 40px rgba(46, 204, 113, 0.15); border-left: 8px solid var(--ipas-economic); position: relative; overflow: hidden; width: 100%; animation: fadeInUp 0.6s ease-out; }
+        .bab-card::before { content: ''; position: absolute; top: 0; right: 0; width: 250px; height: 250px; background: radial-gradient(circle, rgba(46, 204, 113, 0.1) 0%, transparent 70%); z-index: 0; }
+        .bab-card > * { position: relative; z-index: 1; }
+        
+        .bab-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 3px solid var(--ipas-light); }
+        .bab-icon { width: 80px; height: 80px; background: linear-gradient(135deg, var(--ipas-economic), #2ecc71); border-radius: 25px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2.5rem; box-shadow: 0 10px 20px rgba(46, 204, 113, 0.3); }
+        .bab-title-wrapper h1 { color: var(--ipas-dark); font-size: 2.5rem; margin-bottom: 0.5rem; line-height: 1.2; }
+        .bab-subtitle { color: var(--ipas-economic); font-size: 1.1rem; font-weight: 600; display: flex; align-items: center; gap: 8px; }
+        .bab-subtitle i { font-size: 0.8rem; }
+        
+        .bab-info { display: flex; gap: 2rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+        .info-item { display: flex; align-items: center; gap: 10px; background: var(--ipas-light); padding: 0.8rem 1.5rem; border-radius: 50px; color: var(--ipas-dark); font-weight: 600; }
+        .info-item i { color: var(--ipas-economic); font-size: 1.2rem; }
+        
+        .bab-description { background: white; border-radius: 20px; padding: 2rem; margin-bottom: 2rem; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 1px solid rgba(46, 204, 113, 0.1); }
+        .bab-description h2, .bab-description h3, .bab-description h4, .bab-description p, .bab-description ul, .bab-description ol, .bab-description li, .bab-description table, .bab-description .note-box, .bab-description .reflection-box, .bab-description .quote-box, .bab-description blockquote, .bab-description .economic-card, .bab-description .level-card { text-align: justify; }
+        
+        .bab-description h2 { color: var(--ipas-dark); font-size: 2rem; margin: 1.5rem 0 1rem 0; border-bottom: 2px solid var(--ipas-light); padding-bottom: 0.5rem; }
+        .bab-description h3 { color: var(--ipas-dark); font-size: 1.3rem; margin: 1.5rem 0 1rem 0; display: flex; align-items: center; gap: 10px; }
+        .bab-description h4 { color: var(--ipas-dark); font-size: 1.2rem; margin: 1.2rem 0 0.8rem 0; font-weight: 600; }
+        .bab-description h3 i { color: var(--ipas-economic); }
+        .bab-description p { color: #555; font-size: 1.1rem; line-height: 1.8; margin-bottom: 1rem; text-align: justify; }
+        .bab-description ul, .bab-description ol { margin-left: 2rem; margin-bottom: 1rem; color: #555; text-align: justify; }
+        .bab-description li { margin-bottom: 0.5rem; text-align: justify; }
+        .bab-description strong { color: var(--ipas-dark); }
+        .bab-description blockquote { margin: 1.5rem 0; padding: 1rem 2rem; background: var(--ipas-light); border-left: 5px solid var(--ipas-economic); font-style: italic; font-size: 1.1rem; color: var(--ipas-dark); border-radius: 0 15px 15px 0; }
+        
+        .custom-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 1rem; box-shadow: 0 0 20px rgba(0, 0, 0, 0.05); border-radius: 10px; overflow: hidden; }
+        .custom-table th { background-color: var(--ipas-economic); color: white; font-weight: 600; padding: 12px 15px; text-align: left; }
+        .custom-table td { padding: 12px 15px; border-bottom: 1px solid #dddddd; text-align: justify; }
+        .custom-table tr:nth-child(even) { background-color: #f8f8f8; }
+        .custom-table tr:hover { background-color: var(--ipas-light); }
+        
+        .note-box { background: var(--ipas-light); border-left: 5px solid var(--ipas-economic); padding: 1.5rem; margin: 1.5rem 0; border-radius: 10px; font-style: italic; }
+        
+        .reflection-box { background: linear-gradient(135deg, #e8f8f0, #e8f5e9); border-left: 5px solid var(--ipas-economic); padding: 1.5rem; margin: 1.5rem 0; border-radius: 10px; border: 1px solid rgba(46, 204, 113, 0.2); }
+        .reflection-box h4 { color: var(--ipas-dark); margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; }
+        .reflection-box h4 i { color: var(--ipas-economic); }
+        .reflection-box ul, .reflection-box ol { margin-left: 1.5rem; }
+        
+        .quote-box { background: #f9f9f9; border-left: 5px solid var(--ipas-economic); padding: 1.5rem; margin: 1.5rem 0; border-radius: 10px; font-style: italic; font-size: 1.1rem; color: #2c3e50; box-shadow: 0 3px 10px rgba(0,0,0,0.05); }
+        .quote-box i { color: var(--ipas-economic); margin-right: 10px; }
+        
+        .economic-card { background: white; border-radius: 15px; padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 1px solid var(--ipas-light); transition: transform 0.3s ease; }
+        .economic-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(46, 204, 113, 0.15); }
+        .economic-card h4 { color: var(--ipas-economic); border-bottom: 2px solid var(--ipas-light); padding-bottom: 0.5rem; margin-bottom: 1rem; }
+        
+        .level-card { background: linear-gradient(135deg, #ffffff, #f9f9f9); border-radius: 15px; padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-left: 5px solid var(--ipas-economic); }
+        .level-card h4 { color: var(--ipas-economic); margin-bottom: 1rem; }
+        
+        .image-container { margin: 2rem 0; text-align: center; width: 100%; }
+        .image-container img { max-width: 100%; max-height: 400px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); border: 3px solid white; display: block; margin: 0 auto; }
+        .image-caption { font-style: italic; color: #6c757d; margin-top: 0.5rem; font-size: 0.95rem; text-align: center; width: 100%; }
+        .image-placeholder { background: #e9ecef; border: 2px dashed var(--ipas-economic); border-radius: 15px; padding: 2rem; margin: 2rem 0; text-align: center; color: #6c757d; font-weight: 600; transition: all 0.3s ease; width: 100%; }
+        .image-placeholder i { font-size: 3rem; color: var(--ipas-economic); margin-bottom: 1rem; display: block; }
+        .image-placeholder:hover { background: #dee2e6; border-color: var(--ipas-primary); color: #495057; }
+        
+        .bab-navigation { display: flex; gap: 1rem; justify-content: space-between; margin-top: 2rem; }
+        .nav-btn { display: inline-flex; align-items: center; gap: 10px; padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; border: none; cursor: pointer; }
+        .nav-btn.primary { background: linear-gradient(135deg, var(--ipas-economic), #2ecc71); color: white; box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3); }
+        .nav-btn.primary:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(46, 204, 113, 0.4); }
+        .nav-btn.secondary { background: white; color: var(--ipas-dark); border: 2px solid var(--ipas-light); }
+        .nav-btn.secondary:hover { background: var(--ipas-light); transform: translateX(-5px); }
+        
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
+        @media (max-width: 768px) {
+            .bab-container { padding: 1rem; }
+            .bab-card { padding: 2rem; }
+            .bab-header { flex-direction: column; text-align: center; }
+            .bab-title-wrapper h1 { font-size: 2rem; }
+            .bab-info { justify-content: center; }
+            .bab-navigation { flex-direction: column; }
+            .nav-btn { justify-content: center; }
+        }
+        
+        @media (max-width: 480px) {
+            .bab-card { padding: 1.5rem; }
+            .bab-title-wrapper h1 { font-size: 1.8rem; }
+            .bab-icon { width: 60px; height: 60px; font-size: 2rem; }
+            .info-item { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="../../assets/images/logo.png" alt="Logo Sekolah">
+                    <h1>TEMBOK BELAJAR - PROJEK IPAS</h1>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="../../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="../index-ipas.html" class="nav-link"><i class="fas fa-flask"></i> Beranda IPAS</a></li>
+                    <li><a href="../aktivitas-pembelajaran/index-aktifitas-ipas.html" class="nav-link"><i class="fas fa-tasks"></i> Daftar Aktivitas</a></li>
+                    <li><a href="index-materi-ipas.html" class="nav-link active"><i class="fas fa-book-open"></i> Daftar Materi</a></li>
+                    <li><a href="../penilaian/index-penilaian-ipas.html" class="nav-link"><i class="fas fa-chart-line"></i> Penilaian</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="bab-container">
+        <div class="bab-card">
+            <div class="bab-header">
+                <div class="bab-icon"><i class="fas fa-chart-line"></i></div>
+                <div class="bab-title-wrapper">
+                    <h1>Bab 7: Perilaku Ekonomi dan Kesejahteraan</h1>
+                    <div class="bab-subtitle"><i class="fas fa-circle"></i> <span>Semester Ganjil - Kelas X</span></div>
+                </div>
+            </div>
+
+            <div class="bab-description">
+                <h2>A. Pendahuluan: Ekonomi sebagai Perilaku Sosial</h2>
+                
+                <div class="image-container" id="gambar1-container">
+                    <img src="s1-bab-7/gambar1.jpg" alt="Ekonomi sebagai Perilaku Sosial" 
+                         onerror="this.style.display='none'; document.getElementById('gambar1-placeholder').style.display='block';"
+                         onload="this.style.display='block'; document.getElementById('gambar1-placeholder').style.display='none';">
+                    <div class="image-placeholder" id="gambar1-placeholder" style="display:block;">
+                        <i class="fas fa-image"></i>
+                        <span>[Gambar 1: Ekonomi sebagai Perilaku Sosial]</span>
+                        <p style="font-size:0.9rem; margin-top:1rem;">Letakkan file gambar dengan nama "gambar1" di folder "s1-bab-7"</p>
+                    </div>
+                    <div class="image-caption">Gambar 1: Ekonomi sebagai Perilaku Sosial</div>
+                </div>
+                
+                <p>Setiap manusia, sejak lahir hingga akhir hayatnya, selalu terlibat dalam kegiatan ekonomi — meskipun kadang ia tak menyadarinya. Ketika seseorang membeli nasi di warung, menanam padi di sawah, berdagang di pasar, menabung di bank, atau sekadar menukar barang dengan tetangga, ia sedang menjalankan perilaku ekonomi. Dengan kata lain, ekonomi bukan hanya tentang uang atau angka, tetapi tentang bagaimana manusia berupaya memenuhi kebutuhannya dengan sumber daya yang terbatas.</p>
+
+                <h2>B. Kebutuhan, Kelangkaan, dan Pilihan Ekonomi</h2>
+
+                <h3>1. Kebutuhan Manusia</h3>
+                <p>Kebutuhan adalah segala sesuatu yang harus dipenuhi agar manusia dapat hidup layak dan berkembang. Kebutuhan bersifat dinamis—berubah seiring waktu, tempat, dan tingkat pengetahuan. Secara umum, kebutuhan manusia dibagi menjadi tiga tingkatan:</p>
+                <ul>
+                    <li><strong>Kebutuhan primer:</strong> kebutuhan pokok untuk bertahan hidup, seperti makanan, pakaian, dan tempat tinggal.</li>
+                    <li><strong>Kebutuhan sekunder:</strong> kebutuhan untuk kenyamanan dan efisiensi hidup, seperti alat transportasi, peralatan rumah tangga, dan pendidikan.</li>
+                    <li><strong>Kebutuhan tersier:</strong> kebutuhan yang bersifat pelengkap atau prestise, seperti kendaraan mewah, liburan ke luar negeri, atau barang bermerek.</li>
+                </ul>
+
+                <h3>2. Kelangkaan dan Masalah Pokok Ekonomi</h3>
+                <p>Kelangkaan (scarcity) terjadi ketika jumlah sumber daya tidak cukup untuk memenuhi semua kebutuhan manusia. Kelangkaan menuntut manusia membuat pilihan. Karena tidak semua kebutuhan bisa dipenuhi, manusia harus menentukan apa yang harus diproduksi, bagaimana memproduksi, dan untuk siapa hasilnya.</p>
+
+                <div class="image-container" id="gambar2-container">
+                    <img src="s1-bab-7/gambar2.png" alt="Prinsip Ekonomi dalam Kehidupan Sehari-hari" 
+                         onerror="this.style.display='none'; document.getElementById('gambar2-placeholder').style.display='block';"
+                         onload="this.style.display='block'; document.getElementById('gambar2-placeholder').style.display='none';">
+                    <div class="image-placeholder" id="gambar2-placeholder" style="display:block;">
+                        <i class="fas fa-image"></i>
+                        <span>[Gambar 2: Prinsip Ekonomi dalam Kehidupan Sehari-hari]</span>
+                        <p style="font-size:0.9rem; margin-top:1rem;">Letakkan file gambar dengan nama "gambar2" di folder "s1-bab-7"</p>
+                    </div>
+                    <div class="image-caption">Gambar 2: Prinsip Ekonomi dalam Kehidupan Sehari-hari</div>
+                </div>
+
+                <h2>C. Permintaan, Penawaran, dan Harga Pasar</h2>
+
+                <h3>1. Permintaan (Demand)</h3>
+                <p>Permintaan adalah jumlah barang atau jasa yang ingin dan mampu dibeli konsumen pada berbagai tingkat harga dalam waktu tertentu.</p>
+
+                <h3>2. Penawaran (Supply)</h3>
+                <p>Penawaran adalah jumlah barang atau jasa yang ingin dan mampu dijual produsen pada berbagai tingkat harga dalam waktu tertentu.</p>
+
+                <div class="image-container" id="gambar3-container">
+                    <img src="s1-bab-7/gambar3.jpg" alt="Dinamika Pasar Modern" 
+                         onerror="this.style.display='none'; document.getElementById('gambar3-placeholder').style.display='block';"
+                         onload="this.style.display='block'; document.getElementById('gambar3-placeholder').style.display='none';">
+                    <div class="image-placeholder" id="gambar3-placeholder" style="display:block;">
+                        <i class="fas fa-image"></i>
+                        <span>[Gambar 3: Dinamika Pasar Modern]</span>
+                        <p style="font-size:0.9rem; margin-top:1rem;">Letakkan file gambar dengan nama "gambar3" di folder "s1-bab-7"</p>
+                    </div>
+                    <div class="image-caption">Gambar 3: Dinamika Pasar Modern</div>
+                </div>
+
+                <h2>D. Bentuk-bentuk Pasar dan Peran Lembaga Keuangan</h2>
+
+                <h3>1. Bentuk-bentuk Pasar</h3>
+                <p>Secara umum, pasar dapat dibedakan menjadi dua kategori besar: pasar persaingan sempurna dan pasar tidak sempurna.</p>
+
+                <h4>a. Pasar Persaingan Sempurna</h4>
+                <p>Pasar ini idealnya terdiri atas banyak penjual dan pembeli sehingga tidak ada pihak yang mampu mengendalikan harga.</p>
+
+                <h4>b. Pasar Persaingan Tidak Sempurna</h4>
+                <ul>
+                    <li><strong>Monopoli:</strong> hanya ada satu penjual yang menguasai pasar.</li>
+                    <li><strong>Oligopoli:</strong> hanya ada beberapa produsen besar yang menguasai sebagian besar pasar.</li>
+                    <li><strong>Monopolistik:</strong> banyak penjual menawarkan produk sejenis dengan diferensiasi.</li>
+                    <li><strong>Monopsoni:</strong> hanya ada satu pembeli besar.</li>
+                </ul>
+
+                <div class="image-container" id="gambar4-container">
+                    <img src="s1-bab-7/gambar4.jpg" alt="Fungsi Sosial Lembaga Keuangan" 
+                         onerror="this.style.display='none'; document.getElementById('gambar4-placeholder').style.display='block';"
+                         onload="this.style.display='block'; document.getElementById('gambar4-placeholder').style.display='none';">
+                    <div class="image-placeholder" id="gambar4-placeholder" style="display:block;">
+                        <i class="fas fa-image"></i>
+                        <span>[Gambar 4: Fungsi Sosial Lembaga Keuangan]</span>
+                        <p style="font-size:0.9rem; margin-top:1rem;">Letakkan file gambar dengan nama "gambar4" di folder "s1-bab-7"</p>
+                    </div>
+                    <div class="image-caption">Gambar 4: Fungsi Sosial Lembaga Keuangan</div>
+                </div>
+
+                <h2>E. Uang: Nilai, Fungsi, dan Transformasi dari Konvensional ke Digital</h2>
+
+                <h3>1. Nilai Uang</h3>
+                <p>Nilai uang ditentukan oleh dua hal: nilai intrinsik dan nilai ekstrinsik.</p>
+
+                <div class="image-container" id="gambar5-container">
+                    <img src="s1-bab-7/gambar5.jpg" alt="Transformasi Uang dari Konvensional ke Digital" 
+                         onerror="this.style.display='none'; document.getElementById('gambar5-placeholder').style.display='block';"
+                         onload="this.style.display='block'; document.getElementById('gambar5-placeholder').style.display='none';">
+                    <div class="image-placeholder" id="gambar5-placeholder" style="display:block;">
+                        <i class="fas fa-image"></i>
+                        <span>[Gambar 5: Transformasi Uang dari Konvensional ke Digital]</span>
+                        <p style="font-size:0.9rem; margin-top:1rem;">Letakkan file gambar dengan nama "gambar5" di folder "s1-bab-7"</p>
+                    </div>
+                    <div class="image-caption">Gambar 5: Transformasi Uang dari Konvensional ke Digital</div>
+                </div>
+
+                <h2>F. Pengelolaan Keuangan Rumah Tangga, Perusahaan, dan Negara</h2>
+
+                <div class="level-card">
+                    <h4><i class="fas fa-home"></i> 1. Keuangan Rumah Tangga</h4>
+                    <p>Keluarga adalah unit ekonomi terkecil sekaligus fondasi sistem ekonomi nasional. Di sinilah anak-anak belajar arti bekerja, menabung, dan berbagi.</p>
+                </div>
+
+                <div class="level-card">
+                    <h4><i class="fas fa-building"></i> 2. Keuangan Perusahaan</h4>
+                    <p>Perusahaan adalah mesin produksi kesejahteraan. Namun, seperti halnya keluarga, perusahaan juga harus menyeimbangkan antara modal, pendapatan, dan pengeluaran.</p>
+                </div>
+
+                <div class="level-card">
+                    <h4><i class="fas fa-landmark"></i> 3. Keuangan Negara</h4>
+                    <p>Negara berperan seperti kepala rumah tangga raksasa yang mengatur uang rakyat untuk kesejahteraan bersama.</p>
+                </div>
+
+                <h2>G. Inflasi, Stabilitas Ekonomi, dan Peran Kebijakan Publik</h2>
+
+                <h3>1. Pengertian Inflasi</h3>
+                <p>Inflasi adalah kenaikan harga barang dan jasa secara umum dan terus-menerus dalam jangka waktu tertentu.</p>
+
+                <h3>2. Penyebab Inflasi</h3>
+                <ul>
+                    <li><strong>Demand-pull inflation:</strong> terjadi saat permintaan barang dan jasa meningkat, sementara pasokannya terbatas.</li>
+                    <li><strong>Cost-push inflation:</strong> terjadi karena biaya produksi naik sehingga produsen menaikkan harga jual.</li>
+                </ul>
+
+                <h3>3. Peran Pemerintah dan Bank Sentral</h3>
+                <p>Stabilitas ekonomi bergantung pada dua kekuatan: kebijakan fiskal (pemerintah) dan kebijakan moneter (bank sentral).</p>
+
+                <div class="image-container" id="gambar6-container">
+                    <img src="s1-bab-7/gambar6.jpg" alt="Peran Lembaga Keuangan" 
+                         onerror="this.style.display='none'; document.getElementById('gambar6-placeholder').style.display='block';"
+                         onload="this.style.display='block'; document.getElementById('gambar6-placeholder').style.display='none';">
+                    <div class="image-placeholder" id="gambar6-placeholder" style="display:block;">
+                        <i class="fas fa-image"></i>
+                        <span>[Gambar 6: Peran Lembaga Keuangan]</span>
+                        <p style="font-size:0.9rem; margin-top:1rem;">Letakkan file gambar dengan nama "gambar6" di folder "s1-bab-7"</p>
+                    </div>
+                    <div class="image-caption">Gambar 6: Peran Lembaga Keuangan</div>
+                </div>
+
+                <h2>H. Peran Lembaga Keuangan dan Transformasi Uang Konvensional ke Digital</h2>
+
+                <h3>1. Jenis dan Peran Lembaga Keuangan</h3>
+                <ul>
+                    <li><strong>Bank Konvensional:</strong> menghimpun dana dari masyarakat dan menyalurkannya kembali dalam bentuk kredit.</li>
+                    <li><strong>Lembaga Keuangan Non-Bank:</strong> koperasi simpan pinjam, perusahaan pembiayaan, asuransi, fintech.</li>
+                    <li><strong>Lembaga Keuangan Mikro:</strong> memberikan pinjaman kecil bagi pelaku usaha mikro.</li>
+                </ul>
+
+                <h2>I. Pengelolaan Keuangan pada Tingkat Keluarga, Perusahaan, dan Negara</h2>
+
+                <h3>1. Pengelolaan Keuangan Keluarga</h3>
+                <p>Keluarga adalah unit ekonomi terkecil sekaligus fondasi bagi stabilitas sosial. Mengatur keuangan keluarga berarti mengelola sumber pendapatan, mengendalikan pengeluaran, serta menyiapkan masa depan dengan perencanaan yang matang.</p>
+
+                <h3>2. Pengelolaan Keuangan Perusahaan</h3>
+                <p>Perusahaan adalah laboratorium ekonomi yang lebih kompleks: ia tidak hanya mengatur pengeluaran dan pemasukan, tapi juga risiko, investasi, dan strategi jangka panjang.</p>
+
+                <h3>3. Pengelolaan Keuangan Negara</h3>
+                <p>Negara, seperti keluarga dan perusahaan, juga harus mengelola keuangannya — hanya saja dalam skala jauh lebih besar dan dengan konsekuensi sosial-politik yang lebih luas.</p>
+
+                <h2>J. Kontribusi Individu dan Masyarakat dalam Pembangunan Ekonomi dan Kesejahteraan Kolektif</h2>
+
+                <h3>1. Peran Individu dalam Ekonomi</h3>
+                <ul>
+                    <li><strong>Produktivitas dan Etos Kerja:</strong> individu yang bekerja dengan efisien, kreatif, dan bertanggung jawab ikut meningkatkan nilai tambah dalam sistem ekonomi.</li>
+                    <li><strong>Konsumsi yang Bijak:</strong> konsumen berperan dalam menentukan arah produksi. Dengan memilih produk lokal, ramah lingkungan, dan etis, masyarakat mendorong industri untuk lebih berkeadilan.</li>
+                    <li><strong>Literasi Keuangan dan Kemandirian Ekonomi:</strong> individu yang melek finansial tidak hanya memperkuat dirinya, tapi juga mengurangi beban sosial negara.</li>
+                </ul>
+
+                <h3>2. Peran Masyarakat dalam Ekonomi Kolektif</h3>
+                <ul>
+                    <li><strong>Koperasi dan Ekonomi Gotong Royong:</strong> koperasi adalah bentuk ekonomi khas Indonesia yang memadukan prinsip efisiensi pasar dengan semangat kebersamaan.</li>
+                    <li><strong>Ekonomi Sosial dan Komunitas Lokal:</strong> pasar tradisional, UMKM, dan ekonomi kreatif lokal membangun struktur ekonomi yang lebih resilien.</li>
+                    <li><strong>Gerakan Ekonomi Hijau dan Berkelanjutan:</strong> kesadaran lingkungan kini menjadi bagian dari etika ekonomi.</li>
+                </ul>
+
+                <div class="quote-box">
+                    <i class="fas fa-quote-left"></i> Kesejahteraan sejati bukan hanya soal memiliki lebih banyak, tapi tentang menggunakan dengan lebih bijak. Ekonomi yang sehat tumbuh dari karakter manusia yang tahu kapan harus mengambil, kapan harus memberi, dan kapan harus berhenti.
+                </div>
+            </div>
+
+            <div class="bab-navigation">
+                <a href="s1-bab-6.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i> Kembali ke Bab 6
+                </a>
+                <a href="index-materi-ipas.html" class="nav-btn primary">
+                    <i class="fas fa-check-circle"></i> Selesai
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // ===== HAMBURGER MENU - SAMA PERSIS DENGAN REFERENSI =====
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

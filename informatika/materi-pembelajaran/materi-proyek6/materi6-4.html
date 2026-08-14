@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi 6.4: HTML Dasar dengan HTML Editor - Informatika Kelas X</title>
+    <link rel="stylesheet" href="../../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --informatika-primary: #3498db;
+            --informatika-secondary: #2980b9;
+            --informatika-light: #ebf5fb;
+            --informatika-dark: #21618c;
+            --informatika-semester1: #3498db;
+            --success: #27ae60;
+            --warning: #e74c3c;
+            --info: #f39c12;
+            --purple: #9b59b6;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+        
+        .materi-container {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+        
+        .materi-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 30px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(52, 152, 219, 0.15);
+            border-left: 8px solid var(--informatika-semester1);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        .materi-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(52, 152, 219, 0.1) 0%, transparent 70%);
+            z-index: 0;
+        }
+        
+        .materi-card > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .materi-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 3px solid var(--informatika-light);
+            flex-wrap: wrap;
+        }
+        
+        .materi-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--informatika-semester1), var(--informatika-primary));
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+        }
+        
+        .materi-title-wrapper {
+            flex: 1;
+        }
+        
+        .materi-title-wrapper h1 {
+            color: var(--informatika-dark);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .materi-subtitle {
+            color: var(--informatika-primary);
+            font-size: 1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .materi-badge {
+            background: var(--informatika-light);
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: var(--informatika-dark);
+        }
+        
+        .materi-badge i {
+            margin-right: 4px;
+        }
+        
+        .tujuan-card {
+            background: linear-gradient(135deg, var(--informatika-light), white);
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(52, 152, 219, 0.2);
+        }
+        
+        .tujuan-card h3 {
+            color: var(--informatika-dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .tujuan-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 0.8rem;
+        }
+        
+        .tujuan-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            padding: 0.8rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .tujuan-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .tujuan-item i {
+            color: var(--success);
+        }
+        
+        .materi-content {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid rgba(52, 152, 219, 0.1);
+        }
+        
+        .materi-content h2 {
+            color: var(--informatika-dark);
+            font-size: 1.8rem;
+            margin: 1.5rem 0 1rem 0;
+            border-bottom: 2px solid var(--informatika-light);
+            padding-bottom: 0.5rem;
+        }
+        
+        .materi-content h2:first-of-type {
+            margin-top: 0;
+        }
+        
+        .materi-content h3 {
+            color: var(--informatika-dark);
+            font-size: 1.3rem;
+            margin: 1.2rem 0 0.8rem 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .materi-content h3 i {
+            color: var(--informatika-primary);
+        }
+        
+        .materi-content p {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        
+        .materi-content ul, .materi-content ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .materi-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .quote-box {
+            margin: 1.5rem 0;
+            padding: 1rem 1.5rem;
+            background: var(--informatika-light);
+            border-left: 4px solid var(--informatika-primary);
+            border-radius: 0 12px 12px 0;
+        }
+        
+        .note-box {
+            background: #fff3e0;
+            border-left: 4px solid var(--info);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid var(--informatika-primary);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .warning-box {
+            background: #fee2e2;
+            border-left: 4px solid var(--warning);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .success-box {
+            background: #d4edda;
+            border-left: 4px solid var(--success);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .code-block {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 1rem;
+            border-radius: 12px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+            line-height: 1.8;
+        }
+        
+        .code-block .comment { color: #7f8c8d; }
+        .code-block .tag { color: #f39c12; }
+        .code-block .attribute { color: #2ecc71; }
+        .code-block .value { color: #e74c3c; }
+        .code-block .text { color: #ecf0f1; }
+        
+        .keyword-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .keyword-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #e9ecef;
+        }
+        
+        .keyword-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .keyword-card.active {
+            border: 2px solid var(--informatika-primary);
+            background: var(--informatika-light);
+        }
+        
+        .keyword {
+            font-family: monospace;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--informatika-primary);
+        }
+        
+        .keyword-fungsi {
+            font-size: 0.8rem;
+            color: #6c757d;
+            margin-top: 0.3rem;
+        }
+        
+        .keyword-card.active .keyword-fungsi {
+            color: var(--informatika-dark);
+            font-weight: 500;
+        }
+        
+        .struktur-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .struktur-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #e9ecef;
+        }
+        
+        .struktur-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .struktur-card.active {
+            border: 2px solid var(--success);
+            background: #d4edda;
+        }
+        
+        .struktur-title {
+            font-weight: bold;
+            color: var(--informatika-dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .struktur-code {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 0.5rem;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.7rem;
+            margin-top: 0.5rem;
+            overflow-x: auto;
+        }
+        
+        .tag-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .tag-card {
+            background: white;
+            border-radius: 12px;
+            padding: 0.8rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid #e9ecef;
+        }
+        
+        .tag-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .tag {
+            font-family: monospace;
+            font-size: 1rem;
+            font-weight: bold;
+            color: var(--informatika-primary);
+        }
+        
+        .tag-fungsi {
+            font-size: 0.8rem;
+            color: #6c757d;
+            margin-top: 0.3rem;
+        }
+        
+        .materi-navigation {
+            display: flex;
+            gap: 1rem;
+            justify-content: space-between;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn.primary {
+            background: linear-gradient(135deg, var(--informatika-primary), var(--informatika-secondary));
+            color: white;
+        }
+        
+        .nav-btn.primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .nav-btn.secondary {
+            background: white;
+            color: var(--informatika-dark);
+            border: 2px solid var(--informatika-light);
+        }
+        
+        .nav-btn.secondary:hover {
+            background: var(--informatika-light);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .materi-container { padding: 1rem; }
+            .materi-card { padding: 1.5rem; }
+            .materi-header { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="../../../assets/images/logo.png" alt="Logo Sekolah">
+                    <h1>INFORMATIKA - MATERI PEMBELAJARAN</h1>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="../../../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="../../index-informatika.html" class="nav-link"><i class="fas fa-laptop-code"></i> Beranda Informatika</a></li>
+                    <li><a href="../../aktivitas-pembelajaran/index-aktivitas-informatika.html" class="nav-link"><i class="fas fa-tasks"></i> Daftar Aktivitas</a></li>
+                    <li><a href="../index-materi-informatika.html" class="nav-link active"><i class="fas fa-book-open"></i> Daftar Materi</a></li>
+                    <li><a href="../../penilaian/index-penilaian-informatika.html" class="nav-link"><i class="fas fa-chart-line"></i> Penilaian</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="materi-container">
+        <div class="materi-card">
+            <!-- Header -->
+            <div class="materi-header">
+                <div class="materi-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <div class="materi-title-wrapper">
+                    <h1>HTML Dasar dengan HTML Editor</h1>
+                    <div class="materi-subtitle">
+                        <i class="fas fa-circle"></i>
+                        <span>Proyek 6: Pemrograman Dasar - Pertemuan 4</span>
+                        <span class="materi-badge"><i class="fas fa-clock"></i> 4 JP</span>
+                        <span class="materi-badge"><i class="fas fa-tag"></i> TP 1.4 &amp; 1.5</span>
+                        <span class="materi-badge"><i class="fas fa-globe"></i> Online</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tujuan Pembelajaran -->
+            <div class="tujuan-card">
+                <h3><i class="fas fa-bullseye"></i> 🎯 Tujuan Pembelajaran</h3>
+                <div class="tujuan-list">
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Memahami pengertian pseudocode dan tujuannya</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Menulis pseudocode dengan struktur yang benar</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Mengenal struktur dasar dokumen HTML</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Membuat program sederhana menggunakan HTML Editor</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Mengimplementasikan algoritma ke dalam bentuk program HTML</div>
+                </div>
+            </div>
+
+            <!-- Konten Materi -->
+            <div class="materi-content">
+                <h2>A. Pseudocode: Jembatan Menuju Program</h2>
+                <p><strong>Pseudocode</strong> adalah cara menuliskan algoritma menggunakan bahasa yang mirip dengan bahasa pemrograman, tetapi masih mudah dipahami oleh manusia. Pseudocode bukan bahasa pemrograman yang bisa dijalankan oleh komputer, melainkan jembatan antara algoritma dan kode program.</p>
+                
+                <div class="quote-box">
+                    <i class="fas fa-quote-left"></i> <strong>Donald Knuth:</strong> "Pseudocode adalah representasi informal dari algoritma yang menggunakan konvensi struktural dari bahasa pemrograman."
+                </div>
+
+                <h3>Kata Kunci dalam Pseudocode</h3>
+                <div class="keyword-grid" id="keywordGrid">
+                    <div class="keyword-card" data-keyword="start">
+                        <div class="keyword">START / END</div>
+                        <div class="keyword-fungsi">Menandai awal dan akhir algoritma</div>
+                    </div>
+                    <div class="keyword-card" data-keyword="input">
+                        <div class="keyword">INPUT / READ</div>
+                        <div class="keyword-fungsi">Membaca input dari pengguna</div>
+                    </div>
+                    <div class="keyword-card" data-keyword="output">
+                        <div class="keyword">OUTPUT / PRINT</div>
+                        <div class="keyword-fungsi">Menampilkan hasil</div>
+                    </div>
+                    <div class="keyword-card" data-keyword="if">
+                        <div class="keyword">IF / ELSE / ENDIF</div>
+                        <div class="keyword-fungsi">Percabangan kondisi</div>
+                    </div>
+                    <div class="keyword-card" data-keyword="assign">
+                        <div class="keyword">← / =</div>
+                        <div class="keyword-fungsi">Memberi nilai pada variabel</div>
+                    </div>
+                </div>
+
+                <h3>Contoh Pseudocode</h3>
+                <div class="code-block">
+                    PROGRAM CekBilanganGanjilGenap
+
+                    DEKLARASI
+                        bilangan : integer
+
+                    ALGORITMA
+                        START
+                            OUTPUT "Masukkan bilangan: "
+                            INPUT bilangan
+                            IF bilangan % 2 == 0 THEN
+                                OUTPUT "Bilangan genap"
+                            ELSE
+                                OUTPUT "Bilangan ganjil"
+                            ENDIF
+                        END
+
+                    END PROGRAM
+                </div>
+
+                <h2>B. Apa Itu HTML?</h2>
+                <p><strong>HTML (HyperText Markup Language)</strong> adalah bahasa markup standar untuk membuat halaman web. HTML digunakan untuk membuat struktur halaman web dan menampilkan konten seperti teks, gambar, video, dan form.</p>
+
+                <div class="info-box">
+                    <i class="fas fa-lightbulb"></i> <strong>Ilustrasi Sederhana:</strong><br>
+                    HTML seperti <strong>kerangka bangunan</strong>. HTML menentukan struktur halaman (kepala, badan, footer), sedangkan CSS adalah <strong>dekorasi</strong> (warna, gaya), dan JavaScript adalah <strong>fungsi</strong> (interaktivitas).
+                </div>
+
+                <h2>C. Struktur Dasar HTML</h2>
+                <div class="code-block">
+                    &lt;!DOCTYPE html&gt;          <span class="comment">&lt;!-- Deklarasi tipe dokumen --&gt;</span>
+                    &lt;html&gt;                    <span class="comment">&lt;!-- Elemen root --&gt;</span>
+                      &lt;head&gt;                  <span class="comment">&lt;!-- Kepala halaman --&gt;</span>
+                        &lt;title&gt;Halaman Saya&lt;/title&gt;
+                      &lt;/head&gt;
+                      &lt;body&gt;                  <span class="comment">&lt;!-- Isi halaman --&gt;</span>
+                        &lt;h1&gt;Selamat Datang!&lt;/h1&gt;
+                        &lt;p&gt;Ini paragraf pertama.&lt;/p&gt;
+                      &lt;/body&gt;
+                    &lt;/html&gt;
+                </div>
+
+                <div class="struktur-grid" id="strukturGrid">
+                    <div class="struktur-card" data-struktur="html">
+                        <div class="struktur-title">&lt;html&gt; ... &lt;/html&gt;</div>
+                        <div class="struktur-code">Elemen root yang membungkus semua konten halaman</div>
+                    </div>
+                    <div class="struktur-card" data-struktur="head">
+                        <div class="struktur-title">&lt;head&gt; ... &lt;/head&gt;</div>
+                        <div class="struktur-code">Berisi informasi meta, judul, dan link ke CSS</div>
+                    </div>
+                    <div class="struktur-card" data-struktur="body">
+                        <div class="struktur-title">&lt;body&gt; ... &lt;/body&gt;</div>
+                        <div class="struktur-code">Berisi konten yang ditampilkan di halaman web</div>
+                    </div>
+                </div>
+
+                <h2>D. Tag-Tag HTML Dasar</h2>
+                <div class="tag-grid">
+                    <div class="tag-card">
+                        <div class="tag">&lt;h1&gt; - &lt;h6&gt;</div>
+                        <div class="tag-fungsi">Heading (judul), h1 terbesar, h6 terkecil</div>
+                    </div>
+                    <div class="tag-card">
+                        <div class="tag">&lt;p&gt;</div>
+                        <div class="tag-fungsi">Paragraf (teks biasa)</div>
+                    </div>
+                    <div class="tag-card">
+                        <div class="tag">&lt;br&gt;</div>
+                        <div class="tag-fungsi">Line break (baris baru)</div>
+                    </div>
+                    <div class="tag-card">
+                        <div class="tag">&lt;input&gt;</div>
+                        <div class="tag-fungsi">Input field untuk data pengguna</div>
+                    </div>
+                    <div class="tag-card">
+                        <div class="tag">&lt;button&gt;</div>
+                        <div class="tag-fungsi">Tombol untuk menjalankan aksi</div>
+                    </div>
+                    <div class="tag-card">
+                        <div class="tag">&lt;div&gt;</div>
+                        <div class="tag-fungsi">Container untuk mengelompokkan elemen</div>
+                    </div>
+                </div>
+
+                <h2>E. Program Sederhana dengan HTML + JavaScript</h2>
+                <div class="code-block">
+                    &lt;!DOCTYPE html&gt;
+                    &lt;html&gt;
+                    &lt;head&gt;
+                        &lt;title&gt;Cek Ganjil Genap&lt;/title&gt;
+                    &lt;/head&gt;
+                    &lt;body&gt;
+                        &lt;h1&gt;Program Cek Bilangan Ganjil Genap&lt;/h1&gt;
+                        &lt;input type="number" id="bilangan" placeholder="Masukkan bilangan"&gt;
+                        &lt;button onclick="cek()"&gt;Cek&lt;/button&gt;
+                        &lt;p id="hasil"&gt;&lt;/p&gt;
+
+                        &lt;script&gt;
+                            function cek() {
+                                var bil = document.getElementById('bilangan').value;
+                                if (bil % 2 == 0) {
+                                    document.getElementById('hasil').innerHTML = bil + " adalah bilangan genap";
+                                } else {
+                                    document.getElementById('hasil').innerHTML = bil + " adalah bilangan ganjil";
+                                }
+                            }
+                        &lt;/script&gt;
+                    &lt;/body&gt;
+                    &lt;/html&gt;
+                </div>
+
+                <div class="success-box">
+                    <strong>📌 Hubungan Pseudocode dengan HTML:</strong><br>
+                    <strong>Pseudocode:</strong> IF bilangan % 2 == 0 THEN OUTPUT "Genap" ELSE OUTPUT "Ganjil"<br>
+                    <strong>HTML + JavaScript:</strong> if (bil % 2 == 0) { ... } else { ... }
+                </div>
+
+                <div class="warning-box">
+                    <i class="fas fa-exclamation-triangle"></i> <strong>Ingat!</strong> Pseudocode adalah jembatan antara algoritma dan kode program. Tulis pseudocode dengan jelas agar mudah diterjemahkan ke HTML dan JavaScript!
+                </div>
+
+                <div class="quote-box" style="margin-top: 1.5rem; text-align: center;">
+                    <i class="fas fa-code"></i> Dari Pseudocode ke HTML, Wujudkan Programmu! 💻
+                </div>
+            </div>
+
+            <!-- Navigasi -->
+            <div class="materi-navigation">
+                <a href="materi6-3.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i> Kembali ke Materi 6.3
+                </a>
+                <a href="materi6-5.html" class="nav-btn primary">
+                    Lanjut ke Materi 6.5: Presentasi & Refleksi
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script src="../../../script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                });
+            }
+            
+            // Keyword Interaktif
+            const keywordCards = document.querySelectorAll('.keyword-card');
+            keywordCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    keywordCards.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            if(keywordCards.length) keywordCards[0].classList.add('active');
+            
+            // Struktur Interaktif
+            const strukturCards = document.querySelectorAll('.struktur-card');
+            strukturCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    strukturCards.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            if(strukturCards.length) strukturCards[0].classList.add('active');
+        });
+    </script>
+</body>
+</html>

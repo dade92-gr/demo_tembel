@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Pembelajaran</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Optimasi untuk gambar responsif */
+        .logo img {
+            width: auto;
+            height: 50px;
+            max-width: 100%;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+        
+        .logo:hover img {
+            transform: scale(1.2);
+        }
+        
+        /* Container untuk gambar thumbnail */
+        .subject-image {
+            position: relative;
+            width: 100%;
+            height: 200px; /* Fixed height untuk konsistensi */
+            overflow: hidden;
+            border-radius: 8px 8px 0 0;
+            background-color: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Styling untuk gambar thumbnail */
+        .subject-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ini kunci untuk menyesuaikan gambar */
+            object-position: center;
+            transition: transform 0.5s ease;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+        
+        /* Efek hover pada gambar */
+        .subject-card:hover .subject-image img {
+            transform: scale(1.1);
+        }
+        
+        /* Loading state untuk gambar */
+        .subject-image img.loading {
+            opacity: 0.5;
+            filter: blur(5px);
+        }
+        
+        .subject-image img.loaded {
+            opacity: 1;
+            filter: blur(0);
+            transition: opacity 0.3s ease, filter 0.3s ease;
+        }
+        
+        /* Fallback jika gambar tidak load */
+        .subject-image::after {
+            content: attr(data-fallback);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #666;
+            font-size: 14px;
+            text-align: center;
+            padding: 10px;
+            display: none;
+            z-index: 1;
+        }
+        
+        .subject-image img:not([src]),
+        .subject-image img[src=""],
+        .subject-image img.error {
+            opacity: 0;
+        }
+        
+        .subject-image img:not([src]) ~ .subject-image::after,
+        .subject-image img[src=""] ~ .subject-image::after,
+        .subject-image img.error ~ .subject-image::after {
+            display: block;
+        }
+        
+        /* Placeholder saat loading */
+        .subject-image .placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+            display: none;
+        }
+        
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        
+        .subject-image img.loading ~ .placeholder {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="assets/images/logo.png" alt="Logo Sekolah" 
+                         id="logo-image"
+                         loading="lazy"
+                         onerror="handleLogoError(this)">
+                    <h1>TEMBOK BELAJAR - Learning Management System</h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link active"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="ipas/index-ipas.html" class="nav-link"><i class="fas fa-flask"></i> IPAS</a></li>
+                    <li><a href="informatika/index-informatika.html" class="nav-link"><i class="fas fa-laptop-code"></i> Informatika</a></li>
+                    <li><a href="#" class="nav-link"><i class="fas fa-info-circle"></i> Tentang</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Selamat Datang di Platform Pembelajaran Digital</h2>
+            <p>Selamat bergabung di LMS Tembok Belajar, sistem pembelajaran daring yang dikembangkan khusus untuk siswa SMKN 1 Terisi. Platform ini menyediakan berbagai fitur pendukung pembelajaran, mulai dari materi ajar, lembar aktivitas, hingga sistem penilaian untuk mata pelajaran IPAS dan Informatika.</p>
+        </div>
+    </section>
+
+    <!-- Mata Pelajaran Section -->
+    <section class="subjects">
+        <h2 class="section-title">MATA PELAJARAN</h2>
+        <div class="subject-grid">
+            <!-- IPAS Card -->
+            <div class="subject-card">
+                <div class="subject-image" data-fallback="Gambar IPAS">
+                    <div class="placeholder"></div>
+                    <img src="assets/images/ipas-thumbnail.jpg" 
+                         alt="IPAS"
+                         loading="lazy"
+                         data-subject="ipas"
+                         onload="handleImageLoad(this)"
+                         onerror="handleImageError(this, 'ipas')">
+                </div>
+                <div class="subject-content">
+                    <h3>PROJEK IPAS</h3>
+                    <p>Eksplorasi sains dan sosial melalui proyek kolaboratif yang menantang.</p>
+                    <a href="ipas/index-ipas.html" class="subject-btn">MASUK <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Informatika Card -->
+            <div class="subject-card">
+                <div class="subject-image" data-fallback="Gambar Informatika">
+                    <div class="placeholder"></div>
+                    <img src="assets/images/informatika-thumbnail.jpg" 
+                         alt="Informatika"
+                         loading="lazy"
+                         data-subject="informatika"
+                         onload="handleImageLoad(this)"
+                         onerror="handleImageError(this, 'informatika')">
+                </div>
+                <div class="subject-content">
+                    <h3>INFORMATIKA</h3>
+                    <p>Keterampilan Komputer dan Pengolahan Informasi. Menguasai aplikasi produktif untuk pengolahan informasi.</p>
+                    <a href="informatika/index-informatika.html" class="subject-btn">MASUK <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fitur Website -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">FITUR UTAMA WEBSITE</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <h3>Lembar Aktivitas</h3>
+                    <p>Akses berbagai aktivitas pembelajaran interaktif untuk setiap mata pelajaran.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3>Materi Pembelajaran</h3>
+                    <p>Materi lengkap dan terstruktur sesuai kurikulum yang berlaku.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Penilaian</h3>
+                    <p>Pantau perkembangan belajar melalui sistem penilaian yang transparan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Kontak</h3>
+                <p><i class="fas fa-envelope"></i> sugionodade@gmail.com</p>
+                <p><i class="fas fa-phone"></i> 083840755497</p>
+                <p><i class="fas fa-map-marker-alt"></i> Jl. PU Cibereng - Kendayakan, Desa Cibereng, Kecamatan Terisi, Kabupaten Indramayu, Jawa Barat</p>
+            </div>
+            <div class="footer-section">
+                <h3>Sosial Media</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Tautan Cepat</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">Tentang Kami</a></li>
+                    <li><a href="#">Kebijakan Privasi</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Website Pembelajaran. Hak Cipta Dilindungi.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Fungsi untuk handle error logo
+        function handleLogoError(img) {
+            console.error('Logo error:', img.src);
+            img.classList.add('error');
+            
+            // Coba path alternatif untuk logo
+            const paths = [
+                './assets/images/logo.png',
+                'assets/images/logo.png',
+                './assets/images/logo.jpg',
+                'assets/images/logo.jpg',
+                './assets/images/logo.svg',
+                'assets/images/logo.svg'
+            ];
+            
+            let currentIndex = 0;
+            function tryNextLogoPath() {
+                if (currentIndex < paths.length) {
+                    const testImg = new Image();
+                    testImg.onload = function() {
+                        console.log('Found logo at:', paths[currentIndex]);
+                        img.src = paths[currentIndex];
+                        img.classList.remove('error');
+                    };
+                    testImg.onerror = function() {
+                        currentIndex++;
+                        tryNextLogoPath();
+                    };
+                    testImg.src = paths[currentIndex];
+                } else {
+                    // Gunakan fallback text
+                    const logoContainer = img.parentElement;
+                    const fallbackText = document.createElement('div');
+                    fallbackText.className = 'logo-fallback';
+                    fallbackText.textContent = 'LOGO';
+                    fallbackText.style.cssText = `
+                        width: 50px;
+                        height: 50px;
+                        background: linear-gradient(135deg, #3498db, #2c3e50);
+                        color: white;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-weight: bold;
+                        border-radius: 5px;
+                    `;
+                    logoContainer.insertBefore(fallbackText, img);
+                    img.style.display = 'none';
+                }
+            }
+            
+            tryNextLogoPath();
+        }
+        
+        // Fungsi untuk handle loading gambar
+        function handleImageLoad(img) {
+            console.log(`✓ Gambar ${img.alt} berhasil dimuat`);
+            img.classList.remove('loading');
+            img.classList.add('loaded');
+            
+            // Optimasi gambar setelah load
+            optimizeImageDisplay(img);
+        }
+        
+        // Fungsi untuk optimize tampilan gambar
+        function optimizeImageDisplay(img) {
+            const container = img.parentElement;
+            const containerWidth = container.clientWidth;
+            const containerHeight = container.clientHeight;
+            
+            // Jika gambar terlalu kecil, gunakan cover
+            if (img.naturalWidth < containerWidth || img.naturalHeight < containerHeight) {
+                img.style.objectFit = 'cover';
+            }
+            
+            // Jika gambar portrait, atur posisi
+            if (img.naturalHeight > img.naturalWidth) {
+                img.style.objectPosition = 'center top';
+            }
+            
+            // Debug info
+            console.log(`Gambar ${img.alt}:`, {
+                natural: `${img.naturalWidth}x${img.naturalHeight}`,
+                display: `${img.width}x${img.height}`,
+                container: `${containerWidth}x${containerHeight}`,
+                objectFit: img.style.objectFit
+            });
+        }
+        
+        // Fungsi untuk handle error gambar thumbnail
+        function handleImageError(img, subject) {
+            console.error(`Gambar ${subject} tidak ditemukan di:`, img.src);
+            img.classList.add('error');
+            img.classList.remove('loading');
+            
+            // Coba berbagai path alternatif
+            const paths = [
+                `./assets/images/${subject}-thumbnail.jpg`,
+                `assets/images/${subject}-thumbnail.jpg`,
+                `./assets/images/${subject}-thumbnail.png`,
+                `assets/images/${subject}-thumbnail.png`,
+                `./assets/images/${subject}.jpg`,
+                `assets/images/${subject}.jpg`,
+                `/assets/images/${subject}-thumbnail.jpg`
+            ];
+            
+            let currentIndex = 0;
+            function tryNextPath() {
+                if (currentIndex < paths.length) {
+                    const testImg = new Image();
+                    testImg.onload = function() {
+                        console.log(`Found ${subject} image at:`, paths[currentIndex]);
+                        img.src = paths[currentIndex];
+                        img.classList.remove('error');
+                        img.classList.add('loading');
+                    };
+                    testImg.onerror = function() {
+                        currentIndex++;
+                        tryNextPath();
+                    };
+                    testImg.src = paths[currentIndex];
+                } else {
+                    // Semua path gagal, gunakan fallback
+                    console.log(`All paths failed for ${subject}, using generated fallback`);
+                    useGeneratedFallback(img, subject);
+                }
+            }
+            
+            tryNextPath();
+        }
+        
+        // Fungsi untuk menggunakan fallback generated
+        function useGeneratedFallback(img, subject) {
+            const colors = {
+                'ipas': '#27ae60',      // Hijau
+                'informatika': '#8e44ad' // Ungu
+            };
+            
+            const color = colors[subject] || '#3498db';
+            const canvas = document.createElement('canvas');
+            canvas.width = 400;
+            canvas.height = 200;
+            const ctx = canvas.getContext('2d');
+            
+            // Background gradient
+            const gradient = ctx.createLinearGradient(0, 0, 400, 200);
+            gradient.addColorStop(0, color);
+            gradient.addColorStop(1, darkenColor(color, 40));
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, 400, 200);
+            
+            // Icon
+            const icons = {
+                'ipas': '🔬',
+                'informatika': '💻'
+            };
+            
+            // Teks icon besar
+            ctx.font = 'bold 48px Arial';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillStyle = 'rgba(255,255,255,0.8)';
+            ctx.fillText(icons[subject] || '📚', 200, 80);
+            
+            // Teks subject
+            ctx.font = 'bold 24px Arial';
+            ctx.fillStyle = 'white';
+            ctx.fillText(subject.toUpperCase(), 200, 140);
+            
+            img.src = canvas.toDataURL();
+            img.alt = `${subject} (Fallback)`;
+            img.classList.remove('error');
+            img.classList.add('loaded');
+        }
+        
+        function darkenColor(color, percent) {
+            const num = parseInt(color.replace("#", ""), 16);
+            const amt = Math.round(2.55 * percent);
+            const R = (num >> 16) - amt;
+            const G = (num >> 8 & 0x00FF) - amt;
+            const B = (num & 0x0000FF) - amt;
+            
+            return "#" + (
+                0x1000000 +
+                (R < 255 ? (R < 1 ? 0 : R) : 255) * 0x10000 +
+                (G < 255 ? (G < 1 ? 0 : G) : 255) * 0x100 +
+                (B < 255 ? (B < 1 ? 0 : B) : 255)
+            ).toString(16).slice(1);
+        }
+        
+        // Initialize semua gambar saat halaman load
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Initializing images...');
+            
+            // Set loading state untuk semua gambar
+            const images = document.querySelectorAll('.subject-image img, #logo-image');
+            images.forEach(img => {
+                if (!img.complete) {
+                    img.classList.add('loading');
+                }
+                
+                // Jika gambar sudah selesai load
+                if (img.complete && img.naturalWidth !== 0) {
+                    img.classList.remove('loading');
+                    img.classList.add('loaded');
+                    optimizeImageDisplay(img);
+                }
+                
+                console.log(`Image ${img.alt}:`, {
+                    src: img.src,
+                    complete: img.complete,
+                    natural: `${img.naturalWidth}x${img.naturalHeight}`,
+                    loading: img.classList.contains('loading')
+                });
+            });
+            
+            // Responsive image handling
+            window.addEventListener('resize', function() {
+                document.querySelectorAll('.subject-image img.loaded').forEach(optimizeImageDisplay);
+            });
+        });
+        
+        // Preload penting images
+        function preloadImportantImages() {
+            const importantImages = [
+                'assets/images/logo.png',
+                'assets/images/ipas-thumbnail.jpg',
+                'assets/images/informatika-thumbnail.jpg'
+            ];
+            
+            importantImages.forEach(src => {
+                const img = new Image();
+                img.src = src;
+            });
+        }
+        
+        // Jalankan preload setelah halaman load
+        window.addEventListener('load', preloadImportantImages);
+    </script>
+    
+    <script src="script.js"></script>
+</body>
+</html>

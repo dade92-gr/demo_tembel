@@ -1,0 +1,79 @@
+{
+  "vocabulary": [
+    {
+      "id": 1,
+      "word": "Ekosistem",
+      "definition": "Sistem ekologi yang terbentuk oleh hubungan timbal balik antara makhluk hidup dengan lingkungannya",
+      "subject": "IPAS",
+      "chapter": 1
+    },
+    {
+      "id": 2,
+      "word": "Algoritma",
+      "definition": "Langkah-langkah logis yang disusun secara sistematis untuk menyelesaikan suatu masalah",
+      "subject": "Informatika",
+      "chapter": 1
+    },
+    {
+      "id": 3,
+      "word": "Spreadsheet",
+      "definition": "Program aplikasi untuk mengorganisir, menganalisis, dan menyimpan data dalam bentuk tabel",
+      "subject": "KKA",
+      "chapter": 2
+    },
+    {
+      "id": 4,
+      "word": "Fotosintesis",
+      "definition": "Proses pembuatan makanan pada tumbuhan hijau dengan bantuan cahaya matahari",
+      "subject": "IPAS",
+      "chapter": 3
+    },
+    {
+      "id": 5,
+      "word": "Variable",
+      "definition": "Tempat penyimpanan data dalam pemrograman komputer",
+      "subject": "Informatika",
+      "chapter": 2
+    },
+    {
+      "id": 6,
+      "word": "Database",
+      "definition": "Kumpulan data yang terorganisir dan disimpan secara elektronik",
+      "subject": "KKA",
+      "chapter": 4
+    },
+    {
+      "id": 7,
+      "word": "Energi",
+      "definition": "Kemampuan untuk melakukan usaha atau kerja",
+      "subject": "IPAS",
+      "chapter": 2
+    },
+    {
+      "id": 8,
+      "word": "Loop",
+      "definition": "Struktur kendali dalam pemrograman untuk mengulang eksekusi blok kode",
+      "subject": "Informatika",
+      "chapter": 3
+    },
+    {
+      "id": 9,
+      "word": "Formatting",
+      "definition": "Proses mengatur tampilan dokumen untuk meningkatkan keterbacaan",
+      "subject": "KKA",
+      "chapter": 3
+    },
+    {
+      "id": 10,
+      "word": "Bioteknologi",
+      "definition": "Penerapan prinsip ilmu biologi untuk mengembangkan produk dan jasa",
+      "subject": "IPAS",
+      "chapter": 6
+    }
+  ],
+  "subjects": {
+    "IPAS": "Ilmu Pengetahuan Alam dan Sosial",
+    "Informatika": "Ilmu Komputer dan Teknologi Informasi",
+    "KKA": "Keterampilan Komputer dan Pengolahan Informasi"
+  }
+}

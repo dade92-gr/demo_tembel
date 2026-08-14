@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 5: Keruangan dan Konektivitas Antarruang dan Antarwaktu - Kelas X</title>
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* IPAS THEME COLORS - HANYA UNTUK KONTEN */
+        :root {
+            --ipas-primary: #2ecc71;
+            --ipas-secondary: #27ae60;
+            --ipas-light: #d5f4e6;
+            --ipas-dark: #229954;
+            --ipas-accent: #3498db;
+            --ipas-semester1: #3498db;
+            --ipas-gray: #f5f7fa;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f5f7fa; color: #2c3e50; line-height: 1.6; }
+
+        /* ===== LOGO ZOOM EFFECT ===== */
+        .logo img { transition: transform 0.3s ease; }
+        .logo:hover img { transform: scale(1.2); }
+        
+        /* MAIN CONTENT */
+        .bab-container { padding: 2rem; max-width: 1200px; margin: 0 auto; min-height: calc(100vh - 80px); display: flex; align-items: flex-start; justify-content: center; }
+        
+        .bab-card { background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%); border-radius: 30px; padding: 3rem; box-shadow: 0 20px 40px rgba(46, 204, 113, 0.15); border-left: 8px solid var(--ipas-semester1); position: relative; overflow: hidden; width: 100%; animation: fadeInUp 0.6s ease-out; }
+        .bab-card::before { content: ''; position: absolute; top: 0; right: 0; width: 250px; height: 250px; background: radial-gradient(circle, rgba(52, 152, 219, 0.1) 0%, transparent 70%); z-index: 0; }
+        .bab-card > * { position: relative; z-index: 1; }
+        
+        .bab-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 3px solid var(--ipas-light); }
+        .bab-icon { width: 80px; height: 80px; background: linear-gradient(135deg, var(--ipas-semester1), var(--ipas-primary)); border-radius: 25px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2.5rem; box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3); }
+        .bab-title-wrapper h1 { color: var(--ipas-dark); font-size: 2.5rem; margin-bottom: 0.5rem; line-height: 1.2; }
+        .bab-subtitle { color: var(--ipas-semester1); font-size: 1.1rem; font-weight: 600; display: flex; align-items: center; gap: 8px; }
+        .bab-subtitle i { font-size: 0.8rem; }
+        
+        .bab-info { display: flex; gap: 2rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+        .info-item { display: flex; align-items: center; gap: 10px; background: var(--ipas-light); padding: 0.8rem 1.5rem; border-radius: 50px; color: var(--ipas-dark); font-weight: 600; }
+        .info-item i { color: var(--ipas-semester1); font-size: 1.2rem; }
+        
+        .bab-description { background: white; border-radius: 20px; padding: 2rem; margin-bottom: 2rem; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 1px solid rgba(52, 152, 219, 0.1); }
+        .bab-description h2, .bab-description h3, .bab-description h4, .bab-description p, .bab-description ul, .bab-description ol, .bab-description li, .bab-description table, .bab-description .note-box, .bab-description blockquote, .bab-description .reflection-box, .bab-description .jurusan-card { text-align: justify; }
+        
+        .bab-description h2 { color: var(--ipas-dark); font-size: 2rem; margin: 1.5rem 0 1rem 0; border-bottom: 2px solid var(--ipas-light); padding-bottom: 0.5rem; }
+        .bab-description h3 { color: var(--ipas-dark); font-size: 1.3rem; margin: 1.5rem 0 1rem 0; display: flex; align-items: center; gap: 10px; }
+        .bab-description h4 { color: var(--ipas-dark); font-size: 1.2rem; margin: 1.2rem 0 0.8rem 0; font-weight: 600; }
+        .bab-description h3 i { color: var(--ipas-semester1); }
+        .bab-description p { color: #555; font-size: 1.1rem; line-height: 1.8; margin-bottom: 1rem; text-align: justify; }
+        .bab-description ul, .bab-description ol { margin-left: 2rem; margin-bottom: 1rem; color: #555; text-align: justify; }
+        .bab-description li { margin-bottom: 0.5rem; text-align: justify; }
+        .bab-description strong { color: var(--ipas-dark); }
+        .bab-description blockquote { margin: 1.5rem 0; padding: 1rem 2rem; background: var(--ipas-light); border-left: 5px solid var(--ipas-semester1); font-style: italic; font-size: 1.1rem; color: var(--ipas-dark); border-radius: 0 15px 15px 0; }
+        
+        .custom-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 1rem; box-shadow: 0 0 20px rgba(0, 0, 0, 0.05); border-radius: 10px; overflow: hidden; }
+        .custom-table th { background-color: var(--ipas-semester1); color: white; font-weight: 600; padding: 12px 15px; text-align: left; }
+        .custom-table td { padding: 12px 15px; border-bottom: 1px solid #dddddd; text-align: justify; }
+        .custom-table tr:nth-child(even) { background-color: #f8f8f8; }
+        .custom-table tr:hover { background-color: var(--ipas-light); }
+        
+        .note-box { background: var(--ipas-light); border-left: 5px solid var(--ipas-semester1); padding: 1.5rem; margin: 1.5rem 0; border-radius: 10px; font-style: italic; }
+        
+        .reflection-box { background: linear-gradient(135deg, #e8f4fd, #f0f9ff); border-left: 5px solid var(--ipas-semester1); padding: 1.5rem; margin: 1.5rem 0; border-radius: 10px; border: 1px solid rgba(52, 152, 219, 0.2); }
+        .reflection-box h4 { color: var(--ipas-dark); margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; }
+        .reflection-box h4 i { color: var(--ipas-semester1); }
+        .reflection-box ul, .reflection-box ol { margin-left: 1.5rem; }
+        
+        .jurusan-card { background: white; border-radius: 15px; padding: 1.5rem; margin: 1.5rem 0; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 1px solid var(--ipas-light); transition: transform 0.3s ease; }
+        .jurusan-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(46, 204, 113, 0.15); }
+        .jurusan-card h4 { color: var(--ipas-semester1); border-bottom: 2px solid var(--ipas-light); padding-bottom: 0.5rem; margin-bottom: 1rem; }
+        
+        .image-container { margin: 2rem 0; text-align: center; width: 100%; }
+        .image-container img { max-width: 100%; max-height: 400px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); border: 3px solid white; display: block; margin: 0 auto; }
+        .image-caption { font-style: italic; color: #6c757d; margin-top: 0.5rem; font-size: 0.95rem; text-align: center; width: 100%; }
+        .image-placeholder { background: #e9ecef; border: 2px dashed var(--ipas-semester1); border-radius: 15px; padding: 2rem; margin: 2rem 0; text-align: center; color: #6c757d; font-weight: 600; transition: all 0.3s ease; width: 100%; }
+        .image-placeholder i { font-size: 3rem; color: var(--ipas-semester1); margin-bottom: 1rem; display: block; }
+        .image-placeholder:hover { background: #dee2e6; border-color: var(--ipas-primary); color: #495057; }
+        
+        .bab-navigation { display: flex; gap: 1rem; justify-content: space-between; margin-top: 2rem; }
+        .nav-btn { display: inline-flex; align-items: center; gap: 10px; padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; border: none; cursor: pointer; }
+        .nav-btn.primary { background: linear-gradient(135deg, var(--ipas-semester1), var(--ipas-primary)); color: white; box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3); }
+        .nav-btn.primary:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4); }
+        .nav-btn.secondary { background: white; color: var(--ipas-dark); border: 2px solid var(--ipas-light); }
+        .nav-btn.secondary:hover { background: var(--ipas-light); transform: translateX(-5px); }
+        
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
+        @media (max-width: 768px) {
+            .bab-container { padding: 1rem; }
+            .bab-card { padding: 2rem; }
+            .bab-header { flex-direction: column; text-align: center; }
+            .bab-title-wrapper h1 { font-size: 2rem; }
+            .bab-info { justify-content: center; }
+            .bab-navigation { flex-direction: column; }
+            .nav-btn { justify-content: center; }
+        }
+        
+        @media (max-width: 480px) {
+            .bab-card { padding: 1.5rem; }
+            .bab-title-wrapper h1 { font-size: 1.8rem; }
+            .bab-icon { width: 60px; height: 60px; font-size: 2rem; }
+            .info-item { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="../../assets/images/logo.png" alt="Logo Sekolah">
+                    <h1>TEMBOK BELAJAR - PROJEK IPAS</h1>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="../../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="../index-ipas.html" class="nav-link"><i class="fas fa-flask"></i> Beranda IPAS</a></li>
+                    <li><a href="../aktivitas-pembelajaran/index-aktifitas-ipas.html" class="nav-link"><i class="fas fa-tasks"></i> Daftar Aktivitas</a></li>
+                    <li><a href="index-materi-ipas.html" class="nav-link active"><i class="fas fa-book-open"></i> Daftar Materi</a></li>
+                    <li><a href="../penilaian/index-penilaian-ipas.html" class="nav-link"><i class="fas fa-chart-line"></i> Penilaian</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="bab-container">
+        <div class="bab-card">
+            <div class="bab-header">
+                <div class="bab-icon"><i class="fas fa-globe-asia"></i></div>
+                <div class="bab-title-wrapper">
+                    <h1>Bab 5: Keruangan dan Konektivitas Antarruang dan Antarwaktu</h1>
+                    <div class="bab-subtitle"><i class="fas fa-circle"></i> <span>Semester Ganjil - Kelas X</span></div>
+                </div>
+            </div>
+
+            <div class="bab-description">
+                <h2>A. Konsep Dasar Ruang dan Konektivitas</h2>
+                
+                <h3>a. Pengantar</h3>
+                <p>Kehidupan manusia tidak bisa dipisahkan dari ruang tempat ia berada. Setiap aktivitas—bertani, berdagang, bekerja, belajar, atau berwisata—selalu berlangsung di ruang tertentu, dan ruang itu saling berhubungan dengan ruang lain. Bayangkan sebuah desa kecil yang dikelilingi sawah dan sungai. Setiap pagi, truk berisi hasil panen menuju pasar kota, sementara dari arah sebaliknya datang pupuk, bahan bakar, dan barang kebutuhan rumah tangga. Desa dan kota saling bergantung; hubungan timbal balik inilah yang disebut konektivitas antarruang.</p>
+
+                <h3>b. Pengertian Ruang</h3>
+                <p>Dalam ilmu sosial dan geografi, ruang adalah tempat di permukaan bumi yang menjadi wadah kehidupan manusia dan makhluk hidup. Ruang bisa bersifat fisik, seperti rumah, sekolah, sawah, gunung, sungai, atau jalan raya; dan bisa juga sosial, seperti jaringan kerja, pasar, atau sistem informasi yang menghubungkan orang dan kegiatan ekonomi. Setiap ruang memiliki fungsi dan peran berbeda, tetapi saling bergantung.</p>
+
+                <div class="image-container" id="gambar1-container">
+                    <img src="s1-bab-5/gambar1.png" alt="Ilustrasi Konektivitas Antarruang" 
+                         onerror="this.style.display='none'; document.getElementById('gambar1-placeholder').style.display='block';"
+                         onload="this.style.display='block'; document.getElementById('gambar1-placeholder').style.display='none';">
+                    <div class="image-placeholder" id="gambar1-placeholder" style="display:block;">
+                        <i class="fas fa-image"></i>
+                        <span>[Gambar 1: Ilustrasi Konektivitas Antarruang]</span>
+                        <p style="font-size:0.9rem; margin-top:1rem;">Letakkan file gambar dengan nama "gambar1" di folder "s1-bab-5"</p>
+                    </div>
+                    <div class="image-caption">Gambar 1: Ilustrasi Konektivitas Antarruang</div>
+                </div>
+
+                <h3>c. Konektivitas Antarruang</h3>
+                <p>Konektivitas berarti hubungan dan keterkaitan antarwilayah. Beberapa bentuk konektivitas yang umum dijumpai:</p>
+                <ol>
+                    <li><strong>Konektivitas fisik</strong>, seperti jalan, jembatan, sungai, pelabuhan, dan jalur udara.</li>
+                    <li><strong>Konektivitas ekonomi</strong>, berupa kegiatan distribusi dan perdagangan antarwilayah.</li>
+                    <li><strong>Konektivitas sosial-budaya</strong>, muncul dari perpindahan manusia dan pertukaran budaya.</li>
+                    <li><strong>Konektivitas digital</strong>, tumbuh karena perkembangan internet dan teknologi komunikasi.</li>
+                </ol>
+
+                <div class="reflection-box">
+                    <h4><i class="fas fa-question-circle"></i> Refleksi A</h4>
+                    <ol>
+                        <li>Apa contoh konektivitas antara tempat tinggalmu dan wilayah lain di sekitarnya?</li>
+                        <li>Barang, informasi, atau kebiasaan apa yang paling sering berpindah dari daerahmu ke daerah lain?</li>
+                        <li>Apakah ada perubahan besar sejak dibangun jalan baru, jembatan, atau sinyal internet semakin kuat?</li>
+                    </ol>
+                </div>
+
+                <h2>B. Kondisi Geografis Indonesia</h2>
+                
+                <h3>a. Ciri Umum Letak dan Kondisi Indonesia</h3>
+                <p>Indonesia merupakan negara kepulauan terbesar di dunia dengan lebih dari 17.000 pulau yang terbentang di antara dua benua (Asia dan Australia) dan dua samudra (Hindia dan Pasifik). Letak yang strategis ini menyebabkan Indonesia menjadi titik pertemuan berbagai jalur perdagangan, budaya, dan iklim dunia.</p>
+
+                <div class="image-container" id="gambar2-container">
+                    <img src="s1-bab-5/gambar2.png" alt="Peta Indonesia" 
+                         onerror="this.style.display='none'; document.getElementById('gambar2-placeholder').style.display='block';"
+                         onload="this.style.display='block'; document.getElementById('gambar2-placeholder').style.display='none';">
+                    <div class="image-placeholder" id="gambar2-placeholder" style="display:block;">
+                        <i class="fas fa-image"></i>
+                        <span>[Gambar 2: Peta Indonesia]</span>
+                        <p style="font-size:0.9rem; margin-top:1rem;">Letakkan file gambar dengan nama "gambar2" di folder "s1-bab-5"</p>
+                    </div>
+                    <div class="image-caption">Gambar 2: Peta Indonesia</div>
+                </div>
+
+                <h3>b. Struktur Fisik dan Lapisan Bumi Indonesia</h3>
+                <p>Secara geologis, wilayah Indonesia berada di pertemuan tiga lempeng besar: Eurasia, Indo-Australia, dan Pasifik. Akibatnya, terbentuklah banyak gunung api, lembah, serta patahan bumi yang membuat tanah Indonesia subur tetapi juga rawan gempa.</p>
+
+                <div class="image-container" id="gambar3-container">
+                    <img src="s1-bab-5/gambar3.png" alt="Peta Indonesia" 
+                         onerror="this.style.display='none'; document.getElementById('gambar3-placeholder').style.display='block';"
+                         onload="this.style.display='block'; document.getElementById('gambar3-placeholder').style.display='none';">
+                    <div class="image-placeholder" id="gambar3-placeholder" style="display:block;">
+                        <i class="fas fa-image"></i>
+                        <span>[Gambar 3: Posisi Indonesia diantara lempeng-lempeng bumi]</span>
+                        <p style="font-size:0.9rem; margin-top:1rem;">Letakkan file gambar dengan nama "gambar3" di folder "s1-bab-5"</p>
+                    </div>
+                    <div class="image-caption">Gambar 3: Posisi Indonesia diantara lempeng-lempeng bumi</div>
+                </div>
+
+                <h3>c. Persebaran Wilayah dan Aktivitas Sosial Ekonomi</h3>
+                <table class="custom-table">
+                    <thead>
+                        <tr>
+                            <th>Wilayah</th>
+                            <th>Ciri Utama</th>
+                            <th>Aktivitas Ekonomi Dominan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Pesisir</td><td>Banyak pelabuhan, masyarakat bergantung pada laut</td><td>Perikanan, perdagangan, transportasi laut</td></tr>
+                        <tr><td>Dataran Rendah</td><td>Tanah subur, dekat sungai dan kota</td><td>Pertanian, industri kecil, jasa</td></tr>
+                        <tr><td>Dataran Tinggi</td><td>Suhu sejuk, cocok untuk tanaman sayur dan teh</td><td>Pertanian hortikultura, wisata alam</td></tr>
+                        <tr><td>Kepulauan Terpencil</td><td>Akses terbatas, sumber daya melimpah</td><td>Perikanan tradisional, kerajinan lokal</td></tr>
+                        <tr><td>Perkotaan</td><td>Penduduk padat, pusat kegiatan ekonomi dan teknologi</td><td>Industri, perdagangan, layanan digital</td></tr>
+                    </tbody>
+                </table>
+
+                <h2>C. Potensi Sumber Daya Alam dan Pengelolaannya</h2>
+                
+                <h3>a. Ragam Sumber Daya Alam di Indonesia</h3>
+                <p>Indonesia dikenal sebagai negara yang sangat kaya sumber daya alam (SDA). Hal ini dipengaruhi oleh kondisi geografis, geologis, dan iklim tropis yang mendukung keberagaman hayati serta hasil bumi.</p>
+
+                <div class="image-container" id="gambar4-container">
+                    <img src="s1-bab-5/gambar4.jpg" alt="Kekayaan Alam Indonesia" 
+                         onerror="this.style.display='none'; document.getElementById('gambar4-placeholder').style.display='block';"
+                         onload="this.style.display='block'; document.getElementById('gambar4-placeholder').style.display='none';">
+                    <div class="image-placeholder" id="gambar4-placeholder" style="display:block;">
+                        <i class="fas fa-image"></i>
+                        <span>[Gambar 4: Kekayaan Alam Indonesia]</span>
+                        <p style="font-size:0.9rem; margin-top:1rem;">Letakkan file gambar dengan nama "gambar4" di folder "s1-bab-5"</p>
+                    </div>
+                    <div class="image-caption">Gambar 4: Kekayaan Alam Indonesia</div>
+                </div>
+
+                <h3>b. Persebaran Sumber Daya Alam</h3>
+                <table class="custom-table">
+                    <thead>
+                        <tr>
+                            <th>Wilayah</th>
+                            <th>Jenis SDA Utama</th>
+                            <th>Contoh Daerah Penghasil</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Sumatra</td><td>Minyak bumi, gas alam, perkebunan sawit, karet</td><td>Riau, Aceh, Sumatera Selatan</td></tr>
+                        <tr><td>Jawa</td><td>Pertanian, industri, perikanan laut</td><td>Jawa Barat, Jawa Timur</td></tr>
+                        <tr><td>Kalimantan</td><td>Hutan tropis, batu bara, emas</td><td>Kalimantan Timur, Tengah</td></tr>
+                        <tr><td>Sulawesi</td><td>Nikel, kelapa, perikanan</td><td>Sulawesi Tengah, Tenggara</td></tr>
+                        <tr><td>Papua</td><td>Emas, tembaga, hutan hujan tropis</td><td>Papua Tengah, Papua Barat</td></tr>
+                        <tr><td>Nusa Tenggara</td><td>Peternakan, garam, pariwisata alam</td><td>NTB, NTT</td></tr>
+                    </tbody>
+                </table>
+
+                <h2>D. Dinamika Ruang, Kependudukan, dan Aktivitas Sosial–Ekonomi</h2>
+                
+                <h3>a. Konsep Dinamika Ruang</h3>
+                <p>Ruang tidak hanya sekadar wilayah di peta, tetapi tempat berlangsungnya berbagai aktivitas manusia dan interaksi dengan lingkungan. Dalam konteks geografi, ruang bersifat dinamis, artinya terus berubah karena adanya aktivitas sosial, ekonomi, politik, dan alam.</p>
+
+                <div class="image-container" id="gambar5-container">
+                    <img src="s1-bab-5/gambar5.png" alt="Dinamika Kependudukan" 
+                         onerror="this.style.display='none'; document.getElementById('gambar5-placeholder').style.display='block';"
+                         onload="this.style.display='block'; document.getElementById('gambar5-placeholder').style.display='none';">
+                    <div class="image-placeholder" id="gambar5-placeholder" style="display:block;">
+                        <i class="fas fa-image"></i>
+                        <span>[Gambar 5: Dinamika Kependudukan]</span>
+                        <p style="font-size:0.9rem; margin-top:1rem;">Letakkan file gambar dengan nama "gambar5" di folder "s1-bab-5"</p>
+                    </div>
+                    <div class="image-caption">Gambar 5: Peta Persebaran Penduduk di Indonesia</div>
+                </div>
+
+                <h2>E. Mitigasi dan Adaptasi Bencana dalam Konteks Keruangan</h2>
+                
+                <h3>a. Pengantar: Indonesia sebagai Negara Rawan Bencana</h3>
+                <p>Indonesia dikenal sebagai salah satu negara dengan risiko bencana alam tertinggi di dunia. Letaknya di pertemuan tiga lempeng besar — Eurasia, Indo-Australia, dan Pasifik — menjadikan wilayah ini rawan gempa bumi, letusan gunung api, dan tsunami.</p>
+
+                <div class="image-container" id="gambar6-container">
+                    <img src="s1-bab-5/gambar6.jpg" alt="Peta Rawan Bencana Indonesia" 
+                         onerror="this.style.display='none'; document.getElementById('gambar6-placeholder').style.display='block';"
+                         onload="this.style.display='block'; document.getElementById('gambar6-placeholder').style.display='none';">
+                    <div class="image-placeholder" id="gambar6-placeholder" style="display:block;">
+                        <i class="fas fa-image"></i>
+                        <span>[Gambar 6: Peta Rawan Bencana Indonesia]</span>
+                        <p style="font-size:0.9rem; margin-top:1rem;">Letakkan file gambar dengan nama "gambar6" di folder "s1-bab-5"</p>
+                    </div>
+                    <div class="image-caption">Gambar 6: Peta Rawan Bencana Indonesia</div>
+                </div>
+
+                <h3>b. Jenis-Jenis Bencana Berdasarkan Faktor Penyebabnya</h3>
+                
+                <h4>1. Bencana Geologis</h4>
+                <ul>
+                    <li><strong>Gempa bumi:</strong> pergerakan lempeng tektonik yang menyebabkan getaran tanah.</li>
+                    <li><strong>Tsunami:</strong> gelombang besar akibat gempa di dasar laut.</li>
+                    <li><strong>Letusan gunung api:</strong> keluarnya magma dan gas dari perut bumi.</li>
+                </ul>
+                
+                <h4>2. Bencana Hidrometeorologis</h4>
+                <ul>
+                    <li><strong>Banjir:</strong> curah hujan tinggi, drainase buruk, atau penebangan hutan.</li>
+                    <li><strong>Tanah longsor:</strong> lereng curam dan vegetasi yang rusak.</li>
+                    <li><strong>Kekeringan:</strong> perubahan pola curah hujan dan degradasi lahan.</li>
+                </ul>
+
+                <div class="image-container" id="gambar7-container">
+                    <img src="s1-bab-5/gambar7.jpg" alt="Bencana Alam di Indonesia" 
+                         onerror="this.style.display='none'; document.getElementById('gambar7-placeholder').style.display='block';"
+                         onload="this.style.display='block'; document.getElementById('gambar7-placeholder').style.display='none';">
+                    <div class="image-placeholder" id="gambar7-placeholder" style="display:block;">
+                        <i class="fas fa-image"></i>
+                        <span>[Gambar 7: Bencana Alam di Indonesia]</span>
+                        <p style="font-size:0.9rem; margin-top:1rem;">Letakkan file gambar dengan nama "gambar7" di folder "s1-bab-5"</p>
+                    </div>
+                    <div class="image-caption">Gambar 7: Bencana Alam di Indonesia</div>
+                </div>
+
+                <h3>c. Konsep Mitigasi dan Adaptasi</h3>
+                <table class="custom-table">
+                    <thead>
+                        <tr>
+                            <th>Konsep</th>
+                            <th>Pengertian</th>
+                            <th>Contoh Tindakan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Mitigasi</td>
+                            <td>Upaya mengurangi dampak bencana sebelum terjadi.</td>
+                            <td>- Membangun rumah tahan gempa<br>- Menanam pohon di lereng gunung<br>- Pemetaan daerah rawan bencana</td>
+                        </tr>
+                        <tr>
+                            <td>Adaptasi</td>
+                            <td>Upaya menyesuaikan diri terhadap dampak bencana yang tidak bisa dihindari.</td>
+                            <td>- Membuat sistem peringatan dini<br>- Mengubah pola tanam sesuai musim<br>- Relokasi penduduk dari daerah rawan</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>d. Keterkaitan dengan Bidang Keahlian di SMK</h3>
+                
+                <div class="jurusan-card">
+                    <h4>1. Jurusan ATPH (Agribisnis Tanaman Pangan dan Hortikultura)</h4>
+                    <p><strong>Relevansi:</strong></p>
+                    <ul>
+                        <li>Menganalisis peta agroklimat untuk menentukan waktu tanam dan pola rotasi tanaman.</li>
+                        <li>Menyesuaikan teknik irigasi berdasarkan kondisi topografi dan curah hujan.</li>
+                        <li>Menerapkan adaptasi pertanian berkelanjutan, misalnya menanam tanaman penahan erosi di lereng curam.</li>
+                    </ul>
+                </div>
+
+                <div class="jurusan-card">
+                    <h4>2. Jurusan TSM (Teknik dan Bisnis Sepeda Motor)</h4>
+                    <p><strong>Relevansi:</strong></p>
+                    <ul>
+                        <li>Menentukan bahan pelindung kendaraan yang tahan terhadap cuaca ekstrem.</li>
+                        <li>Mengatur ventilasi dan sistem kerja bengkel agar tetap aman dan efisien di lingkungan tropis.</li>
+                        <li>Berperan dalam proyek sosial mitigasi, misalnya pembuatan alat deteksi banjir sederhana dari sensor air.</li>
+                    </ul>
+                </div>
+
+                <div class="jurusan-card">
+                    <h4>3. Jurusan AKL (Akuntansi dan Keuangan Lembaga)</h4>
+                    <p><strong>Relevansi:</strong></p>
+                    <ul>
+                        <li>Membuat laporan biaya mitigasi dan bantuan secara akurat dan terstruktur.</li>
+                        <li>Menghitung efisiensi penggunaan dana proyek lingkungan.</li>
+                        <li>Membantu sekolah atau komunitas dalam pencatatan donasi dan logistik saat terjadi bencana.</li>
+                    </ul>
+                </div>
+
+                <div class="jurusan-card">
+                    <h4>4. Jurusan TKJ (Teknik Komputer dan Jaringan)</h4>
+                    <p><strong>Relevansi:</strong></p>
+                    <ul>
+                        <li>Mendesain sistem informasi geografis sederhana (SIG) untuk memantau risiko bencana.</li>
+                        <li>Membuat peta digital lokasi aman dan jalur evakuasi menggunakan aplikasi berbasis ponsel.</li>
+                        <li>Mengembangkan aplikasi sederhana untuk pelaporan kondisi lapangan saat bencana.</li>
+                    </ul>
+                </div>
+
+                <div class="reflection-box">
+                    <h4><i class="fas fa-users"></i> Refleksi Lintas Jurusan</h4>
+                    <ol>
+                        <li>Bagaimana lokasi geografis sekolahmu memengaruhi risiko bencana di wilayah sekitar?</li>
+                        <li>Apa kontribusi jurusanmu dalam mencegah atau menanggulangi dampak lingkungan di masa depan?</li>
+                        <li>Jika seluruh jurusan bekerja sama, seperti apa solusi lintas keahlian yang bisa dilakukan untuk menciptakan lingkungan sekolah tangguh bencana?</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="bab-navigation">
+                <a href="s1-bab-4.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i> Kembali ke Bab 4
+                </a>
+                <a href="s1-bab-6.html" class="nav-btn primary">
+                    Lanjut ke Bab 6 <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // ===== HAMBURGER MENU - SAMA PERSIS DENGAN REFERENSI =====
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

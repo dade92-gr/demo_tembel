@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi 6.3: Pemecahan Masalah dengan Komputasi - Informatika Kelas X</title>
+    <link rel="stylesheet" href="../../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --informatika-primary: #3498db;
+            --informatika-secondary: #2980b9;
+            --informatika-light: #ebf5fb;
+            --informatika-dark: #21618c;
+            --informatika-semester1: #3498db;
+            --success: #27ae60;
+            --warning: #e74c3c;
+            --info: #f39c12;
+            --purple: #9b59b6;
+            --mandiri: #e74c3c;
+            --kolaboratif: #27ae60;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+        
+        .materi-container {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+        
+        .materi-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 30px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(52, 152, 219, 0.15);
+            border-left: 8px solid var(--informatika-semester1);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        .materi-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(52, 152, 219, 0.1) 0%, transparent 70%);
+            z-index: 0;
+        }
+        
+        .materi-card > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .materi-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 3px solid var(--informatika-light);
+            flex-wrap: wrap;
+        }
+        
+        .materi-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--informatika-semester1), var(--informatika-primary));
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+        }
+        
+        .materi-title-wrapper {
+            flex: 1;
+        }
+        
+        .materi-title-wrapper h1 {
+            color: var(--informatika-dark);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .materi-subtitle {
+            color: var(--informatika-primary);
+            font-size: 1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .materi-badge {
+            background: var(--informatika-light);
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: var(--informatika-dark);
+        }
+        
+        .materi-badge i {
+            margin-right: 4px;
+        }
+        
+        .tujuan-card {
+            background: linear-gradient(135deg, var(--informatika-light), white);
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(52, 152, 219, 0.2);
+        }
+        
+        .tujuan-card h3 {
+            color: var(--informatika-dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .tujuan-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 0.8rem;
+        }
+        
+        .tujuan-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            padding: 0.8rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .tujuan-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .tujuan-item i {
+            color: var(--success);
+        }
+        
+        .materi-content {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid rgba(52, 152, 219, 0.1);
+        }
+        
+        .materi-content h2 {
+            color: var(--informatika-dark);
+            font-size: 1.8rem;
+            margin: 1.5rem 0 1rem 0;
+            border-bottom: 2px solid var(--informatika-light);
+            padding-bottom: 0.5rem;
+        }
+        
+        .materi-content h2:first-of-type {
+            margin-top: 0;
+        }
+        
+        .materi-content h3 {
+            color: var(--informatika-dark);
+            font-size: 1.3rem;
+            margin: 1.2rem 0 0.8rem 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .materi-content h3 i {
+            color: var(--informatika-primary);
+        }
+        
+        .materi-content p {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        
+        .materi-content ul, .materi-content ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .materi-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .quote-box {
+            margin: 1.5rem 0;
+            padding: 1rem 1.5rem;
+            background: var(--informatika-light);
+            border-left: 4px solid var(--informatika-primary);
+            border-radius: 0 12px 12px 0;
+        }
+        
+        .note-box {
+            background: #fff3e0;
+            border-left: 4px solid var(--info);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid var(--informatika-primary);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .warning-box {
+            background: #fee2e2;
+            border-left: 4px solid var(--warning);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .success-box {
+            background: #d4edda;
+            border-left: 4px solid var(--success);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .comparison-main {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .comp-card {
+            border-radius: 20px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .comp-card.mandiri {
+            background: linear-gradient(135deg, #fee2e2, #ffffff);
+            border: 2px solid var(--mandiri);
+        }
+        
+        .comp-card.kolaboratif {
+            background: linear-gradient(135deg, #d4edda, #ffffff);
+            border: 2px solid var(--kolaboratif);
+        }
+        
+        .comp-card h3 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 1rem;
+        }
+        
+        .comp-icon {
+            font-size: 2.5rem;
+        }
+        
+        .kelebihan-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .kelebihan-card {
+            border-radius: 16px;
+            padding: 1rem;
+        }
+        
+        .kelebihan-card.plus {
+            background: #d4edda;
+            border: 1px solid var(--success);
+        }
+        
+        .kelebihan-card.minus {
+            background: #fee2e2;
+            border: 1px solid var(--warning);
+        }
+        
+        .kelebihan-card h4 {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .kelebihan-card ul {
+            margin-left: 1.2rem;
+        }
+        
+        .kapan-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .kapan-card {
+            border-radius: 16px;
+            padding: 1.2rem;
+        }
+        
+        .kapan-card.mandiri {
+            background: #fee2e2;
+        }
+        
+        .kapan-card.kolaboratif {
+            background: #d4edda;
+        }
+        
+        .kapan-card h4 {
+            margin-bottom: 0.8rem;
+        }
+        
+        .data-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .data-card {
+            text-align: center;
+            padding: 1rem;
+            background: white;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            border: 1px solid #e9ecef;
+        }
+        
+        .data-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .data-icon {
+            font-size: 2rem;
+        }
+        
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+        
+        .compare-table th {
+            background: var(--informatika-primary);
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .compare-table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .compare-table tr:hover {
+            background: var(--informatika-light);
+        }
+        
+        .materi-navigation {
+            display: flex;
+            gap: 1rem;
+            justify-content: space-between;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn.primary {
+            background: linear-gradient(135deg, var(--informatika-primary), var(--informatika-secondary));
+            color: white;
+        }
+        
+        .nav-btn.primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .nav-btn.secondary {
+            background: white;
+            color: var(--informatika-dark);
+            border: 2px solid var(--informatika-light);
+        }
+        
+        .nav-btn.secondary:hover {
+            background: var(--informatika-light);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .materi-container { padding: 1rem; }
+            .materi-card { padding: 1.5rem; }
+            .materi-header { flex-direction: column; text-align: center; }
+            .comparison-main { grid-template-columns: 1fr; }
+            .kelebihan-grid { grid-template-columns: 1fr; }
+            .kapan-grid { grid-template-columns: 1fr; }
+            .compare-table { font-size: 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="../../../assets/images/logo.png" alt="Logo Sekolah">
+                    <h1>INFORMATIKA - MATERI PEMBELAJARAN</h1>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="../../../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="../../index-informatika.html" class="nav-link"><i class="fas fa-laptop-code"></i> Beranda Informatika</a></li>
+                    <li><a href="../../aktivitas-pembelajaran/index-aktivitas-informatika.html" class="nav-link"><i class="fas fa-tasks"></i> Daftar Aktivitas</a></li>
+                    <li><a href="../index-materi-informatika.html" class="nav-link active"><i class="fas fa-book-open"></i> Daftar Materi</a></li>
+                    <li><a href="../../penilaian/index-penilaian-informatika.html" class="nav-link"><i class="fas fa-chart-line"></i> Penilaian</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="materi-container">
+        <div class="materi-card">
+            <!-- Header -->
+            <div class="materi-header">
+                <div class="materi-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="materi-title-wrapper">
+                    <h1>Pemecahan Masalah dengan Komputasi</h1>
+                    <div class="materi-subtitle">
+                        <i class="fas fa-circle"></i>
+                        <span>Proyek 6: Pemrograman Dasar - Pertemuan 3</span>
+                        <span class="materi-badge"><i class="fas fa-clock"></i> 4 JP</span>
+                        <span class="materi-badge"><i class="fas fa-tag"></i> TP 1.2 &amp; 1.3</span>
+                        <span class="materi-badge"><i class="fas fa-globe"></i> Online</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tujuan Pembelajaran -->
+            <div class="tujuan-card">
+                <h3><i class="fas fa-bullseye"></i> 🎯 Tujuan Pembelajaran</h3>
+                <div class="tujuan-list">
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Memahami pengertian proses komputasi</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Menjelaskan konsep komputasi mandiri dan contohnya</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Menjelaskan konsep komputasi kolaboratif dan contohnya</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Membedakan kelebihan dan kekurangan komputasi mandiri dan kolaboratif</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Menentukan kapan harus bekerja mandiri dan kapan harus berkolaborasi</div>
+                </div>
+            </div>
+
+            <!-- Konten Materi -->
+            <div class="materi-content">
+                <h2>A. Apa Itu Proses Komputasi?</h2>
+                <p><strong>Komputasi</strong> adalah proses untuk menemukan pemecahan masalah menggunakan data dan algoritma dengan bantuan komputer atau secara manual. Komputasi melibatkan serangkaian langkah sistematis untuk mengolah input menjadi output yang diinginkan.</p>
+                
+                <div class="quote-box">
+                    <i class="fas fa-quote-left"></i> <strong>Peter J. Denning:</strong> "Komputasi adalah disiplin yang mencari pemahaman dan penemuan melalui pemikiran algoritmik."
+                </div>
+                
+                <div class="info-box">
+                    <i class="fas fa-chart-line"></i> <strong>Ilustrasi Sederhana:</strong><br>
+                    <strong>INPUT (Data Mentah)</strong> → <strong>PROSES KOMPUTASI</strong> → <strong>OUTPUT (Hasil Olahan)</strong><br>
+                    • Nilai mentah → Dihitung rata-rata → Hasil rata-rata<br>
+                    • Data siswa → Dikelompokkan → Laporan kelas<br>
+                    • Angka penjualan → Dianalisis → Grafik penjualan
+                </div>
+
+                <h2>B. Komputasi Mandiri vs Kolaboratif</h2>
+                
+                <div class="comparison-main">
+                    <div class="comp-card mandiri">
+                        <h3><i class="fas fa-user comp-icon"></i> Komputasi Mandiri</h3>
+                        <p>Proses komputasi yang dilakukan oleh <strong>seorang individu secara sendiri</strong> tanpa bantuan orang lain. Seseorang bertanggung jawab penuh atas seluruh proses.</p>
+                        <div class="note-box" style="margin-top: 1rem; background: #f8d7da; border-left-color: var(--mandiri);">
+                            <strong>🎯 Karakteristik:</strong> Individu, tanggung jawab penuh, keputusan sendiri, privasi terjaga.
+                        </div>
+                    </div>
+                    <div class="comp-card kolaboratif">
+                        <h3><i class="fas fa-users comp-icon"></i> Komputasi Kolaboratif</h3>
+                        <p>Proses komputasi yang dilakukan <strong>secara bersama-sama oleh dua orang atau lebih</strong> dalam sebuah tim. Mereka berbagi tugas, saling membantu, dan berdiskusi.</p>
+                        <div class="note-box" style="margin-top: 1rem; background: #d4edda; border-left-color: var(--kolaboratif);">
+                            <strong>🎯 Karakteristik:</strong> Kelompok, tanggung jawab bersama, diskusi, hasil lebih kaya.
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Kelebihan dan Kekurangan</h3>
+                
+                <div class="kelebihan-grid">
+                    <div class="kelebihan-card plus">
+                        <h4><i class="fas fa-check-circle" style="color: var(--success);"></i> Kelebihan</h4>
+                        <div>
+                            <strong>Komputasi Mandiri:</strong>
+                            <ul>
+                                <li>Melatih kemandirian</li>
+                                <li>Mengembangkan kemampuan individu</li>
+                                <li>Keputusan cepat tanpa diskusi</li>
+                            </ul>
+                            <strong style="margin-top: 0.5rem; display: block;">Komputasi Kolaboratif:</strong>
+                            <ul>
+                                <li>Pengetahuan lebih luas</li>
+                                <li>Ide lebih bervariasi</li>
+                                <li>Saling mengoreksi kesalahan</li>
+                                <li>Hasil lebih berkualitas</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="kelebihan-card minus">
+                        <h4><i class="fas fa-times-circle" style="color: var(--warning);"></i> Kekurangan</h4>
+                        <div>
+                            <strong>Komputasi Mandiri:</strong>
+                            <ul>
+                                <li>Terbatas pada pengetahuan sendiri</li>
+                                <li>Risiko kesalahan lebih tinggi</li>
+                                <li>Bisa mengalami kebuntuan</li>
+                            </ul>
+                            <strong style="margin-top: 0.5rem; display: block;">Komputasi Kolaboratif:</strong>
+                            <ul>
+                                <li>Butuh koordinasi dan komunikasi</li>
+                                <li>Bisa terjadi konflik</li>
+                                <li>Keputusan butuh waktu</li>
+                                <li>Ada anggota yang pasif</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <h2>C. Kapan Menggunakan Komputasi Mandiri atau Kolaboratif?</h2>
+                <div class="kapan-grid">
+                    <div class="kapan-card mandiri">
+                        <h4><i class="fas fa-user"></i> Komputasi Mandiri Cocok untuk:</h4>
+                        <ul>
+                            <li>Tugas sederhana</li>
+                            <li>Evaluasi individu (ulangan, tes)</li>
+                            <li>Pekerjaan pribadi (diary, catatan)</li>
+                            <li>Latihan keterampilan</li>
+                            <li>Saat butuh fokus tinggi</li>
+                            <li>Data pribadi/rahasia</li>
+                        </ul>
+                    </div>
+                    <div class="kapan-card kolaboratif">
+                        <h4><i class="fas fa-users"></i> Komputasi Kolaboratif Cocok untuk:</h4>
+                        <ul>
+                            <li>Masalah kompleks</li>
+                            <li>Proyek besar</li>
+                            <li>Butuh kreativitas (brainstorming)</li>
+                            <li>Pengambilan keputusan penting</li>
+                            <li>Pembelajaran (belajar dari teman)</li>
+                            <li>Target cepat (pekerjaan terbagi)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h2>D. Data Berkualitas</h2>
+                <div class="data-grid">
+                    <div class="data-card"><div class="data-icon">🎯</div><strong>Akurat</strong><br>Data sesuai kenyataan</div>
+                    <div class="data-card"><div class="data-icon">📋</div><strong>Lengkap</strong><br>Tidak ada data hilang</div>
+                    <div class="data-card"><div class="data-icon">🔄</div><strong>Konsisten</strong><br>Tidak saling bertentangan</div>
+                    <div class="data-card"><div class="data-icon">⏰</div><strong>Tepat Waktu</strong><br>Data masih relevan</div>
+                    <div class="data-card"><div class="data-icon">✅</div><strong>Kredibel</strong><br>Sumber dapat dipercaya</div>
+                </div>
+
+                <div class="warning-box">
+                    <i class="fas fa-exclamation-triangle"></i> <strong>Ingat!</strong> Baik mandiri maupun kolaboratif, yang terpenting adalah menghasilkan data yang berkualitas dan dapat dipertanggungjawabkan!
+                </div>
+
+                <div class="quote-box" style="margin-top: 1.5rem; text-align: center;">
+                    <i class="fas fa-users"></i> Komputasi Bersama, Hasil Berkualitas! 💻
+                </div>
+            </div>
+
+            <!-- Navigasi -->
+            <div class="materi-navigation">
+                <a href="materi6-2.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i> Kembali ke Materi 6.2
+                </a>
+                <a href="materi6-4.html" class="nav-btn primary">
+                    Lanjut ke Materi 6.4: Pseudocode & Flowchart
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script src="../../../script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

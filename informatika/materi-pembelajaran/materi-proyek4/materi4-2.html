@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi 4.2: Strategi Mencari Informasi - Informatika Kelas X</title>
+    <link rel="stylesheet" href="../../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --informatika-primary: #3498db;
+            --informatika-secondary: #2980b9;
+            --informatika-light: #ebf5fb;
+            --informatika-dark: #21618c;
+            --informatika-semester1: #3498db;
+            --success: #27ae60;
+            --warning: #e74c3c;
+            --info: #f39c12;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+        
+        .materi-container {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+        
+        .materi-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 30px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(52, 152, 219, 0.15);
+            border-left: 8px solid var(--informatika-semester1);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        .materi-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(52, 152, 219, 0.1) 0%, transparent 70%);
+            z-index: 0;
+        }
+        
+        .materi-card > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .materi-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 3px solid var(--informatika-light);
+            flex-wrap: wrap;
+        }
+        
+        .materi-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--informatika-primary), var(--informatika-secondary));
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+        }
+        
+        .materi-title-wrapper {
+            flex: 1;
+        }
+        
+        .materi-title-wrapper h1 {
+            color: var(--informatika-dark);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .materi-subtitle {
+            color: var(--informatika-primary);
+            font-size: 1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .materi-badge {
+            background: var(--informatika-light);
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: var(--informatika-dark);
+        }
+        
+        .materi-badge i {
+            margin-right: 4px;
+        }
+        
+        .tujuan-card {
+            background: linear-gradient(135deg, var(--informatika-light), white);
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(52, 152, 219, 0.2);
+        }
+        
+        .tujuan-card h3 {
+            color: var(--informatika-dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .tujuan-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 0.8rem;
+        }
+        
+        .tujuan-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            padding: 0.8rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .tujuan-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .tujuan-item i {
+            color: var(--success);
+        }
+        
+        .materi-content {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid rgba(52, 152, 219, 0.1);
+        }
+        
+        .materi-content h2 {
+            color: var(--informatika-dark);
+            font-size: 1.8rem;
+            margin: 1.5rem 0 1rem 0;
+            border-bottom: 2px solid var(--informatika-light);
+            padding-bottom: 0.5rem;
+        }
+        
+        .materi-content h2:first-of-type {
+            margin-top: 0;
+        }
+        
+        .materi-content h3 {
+            color: var(--informatika-dark);
+            font-size: 1.3rem;
+            margin: 1.2rem 0 0.8rem 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .materi-content h3 i {
+            color: var(--informatika-primary);
+        }
+        
+        .materi-content p {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        
+        .materi-content ul, .materi-content ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .materi-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .quote-box {
+            margin: 1.5rem 0;
+            padding: 1rem 1.5rem;
+            background: var(--informatika-light);
+            border-left: 4px solid var(--informatika-primary);
+            border-radius: 0 12px 12px 0;
+        }
+        
+        .note-box {
+            background: #fff3e0;
+            border-left: 4px solid var(--info);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid var(--informatika-primary);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .warning-box {
+            background: #fee2e2;
+            border-left: 4px solid var(--warning);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .success-box {
+            background: #d4edda;
+            border-left: 4px solid var(--success);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .operator-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .operator-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1.2rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #e9ecef;
+        }
+        
+        .operator-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.15);
+        }
+        
+        .operator-card.active {
+            border: 2px solid var(--informatika-primary);
+            background: var(--informatika-light);
+        }
+        
+        .operator-code {
+            font-family: monospace;
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            display: inline-block;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .operator-title {
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: var(--informatika-dark);
+            margin-bottom: 0.3rem;
+        }
+        
+        .operator-desc {
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        .operator-card.active .operator-desc {
+            color: var(--informatika-dark);
+            font-weight: 500;
+        }
+        
+        .operator-example {
+            font-size: 0.8rem;
+            background: #f8f9fa;
+            padding: 0.3rem 0.8rem;
+            border-radius: 6px;
+            margin-top: 0.3rem;
+            font-family: monospace;
+            color: var(--informatika-primary);
+        }
+        
+        .workflow {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .workflow-step {
+            text-align: center;
+            flex: 1;
+            min-width: 150px;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 16px;
+        }
+        
+        .workflow-icon {
+            font-size: 2rem;
+            color: var(--informatika-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .workflow-step h4 {
+            color: var(--informatika-dark);
+            margin-bottom: 0.3rem;
+        }
+        
+        .workflow-step p {
+            font-size: 0.85rem;
+            color: #6c757d;
+        }
+        
+        .domain-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin: 1.5rem 0;
+        }
+        
+        .domain-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.8rem;
+            background: white;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            border: 1px solid #e9ecef;
+        }
+        
+        .domain-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .domain-badge {
+            width: 80px;
+            font-family: monospace;
+            font-weight: bold;
+            padding: 0.3rem;
+            text-align: center;
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+        
+        .domain-high {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .domain-medium {
+            background: #fff3e0;
+            color: #856404;
+        }
+        
+        .domain-low {
+            background: #fee2e2;
+            color: #721c24;
+        }
+        
+        .criteria-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .criteria-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1rem;
+            text-align: center;
+            border: 1px solid #e9ecef;
+        }
+        
+        .criteria-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--informatika-primary);
+        }
+        
+        .criteria-title {
+            font-weight: bold;
+            color: var(--informatika-dark);
+        }
+        
+        .criteria-desc {
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin-top: 0.3rem;
+        }
+        
+        .search-example {
+            background: #f8f9fa;
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .search-example h4 {
+            margin-bottom: 1rem;
+        }
+        
+        .example-item {
+            background: white;
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--informatika-primary);
+        }
+        
+        .example-bad {
+            border-left-color: var(--warning);
+        }
+        
+        .example-good {
+            border-left-color: var(--success);
+        }
+        
+        .example-bad .badge {
+            background: #fee2e2;
+            color: var(--warning);
+        }
+        
+        .example-good .badge {
+            background: #d4edda;
+            color: var(--success);
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .materi-navigation {
+            display: flex;
+            gap: 1rem;
+            justify-content: space-between;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn.primary {
+            background: linear-gradient(135deg, var(--informatika-primary), var(--informatika-secondary));
+            color: white;
+        }
+        
+        .nav-btn.primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .nav-btn.secondary {
+            background: white;
+            color: var(--informatika-dark);
+            border: 2px solid var(--informatika-light);
+        }
+        
+        .nav-btn.secondary:hover {
+            background: var(--informatika-light);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .materi-container { padding: 1rem; }
+            .materi-card { padding: 1.5rem; }
+            .materi-header { flex-direction: column; text-align: center; }
+            .operator-grid { grid-template-columns: 1fr; }
+            .workflow { flex-direction: column; align-items: center; }
+            .domain-item { flex-wrap: wrap; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="../../../assets/images/logo.png" alt="Logo Sekolah">
+                    <h1>INFORMATIKA - MATERI PEMBELAJARAN</h1>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="../../../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="../../index-informatika.html" class="nav-link"><i class="fas fa-laptop-code"></i> Beranda Informatika</a></li>
+                    <li><a href="../../aktivitas-pembelajaran/index-aktivitas-informatika.html" class="nav-link"><i class="fas fa-tasks"></i> Daftar Aktivitas</a></li>
+                    <li><a href="../index-materi-informatika.html" class="nav-link active"><i class="fas fa-book-open"></i> Daftar Materi</a></li>
+                    <li><a href="../../penilaian/index-penilaian-informatika.html" class="nav-link"><i class="fas fa-chart-line"></i> Penilaian</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="materi-container">
+        <div class="materi-card">
+            <!-- Header -->
+            <div class="materi-header">
+                <div class="materi-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="materi-title-wrapper">
+                    <h1>Strategi Mencari Informasi</h1>
+                    <div class="materi-subtitle">
+                        <i class="fas fa-circle"></i>
+                        <span>Proyek 4: Fakta atau Hoaks? - Pertemuan 2</span>
+                        <span class="materi-badge"><i class="fas fa-clock"></i> 4 JP</span>
+                        <span class="materi-badge"><i class="fas fa-tag"></i> TP 2.1</span>
+                        <span class="materi-badge"><i class="fas fa-globe"></i> Online</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tujuan Pembelajaran -->
+            <div class="tujuan-card">
+                <h3><i class="fas fa-bullseye"></i> 🎯 Tujuan Pembelajaran</h3>
+                <div class="tujuan-list">
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Memahami cara kerja mesin pencari dan fungsinya</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Menggunakan berbagai operator pencarian untuk mempersempit hasil</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Menerapkan kombinasi operator untuk pencarian yang lebih akurat</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Mengevaluasi kredibilitas sumber informasi dari hasil pencarian</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Membedakan sumber informasi kredibel dan tidak kredibel</div>
+                </div>
+            </div>
+
+            <!-- Konten Materi -->
+            <div class="materi-content">
+                <h2>A. Pengenalan Mesin Pencari</h2>
+                <p><strong>Mesin pencari (search engine)</strong> adalah program komputer yang dirancang untuk mencari informasi di internet berdasarkan kata kunci yang dimasukkan pengguna. Mesin pencari menjadi pintu gerbang utama untuk mengakses informasi di era digital.</p>
+                
+                <div class="quote-box">
+                    <i class="fas fa-quote-left"></i> Mesin pencari bekerja dengan tiga tahap: <strong>Crawling</strong> (menjelajah), <strong>Indexing</strong> (menyimpan), dan <strong>Ranking</strong> (mengurutkan).
+                </div>
+
+                <div class="workflow">
+                    <div class="workflow-step">
+                        <div class="workflow-icon"><i class="fas fa-spider"></i></div>
+                        <h4>1. Crawling</h4>
+                        <p>Bot menjelajahi internet dengan mengikuti link dari satu halaman ke halaman lain</p>
+                    </div>
+                    <div class="workflow-step">
+                        <div class="workflow-icon"><i class="fas fa-database"></i></div>
+                        <h4>2. Indexing</h4>
+                        <p>Halaman yang ditemukan disimpan dalam database raksasa (indeks)</p>
+                    </div>
+                    <div class="workflow-step">
+                        <div class="workflow-icon"><i class="fas fa-chart-line"></i></div>
+                        <h4>3. Ranking</h4>
+                        <p>Algoritma mengurutkan hasil berdasarkan relevansi dan popularitas</p>
+                    </div>
+                </div>
+
+                <h2>B. Operator Pencarian Google</h2>
+                <p><strong>Operator pencarian</strong> adalah perintah khusus yang membuat pencarian lebih spesifik dan akurat. <strong>Klik pada setiap operator</strong> untuk memperjelas tampilan:</p>
+                
+                <div class="operator-grid" id="operatorGrid">
+                    <div class="operator-card" data-op="quote">
+                        <div class="operator-code">" "</div>
+                        <div class="operator-title">Frasa Persis (Kutip)</div>
+                        <div class="operator-desc">Mencari frasa persis (kata demi kata). Contoh: "vaksin covid-19" → mencari halaman dengan frasa tersebut tepat. Berguna untuk mencari kutipan atau informasi spesifik.</div>
+                        <div class="operator-example">Contoh: "vaksin covid-19"</div>
+                    </div>
+                    <div class="operator-card" data-op="site">
+                        <div class="operator-code">site:</div>
+                        <div class="operator-title">Pencarian dalam Situs Tertentu</div>
+                        <div class="operator-desc">Membatasi pencarian hanya pada website tertentu. Berguna untuk mencari informasi dari sumber terpercaya. Contoh: site:who.int covid → mencari covid di situs WHO.</div>
+                        <div class="operator-example">Contoh: site:who.int vaksin</div>
+                    </div>
+                    <div class="operator-card" data-op="minus">
+                        <div class="operator-code">- (minus)</div>
+                        <div class="operator-title">Mengecualikan Kata</div>
+                        <div class="operator-desc">Menghilangkan hasil pencarian yang mengandung kata tertentu. Berguna untuk menyaring hoaks atau informasi yang tidak diinginkan. Contoh: vaksin -hoaks.</div>
+                        <div class="operator-example">Contoh: vaksin -hoaks</div>
+                    </div>
+                    <div class="operator-card" data-op="filetype">
+                        <div class="operator-code">filetype:</div>
+                        <div class="operator-title">Jenis File Tertentu</div>
+                        <div class="operator-desc">Mencari jenis file tertentu seperti PDF, PPT, DOC. Berguna untuk mencari dokumen resmi atau jurnal ilmiah. Contoh: vaksin filetype:pdf.</div>
+                        <div class="operator-example">Contoh: vaksin filetype:pdf</div>
+                    </div>
+                    <div class="operator-card" data-op="intitle">
+                        <div class="operator-code">intitle:</div>
+                        <div class="operator-title">Kata dalam Judul</div>
+                        <div class="operator-desc">Membatasi pencarian hanya pada judul halaman. Berguna untuk mencari artikel dengan topik spesifik. Contoh: intitle:vaksin → judul halaman mengandung "vaksin".</div>
+                        <div class="operator-example">Contoh: intitle:"vaksin covid"</div>
+                    </div>
+                    <div class="operator-card" data-op="or">
+                        <div class="operator-code">OR / |</div>
+                        <div class="operator-title">Pencarian Alternatif</div>
+                        <div class="operator-desc">Mencari salah satu dari beberapa kata. Berguna untuk memperluas hasil dengan kata kunci serupa. Contoh: vaksin OR imunisasi.</div>
+                        <div class="operator-example">Contoh: vaksin OR imunisasi</div>
+                    </div>
+                </div>
+
+                <h3>Contoh Penerapan Operator</h3>
+                <div class="search-example">
+                    <h4><i class="fas fa-syringe"></i> Mencari Informasi Vaksin dari Situs Resmi</h4>
+                    <div class="example-item example-bad">
+                        <span class="badge"><i class="fas fa-times-circle"></i> Tanpa operator</span>
+                        <p><code>vaksin covid</code></p>
+                        <small>Hasil: bercampur antara sumber resmi dan tidak resmi</small>
+                    </div>
+                    <div class="example-item example-good">
+                        <span class="badge"><i class="fas fa-check-circle"></i> Dengan operator</span>
+                        <p><code>site:who.int "vaksin covid"</code></p>
+                        <small>Hasil: hanya dari situs WHO, frasa persis "vaksin covid"</small>
+                    </div>
+                    <div class="example-item example-good">
+                        <span class="badge"><i class="fas fa-check-circle"></i> Kombinasi operator</span>
+                        <p><code>site:who.int "vaksin covid" -hoaks filetype:pdf</code></p>
+                        <small>Hasil: PDF dari WHO tentang vaksin covid tanpa kata hoaks</small>
+                    </div>
+                </div>
+
+                <h2>C. Mengevaluasi Kredibilitas Sumber</h2>
+                <p>Setelah mendapatkan hasil pencarian, langkah selanjutnya adalah mengevaluasi apakah sumber tersebut kredibel (dapat dipercaya).</p>
+
+                <div class="criteria-grid">
+                    <div class="criteria-card">
+                        <div class="criteria-icon"><i class="fas fa-globe"></i></div>
+                        <div class="criteria-title">Domain</div>
+                        <div class="criteria-desc">.go.id (pemerintah), .ac.id (pendidikan), .org (organisasi) lebih kredibel</div>
+                    </div>
+                    <div class="criteria-card">
+                        <div class="criteria-icon"><i class="fas fa-user-edit"></i></div>
+                        <div class="criteria-title">Penulis</div>
+                        <div class="criteria-desc">Nama jelas, ada profil, kompeten di bidangnya</div>
+                    </div>
+                    <div class="criteria-card">
+                        <div class="criteria-icon"><i class="fas fa-calendar-alt"></i></div>
+                        <div class="criteria-title">Tanggal</div>
+                        <div class="criteria-desc">Tanggal publikasi jelas dan masih relevan</div>
+                    </div>
+                    <div class="criteria-card">
+                        <div class="criteria-icon"><i class="fas fa-link"></i></div>
+                        <div class="criteria-title">Sumber Data</div>
+                        <div class="criteria-desc">Menyebutkan sumber asli dan referensi yang jelas</div>
+                    </div>
+                    <div class="criteria-card">
+                        <div class="criteria-icon"><i class="fas fa-balance-scale"></i></div>
+                        <div class="criteria-title">Tujuan</div>
+                        <div class="criteria-desc">Informatif, netral, bukan untuk provokasi atau komersial</div>
+                    </div>
+                    <div class="criteria-card">
+                        <div class="criteria-icon"><i class="fas fa-language"></i></div>
+                        <div class="criteria-title">Bahasa</div>
+                        <div class="criteria-desc">Bahasa objektif, tidak emosional atau provokatif</div>
+                    </div>
+                </div>
+
+                <h3>Tingkatan Kredibilitas Situs Berdasarkan Domain</h3>
+                <div class="domain-list">
+                    <div class="domain-item"><span class="domain-badge domain-high">.go.id</span><span><strong>Sangat Kredibel</strong> - Situs pemerintah Indonesia (resmi dan terpercaya)</span></div>
+                    <div class="domain-item"><span class="domain-badge domain-high">.ac.id</span><span><strong>Sangat Kredibel</strong> - Situs institusi pendidikan (universitas, sekolah)</span></div>
+                    <div class="domain-item"><span class="domain-badge domain-medium">.org</span><span><strong>Kredibel</strong> - Situs organisasi (perlu verifikasi lebih lanjut)</span></div>
+                    <div class="domain-item"><span class="domain-badge domain-medium">.com</span><span><strong>Bervariasi</strong> - Situs komersial (perlu ketelitian ekstra)</span></div>
+                    <div class="domain-item"><span class="domain-badge domain-low">.net, .info, .biz</span><span><strong>Rendah</strong> - Kurang terpercaya, sering digunakan untuk konten murah</span></div>
+                    <div class="domain-item"><span class="domain-badge domain-low">Blog gratis</span><span><strong>Sangat Rendah</strong> - .blogspot, .wordpress (perlu verifikasi silang)</span></div>
+                </div>
+
+                <div class="success-box">
+                    <i class="fas fa-check-circle"></i> <strong>Tips Menjadi Pencari Informasi Cerdas:</strong><br>
+                    • Gunakan operator <strong>site:</strong> untuk mencari di sumber resmi (pemerintah, WHO, kementerian)<br>
+                    • Gunakan tanda minus <strong>-</strong> untuk menghilangkan kata kunci hoaks<br>
+                    • Gunakan <strong>"kutipan"</strong> untuk mencari frasa tepat<br>
+                    • Gunakan <strong>filetype:pdf</strong> untuk mencari dokumen resmi<br>
+                    • Bandingkan informasi dari <strong>minimal 3 sumber</strong> berbeda<br>
+                    • Cek <strong>domain</strong> dan <strong>tanggal publikasi</strong> sebelum mempercayai informasi
+                </div>
+
+                <div class="warning-box">
+                    <i class="fas fa-exclamation-triangle"></i> <strong>Ingat!</strong> Tidak semua informasi yang muncul di hasil pencarian adalah benar. Selalu verifikasi kredibilitas sumber sebelum mempercayai dan membagikan informasi!
+                </div>
+
+                <div class="quote-box" style="margin-top: 1.5rem; text-align: center;">
+                    <i class="fas fa-search"></i> Cari dengan Cerdas, Temukan yang Akurat! 🔍
+                </div>
+            </div>
+
+            <!-- Navigasi -->
+            <div class="materi-navigation">
+                <a href="materi4-1.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i> Kembali ke Materi 4.1
+                </a>
+                <a href="materi4-3.html" class="nav-btn primary">
+                    Lanjut ke Materi 4.3: Verifikasi Fakta
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script src="../../../script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                });
+            }
+            
+            // Operator Grid Interaktif - HANYA EFEK HIGHLIGHT
+            const operatorCards = document.querySelectorAll('.operator-card');
+            operatorCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    operatorCards.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            if(operatorCards.length) operatorCards[0].classList.add('active');
+        });
+    </script>
+</body>
+</html>

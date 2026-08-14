@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 1: Pengenalan PROJEK IPAS - Kelas X</title>
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* IPAS THEME COLORS - HANYA UNTUK KONTEN, BUKAN HEADER */
+        :root {
+            --ipas-primary: #2ecc71;
+            --ipas-secondary: #27ae60;
+            --ipas-light: #d5f4e6;
+            --ipas-dark: #229954;
+            --ipas-accent: #3498db;
+            --ipas-semester1: #3498db;
+            --ipas-semester2: #e67e22;
+            --ipas-gray: #f5f7fa;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f5f7fa; color: #2c3e50; line-height: 1.6; }
+
+        /* ===== LOGO ZOOM EFFECT ===== */
+        .logo img { transition: transform 0.3s ease; }
+        .logo:hover img { transform: scale(1.2); }
+        
+        /* MAIN CONTENT */
+        .bab-container { padding: 2rem; max-width: 1200px; margin: 0 auto; min-height: calc(100vh - 80px); display: flex; align-items: flex-start; justify-content: center; }
+        
+        .bab-card { background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%); border-radius: 30px; padding: 3rem; box-shadow: 0 20px 40px rgba(46, 204, 113, 0.15); border-left: 8px solid var(--ipas-semester1); position: relative; overflow: hidden; width: 100%; animation: fadeInUp 0.6s ease-out; }
+        .bab-card::before { content: ''; position: absolute; top: 0; right: 0; width: 250px; height: 250px; background: radial-gradient(circle, rgba(52, 152, 219, 0.1) 0%, transparent 70%); z-index: 0; }
+        .bab-card > * { position: relative; z-index: 1; }
+        
+        .bab-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 3px solid var(--ipas-light); }
+        .bab-icon { width: 80px; height: 80px; background: linear-gradient(135deg, var(--ipas-semester1), var(--ipas-primary)); border-radius: 25px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2.5rem; box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3); }
+        .bab-title-wrapper h1 { color: var(--ipas-dark); font-size: 2.5rem; margin-bottom: 0.5rem; line-height: 1.2; }
+        .bab-subtitle { color: var(--ipas-semester1); font-size: 1.1rem; font-weight: 600; display: flex; align-items: center; gap: 8px; }
+        .bab-subtitle i { font-size: 0.8rem; }
+        
+        .bab-info { display: flex; gap: 2rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+        .info-item { display: flex; align-items: center; gap: 10px; background: var(--ipas-light); padding: 0.8rem 1.5rem; border-radius: 50px; color: var(--ipas-dark); font-weight: 600; }
+        .info-item i { color: var(--ipas-semester1); font-size: 1.2rem; }
+        
+        .bab-description { background: white; border-radius: 20px; padding: 2rem; margin-bottom: 2rem; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 1px solid rgba(52, 152, 219, 0.1); }
+        
+        .bab-description h2, .bab-description h3, .bab-description h4, .bab-description p, .bab-description ul, .bab-description ol, .bab-description li, .bab-description table, .bab-description .note-box, .bab-description blockquote { text-align: justify; }
+        
+        .bab-description h2 { color: var(--ipas-dark); font-size: 2rem; margin: 1.5rem 0 1rem 0; border-bottom: 2px solid var(--ipas-light); padding-bottom: 0.5rem; }
+        .bab-description h3 { color: var(--ipas-dark); font-size: 1.3rem; margin: 1.5rem 0 1rem 0; display: flex; align-items: center; gap: 10px; }
+        .bab-description h4 { color: var(--ipas-dark); font-size: 1.2rem; margin: 1.2rem 0 0.8rem 0; font-weight: 600; }
+        .bab-description h3 i { color: var(--ipas-semester1); }
+        .bab-description p { color: #555; font-size: 1.1rem; line-height: 1.8; margin-bottom: 1rem; text-align: justify; }
+        .bab-description ul, .bab-description ol { margin-left: 2rem; margin-bottom: 1rem; color: #555; text-align: justify; }
+        .bab-description li { margin-bottom: 0.5rem; text-align: justify; }
+        .bab-description strong { color: var(--ipas-dark); }
+        .bab-description blockquote { margin: 1.5rem 0; padding: 1rem 2rem; background: var(--ipas-light); border-left: 5px solid var(--ipas-semester1); font-style: italic; font-size: 1.1rem; color: var(--ipas-dark); border-radius: 0 15px 15px 0; }
+        
+        .custom-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 1rem; box-shadow: 0 0 20px rgba(0, 0, 0, 0.05); border-radius: 10px; overflow: hidden; }
+        .custom-table th { background-color: var(--ipas-semester1); color: white; font-weight: 600; padding: 12px 15px; text-align: left; }
+        .custom-table td { padding: 12px 15px; border-bottom: 1px solid #dddddd; text-align: justify; }
+        .custom-table tr:nth-child(even) { background-color: #f8f8f8; }
+        .custom-table tr:hover { background-color: var(--ipas-light); }
+        
+        .semester-table { width: 100%; border-collapse: collapse; margin: 2rem 0; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .semester-table th { padding: 15px 20px; font-size: 1.2rem; color: white; }
+        .semester-table th:first-child { background-color: var(--ipas-semester1); }
+        .semester-table th:last-child { background-color: var(--ipas-semester2); }
+        .semester-table td { padding: 15px 20px; vertical-align: top; border: 1px solid #e0e0e0; }
+        .semester-table .semester-ganjil { background-color: #ebf5fb; }
+        .semester-table .semester-genap { background-color: #fef5e7; }
+        .semester-table ul { margin: 0; padding-left: 20px; }
+        .semester-table li { margin-bottom: 8px; }
+        .semester-table .kegiatan-utama { font-weight: 700; color: var(--ipas-dark); display: block; margin-bottom: 10px; font-size: 1.1rem; }
+        
+        .note-box { background: var(--ipas-light); border-left: 5px solid var(--ipas-semester1); padding: 1.5rem; margin: 1.5rem 0; border-radius: 10px; font-style: italic; }
+        
+        .level-list { list-style-type: none; padding-left: 1rem; }
+        .level-list li { margin-bottom: 0.5rem; position: relative; padding-left: 1.5rem; }
+        .level-list li:before { content: "→"; color: var(--ipas-semester1); font-weight: bold; position: absolute; left: 0; }
+        
+        .bab-navigation { display: flex; gap: 1rem; justify-content: space-between; margin-top: 2rem; }
+        .nav-btn { display: inline-flex; align-items: center; gap: 10px; padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; border: none; cursor: pointer; }
+        .nav-btn.primary { background: linear-gradient(135deg, var(--ipas-semester1), var(--ipas-primary)); color: white; box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3); }
+        .nav-btn.primary:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4); }
+        .nav-btn.secondary { background: white; color: var(--ipas-dark); border: 2px solid var(--ipas-light); }
+        .nav-btn.secondary:hover { background: var(--ipas-light); transform: translateX(-5px); }
+        
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
+        @media (max-width: 768px) {
+            .bab-container { padding: 1rem; }
+            .bab-card { padding: 2rem; }
+            .bab-header { flex-direction: column; text-align: center; }
+            .bab-title-wrapper h1 { font-size: 2rem; }
+            .bab-info { justify-content: center; }
+            .bab-navigation { flex-direction: column; }
+            .nav-btn { justify-content: center; }
+            .semester-table, .semester-table tbody, .semester-table tr, .semester-table td { display: block; width: 100%; }
+            .semester-table tr { margin-bottom: 20px; display: block; }
+            .semester-table td { display: block; width: 100%; border: 1px solid #e0e0e0; }
+            .semester-table th { display: block; width: 100%; text-align: center; }
+        }
+        
+        @media (max-width: 480px) {
+            .bab-card { padding: 1.5rem; }
+            .bab-title-wrapper h1 { font-size: 1.8rem; }
+            .bab-icon { width: 60px; height: 60px; font-size: 2rem; }
+            .info-item { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="../../assets/images/logo.png" alt="Logo Sekolah">
+                    <h1>TEMBOK BELAJAR - PROJEK IPAS</h1>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="../../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="../index-ipas.html" class="nav-link"><i class="fas fa-flask"></i> Beranda IPAS</a></li>
+                    <li><a href="../aktivitas-pembelajaran/index-aktifitas-ipas.html" class="nav-link"><i class="fas fa-tasks"></i> Daftar Aktivitas</a></li>
+                    <li><a href="index-materi-ipas.html" class="nav-link active"><i class="fas fa-book-open"></i> Daftar Materi</a></li>
+                    <li><a href="../penilaian/index-penilaian-ipas.html" class="nav-link"><i class="fas fa-chart-line"></i> Penilaian</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="bab-container">
+        <div class="bab-card">
+            <div class="bab-header">
+                <div class="bab-icon"><i class="fas fa-flask"></i></div>
+                <div class="bab-title-wrapper">
+                    <h1>Bab 1: Pengenalan Projek IPAS</h1>
+                    <div class="bab-subtitle"><i class="fas fa-circle"></i> <span>Semester Ganjil - Kelas X</span></div>
+                </div>
+            </div>
+
+            <div class="bab-description">
+                <h2>A. Mengenal Ilmu Pengetahuan</h2>
+                <p>Pernahkah kalian bertanya-tanya mengapa langit berwarna biru? Mengapa ada siang dan malam? Mengapa manusia bisa hidup berdampingan meskipun berbeda-beda? Pertanyaan-pertanyaan seperti inilah yang menjadi awal dari lahirnya ilmu pengetahuan.</p>
+                
+                <p>Ilmu berasal dari bahasa Latin <em>scientia</em> yang berarti pengetahuan. Namun, ilmu bukan sekadar kumpulan pengetahuan biasa. Ilmu adalah pengetahuan yang diperoleh melalui proses pembelajaran dan pembuktian yang sistematis. Ia melingkupi kebenaran umum dari hukum-hukum alam yang terjadi, didapatkan, dan dibuktikan melalui metode ilmiah.</p>
+                
+                <p>Bayangkan jika nenek moyang kita tidak pernah bertanya dan mencari tahu, mungkin kita tidak akan pernah tahu bahwa bumi itu bulat, bahwa ada gravitasi yang membuat kita tidak melayang, atau bahwa tumbuhan menghasilkan oksigen yang kita hirup. Rasa ingin tahu inilah yang mendorong manusia untuk terus belajar dan mengembangkan ilmu pengetahuan.</p>
+                
+                <p>Ilmu tersusun secara sistematis, artinya ia memiliki struktur dan urutan yang logis. Ia dibangun dengan menggunakan kekuatan pemikiran dan dapat ditelaah secara kritis oleh setiap orang yang ingin mengetahuinya. Tidak ada kebenaran mutlak dalam ilmu karena ilmu selalu terbuka untuk dikaji ulang, diuji kembali, dan disempurnakan seiring dengan ditemukannya bukti-bukti baru.</p>
+
+                <h2>B. Memahami IPAS: Jembatan Antara Alam dan Manusia</h2>
+                <p>IPAS adalah singkatan dari Ilmu Pengetahuan Alam dan Sosial. Tapi apa sebenarnya yang dimaksud dengan IPAS? Mengapa dua bidang ilmu yang tampak berbeda ini harus digabungkan?</p>
+                
+                <p>Coba kita renungkan sejenak. Ketika kita berbicara tentang banjir yang melanda sebuah kota, apakah itu masalah alam atau masalah sosial? Tentu saja keduanya. Banjir bisa terjadi karena faktor alam seperti curah hujan tinggi (IPA), tetapi juga bisa terjadi karena ulah manusia seperti membuang sampah sembarangan atau membangun pemukiman di daerah resapan air (IPS). Untuk menyelesaikan masalah banjir, kita tidak bisa hanya melihat dari satu sisi saja. Kita perlu memahami siklus hidrologi sekaligus perilaku masyarakat.</p>
+                
+                <p>Projek IPAS hadir sebagai integrasi antara Ilmu Pengetahuan Alam (IPA) dan Ilmu Pengetahuan Sosial (IPS). Mengapa keduanya harus terintegrasi? Karena permasalahan yang melibatkan aspek manusia dengan manusia lainnya serta manusia dengan alam terjadi akibat kurangnya pemahaman akan sains.</p>
+                
+                <p>Sebagai manusia, kita adalah makhluk sosial yang tidak bisa hidup sendiri. Kita membutuhkan orang lain dalam masyarakat. Namun di saat yang sama, kita juga sangat bergantung pada alam. Udara yang kita hirup, air yang kita minum, makanan yang kita konsumsi, semua berasal dari alam. Ketika kita merusak alam, sejatinya kita sedang merusak kehidupan kita sendiri.</p>
+                
+                <p>Integrasi IPA dan IPS dalam Projek IPAS menjadi kunci keberhasilan dalam proses pembelajaran. Sains hadir bukan hanya sebagai hafalan rumus atau teori, tetapi sebagai alat untuk memecahkan permasalahan yang berkaitan dengan fenomena alam dan sosial di sekitar kita secara ilmiah. Dengan memahami keduanya, kita dapat melihat masalah secara utuh dan menemukan solusi yang lebih baik.</p>
+
+                <h2>C. Apa yang Ingin Kita Capai dalam Projek IPAS?</h2>
+                <p>Setiap perjalanan pasti memiliki tujuan. Demikian pula dengan pembelajaran Projek IPAS. Mata pelajaran ini dirancang dengan tujuan mulia untuk membekali kalian dengan kemampuan yang tidak hanya berguna di sekolah, tetapi juga sepanjang kehidupan.</p>
+                
+                <p><strong>Pertama</strong>, Projek IPAS bertujuan memadukan pola pikir, perilaku, dan membangun karakter agar kalian menjadi pribadi yang peduli dan bertanggung jawab. Peduli terhadap diri sendiri, peduli terhadap masyarakat, peduli terhadap alam semesta, serta peduli terhadap berbagai permasalahan yang ada di sekitar. Karakter inilah yang akan membentuk kalian menjadi manusia yang berakhlak mulia dan bermanfaat bagi sesama.</p>
+                
+                <p><strong>Kedua</strong>, kalian akan belajar menganalisis manfaat potensial dan risiko dari penggunaan sumber daya alam. Indonesia adalah negeri yang kaya akan sumber daya alam. Namun kekayaan ini bisa menjadi berkah sekaligus bencana jika tidak dikelola dengan bijak. Melalui Projek IPAS, kalian akan diajak berpikir kritis: apa manfaat yang bisa kita peroleh dari sumber daya alam? Apa risiko yang mungkin timbul? Bagaimana cara mengelola sumber daya alam agar berkelanjutan?</p>
+                
+                <p><strong>Ketiga</strong>, kalian akan menyusun pengembangan alternatif keputusan yang mendasar dengan menggunakan sains serta teknologi. Dalam kehidupan, kita sering dihadapkan pada berbagai pilihan. Mana yang harus kita pilih? Mana yang lebih baik? Dengan pendekatan ilmiah, kita dapat mengambil keputusan yang lebih rasional dan dapat dipertanggungjawabkan.</p>
+                
+                <p><strong>Keempat</strong>, Projek IPAS melatih kalian untuk menemukan solusi dari masalah yang dihadapi melalui sains, baik masalah personal maupun sosial. Setiap masalah pasti ada solusinya. Dan sains menawarkan cara-cara sistematis untuk menemukan solusi tersebut.</p>
+                
+                <p><strong>Kelima</strong>, yang tidak kalah penting, kalian akan belajar merefleksikan pengambilan keputusan secara ilmiah agar dapat hidup lebih bijak dan lebih baik. Refleksi adalah proses melihat ke belakang untuk melangkah lebih baik ke depan. Dengan membiasakan diri merefleksikan setiap keputusan, kalian akan tumbuh menjadi pribadi yang bijaksana.</p>
+
+                <h2>D. Karakteristik Khas Projek IPAS</h2>
+                <p>Setiap mata pelajaran memiliki ciri khasnya masing-masing. Apa yang membuat Projek IPAS berbeda dan istimewa?</p>
+
+                <h3>1. Objek Kajian yang Unik</h3>
+                <p>Projek IPAS memiliki objek kajian yang sangat dekat dengan kehidupan sehari-hari, yaitu benda konkret dan non-konkret yang terdapat di alam.</p>
+                
+                <p>Benda konkret adalah benda-benda yang dapat dilihat, diraba, dan diamati secara langsung. Misalnya batu, air, tumbuhan, hewan, atau manusia itu sendiri. Sedangkan benda non-konkret adalah sesuatu yang tidak dapat diraba tetapi keberadaannya dapat dirasakan atau diamati dampaknya. Misalnya energi, gaya gravitasi, interaksi sosial, atau nilai-nilai budaya.</p>
+                
+                <p>Yang menarik, semua objek kajian ini dikembangkan berdasarkan pengalaman empirik, yaitu pengalaman nyata yang dirasakan oleh setiap orang. Kalian tidak perlu membayangkan hal-hal abstrak yang jauh dari keseharian. Sebaliknya, kalian akan belajar dari apa yang kalian lihat, rasakan, dan alami setiap hari. Objek kajian tersebut dipelajari dengan langkah-langkah sistematis menggunakan cara berpikir yang logis dan ilmiah.</p>
+
+                <h3>2. Belajar Melalui Proyek Nyata</h3>
+                <p>Pembelajaran Projek IPAS dikemas dalam bentuk pembelajaran berbasis projek (project-based learning). Apa artinya? Artinya, kalian tidak hanya duduk diam mendengarkan ceramah guru, menghafal teori, lalu mengerjakan ujian. Sebaliknya, kalian akan terlibat aktif dalam proyek-proyek nyata yang menantang.</p>
+                
+                <p>Project-Based Learning adalah pendekatan pengajaran yang dibangun di atas:</p>
+                <ul>
+                    <li>Kegiatan pembelajaran dan tugas nyata yang relevan dengan kehidupan</li>
+                    <li>Tantangan yang terkait dengan kehidupan sehari-hari</li>
+                    <li>Pemecahan masalah secara berkelompok, karena tidak semua masalah bisa diselesaikan sendirian</li>
+                </ul>
+                
+                <p>Setiap projek dilaksanakan untuk mencapai semua kompetensi dalam elemen mata pelajaran yang dikontekskan dengan karakteristik masing-masing bidang keahlian. Jadi, apa pun bidang keahlian yang kalian tekuni di SMK, Projek IPAS akan selalu relevan dan bermanfaat.</p>
+
+                <h3>3. Tiga Elemen Utama</h3>
+                <p>Dalam perjalanan mempelajari Projek IPAS, kalian akan mengembangkan tiga kemampuan utama atau yang disebut dengan elemen mata pelajaran:</p>
+                
+                <h4>Elemen Pertama: Menjelaskan Fenomena secara Ilmiah</h4>
+                <p>Kemampuan ini meliputi:</p>
+                <ul>
+                    <li>Menjelaskan pengetahuan ilmiah tentang berbagai fenomena</li>
+                    <li>Membuat prediksi sederhana disertai pembuktian terhadap fenomena-fenomena yang terjadi di lingkungan sekitar</li>
+                    <li>Mengaitkan fenomena tersebut dengan keterampilan teknis pada bidang keahlian masing-masing</li>
+                </ul>
+                <p>Misalnya, ketika kalian melihat tanah longsor di daerah pegunungan, kalian tidak hanya bisa menjelaskan penyebab fisiknya (curah hujan tinggi, kemiringan lereng), tetapi juga faktor sosialnya (alih fungsi lahan, deforestasi) dan mengaitkannya dengan bidang keahlian kalian.</p>
+                
+                <h4>Elemen Kedua: Menyusun Penyelidikan Ilmiah</h4>
+                <p>Kemampuan ini meliputi:</p>
+                <ul>
+                    <li>Menyusun rancangan percobaan dengan mengikuti prosedur penyelidikan ilmiah</li>
+                    <li>Melaksanakan percobaan sesuai rancangan</li>
+                    <li>Memeriksa kekurangan atau kesalahan pada rancangan percobaan</li>
+                </ul>
+                <p>Ini adalah keterampilan yang sangat berharga. Dalam kehidupan, kita sering perlu melakukan "percobaan" untuk menemukan solusi terbaik. Dengan menguasai metode ilmiah, kalian akan terbiasa bekerja secara sistematis dan teliti.</p>
+                
+                <h4>Elemen Ketiga: Merefleksikan Data dan Bukti secara Ilmiah</h4>
+                <p>Kemampuan ini meliputi:</p>
+                <ul>
+                    <li>Membuktikan dengan prinsip dasar melalui data dan bukti dari berbagai sumber</li>
+                    <li>Membangun argumen berdasarkan prinsip dasar dan bukti ilmiah</li>
+                    <li>Mempertahankan argumen dengan penjelasan ilmiah yang logis</li>
+                    <li>Mengomunikasikan proses dan hasil</li>
+                    <li>Melakukan refleksi diri terhadap tahapan kegiatan</li>
+                </ul>
+                <p>Di era informasi seperti sekarang, kemampuan memilah data, membangun argumen, dan mengomunikasikannya dengan baik adalah keterampilan yang sangat dibutuhkan.</p>
+
+                <h2>E. Enam Aspek yang Akan Kalian Pelajari dalam Projek IPAS</h2>
+                <p>Selama Fase E, kalian akan menjelajahi enam aspek utama dalam Projek IPAS. Setiap aspek ibarat jendela yang membuka cara pandang baru terhadap dunia.</p>
+
+                <h3>1. Makhluk Hidup dan Lingkungannya</h3>
+                <p>Bayangkan sebuah kolam kecil di belakang rumahmu. Di dalamnya ada ikan yang berenang, tumbuhan air yang hijau, air yang jernih, dan mungkin beberapa serangga. Semuanya hidup bersama, saling bergantung satu sama lain. Ikan membutuhkan oksigen yang dihasilkan tumbuhan, tumbuhan membutuhkan kotoran ikan sebagai pupuk. Inilah gambaran sederhana dari ekosistem.</p>
+                
+                <p>Aspek Makhluk Hidup dan Lingkungannya mempelajari keterkaitan antara makhluk hidup (manusia, tumbuhan, hewan) yang saling bergantung kepada lingkungannya (tanah, air, energi). Hubungan ini dapat digambarkan sebagai tingkatan yang berjenjang:</p>
+                
+                <ul class="level-list">
+                    <li><strong>Individu</strong> → seekor ikan, sebatang pohon, seorang manusia</li>
+                    <li><strong>Populasi</strong> → kumpulan ikan sejenis di kolam</li>
+                    <li><strong>Komunitas</strong> → semua makhluk hidup di kolam (ikan, tumbuhan, serangga)</li>
+                    <li><strong>Ekosistem</strong> → komunitas bersama lingkungan fisiknya (air, tanah, batu)</li>
+                    <li><strong>Biosfer</strong> → seluruh ekosistem di bumi</li>
+                </ul>
+                
+                <p>Aspek ini juga mencakup:</p>
+                <ul>
+                    <li>Keragaman hayati yang menjadi kekayaan Indonesia</li>
+                    <li>Keseimbangan alam yang harus kita jaga</li>
+                    <li>Perubahan iklim, cuaca, dan musim yang semakin tidak menentu</li>
+                    <li>Struktur bumi yang menakjubkan, mulai dari lapisan batuan (litosfer), lapisan perairan (hidrosfer), hingga lapisan udara (atmosfer)</li>
+                </ul>
+
+                <h3>2. Zat dan Perubahannya</h3>
+                <p>Pernahkah kalian memperhatikan es batu yang mencair? Atau gula yang larut dalam air? Atau kertas yang terbakar menjadi abu? Itu semua adalah contoh perubahan zat.</p>
+                
+                <p>Aspek Zat dan Perubahannya mempelajari:</p>
+                <ul>
+                    <li>Jenis dan sifat zat yang dibedakan secara kimia dan fisika</li>
+                    <li>Perubahan zat secara fisika (perubahan bentuk tanpa mengubah jenis zat, seperti es mencair), kimia (perubahan yang menghasilkan zat baru, seperti kayu terbakar), dan biologi (perubahan yang melibatkan makhluk hidup, seperti fermentasi)</li>
+                    <li>Unsur, senyawa, dan campuran yang membentuk segala sesuatu di alam semesta</li>
+                </ul>
+
+                <h3>3. Energi dan Perubahannya</h3>
+                <p>Apa yang membuat kendaraan bisa bergerak? Apa yang membuat lampu bisa menyala? Apa yang membuat tubuh kita bisa beraktivitas? Jawabannya adalah energi.</p>
+                
+                <p>Aspek Energi dan Perubahannya mempelajari:</p>
+                <ul>
+                    <li>Dasar-dasar besaran dan pengukuran yang menjadi fondasi ilmu fisika</li>
+                    <li>Energi sebagai segala sesuatu yang mampu membuat benda melakukan usaha</li>
+                    <li>Perubahan energi dari satu bentuk ke bentuk lain: kimia, listrik, panas, dan mekanik</li>
+                    <li>Energi terbarukan yang ramah lingkungan dan berkelanjutan</li>
+                </ul>
+
+                <h3>4. Keruangan dan Konektivitas Antarruang dan Antarwaktu</h3>
+                <p>Indonesia adalah negara kepulauan terbesar di dunia. Ribuan pulau membentang dari Sabang sampai Merauke. Bagaimana kehidupan di setiap pulau? Apa yang membedakan masyarakat pesisir dengan masyarakat pegunungan? Bagaimana peristiwa di suatu tempat bisa memengaruhi tempat lain?</p>
+                
+                <p>Aspek Keruangan dan Konektivitas Antarruang dan Antarwaktu mempelajari pemahaman terhadap kondisi sosial dan lingkungan alam dalam berbagai konteks: lokal, regional, nasional, dan global.</p>
+
+                <h3>5. Interaksi, Komunikasi, Sosialisasi, Institusi Sosial, dan Dinamika Sosial</h3>
+                <p>Siapa kita sebenarnya? Apa yang membentuk identitas kita? Bagaimana kita bisa hidup berdampingan dengan orang yang berbeda suku, agama, dan budaya?</p>
+                
+                <p>Aspek Interaksi, Komunikasi, Sosialisasi, Institusi Sosial, dan Dinamika Sosial mempelajari:</p>
+                <ul>
+                    <li>Pembentukan identitas diri: bagaimana kita menjadi diri kita sekarang</li>
+                    <li>Refleksi keberadaan diri di tengah keberagaman dan kelompok yang berbeda-beda</li>
+                    <li>Peran sebagai warga Indonesia dan bagian dari warga dunia</li>
+                    <li>Interaksi dan institusi sosial: keluarga, sekolah, masyarakat, pemerintah</li>
+                    <li>Dinamika dan problematika sosial: kemiskinan, kesenjangan, konflik</li>
+                    <li>Pembangunan berkelanjutan untuk kemaslahatan manusia dan lingkungan</li>
+                </ul>
+                
+                <p>Manusia adalah makhluk sosial. Kita tidak bisa hidup sendiri. Sejak lahir, kita sudah berinteraksi dengan orang lain: orang tua, saudara, tetangga, teman sekolah. Melalui interaksi ini, kita belajar tentang nilai-nilai, norma, dan aturan yang berlaku di masyarakat. Interaksi sosial yang baik akan menciptakan hubungan yang harmonis dalam masyarakat.</p>
+
+                <h3>6. Perilaku Ekonomi dan Kesejahteraan</h3>
+                <p>Mengapa ada barang yang mahal dan murah? Mengapa ada orang kaya dan miskin? Bagaimana cara mengelola uang dengan bijak?</p>
+                
+                <p>Aspek Perilaku Ekonomi dan Kesejahteraan mempelajari:</p>
+                <ul>
+                    <li>Peran diri, masyarakat, serta negara dalam memenuhi kebutuhan bersama</li>
+                    <li>Faktor-faktor penyebab kelangkaan</li>
+                    <li>Permintaan, penawaran, harga pasar, dan bentuk pasar</li>
+                    <li>Inflasi dan peran lembaga keuangan</li>
+                    <li>Pengelolaan keuangan keluarga, perusahaan, dan negara</li>
+                </ul>
+
+                <h2>F. Gambaran Kegiatan Projek IPAS Selama 1 Tahun (2 Semester)</h2>
+                <p>Setelah memahami apa saja yang akan dipelajari dalam Projek IPAS, penting bagi kalian untuk mengetahui bagaimana alur kegiatan pembelajaran selama satu tahun ke depan.</p>
+
+                <table class="semester-table">
+                    <thead>
+                        <tr>
+                            <th style="background-color: var(--ipas-semester1);">Semester Ganjil</th>
+                            <th style="background-color: var(--ipas-semester2);">Semester Genap</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="semester-ganjil">
+                                <span class="kegiatan-utama"><i class="fas fa-book" style="color: var(--ipas-semester1); margin-right: 8px;"></i>Mempelajari 6 Aspek IPAS</span>
+                                <p><strong>Contoh Kegiatan:</strong></p>
+                                <ul>
+                                    <li>Membaca materi</li>
+                                    <li>Diskusi kelompok</li>
+                                    <li>Pembuktian Ilmiah</li>
+                                </ul>
+                            </td>
+                            <td class="semester-genap">
+                                <span class="kegiatan-utama"><i class="fas fa-project-diagram" style="color: var(--ipas-semester2); margin-right: 8px;"></i>Praktik Proyek Nyata</span>
+                                <p><strong>Tahapan:</strong></p>
+                                <ul>
+                                    <li>Identifikasi masalah</li>
+                                    <li>Menentukan solusi</li>
+                                    <li>Perancangan proyek</li>
+                                    <li>Pelaksanaan proyek</li>
+                                    <li>Pengolahan data</li>
+                                    <li>Pelaporan dan presentasi</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="note-box">
+                    <i class="fas fa-lightbulb" style="color: var(--ipas-semester1); margin-right: 10px;"></i>
+                    <strong>Catatan Penting:</strong> Pembelajaran di semester ganjil dan genap saling berkaitan. Pengetahuan di semester ganjil akan menjadi bekal untuk proyek di semester genap.
+                </div>
+
+                <h2>G. Menjadi Manusia yang Lebih Baik melalui IPAS</h2>
+                <p>Apa yang akan kalian dapatkan setelah mempelajari Projek IPAS? Lebih dari sekadar nilai rapor atau ijazah, Projek IPAS akan membekali kalian dengan bekal berharga untuk kehidupan.</p>
+                
+                <p>Penerapan mata pelajaran Projek IPAS dengan pendekatan pembelajaran mendalam dapat membekali kalian dengan:</p>
+                <ul>
+                    <li><strong>Keimanan dan ketakwaan</strong> terhadap Tuhan Yang Maha Esa</li>
+                    <li><strong>Kewargaan yang baik</strong> sebagai warga negara</li>
+                    <li><strong>Penalaran kritis</strong> dalam berpikir dan menganalisis</li>
+                    <li><strong>Kreativitas</strong> dalam menemukan solusi</li>
+                    <li><strong>Kolaborasi</strong> dalam bekerja sama dengan orang lain</li>
+                    <li><strong>Kemandirian</strong> dalam belajar dan bekerja</li>
+                    <li><strong>Komunikasi</strong> yang efektif</li>
+                </ul>
+
+                <h2>Rangkuman Perjalanan</h2>
+                <p>Setelah mempelajari Bab 1 ini, kalian telah memahami fondasi dari Projek IPAS. Mari kita rangkum apa yang telah kita pelajari:</p>
+                
+                <ul>
+                    <li><strong>Ilmu</strong> adalah pengetahuan sistematis yang diperoleh melalui pembelajaran, pembuktian, dan metode ilmiah.</li>
+                    <li><strong>IPAS</strong> adalah integrasi antara IPA dan IPS yang hadir untuk memecahkan masalah nyata.</li>
+                    <li><strong>Tujuan Projek IPAS</strong> adalah membekali kalian dengan kemampuan memadukan pola pikir dan mengambil keputusan secara ilmiah.</li>
+                    <li><strong>Enam Aspek Projek IPAS</strong>: Makhluk Hidup, Zat, Energi, Keruangan, Interaksi Sosial, dan Perilaku Ekonomi.</li>
+                </ul>
+
+                <h2>Penutup</h2>
+                <p>Selamat! Kalian telah menyelesaikan Bab 1: Pengenalan IPAS. Perjalanan masih panjang. Masih ada enam bab lagi di semester ganjil yang akan membawa kalian menjelajahi keajaiban alam dan keragaman sosial.</p>
+
+                <blockquote>
+                    "Alam adalah buku terbesar yang pernah ditulis, dan ia terbuka untuk semua orang. Sosial adalah lukisan terindah yang terus dilukis, dan kita semua adalah bagian dari kanvasnya. IPAS mengajarkan kita membaca keduanya."
+                </blockquote>
+            </div>
+
+            <div class="bab-navigation">
+                <a href="index-materi-ipas.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i> Kembali ke Daftar Materi
+                </a>
+                <a href="s1-bab-2.html" class="nav-btn primary">
+                    Lanjut ke Bab 2 <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // ===== HAMBURGER MENU - SAMA PERSIS DENGAN REFERENSI =====
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

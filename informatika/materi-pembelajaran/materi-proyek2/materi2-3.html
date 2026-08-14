@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi 2.3: Produksi Konten Digital - Informatika Kelas X</title>
+    <link rel="stylesheet" href="../../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --informatika-primary: #3498db;
+            --informatika-secondary: #2980b9;
+            --informatika-light: #ebf5fb;
+            --informatika-dark: #21618c;
+            --informatika-semester1: #3498db;
+            --success: #27ae60;
+            --warning: #e74c3c;
+            --info: #f39c12;
+            --purple: #9b59b6;
+            --teks: #3498db;
+            --gambar: #27ae60;
+            --video: #e74c3c;
+            --audio: #f39c12;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+        
+        .materi-container {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+        
+        .materi-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 30px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(52, 152, 219, 0.15);
+            border-left: 8px solid var(--informatika-semester1);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        .materi-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(52, 152, 219, 0.1) 0%, transparent 70%);
+            z-index: 0;
+        }
+        
+        .materi-card > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .materi-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 3px solid var(--informatika-light);
+            flex-wrap: wrap;
+        }
+        
+        .materi-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--video), var(--gambar));
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+        }
+        
+        .materi-title-wrapper {
+            flex: 1;
+        }
+        
+        .materi-title-wrapper h1 {
+            color: var(--informatika-dark);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .materi-subtitle {
+            color: var(--informatika-primary);
+            font-size: 1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .materi-badge {
+            background: var(--informatika-light);
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: var(--informatika-dark);
+        }
+        
+        .materi-badge i {
+            margin-right: 4px;
+        }
+        
+        .tujuan-card {
+            background: linear-gradient(135deg, var(--informatika-light), white);
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(52, 152, 219, 0.2);
+        }
+        
+        .tujuan-card h3 {
+            color: var(--informatika-dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .tujuan-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 0.8rem;
+        }
+        
+        .tujuan-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            padding: 0.8rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .tujuan-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .tujuan-item i {
+            color: var(--success);
+        }
+        
+        .materi-content {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid rgba(52, 152, 219, 0.1);
+        }
+        
+        .materi-content h2 {
+            color: var(--informatika-dark);
+            font-size: 1.8rem;
+            margin: 1.5rem 0 1rem 0;
+            border-bottom: 2px solid var(--informatika-light);
+            padding-bottom: 0.5rem;
+        }
+        
+        .materi-content h2:first-of-type {
+            margin-top: 0;
+        }
+        
+        .materi-content h3 {
+            color: var(--informatika-dark);
+            font-size: 1.3rem;
+            margin: 1.2rem 0 0.8rem 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .materi-content h3 i {
+            color: var(--informatika-primary);
+        }
+        
+        .materi-content p {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        
+        .materi-content ul, .materi-content ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .materi-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .quote-box {
+            margin: 1.5rem 0;
+            padding: 1rem 1.5rem;
+            background: var(--informatika-light);
+            border-left: 4px solid var(--informatika-primary);
+            border-radius: 0 12px 12px 0;
+        }
+        
+        .note-box {
+            background: #fff3e0;
+            border-left: 4px solid var(--info);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid var(--informatika-primary);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .warning-box {
+            background: #fee2e2;
+            border-left: 4px solid var(--warning);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .success-box {
+            background: #d4edda;
+            border-left: 4px solid var(--success);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        /* Jenis Konten Grid */
+        .jenis-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .jenis-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #e9ecef;
+            text-align: center;
+        }
+        
+        .jenis-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .jenis-card.active {
+            border: 2px solid;
+        }
+        
+        .jenis-card.teks.active { border-color: var(--teks); background: #ebf5fb; }
+        .jenis-card.gambar.active { border-color: var(--gambar); background: #d4edda; }
+        .jenis-card.video.active { border-color: var(--video); background: #fee2e2; }
+        .jenis-card.audio.active { border-color: var(--audio); background: #fff3e0; }
+        
+        .jenis-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .jenis-title {
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+        }
+        
+        .jenis-desc {
+            font-size: 0.8rem;
+            color: #6c757d;
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        /* Aplikasi Grid */
+        .aplikasi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .aplikasi-card {
+            background: white;
+            border-radius: 12px;
+            padding: 0.8rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #e9ecef;
+            text-align: center;
+        }
+        
+        .aplikasi-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .aplikasi-card.active {
+            border: 2px solid var(--success);
+            background: #d4edda;
+        }
+        
+        .aplikasi-name {
+            font-weight: bold;
+        }
+        
+        .aplikasi-platform {
+            font-size: 0.7rem;
+            color: #6c757d;
+        }
+        
+        /* Langkah Produksi */
+        .langkah-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .langkah-card {
+            text-align: center;
+            padding: 1rem;
+            background: white;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #e9ecef;
+        }
+        
+        .langkah-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .langkah-card.active {
+            border: 2px solid var(--info);
+            background: #fff3e0;
+        }
+        
+        .langkah-number {
+            width: 35px;
+            height: 35px;
+            background: var(--info);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.5rem;
+            font-weight: bold;
+        }
+        
+        .langkah-title {
+            font-weight: bold;
+        }
+        
+        /* Tips Grid */
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .tips-card {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: white;
+            border-radius: 12px;
+            padding: 0.8rem;
+            transition: all 0.3s ease;
+            border: 1px solid #e9ecef;
+        }
+        
+        .tips-card:hover {
+            transform: translateX(5px);
+            background: var(--informatika-light);
+        }
+        
+        .tips-number {
+            width: 30px;
+            height: 30px;
+            background: var(--success);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        /* Kolaborasi Grid */
+        .kolaborasi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .kolaborasi-card {
+            background: white;
+            border-radius: 12px;
+            padding: 0.8rem;
+            transition: all 0.3s ease;
+            border: 1px solid #e9ecef;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .kolaborasi-card:hover {
+            transform: translateX(5px);
+            background: var(--informatika-light);
+        }
+        
+        .kolaborasi-icon {
+            font-size: 1.5rem;
+        }
+        
+        /* Etika */
+        .etika-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .etika-card {
+            background: white;
+            border-radius: 12px;
+            padding: 0.8rem;
+            transition: all 0.3s ease;
+            border: 1px solid #e9ecef;
+            text-align: center;
+        }
+        
+        .etika-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .demo-generator {
+            background: #f8f9fa;
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .demo-select {
+            width: 100%;
+            padding: 0.8rem;
+            margin: 0.5rem 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        
+        .demo-btn {
+            background: var(--purple);
+            color: white;
+            border: none;
+            padding: 0.8rem;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 0.5rem;
+        }
+        
+        .demo-btn:hover {
+            background: #8e44ad;
+        }
+        
+        .demo-result {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            border-left: 4px solid var(--purple);
+            display: none;
+        }
+        
+        .materi-navigation {
+            display: flex;
+            gap: 1rem;
+            justify-content: space-between;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn.primary {
+            background: linear-gradient(135deg, var(--informatika-primary), var(--informatika-secondary));
+            color: white;
+        }
+        
+        .nav-btn.primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .nav-btn.secondary {
+            background: white;
+            color: var(--informatika-dark);
+            border: 2px solid var(--informatika-light);
+        }
+        
+        .nav-btn.secondary:hover {
+            background: var(--informatika-light);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .materi-container { padding: 1rem; }
+            .materi-card { padding: 1.5rem; }
+            .materi-header { flex-direction: column; text-align: center; }
+            .tips-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="../../../assets/images/logo.png" alt="Logo Sekolah">
+                    <h1>INFORMATIKA - MATERI PEMBELAJARAN</h1>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="../../../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="../../index-informatika.html" class="nav-link"><i class="fas fa-laptop-code"></i> Beranda Informatika</a></li>
+                    <li><a href="../../aktivitas-pembelajaran/index-aktivitas-informatika.html" class="nav-link"><i class="fas fa-tasks"></i> Daftar Aktivitas</a></li>
+                    <li><a href="../index-materi-informatika.html" class="nav-link active"><i class="fas fa-book-open"></i> Daftar Materi</a></li>
+                    <li><a href="../../penilaian/index-penilaian-informatika.html" class="nav-link"><i class="fas fa-chart-line"></i> Penilaian</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="materi-container">
+        <div class="materi-card">
+            <!-- Header -->
+            <div class="materi-header">
+                <div class="materi-icon">
+                    <i class="fas fa-video"></i>
+                </div>
+                <div class="materi-title-wrapper">
+                    <h1>Produksi Konten Digital</h1>
+                    <div class="materi-subtitle">
+                        <i class="fas fa-circle"></i>
+                        <span>Proyek 2: Digitalisasi Budaya - Pertemuan 3</span>
+                        <span class="materi-badge"><i class="fas fa-clock"></i> 4 JP</span>
+                        <span class="materi-badge"><i class="fas fa-tag"></i> TP 2.6</span>
+                        <span class="materi-badge"><i class="fas fa-globe"></i> Online</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tujuan Pembelajaran -->
+            <div class="tujuan-card">
+                <h3><i class="fas fa-bullseye"></i> 🎯 Tujuan Pembelajaran</h3>
+                <div class="tujuan-list">
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Memahami pengertian dan jenis-jenis konten digital</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Mengenal berbagai platform untuk produksi konten</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Menggunakan aplikasi digital untuk membuat konten (poster, video, infografis)</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Memahami tips membuat konten yang menarik dan efektif</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Berkontribusi secara daring dalam produksi konten</div>
+                </div>
+            </div>
+
+            <!-- Konten Materi -->
+            <div class="materi-content">
+                <h2>A. Apa Itu Konten Digital?</h2>
+                <p><strong>Konten digital</strong> adalah semua bentuk informasi atau materi yang dibuat, didistribusikan, dan dikonsumsi dalam format digital. Konten digital dapat berupa teks, gambar, audio, video, atau kombinasi dari semuanya.</p>
+                
+                <div class="quote-box">
+                    <i class="fas fa-quote-left"></i> <strong>Content Marketing Institute:</strong> "Konten digital adalah aset berharga yang dibuat untuk menarik, melibatkan, dan mempertahankan audiens."
+                </div>
+
+                <div class="info-box">
+                    <i class="fas fa-lightbulb"></i> <strong>Ilustrasi Sederhana:</strong><br>
+                    📝 <strong>Teks</strong> - Artikel, Caption, Blog<br>
+                    🖼️ <strong>Gambar</strong> - Poster, Infografis, Meme, Foto<br>
+                    🎥 <strong>Video</strong> - YouTube, TikTok, Reels, Live Streaming<br>
+                    🎧 <strong>Audio</strong> - Podcast, Musik
+                </div>
+
+                <h2>B. Jenis-Jenis Konten Digital</h2>
+                <p><strong>Klik pada setiap jenis konten</strong> untuk memperjelas tampilan:</p>
+                
+                <div class="jenis-grid" id="jenisGrid">
+                    <div class="jenis-card teks" data-jenis="teks">
+                        <div class="jenis-icon"><i class="fas fa-file-alt"></i></div>
+                        <div class="jenis-title">Konten Teks</div>
+                        <div class="jenis-desc">Artikel, Caption, Thread, E-book. Platform: Website, Blog, Instagram, Twitter.</div>
+                    </div>
+                    <div class="jenis-card gambar" data-jenis="gambar">
+                        <div class="jenis-icon"><i class="fas fa-image"></i></div>
+                        <div class="jenis-title">Konten Gambar</div>
+                        <div class="jenis-desc">Poster, Infografis, Foto, Meme. Aplikasi: Canva, Photoshop, Lightroom.</div>
+                    </div>
+                    <div class="jenis-card video" data-jenis="video">
+                        <div class="jenis-icon"><i class="fas fa-video"></i></div>
+                        <div class="jenis-title">Konten Video</div>
+                        <div class="jenis-desc">Video Pendek (TikTok/Reels), YouTube, Live Streaming, Animasi. Aplikasi: CapCut, Premiere Pro.</div>
+                    </div>
+                    <div class="jenis-card audio" data-jenis="audio">
+                        <div class="jenis-icon"><i class="fas fa-headphones"></i></div>
+                        <div class="jenis-title">Konten Audio</div>
+                        <div class="jenis-desc">Podcast, Musik. Platform: Spotify, Anchor, YouTube Audio Library.</div>
+                    </div>
+                </div>
+
+                <h2>C. Platform &amp; Aplikasi Produksi Konten</h2>
+                
+                <h3>Aplikasi Desain Grafis</h3>
+                <div class="aplikasi-grid" id="aplikasiGrid">
+                    <div class="aplikasi-card" data-aplikasi="canva">
+                        <div class="aplikasi-name">🎨 Canva</div>
+                        <div class="aplikasi-platform">Web, Android, iOS | Gratis &amp; Berbayar</div>
+                    </div>
+                    <div class="aplikasi-card" data-aplikasi="photoshop">
+                        <div class="aplikasi-name">📸 Adobe Photoshop</div>
+                        <div class="aplikasi-platform">Windows, Mac | Berbayar</div>
+                    </div>
+                    <div class="aplikasi-card" data-aplikasi="figma">
+                        <div class="aplikasi-name">🎯 Figma</div>
+                        <div class="aplikasi-platform">Web, Windows, Mac | Gratis &amp; Berbayar</div>
+                    </div>
+                </div>
+
+                <h3>Aplikasi Edit Video</h3>
+                <div class="aplikasi-grid">
+                    <div class="aplikasi-card" data-aplikasi="capcut">
+                        <div class="aplikasi-name">✂️ CapCut</div>
+                        <div class="aplikasi-platform">Android, iOS, Windows | Gratis</div>
+                    </div>
+                    <div class="aplikasi-card" data-aplikasi="inshot">
+                        <div class="aplikasi-name">📱 InShot</div>
+                        <div class="aplikasi-platform">Android, iOS | Gratis &amp; Berbayar</div>
+                    </div>
+                    <div class="aplikasi-card" data-aplikasi="premiere">
+                        <div class="aplikasi-name">🎬 Adobe Premiere Pro</div>
+                        <div class="aplikasi-platform">Windows, Mac | Berbayar</div>
+                    </div>
+                </div>
+
+                <h2>D. Langkah-Langkah Produksi Konten</h2>
+                <p><strong>Klik pada setiap langkah</strong> untuk memperjelas tampilan:</p>
+                
+                <div class="langkah-grid" id="langkahGrid">
+                    <div class="langkah-card" data-langkah="1">
+                        <div class="langkah-number">1</div>
+                        <div class="langkah-title">Perencanaan</div>
+                        <div class="langkah-desc" style="font-size: 0.75rem;">Tentukan tujuan, kenali audiens, riset topik, tentukan format</div>
+                    </div>
+                    <div class="langkah-card" data-langkah="2">
+                        <div class="langkah-number">2</div>
+                        <div class="langkah-title">Pengumpulan Materi</div>
+                        <div class="langkah-desc" style="font-size: 0.75rem;">Kumpulkan teks, gambar, video, audio dari sumber terpercaya</div>
+                    </div>
+                    <div class="langkah-card" data-langkah="3">
+                        <div class="langkah-number">3</div>
+                        <div class="langkah-title">Produksi</div>
+                        <div class="langkah-desc" style="font-size: 0.75rem;">Desain poster/edit video menggunakan aplikasi</div>
+                    </div>
+                    <div class="langkah-card" data-langkah="4">
+                        <div class="langkah-number">4</div>
+                        <div class="langkah-title">Review &amp; Revisi</div>
+                        <div class="langkah-desc" style="font-size: 0.75rem;">Cek kesesuaian, akurasi, kualitas</div>
+                    </div>
+                    <div class="langkah-card" data-langkah="5">
+                        <div class="langkah-number">5</div>
+                        <div class="langkah-title">Publikasi</div>
+                        <div class="langkah-desc" style="font-size: 0.75rem;">Upload ke platform, tambahkan judul &amp; hashtag</div>
+                    </div>
+                </div>
+
+                <h2>E. Tips Membuat Konten yang Menarik</h2>
+                <div class="tips-grid">
+                    <div class="tips-card"><div class="tips-number">1</div><div><strong>3 Detik Pertama</strong><br>Menentukan apakah orang akan lanjut nonton</div></div>
+                    <div class="tips-card"><div class="tips-number">2</div><div><strong>Pesan Jelas</strong><br>Satu konten, satu pesan utama</div></div>
+                    <div class="tips-card"><div class="tips-number">3</div><div><strong>Visual Menarik</strong><br>Gunakan warna, font, gambar yang eye-catching</div></div>
+                    <div class="tips-card"><div class="tips-number">4</div><div><strong>Judul Menarik</strong><br>Buat orang penasaran untuk klik</div></div>
+                    <div class="tips-card"><div class="tips-number">5</div><div><strong>Call to Action</strong><br>Ajak audiens like, comment, share</div></div>
+                    <div class="tips-card"><div class="tips-number">6</div><div><strong>Gunakan Hashtag</strong><br>Memudahkan konten ditemukan</div></div>
+                </div>
+
+                <h2>F. Kolaborasi Daring</h2>
+                <div class="kolaborasi-grid">
+                    <div class="kolaborasi-card"><div class="kolaborasi-icon">📁</div><div><strong>Google Drive</strong><br>Menyimpan dan berbagi file</div></div>
+                    <div class="kolaborasi-card"><div class="kolaborasi-icon">📝</div><div><strong>Google Docs</strong><br>Menulis naskah bersama</div></div>
+                    <div class="kolaborasi-card"><div class="kolaborasi-icon">📋</div><div><strong>Trello</strong><br>Manajemen tugas tim</div></div>
+                    <div class="kolaborasi-card"><div class="kolaborasi-icon">💬</div><div><strong>WhatsApp/Discord</strong><br>Komunikasi tim</div></div>
+                </div>
+
+                <div class="success-box">
+                    <strong>📌 Pembagian Tugas dalam Tim:</strong><br>
+                    • <strong>Penulis Naskah</strong> - Membuat script, caption<br>
+                    • <strong>Desainer Grafis</strong> - Membuat poster, infografis<br>
+                    • <strong>Videografer</strong> - Mengambil video, foto<br>
+                    • <strong>Editor Video</strong> - Mengedit video<br>
+                    • <strong>Narator/Host</strong> - Muncul di depan kamera<br>
+                    • <strong>Koordinator</strong> - Mengatur jadwal
+                </div>
+
+                <h2>G. Etika dalam Produksi Konten</h2>
+                <div class="etika-grid">
+                    <div class="etika-card"><i class="fas fa-copyright"></i><br><strong>Hak Cipta</strong><br>Gunakan materi bebas hak cipta</div>
+                    <div class="etika-card"><i class="fas fa-link"></i><br><strong>Sumber</strong><br>Cantumkan sumber</div>
+                    <div class="etika-card"><i class="fas fa-check-circle"></i><br><strong>Akurasi</strong><br>Informasi harus benar</div>
+                    <div class="etika-card"><i class="fas fa-heart"></i><br><strong>Sensitivitas</strong><br>Hormati budaya</div>
+                    <div class="etika-card"><i class="fas fa-comment"></i><br><strong>Komentar</strong><br>Balas dengan sopan</div>
+                    <div class="etika-card"><i class="fas fa-ban"></i><br><strong>Kebohongan</strong><br>Jangan clickbait</div>
+                </div>
+
+                <h2>H. Generator Ide Konten Budaya</h2>
+                <div class="demo-generator">
+                    <h3><i class="fas fa-lightbulb"></i> Generator Ide Konten Budaya</h3>
+                    <p>Coba dapatkan ide konten tentang budaya Indonesia:</p>
+                    
+                    <select id="demoBudaya" class="demo-select">
+                        <option value="tari">Tarian Tradisional</option>
+                        <option value="musik">Musik/Alat Musik</option>
+                        <option value="kuliner">Makanan Tradisional</option>
+                        <option value="pakaian">Pakaian Adat</option>
+                        <option value="cerita">Cerita Rakyat</option>
+                    </select>
+                    
+                    <select id="demoFormat" class="demo-select">
+                        <option value="poster">Poster Digital</option>
+                        <option value="video-pendek">Video Pendek (TikTok/Reels)</option>
+                        <option value="infografis">Infografis</option>
+                        <option value="artikel">Artikel/Blog</option>
+                    </select>
+                    
+                    <button class="demo-btn" onclick="generateIdea()">✨ Bikin Ide Konten</button>
+                    
+                    <div id="demoResult" class="demo-result"></div>
+                </div>
+
+                <div class="warning-box" style="margin-top: 1.5rem;">
+                    <i class="fas fa-exclamation-triangle"></i> <strong>Ingat!</strong> Konten yang baik bukan hanya viral, tapi juga memberikan manfaat dan tidak merugikan orang lain!
+                </div>
+
+                <div class="quote-box" style="margin-top: 1.5rem; text-align: center;">
+                    <i class="fas fa-video"></i> Selamat Membuat Konten Budaya Digital! 🎨
+                </div>
+            </div>
+
+            <!-- Navigasi -->
+            <div class="materi-navigation">
+                <a href="materi2-2.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i> Kembali ke Materi 2.2
+                </a>
+                <a href="../index-materi-informatika.html" class="nav-btn primary">
+                    <i class="fas fa-check-circle"></i> Selesai! Kembali ke Daftar Materi
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script src="../../../script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                });
+            }
+            
+            // Jenis Konten Interaktif
+            const jenisCards = document.querySelectorAll('.jenis-card');
+            jenisCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    jenisCards.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            
+            // Aplikasi Interaktif
+            const aplikasiCards = document.querySelectorAll('.aplikasi-card');
+            aplikasiCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    aplikasiCards.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            
+            // Langkah Interaktif
+            const langkahCards = document.querySelectorAll('.langkah-card');
+            langkahCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    langkahCards.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        });
+        
+        // Demo Generator Ide Konten
+        function generateIdea() {
+            const budaya = document.getElementById('demoBudaya').value;
+            const format = document.getElementById('demoFormat').value;
+            
+            const ideDatabase = {
+                tari: {
+                    poster: "Poster Festival Tari Nusantara dengan foto berbagai tarian dari Sabang sampai Merauke",
+                    "video-pendek": "Tutorial gerakan dasar Tari Saman dalam 30 detik dengan musik tradisional",
+                    infografis: "Infografis 10 tarian tradisional Indonesia dan asal daerahnya",
+                    artikel: "Artikel 'Mengenal 5 Tarian Tradisional yang Hampir Punah dan Upaya Pelestariannya'"
+                },
+                musik: {
+                    poster: "Poster konser musik tradisional dengan alat musik dari berbagai daerah",
+                    "video-pendek": "Cara memainkan angklung dalam 60 detik yang mudah diikuti",
+                    infografis: "Infografis alat musik tradisional dari 34 provinsi Indonesia",
+                    artikel: "Artikel 'Mengenal Tangga Nada Gamelan Jawa dan Bali yang Unik'"
+                },
+                kuliner: {
+                    poster: "Poster Festival Kuliner Nusantara dengan 10 makanan ikonik",
+                    "video-pendek": "Resep cepat rendang dalam 1 menit dengan bumbu sederhana",
+                    infografis: "Infografis 10 makanan terpedas di Indonesia dan tingkat kepedasannya",
+                    artikel: "Artikel 'Filosofi di Balik 5 Makanan Tradisional Indonesia'"
+                },
+                pakaian: {
+                    poster: "Poster fashion show pakaian adat Nusantara dari berbagai provinsi",
+                    "video-pendek": "Tutorial mix and match kebaya modern dalam 30 detik",
+                    infografis: "Infografis 20 pakaian adat Indonesia dan fungsinya",
+                    artikel: "Artikel 'Pakaian Adat Indonesia yang Diakui UNESCO'"
+                },
+                cerita: {
+                    poster: "Poster festival mendongeng cerita rakyat Nusantara",
+                    "video-pendek": "Cuplikan animasi singkat cerita Malin Kundang yang penuh makna",
+                    infografis: "Infografis 10 cerita rakyat Indonesia dan pesan moralnya",
+                    artikel: "Artikel '7 Cerita Rakyat yang Menginspirasi Film Indonesia'"
+                }
+            };
+            
+            const tipsDatabase = {
+                poster: "Gunakan warna-warna cerah dan font yang mudah dibaca. Jangan terlalu banyak teks.",
+                "video-pendek": "3 detik pertama harus menarik! Gunakan musik yang sedang tren.",
+                infografis: "Data harus akurat. Gunakan ikon yang konsisten. Jangan terlalu ramai.",
+                artikel: "Buat judul menarik. Gunakan subheading. Tambahkan gambar pendukung."
+            };
+            
+            const ide = ideDatabase[budaya][format];
+            const tips = tipsDatabase[format];
+            
+            document.getElementById('demoResult').innerHTML = `
+                <strong>💡 Ide Konten:</strong><br>
+                ${ide}<br><br>
+                <strong>📌 Tips Produksi:</strong><br>
+                ${tips}<br><br>
+                <strong>🎯 Call to Action:</strong><br>
+                Ajak audiens untuk like, comment, share, dan follow!
+            `;
+            document.getElementById('demoResult').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

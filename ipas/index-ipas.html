@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPAS - Kelas X (Kurikulum Merdeka)</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* IPAS THEME COLORS */
+        :root {
+            --ipas-primary: #2ecc71;
+            --ipas-secondary: #27ae60;
+            --ipas-light: #d5f4e6;
+            --ipas-dark: #229954;
+            --ipas-accent: #3498db;
+        }
+        
+        /* IPAS COURSE CONTENT */
+        .ipas-course-content {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .ipas-content-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(46, 204, 113, 0.1);
+            border-left: 5px solid var(--ipas-primary);
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        .ipas-content-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(46, 204, 113, 0.1) 0%, transparent 70%);
+            z-index: 0;
+        }
+        
+        .ipas-content-card > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .ipas-content-card h2 {
+            color: var(--ipas-dark);
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        
+        .ipas-content-card h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--ipas-primary), var(--ipas-secondary));
+            border-radius: 2px;
+        }
+        
+        .section-title {
+            color: var(--ipas-dark);
+            font-size: 1.8rem;
+            margin: 2.5rem 0 1.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-bottom: 3px solid var(--ipas-light);
+            padding-bottom: 0.8rem;
+        }
+        
+        .section-title i {
+            color: var(--ipas-primary);
+            background: var(--ipas-light);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+        
+        .section-title span {
+            background: var(--ipas-primary);
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+        
+        .content-block {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid #e8f5e9;
+        }
+        
+        .content-block p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+        
+        .content-block p:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* TUJUAN PEMBELAJARAN GRID */
+        .tujuan-pembelajaran-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .tujuan-phase {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border: 1px solid #e8f5e9;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tujuan-phase::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--ipas-primary), var(--ipas-secondary));
+        }
+        
+        .tujuan-phase:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(46, 204, 113, 0.15);
+        }
+        
+        .tujuan-phase h4 {
+            color: var(--ipas-dark);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--ipas-light);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .tujuan-phase h4 i {
+            background: var(--ipas-primary);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+        
+        .tujuan-phase ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .tujuan-phase li {
+            padding: 0.8rem 0;
+            margin-bottom: 0.5rem;
+            border-bottom: 1px dashed #e0e0e0;
+            line-height: 1.5;
+            display: flex;
+            gap: 10px;
+            animation: slideInLeft 0.5s ease-out both;
+        }
+        
+        .tujuan-phase li:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        
+        .tujuan-phase li strong {
+            color: var(--ipas-primary);
+            background: var(--ipas-light);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            min-width: 40px;
+            text-align: center;
+            display: inline-block;
+            flex-shrink: 0;
+        }
+        
+        /* ASPEK KARAKTERISTIK GRID */
+        .aspek-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .aspek-item {
+            background: linear-gradient(135deg, #f8fff9, #ffffff);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border: 1px solid #d5f4e6;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .aspek-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--ipas-primary);
+        }
+        
+        .aspek-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(46, 204, 113, 0.1);
+        }
+        
+        .aspek-item h4 {
+            color: var(--ipas-dark);
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--ipas-light);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .aspek-item h4 i {
+            color: var(--ipas-primary);
+            background: var(--ipas-light);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+        }
+        
+        .aspek-item p {
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 0;
+            text-align: justify;
+        }
+        
+        /* CAPAIAN PEMBELAJARAN CARD */
+        .capaian-card {
+            background: linear-gradient(135deg, #f8fff9, #ffffff);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--ipas-primary);
+        }
+        
+        .capaian-card h4 {
+            color: var(--ipas-dark);
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .capaian-card h4 i {
+            color: var(--ipas-primary);
+            background: var(--ipas-light);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .capaian-card p {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+        
+        /* QUICK LINKS */
+        .ipas-quick-links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .ipas-quick-link {
+            background: linear-gradient(135deg, var(--ipas-primary), var(--ipas-secondary));
+            color: white;
+            text-decoration: none;
+            padding: 1.5rem;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            animation: bounceIn 0.6s ease-out both;
+        }
+        
+        .ipas-quick-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--ipas-secondary), var(--ipas-dark));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+        
+        .ipas-quick-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(46, 204, 113, 0.4);
+        }
+        
+        .ipas-quick-link:hover::before {
+            opacity: 1;
+        }
+        
+        .ipas-quick-link i {
+            font-size: 2.5rem;
+            color: white;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+        }
+        
+        .ipas-quick-link span {
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        .ipas-quick-link:nth-child(1) {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+            animation-delay: 0.1s;
+        }
+        
+        .ipas-quick-link:nth-child(2) {
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
+            animation-delay: 0.2s;
+        }
+        
+        .ipas-quick-link:nth-child(3) {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+            animation-delay: 0.3s;
+        }
+        
+        /* FOOTER */
+        .ipas-footer {
+            background: linear-gradient(135deg, var(--ipas-dark), var(--ipas-primary));
+            color: white;
+            padding: 3rem 0;
+            margin-top: 4rem;
+            border-radius: 20px 20px 0 0;
+        }
+        
+        .ipas-footer .footer-section h3 {
+            color: white;
+        }
+        
+        .ipas-footer .footer-section p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .ipas-course-content {
+                padding: 1rem;
+            }
+            
+            .ipas-content-card {
+                padding: 1.5rem;
+            }
+            
+            .ipas-content-card h2 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .tujuan-pembelajaran-grid,
+            .aspek-grid,
+            .ipas-quick-links-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tujuan-phase,
+            .aspek-item,
+            .capaian-card {
+                padding: 1.2rem;
+            }
+            
+            .ipas-quick-link {
+                animation-delay: 0s !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .ipas-content-card {
+                padding: 1rem;
+            }
+            
+            .ipas-content-card h2 {
+                font-size: 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 1.3rem;
+            }
+            
+            .tujuan-phase li {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+            
+            .tujuan-phase li strong {
+                align-self: flex-start;
+            }
+            
+            .ipas-quick-link {
+                padding: 1rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+            70% {
+                transform: scale(0.9);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="../assets/images/logo.png" alt="Logo Sekolah">
+                    <h1>TEMBOK BELAJAR - PROJEK IPAS</h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="index-ipas.html" class="nav-link active"><i class="fas fa-flask"></i> Beranda IPAS</a></li>
+                    <li><a href="aktivitas-pembelajaran/index-aktifitas-ipas.html" class="nav-link"><i class="fas fa-tasks"></i> Daftar Aktivitas</a></li>
+                    <li><a href="materi-pembelajaran/index-materi-ipas.html" class="nav-link"><i class="fas fa-book-open"></i> Daftar Materi</a></li>
+                    <li><a href="penilaian/index-penilaian-ipas.html" class="nav-link"><i class="fas fa-chart-line"></i> Penilaian</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Course Content -->
+    <section class="ipas-course-content">
+        <div class="ipas-content-card">
+            <!-- A. Rasional -->
+            <div class="section-title">
+                <i class="fas fa-brain"></i> <strong>A. Rasional</strong>
+            </div>
+            <div class="content-block">
+                <p><strong>Ilmu</strong> adalah terjemahan dari <em>science</em> (sains) yang berasal dari bahasa Latin <em>scientia</em>, berarti pengetahuan yang diperoleh melalui pembelajaran, pembuktian, dan metode ilmiah. Ilmu merupakan pengetahuan sistematis yang dapat ditelaah secara kritis.</p>
+                <p>Penerapan mata pelajaran <strong>Projek IPAS</strong> dengan pendekatan pembelajaran mendalam membekali peserta didik dengan keimanan, ketakwaan, kewargaan, penalaran kritis, kreativitas, kolaborasi, kemandirian, kesehatan, dan komunikasi. Dengan demikian, peserta didik mampu menyelesaikan permasalahan nyata terkait fenomena alam dan sosial secara ilmiah serta mengambil keputusan tepat untuk hidup lebih bijak.</p>
+                <p>Projek IPAS merupakan integrasi IPA dan IPS. Permasalahan antar manusia serta manusia dengan alam terjadi akibat kurangnya pemahaman sains. Sebagai makhluk sosial, manusia bergantung pada alam. Integrasi ini menjadi kunci keberhasilan pembelajaran, di mana sains hadir memecahkan permasalahan fenomena alam dan sosial secara ilmiah.</p>
+            </div>
+
+            <!-- B. Karakteristik -->
+            <div class="section-title">
+                <i class="fas fa-cubes"></i> <strong>B. Karakteristik</strong>
+            </div>
+            <div class="content-block">
+                <p>Projek IPAS memiliki objek kajian berupa benda konkret dan non-konkret di alam yang dikembangkan berdasarkan pengalaman empirik. Pembelajarannya menggunakan <strong>project-based learning</strong> yang mengintegrasikan seluruh aspek ilmu pengetahuan alam dan sosial. Setiap projek dilaksanakan untuk mencapai kompetensi dalam elemen mata pelajaran yang dikontekskan dengan bidang keahlian.</p>
+                <p><strong>Elemen mata pelajaran Projek IPAS:</strong> Menjelaskan fenomena secara ilmiah, Menyusun penyelidikan ilmiah, Merefleksikan data dan bukti secara ilmiah. Elemen-elemen ini disampaikan dalam satu projek dengan berbagai aspek sesuai ruang lingkup dan karakteristik bidang keahlian.</p>
+                
+                <h4 style="color: var(--ipas-dark); margin: 1.5rem 0 1rem 0;">Aspek-Aspek Projek IPAS</h4>
+                <div class="aspek-grid">
+                    <!-- Aspek 1 -->
+                    <div class="aspek-item">
+                        <h4><i class="fas fa-leaf"></i> Makhluk Hidup dan Lingkungannya</h4>
+                        <p>Keterkaitan antara manusia, tumbuhan, hewan yang bergantung pada lingkungan (tanah, air, energi). Mencakup ekosistem, keanekaragaman hayati, perubahan iklim, serta struktur bumi (litosfer, hidrosfer, atmosfer).</p>
+                    </div>
+                    <!-- Aspek 2 -->
+                    <div class="aspek-item">
+                        <h4><i class="fas fa-atom"></i> Zat dan Perubahannya</h4>
+                        <p>Jenis dan sifat zat (kimia/fisika), perubahan zat, unsur, senyawa, campuran. Ditinjau dari perspektif ekonomi kreatif dan sosial dalam kehidupan sehari-hari.</p>
+                    </div>
+                    <!-- Aspek 3 -->
+                    <div class="aspek-item">
+                        <h4><i class="fas fa-bolt"></i> Energi dan Perubahannya</h4>
+                        <p>Dasar besaran dan pengukuran, energi (kimia, listrik, panas, mekanik) serta energi terbarukan. Segala sesuatu yang mampu melakukan usaha.</p>
+                    </div>
+                    <!-- Aspek 4 -->
+                    <div class="aspek-item">
+                        <h4><i class="fas fa-globe-asia"></i> Keruangan dan Konektivitas</h4>
+                        <p>Kondisi sosial dan lingkungan alam lokal hingga global, geografis Indonesia, mitigasi bencana, tata ruang, revolusi industri, dan pemetaan bumi sebagai ruang hidup.</p>
+                    </div>
+                    <!-- Aspek 5 -->
+                    <div class="aspek-item">
+                        <h4><i class="fas fa-users"></i> Interaksi dan Dinamika Sosial</h4>
+                        <p>Pembentukan identitas diri, keberagaman, peran sebagai warga negara dan dunia, institusi sosial, dinamika/problematika sosial, serta solusi untuk pembangunan berkelanjutan.</p>
+                    </div>
+                    <!-- Aspek 6 -->
+                    <div class="aspek-item">
+                        <h4><i class="fas fa-chart-line"></i> Perilaku Ekonomi dan Kesejahteraan</h4>
+                        <p>Peran diri, masyarakat, negara dalam memenuhi kebutuhan, kelangkaan, pasar, inflasi, lembaga keuangan, uang konvensional/digital, dan pengelolaan keuangan.</p>
+                    </div>
+                </div>
+                <p style="margin-top: 1.5rem;">Penilaian dilakukan secara individual/kelompok dengan memperhatikan proses, kualitas projek, kedalaman pemahaman, kontribusi, serta presentasi hasil akhir.</p>
+            </div>
+
+            <!-- C. Capaian Pembelajaran -->
+            <div class="section-title">
+                <i class="fas fa-graduation-cap"></i> <strong>C. Capaian Pembelajaran Fase E</strong>
+            </div>
+            <div class="content-block">
+                <p>Pada akhir Fase E, peserta didik memiliki kemampuan sebagai berikut.</p>
+                
+                <div class="capaian-card">
+                    <h4><i class="fas fa-search"></i> 1. Menjelaskan Fenomena secara Ilmiah</h4>
+                    <p>Menjelaskan pengetahuan ilmiah; membuat prediksi sederhana disertai pembuktian fenomena di lingkungan sekitar dari berbagai aspek (makhluk hidup, zat, energi, keruangan, interaksi sosial, perilaku ekonomi) dan mengaitkannya dengan keterampilan teknis bidang keahlian.</p>
+                </div>
+                
+                <div class="capaian-card">
+                    <h4><i class="fas fa-flask"></i> 2. Menyusun Penyelidikan Ilmiah</h4>
+                    <p>Menyusun percobaan dengan menerapkan prosedur penyelidikan ilmiah dan memeriksa kekurangan/kesalahan pada rancangan percobaan tersebut.</p>
+                </div>
+                
+                <div class="capaian-card">
+                    <h4><i class="fas fa-chart-line"></i> 3. Merefleksikan Data dan Bukti-bukti secara Ilmiah</h4>
+                    <p>Membuktikan dengan prinsip dasar melalui data dan bukti dari berbagai sumber (tabel, grafik) untuk membangun argumen, mempertahankan argumen dengan penjelasan ilmiah, mengomunikasikan proses dan hasil, serta melakukan refleksi diri terhadap tahapan kegiatan.</p>
+                </div>
+            </div>
+
+            <!-- D. Tujuan Pembelajaran -->
+            <div class="section-title">
+                <i class="fas fa-bullseye"></i> <strong>D. Tujuan Pembelajaran</strong>
+            </div>
+            <div class="content-block">
+                <p>Mata pelajaran Projek IPAS bertujuan membekali peserta didik dengan <em>hard skills</em> dan <em>soft skills</em> untuk:</p>
+                <div class="tujuan-pembelajaran-grid">
+                    <!-- Tujuan 1 -->
+                    <div class="tujuan-phase">
+                        <h4><i class="fas fa-1"></i> Elemen 1: Menjelaskan Fenomena secara Ilmiah</h4>
+                        <ul>
+                            <li><strong>1.1</strong> Menjelaskan pengetahuan ilmiah yang berkaitan dengan fenomena alam dan sosial di lingkungan sekitar.</li>
+                            <li><strong>1.2</strong> Membuat prediksi sederhana terhadap fenomena alam dan sosial berdasarkan pola ilmiah.</li>
+                            <li><strong>1.3</strong> Melakukan pembuktian sederhana terhadap prediksi yang telah dibuat.</li>
+                            <li><strong>1.4</strong> Mengaitkan fenomena alam dan sosial dengan keterampilan teknis pada bidang keahliannya.</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Tujuan 2 -->
+                    <div class="tujuan-phase">
+                        <h4><i class="fas fa-2"></i> Elemen 2: Menyusun Penyelidikan Ilmiah</h4>
+                        <ul>
+                            <li><strong>2.1</strong> Menyusun rancangan percobaan dengan mengikuti prosedur penyelidikan ilmiah.</li>
+                            <li><strong>2.2</strong> Melaksanakan percobaan sesuai dengan rancangan yang telah dibuat.</li>
+                            <li><strong>2.3</strong> Memeriksa kekurangan atau kesalahan pada rancangan percobaan yang telah dilakukan.</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Tujuan 3 -->
+                    <div class="tujuan-phase">
+                        <h4><i class="fas fa-3"></i> Elemen 3: Merefleksikan Data dan Bukti-bukti secara Ilmiah</h4>
+                        <ul>
+                            <li><strong>3.1</strong> Membuktikan hasil penyelidikan dengan menggunakan data dan bukti dari berbagai sumber.</li>
+                            <li><strong>3.2</strong> Membangun argumen berdasarkan prinsip dasar dan bukti ilmiah yang diperoleh.</li>
+                            <li><strong>3.3</strong> Mempertahankan argumen menggunakan penjelasan ilmiah yang logis.</li>
+                            <li><strong>3.4</strong> Mengomunikasikan proses dan hasil kegiatan penyelidikan secara ilmiah.</li>
+                            <li><strong>3.5</strong> Melakukan refleksi diri terhadap tahapan kegiatan penyelidikan yang telah dilakukan.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="../script.js"></script>
+    <script>
+        // JavaScript untuk interaksi IPAS
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add animation for tujuan pembelajaran items
+            const tujuanItems = document.querySelectorAll('.tujuan-phase li');
+            tujuanItems.forEach((item, index) => {
+                item.style.animationDelay = `${index * 0.05}s`;
+            });
+            
+            // Add hover effect for aspek items
+            const aspekItems = document.querySelectorAll('.aspek-item');
+            aspekItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-3px) scale(1.02)';
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+
+            // Add hover effect for tujuan items
+            const tujuanPhases = document.querySelectorAll('.tujuan-phase');
+            tujuanPhases.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+            
+            // Add click effect for quick links
+            const quickLinks = document.querySelectorAll('.ipas-quick-link');
+            quickLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 200);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

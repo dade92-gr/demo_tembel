@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi 5.3: Sistem Operasi & Model Von Neumann - Informatika Kelas X</title>
+    <link rel="stylesheet" href="../../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --informatika-primary: #3498db;
+            --informatika-secondary: #2980b9;
+            --informatika-light: #ebf5fb;
+            --informatika-dark: #21618c;
+            --informatika-semester1: #3498db;
+            --success: #27ae60;
+            --warning: #e74c3c;
+            --info: #f39c12;
+            --purple: #9b59b6;
+            --os-color: #2c3e50;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+        
+        .materi-container {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+        
+        .materi-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 30px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(52, 152, 219, 0.15);
+            border-left: 8px solid var(--informatika-semester1);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        .materi-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(52, 152, 219, 0.1) 0%, transparent 70%);
+            z-index: 0;
+        }
+        
+        .materi-card > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .materi-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 3px solid var(--informatika-light);
+            flex-wrap: wrap;
+        }
+        
+        .materi-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--os-color), var(--informatika-primary));
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+        }
+        
+        .materi-title-wrapper {
+            flex: 1;
+        }
+        
+        .materi-title-wrapper h1 {
+            color: var(--informatika-dark);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .materi-subtitle {
+            color: var(--informatika-primary);
+            font-size: 1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .materi-badge {
+            background: var(--informatika-light);
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: var(--informatika-dark);
+        }
+        
+        .materi-badge i {
+            margin-right: 4px;
+        }
+        
+        .tujuan-card {
+            background: linear-gradient(135deg, var(--informatika-light), white);
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(52, 152, 219, 0.2);
+        }
+        
+        .tujuan-card h3 {
+            color: var(--informatika-dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .tujuan-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 0.8rem;
+        }
+        
+        .tujuan-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            padding: 0.8rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .tujuan-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .tujuan-item i {
+            color: var(--success);
+        }
+        
+        .materi-content {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid rgba(52, 152, 219, 0.1);
+        }
+        
+        .materi-content h2 {
+            color: var(--informatika-dark);
+            font-size: 1.8rem;
+            margin: 1.5rem 0 1rem 0;
+            border-bottom: 2px solid var(--informatika-light);
+            padding-bottom: 0.5rem;
+        }
+        
+        .materi-content h2:first-of-type {
+            margin-top: 0;
+        }
+        
+        .materi-content h3 {
+            color: var(--informatika-dark);
+            font-size: 1.3rem;
+            margin: 1.2rem 0 0.8rem 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .materi-content h3 i {
+            color: var(--informatika-primary);
+        }
+        
+        .materi-content p {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        
+        .materi-content ul, .materi-content ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .materi-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .quote-box {
+            margin: 1.5rem 0;
+            padding: 1rem 1.5rem;
+            background: var(--informatika-light);
+            border-left: 4px solid var(--informatika-primary);
+            border-radius: 0 12px 12px 0;
+        }
+        
+        .note-box {
+            background: #fff3e0;
+            border-left: 4px solid var(--info);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid var(--informatika-primary);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .warning-box {
+            background: #fee2e2;
+            border-left: 4px solid var(--warning);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .success-box {
+            background: #d4edda;
+            border-left: 4px solid var(--success);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .layer-diagram {
+            background: #f8f9fa;
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+        
+        .layer {
+            padding: 0.8rem;
+            margin: 0.2rem 0;
+            border-radius: 12px;
+        }
+        
+        .layer.user { background: #3498db; color: white; }
+        .layer.apps { background: #27ae60; color: white; }
+        .layer.os { background: #f39c12; color: white; }
+        .layer.hardware { background: #e74c3c; color: white; }
+        
+        .fungsi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .fungsi-card {
+            background: white;
+            border-radius: 20px;
+            padding: 1.2rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #e9ecef;
+        }
+        
+        .fungsi-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .fungsi-card.active {
+            border: 2px solid var(--info);
+            background: #fff3e0;
+        }
+        
+        .fungsi-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .fungsi-title {
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+        
+        .fungsi-desc {
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        .fungsi-card.active .fungsi-desc {
+            color: var(--informatika-dark);
+            font-weight: 500;
+        }
+        
+        .os-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .os-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #e9ecef;
+            text-align: center;
+        }
+        
+        .os-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .os-card.active {
+            border: 2px solid var(--purple);
+            background: #f3e5f5;
+        }
+        
+        .os-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .os-name {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .os-desc {
+            font-size: 0.8rem;
+            color: #6c757d;
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        .os-card.active .os-desc {
+            color: var(--informatika-dark);
+            font-weight: 500;
+        }
+        
+        .vonneumann-os-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .vonneumann-os-card {
+            background: white;
+            border-radius: 20px;
+            padding: 1.2rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #e9ecef;
+        }
+        
+        .vonneumann-os-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .vonneumann-os-card.active {
+            border: 2px solid var(--informatika-primary);
+            background: var(--informatika-light);
+        }
+        
+        .vonneumann-os-card .komponen-title {
+            font-weight: bold;
+            color: var(--informatika-dark);
+            margin-bottom: 0.3rem;
+        }
+        
+        .vonneumann-os-card .komponen-desc {
+            font-size: 0.85rem;
+            color: #6c757d;
+        }
+        
+        .vonneumann-os-card.active .komponen-desc {
+            color: var(--informatika-dark);
+            font-weight: 500;
+        }
+        
+        .role-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .role-step {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.8rem;
+            background: #f8f9fa;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .role-step:hover {
+            transform: translateX(5px);
+            background: var(--informatika-light);
+        }
+        
+        .role-step.active {
+            background: #d4edda;
+            border-left: 4px solid var(--success);
+        }
+        
+        .role-number {
+            width: 30px;
+            height: 30px;
+            background: var(--success);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        
+        .role-step .role-desc {
+            font-size: 0.9rem;
+        }
+        
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+        
+        .compare-table th {
+            background: var(--informatika-primary);
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .compare-table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .compare-table tr:hover {
+            background: var(--informatika-light);
+        }
+        
+        .materi-navigation {
+            display: flex;
+            gap: 1rem;
+            justify-content: space-between;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn.primary {
+            background: linear-gradient(135deg, var(--informatika-primary), var(--informatika-secondary));
+            color: white;
+        }
+        
+        .nav-btn.primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .nav-btn.secondary {
+            background: white;
+            color: var(--informatika-dark);
+            border: 2px solid var(--informatika-light);
+        }
+        
+        .nav-btn.secondary:hover {
+            background: var(--informatika-light);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .materi-container { padding: 1rem; }
+            .materi-card { padding: 1.5rem; }
+            .materi-header { flex-direction: column; text-align: center; }
+            .compare-table { font-size: 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="../../../assets/images/logo.png" alt="Logo Sekolah">
+                    <h1>INFORMATIKA - MATERI PEMBELAJARAN</h1>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="../../../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="../../index-informatika.html" class="nav-link"><i class="fas fa-laptop-code"></i> Beranda Informatika</a></li>
+                    <li><a href="../../aktivitas-pembelajaran/index-aktivitas-informatika.html" class="nav-link"><i class="fas fa-tasks"></i> Daftar Aktivitas</a></li>
+                    <li><a href="../index-materi-informatika.html" class="nav-link active"><i class="fas fa-book-open"></i> Daftar Materi</a></li>
+                    <li><a href="../../penilaian/index-penilaian-informatika.html" class="nav-link"><i class="fas fa-chart-line"></i> Penilaian</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="materi-container">
+        <div class="materi-card">
+            <!-- Header -->
+            <div class="materi-header">
+                <div class="materi-icon">
+                    <i class="fas fa-desktop"></i>
+                </div>
+                <div class="materi-title-wrapper">
+                    <h1>Sistem Operasi &amp; Model Von Neumann</h1>
+                    <div class="materi-subtitle">
+                        <i class="fas fa-circle"></i>
+                        <span>Proyek 5: Arsitektur Komputer - Pertemuan 3</span>
+                        <span class="materi-badge"><i class="fas fa-clock"></i> 4 JP</span>
+                        <span class="materi-badge"><i class="fas fa-tag"></i> TP 1.7</span>
+                        <span class="materi-badge"><i class="fas fa-globe"></i> Online</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tujuan Pembelajaran -->
+            <div class="tujuan-card">
+                <h3><i class="fas fa-bullseye"></i> 🎯 Tujuan Pembelajaran</h3>
+                <div class="tujuan-list">
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Memahami pengertian dan tujuan sistem operasi</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Menjelaskan berbagai fungsi sistem operasi</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Mengenal berbagai jenis sistem operasi yang umum digunakan</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Memahami peran sistem operasi dalam mengelola komponen Von Neumann</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Menjelaskan hubungan antara sistem operasi dan arsitektur Von Neumann</div>
+                </div>
+            </div>
+
+            <!-- Konten Materi -->
+            <div class="materi-content">
+                <h2>A. Apa Itu Sistem Operasi?</h2>
+                <p><strong>Sistem Operasi (Operating System)</strong> adalah perangkat lunak sistem yang bertindak sebagai perantara antara pengguna, perangkat lunak aplikasi, dan perangkat keras komputer. Sistem operasi mengelola semua sumber daya komputer dan menyediakan layanan umum untuk program-program aplikasi.</p>
+                
+                <div class="quote-box">
+                    <i class="fas fa-quote-left"></i> <strong>Abraham Silberschatz:</strong> "Sistem operasi adalah program yang bertindak sebagai perantara antara pengguna komputer dan perangkat keras komputer."
+                </div>
+                
+                <div class="layer-diagram">
+                    <div class="layer user">👤 PENGGUNA</div>
+                    <div class="layer apps">📱 APLIKASI (Browser, Game, Office)</div>
+                    <div class="layer os">⚙️ SISTEM OPERASI</div>
+                    <div class="layer hardware">🖥️ PERANGKAT KERAS (CPU, RAM, Harddisk)</div>
+                </div>
+
+                <h2>B. Fungsi Utama Sistem Operasi</h2>
+                <p><strong>Klik pada setiap fungsi</strong> untuk memperjelas tampilan:</p>
+                
+                <div class="fungsi-grid" id="fungsiGrid">
+                    <div class="fungsi-card" data-fungsi="proses">
+                        <div class="fungsi-icon"><i class="fas fa-tasks"></i></div>
+                        <div class="fungsi-title">Manajemen Proses</div>
+                        <div class="fungsi-desc">Membuat/menghapus proses, menjadwalkan proses di CPU, sinkronisasi antar proses. Contoh: menjalankan browser, Word, dan game secara bersamaan.</div>
+                    </div>
+                    <div class="fungsi-card" data-fungsi="memori">
+                        <div class="fungsi-icon"><i class="fas fa-memory"></i></div>
+                        <div class="fungsi-title">Manajemen Memori</div>
+                        <div class="fungsi-desc">Melacak penggunaan memori, mengalokasikan ruang untuk proses, membebaskan memori. Contoh: membuka banyak aplikasi tanpa mengurangi kinerja.</div>
+                    </div>
+                    <div class="fungsi-card" data-fungsi="file">
+                        <div class="fungsi-icon"><i class="fas fa-file-alt"></i></div>
+                        <div class="fungsi-title">Manajemen File</div>
+                        <div class="fungsi-desc">Membuat/menghapus file dan direktori, mengatur akses file. Contoh: menyimpan dokumen Word di folder Documents.</div>
+                    </div>
+                    <div class="fungsi-card" data-fungsi="io">
+                        <div class="fungsi-icon"><i class="fas fa-keyboard"></i></div>
+                        <div class="fungsi-title">Manajemen I/O</div>
+                        <div class="fungsi-desc">Mengelola driver perangkat, buffering data, menangani interupsi. Contoh: menekan tombol keyboard, menggerakkan mouse.</div>
+                    </div>
+                    <div class="fungsi-card" data-fungsi="keamanan">
+                        <div class="fungsi-icon"><i class="fas fa-shield-alt"></i></div>
+                        <div class="fungsi-title">Manajemen Keamanan</div>
+                        <div class="fungsi-desc">Autentikasi (login), otorisasi akses, enkripsi data. Contoh: login dengan password, pengaturan izin file.</div>
+                    </div>
+                    <div class="fungsi-card" data-fungsi="jaringan">
+                        <div class="fungsi-icon"><i class="fas fa-network-wired"></i></div>
+                        <div class="fungsi-title">Manajemen Jaringan</div>
+                        <div class="fungsi-desc">Protokol jaringan (TCP/IP), routing, keamanan jaringan. Contoh: browsing internet, streaming video.</div>
+                    </div>
+                </div>
+
+                <h2>C. Jenis-Jenis Sistem Operasi</h2>
+                <div class="os-grid" id="osGrid">
+                    <div class="os-card" data-os="windows">
+                        <div class="os-icon"><i class="fab fa-windows"></i></div>
+                        <div class="os-name">Windows</div>
+                        <div class="os-desc">Pengembang: Microsoft | GUI | Mudah digunakan, banyak software</div>
+                    </div>
+                    <div class="os-card" data-os="macos">
+                        <div class="os-icon"><i class="fab fa-apple"></i></div>
+                        <div class="os-name">macOS</div>
+                        <div class="os-desc">Pengembang: Apple | GUI | Stabil, aman, desain bagus</div>
+                    </div>
+                    <div class="os-card" data-os="linux">
+                        <div class="os-icon"><i class="fab fa-linux"></i></div>
+                        <div class="os-name">Linux</div>
+                        <div class="os-desc">Open source | GUI/CLI | Gratis, aman, kustomisasi tinggi</div>
+                    </div>
+                    <div class="os-card" data-os="android">
+                        <div class="os-icon"><i class="fab fa-android"></i></div>
+                        <div class="os-name">Android</div>
+                        <div class="os-desc">Pengembang: Google | Open source | Banyak aplikasi</div>
+                    </div>
+                    <div class="os-card" data-os="ios">
+                        <div class="os-icon"><i class="fab fa-apple"></i></div>
+                        <div class="os-name">iOS</div>
+                        <div class="os-desc">Pengembang: Apple | Tertutup | Stabil, aman</div>
+                    </div>
+                </div>
+
+                <h2>D. Hubungan Sistem Operasi dengan Arsitektur Von Neumann</h2>
+                <p><strong>Klik pada setiap komponen</strong> untuk memperjelas tampilan:</p>
+                
+                <div class="vonneumann-os-grid" id="vonneumannGrid">
+                    <div class="vonneumann-os-card" data-vn="cpu">
+                        <div class="komponen-title"><i class="fas fa-microchip"></i> CPU</div>
+                        <div class="komponen-desc"><strong>Peran OS:</strong> Menjadwalkan proses, mengalokasikan waktu CPU, menangani interupsi. OS memastikan setiap program mendapat giliran menggunakan CPU secara bergiliran.</div>
+                    </div>
+                    <div class="vonneumann-os-card" data-vn="memory">
+                        <div class="komponen-title"><i class="fas fa-memory"></i> Memori (RAM)</div>
+                        <div class="komponen-desc"><strong>Peran OS:</strong> Mengalokasikan ruang memori untuk setiap program, mengelola memori virtual, melindungi memori antar program. OS memastikan program tidak saling mengganggu di memori.</div>
+                    </div>
+                    <div class="vonneumann-os-card" data-vn="input">
+                        <div class="komponen-title"><i class="fas fa-keyboard"></i> Input Device</div>
+                        <div class="komponen-desc"><strong>Peran OS:</strong> Menyediakan driver untuk perangkat input, buffering data, menangani interupsi dari keyboard, mouse, scanner.</div>
+                    </div>
+                    <div class="vonneumann-os-card" data-vn="output">
+                        <div class="komponen-title"><i class="fas fa-desktop"></i> Output Device</div>
+                        <div class="komponen-desc"><strong>Peran OS:</strong> Menyediakan driver untuk perangkat output, mengelola antrean cetak (spooling), menampilkan informasi ke monitor.</div>
+                    </div>
+                    <div class="vonneumann-os-card" data-vn="storage">
+                        <div class="komponen-title"><i class="fas fa-hdd"></i> Storage</div>
+                        <div class="komponen-desc"><strong>Peran OS:</strong> Manajemen file sistem, mengatur alokasi ruang di harddisk/SSD, caching data, menyimpan data secara permanen.</div>
+                    </div>
+                </div>
+
+                <h2>E. Peran Sistem Operasi dalam Proses Komputasi</h2>
+                <p><strong>Klik pada setiap tahap</strong> untuk memperjelas tampilan:</p>
+                
+                <div class="role-steps" id="roleSteps">
+                    <div class="role-step" data-role="booting">
+                        <div class="role-number">1</div>
+                        <div class="role-desc"><strong>Saat Komputer Dinyalakan (Booting)</strong><br>BIOS/UEFI menjalankan POST, mencari boot loader, memuat kernel OS ke memori</div>
+                    </div>
+                    <div class="role-step" data-role="program">
+                        <div class="role-number">2</div>
+                        <div class="role-desc"><strong>Saat Menjalankan Program</strong><br>OS mengalokasikan memori, memuat program ke RAM, menjadwalkan proses di CPU</div>
+                    </div>
+                    <div class="role-step" data-role="multitasking">
+                        <div class="role-number">3</div>
+                        <div class="role-desc"><strong>Saat Multitasking</strong><br>OS membagi waktu CPU untuk banyak program, mengelola memori agar semua program berjalan</div>
+                    </div>
+                    <div class="role-step" data-role="file">
+                        <div class="role-number">4</div>
+                        <div class="role-desc"><strong>Saat Mengakses File</strong><br>OS memeriksa izin akses, mencari lokasi file, membaca/menulis data melalui driver</div>
+                    </div>
+                </div>
+
+                <h2>F. Studi Kasus: Menjalankan Program Microsoft Word</h2>
+                <div class="success-box">
+                    <strong>📝 Peran OS Saat Menjalankan Microsoft Word:</strong><br>
+                    1. <strong>Input:</strong> User mengklik ikon Word → OS menerima perintah<br>
+                    2. <strong>Storage:</strong> OS mencari file program Word di harddisk<br>
+                    3. <strong>Memori:</strong> OS mengalokasikan ruang di RAM untuk Word<br>
+                    4. <strong>Proses:</strong> OS memuat kode program dari harddisk ke RAM<br>
+                    5. <strong>CPU:</strong> OS membuat proses baru dan menjadwalkannya di CPU<br>
+                    6. <strong>Output:</strong> OS menampilkan jendela Word di monitor<br>
+                    7. <strong>I/O:</strong> Saat user mengetik, OS menangani input dari keyboard<br>
+                    8. <strong>File:</strong> Saat save, OS menyimpan file ke harddisk
+                </div>
+
+                <h2>G. Studi Kasus: Multitasking</h2>
+                <div class="info-box">
+                    <i class="fas fa-tasks"></i> <strong>Saat Menjalankan Banyak Program:</strong><br>
+                    • <strong>Time Sharing:</strong> OS membagi waktu CPU secara bergiliran (millidetik)<br>
+                    • <strong>Memory Management:</strong> OS mengalokasikan RAM untuk setiap program<br>
+                    • <strong>Jika RAM Penuh:</strong> OS menggunakan memori virtual (harddisk sebagai RAM tambahan)<br>
+                    • <strong>Komputer Lambat:</strong> Terjadi karena CPU dan RAM kelebihan beban
+                </div>
+
+                <div class="warning-box">
+                    <i class="fas fa-exclamation-triangle"></i> <strong>Ingat!</strong> Sistem operasi adalah "jembatan" yang memungkinkan kita menggunakan komputer. Tanpa OS, komputer hanya kumpulan komponen elektronik yang tidak berguna!
+                </div>
+
+                <div class="quote-box" style="margin-top: 1.5rem; text-align: center;">
+                    <i class="fas fa-desktop"></i> Sistem Operasi, Jembatan antara Manusia dan Mesin! 🖥️
+                </div>
+            </div>
+
+            <!-- Navigasi -->
+            <div class="materi-navigation">
+                <a href="materi5-2.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i> Kembali ke Materi 5.2
+                </a>
+                <a href="materi5-4.html" class="nav-btn primary">
+                    Lanjut ke Materi 5.4: Interaksi Perangkat Keras dan Software
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script src="../../../script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                });
+            }
+            
+            // Fungsi Interaktif
+            const fungsiCards = document.querySelectorAll('.fungsi-card');
+            fungsiCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    fungsiCards.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            if(fungsiCards.length) fungsiCards[0].classList.add('active');
+            
+            // OS Interaktif
+            const osCards = document.querySelectorAll('.os-card');
+            osCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    osCards.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            if(osCards.length) osCards[0].classList.add('active');
+            
+            // Von Neumann OS Interaktif
+            const vnCards = document.querySelectorAll('.vonneumann-os-card');
+            vnCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    vnCards.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            if(vnCards.length) vnCards[0].classList.add('active');
+            
+            // Role Steps Interaktif
+            const roleSteps = document.querySelectorAll('.role-step');
+            roleSteps.forEach(step => {
+                step.addEventListener('click', function() {
+                    roleSteps.forEach(s => s.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            if(roleSteps.length) roleSteps[0].classList.add('active');
+        });
+    </script>
+</body>
+</html>

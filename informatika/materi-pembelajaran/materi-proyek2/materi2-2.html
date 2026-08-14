@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi 2.2: Profesi di Bidang Informatika - Informatika Kelas X</title>
+    <link rel="stylesheet" href="../../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --informatika-primary: #3498db;
+            --informatika-secondary: #2980b9;
+            --informatika-light: #ebf5fb;
+            --informatika-dark: #21618c;
+            --informatika-semester1: #3498db;
+            --success: #27ae60;
+            --warning: #e74c3c;
+            --info: #f39c12;
+            --purple: #9b59b6;
+            --pengembangan: #3498db;
+            --data: #27ae60;
+            --jaringan: #e67e22;
+            --keamanan: #e74c3c;
+            --desain: #9b59b6;
+            --konten: #f39c12;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+        
+        .materi-container {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+        
+        .materi-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 30px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(52, 152, 219, 0.15);
+            border-left: 8px solid var(--informatika-semester1);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        .materi-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(52, 152, 219, 0.1) 0%, transparent 70%);
+            z-index: 0;
+        }
+        
+        .materi-card > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .materi-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 3px solid var(--informatika-light);
+            flex-wrap: wrap;
+        }
+        
+        .materi-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--purple), var(--informatika-primary));
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+        }
+        
+        .materi-title-wrapper {
+            flex: 1;
+        }
+        
+        .materi-title-wrapper h1 {
+            color: var(--informatika-dark);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .materi-subtitle {
+            color: var(--informatika-primary);
+            font-size: 1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .materi-badge {
+            background: var(--informatika-light);
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: var(--informatika-dark);
+        }
+        
+        .materi-badge i {
+            margin-right: 4px;
+        }
+        
+        .tujuan-card {
+            background: linear-gradient(135deg, var(--informatika-light), white);
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(52, 152, 219, 0.2);
+        }
+        
+        .tujuan-card h3 {
+            color: var(--informatika-dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .tujuan-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 0.8rem;
+        }
+        
+        .tujuan-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            padding: 0.8rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .tujuan-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .tujuan-item i {
+            color: var(--success);
+        }
+        
+        .materi-content {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid rgba(52, 152, 219, 0.1);
+        }
+        
+        .materi-content h2 {
+            color: var(--informatika-dark);
+            font-size: 1.8rem;
+            margin: 1.5rem 0 1rem 0;
+            border-bottom: 2px solid var(--informatika-light);
+            padding-bottom: 0.5rem;
+        }
+        
+        .materi-content h2:first-of-type {
+            margin-top: 0;
+        }
+        
+        .materi-content h3 {
+            color: var(--informatika-dark);
+            font-size: 1.3rem;
+            margin: 1.2rem 0 0.8rem 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .materi-content h3 i {
+            color: var(--informatika-primary);
+        }
+        
+        .materi-content p {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        
+        .materi-content ul, .materi-content ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .materi-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .quote-box {
+            margin: 1.5rem 0;
+            padding: 1rem 1.5rem;
+            background: var(--informatika-light);
+            border-left: 4px solid var(--informatika-primary);
+            border-radius: 0 12px 12px 0;
+        }
+        
+        .note-box {
+            background: #fff3e0;
+            border-left: 4px solid var(--info);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid var(--informatika-primary);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .warning-box {
+            background: #fee2e2;
+            border-left: 4px solid var(--warning);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .success-box {
+            background: #d4edda;
+            border-left: 4px solid var(--success);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        /* Bidang Grid */
+        .bidang-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .bidang-card {
+            background: white;
+            border-radius: 20px;
+            padding: 1.2rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #e9ecef;
+        }
+        
+        .bidang-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .bidang-card.active {
+            border: 2px solid;
+        }
+        
+        .bidang-card.pengembangan.active { border-color: var(--pengembangan); background: #ebf5fb; }
+        .bidang-card.data.active { border-color: var(--data); background: #d4edda; }
+        .bidang-card.jaringan.active { border-color: var(--jaringan); background: #fee2e2; }
+        .bidang-card.keamanan.active { border-color: var(--keamanan); background: #fee2e2; }
+        .bidang-card.desain.active { border-color: var(--desain); background: #f3e5f5; }
+        .bidang-card.konten.active { border-color: var(--konten); background: #fff3e0; }
+        
+        .bidang-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .bidang-title {
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .bidang-desc {
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        /* Profesi Grid */
+        .profesi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .profesi-card {
+            background: white;
+            border-radius: 20px;
+            padding: 1.2rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #e9ecef;
+        }
+        
+        .profesi-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .profesi-card.active {
+            border: 2px solid var(--informatika-primary);
+            background: var(--informatika-light);
+        }
+        
+        .profesi-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 1rem;
+        }
+        
+        .profesi-icon {
+            font-size: 2rem;
+        }
+        
+        .profesi-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        
+        .profesi-badge {
+            display: inline-block;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: white;
+        }
+        
+        .badge-pengembangan { background: var(--pengembangan); }
+        .badge-data { background: var(--data); }
+        .badge-jaringan { background: var(--jaringan); }
+        .badge-keamanan { background: var(--keamanan); }
+        .badge-desain { background: var(--desain); }
+        .badge-konten { background: var(--konten); }
+        
+        .profesi-detail {
+            font-size: 0.85rem;
+            margin-top: 0.8rem;
+            padding-top: 0.8rem;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        /* Tabel Ringkasan */
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+        
+        .summary-table th {
+            background: var(--informatika-primary);
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .summary-table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .summary-table tr:hover {
+            background: var(--informatika-light);
+        }
+        
+        /* Langkah Karir */
+        .karir-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .karir-card {
+            text-align: center;
+            padding: 1rem;
+            background: white;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #e9ecef;
+        }
+        
+        .karir-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .karir-card.active {
+            border: 2px solid var(--success);
+            background: #d4edda;
+        }
+        
+        .karir-number {
+            width: 35px;
+            height: 35px;
+            background: var(--success);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.5rem;
+            font-weight: bold;
+        }
+        
+        .karir-title {
+            font-weight: bold;
+        }
+        
+        .materi-navigation {
+            display: flex;
+            gap: 1rem;
+            justify-content: space-between;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn.primary {
+            background: linear-gradient(135deg, var(--informatika-primary), var(--informatika-secondary));
+            color: white;
+        }
+        
+        .nav-btn.primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .nav-btn.secondary {
+            background: white;
+            color: var(--informatika-dark);
+            border: 2px solid var(--informatika-light);
+        }
+        
+        .nav-btn.secondary:hover {
+            background: var(--informatika-light);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .materi-container { padding: 1rem; }
+            .materi-card { padding: 1.5rem; }
+            .materi-header { flex-direction: column; text-align: center; }
+            .summary-table { font-size: 0.8rem; }
+            .profesi-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="../../../assets/images/logo.png" alt="Logo Sekolah">
+                    <h1>INFORMATIKA - MATERI PEMBELAJARAN</h1>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="../../../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="../../index-informatika.html" class="nav-link"><i class="fas fa-laptop-code"></i> Beranda Informatika</a></li>
+                    <li><a href="../../aktivitas-pembelajaran/index-aktivitas-informatika.html" class="nav-link"><i class="fas fa-tasks"></i> Daftar Aktivitas</a></li>
+                    <li><a href="../index-materi-informatika.html" class="nav-link active"><i class="fas fa-book-open"></i> Daftar Materi</a></li>
+                    <li><a href="../../penilaian/index-penilaian-informatika.html" class="nav-link"><i class="fas fa-chart-line"></i> Penilaian</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="materi-container">
+        <div class="materi-card">
+            <!-- Header -->
+            <div class="materi-header">
+                <div class="materi-icon">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <div class="materi-title-wrapper">
+                    <h1>Profesi di Bidang Informatika</h1>
+                    <div class="materi-subtitle">
+                        <i class="fas fa-circle"></i>
+                        <span>Proyek 2: Digitalisasi Budaya - Pertemuan 2</span>
+                        <span class="materi-badge"><i class="fas fa-clock"></i> 4 JP</span>
+                        <span class="materi-badge"><i class="fas fa-tag"></i> TP 2.8</span>
+                        <span class="materi-badge"><i class="fas fa-globe"></i> Online</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tujuan Pembelajaran -->
+            <div class="tujuan-card">
+                <h3><i class="fas fa-bullseye"></i> 🎯 Tujuan Pembelajaran</h3>
+                <div class="tujuan-list">
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Mengenal berbagai profesi di bidang informatika</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Memahami tugas dan tanggung jawab masing-masing profesi</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Menjelaskan keterampilan yang dibutuhkan untuk setiap profesi</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Memahami kontribusi profesi informatika dalam pelestarian budaya</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Merefleksikan minat dan bakat terhadap profesi di bidang informatika</div>
+                </div>
+            </div>
+
+            <!-- Konten Materi -->
+            <div class="materi-content">
+                <h2>A. Apa Itu Profesi di Bidang Informatika?</h2>
+                <p><strong>Profesi di bidang informatika</strong> adalah pekerjaan yang berkaitan dengan pengembangan, pengelolaan, dan pemanfaatan teknologi informasi dan komputer. Profesi ini melibatkan pengetahuan tentang perangkat keras, perangkat lunak, jaringan, data, dan keamanan informasi.</p>
+                
+                <div class="quote-box">
+                    <i class="fas fa-quote-left"></i> <strong>ACM (Association for Computing Machinery):</strong> "Profesi komputasi melibatkan perancangan, pengembangan, dan pemeliharaan sistem berbasis komputer."
+                </div>
+
+                <div class="info-box">
+                    <i class="fas fa-lightbulb"></i> <strong>Bidang Informatika:</strong><br>
+                    • <strong>Pengembangan</strong> - Software, web, mobile, game<br>
+                    • <strong>Data</strong> - Ilmu data, analisis, database<br>
+                    • <strong>Infrastruktur</strong> - Jaringan, cloud, sistem<br>
+                    • <strong>Keamanan</strong> - Keamanan siber, enkripsi<br>
+                    • <strong>Desain</strong> - UI/UX, grafis, motion<br>
+                    • <strong>Konten</strong> - Multimedia, kreator konten
+                </div>
+
+                <h2>B. Bidang Profesi di Informatika</h2>
+                <p><strong>Klik pada setiap bidang</strong> untuk memperjelas tampilan:</p>
+                
+                <div class="bidang-grid" id="bidangGrid">
+                    <div class="bidang-card pengembangan" data-bidang="pengembangan">
+                        <div class="bidang-icon"><i class="fas fa-code"></i></div>
+                        <div class="bidang-title">Pengembangan Perangkat Lunak</div>
+                        <div class="bidang-desc">Web Developer, Mobile Developer, Game Developer, Software Engineer. Membangun aplikasi dan sistem.</div>
+                    </div>
+                    <div class="bidang-card data" data-bidang="data">
+                        <div class="bidang-icon"><i class="fas fa-chart-line"></i></div>
+                        <div class="bidang-title">Data & Analitik</div>
+                        <div class="bidang-desc">Data Scientist, Data Analyst, Database Administrator, ML Engineer. Mengolah dan menganalisis data.</div>
+                    </div>
+                    <div class="bidang-card jaringan" data-bidang="jaringan">
+                        <div class="bidang-icon"><i class="fas fa-network-wired"></i></div>
+                        <div class="bidang-title">Jaringan & Infrastruktur</div>
+                        <div class="bidang-desc">Network Engineer, System Admin, Cloud Architect, DevOps. Mengelola infrastruktur IT.</div>
+                    </div>
+                    <div class="bidang-card keamanan" data-bidang="keamanan">
+                        <div class="bidang-icon"><i class="fas fa-shield-alt"></i></div>
+                        <div class="bidang-title">Keamanan Informasi</div>
+                        <div class="bidang-desc">Cyber Security Specialist, Info Security Analyst, Cryptographer. Melindungi data dan sistem.</div>
+                    </div>
+                    <div class="bidang-card desain" data-bidang="desain">
+                        <div class="bidang-icon"><i class="fas fa-paintbrush"></i></div>
+                        <div class="bidang-title">Desain & UI/UX</div>
+                        <div class="bidang-desc">UI Designer, UX Designer, Graphic Designer, Motion Graphic Designer. Mendesain antarmuka dan visual.</div>
+                    </div>
+                    <div class="bidang-card konten" data-bidang="konten">
+                        <div class="bidang-icon"><i class="fas fa-video"></i></div>
+                        <div class="bidang-title">Multimedia & Konten</div>
+                        <div class="bidang-desc">Content Creator, Videographer, Photographer, Copywriter. Membuat konten digital.</div>
+                    </div>
+                </div>
+
+                <h2>C. Profesi di Bidang Informatika</h2>
+                <p><strong>Klik pada setiap profesi</strong> untuk memperjelas tampilan:</p>
+                
+                <div class="profesi-grid" id="profesiGrid">
+                    <!-- Web Developer -->
+                    <div class="profesi-card" data-profesi="web">
+                        <div class="profesi-header">
+                            <div class="profesi-icon">🌐</div>
+                            <div class="profesi-name">Web Developer</div>
+                            <span class="profesi-badge badge-pengembangan">Pengembangan</span>
+                        </div>
+                        <div class="profesi-detail"><strong>Tugas:</strong> Membuat dan memelihara website (Front-end, Back-end, Full-stack)<br>
+                        <strong>Skill:</strong> HTML, CSS, JavaScript, PHP, Framework<br>
+                        <strong>🎭 Kontribusi Budaya:</strong> Membuat website museum digital, portal budaya</div>
+                    </div>
+                    <!-- Mobile Developer -->
+                    <div class="profesi-card" data-profesi="mobile">
+                        <div class="profesi-header">
+                            <div class="profesi-icon">📱</div>
+                            <div class="profesi-name">Mobile App Developer</div>
+                            <span class="profesi-badge badge-pengembangan">Pengembangan</span>
+                        </div>
+                        <div class="profesi-detail"><strong>Tugas:</strong> Membuat aplikasi untuk smartphone (Android, iOS, Cross-platform)<br>
+                        <strong>Skill:</strong> Kotlin, Swift, Flutter, React Native<br>
+                        <strong>🎭 Kontribusi Budaya:</strong> Aplikasi kamus bahasa daerah, panduan wisata budaya</div>
+                    </div>
+                    <!-- Game Developer -->
+                    <div class="profesi-card" data-profesi="game">
+                        <div class="profesi-header">
+                            <div class="profesi-icon">🎮</div>
+                            <div class="profesi-name">Game Developer</div>
+                            <span class="profesi-badge badge-pengembangan">Pengembangan</span>
+                        </div>
+                        <div class="profesi-detail"><strong>Tugas:</strong> Membuat game untuk berbagai platform<br>
+                        <strong>Skill:</strong> Unity, Unreal Engine, C#, C++<br>
+                        <strong>🎭 Kontribusi Budaya:</strong> Game edukasi cerita rakyat, mitologi Indonesia</div>
+                    </div>
+                    <!-- Data Scientist -->
+                    <div class="profesi-card" data-profesi="ds">
+                        <div class="profesi-header">
+                            <div class="profesi-icon">📊</div>
+                            <div class="profesi-name">Data Scientist</div>
+                            <span class="profesi-badge badge-data">Data</span>
+                        </div>
+                        <div class="profesi-detail"><strong>Tugas:</strong> Menganalisis data untuk mendapatkan insight<br>
+                        <strong>Skill:</strong> Python, Machine Learning, SQL, Statistik<br>
+                        <strong>🎭 Kontribusi Budaya:</strong> Analisis data kunjungan museum, tren budaya</div>
+                    </div>
+                    <!-- UI/UX Designer -->
+                    <div class="profesi-card" data-profesi="uiux">
+                        <div class="profesi-header">
+                            <div class="profesi-icon">🎨</div>
+                            <div class="profesi-name">UI/UX Designer</div>
+                            <span class="profesi-badge badge-desain">Desain</span>
+                        </div>
+                        <div class="profesi-detail"><strong>Tugas:</strong> Mendesain tampilan dan pengalaman pengguna<br>
+                        <strong>Skill:</strong> Figma, Adobe XD, riset pengguna, prototyping<br>
+                        <strong>🎭 Kontribusi Budaya:</strong> Tampilan aplikasi budaya yang menarik dan mudah digunakan</div>
+                    </div>
+                    <!-- Content Creator -->
+                    <div class="profesi-card" data-profesi="creator">
+                        <div class="profesi-header">
+                            <div class="profesi-icon">📹</div>
+                            <div class="profesi-name">Content Creator</div>
+                            <span class="profesi-badge badge-konten">Konten</span>
+                        </div>
+                        <div class="profesi-detail"><strong>Tugas:</strong> Membuat konten digital untuk media sosial, YouTube<br>
+                        <strong>Skill:</strong> Video editing, menulis, public speaking<br>
+                        <strong>🎭 Kontribusi Budaya:</strong> Konten budaya viral di TikTok/YouTube</div>
+                    </div>
+                    <!-- Cyber Security -->
+                    <div class="profesi-card" data-profesi="security">
+                        <div class="profesi-header">
+                            <div class="profesi-icon">🔒</div>
+                            <div class="profesi-name">Cyber Security Specialist</div>
+                            <span class="profesi-badge badge-keamanan">Keamanan</span>
+                        </div>
+                        <div class="profesi-detail"><strong>Tugas:</strong> Melindungi sistem dari serangan siber<br>
+                        <strong>Skill:</strong> Ethical hacking, firewall, enkripsi<br>
+                        <strong>🎭 Kontribusi Budaya:</strong> Melindungi database budaya dari peretas</div>
+                    </div>
+                    <!-- DevOps Engineer -->
+                    <div class="profesi-card" data-profesi="devops">
+                        <div class="profesi-header">
+                            <div class="profesi-icon">⚙️</div>
+                            <div class="profesi-name">DevOps Engineer</div>
+                            <span class="profesi-badge badge-jaringan">Jaringan</span>
+                        </div>
+                        <div class="profesi-detail"><strong>Tugas:</strong> Mengelola infrastruktur dan deployment aplikasi<br>
+                        <strong>Skill:</strong> Docker, Kubernetes, CI/CD, Cloud<br>
+                        <strong>🎭 Kontribusi Budaya:</strong> Memastikan aplikasi budaya berjalan stabil</div>
+                    </div>
+                    <!-- Database Administrator -->
+                    <div class="profesi-card" data-profesi="dba">
+                        <div class="profesi-header">
+                            <div class="profesi-icon">🗄️</div>
+                            <div class="profesi-name">Database Administrator</div>
+                            <span class="profesi-badge badge-data">Data</span>
+                        </div>
+                        <div class="profesi-detail"><strong>Tugas:</strong> Mengelola dan memelihara basis data<br>
+                        <strong>Skill:</strong> SQL, Oracle, MySQL, PostgreSQL<br>
+                        <strong>🎭 Kontribusi Budaya:</strong> Menyimpan data budaya dalam database</div>
+                    </div>
+                </div>
+
+                <h2>D. Tabel Ringkasan Profesi Informatika</h2>
+                <table class="summary-table">
+                    <thead>
+                        <tr><th>Profesi</th><th>Bidang</th><th>Skill Utama</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Web Developer</td><td>Pengembangan</td><td>HTML, CSS, JS, PHP</td></tr>
+                        <tr><td>Mobile App Developer</td><td>Pengembangan</td><td>Kotlin, Swift, Flutter</td></tr>
+                        <tr><td>Game Developer</td><td>Pengembangan</td><td>Unity, C#</td></tr>
+                        <tr><td>Data Scientist</td><td>Data</td><td>Python, ML, SQL</td></tr>
+                        <tr><td>UI/UX Designer</td><td>Desain</td><td>Figma, Adobe XD</td></tr>
+                        <tr><td>Content Creator</td><td>Konten</td><td>Video editing, menulis</td></tr>
+                        <tr><td>Cyber Security Specialist</td><td>Keamanan</td><td>Ethical hacking</td></tr>
+                        <tr><td>DevOps Engineer</td><td>Jaringan</td><td>Docker, Kubernetes</td></tr>
+                        <tr><td>Database Administrator</td><td>Data</td><td>SQL, Oracle</td></tr>
+                    </tbody>
+                </table>
+
+                <h2>E. Peran Profesi IT untuk Pelestarian Budaya</h2>
+                <div class="success-box">
+                    <strong>📌 Profesi IT dan Kontribusinya untuk Budaya:</strong><br>
+                    • <strong>Web Developer</strong> → Website museum digital, portal budaya<br>
+                    • <strong>Mobile App Developer</strong> → Aplikasi kamus bahasa daerah, panduan wisata budaya<br>
+                    • <strong>Game Developer</strong> → Game edukasi cerita rakyat, mitologi Indonesia<br>
+                    • <strong>Data Scientist</strong> → Analisis data kunjungan museum, tren budaya<br>
+                    • <strong>UI/UX Designer</strong> → Tampilan aplikasi budaya yang menarik dan mudah digunakan<br>
+                    • <strong>Content Creator</strong> → Konten budaya viral di TikTok/YouTube<br>
+                    • <strong>Cyber Security Specialist</strong> → Melindungi database budaya dari peretas<br>
+                    • <strong>DevOps Engineer</strong> → Memastikan aplikasi budaya berjalan stabil<br>
+                    • <strong>Database Administrator</strong> → Menyimpan data budaya dalam database
+                </div>
+
+                <h2>F. Cara Menjadi Profesional di Bidang Informatika</h2>
+                <div class="karir-grid" id="karirGrid">
+                    <div class="karir-card" data-karir="1">
+                        <div class="karir-number">1</div>
+                        <div class="karir-title">Pendidikan Formal</div>
+                        <div class="karir-desc" style="font-size: 0.75rem;">Sekolah/SMK jurusan IT, kuliah di informatika/ilmu komputer</div>
+                    </div>
+                    <div class="karir-card" data-karir="2">
+                        <div class="karir-number">2</div>
+                        <div class="karir-title">Kursus Online</div>
+                        <div class="karir-desc" style="font-size: 0.75rem;">Coursera, Udemy, Dicoding, Progate</div>
+                    </div>
+                    <div class="karir-card" data-karir="3">
+                        <div class="karir-number">3</div>
+                        <div class="karir-title">Sertifikasi</div>
+                        <div class="karir-desc" style="font-size: 0.75rem;">Sertifikasi resmi (Cisco, Microsoft, Google, AWS)</div>
+                    </div>
+                    <div class="karir-card" data-karir="4">
+                        <div class="karir-number">4</div>
+                        <div class="karir-title">Portofolio</div>
+                        <div class="karir-desc" style="font-size: 0.75rem;">Kumpulkan proyek-proyek yang pernah dibuat</div>
+                    </div>
+                    <div class="karir-card" data-karir="5">
+                        <div class="karir-number">5</div>
+                        <div class="karir-title">Magang</div>
+                        <div class="karir-desc" style="font-size: 0.75rem;">Pengalaman kerja di perusahaan IT</div>
+                    </div>
+                    <div class="karir-card" data-karir="6">
+                        <div class="karir-number">6</div>
+                        <div class="karir-title">Networking</div>
+                        <div class="karir-desc" style="font-size: 0.75rem;">Bergabung dengan komunitas IT</div>
+                    </div>
+                </div>
+
+                <div class="warning-box">
+                    <i class="fas fa-exclamation-triangle"></i> <strong>Ingat!</strong> Dunia IT terus berkembang. Jadilah pembelajar seumur hidup agar tidak tertinggal!
+                </div>
+
+                <div class="quote-box" style="margin-top: 1.5rem; text-align: center;">
+                    <i class="fas fa-briefcase"></i> Selamat Menjelajahi Profesi IT! 💼
+                </div>
+            </div>
+
+            <!-- Navigasi -->
+            <div class="materi-navigation">
+                <a href="materi2-1.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i> Kembali ke Materi 2.1
+                </a>
+                <a href="materi2-3.html" class="nav-btn primary">
+                    Lanjut ke Materi 2.3: Produksi Konten Digital
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script src="../../../script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                });
+            }
+            
+            // Bidang Grid Interaktif
+            const bidangCards = document.querySelectorAll('.bidang-card');
+            bidangCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    bidangCards.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            
+            // Profesi Grid Interaktif
+            const profesiCards = document.querySelectorAll('.profesi-card');
+            profesiCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    profesiCards.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            
+            // Karir Grid Interaktif
+            const karirCards = document.querySelectorAll('.karir-card');
+            karirCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    karirCards.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

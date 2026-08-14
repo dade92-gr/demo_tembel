@@ -1,0 +1,2492 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aktivitas 3: Perancangan Proyek - IPAS SMK</title>
+    <link rel="stylesheet" href="../../style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        /* ================================================================
+           ROOT & RESET
+           ================================================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2ecc71;
+            --primary-dark: #27ae60;
+            --primary-light: #d5f4e6;
+            --accent: #3498db;
+            --gray-bg: #f5f7fa;
+            --text: #2c3e50;
+            --text-light: #666;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            --radius: 16px;
+            --border: #e0e0e0;
+            --orange: #f39c12;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--gray-bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .logo img {
+            transition: transform 0.3s ease;
+        }
+        .logo:hover img {
+            transform: scale(1.2);
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: var(--radius);
+            padding: 2rem 2.5rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 1.5rem;
+            border-left: 5px solid var(--primary);
+        }
+
+        .header-title {
+            text-align: center;
+            font-size: 1.8rem;
+            color: var(--primary-dark);
+            margin-bottom: 0.3rem;
+        }
+
+        .header-sub {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* ===== IDENTITAS ===== */
+        .identitas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            background: var(--primary-light);
+            padding: 1.2rem 1.5rem;
+            border-radius: 12px;
+        }
+
+        .identitas-item label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--primary-dark);
+            margin-bottom: 0.2rem;
+        }
+
+        .identitas-item select,
+        .identitas-item textarea {
+            width: 100%;
+            padding: 0.6rem 0.8rem;
+            border: 2px solid #fff;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            background: #fff;
+            transition: 0.2s;
+            font-family: inherit;
+            resize: vertical;
+            min-height: 42px;
+            overflow: hidden;
+        }
+
+        .identitas-item select:focus,
+        .identitas-item textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        /* ===== SECTION ===== */
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin: 1.5rem 0 0.8rem 0;
+            padding-bottom: 0.4rem;
+            border-bottom: 3px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title i {
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .section-desc {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            padding: 0.8rem 1.2rem;
+            background: #f0faf0;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .section-desc strong {
+            color: var(--text);
+        }
+
+        /* ===== TABEL ===== */
+        .table-wrap {
+            overflow-x: auto;
+            margin: 0.8rem 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 0 1px #eee;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            padding: 10px 12px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        td {
+            padding: 8px 10px;
+            border-bottom: 1px solid #f0f0f0;
+            vertical-align: top;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* ===== DINAMIC TEXTAREA ===== */
+        .dynamic-textarea {
+            width: 100%;
+            border: 2px solid #e8e8e8;
+            border-radius: 8px;
+            padding: 8px 10px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            background: #fff;
+            transition: 0.2s;
+            resize: vertical;
+            min-height: 42px;
+            line-height: 1.6;
+            overflow: hidden;
+        }
+
+        .dynamic-textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.15);
+        }
+
+        .dynamic-textarea-sm {
+            min-height: 36px;
+            padding: 6px 10px;
+            font-size: 0.9rem;
+        }
+
+        .dynamic-textarea-lg {
+            min-height: 70px;
+        }
+
+        /* ===== SELECT UNIFORM ===== */
+        .select-uniform {
+            width: 100%;
+            padding: 0.6rem 0.8rem;
+            border: 2px solid #e8e8e8;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            background: #fff;
+            transition: 0.2s;
+            font-family: inherit;
+            color: var(--text);
+            appearance: auto;
+            cursor: pointer;
+        }
+
+        .select-uniform:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.15);
+        }
+
+        .select-uniform:disabled {
+            background: #f5f5f5;
+            color: #999;
+            cursor: not-allowed;
+        }
+
+        /* ===== RADIO & CHECKBOX ===== */
+        .options-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 20px;
+            padding: 6px 0;
+        }
+
+        .options-group label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.92rem;
+            cursor: pointer;
+        }
+
+        .options-group input[type="radio"],
+        .options-group input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary);
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        /* ===== TOMBOL ===== */
+        .btn-row {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 16px;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            margin: 4px 4px 0 0;
+        }
+
+        .btn-add {
+            background: var(--primary);
+            color: #fff;
+        }
+        .btn-add:hover {
+            background: var(--primary-dark);
+            transform: scale(1.02);
+        }
+
+        .btn-remove {
+            background: #e74c3c;
+            color: #fff;
+        }
+        .btn-remove:hover {
+            background: #c0392b;
+            transform: scale(1.02);
+        }
+        .btn-remove:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: #fff;
+            border: none;
+            padding: 0.9rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            display: block;
+            margin: 2rem auto 1rem;
+            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(46, 204, 113, 0.4);
+        }
+        .btn-submit:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .btn-export {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: #fff;
+            border: none;
+            padding: 0.7rem 1.8rem;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.25);
+        }
+
+        .btn-export:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.35);
+        }
+        .btn-export:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .toolbar {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        /* ===== STATUS ===== */
+        .status-bar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 16px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            margin-bottom: 1.2rem;
+            font-size: 0.9rem;
+        }
+
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #28a745;
+            animation: pulse 2s infinite;
+        }
+        .status-dot.offline {
+            background: #dc3545;
+            animation: none;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.5);
+            }
+            70% {
+                box-shadow: 0 0 0 8px rgba(40, 167, 69, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(40, 167, 69, 0);
+            }
+        }
+
+        .msg {
+            padding: 0.8rem 1.2rem;
+            border-radius: 10px;
+            margin: 0.8rem 0;
+            display: none;
+        }
+        .msg-success {
+            background: #d4edda;
+            color: #155724;
+            border-left: 5px solid #28a745;
+        }
+        .msg-error {
+            background: #f8d7da;
+            color: #721c24;
+            border-left: 5px solid #dc3545;
+        }
+        .msg-loading {
+            background: #fff3cd;
+            color: #856404;
+            border-left: 5px solid #ffc107;
+        }
+
+        .msg i {
+            margin-right: 8px;
+        }
+
+        /* ===== MODAL ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.25s ease;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .modal-box {
+            background: #fff;
+            margin: 8% auto;
+            padding: 2rem;
+            border-radius: 20px;
+            max-width: 440px;
+            text-align: center;
+            animation: slideDown 0.3s ease;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-40px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-icon {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .modal-icon.success {
+            color: var(--primary);
+        }
+        .modal-icon.warning {
+            color: #f39c12;
+        }
+
+        .modal-box h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.4rem;
+        }
+        .modal-box .sub {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 1.2rem;
+            line-height: 1.6;
+        }
+        .modal-box .sub strong {
+            color: var(--text);
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 0.8rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .modal-btn {
+            padding: 0.7rem 1.6rem;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: 0.2s;
+            min-width: 110px;
+            flex: 1;
+        }
+        .modal-btn:hover {
+            transform: translateY(-2px);
+        }
+        .modal-btn.primary {
+            background: var(--primary);
+            color: #fff;
+        }
+        .modal-btn.primary:hover {
+            background: var(--primary-dark);
+        }
+        .modal-btn.danger {
+            background: #e74c3c;
+            color: #fff;
+        }
+        .modal-btn.danger:hover {
+            background: #c0392b;
+        }
+        .modal-btn.secondary {
+            background: #6c757d;
+            color: #fff;
+        }
+        .modal-btn.secondary:hover {
+            background: #5a6268;
+        }
+
+        /* ===== INFO BOX ===== */
+        .info-hijau {
+            background: #e8f5e9;
+            border-left: 5px solid var(--primary);
+            padding: 1rem;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .info-biru {
+            background: #e3f2fd;
+            border-left: 5px solid var(--accent);
+            padding: 1rem;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .kotak-checklist {
+            border: 1px solid var(--primary-light);
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            background: #f9f9f9;
+            margin: 15px 0;
+        }
+
+        .materi-box {
+            background: #e3f2fd;
+            border-radius: 12px;
+            padding: 15px;
+            margin: 15px 0;
+            border-left: 4px solid var(--accent);
+        }
+
+        .btn-materi {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+        .btn-materi:hover {
+            background: #2980b9;
+        }
+
+        .soal-cek {
+            background: #fff8e1;
+            padding: 15px;
+            border-radius: 12px;
+            margin-top: 10px;
+        }
+
+        .soal-cek textarea {
+            margin-bottom: 10px;
+        }
+
+        .link-drive-box {
+            background: #e3f2fd;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            border-left: 5px solid #1976d2;
+            margin: 1rem 0;
+        }
+
+        .link-drive-box ul {
+            margin-left: 1.5rem;
+            margin-top: 4px;
+        }
+
+        .link-drive-box ul li {
+            margin-bottom: 2px;
+        }
+
+        .anggota-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        /* ===== PANDUAN DESAIN ===== */
+        .panduan-desain {
+            background: #fef9e7;
+            border: 2px solid #f39c12;
+            border-radius: 12px;
+            padding: 1.2rem 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .panduan-desain .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed #f0e0c0;
+        }
+
+        .panduan-desain .step:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .panduan-desain .step-num {
+            background: var(--orange);
+            color: #fff;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .panduan-desain .step-content {
+            font-size: 0.92rem;
+            color: #555;
+        }
+
+        .panduan-desain .step-content strong {
+            color: var(--text);
+        }
+
+        .panduan-desain .step-content .highlight {
+            background: #fff3cd;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.85rem;
+        }
+
+        .link-preview {
+            display: inline-block;
+            margin-top: 8px;
+            padding: 6px 14px;
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            text-decoration: none;
+        }
+        .link-preview:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* ===== TOMBOL TABEL DINAMIS ===== */
+        .table-toolbar {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 6px;
+        }
+
+        .btn-table-add {
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            padding: 4px 14px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .btn-table-add:hover {
+            background: var(--primary-dark);
+            transform: scale(1.02);
+        }
+
+        .btn-table-remove {
+            background: #e74c3c;
+            color: #fff;
+            border: none;
+            padding: 4px 14px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .btn-table-remove:hover {
+            background: #c0392b;
+            transform: scale(1.02);
+        }
+        .btn-table-remove:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-hapus-baris {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 4px 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            transition: 0.2s;
+        }
+        .btn-hapus-baris:hover {
+            background: #c0392b;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 0.8rem;
+                margin: 1rem auto;
+            }
+            .card {
+                padding: 1.2rem 1.2rem;
+            }
+            .identitas-grid {
+                grid-template-columns: 1fr;
+            }
+            .header-title {
+                font-size: 1.4rem;
+            }
+            .section-title {
+                font-size: 1.1rem;
+            }
+            .toolbar {
+                justify-content: center;
+            }
+            .btn-submit {
+                width: 100%;
+                justify-content: center;
+                padding: 0.8rem;
+            }
+            .modal-box {
+                margin: 15% auto;
+                padding: 1.5rem;
+            }
+            .modal-actions {
+                flex-direction: column;
+            }
+            .modal-btn {
+                flex: none;
+                width: 100%;
+            }
+            .anggota-grid {
+                grid-template-columns: 1fr !important;
+            }
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+            .panduan-desain .step {
+                flex-direction: column;
+                gap: 4px;
+            }
+            .panduan-desain .step-num {
+                width: 24px;
+                height: 24px;
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                padding: 0.8rem 0.8rem;
+            }
+            table {
+                font-size: 0.85rem;
+            }
+            th,
+            td {
+                padding: 6px 8px;
+            }
+            .dynamic-textarea {
+                font-size: 0.85rem;
+                min-height: 36px;
+                padding: 6px 8px;
+            }
+            .btn-table-add,
+            .btn-table-remove {
+                font-size: 0.7rem;
+                padding: 3px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER NAV ===== -->
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="../../assets/images/logo.png" alt="Logo" />
+                    <h1>TEMBOK BELAJAR - PROJEK IPAS SMK</h1>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="../../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="../index-ipas.html" class="nav-link"><i class="fas fa-flask"></i> Beranda IPAS</a></li>
+                    <li><a href="index-aktifitas-ipas.html" class="nav-link active"><i class="fas fa-tasks"></i> Daftar Aktivitas</a></li>
+                    <li><a href="../materi-pembelajaran/index-materi-ipas.html" class="nav-link"><i class="fas fa-book-open"></i> Daftar Materi</a></li>
+                    <li><a href="../penilaian/index-penilaian-ipas.html" class="nav-link"><i class="fas fa-chart-line"></i> Penilaian</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ===== MAIN ===== -->
+    <div class="container">
+
+        <!-- HEADER -->
+        <div class="card" style="text-align:center; border-left-color:var(--primary);">
+            <h1 class="header-title">📐 Perancangan Proyek</h1>
+            <p class="header-sub">
+                <i class="fas fa-calendar"></i> Semester Genap &nbsp;·&nbsp;
+                <i class="fas fa-clock"></i> 6 JP
+            </p>
+            <p style="color:var(--text-light); font-size:0.95rem; max-width:600px; margin:0 auto;">
+                Rancang produk secara detail: spesifikasi, desain, bahan, dan rencana produksi!
+            </p>
+        </div>
+
+        <!-- STATUS -->
+        <div class="status-bar">
+            <div class="status-dot" id="statusDot"></div>
+            <span id="statusText">Memeriksa koneksi...</span>
+        </div>
+
+        <!-- LOADING / ERROR -->
+        <div id="loadingMsg" class="msg msg-loading" style="display:none;">
+            <i class="fas fa-spinner fa-spin"></i> Memuat data...
+        </div>
+        <div id="errorMsg" class="msg msg-error" style="display:none;">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span id="errorText">Gagal terhubung ke server. Refresh halaman.</span>
+            <br />
+            <button onclick="location.reload()" style="margin-top:8px; padding:6px 20px; background:#dc3545; color:#fff; border:none; border-radius:6px; cursor:pointer;">
+                <i class="fas fa-sync-alt"></i> Refresh
+            </button>
+        </div>
+
+        <!-- ===== FORM ===== -->
+        <div id="formContainer">
+
+            <!-- TOOLBAR -->
+            <div class="toolbar">
+                <button class="btn-export" id="exportBtn" onclick="exportTemplate()" disabled>
+                    <i class="fas fa-file-word"></i> Export Template
+                </button>
+            </div>
+
+            <!-- ============================================================ -->
+            <!-- A. IDENTITAS -->
+            <!-- ============================================================ -->
+            <div class="card">
+                <h2 class="section-title"><i class="fas fa-id-card"></i> Identitas</h2>
+                <div class="identitas-grid">
+                    <div class="identitas-item">
+                        <label>Kelas</label>
+                        <select id="kelas" onchange="onKelasChange(); saveDraft();" disabled>
+                            <option value="">-- Pilih --</option>
+                        </select>
+                    </div>
+                    <div class="identitas-item">
+                        <label>Nama (Pengisi)</label>
+                        <select id="nama" onchange="saveDraft();" disabled>
+                            <option value="">-- Pilih --</option>
+                        </select>
+                    </div>
+                    <div class="identitas-item">
+                        <label>Kelompok</label>
+                        <textarea class="dynamic-textarea dynamic-textarea-sm" id="kelompok" rows="1" placeholder="Contoh: Kelompok 1" oninput="saveDraft(); autoResize(this);" disabled></textarea>
+                    </div>
+                    <div class="identitas-item">
+                        <label>Tugas/Peran</label>
+                        <textarea class="dynamic-textarea dynamic-textarea-sm" id="tugas" rows="1" placeholder="Contoh: Ketua" oninput="saveDraft(); autoResize(this);" disabled></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============================================================ -->
+            <!-- B. CEK PEMAHAMAN MATERI -->
+            <!-- ============================================================ -->
+            <div class="card">
+                <h2 class="section-title"><i class="fas fa-book-open"></i> Cek Pemahaman Materi</h2>
+                <div class="section-desc">
+                    <i class="fas fa-info-circle"></i>
+                    Sebelum memulai, baca dulu materi
+                    <a href="../materi-pembelajaran/s2-bab-3.html" target="_blank" style="color:var(--primary-dark); font-weight:600;">
+                        "Perancangan Proyek"
+                    </a>
+                    , lalu jawab pertanyaan di bawah ini.
+                </div>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th style="width:50px;">No</th><th style="width:38%;">Pertanyaan</th><th>Jawaban</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Apa saja komponen utama dalam perancangan proyek? Sebutkan minimal 3!</td>
+                                <td><textarea class="dynamic-textarea" id="cek1" rows="2" oninput="saveDraft(); autoResize(this);"></textarea></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Mengapa kita perlu membuat perencanaan sebelum memproduksi produk?</td>
+                                <td><textarea class="dynamic-textarea" id="cek2" rows="2" oninput="saveDraft(); autoResize(this);"></textarea></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ============================================================ -->
+            <!-- C. MASALAH & SOLUSI -->
+            <!-- ============================================================ -->
+            <div class="card">
+                <h2 class="section-title"><i class="fas fa-bullseye"></i> Masalah & Solusi</h2>
+
+                <div class="info-biru">
+                    <strong>📝 PETUNJUK:</strong> Tuliskan masalah dan solusi yang sudah kalian pilih dari Aktivitas 1 & 2.
+                </div>
+
+                <div class="kotak-checklist">
+                    <div style="margin-bottom:1rem;">
+                        <label style="font-weight:600; display:block; margin-bottom:4px;">C1. Masalah yang Akan Diselesaikan</label>
+                        <textarea class="dynamic-textarea" id="masalah_proyek" rows="2" placeholder="Tulis masalah yang sudah dipilih..." oninput="saveDraft(); autoResize(this);"></textarea>
+                    </div>
+                    <div>
+                        <label style="font-weight:600; display:block; margin-bottom:4px;">C2. Solusi/Produk yang Akan Dibuat</label>
+                        <textarea class="dynamic-textarea" id="solusi_proyek" rows="2" placeholder="Tulis solusi/produk yang sudah dipilih..." oninput="saveDraft(); autoResize(this);"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============================================================ -->
+            <!-- D. SPESIFIKASI PRODUK -->
+            <!-- ============================================================ -->
+            <div class="card">
+                <h2 class="section-title"><i class="fas fa-cog"></i> Spesifikasi Produk</h2>
+
+                <div class="info-biru">
+                    <strong>📝 PETUNJUK:</strong> Tentukan spesifikasi produk yang akan kalian buat.
+                </div>
+
+                <div style="margin-bottom:1rem;">
+                    <label style="font-weight:600; display:block; margin-bottom:4px;">D1. Fungsi Produk</label>
+                    <div style="margin-bottom:4px; font-size:0.9rem; color:#555;">
+                        <strong>💡 Panduan:</strong> Apa saja yang bisa dilakukan oleh produk ini?
+                    </div>
+                    <textarea class="dynamic-textarea" id="fungsi_produk" rows="2" placeholder="Tulis fungsi produk..." oninput="saveDraft(); autoResize(this);"></textarea>
+                </div>
+
+                <div style="margin-bottom:1rem;">
+                    <label style="font-weight:600; display:block; margin-bottom:4px;">D2. Target Pengguna</label>
+                    <div style="margin-bottom:4px; font-size:0.9rem; color:#555;">
+                        <strong>💡 Panduan:</strong> Siapa yang akan menggunakan produk ini?
+                    </div>
+                    <textarea class="dynamic-textarea dynamic-textarea-sm" id="target_pengguna" rows="1" placeholder="Contoh: Siswa SMK, petani, ibu rumah tangga..." oninput="saveDraft(); autoResize(this);"></textarea>
+                </div>
+
+                <div style="margin-bottom:1rem;">
+                    <label style="font-weight:600; display:block; margin-bottom:4px;">D3. Bahan yang Dibutuhkan</label>
+                    <div style="margin-bottom:4px; font-size:0.9rem; color:#555;">
+                        <strong>💡 Panduan:</strong> Tulis bahan-bahan yang dibutuhkan beserta perkiraan biaya. Klik <strong>"Tambah Baris"</strong> untuk menambah bahan.
+                    </div>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr><th style="width:28%;">Nama Bahan</th><th style="width:15%;">Jumlah</th><th style="width:20%;">Perkiraan Biaya (Rp)</th><th style="width:30%;">Sumber/Keterangan</th><th style="width:7%;">Aksi</th></tr>
+                            </thead>
+                            <tbody id="tbody_bahan">
+                                <tr>
+                                    <td><textarea class="dynamic-textarea dynamic-textarea-sm bahan_nama" rows="1" placeholder="Contoh: Botol bekas" oninput="saveDraft(); autoResize(this);"></textarea></td>
+                                    <td><input type="text" class="select-uniform bahan_jumlah" placeholder="2 buah" oninput="saveDraft();" /></td>
+                                    <td><input type="number" class="select-uniform bahan_biaya" placeholder="0" oninput="hitungTotalBiaya(); saveDraft();" /></td>
+                                    <td><textarea class="dynamic-textarea dynamic-textarea-sm bahan_sumber" rows="1" placeholder="Dari rumah" oninput="saveDraft(); autoResize(this);"></textarea></td>
+                                    <td style="text-align:center;"><button type="button" class="btn-hapus-baris" onclick="hapusBarisBahan(this)" disabled><i class="fas fa-trash"></i></button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="table-toolbar">
+                        <button type="button" class="btn-table-add" onclick="tambahBarisBahan()"><i class="fas fa-plus"></i> Tambah Baris</button>
+                        <button type="button" class="btn-table-remove" id="hapusBahanBtn" onclick="hapusBarisBahan()" disabled><i class="fas fa-minus"></i> Hapus</button>
+                    </div>
+                    <p style="margin-top:8px; font-weight:600;">Total Perkiraan Biaya: Rp <input type="text" id="total_biaya" readonly style="width:180px; background:#f5f5f5; border:2px solid #e0e0e0; border-radius:8px; padding:6px 12px; font-weight:600;" value="0"></p>
+                </div>
+
+                <div>
+                    <label style="font-weight:600; display:block; margin-bottom:4px;">D4. Cara Kerja Produk</label>
+                    <div style="margin-bottom:4px; font-size:0.9rem; color:#555;">
+                        <strong>💡 Panduan:</strong> Jelaskan secara berurutan bagaimana produk ini bekerja.
+                    </div>
+                    <textarea class="dynamic-textarea" id="cara_kerja" rows="3" placeholder="Tulis cara kerja produk secara berurutan..." oninput="saveDraft(); autoResize(this);"></textarea>
+                </div>
+            </div>
+
+            <!-- ============================================================ -->
+            <!-- E. DESAIN PRODUK (DENGAN PANDUAN LENGKAP) -->
+            <!-- ============================================================ -->
+            <div class="card">
+                <h2 class="section-title"><i class="fas fa-pencil-ruler"></i> Desain Produk</h2>
+
+                <div class="info-hijau">
+                    <i class="fas fa-lightbulb" style="color:var(--orange);"></i>
+                    <strong>LANGKAH-LANGKAH MEMBUAT DESAIN PRODUK:</strong>
+                </div>
+
+                <div class="panduan-desain">
+                    <div class="step">
+                        <div class="step-num">1</div>
+                        <div class="step-content">
+                            <strong>Gambar sketsa di kertas dengan rapi</strong><br />
+                            • Gunakan pensil atau spidol agar jelas<br />
+                            • Tulis <strong>nama setiap bagian</strong> produk pada sketsa<br />
+                            • Pastikan garis jelas, proporsional, dan mudah dibaca
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">2</div>
+                        <div class="step-content">
+                            <strong>Foto sketsa dengan HP</strong><br />
+                            • Pastikan <strong>pencahayaan cukup</strong> (cahaya terang)<br />
+                            • Foto dari posisi <strong>tegak lurus</strong> (jangan miring)<br />
+                            • Hasil foto harus <strong>jelas dan tidak buram</strong>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">3</div>
+                        <div class="step-content">
+                            <strong>Upload foto ke Gemini AI</strong><br />
+                            • Buka <strong>Gemini AI</strong> (gemini.google.com)<br />
+                            • Upload foto sketsa<br />
+                            • Gunakan prompt: <span class="highlight">"Ubah gambar sketsa tangan ini menjadi desain produk yang rapi, bersih, dan profesional. Perbaiki garis, tambahkan warna, dan buat tampilan yang lebih menarik untuk presentasi."</span>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">4</div>
+                        <div class="step-content">
+                            <strong>Download hasil desain dari Gemini</strong><br />
+                            • Tunggu hingga Gemini selesai memproses<br />
+                            • Klik <strong>Download</strong> atau screenshot hasil desain
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">5</div>
+                        <div class="step-content">
+                            <strong>Upload ke Google Drive & Bagikan</strong><br />
+                            • Upload file desain ke <strong>Google Drive</strong><br />
+                            • Klik kanan file → <strong>"Bagikan"</strong><br />
+                            • Ubah akses menjadi <strong>"Siapa saja dengan link dapat melihat"</strong><br />
+                            • Salin link
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">6</div>
+                        <div class="step-content">
+                            <strong>Tempel link Google Drive di bawah ini</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Link Google Drive -->
+                <div class="link-drive-box" style="margin-top:1rem;">
+                    <label style="font-weight:600; display:block; margin-bottom:4px; font-size:1rem;">
+                        📁 Link Google Drive - Hasil Desain Produk
+                    </label>
+                    <div style="margin-bottom:6px; font-size:0.9rem; color:#555; background:#fff; padding:6px 12px; border-radius:6px;">
+                        <strong>📌 Contoh:</strong>
+                        <em>"https://drive.google.com/file/d/xxxxxxxxxxxx/view?usp=sharing"</em>
+                    </div>
+                    <textarea class="dynamic-textarea dynamic-textarea-sm" id="link_desain" rows="1" placeholder="Tempel link Google Drive hasil desain di sini..." oninput="previewLinkDesain(); saveDraft(); autoResize(this);"></textarea>
+                    <div id="preview_link_desain" style="margin-top:6px;"></div>
+                </div>
+
+                <!-- Bagian-bagian Produk -->
+                <div style="margin-top:1.5rem;">
+                    <label style="font-weight:600; display:block; margin-bottom:4px;">Bagian-bagian Produk</label>
+                    <div style="margin-bottom:4px; font-size:0.9rem; color:#555;">
+                        <strong>💡 Panduan:</strong> Jelaskan setiap bagian dari produk kalian berdasarkan sketsa yang sudah dibuat. Klik <strong>"Tambah Baris"</strong> untuk menambah bagian.
+                    </div>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr><th style="width:35%;">Nama Bagian</th><th style="width:58%;">Fungsi Bagian</th><th style="width:7%;">Aksi</th></tr>
+                            </thead>
+                            <tbody id="tbody_bagian">
+                                <tr>
+                                    <td><textarea class="dynamic-textarea dynamic-textarea-sm bagian_nama" rows="1" placeholder="Contoh: Rangka utama" oninput="saveDraft(); autoResize(this);"></textarea></td>
+                                    <td><textarea class="dynamic-textarea dynamic-textarea-sm bagian_fungsi" rows="1" placeholder="Sebagai kerangka penyangga produk" oninput="saveDraft(); autoResize(this);"></textarea></td>
+                                    <td style="text-align:center;"><button type="button" class="btn-hapus-baris" onclick="hapusBarisBagian(this)" disabled><i class="fas fa-trash"></i></button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="table-toolbar">
+                        <button type="button" class="btn-table-add" onclick="tambahBarisBagian()"><i class="fas fa-plus"></i> Tambah Baris</button>
+                        <button type="button" class="btn-table-remove" id="hapusBagianBtn" onclick="hapusBarisBagian()" disabled><i class="fas fa-minus"></i> Hapus</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============================================================ -->
+            <!-- F. KEBERHASILAN PRODUK -->
+            <!-- ============================================================ -->
+            <div class="card">
+                <h2 class="section-title"><i class="fas fa-check-circle"></i> Keberhasilan Produk</h2>
+
+                <div class="info-biru">
+                    <strong>📝 PETUNJUK:</strong> Tentukan kriteria keberhasilan produk. Bagaimana kalian tahu produk berhasil? Klik <strong>"Tambah Baris"</strong> untuk menambah kriteria.
+                </div>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th style="width:43%;">Kriteria Keberhasilan</th><th style="width:50%;">Cara Mengukur</th><th style="width:7%;">Aksi</th></tr>
+                        </thead>
+                        <tbody id="tbody_kriteria">
+                            <tr>
+                                <td><textarea class="dynamic-textarea dynamic-textarea-sm kriteria_nama" rows="1" placeholder="Contoh: Produk kuat dan tidak mudah rusak" oninput="saveDraft(); autoResize(this);"></textarea></td>
+                                <td><textarea class="dynamic-textarea dynamic-textarea-sm kriteria_ukur" rows="1" placeholder="Dijatuhkan dari ketinggian 1m, tidak pecah" oninput="saveDraft(); autoResize(this);"></textarea></td>
+                                <td style="text-align:center;"><button type="button" class="btn-hapus-baris" onclick="hapusBarisKriteria(this)" disabled><i class="fas fa-trash"></i></button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-toolbar">
+                    <button type="button" class="btn-table-add" onclick="tambahBarisKriteria()"><i class="fas fa-plus"></i> Tambah Baris</button>
+                    <button type="button" class="btn-table-remove" id="hapusKriteriaBtn" onclick="hapusBarisKriteria()" disabled><i class="fas fa-minus"></i> Hapus</button>
+                </div>
+            </div>
+
+            <!-- ============================================================ -->
+            <!-- G. RENCANA PRODUKSI -->
+            <!-- ============================================================ -->
+            <div class="card">
+                <h2 class="section-title"><i class="fas fa-calendar-alt"></i> Rencana Produksi</h2>
+
+                <div class="info-biru">
+                    <strong>📝 PETUNJUK:</strong> Rencanakan kegiatan produksi untuk 4 minggu ke depan.
+                </div>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th style="width:15%;">Minggu</th><th style="width:52%;">Aktivitas</th><th style="width:33%;">Penanggung Jawab</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Minggu 4</strong></td><td><textarea class="dynamic-textarea dynamic-textarea-sm" id="produksi1" rows="1" placeholder="Contoh: Mengumpulkan bahan-bahan" oninput="saveDraft(); autoResize(this);"></textarea></td><td><input type="text" id="pj1" class="select-uniform" placeholder="Nama siswa" oninput="saveDraft();" /></td></tr>
+                            <tr><td><strong>Minggu 5</strong></td><td><textarea class="dynamic-textarea dynamic-textarea-sm" id="produksi2" rows="1" placeholder="Contoh: Merakit komponen" oninput="saveDraft(); autoResize(this);"></textarea></td><td><input type="text" id="pj2" class="select-uniform" placeholder="Nama siswa" oninput="saveDraft();" /></td></tr>
+                            <tr><td><strong>Minggu 6</strong></td><td><textarea class="dynamic-textarea dynamic-textarea-sm" id="produksi3" rows="1" placeholder="Contoh: Menguji coba produk" oninput="saveDraft(); autoResize(this);"></textarea></td><td><input type="text" id="pj3" class="select-uniform" placeholder="Nama siswa" oninput="saveDraft();" /></td></tr>
+                            <tr><td><strong>Minggu 7</strong></td><td><textarea class="dynamic-textarea dynamic-textarea-sm" id="produksi4" rows="1" placeholder="Contoh: Finishing dan perbaikan" oninput="saveDraft(); autoResize(this);"></textarea></td><td><input type="text" id="pj4" class="select-uniform" placeholder="Nama siswa" oninput="saveDraft();" /></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ============================================================ -->
+            <!-- H. RENCANA PENGUJIAN -->
+            <!-- ============================================================ -->
+            <div class="card">
+                <h2 class="section-title"><i class="fas fa-flask"></i> Rencana Pengujian</h2>
+
+                <div class="info-biru">
+                    <strong>📝 PETUNJUK:</strong> Rencanakan bagaimana kalian akan menguji produk. Klik <strong>"Tambah Baris"</strong> untuk menambah pengujian.
+                </div>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th style="width:26%;">Aspek yang Diuji</th><th style="width:32%;">Cara Menguji</th><th style="width:35%;">Target Keberhasilan</th><th style="width:7%;">Aksi</th></tr>
+                        </thead>
+                        <tbody id="tbody_pengujian">
+                            <tr>
+                                <td><textarea class="dynamic-textarea dynamic-textarea-sm uji_aspek" rows="1" placeholder="Contoh: Ketahanan produk" oninput="saveDraft(); autoResize(this);"></textarea></td>
+                                <td><textarea class="dynamic-textarea dynamic-textarea-sm uji_cara" rows="1" placeholder="Dijatuhkan dari ketinggian 1m" oninput="saveDraft(); autoResize(this);"></textarea></td>
+                                <td><textarea class="dynamic-textarea dynamic-textarea-sm uji_target" rows="1" placeholder="Tidak pecah/rusak" oninput="saveDraft(); autoResize(this);"></textarea></td>
+                                <td style="text-align:center;"><button type="button" class="btn-hapus-baris" onclick="hapusBarisPengujian(this)" disabled><i class="fas fa-trash"></i></button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-toolbar">
+                    <button type="button" class="btn-table-add" onclick="tambahBarisPengujian()"><i class="fas fa-plus"></i> Tambah Baris</button>
+                    <button type="button" class="btn-table-remove" id="hapusPengujianBtn" onclick="hapusBarisPengujian()" disabled><i class="fas fa-minus"></i> Hapus</button>
+                </div>
+            </div>
+
+            <!-- ============================================================ -->
+            <!-- I. PERSIAPAN PRESENTASI & DOKUMENTASI -->
+            <!-- ============================================================ -->
+            <div class="card">
+                <h2 class="section-title"><i class="fas fa-presentation"></i> Persiapan Presentasi & Dokumentasi</h2>
+
+                <div class="info-biru">
+                    <strong>📝 PETUNJUK:</strong> Tentukan siapa yang akan presentasi rancangan kalian.
+                </div>
+
+                <div class="kotak-checklist">
+                    <div style="margin-bottom:1rem;">
+                        <label style="font-weight:600; display:block; margin-bottom:4px;">I1. Presenter Utama</label>
+                        <select id="presenter_utama" class="select-uniform" onchange="saveDraft();" disabled>
+                            <option value="">-- Pilih Presenter --</option>
+                        </select>
+                    </div>
+
+                    <div style="margin-bottom:1rem;">
+                        <label style="font-weight:600; display:block; margin-bottom:4px;">I2. Anggota Kelompok</label>
+                        <div class="anggota-grid">
+                            <div>
+                                <label style="font-weight:500; font-size:0.85rem; color:var(--text-light);">Anggota 1</label>
+                                <select id="anggota1" class="select-uniform" onchange="saveDraft();" disabled>
+                                    <option value="">-- Pilih --</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label style="font-weight:500; font-size:0.85rem; color:var(--text-light);">Anggota 2</label>
+                                <select id="anggota2" class="select-uniform" onchange="saveDraft();" disabled>
+                                    <option value="">-- Pilih --</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label style="font-weight:500; font-size:0.85rem; color:var(--text-light);">Anggota 3</label>
+                                <select id="anggota3" class="select-uniform" onchange="saveDraft();" disabled>
+                                    <option value="">-- Pilih --</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label style="font-weight:500; font-size:0.85rem; color:var(--text-light);">Anggota 4</label>
+                                <select id="anggota4" class="select-uniform" onchange="saveDraft();" disabled>
+                                    <option value="">-- Pilih --</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label style="font-weight:600; display:block; margin-bottom:4px;">I3. Catatan Presentasi</label>
+                        <div style="margin-bottom:4px; font-size:0.9rem; color:#555;">
+                            <strong>💡 Panduan:</strong> Catat masukan dari kelompok lain dan hal yang perlu diperbaiki.
+                        </div>
+                        <textarea class="dynamic-textarea" id="catatan_presentasi" rows="2" placeholder="Tulis catatan di sini..." oninput="saveDraft(); autoResize(this);"></textarea>
+                    </div>
+                </div>
+
+                <!-- ===== LINK DOKUMENTASI VIDEO PRESENTASI ===== -->
+                <div class="link-drive-box" style="margin-top:1rem;">
+                    <label style="font-weight:600; display:block; margin-bottom:4px; font-size:1rem;">
+                        📁 Link Dokumentasi - Video Presentasi
+                    </label>
+                    <div style="margin-bottom:6px; font-size:0.9rem; color:#555; background:#fff; padding:6px 12px; border-radius:6px;">
+                        <strong>💡 Panduan:</strong>
+                        <ul>
+                            <li>Rekam video presentasi kelompok kalian saat presentasi di kelas.</li>
+                            <li>Upload video ke <strong>Google Drive</strong> (bisa satu folder khusus kelompok).</li>
+                            <li>Klik kanan folder/video → <strong>"Bagikan"</strong> → ubah akses menjadi <strong>"Siapa saja dengan link dapat melihat"</strong>.</li>
+                            <li>Salin link dan tempel di kolom di bawah ini.</li>
+                        </ul>
+                        <div style="margin-top:4px; color:#1976d2; background:#e3f2fd; padding:4px 10px; border-radius:4px;">
+                            <strong>📌 Contoh:</strong>
+                            <em>"https://drive.google.com/drive/folders/xxxxxxxxxxxx"</em>
+                        </div>
+                        <div style="margin-top:6px; color:#e67e22; background:#fff3e0; padding:4px 10px; border-radius:4px;">
+                            <i class="fas fa-info-circle"></i> <strong>Catatan untuk Guru:</strong> Guru dapat menilai ulang presentasi dengan melihat video di link ini.
+                        </div>
+                    </div>
+                    <textarea class="dynamic-textarea dynamic-textarea-sm" id="link_dokumentasi" rows="1" placeholder="Tempel link folder/video Google Drive di sini..." oninput="saveDraft(); autoResize(this);"></textarea>
+                </div>
+            </div>
+
+            <!-- ============================================================ -->
+            <!-- J. REFLEKSI -->
+            <!-- ============================================================ -->
+            <div class="card">
+                <h2 class="section-title"><i class="fas fa-smile"></i> Refleksi</h2>
+                <div class="section-desc">
+                    <i class="fas fa-comment"></i>
+                    Tulis dengan jujur, ya! Tidak ada jawaban benar atau salah.
+                </div>
+
+                <div style="margin-bottom:0.8rem;">
+                    <label style="font-weight:600; display:block; margin-bottom:4px;">1. Hal paling menarik dari proses merancang produk ini</label>
+                    <textarea class="dynamic-textarea" id="ref1" rows="1" oninput="saveDraft(); autoResize(this);"></textarea>
+                </div>
+                <div style="margin-bottom:0.8rem;">
+                    <label style="font-weight:600; display:block; margin-bottom:4px;">2. Kesulitan terbesar saat merancang</label>
+                    <textarea class="dynamic-textarea" id="ref2" rows="1" oninput="saveDraft(); autoResize(this);"></textarea>
+                </div>
+                <div style="margin-bottom:0.5rem;">
+                    <label style="font-weight:600; display:block; margin-bottom:4px;">3. Rencana untuk minggu depan (memulai produksi)</label>
+                    <textarea class="dynamic-textarea" id="ref3" rows="1" oninput="saveDraft(); autoResize(this);"></textarea>
+                </div>
+            </div>
+
+            <!-- ============================================================ -->
+            <!-- K. NILAI DIRI KELOMPOK -->
+            <!-- ============================================================ -->
+            <div class="card">
+                <h2 class="section-title"><i class="fas fa-star"></i> Nilai Diri Kelompok</h2>
+                <div class="section-desc">
+                    <i class="fas fa-hand-peace"></i>
+                    Berikan nilai untuk kelompokmu (1 = Kurang, 4 = Sangat Baik)!
+                </div>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead><tr><th style="width:40px;">No</th><th>Aspek</th><th style="width:130px;">Nilai (1-4)</th></tr></thead>
+                        <tbody>
+                            <tr><td>1</td><td>Partisipasi dalam diskusi</td><td>
+                                    <select id="nilai1" class="select-uniform" onchange="saveDraft();">
+                                        <option value="">--</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3" selected>3</option>
+                                        <option value="4">4</option>
+                                    </select>
+                            </td></tr>
+                            <tr><td>2</td><td>Kreativitas dalam merancang</td><td>
+                                    <select id="nilai2" class="select-uniform" onchange="saveDraft();">
+                                        <option value="">--</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3" selected>3</option>
+                                        <option value="4">4</option>
+                                    </select>
+                            </td></tr>
+                            <tr><td>3</td><td>Kerja sama dalam kelompok</td><td>
+                                    <select id="nilai3" class="select-uniform" onchange="saveDraft();">
+                                        <option value="">--</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3" selected>3</option>
+                                        <option value="4">4</option>
+                                    </select>
+                            </td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ===== SUBMIT ===== -->
+            <button class="btn-submit" id="submitBtn" onclick="submitData()" disabled>
+                <i class="fas fa-paper-plane"></i> Kirim Data
+            </button>
+
+            <div id="successMsg" class="msg msg-success" style="display:none;">
+                <i class="fas fa-check-circle"></i>
+                <span id="successText">Data berhasil dikirim!</span>
+            </div>
+
+        </div><!-- end formContainer -->
+    </div><!-- end container -->
+
+    <!-- ===== MODAL SUKSES ===== -->
+    <div id="modalSuccess" class="modal">
+        <div class="modal-box">
+            <div class="modal-icon success"><i class="fas fa-check-circle"></i></div>
+            <h3>✅ Data Berhasil Dikirim!</h3>
+            <p class="sub">Data Anda telah tersimpan di Google Spreadsheet.</p>
+            <div class="modal-actions">
+                <button class="modal-btn primary" onclick="resetForm(); closeModal('modalSuccess');">
+                    <i class="fas fa-undo"></i> Reset Form
+                </button>
+                <button class="modal-btn secondary" onclick="closeModal('modalSuccess');">
+                    <i class="fas fa-times"></i> Tutup
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== MODAL KONFIRMASI GANTI ===== -->
+    <div id="modalConfirm" class="modal">
+        <div class="modal-box">
+            <div class="modal-icon warning"><i class="fas fa-exclamation-triangle"></i></div>
+            <h3>⚠️ Data Sudah Ada!</h3>
+            <p class="sub">
+                Data dengan kombinasi <br />
+                <strong id="confirmKeyDisplay"></strong> <br />
+                sudah ada di spreadsheet.<br /><br />
+                Apakah Anda yakin ingin <strong>mengganti</strong> data lama?
+            </p>
+            <div class="modal-actions">
+                <button class="modal-btn danger" id="confirmGantiBtn" onclick="confirmGanti()">
+                    <i class="fas fa-exchange-alt"></i> Ya, Ganti
+                </button>
+                <button class="modal-btn secondary" onclick="closeModal('modalConfirm');">
+                    <i class="fas fa-times"></i> Batal
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SCRIPT -->
+    <!-- ============================================================ -->
+    <script>
+        // ================================================================
+        // KONFIGURASI
+        // ================================================================
+        const URL_DATA_SISWA = 'https://script.google.com/macros/s/AKfycbxZMS_o6xWMAQAkjBzzEMR9tJmHOnHCX13KJX2xZMn7WIr-A9pwVK_3DDHnMg7y_rD29Q/exec';
+        const URL_PEREKAPAN = 'https://script.google.com/macros/s/AKfycbyOV0q9vp8bVeVXCoYWa7qNUqzSPTA7BgTTjwEO0qjUGeHy-mrx7O0hFhcEHxK57oVY/exec';
+        const STORAGE_KEY = 'ipas_s2_a3_draft_v3';
+        const AKTIVITAS_NAMA = 'AKTIVITAS 3 - PERANCANGAN PROYEK';
+        const SHEET_NAME = 'data_aktivitas';
+
+        let dataKelas = [];
+        let dataSiswa = {};
+        let isLoading = true;
+        let isOnline = true;
+        let isSubmitting = false;
+        let pendingData = null;
+        let autoSaveTimer;
+
+        // ================================================================
+        // AUTO-RESIZE
+        // ================================================================
+        function autoResize(el) {
+            if (!el || el.tagName !== 'TEXTAREA') return;
+            el.style.height = 'auto';
+            el.style.height = Math.min(el.scrollHeight, 350) + 'px';
+        }
+
+        function refreshAutoResize() {
+            document.querySelectorAll('.dynamic-textarea, .dynamic-textarea-sm, .dynamic-textarea-lg').forEach(el => {
+                if (el.tagName === 'TEXTAREA') autoResize(el);
+            });
+        }
+
+        // ================================================================
+        // CONNECTION
+        // ================================================================
+        function checkConnection() {
+            const dot = document.getElementById('statusDot');
+            const text = document.getElementById('statusText');
+            if (navigator.onLine) {
+                dot.classList.remove('offline');
+                text.textContent = 'Terhubung ke internet';
+                isOnline = true;
+            } else {
+                dot.classList.add('offline');
+                text.textContent = 'Tidak terhubung ke internet';
+                isOnline = false;
+                showError('Tidak ada koneksi internet. Refresh setelah koneksi pulih.');
+            }
+        }
+
+        window.addEventListener('online', checkConnection);
+        window.addEventListener('offline', checkConnection);
+
+        // ================================================================
+        // LOAD DATA SISWA
+        // ================================================================
+        function loadDataSiswa() {
+            if (!navigator.onLine) {
+                showError('Tidak ada koneksi internet.');
+                return;
+            }
+
+            document.getElementById('loadingMsg').style.display = 'block';
+            const cb = 'jsonp_' + Date.now();
+
+            window[cb] = function(result) {
+                const script = document.querySelector(`script[src*="${cb}"]`);
+                if (script) script.remove();
+                delete window[cb];
+
+                if (result && result.success) {
+                    dataKelas = result.kelasList || [];
+                    dataSiswa = result.siswaPerKelas || {};
+                    const sel = document.getElementById('kelas');
+                    sel.innerHTML = '<option value="">-- Pilih Kelas --</option>';
+                    dataKelas.forEach(k => {
+                        if (k && k.trim()) {
+                            const opt = document.createElement('option');
+                            opt.value = k;
+                            opt.textContent = k;
+                            sel.appendChild(opt);
+                        }
+                    });
+                    enableForm();
+                } else {
+                    showError('Gagal memuat data siswa. Refresh halaman.');
+                }
+                document.getElementById('loadingMsg').style.display = 'none';
+                isLoading = false;
+            };
+
+            const script = document.createElement('script');
+            script.src = URL_DATA_SISWA + '?callback=' + cb;
+            script.onerror = function() {
+                const s = document.querySelector(`script[src*="${cb}"]`);
+                if (s) s.remove();
+                delete window[cb];
+                showError('Gagal terhubung ke server. Refresh halaman.');
+                document.getElementById('loadingMsg').style.display = 'none';
+                isLoading = false;
+            };
+            document.head.appendChild(script);
+        }
+
+        function enableForm() {
+            if (isOnline) {
+                ['kelas', 'nama', 'kelompok', 'tugas', 'submitBtn', 'exportBtn',
+                    'presenter_utama', 'anggota1', 'anggota2', 'anggota3', 'anggota4'
+                ].forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) el.disabled = false;
+                });
+                loadDraft();
+            }
+        }
+
+        function showError(msg) {
+            const el = document.getElementById('errorMsg');
+            document.getElementById('errorText').textContent = msg;
+            el.style.display = 'block';
+        }
+
+        // ================================================================
+        // FUNGSI KELAS
+        // ================================================================
+        function onKelasChange() {
+            updateNama();
+            updateSiswaDropdowns();
+            saveDraft();
+        }
+
+        function updateNama() {
+            const kelas = document.getElementById('kelas').value;
+            const namaSel = document.getElementById('nama');
+            namaSel.innerHTML = '<option value="">-- Pilih Nama --</option>';
+            if (kelas && dataSiswa[kelas]) {
+                (dataSiswa[kelas] || []).sort().forEach(n => {
+                    if (n && n.trim()) {
+                        const opt = document.createElement('option');
+                        opt.value = n;
+                        opt.textContent = n;
+                        namaSel.appendChild(opt);
+                    }
+                });
+            }
+            saveDraft();
+        }
+
+        function updateSiswaDropdowns() {
+            const kelas = document.getElementById('kelas').value;
+
+            if (!kelas || !dataSiswa[kelas]) {
+                ['presenter_utama', 'anggota1', 'anggota2', 'anggota3', 'anggota4'].forEach(id => {
+                    const sel = document.getElementById(id);
+                    sel.innerHTML = '<option value="">-- Pilih --</option>';
+                });
+                return;
+            }
+
+            const siswaList = [...(dataSiswa[kelas] || [])].sort();
+
+            ['presenter_utama', 'anggota1', 'anggota2', 'anggota3', 'anggota4'].forEach(id => {
+                const sel = document.getElementById(id);
+                const currentVal = sel.value;
+                sel.innerHTML = '<option value="">-- Pilih --</option>';
+                siswaList.forEach(s => {
+                    const opt = document.createElement('option');
+                    opt.value = s;
+                    opt.textContent = s;
+                    sel.appendChild(opt);
+                });
+                if (currentVal && siswaList.includes(currentVal)) {
+                    sel.value = currentVal;
+                }
+            });
+
+            saveDraft();
+        }
+
+        // ================================================================
+        // FUNGSI TABEL DINAMIS - BAHAN
+        // ================================================================
+        function tambahBarisBahan() {
+            const tbody = document.getElementById('tbody_bahan');
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td><textarea class="dynamic-textarea dynamic-textarea-sm bahan_nama" rows="1" placeholder="Contoh: Botol bekas" oninput="saveDraft(); autoResize(this);"></textarea></td>
+                <td><input type="text" class="select-uniform bahan_jumlah" placeholder="2 buah" oninput="saveDraft();" /></td>
+                <td><input type="number" class="select-uniform bahan_biaya" placeholder="0" oninput="hitungTotalBiaya(); saveDraft();" /></td>
+                <td><textarea class="dynamic-textarea dynamic-textarea-sm bahan_sumber" rows="1" placeholder="Dari rumah" oninput="saveDraft(); autoResize(this);"></textarea></td>
+                <td style="text-align:center;"><button type="button" class="btn-hapus-baris" onclick="hapusBarisBahan(this)"><i class="fas fa-trash"></i></button></td>
+            `;
+            tbody.appendChild(tr);
+            updateHapusButton('bahan');
+            saveDraft();
+            refreshAutoResize();
+        }
+
+        function hapusBarisBahan(btn) {
+            const tbody = document.getElementById('tbody_bahan');
+            if (btn) {
+                btn.closest('tr').remove();
+            } else {
+                const rows = tbody.querySelectorAll('tr');
+                if (rows.length > 1) {
+                    rows[rows.length - 1].remove();
+                }
+            }
+            updateHapusButton('bahan');
+            hitungTotalBiaya();
+            saveDraft();
+        }
+
+        // ================================================================
+        // FUNGSI TABEL DINAMIS - BAGIAN
+        // ================================================================
+        function tambahBarisBagian() {
+            const tbody = document.getElementById('tbody_bagian');
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td><textarea class="dynamic-textarea dynamic-textarea-sm bagian_nama" rows="1" placeholder="Contoh: Rangka utama" oninput="saveDraft(); autoResize(this);"></textarea></td>
+                <td><textarea class="dynamic-textarea dynamic-textarea-sm bagian_fungsi" rows="1" placeholder="Sebagai kerangka penyangga produk" oninput="saveDraft(); autoResize(this);"></textarea></td>
+                <td style="text-align:center;"><button type="button" class="btn-hapus-baris" onclick="hapusBarisBagian(this)"><i class="fas fa-trash"></i></button></td>
+            `;
+            tbody.appendChild(tr);
+            updateHapusButton('bagian');
+            saveDraft();
+            refreshAutoResize();
+        }
+
+        function hapusBarisBagian(btn) {
+            const tbody = document.getElementById('tbody_bagian');
+            if (btn) {
+                btn.closest('tr').remove();
+            } else {
+                const rows = tbody.querySelectorAll('tr');
+                if (rows.length > 1) {
+                    rows[rows.length - 1].remove();
+                }
+            }
+            updateHapusButton('bagian');
+            saveDraft();
+        }
+
+        // ================================================================
+        // FUNGSI TABEL DINAMIS - KRITERIA
+        // ================================================================
+        function tambahBarisKriteria() {
+            const tbody = document.getElementById('tbody_kriteria');
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td><textarea class="dynamic-textarea dynamic-textarea-sm kriteria_nama" rows="1" placeholder="Contoh: Produk kuat dan tidak mudah rusak" oninput="saveDraft(); autoResize(this);"></textarea></td>
+                <td><textarea class="dynamic-textarea dynamic-textarea-sm kriteria_ukur" rows="1" placeholder="Dijatuhkan dari ketinggian 1m, tidak pecah" oninput="saveDraft(); autoResize(this);"></textarea></td>
+                <td style="text-align:center;"><button type="button" class="btn-hapus-baris" onclick="hapusBarisKriteria(this)"><i class="fas fa-trash"></i></button></td>
+            `;
+            tbody.appendChild(tr);
+            updateHapusButton('kriteria');
+            saveDraft();
+            refreshAutoResize();
+        }
+
+        function hapusBarisKriteria(btn) {
+            const tbody = document.getElementById('tbody_kriteria');
+            if (btn) {
+                btn.closest('tr').remove();
+            } else {
+                const rows = tbody.querySelectorAll('tr');
+                if (rows.length > 1) {
+                    rows[rows.length - 1].remove();
+                }
+            }
+            updateHapusButton('kriteria');
+            saveDraft();
+        }
+
+        // ================================================================
+        // FUNGSI TABEL DINAMIS - PENGUJIAN
+        // ================================================================
+        function tambahBarisPengujian() {
+            const tbody = document.getElementById('tbody_pengujian');
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td><textarea class="dynamic-textarea dynamic-textarea-sm uji_aspek" rows="1" placeholder="Contoh: Ketahanan produk" oninput="saveDraft(); autoResize(this);"></textarea></td>
+                <td><textarea class="dynamic-textarea dynamic-textarea-sm uji_cara" rows="1" placeholder="Dijatuhkan dari ketinggian 1m" oninput="saveDraft(); autoResize(this);"></textarea></td>
+                <td><textarea class="dynamic-textarea dynamic-textarea-sm uji_target" rows="1" placeholder="Tidak pecah/rusak" oninput="saveDraft(); autoResize(this);"></textarea></td>
+                <td style="text-align:center;"><button type="button" class="btn-hapus-baris" onclick="hapusBarisPengujian(this)"><i class="fas fa-trash"></i></button></td>
+            `;
+            tbody.appendChild(tr);
+            updateHapusButton('pengujian');
+            saveDraft();
+            refreshAutoResize();
+        }
+
+        function hapusBarisPengujian(btn) {
+            const tbody = document.getElementById('tbody_pengujian');
+            if (btn) {
+                btn.closest('tr').remove();
+            } else {
+                const rows = tbody.querySelectorAll('tr');
+                if (rows.length > 1) {
+                    rows[rows.length - 1].remove();
+                }
+            }
+            updateHapusButton('pengujian');
+            saveDraft();
+        }
+
+        // ================================================================
+        // UPDATE HAPUS BUTTON
+        // ================================================================
+        function updateHapusButton(type) {
+            let btnId, tbodyId;
+            if (type === 'bahan') {
+                btnId = 'hapusBahanBtn';
+                tbodyId = 'tbody_bahan';
+            } else if (type === 'bagian') {
+                btnId = 'hapusBagianBtn';
+                tbodyId = 'tbody_bagian';
+            } else if (type === 'kriteria') {
+                btnId = 'hapusKriteriaBtn';
+                tbodyId = 'tbody_kriteria';
+            } else if (type === 'pengujian') {
+                btnId = 'hapusPengujianBtn';
+                tbodyId = 'tbody_pengujian';
+            }
+            const btn = document.getElementById(btnId);
+            const tbody = document.getElementById(tbodyId);
+            if (btn) {
+                btn.disabled = tbody.querySelectorAll('tr').length <= 1;
+            }
+        }
+
+        // ================================================================
+        // FUNGSI TOTAL BIAYA
+        // ================================================================
+        function hitungTotalBiaya() {
+            let total = 0;
+            const biayaInputs = document.querySelectorAll('.bahan_biaya');
+            biayaInputs.forEach(input => {
+                total += Number(input.value) || 0;
+            });
+            const totalEl = document.getElementById('total_biaya');
+            if (totalEl) {
+                totalEl.value = total.toLocaleString('id-ID');
+            }
+            saveDraft();
+        }
+
+        // ================================================================
+        // FUNGSI PREVIEW LINK DESAIN
+        // ================================================================
+        function previewLinkDesain() {
+            const link = document.getElementById('link_desain')?.value || '';
+            const preview = document.getElementById('preview_link_desain');
+            if (link && link.trim() !== '') {
+                preview.innerHTML = `<a href="${link.trim()}" target="_blank" class="link-preview"><i class="fas fa-external-link-alt"></i> Lihat Desain Produk</a>`;
+            } else {
+                preview.innerHTML = '';
+            }
+            saveDraft();
+        }
+
+        // ================================================================
+        // TIMESTAMP
+        // ================================================================
+        function getTimestamp() {
+            const now = new Date();
+            const d = String(now.getDate()).padStart(2, '0');
+            const m = String(now.getMonth() + 1).padStart(2, '0');
+            const y = now.getFullYear();
+            const h = String(now.getHours()).padStart(2, '0');
+            const min = String(now.getMinutes()).padStart(2, '0');
+            const s = String(now.getSeconds()).padStart(2, '0');
+            return `${d}/${m}/${y} ${h}:${min}:${s}`;
+        }
+
+        // ================================================================
+        // DRAFT - SAVE & LOAD
+        // ================================================================
+        function saveDraft() {
+            if (!isOnline) return;
+            clearTimeout(autoSaveTimer);
+            autoSaveTimer = setTimeout(() => {
+                const data = collectData();
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+            }, 800);
+        }
+
+        function loadDraft() {
+            const raw = localStorage.getItem(STORAGE_KEY);
+            if (raw) {
+                try {
+                    const data = JSON.parse(raw);
+                    restoreData(data);
+                } catch (e) {
+                    console.warn('Gagal load draft:', e);
+                }
+            }
+            refreshAutoResize();
+            setTimeout(hitungTotalBiaya, 300);
+            setTimeout(previewLinkDesain, 300);
+            setTimeout(() => {
+                updateHapusButton('bahan');
+                updateHapusButton('bagian');
+                updateHapusButton('kriteria');
+                updateHapusButton('pengujian');
+            }, 400);
+        }
+
+        function clearDraft() {
+            localStorage.removeItem(STORAGE_KEY);
+        }
+
+        // ================================================================
+        // COLLECT DATA
+        // ================================================================
+        function collectData() {
+            const data = { timestamp: getTimestamp() };
+
+            // Identitas
+            data.identitas = {
+                "Kelas": document.getElementById('kelas').value || '',
+                "Nama": document.getElementById('nama').value || '',
+                "Kelompok": document.getElementById('kelompok').value || '',
+                "Tugas/Peran": document.getElementById('tugas').value || ''
+            };
+
+            // Cek Pemahaman
+            data.cek_pemahaman = {
+                "Komponen utama perancangan proyek": document.getElementById('cek1').value || '',
+                "Mengapa perlu perencanaan": document.getElementById('cek2').value || ''
+            };
+
+            // Masalah & Solusi
+            data.masalah_solusi = {
+                "Masalah yang akan diselesaikan": document.getElementById('masalah_proyek').value || '',
+                "Solusi/Produk yang akan dibuat": document.getElementById('solusi_proyek').value || ''
+            };
+
+            // Spesifikasi - Bahan
+            const bahanList = [];
+            const bahanNama = document.querySelectorAll('.bahan_nama');
+            const bahanJumlah = document.querySelectorAll('.bahan_jumlah');
+            const bahanBiaya = document.querySelectorAll('.bahan_biaya');
+            const bahanSumber = document.querySelectorAll('.bahan_sumber');
+            for (let i = 0; i < bahanNama.length; i++) {
+                const nama = bahanNama[i]?.value || '';
+                if (nama) {
+                    bahanList.push({
+                        nama: nama,
+                        jumlah: bahanJumlah[i]?.value || '',
+                        biaya: bahanBiaya[i]?.value || '',
+                        sumber: bahanSumber[i]?.value || ''
+                    });
+                }
+            }
+
+            data.spesifikasi = {
+                "Fungsi Produk": document.getElementById('fungsi_produk').value || '',
+                "Target Pengguna": document.getElementById('target_pengguna').value || '',
+                "Daftar Bahan": bahanList,
+                "Total Biaya": document.getElementById('total_biaya').value || '0',
+                "Cara Kerja": document.getElementById('cara_kerja').value || ''
+            };
+
+            // Desain - Bagian
+            const bagianList = [];
+            const bagianNama = document.querySelectorAll('.bagian_nama');
+            const bagianFungsi = document.querySelectorAll('.bagian_fungsi');
+            for (let i = 0; i < bagianNama.length; i++) {
+                const nama = bagianNama[i]?.value || '';
+                if (nama) {
+                    bagianList.push({
+                        nama: nama,
+                        fungsi: bagianFungsi[i]?.value || ''
+                    });
+                }
+            }
+
+            data.desain = {
+                "Link Google Drive": document.getElementById('link_desain').value || '',
+                "Bagian-bagian Produk": bagianList
+            };
+
+            // Keberhasilan
+            const kriteriaList = [];
+            const kriteriaNama = document.querySelectorAll('.kriteria_nama');
+            const kriteriaUkur = document.querySelectorAll('.kriteria_ukur');
+            for (let i = 0; i < kriteriaNama.length; i++) {
+                const nama = kriteriaNama[i]?.value || '';
+                if (nama) {
+                    kriteriaList.push({
+                        nama: nama,
+                        ukur: kriteriaUkur[i]?.value || ''
+                    });
+                }
+            }
+            data.keberhasilan = kriteriaList;
+
+            // Rencana Produksi
+            const produksiList = [];
+            for (let i = 1; i <= 4; i++) {
+                const aktivitas = document.getElementById(`produksi${i}`)?.value || '';
+                const pj = document.getElementById(`pj${i}`)?.value || '';
+                produksiList.push({ aktivitas, pj });
+            }
+            data.produksi = produksiList;
+
+            // Rencana Pengujian
+            const ujiList = [];
+            const ujiAspek = document.querySelectorAll('.uji_aspek');
+            const ujiCara = document.querySelectorAll('.uji_cara');
+            const ujiTarget = document.querySelectorAll('.uji_target');
+            for (let i = 0; i < ujiAspek.length; i++) {
+                const aspek = ujiAspek[i]?.value || '';
+                if (aspek) {
+                    ujiList.push({
+                        aspek: aspek,
+                        cara: ujiCara[i]?.value || '',
+                        target: ujiTarget[i]?.value || ''
+                    });
+                }
+            }
+            data.pengujian = ujiList;
+
+            // Presentasi
+            const anggota = [
+                document.getElementById('anggota1').value || '',
+                document.getElementById('anggota2').value || '',
+                document.getElementById('anggota3').value || '',
+                document.getElementById('anggota4').value || ''
+            ].filter(a => a).join(', ');
+
+            data.presentasi = {
+                "Presenter Utama": document.getElementById('presenter_utama').value || '',
+                "Anggota Kelompok": anggota,
+                "Catatan Presentasi": document.getElementById('catatan_presentasi').value || ''
+            };
+
+            // Dokumentasi
+            data.dokumentasi = {
+                "Link Video Presentasi": document.getElementById('link_dokumentasi').value || ''
+            };
+
+            // Refleksi
+            data.refleksi = {
+                "Hal paling menarik": document.getElementById('ref1').value || '',
+                "Kesulitan terbesar": document.getElementById('ref2').value || '',
+                "Rencana minggu depan": document.getElementById('ref3').value || ''
+            };
+
+            // Nilai
+            data.nilai = {
+                "Partisipasi diskusi": document.getElementById('nilai1').value || '3',
+                "Kreativitas merancang": document.getElementById('nilai2').value || '3',
+                "Kerja sama": document.getElementById('nilai3').value || '3'
+            };
+
+            return data;
+        }
+
+        // ================================================================
+        // RESTORE DATA
+        // ================================================================
+        function restoreData(data) {
+            if (!data) return;
+
+            if (data.identitas) {
+                const sel = document.getElementById('kelas');
+                for (let opt of sel.options) {
+                    if (opt.value === data.identitas["Kelas"]) { opt.selected = true; break; }
+                }
+                updateNama();
+                const selNama = document.getElementById('nama');
+                for (let opt of selNama.options) {
+                    if (opt.value === data.identitas["Nama"]) { opt.selected = true; break; }
+                }
+                document.getElementById('kelompok').value = data.identitas["Kelompok"] || '';
+                document.getElementById('tugas').value = data.identitas["Tugas/Peran"] || '';
+            }
+
+            if (data.cek_pemahaman) {
+                document.getElementById('cek1').value = data.cek_pemahaman["Komponen utama perancangan proyek"] || '';
+                document.getElementById('cek2').value = data.cek_pemahaman["Mengapa perlu perencanaan"] || '';
+            }
+
+            if (data.masalah_solusi) {
+                document.getElementById('masalah_proyek').value = data.masalah_solusi["Masalah yang akan diselesaikan"] || '';
+                document.getElementById('solusi_proyek').value = data.masalah_solusi["Solusi/Produk yang akan dibuat"] || '';
+            }
+
+            if (data.spesifikasi) {
+                const s = data.spesifikasi;
+                document.getElementById('fungsi_produk').value = s["Fungsi Produk"] || '';
+                document.getElementById('target_pengguna').value = s["Target Pengguna"] || '';
+                document.getElementById('cara_kerja').value = s["Cara Kerja"] || '';
+                document.getElementById('total_biaya').value = s["Total Biaya"] || '0';
+
+                if (s["Daftar Bahan"] && s["Daftar Bahan"].length > 0) {
+                    const tbody = document.getElementById('tbody_bahan');
+                    tbody.innerHTML = '';
+                    s["Daftar Bahan"].forEach((b) => {
+                        const tr = document.createElement('tr');
+                        tr.innerHTML = `
+                            <td><textarea class="dynamic-textarea dynamic-textarea-sm bahan_nama" rows="1" placeholder="Contoh: Botol bekas" oninput="saveDraft(); autoResize(this);">${escapeHtml(b.nama || '')}</textarea></td>
+                            <td><input type="text" class="select-uniform bahan_jumlah" placeholder="2 buah" value="${escapeHtml(b.jumlah || '')}" oninput="saveDraft();" /></td>
+                            <td><input type="number" class="select-uniform bahan_biaya" placeholder="0" value="${b.biaya || ''}" oninput="hitungTotalBiaya(); saveDraft();" /></td>
+                            <td><textarea class="dynamic-textarea dynamic-textarea-sm bahan_sumber" rows="1" placeholder="Dari rumah" oninput="saveDraft(); autoResize(this);">${escapeHtml(b.sumber || '')}</textarea></td>
+                            <td style="text-align:center;"><button type="button" class="btn-hapus-baris" onclick="hapusBarisBahan(this)"><i class="fas fa-trash"></i></button></td>
+                        `;
+                        tbody.appendChild(tr);
+                    });
+                }
+            }
+
+            if (data.desain) {
+                document.getElementById('link_desain').value = data.desain["Link Google Drive"] || '';
+                setTimeout(previewLinkDesain, 100);
+
+                if (data.desain["Bagian-bagian Produk"] && data.desain["Bagian-bagian Produk"].length > 0) {
+                    const tbody = document.getElementById('tbody_bagian');
+                    tbody.innerHTML = '';
+                    data.desain["Bagian-bagian Produk"].forEach((b) => {
+                        const tr = document.createElement('tr');
+                        tr.innerHTML = `
+                            <td><textarea class="dynamic-textarea dynamic-textarea-sm bagian_nama" rows="1" placeholder="Contoh: Rangka utama" oninput="saveDraft(); autoResize(this);">${escapeHtml(b.nama || '')}</textarea></td>
+                            <td><textarea class="dynamic-textarea dynamic-textarea-sm bagian_fungsi" rows="1" placeholder="Sebagai kerangka penyangga produk" oninput="saveDraft(); autoResize(this);">${escapeHtml(b.fungsi || '')}</textarea></td>
+                            <td style="text-align:center;"><button type="button" class="btn-hapus-baris" onclick="hapusBarisBagian(this)"><i class="fas fa-trash"></i></button></td>
+                        `;
+                        tbody.appendChild(tr);
+                    });
+                }
+            }
+
+            if (data.keberhasilan && data.keberhasilan.length > 0) {
+                const tbody = document.getElementById('tbody_kriteria');
+                tbody.innerHTML = '';
+                data.keberhasilan.forEach((k) => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td><textarea class="dynamic-textarea dynamic-textarea-sm kriteria_nama" rows="1" placeholder="Contoh: Produk kuat dan tidak mudah rusak" oninput="saveDraft(); autoResize(this);">${escapeHtml(k.nama || '')}</textarea></td>
+                        <td><textarea class="dynamic-textarea dynamic-textarea-sm kriteria_ukur" rows="1" placeholder="Dijatuhkan dari ketinggian 1m, tidak pecah" oninput="saveDraft(); autoResize(this);">${escapeHtml(k.ukur || '')}</textarea></td>
+                        <td style="text-align:center;"><button type="button" class="btn-hapus-baris" onclick="hapusBarisKriteria(this)"><i class="fas fa-trash"></i></button></td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            }
+
+            if (data.produksi && data.produksi.length > 0) {
+                for (let i = 0; i < Math.min(4, data.produksi.length); i++) {
+                    const idx = i + 1;
+                    const p = data.produksi[i];
+                    document.getElementById(`produksi${idx}`).value = p.aktivitas || '';
+                    document.getElementById(`pj${idx}`).value = p.pj || '';
+                }
+            }
+
+            if (data.pengujian && data.pengujian.length > 0) {
+                const tbody = document.getElementById('tbody_pengujian');
+                tbody.innerHTML = '';
+                data.pengujian.forEach((u) => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td><textarea class="dynamic-textarea dynamic-textarea-sm uji_aspek" rows="1" placeholder="Contoh: Ketahanan produk" oninput="saveDraft(); autoResize(this);">${escapeHtml(u.aspek || '')}</textarea></td>
+                        <td><textarea class="dynamic-textarea dynamic-textarea-sm uji_cara" rows="1" placeholder="Dijatuhkan dari ketinggian 1m" oninput="saveDraft(); autoResize(this);">${escapeHtml(u.cara || '')}</textarea></td>
+                        <td><textarea class="dynamic-textarea dynamic-textarea-sm uji_target" rows="1" placeholder="Tidak pecah/rusak" oninput="saveDraft(); autoResize(this);">${escapeHtml(u.target || '')}</textarea></td>
+                        <td style="text-align:center;"><button type="button" class="btn-hapus-baris" onclick="hapusBarisPengujian(this)"><i class="fas fa-trash"></i></button></td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            }
+
+            if (data.presentasi) {
+                setTimeout(() => {
+                    document.getElementById('presenter_utama').value = data.presentasi["Presenter Utama"] || '';
+                    const anggota = (data.presentasi["Anggota Kelompok"] || '').split(', ');
+                    document.getElementById('anggota1').value = anggota[0] || '';
+                    document.getElementById('anggota2').value = anggota[1] || '';
+                    document.getElementById('anggota3').value = anggota[2] || '';
+                    document.getElementById('anggota4').value = anggota[3] || '';
+                }, 200);
+                document.getElementById('catatan_presentasi').value = data.presentasi["Catatan Presentasi"] || '';
+            }
+
+            if (data.dokumentasi) {
+                document.getElementById('link_dokumentasi').value = data.dokumentasi["Link Video Presentasi"] || '';
+            }
+
+            if (data.refleksi) {
+                document.getElementById('ref1').value = data.refleksi["Hal paling menarik"] || '';
+                document.getElementById('ref2').value = data.refleksi["Kesulitan terbesar"] || '';
+                document.getElementById('ref3').value = data.refleksi["Rencana minggu depan"] || '';
+            }
+
+            if (data.nilai) {
+                document.getElementById('nilai1').value = data.nilai["Partisipasi diskusi"] || '3';
+                document.getElementById('nilai2').value = data.nilai["Kreativitas merancang"] || '3';
+                document.getElementById('nilai3').value = data.nilai["Kerja sama"] || '3';
+            }
+
+            refreshAutoResize();
+            setTimeout(hitungTotalBiaya, 400);
+            setTimeout(() => {
+                updateHapusButton('bahan');
+                updateHapusButton('bagian');
+                updateHapusButton('kriteria');
+                updateHapusButton('pengujian');
+            }, 500);
+        }
+
+        function escapeHtml(str) {
+            if (!str) return '';
+            return str.replace(/[&<>]/g, function(m) {
+                if (m === '&') return '&amp;';
+                if (m === '<') return '&lt;';
+                if (m === '>') return '&gt;';
+                return m;
+            });
+        }
+
+        // ================================================================
+        // RESET FORM
+        // ================================================================
+        function resetForm() {
+            document.querySelectorAll('textarea, select, input[type="text"], input[type="number"], input[type="url"]').forEach(el => {
+                if (el.tagName === 'SELECT') el.selectedIndex = 0;
+                else el.value = '';
+            });
+            document.querySelectorAll('input[type="radio"], input[type="checkbox"]').forEach(el => el.checked = false);
+            document.getElementById('nama').innerHTML = '<option value="">-- Pilih Nama --</option>';
+            ['nilai1', 'nilai2', 'nilai3'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.value = '3';
+            });
+            document.getElementById('total_biaya').value = '0';
+            document.getElementById('preview_link_desain').innerHTML = '';
+
+            document.getElementById('presenter_utama').innerHTML = '<option value="">-- Pilih Presenter --</option>';
+            ['anggota1', 'anggota2', 'anggota3', 'anggota4'].forEach(id => {
+                const el = document.getElementById(id);
+                el.innerHTML = '<option value="">-- Pilih --</option>';
+            });
+
+            // Reset dynamic tables to one row each
+            const tbodyBahan = document.getElementById('tbody_bahan');
+            tbodyBahan.innerHTML = `
+                <tr>
+                    <td><textarea class="dynamic-textarea dynamic-textarea-sm bahan_nama" rows="1" placeholder="Contoh: Botol bekas" oninput="saveDraft(); autoResize(this);"></textarea></td>
+                    <td><input type="text" class="select-uniform bahan_jumlah" placeholder="2 buah" oninput="saveDraft();" /></td>
+                    <td><input type="number" class="select-uniform bahan_biaya" placeholder="0" oninput="hitungTotalBiaya(); saveDraft();" /></td>
+                    <td><textarea class="dynamic-textarea dynamic-textarea-sm bahan_sumber" rows="1" placeholder="Dari rumah" oninput="saveDraft(); autoResize(this);"></textarea></td>
+                    <td style="text-align:center;"><button type="button" class="btn-hapus-baris" onclick="hapusBarisBahan(this)" disabled><i class="fas fa-trash"></i></button></td>
+                </tr>
+            `;
+
+            const tbodyBagian = document.getElementById('tbody_bagian');
+            tbodyBagian.innerHTML = `
+                <tr>
+                    <td><textarea class="dynamic-textarea dynamic-textarea-sm bagian_nama" rows="1" placeholder="Contoh: Rangka utama" oninput="saveDraft(); autoResize(this);"></textarea></td>
+                    <td><textarea class="dynamic-textarea dynamic-textarea-sm bagian_fungsi" rows="1" placeholder="Sebagai kerangka penyangga produk" oninput="saveDraft(); autoResize(this);"></textarea></td>
+                    <td style="text-align:center;"><button type="button" class="btn-hapus-baris" onclick="hapusBarisBagian(this)" disabled><i class="fas fa-trash"></i></button></td>
+                </tr>
+            `;
+
+            const tbodyKriteria = document.getElementById('tbody_kriteria');
+            tbodyKriteria.innerHTML = `
+                <tr>
+                    <td><textarea class="dynamic-textarea dynamic-textarea-sm kriteria_nama" rows="1" placeholder="Contoh: Produk kuat dan tidak mudah rusak" oninput="saveDraft(); autoResize(this);"></textarea></td>
+                    <td><textarea class="dynamic-textarea dynamic-textarea-sm kriteria_ukur" rows="1" placeholder="Dijatuhkan dari ketinggian 1m, tidak pecah" oninput="saveDraft(); autoResize(this);"></textarea></td>
+                    <td style="text-align:center;"><button type="button" class="btn-hapus-baris" onclick="hapusBarisKriteria(this)" disabled><i class="fas fa-trash"></i></button></td>
+                </tr>
+            `;
+
+            const tbodyPengujian = document.getElementById('tbody_pengujian');
+            tbodyPengujian.innerHTML = `
+                <tr>
+                    <td><textarea class="dynamic-textarea dynamic-textarea-sm uji_aspek" rows="1" placeholder="Contoh: Ketahanan produk" oninput="saveDraft(); autoResize(this);"></textarea></td>
+                    <td><textarea class="dynamic-textarea dynamic-textarea-sm uji_cara" rows="1" placeholder="Dijatuhkan dari ketinggian 1m" oninput="saveDraft(); autoResize(this);"></textarea></td>
+                    <td><textarea class="dynamic-textarea dynamic-textarea-sm uji_target" rows="1" placeholder="Tidak pecah/rusak" oninput="saveDraft(); autoResize(this);"></textarea></td>
+                    <td style="text-align:center;"><button type="button" class="btn-hapus-baris" onclick="hapusBarisPengujian(this)" disabled><i class="fas fa-trash"></i></button></td>
+                </tr>
+            `;
+
+            updateHapusButton('bahan');
+            updateHapusButton('bagian');
+            updateHapusButton('kriteria');
+            updateHapusButton('pengujian');
+
+            clearDraft();
+            document.getElementById('successMsg').style.display = 'none';
+            refreshAutoResize();
+        }
+
+        // ================================================================
+        // MODAL
+        // ================================================================
+        function closeModal(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+
+        document.querySelectorAll('.modal').forEach(m => {
+            m.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.style.display = 'none';
+                }
+            });
+        });
+
+        function confirmGanti() {
+            const btn = document.getElementById('confirmGantiBtn');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengganti...';
+            if (pendingData) {
+                doSubmit(pendingData, true).finally(() => {
+                    btn.disabled = false;
+                    btn.innerHTML = '<i class="fas fa-exchange-alt"></i> Ya, Ganti';
+                });
+            }
+        }
+
+        // ================================================================
+        // CEK DATA
+        // ================================================================
+        async function cekDataSpreadsheet(kelas, nama) {
+            const url =
+                `${URL_PEREKAPAN}?action=getDataSiswa&kelas=${encodeURIComponent(kelas)}&nama=${encodeURIComponent(nama)}&aktivitas=${encodeURIComponent(AKTIVITAS_NAMA)}`;
+            const resp = await fetch(url);
+            const result = await resp.json();
+            if (result.success && result.data) {
+                return { found: true, key: `${kelas}_${nama}_${AKTIVITAS_NAMA}_AKTIF` };
+            }
+            return { found: false };
+        }
+
+        // ================================================================
+        // SUBMIT DATA
+        // ================================================================
+        function submitData() {
+            if (!isOnline) {
+                alert('Tidak ada koneksi internet. Periksa koneksi Anda.');
+                return;
+            }
+            if (isLoading) {
+                alert('Data masih dimuat. Tunggu sebentar.');
+                return;
+            }
+            if (isSubmitting) {
+                alert('Proses pengiriman sedang berlangsung...');
+                return;
+            }
+
+            const kelas = document.getElementById('kelas').value;
+            const nama = document.getElementById('nama').value;
+            const kelompok = document.getElementById('kelompok').value;
+
+            if (!kelas) { alert('Pilih kelas dulu!'); return; }
+            if (!nama) { alert('Pilih nama dulu!'); return; }
+            if (!kelompok) { alert('Isi nama kelompok!'); return; }
+
+            const btn = document.getElementById('submitBtn');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memeriksa...';
+
+            const allData = collectData();
+            pendingData = { allData, kelas, nama, kelompok };
+
+            cekDataSpreadsheet(kelas, nama)
+                .then(result => {
+                    if (result.found) {
+                        document.getElementById('confirmKeyDisplay').textContent = result.key;
+                        document.getElementById('modalConfirm').style.display = 'block';
+                        btn.innerHTML = '<i class="fas fa-paper-plane"></i> Kirim Data';
+                        btn.disabled = false;
+                        return;
+                    }
+                    return doSubmit(pendingData, false);
+                })
+                .catch(err => {
+                    alert('❌ Gagal: ' + err.message);
+                    btn.innerHTML = '<i class="fas fa-paper-plane"></i> Kirim Data';
+                    btn.disabled = false;
+                    pendingData = null;
+                });
+        }
+
+        async function doSubmit(data, isReplace) {
+            isSubmitting = true;
+            const btn = document.getElementById('submitBtn');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> ' + (isReplace ? 'Mengganti...' : 'Mengirim...');
+
+            try {
+                const { allData, kelas, nama } = data;
+                const formData = new URLSearchParams();
+                formData.append('sheetName', SHEET_NAME);
+                formData.append('data', JSON.stringify(allData));
+                formData.append('kelas', kelas);
+                formData.append('nama', nama);
+                formData.append('aktivitas', AKTIVITAS_NAMA);
+                if (isReplace) formData.append('replace', 'true');
+
+                const resp = await fetch(URL_PEREKAPAN, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: formData
+                });
+
+                const result = await resp.json();
+
+                if (result.success) {
+                    closeModal('modalConfirm');
+                    document.getElementById('successText').textContent =
+                        '✅ Data berhasil ' + (isReplace ? 'diganti' : 'dikirim') + '! Key: ' + (result.key || '-');
+                    document.getElementById('successMsg').style.display = 'block';
+                    clearDraft();
+                    document.getElementById('modalSuccess').style.display = 'block';
+                } else {
+                    alert('❌ Gagal: ' + (result.error || 'Terjadi kesalahan.'));
+                }
+            } catch (err) {
+                alert('❌ Error: ' + err.message);
+                showError('Gagal kirim: ' + err.message);
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-paper-plane"></i> Kirim Data';
+                isSubmitting = false;
+                pendingData = null;
+            }
+        }
+
+        // ================================================================
+        // EXPORT TEMPLATE
+        // ================================================================
+        function exportTemplate() {
+            const btn = document.getElementById('exportBtn');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memproses...';
+
+            try {
+                const clone = document.getElementById('formContainer').cloneNode(true);
+                clone.querySelectorAll('.btn-submit, .btn-export, .status-bar, .msg, .toolbar, .btn-table-add, .btn-table-remove, .btn-hapus-baris, .table-toolbar').forEach(el => el
+                    .remove());
+
+                clone.querySelectorAll('textarea, select, input[type="text"], input[type="number"], input[type="url"]').forEach(el => {
+                    const p = document.createElement('span');
+                    p.textContent = el.value || '[_________________]';
+                    p.style.cssText = 'color:#666; font-style:italic;';
+                    el.replaceWith(p);
+                });
+
+                clone.querySelectorAll('input[type="radio"], input[type="checkbox"]').forEach(el => {
+                    const span = document.createElement('span');
+                    span.textContent = el.checked ? '☑' : '☐';
+                    span.style.cssText = 'font-size:1.2rem; margin-right:4px;';
+                    el.replaceWith(span);
+                });
+
+                const html = `
+                    <html><head><meta charset="UTF-8"><title>Template Perancangan Proyek</title>
+                    <style>
+                        body { font-family: 'Segoe UI', Arial, sans-serif; padding:30px; max-width:960px; margin:auto; line-height:1.6; }
+                        .card { background:#fff; border-radius:12px; padding:20px; margin-bottom:16px; border-left:5px solid #2ecc71; }
+                        .section-title { font-size:1.2rem; font-weight:700; margin:0 0 8px 0; border-bottom:2px solid #d5f4e6; padding-bottom:4px; }
+                        .section-desc { background:#f0faf0; padding:8px 14px; border-radius:8px; margin-bottom:12px; }
+                        table { width:100%; border-collapse:collapse; margin:8px 0; }
+                        th { background:#2ecc71; color:#fff; padding:8px 10px; text-align:left; }
+                        td { padding:6px 10px; border-bottom:1px solid #eee; }
+                        .identitas-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; background:#d5f4e6; padding:12px 16px; border-radius:10px; }
+                        .kotak-checklist { border:1px solid #d5f4e6; padding:12px 16px; border-radius:12px; background:#f9f9f9; margin:15px 0; }
+                        .info-biru { background:#e3f2fd; padding:8px 14px; border-radius:8px; border-left:4px solid #3498db; margin-bottom:12px; }
+                        .info-hijau { background:#e8f5e9; padding:8px 14px; border-radius:8px; border-left:4px solid #2ecc71; margin-bottom:12px; }
+                        .link-drive-box { background:#e3f2fd; padding:12px 16px; border-radius:12px; border-left:5px solid #1976d2; margin:15px 0; }
+                        .header-title { text-align:center; font-size:1.6rem; color:#27ae60; }
+                        .header-sub { text-align:center; color:#666; }
+                        .panduan-desain { background:#fef9e7; border:2px solid #f39c12; border-radius:12px; padding:12px 16px; margin:10px 0; }
+                        .panduan-desain .step { display:flex; gap:12px; margin-bottom:8px; padding-bottom:8px; border-bottom:1px dashed #f0e0c0; }
+                        .panduan-desain .step:last-child { border-bottom:none; margin-bottom:0; padding-bottom:0; }
+                        .panduan-desain .step-num { background:#f39c12; color:#fff; width:24px; height:24px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:0.8rem; flex-shrink:0; }
+                        .panduan-desain .step-content { font-size:0.9rem; color:#555; }
+                        .anggota-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+                        .select-uniform { width:100%; padding:6px 10px; border:2px solid #e0e0e0; border-radius:8px; }
+                    </style>
+                    </head><body>
+                    <h1 class="header-title">📐 Perancangan Proyek</h1>
+                    <p class="header-sub">Lembar Kerja IPAS SMK - Semester Genap</p>
+                    ${clone.innerHTML}
+                    <p style="text-align:center; color:#999; font-size:0.85rem; margin-top:30px; border-top:1px solid #eee; padding-top:12px;">
+                        Dicetak dari Sistem IPAS Tembok Belajar
+                    </p>
+                    </body></html>
+                `;
+
+                const blob = new Blob([html], { type: 'application/msword;charset=utf-8' });
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                const date = new Date().toISOString().slice(0, 10);
+                link.download = `Template_Perancangan_Proyek_${date}.doc`;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                setTimeout(() => URL.revokeObjectURL(link.href), 1000);
+
+            } catch (e) {
+                alert('Gagal export: ' + e.message);
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-file-word"></i> Export Template';
+            }
+        }
+
+        // ================================================================
+        // HAMBURGER MENU
+        // ================================================================
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                });
+            }
+
+            checkConnection();
+            loadDataSiswa();
+            setInterval(checkConnection, 5000);
+            setTimeout(refreshAutoResize, 500);
+
+            // Expose functions globally
+            window.tambahBarisBahan = tambahBarisBahan;
+            window.hapusBarisBahan = hapusBarisBahan;
+            window.tambahBarisBagian = tambahBarisBagian;
+            window.hapusBarisBagian = hapusBarisBagian;
+            window.tambahBarisKriteria = tambahBarisKriteria;
+            window.hapusBarisKriteria = hapusBarisKriteria;
+            window.tambahBarisPengujian = tambahBarisPengujian;
+            window.hapusBarisPengujian = hapusBarisPengujian;
+            window.hitungTotalBiaya = hitungTotalBiaya;
+            window.previewLinkDesain = previewLinkDesain;
+            window.autoResize = autoResize;
+            window.updateHapusButton = updateHapusButton;
+        });
+    </script>
+</body>
+</html>

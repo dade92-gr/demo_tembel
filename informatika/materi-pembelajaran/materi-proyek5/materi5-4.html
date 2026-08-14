@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi 5.4: Rancang & Uji Solusi - Informatika Kelas X</title>
+    <link rel="stylesheet" href="../../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --informatika-primary: #3498db;
+            --informatika-secondary: #2980b9;
+            --informatika-light: #ebf5fb;
+            --informatika-dark: #21618c;
+            --informatika-semester1: #3498db;
+            --success: #27ae60;
+            --warning: #e74c3c;
+            --info: #f39c12;
+            --purple: #9b59b6;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+        
+        .materi-container {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+        
+        .materi-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 30px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(52, 152, 219, 0.15);
+            border-left: 8px solid var(--informatika-semester1);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        .materi-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(52, 152, 219, 0.1) 0%, transparent 70%);
+            z-index: 0;
+        }
+        
+        .materi-card > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .materi-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 3px solid var(--informatika-light);
+            flex-wrap: wrap;
+        }
+        
+        .materi-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--purple), var(--informatika-primary));
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+        }
+        
+        .materi-title-wrapper {
+            flex: 1;
+        }
+        
+        .materi-title-wrapper h1 {
+            color: var(--informatika-dark);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .materi-subtitle {
+            color: var(--informatika-primary);
+            font-size: 1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .materi-badge {
+            background: var(--informatika-light);
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: var(--informatika-dark);
+        }
+        
+        .materi-badge i {
+            margin-right: 4px;
+        }
+        
+        .tujuan-card {
+            background: linear-gradient(135deg, var(--informatika-light), white);
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(52, 152, 219, 0.2);
+        }
+        
+        .tujuan-card h3 {
+            color: var(--informatika-dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .tujuan-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 0.8rem;
+        }
+        
+        .tujuan-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            padding: 0.8rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .tujuan-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .tujuan-item i {
+            color: var(--success);
+        }
+        
+        .materi-content {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid rgba(52, 152, 219, 0.1);
+        }
+        
+        .materi-content h2 {
+            color: var(--informatika-dark);
+            font-size: 1.8rem;
+            margin: 1.5rem 0 1rem 0;
+            border-bottom: 2px solid var(--informatika-light);
+            padding-bottom: 0.5rem;
+        }
+        
+        .materi-content h2:first-of-type {
+            margin-top: 0;
+        }
+        
+        .materi-content h3 {
+            color: var(--informatika-dark);
+            font-size: 1.3rem;
+            margin: 1.2rem 0 0.8rem 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .materi-content h3 i {
+            color: var(--informatika-primary);
+        }
+        
+        .materi-content p {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        
+        .materi-content ul, .materi-content ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .materi-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .quote-box {
+            margin: 1.5rem 0;
+            padding: 1rem 1.5rem;
+            background: var(--informatika-light);
+            border-left: 4px solid var(--informatika-primary);
+            border-radius: 0 12px 12px 0;
+        }
+        
+        .note-box {
+            background: #fff3e0;
+            border-left: 4px solid var(--info);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid var(--informatika-primary);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .warning-box {
+            background: #fee2e2;
+            border-left: 4px solid var(--warning);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .success-box {
+            background: #d4edda;
+            border-left: 4px solid var(--success);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .code-block {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 1rem;
+            border-radius: 12px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+            line-height: 1.8;
+        }
+        
+        .code-block .comment { color: #7f8c8d; }
+        .code-block .keyword { color: #f39c12; }
+        .code-block .string { color: #2ecc71; }
+        .code-block .variable { color: #3498db; }
+        
+        .keyword-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .keyword-card {
+            background: white;
+            border-radius: 12px;
+            padding: 0.8rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #e9ecef;
+        }
+        
+        .keyword-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .keyword-card.active {
+            border: 2px solid var(--success);
+            background: #d4edda;
+        }
+        
+        .keyword {
+            font-family: monospace;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--success);
+        }
+        
+        .keyword-fungsi {
+            font-size: 0.8rem;
+            margin-top: 0.3rem;
+            color: #6c757d;
+        }
+        
+        .keyword-card.active .keyword-fungsi {
+            color: var(--informatika-dark);
+            font-weight: 500;
+        }
+        
+        .mesin-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .mesin-card {
+            background: white;
+            border-radius: 20px;
+            padding: 1.2rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #e9ecef;
+        }
+        
+        .mesin-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .mesin-card.active {
+            border: 2px solid var(--info);
+            background: #fff3e0;
+        }
+        
+        .mesin-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--info);
+        }
+        
+        .mesin-pseudocode {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 0.8rem;
+            border-radius: 12px;
+            font-family: monospace;
+            font-size: 0.7rem;
+            overflow-x: auto;
+            margin-top: 0.5rem;
+            max-height: 300px;
+            overflow-y: auto;
+            line-height: 1.6;
+        }
+        
+        .langkah-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .langkah-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #e9ecef;
+            text-align: center;
+        }
+        
+        .langkah-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .langkah-card.active {
+            border: 2px solid var(--purple);
+            background: #f3e5f5;
+        }
+        
+        .langkah-number {
+            width: 40px;
+            height: 40px;
+            background: var(--purple);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.5rem;
+            font-weight: bold;
+        }
+        
+        .langkah-title {
+            font-weight: bold;
+        }
+        
+        .langkah-desc {
+            font-size: 0.8rem;
+            color: #6c757d;
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        .langkah-card.active .langkah-desc {
+            color: var(--purple);
+            font-weight: 500;
+        }
+        
+        .html-example {
+            background: #f8f9fa;
+            border-radius: 16px;
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            border: 1px solid #e9ecef;
+        }
+        
+        .html-example h4 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .materi-navigation {
+            display: flex;
+            gap: 1rem;
+            justify-content: space-between;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn.primary {
+            background: linear-gradient(135deg, var(--informatika-primary), var(--informatika-secondary));
+            color: white;
+        }
+        
+        .nav-btn.primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .nav-btn.secondary {
+            background: white;
+            color: var(--informatika-dark);
+            border: 2px solid var(--informatika-light);
+        }
+        
+        .nav-btn.secondary:hover {
+            background: var(--informatika-light);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .materi-container { padding: 1rem; }
+            .materi-card { padding: 1.5rem; }
+            .materi-header { flex-direction: column; text-align: center; }
+            .mesin-pseudocode { font-size: 0.6rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="../../../assets/images/logo.png" alt="Logo Sekolah">
+                    <h1>INFORMATIKA - MATERI PEMBELAJARAN</h1>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="../../../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="../../index-informatika.html" class="nav-link"><i class="fas fa-laptop-code"></i> Beranda Informatika</a></li>
+                    <li><a href="../../aktivitas-pembelajaran/index-aktivitas-informatika.html" class="nav-link"><i class="fas fa-tasks"></i> Daftar Aktivitas</a></li>
+                    <li><a href="../index-materi-informatika.html" class="nav-link active"><i class="fas fa-book-open"></i> Daftar Materi</a></li>
+                    <li><a href="../../penilaian/index-penilaian-informatika.html" class="nav-link"><i class="fas fa-chart-line"></i> Penilaian</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="materi-container">
+        <div class="materi-card">
+            <!-- Header -->
+            <div class="materi-header">
+                <div class="materi-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <div class="materi-title-wrapper">
+                    <h1>Rancang &amp; Uji Solusi</h1>
+                    <div class="materi-subtitle">
+                        <i class="fas fa-circle"></i>
+                        <span>Proyek 5: Arsitektur Komputer - Pertemuan 4</span>
+                        <span class="materi-badge"><i class="fas fa-clock"></i> 4 JP</span>
+                        <span class="materi-badge"><i class="fas fa-tag"></i> TP 1.4 &amp; 1.5</span>
+                        <span class="materi-badge"><i class="fas fa-globe"></i> Online</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tujuan Pembelajaran -->
+            <div class="tujuan-card">
+                <h3><i class="fas fa-bullseye"></i> 🎯 Tujuan Pembelajaran</h3>
+                <div class="tujuan-list">
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Memahami konsep pseudocode untuk merancang solusi program</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Menulis pseudocode dengan struktur yang benar berdasarkan model IPO</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Mengimplementasikan pseudocode ke dalam program HTML</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Menguji program dan melakukan debugging</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Mempresentasikan hasil rancangan solusi</div>
+                </div>
+            </div>
+
+            <!-- Konten Materi -->
+            <div class="materi-content">
+                <h2>A. Apa Itu Pseudocode?</h2>
+                <p><strong>Pseudocode</strong> adalah cara menuliskan algoritma menggunakan bahasa yang mirip dengan bahasa pemrograman, tetapi masih mudah dipahami oleh manusia. Pseudocode membantu kita merancang logika program sebelum diimplementasikan ke dalam kode.</p>
+                
+                <div class="quote-box">
+                    <i class="fas fa-quote-left"></i> Pseudocode adalah jembatan antara ide dan kode program. Tulis pseudocode dengan jelas agar mudah diterjemahkan ke bahasa pemrograman apapun.
+                </div>
+
+                <h3>Mengapa Pseudocode Penting?</h3>
+                <div class="success-box">
+                    <strong>📌 Manfaat Pseudocode:</strong><br>
+                    • <strong>Perencanaan</strong> - Merancang logika sebelum membuat program<br>
+                    • <strong>Visualisasi</strong> - Melihat alur input → proses → output<br>
+                    • <strong>Komunikasi</strong> - Memudahkan diskusi dalam kelompok<br>
+                    • <strong>Dokumentasi</strong> - Menjadi catatan cara kerja program<br>
+                    • <strong>Debugging</strong> - Memudahkan menemukan kesalahan logika
+                </div>
+
+                <h2>B. Kata Kunci dalam Pseudocode</h2>
+                <p><strong>Klik pada setiap kata kunci</strong> untuk memperjelas tampilan:</p>
+                
+                <div class="keyword-grid" id="keywordGrid">
+                    <div class="keyword-card" data-keyword="start">
+                        <div class="keyword">START / END</div>
+                        <div class="keyword-fungsi">Menandai awal dan akhir algoritma</div>
+                    </div>
+                    <div class="keyword-card" data-keyword="input">
+                        <div class="keyword">INPUT / READ</div>
+                        <div class="keyword-fungsi">Menerima masukan dari pengguna</div>
+                    </div>
+                    <div class="keyword-card" data-keyword="output">
+                        <div class="keyword">OUTPUT / PRINT</div>
+                        <div class="keyword-fungsi">Menampilkan hasil</div>
+                    </div>
+                    <div class="keyword-card" data-keyword="if">
+                        <div class="keyword">IF / ELSE / ENDIF</div>
+                        <div class="keyword-fungsi">Pengambilan keputusan (kondisi)</div>
+                    </div>
+                    <div class="keyword-card" data-keyword="assign">
+                        <div class="keyword">← atau =</div>
+                        <div class="keyword-fungsi">Memberi nilai pada variabel (assignment)</div>
+                    </div>
+                </div>
+
+                <h2>C. Struktur Pseudocode</h2>
+                <div class="code-block">
+                    PROGRAM NamaProgram
+
+                    DEKLARASI
+                        // Variabel yang dibutuhkan
+                        namaVariabel1 : tipeData
+                        namaVariabel2 : tipeData
+
+                    ALGORITMA
+                        START
+                            // ===== INPUT =====
+                            INPUT data1
+                            INPUT data2
+
+                            // ===== PROSES =====
+                            // Logika perhitungan, kondisi, perulangan
+
+                            // ===== OUTPUT =====
+                            OUTPUT hasil
+                        END
+
+                    END PROGRAM
+                </div>
+
+                <h2>D. Contoh Pseudocode untuk Berbagai Mesin</h2>
+                <p><strong>Klik pada setiap mesin</strong> untuk memperjelas tampilan:</p>
+                
+                <div class="mesin-grid" id="mesinGrid">
+                    <div class="mesin-card" data-mesin="kalkulator">
+                        <div class="mesin-title"><i class="fas fa-calculator"></i> Kalkulator Sederhana</div>
+                        <div class="mesin-pseudocode">
+                            PROGRAM KalkulatorSederhana
+
+                            DEKLARASI
+                                a, b : integer
+                                hasil : integer
+                                operator : char
+
+                            ALGORITMA
+                                START
+                                    OUTPUT "Masukkan angka pertama: "
+                                    INPUT a
+                                    OUTPUT "Masukkan operator (+, -, *, /): "
+                                    INPUT operator
+                                    OUTPUT "Masukkan angka kedua: "
+                                    INPUT b
+
+                                    IF operator = '+' THEN
+                                        hasil ← a + b
+                                    ELSE IF operator = '-' THEN
+                                        hasil ← a - b
+                                    ELSE IF operator = '*' THEN
+                                        hasil ← a * b
+                                    ELSE IF operator = '/' THEN
+                                        hasil ← a / b
+                                    ENDIF
+
+                                    OUTPUT "Hasil: " + hasil
+                                END
+
+                            END PROGRAM
+                        </div>
+                    </div>
+                    <div class="mesin-card" data-mesin="atm">
+                        <div class="mesin-title"><i class="fas fa-credit-card"></i> ATM Mini</div>
+                        <div class="mesin-pseudocode">
+                            PROGRAM ATM_Mini
+
+                            DEKLARASI
+                                saldo : integer ← 1000000
+                                pin : integer ← 1234
+                                inputPin : integer
+                                pilihan : integer
+                                jumlahTarik : integer
+
+                            ALGORITMA
+                                START
+                                    OUTPUT "Masukkan PIN: "
+                                    INPUT inputPin
+                                    IF inputPin = pin THEN
+                                        REPEAT
+                                            OUTPUT "=== MENU ATM ==="
+                                            OUTPUT "1. Cek Saldo"
+                                            OUTPUT "2. Tarik Tunai"
+                                            OUTPUT "3. Keluar"
+                                            INPUT pilihan
+
+                                            IF pilihan = 1 THEN
+                                                OUTPUT "Saldo Anda: " + saldo
+                                            ELSE IF pilihan = 2 THEN
+                                                OUTPUT "Masukkan jumlah tarik: "
+                                                INPUT jumlahTarik
+                                                IF jumlahTarik <= saldo THEN
+                                                    saldo ← saldo - jumlahTarik
+                                                    OUTPUT "Tarik tunai berhasil"
+                                                    OUTPUT "Saldo tersisa: " + saldo
+                                                ELSE
+                                                    OUTPUT "Saldo tidak mencukupi"
+                                                ENDIF
+                                            ENDIF
+                                        UNTIL pilihan = 3
+                                    ELSE
+                                        OUTPUT "PIN salah"
+                                    ENDIF
+                                END
+
+                            END PROGRAM
+                        </div>
+                    </div>
+                    <div class="mesin-card" data-mesin="konversi">
+                        <div class="mesin-title"><i class="fas fa-thermometer-half"></i> Konversi Suhu</div>
+                        <div class="mesin-pseudocode">
+                            PROGRAM KonversiSuhu
+
+                            DEKLARASI
+                                celcius, fahrenheit : float
+                                pilihan : integer
+
+                            ALGORITMA
+                                START
+                                    OUTPUT "=== KONVERSI SUHU ==="
+                                    OUTPUT "1. Celcius ke Fahrenheit"
+                                    OUTPUT "2. Fahrenheit ke Celcius"
+                                    INPUT pilihan
+
+                                    IF pilihan = 1 THEN
+                                        OUTPUT "Masukkan suhu Celcius: "
+                                        INPUT celcius
+                                        fahrenheit ← (celcius * 9/5) + 32
+                                        OUTPUT celcius + "°C = " + fahrenheit + "°F"
+                                    ELSE IF pilihan = 2 THEN
+                                        OUTPUT "Masukkan suhu Fahrenheit: "
+                                        INPUT fahrenheit
+                                        celcius ← (fahrenheit - 32) * 5/9
+                                        OUTPUT fahrenheit + "°F = " + celcius + "°C"
+                                    ENDIF
+                                END
+
+                            END PROGRAM
+                        </div>
+                    </div>
+                    <div class="mesin-card" data-mesin="luas">
+                        <div class="mesin-title"><i class="fas fa-square"></i> Penghitung Luas</div>
+                        <div class="mesin-pseudocode">
+                            PROGRAM PenghitungLuas
+
+                            DEKLARASI
+                                panjang, lebar, sisi, alas, tinggi : float
+                                luas : float
+                                pilihan : integer
+
+                            ALGORITMA
+                                START
+                                    OUTPUT "=== HITUNG LUAS ==="
+                                    OUTPUT "1. Persegi Panjang"
+                                    OUTPUT "2. Segitiga"
+                                    OUTPUT "3. Persegi"
+                                    INPUT pilihan
+
+                                    IF pilihan = 1 THEN
+                                        OUTPUT "Masukkan panjang: "
+                                        INPUT panjang
+                                        OUTPUT "Masukkan lebar: "
+                                        INPUT lebar
+                                        luas ← panjang * lebar
+                                        OUTPUT "Luas Persegi Panjang: " + luas
+                                    ELSE IF pilihan = 2 THEN
+                                        OUTPUT "Masukkan alas: "
+                                        INPUT alas
+                                        OUTPUT "Masukkan tinggi: "
+                                        INPUT tinggi
+                                        luas ← (alas * tinggi) / 2
+                                        OUTPUT "Luas Segitiga: " + luas
+                                    ELSE IF pilihan = 3 THEN
+                                        OUTPUT "Masukkan sisi: "
+                                        INPUT sisi
+                                        luas ← sisi * sisi
+                                        OUTPUT "Luas Persegi: " + luas
+                                    ENDIF
+                                END
+
+                            END PROGRAM
+                        </div>
+                    </div>
+                </div>
+
+                <h2>E. Langkah-Langkah Menulis Pseudocode</h2>
+                <p><strong>Klik pada setiap langkah</strong> untuk memperjelas tampilan:</p>
+                
+                <div class="langkah-grid" id="langkahGrid">
+                    <div class="langkah-card" data-langkah="1">
+                        <div class="langkah-number">1</div>
+                        <div class="langkah-title">Analisis Kebutuhan</div>
+                        <div class="langkah-desc">Tentukan masalah yang akan diselesaikan dan kebutuhan program</div>
+                    </div>
+                    <div class="langkah-card" data-langkah="2">
+                        <div class="langkah-number">2</div>
+                        <div class="langkah-title">Identifikasi IPO</div>
+                        <div class="langkah-desc">Tentukan Input, Proses, dan Output yang diperlukan</div>
+                    </div>
+                    <div class="langkah-card" data-langkah="3">
+                        <div class="langkah-number">3</div>
+                        <div class="langkah-title">Tulis Pseudocode</div>
+                        <div class="langkah-desc">Tulis langkah-langkah algoritma dengan struktur yang benar</div>
+                    </div>
+                    <div class="langkah-card" data-langkah="4">
+                        <div class="langkah-number">4</div>
+                        <div class="langkah-title">Implementasi HTML</div>
+                        <div class="langkah-desc">Terjemahkan pseudocode ke dalam program HTML</div>
+                    </div>
+                    <div class="langkah-card" data-langkah="5">
+                        <div class="langkah-number">5</div>
+                        <div class="langkah-title">Uji & Debug</div>
+                        <div class="langkah-desc">Uji program dan perbaiki kesalahan (debugging)</div>
+                    </div>
+                </div>
+
+                <h2>F. Implementasi HTML</h2>
+                <p>Berikut adalah struktur dasar HTML untuk mengimplementasikan pseudocode:</p>
+                
+                <div class="html-example">
+                    <h4><i class="fab fa-html5"></i> Struktur Dasar HTML Program</h4>
+                    <div class="code-block" style="font-size: 0.8rem;">
+                        <span class="comment">&lt;!-- Struktur Dasar HTML untuk Program --&gt;</span>
+                        &lt;!DOCTYPE html&gt;
+                        &lt;html&gt;
+                        &lt;head&gt;
+                            &lt;title&gt;Nama Program&lt;/title&gt;
+                            &lt;style&gt;
+                                <span class="comment">/* CSS untuk tampilan */</span>
+                            &lt;/style&gt;
+                        &lt;/head&gt;
+                        &lt;body&gt;
+                            <span class="comment">&lt;!-- ===== INPUT ===== --&gt;</span>
+                            &lt;label&gt;Masukkan data: &lt;/label&gt;
+                            &lt;input type="text" id="input1"&gt;
+                            &lt;button onclick="proses()"&gt;Hitung&lt;/button&gt;
+
+                            <span class="comment">&lt;!-- ===== OUTPUT ===== --&gt;</span>
+                            &lt;p id="hasil"&gt;&lt;/p&gt;
+
+                            <span class="comment">&lt;!-- ===== PROSES ===== --&gt;</span>
+                            &lt;script&gt;
+                                function proses() {
+                                    <span class="comment">// Ambil data dari input</span>
+                                    var data = document.getElementById('input1').value;
+
+                                    <span class="comment">// Lakukan perhitungan</span>
+                                    var hasil = data * 2;
+
+                                    <span class="comment">// Tampilkan output</span>
+                                    document.getElementById('hasil').innerHTML = "Hasil: " + hasil;
+                                }
+                            &lt;/script&gt;
+                        &lt;/body&gt;
+                        &lt;/html&gt;
+                    </div>
+                </div>
+
+                <h2>G. Uji Coba dan Debugging</h2>
+                <div class="info-box">
+                    <i class="fas fa-bug"></i> <strong>Tips Debugging (Mencari dan Memperbaiki Kesalahan):</strong><br>
+                    • <strong>Baca Pesan Error</strong> - Pesan error memberitahu lokasi dan jenis kesalahan<br>
+                    • <strong>Console.log()</strong> - Gunakan console.log() untuk melihat nilai variabel<br>
+                    • <strong>Uji dengan Data Sederhana</strong> - Uji dengan angka kecil yang mudah dihitung manual<br>
+                    • <strong>Periksa Tanda Baca</strong> - Periksa apakah ada tanda kutip, kurung, atau titik koma yang hilang<br>
+                    • <strong>Debug Bersama</strong> - Diskusikan dengan kelompok, kadang orang lain melihat kesalahan yang terlewat
+                </div>
+
+                <div class="warning-box">
+                    <i class="fas fa-exclamation-triangle"></i> <strong>Ingat!</strong> Program yang baik adalah program yang tidak hanya berfungsi, tetapi juga mudah dipahami dan diperbaiki. Tulis kode dengan rapi dan beri komentar!
+                </div>
+
+                <div class="quote-box" style="margin-top: 1.5rem; text-align: center;">
+                    <i class="fas fa-code"></i> Rancang dengan Pseudocode, Wujudkan dengan Kode! 🚀
+                </div>
+            </div>
+
+            <!-- Navigasi -->
+            <div class="materi-navigation">
+                <a href="materi5-3.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i> Kembali ke Materi 5.3
+                </a>
+                <a href="materi5-5.html" class="nav-btn primary">
+                    Lanjut ke Materi 5.5: Presentasi & Refleksi
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script src="../../../script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                });
+            }
+            
+            // Keyword Interaktif
+            const keywordCards = document.querySelectorAll('.keyword-card');
+            keywordCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    keywordCards.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            if(keywordCards.length) keywordCards[0].classList.add('active');
+            
+            // Mesin Interaktif
+            const mesinCards = document.querySelectorAll('.mesin-card');
+            mesinCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    mesinCards.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            if(mesinCards.length) mesinCards[0].classList.add('active');
+            
+            // Langkah Interaktif
+            const langkahCards = document.querySelectorAll('.langkah-card');
+            langkahCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    langkahCards.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            if(langkahCards.length) langkahCards[0].classList.add('active');
+        });
+    </script>
+</body>
+</html>

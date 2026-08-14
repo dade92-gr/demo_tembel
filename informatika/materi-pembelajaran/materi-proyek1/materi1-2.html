@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi 1.2: Produktivitas & Kolaborasi Google Workspace - Informatika Kelas X</title>
+    <link rel="stylesheet" href="../../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --informatika-primary: #3498db;
+            --informatika-secondary: #2980b9;
+            --informatika-light: #ebf5fb;
+            --informatika-dark: #21618c;
+            --informatika-semester1: #3498db;
+            --success: #27ae60;
+            --warning: #e74c3c;
+            --info: #f39c12;
+            --purple: #9b59b6;
+            --google-blue: #4285F4;
+            --google-green: #0F9D58;
+            --google-yellow: #F4B400;
+            --google-red: #DB4437;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+        
+        .materi-container {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+        
+        .materi-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 30px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(52, 152, 219, 0.15);
+            border-left: 8px solid var(--informatika-semester1);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        .materi-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(52, 152, 219, 0.1) 0%, transparent 70%);
+            z-index: 0;
+        }
+        
+        .materi-card > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .materi-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 3px solid var(--informatika-light);
+            flex-wrap: wrap;
+        }
+        
+        .materi-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--google-blue), var(--google-green));
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+        }
+        
+        .materi-title-wrapper {
+            flex: 1;
+        }
+        
+        .materi-title-wrapper h1 {
+            color: var(--informatika-dark);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .materi-subtitle {
+            color: var(--informatika-primary);
+            font-size: 1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .materi-badge {
+            background: var(--informatika-light);
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: var(--informatika-dark);
+        }
+        
+        .materi-badge i {
+            margin-right: 4px;
+        }
+        
+        .tujuan-card {
+            background: linear-gradient(135deg, var(--informatika-light), white);
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(52, 152, 219, 0.2);
+        }
+        
+        .tujuan-card h3 {
+            color: var(--informatika-dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .tujuan-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 0.8rem;
+        }
+        
+        .tujuan-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            padding: 0.8rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .tujuan-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .tujuan-item i {
+            color: var(--success);
+        }
+        
+        .materi-content {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid rgba(52, 152, 219, 0.1);
+        }
+        
+        .materi-content h2 {
+            color: var(--informatika-dark);
+            font-size: 1.8rem;
+            margin: 1.5rem 0 1rem 0;
+            border-bottom: 2px solid var(--informatika-light);
+            padding-bottom: 0.5rem;
+        }
+        
+        .materi-content h2:first-of-type {
+            margin-top: 0;
+        }
+        
+        .materi-content h3 {
+            color: var(--informatika-dark);
+            font-size: 1.3rem;
+            margin: 1.2rem 0 0.8rem 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .materi-content h3 i {
+            color: var(--informatika-primary);
+        }
+        
+        .materi-content p {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        
+        .materi-content ul, .materi-content ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .materi-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .quote-box {
+            margin: 1.5rem 0;
+            padding: 1rem 1.5rem;
+            background: var(--informatika-light);
+            border-left: 4px solid var(--informatika-primary);
+            border-radius: 0 12px 12px 0;
+        }
+        
+        .note-box {
+            background: #fff3e0;
+            border-left: 4px solid var(--info);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid var(--informatika-primary);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .warning-box {
+            background: #fee2e2;
+            border-left: 4px solid var(--warning);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .success-box {
+            background: #d4edda;
+            border-left: 4px solid var(--success);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        /* Feature Grid */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .feature-card {
+            background: #f8f9fa;
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        }
+        
+        .feature-card .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .feature-card .feature-name {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .feature-card .feature-desc {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 0.3rem;
+        }
+        
+        /* Collaboration Steps */
+        .collab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .collab-item {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 1.2rem;
+            text-align: center;
+            border: 1px solid #e9ecef;
+        }
+        
+        .collab-item .step-num {
+            width: 40px;
+            height: 40px;
+            background: var(--google-blue);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.5rem auto;
+            font-weight: bold;
+        }
+        
+        .collab-item .step-title {
+            font-weight: bold;
+            font-size: 1rem;
+        }
+        
+        .collab-item .step-desc {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 0.3rem;
+        }
+        
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+        
+        .comparison-table th {
+            background: var(--google-blue);
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .comparison-table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        
+        .comparison-table tr:hover {
+            background: var(--informatika-light);
+        }
+        
+        .comparison-table .check {
+            color: var(--success);
+        }
+        
+        .comparison-table .cross {
+            color: var(--warning);
+        }
+        
+        /* Access Level Grid */
+        .access-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .access-card {
+            text-align: center;
+            padding: 1.2rem;
+            background: white;
+            border-radius: 16px;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+        
+        .access-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .access-card .access-icon {
+            font-size: 2rem;
+        }
+        
+        .access-card .access-title {
+            font-weight: bold;
+            margin-top: 0.3rem;
+        }
+        
+        .access-card .access-desc {
+            font-size: 0.8rem;
+            color: #666;
+        }
+        
+        /* Shortcut Table */
+        .shortcut-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+        
+        .shortcut-table th {
+            background: var(--informatika-dark);
+            color: white;
+            padding: 10px;
+            text-align: left;
+        }
+        
+        .shortcut-table td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .shortcut-table tr:hover {
+            background: var(--informatika-light);
+        }
+        
+        .shortcut-table .key {
+            background: #2c3e50;
+            color: white;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.85rem;
+        }
+        
+        .materi-navigation {
+            display: flex;
+            gap: 1rem;
+            justify-content: space-between;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn.primary {
+            background: linear-gradient(135deg, var(--informatika-primary), var(--informatika-secondary));
+            color: white;
+        }
+        
+        .nav-btn.primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .nav-btn.secondary {
+            background: white;
+            color: var(--informatika-dark);
+            border: 2px solid var(--informatika-light);
+        }
+        
+        .nav-btn.secondary:hover {
+            background: var(--informatika-light);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .materi-container { padding: 1rem; }
+            .materi-card { padding: 1.5rem; }
+            .materi-header { flex-direction: column; text-align: center; }
+            .comparison-table { font-size: 0.8rem; }
+            .comparison-table th, .comparison-table td { padding: 8px; }
+            .shortcut-table { font-size: 0.8rem; }
+            .shortcut-table th, .shortcut-table td { padding: 6px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="../../../assets/images/logo.png" alt="Logo Sekolah">
+                    <h1>INFORMATIKA - MATERI PEMBELAJARAN</h1>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="../../../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="../../index-informatika.html" class="nav-link"><i class="fas fa-laptop-code"></i> Beranda Informatika</a></li>
+                    <li><a href="../../aktivitas-pembelajaran/index-aktivitas-informatika.html" class="nav-link"><i class="fas fa-tasks"></i> Daftar Aktivitas</a></li>
+                    <li><a href="../index-materi-informatika.html" class="nav-link active"><i class="fas fa-book-open"></i> Daftar Materi</a></li>
+                    <li><a href="../../penilaian/index-penilaian-informatika.html" class="nav-link"><i class="fas fa-chart-line"></i> Penilaian</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="materi-container">
+        <div class="materi-card">
+            <!-- Header -->
+            <div class="materi-header">
+                <div class="materi-icon">
+                    <i class="fas fa-users-cog"></i>
+                </div>
+                <div class="materi-title-wrapper">
+                    <h1>Produktivitas &amp; Kolaborasi dengan Google Workspace</h1>
+                    <div class="materi-subtitle">
+                        <i class="fas fa-circle"></i>
+                        <span>Proyek 1: Saya Siap Jadi Kreator Digital - Pertemuan 2</span>
+                        <span class="materi-badge"><i class="fas fa-clock"></i> 4 JP</span>
+                        <span class="materi-badge"><i class="fas fa-tag"></i> TP 2.4</span>
+                        <span class="materi-badge"><i class="fas fa-globe"></i> Online</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tujuan Pembelajaran -->
+            <div class="tujuan-card">
+                <h3><i class="fas fa-bullseye"></i> 🎯 Tujuan Pembelajaran</h3>
+                <div class="tujuan-list">
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Memahami konsep produktivitas dan kolaborasi digital</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Mengenal fitur-fitur kolaborasi di Google Workspace</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Memahami cara berbagi dan mengelola akses dokumen</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Mengetahui fitur-fitur produktivitas di Google Docs, Sheets, dan Slides</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Memahami pentingnya kolaborasi dalam dunia kerja digital</div>
+                </div>
+            </div>
+
+            <!-- Konten Materi -->
+            <div class="materi-content">
+                <h2>A. Produktivitas dan Kolaborasi Digital</h2>
+                
+                <h3>Pengertian Produktivitas Digital</h3>
+                <p><strong>Produktivitas digital</strong> adalah kemampuan untuk menyelesaikan pekerjaan secara efisien dan efektif dengan memanfaatkan perangkat teknologi dan aplikasi digital. Dalam konteks Google Workspace, produktivitas berarti menggunakan aplikasi seperti Google Docs, Sheets, dan Slides untuk menghasilkan karya digital dengan cepat dan tepat.</p>
+                
+                <h3>Pengertian Kolaborasi Digital</h3>
+                <p><strong>Kolaborasi digital</strong> adalah proses bekerja sama dengan orang lain menggunakan teknologi digital untuk mencapai tujuan bersama. Berbeda dengan kerja sama tradisional yang membutuhkan pertemuan fisik, kolaborasi digital memungkinkan tim bekerja dari lokasi berbeda secara bersamaan.</p>
+
+                <div class="quote-box">
+                    <i class="fas fa-quote-left"></i> <strong>Manfaat Kolaborasi Digital:</strong>
+                    <ul>
+                        <li><strong>Efisiensi Waktu:</strong> Pekerjaan dapat diselesaikan lebih cepat karena dikerjakan bersama</li>
+                        <li><strong>Fleksibilitas:</strong> Bekerja dari mana saja dan kapan saja</li>
+                        <li><strong>Transparansi:</strong> Semua anggota tim dapat melihat progres pekerjaan</li>
+                        <li><strong>Inovasi:</strong> Berbagi ide menghasilkan solusi yang lebih kreatif</li>
+                        <li><strong>Dokumentasi:</strong> Riwayat revisi mencatat semua perubahan yang dilakukan</li>
+                    </ul>
+                </div>
+
+                <h2>B. Fitur Kolaborasi di Google Workspace</h2>
+                
+                <h3>1. Berbagi Dokumen (Sharing)</h3>
+                <p>Google Workspace memungkinkan pengguna untuk berbagi dokumen dengan orang lain melalui tautan atau undangan email. Fitur ini memungkinkan banyak orang untuk mengakses, melihat, atau mengedit dokumen yang sama.</p>
+
+                <div class="access-grid">
+                    <div class="access-card">
+                        <div class="access-icon"><i class="fas fa-eye" style="color: var(--google-blue);"></i></div>
+                        <div class="access-title">Viewer</div>
+                        <div class="access-desc">Hanya dapat melihat dokumen</div>
+                    </div>
+                    <div class="access-card">
+                        <div class="access-icon"><i class="fas fa-comment" style="color: var(--info);"></i></div>
+                        <div class="access-title">Commenter</div>
+                        <div class="access-desc">Dapat melihat dan memberi komentar</div>
+                    </div>
+                    <div class="access-card">
+                        <div class="access-icon"><i class="fas fa-edit" style="color: var(--success);"></i></div>
+                        <div class="access-title">Editor</div>
+                        <div class="access-desc">Dapat melihat, komentar, dan mengedit</div>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <i class="fas fa-share-alt"></i> <strong>Cara Berbagi Dokumen:</strong>
+                    <ol>
+                        <li>Klik tombol <strong>Share</strong> di pojok kanan atas</li>
+                        <li>Masukkan alamat email orang yang akan diajak berkolaborasi</li>
+                        <li>Pilih level akses: <strong>Viewer</strong>, <strong>Commenter</strong>, atau <strong>Editor</strong></li>
+                        <li>Klik <strong>Send</strong> untuk mengirim undangan</li>
+                        <li>Alternatif: atur menjadi <strong>"Siapa pun dengan tautan dapat..."</strong> dan salin link</li>
+                    </ol>
+                </div>
+
+                <h3>2. Komentar dan Saran</h3>
+                <p>Fitur komentar memungkinkan anggota tim memberi masukan tanpa mengubah konten secara langsung. Sedangkan <strong>Mode Saran</strong> (Suggesting Mode) memungkinkan pengguna membuat perubahan yang terlihat sebagai saran, yang dapat diterima atau ditolak oleh pemilik dokumen.</p>
+
+                <div class="note-box">
+                    <i class="fas fa-comment-dots"></i> <strong>Cara Menggunakan Komentar:</strong>
+                    <ul>
+                        <li>Blok teks yang ingin dikomentari</li>
+                        <li>Klik ikon komentar atau tekan <strong>Ctrl+Alt+M</strong></li>
+                        <li>Tulis komentar dan klik <strong>Comment</strong></li>
+                        <li>Gunakan <strong>@mention</strong> (ketik @) untuk memberi notifikasi ke anggota tim</li>
+                    </ul>
+                </div>
+
+                <h3>3. Riwayat Revisi (Version History)</h3>
+                <p>Google Workspace menyimpan semua perubahan yang dilakukan pada dokumen. Fitur ini memungkinkan pengguna untuk melihat siapa yang mengubah apa, kapan perubahan dilakukan, dan mengembalikan dokumen ke versi sebelumnya jika diperlukan.</p>
+
+                <div class="success-box">
+                    <i class="fas fa-history"></i> <strong>Cara Mengakses Riwayat Revisi:</strong>
+                    <ul>
+                        <li>Klik menu <strong>File → Version history → See version history</strong></li>
+                        <li>Atau tekan <strong>Ctrl+Alt+Shift+H</strong></li>
+                        <li>Setiap versi diberi nama berdasarkan waktu dan editor</li>
+                        <li>Klik <strong>Restore this version</strong> untuk kembali ke versi tersebut</li>
+                    </ul>
+                </div>
+
+                <h3>4. Kolaborasi Real-Time</h3>
+                <p>Salah satu keunggulan utama Google Workspace adalah kemampuan kolaborasi real-time. Beberapa orang dapat mengedit dokumen yang sama secara bersamaan. Perubahan akan terlihat secara langsung oleh semua pengguna yang membuka dokumen tersebut.</p>
+
+                <div class="warning-box">
+                    <i class="fas fa-users"></i> <strong>Ciri Kolaborasi Real-Time:</strong>
+                    <ul>
+                        <li>Kursor pengguna lain terlihat dengan warna berbeda</li>
+                        <li>Perubahan muncul secara instan</li>
+                        <li>Ada indikator siapa yang sedang mengedit</li>
+                        <li>Chat sidebar untuk diskusi singkat</li>
+                    </ul>
+                </div>
+
+                <h2>C. Fitur Produktivitas Google Docs</h2>
+                
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon" style="color: var(--google-blue);"><i class="fas fa-heading"></i></div>
+                        <div class="feature-name">Format Heading</div>
+                        <div class="feature-desc">Heading 1 untuk judul utama, Heading 2 untuk subjudul</div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon" style="color: var(--google-blue);"><i class="fas fa-list"></i></div>
+                        <div class="feature-name">Daftar dan Tabel</div>
+                        <div class="feature-desc">Membuat bullet list, numbered list, dan tabel informasi</div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon" style="color: var(--google-blue);"><i class="fas fa-image"></i></div>
+                        <div class="feature-name">Sisipkan Gambar</div>
+                        <div class="feature-desc">Menambahkan ilustrasi dari komputer, URL, atau Google Drive</div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon" style="color: var(--google-blue);"><i class="fas fa-link"></i></div>
+                        <div class="feature-name">Hyperlink</div>
+                        <div class="feature-desc">Menambahkan link referensi ke sumber informasi</div>
+                    </div>
+                </div>
+
+                <div class="note-box">
+                    <i class="fas fa-lightbulb"></i> <strong>Tips Produktivitas Google Docs:</strong>
+                    <ul>
+                        <li>Gunakan <strong>Template</strong> untuk memulai dokumen dengan cepat</li>
+                        <li>Manfaatkan <strong>Explore</strong> (Tools → Explore) untuk mencari informasi tanpa keluar dokumen</li>
+                        <li>Gunakan <strong>Voice Typing</strong> (Tools → Voice typing) untuk mengetik dengan suara</li>
+                        <li>Fitur <strong>Dictionary</strong> (klik kanan → Define) untuk mencari arti kata</li>
+                    </ul>
+                </div>
+
+                <h2>D. Fitur Produktivitas Google Sheets</h2>
+                
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon" style="color: var(--google-green);"><i class="fas fa-table"></i></div>
+                        <div class="feature-name">Tabel dan Data</div>
+                        <div class="feature-desc">Mengelola data dalam bentuk tabel dengan header dan baris</div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon" style="color: var(--google-green);"><i class="fas fa-calculator"></i></div>
+                        <div class="feature-name">Rumus dan Fungsi</div>
+                        <div class="feature-desc">SUM, COUNT, AVERAGE, MAX, MIN, IF untuk mengolah data</div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon" style="color: var(--google-green);"><i class="fas fa-filter"></i></div>
+                        <div class="feature-name">Filter dan Sortir</div>
+                        <div class="feature-desc">Menyaring dan mengurutkan data sesuai kebutuhan</div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon" style="color: var(--google-green);"><i class="fas fa-chart-bar"></i></div>
+                        <div class="feature-name">Grafik dan Chart</div>
+                        <div class="feature-desc">Visualisasi data dengan column, line, pie, dan bar chart</div>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <i class="fas fa-calculator"></i> <strong>Rumus Dasar Google Sheets:</strong>
+                    <ul>
+                        <li><strong>=SUM(range)</strong> → Menjumlahkan data</li>
+                        <li><strong>=COUNT(range)</strong> → Menghitung jumlah data</li>
+                        <li><strong>=AVERAGE(range)</strong> → Menghitung rata-rata</li>
+                        <li><strong>=MAX(range)</strong> → Mencari nilai tertinggi</li>
+                        <li><strong>=MIN(range)</strong> → Mencari nilai terendah</li>
+                        <li><strong>=IF(kondisi, nilai_benar, nilai_salah)</strong> → Percabangan kondisi</li>
+                    </ul>
+                </div>
+
+                <h2>E. Fitur Produktivitas Google Slides</h2>
+                
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon" style="color: var(--google-yellow);"><i class="fas fa-paint-brush"></i></div>
+                        <div class="feature-name">Tema dan Warna</div>
+                        <div class="feature-desc">Memilih tema yang konsisten untuk seluruh slide</div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon" style="color: var(--google-yellow);"><i class="fas fa-arrows-alt-h"></i></div>
+                        <div class="feature-name">Transisi</div>
+                        <div class="feature-desc">Efek perpindahan antar slide saat presentasi</div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon" style="color: var(--google-yellow);"><i class="fas fa-play"></i></div>
+                        <div class="feature-name">Animasi</div>
+                        <div class="feature-desc">Efek gerakan pada teks atau gambar di slide</div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon" style="color: var(--google-yellow);"><i class="fas fa-video"></i></div>
+                        <div class="feature-name">Multimedia</div>
+                        <div class="feature-desc">Menyisipkan gambar, video, dan audio ke dalam slide</div>
+                    </div>
+                </div>
+
+                <div class="note-box">
+                    <i class="fas fa-lightbulb"></i> <strong>Tips Membuat Presentasi Efektif:</strong>
+                    <ul>
+                        <li>Gunakan <strong>Cover Slide</strong> yang menarik dengan judul besar</li>
+                        <li>Setiap slide sebaiknya hanya memuat <strong>satu ide utama</strong></li>
+                        <li>Gunakan <strong>gambar</strong> untuk memperjelas penjelasan</li>
+                        <li>Tambahkan <strong>transisi yang halus</strong> agar presentasi terlihat profesional</li>
+                        <li>Gunakan <strong>animasi</strong> secukupnya, jangan terlalu berlebihan</li>
+                    </ul>
+                </div>
+
+                <h2>F. Perbandingan Aplikasi Google Workspace</h2>
+                
+                <table class="comparison-table">
+                    <thead>
+                        <tr><th>Aspek</th><th>Google Docs</th><th>Google Sheets</th><th>Google Slides</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Fungsi Utama</strong></td>
+                            <td>Membuat dan mengedit dokumen teks</td>
+                            <td>Mengolah data dalam bentuk spreadsheet</td>
+                            <td>Membuat presentasi digital</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Format File</strong></td>
+                            <td>.docx, .odt, .pdf, .txt</td>
+                            <td>.xlsx, .ods, .csv, .pdf</td>
+                            <td>.pptx, .odp, .pdf</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Fitur Utama</strong></td>
+                            <td>Heading, daftar, tabel, gambar, link</td>
+                            <td>Rumus, filter, sortir, grafik, chart</td>
+                            <td>Tema, transisi, animasi, multimedia</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Penggunaan</strong></td>
+                            <td>Laporan, makalah, proposal, surat</td>
+                            <td>Data, analisis, anggaran, inventaris</td>
+                            <td>Presentasi, seminar, proposal proyek</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h2>G. Shortcut Keyboard Penting</h2>
+                
+                <table class="shortcut-table">
+                    <thead>
+                        <tr><th>Shortcut</th><th>Fungsi</th><th>Keterangan</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><span class="key">Ctrl+B</span></td><td>Bold (Tebal)</td><td>Membuat teks menjadi tebal</td></tr>
+                        <tr><td><span class="key">Ctrl+I</span></td><td>Italic (Miring)</td><td>Membuat teks menjadi miring</td></tr>
+                        <tr><td><span class="key">Ctrl+U</span></td><td>Underline</td><td>Memberi garis bawah pada teks</td></tr>
+                        <tr><td><span class="key">Ctrl+K</span></td><td>Insert Link</td><td>Menambahkan hyperlink</td></tr>
+                        <tr><td><span class="key">Ctrl+Z</span></td><td>Undo</td><td>Membatalkan perubahan terakhir</td></tr>
+                        <tr><td><span class="key">Ctrl+Y</span></td><td>Redo</td><td>Mengulangi perubahan yang dibatalkan</td></tr>
+                        <tr><td><span class="key">Ctrl+Alt+M</span></td><td>Insert Comment</td><td>Menambahkan komentar</td></tr>
+                        <tr><td><span class="key">Ctrl+Shift+C</span></td><td>Word Count</td><td>Menampilkan jumlah kata (Docs)</td></tr>
+                        <tr><td><span class="key">Ctrl+Shift+Enter</span></td><td>Array Formula</td><td>Rumus array (Sheets)</td></tr>
+                    </tbody>
+                </table>
+
+                <h2>H. Rangkuman</h2>
+                <ul>
+                    <li><strong>Produktivitas Digital:</strong> Kemampuan menyelesaikan pekerjaan efisien dengan teknologi digital.</li>
+                    <li><strong>Kolaborasi Digital:</strong> Bekerja sama menggunakan teknologi untuk mencapai tujuan bersama.</li>
+                    <li><strong>Fitur Kolaborasi:</strong> Berbagi dokumen (Viewer/Commenter/Editor), komentar, riwayat revisi, dan kolaborasi real-time.</li>
+                    <li><strong>Google Docs:</strong> Pengolah kata dengan fitur heading, daftar, tabel, gambar, dan link.</li>
+                    <li><strong>Google Sheets:</strong> Spreadsheet dengan rumus, filter, grafik, dan analisis data.</li>
+                    <li><strong>Google Slides:</strong> Presentasi dengan tema, transisi, animasi, dan multimedia.</li>
+                    <li><strong>Shortcut Keyboard:</strong> Mempercepat pekerjaan dengan kombinasi tombol keyboard.</li>
+                </ul>
+
+                <div class="warning-box">
+                    <i class="fas fa-exclamation-triangle"></i> <strong>Ingat!</strong> Kolaborasi digital membutuhkan komunikasi yang baik antar anggota tim. Selalu koordinasikan tugas dan pastikan semua anggota berkontribusi secara aktif.
+                </div>
+
+                <div class="quote-box" style="margin-top: 1.5rem; text-align: center;">
+                    <i class="fas fa-users"></i> Produktivitas Meningkat dengan Kolaborasi yang Baik! 🚀
+                </div>
+            </div>
+
+            <!-- Navigasi -->
+            <div class="materi-navigation">
+                <a href="materi1-1.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i> Kembali ke Materi 1.1
+                </a>
+                <a href="materi1-3.html" class="nav-btn primary">
+                    Lanjut ke Materi 1.3: Presentasi Digital (Google Slides)
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script src="../../../script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

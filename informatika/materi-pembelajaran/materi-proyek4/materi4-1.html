@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi 4.1: Pengantar Literasi Informasi & Isu Viral - Informatika Kelas X</title>
+    <link rel="stylesheet" href="../../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --informatika-primary: #3498db;
+            --informatika-secondary: #2980b9;
+            --informatika-light: #ebf5fb;
+            --informatika-dark: #21618c;
+            --informatika-semester1: #3498db;
+            --warning: #e74c3c;
+            --success: #27ae60;
+            --info: #f39c12;
+            --purple: #9b59b6;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+        
+        .materi-container {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+        
+        .materi-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 30px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(52, 152, 219, 0.15);
+            border-left: 8px solid var(--informatika-semester1);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        .materi-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(52, 152, 219, 0.1) 0%, transparent 70%);
+            z-index: 0;
+        }
+        
+        .materi-card > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .materi-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 3px solid var(--informatika-light);
+            flex-wrap: wrap;
+        }
+        
+        .materi-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--informatika-primary), var(--informatika-secondary));
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+        }
+        
+        .materi-title-wrapper {
+            flex: 1;
+        }
+        
+        .materi-title-wrapper h1 {
+            color: var(--informatika-dark);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .materi-subtitle {
+            color: var(--informatika-primary);
+            font-size: 1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .materi-badge {
+            background: var(--informatika-light);
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: var(--informatika-dark);
+        }
+        
+        .materi-badge i {
+            margin-right: 4px;
+        }
+        
+        .tujuan-card {
+            background: linear-gradient(135deg, var(--informatika-light), white);
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(52, 152, 219, 0.2);
+        }
+        
+        .tujuan-card h3 {
+            color: var(--informatika-dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .tujuan-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 0.8rem;
+        }
+        
+        .tujuan-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            padding: 0.8rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .tujuan-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .tujuan-item i {
+            color: var(--success);
+        }
+        
+        .materi-content {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid rgba(52, 152, 219, 0.1);
+        }
+        
+        .materi-content h2 {
+            color: var(--informatika-dark);
+            font-size: 1.8rem;
+            margin: 1.5rem 0 1rem 0;
+            border-bottom: 2px solid var(--informatika-light);
+            padding-bottom: 0.5rem;
+        }
+        
+        .materi-content h2:first-of-type {
+            margin-top: 0;
+        }
+        
+        .materi-content h3 {
+            color: var(--informatika-dark);
+            font-size: 1.3rem;
+            margin: 1.2rem 0 0.8rem 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .materi-content h3 i {
+            color: var(--informatika-primary);
+        }
+        
+        .materi-content p {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        
+        .materi-content ul, .materi-content ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .materi-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .quote-box {
+            margin: 1.5rem 0;
+            padding: 1rem 1.5rem;
+            background: var(--informatika-light);
+            border-left: 4px solid var(--informatika-primary);
+            border-radius: 0 12px 12px 0;
+        }
+        
+        .note-box {
+            background: #fff3e0;
+            border-left: 4px solid var(--info);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid var(--informatika-primary);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .warning-box {
+            background: #fee2e2;
+            border-left: 4px solid var(--warning);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .success-box {
+            background: #d4edda;
+            border-left: 4px solid var(--success);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .pilar-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .pilar-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1.2rem;
+            transition: all 0.3s ease;
+            border: 1px solid #e9ecef;
+            cursor: pointer;
+        }
+        
+        .pilar-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.15);
+        }
+        
+        .pilar-card.active {
+            border: 2px solid var(--informatika-primary);
+            background: var(--informatika-light);
+        }
+        
+        .pilar-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--informatika-primary);
+        }
+        
+        .pilar-title {
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+            color: var(--informatika-dark);
+        }
+        
+        .pilar-desc {
+            font-size: 0.85rem;
+            color: #6c757d;
+        }
+        
+        .pilar-card.active .pilar-desc {
+            color: var(--informatika-dark);
+            font-weight: 500;
+        }
+        
+        .hoaks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .hoaks-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1.2rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #e9ecef;
+        }
+        
+        .hoaks-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .hoaks-card.active {
+            border: 2px solid;
+        }
+        
+        .hoaks-card.misinformasi.active { border-color: var(--info); background: #fff3e0; }
+        .hoaks-card.disinformasi.active { border-color: var(--warning); background: #fee2e2; }
+        .hoaks-card.malinformasi.active { border-color: var(--purple); background: #f3e5f5; }
+        
+        .hoaks-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .hoaks-title {
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+            color: var(--informatika-dark);
+        }
+        
+        .hoaks-desc {
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        .hoaks-card.active .hoaks-desc {
+            color: var(--informatika-dark);
+            font-weight: 500;
+        }
+        
+        .ciri-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .ciri-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 0.8rem;
+            background: white;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            border: 1px solid #e9ecef;
+        }
+        
+        .ciri-item:hover {
+            transform: translateX(5px);
+            border-color: var(--warning);
+        }
+        
+        .ciri-item i {
+            width: 35px;
+            height: 35px;
+            background: #fee2e2;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--warning);
+            flex-shrink: 0;
+        }
+        
+        .faktor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .faktor-card {
+            text-align: center;
+            padding: 1rem;
+            background: white;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            border: 1px solid #e9ecef;
+        }
+        
+        .faktor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .faktor-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--informatika-primary);
+        }
+        
+        .faktor-title {
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+            color: var(--informatika-dark);
+        }
+        
+        .faktor-desc {
+            font-size: 0.85rem;
+            color: #6c757d;
+        }
+        
+        .operator-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .operator-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1.2rem;
+            transition: all 0.3s ease;
+            border: 1px solid #e9ecef;
+        }
+        
+        .operator-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .operator-code {
+            font-family: monospace;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--informatika-primary);
+            background: var(--informatika-light);
+            padding: 0.3rem 0.8rem;
+            border-radius: 6px;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .operator-title {
+            font-weight: bold;
+            color: var(--informatika-dark);
+        }
+        
+        .operator-desc {
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin-top: 0.3rem;
+        }
+        
+        .search-example {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 0.5rem 0.8rem;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+        
+        .stop-method {
+            background: linear-gradient(135deg, var(--informatika-primary), var(--informatika-secondary));
+            border-radius: 20px;
+            padding: 1.8rem;
+            color: white;
+            margin: 1.5rem 0;
+        }
+        
+        .stop-method h4 {
+            color: white;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
+        .stop-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .stop-card {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 0.8rem 1.2rem;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .stop-card:hover {
+            background: rgba(255,255,255,0.3);
+            transform: scale(1.05);
+        }
+        
+        .stop-card.active {
+            background: rgba(255,255,255,0.4);
+            box-shadow: 0 0 15px rgba(255,255,255,0.3);
+        }
+        
+        .stop-letter {
+            font-size: 1.3rem;
+            font-weight: bold;
+            background: white;
+            color: var(--informatika-primary);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .stop-detail {
+            background: rgba(255,255,255,0.15);
+            padding: 0.8rem;
+            border-radius: 12px;
+            margin-top: 1rem;
+            text-align: left;
+            line-height: 1.5;
+        }
+        
+        .materi-navigation {
+            display: flex;
+            gap: 1rem;
+            justify-content: space-between;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn.primary {
+            background: linear-gradient(135deg, var(--informatika-primary), var(--informatika-secondary));
+            color: white;
+        }
+        
+        .nav-btn.primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .nav-btn.secondary {
+            background: white;
+            color: var(--informatika-dark);
+            border: 2px solid var(--informatika-light);
+        }
+        
+        .nav-btn.secondary:hover {
+            background: var(--informatika-light);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .materi-container { padding: 1rem; }
+            .materi-card { padding: 1.5rem; }
+            .materi-header { flex-direction: column; text-align: center; }
+            .operator-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="../../../assets/images/logo.png" alt="Logo Sekolah">
+                    <h1>INFORMATIKA - MATERI PEMBELAJARAN</h1>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="../../../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="../../index-informatika.html" class="nav-link"><i class="fas fa-laptop-code"></i> Beranda Informatika</a></li>
+                    <li><a href="../../aktivitas-pembelajaran/index-aktivitas-informatika.html" class="nav-link"><i class="fas fa-tasks"></i> Daftar Aktivitas</a></li>
+                    <li><a href="../index-materi-informatika.html" class="nav-link active"><i class="fas fa-book-open"></i> Daftar Materi</a></li>
+                    <li><a href="../../penilaian/index-penilaian-informatika.html" class="nav-link"><i class="fas fa-chart-line"></i> Penilaian</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="materi-container">
+        <div class="materi-card">
+            <!-- Header -->
+            <div class="materi-header">
+                <div class="materi-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="materi-title-wrapper">
+                    <h1>Pengantar Literasi Informasi &amp; Isu Viral</h1>
+                    <div class="materi-subtitle">
+                        <i class="fas fa-circle"></i>
+                        <span>Proyek 4: Fakta atau Hoaks? - Pertemuan 1</span>
+                        <span class="materi-badge"><i class="fas fa-clock"></i> 4 JP</span>
+                        <span class="materi-badge"><i class="fas fa-tag"></i> TP 2.1</span>
+                        <span class="materi-badge"><i class="fas fa-globe"></i> Online</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tujuan Pembelajaran -->
+            <div class="tujuan-card">
+                <h3><i class="fas fa-bullseye"></i> 🎯 Tujuan Pembelajaran</h3>
+                <div class="tujuan-list">
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Memahami pengertian literasi digital dan komponen-komponennya</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Mengidentifikasi berbagai jenis hoaks (misinformasi, disinformasi, malinformasi)</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Mengenali ciri-ciri informasi hoaks dan faktor penyebarannya</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Menggunakan teknik pencarian informasi dengan operator mesin pencari</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Menerapkan metode verifikasi informasi sebelum menyebarkannya</div>
+                </div>
+            </div>
+
+            <!-- Konten Materi -->
+            <div class="materi-content">
+                <h2>A. Apa Itu Literasi Digital?</h2>
+                <p><strong>Literasi digital</strong> adalah kemampuan untuk memahami, menganalisis, mengevaluasi, dan menggunakan informasi yang diperoleh dari berbagai sumber digital secara bijak, cerdas, dan bertanggung jawab. Literasi digital bukan hanya tentang bisa mengoperasikan perangkat, tetapi juga tentang bagaimana berpikir kritis terhadap informasi yang diterima.</p>
+                
+                <div class="quote-box">
+                    <i class="fas fa-quote-left"></i> Menurut Paul Gilster (1997), literasi digital adalah kemampuan untuk memahami dan menggunakan informasi dalam berbagai format dari berbagai sumber yang disajikan melalui komputer.
+                </div>
+
+                <h3>5 Komponen Literasi Digital</h3>
+                <p><strong>Klik pada setiap komponen</strong> untuk memperjelas tampilan:</p>
+                
+                <div class="pilar-grid" id="pilarGrid">
+                    <div class="pilar-card" data-pilar="teknis">
+                        <div class="pilar-icon"><i class="fas fa-cogs"></i></div>
+                        <div class="pilar-title">Kemampuan Teknis</div>
+                        <div class="pilar-desc">Kemampuan mengoperasikan perangkat digital dan aplikasi. Contoh: menggunakan smartphone, laptop, aplikasi perkantoran, dan platform digital lainnya.</div>
+                    </div>
+                    <div class="pilar-card" data-pilar="kritis">
+                        <div class="pilar-icon"><i class="fas fa-brain"></i></div>
+                        <div class="pilar-title">Kemampuan Kritis</div>
+                        <div class="pilar-desc">Kemampuan mengevaluasi dan menganalisis informasi secara objektif. Contoh: membedakan berita fakta dan hoaks, menilai kredibilitas sumber.</div>
+                    </div>
+                    <div class="pilar-card" data-pilar="sosial">
+                        <div class="pilar-icon"><i class="fas fa-users"></i></div>
+                        <div class="pilar-title">Kemampuan Sosial</div>
+                        <div class="pilar-desc">Kemampuan berkomunikasi dan berkolaborasi di dunia digital. Contoh: berdiskusi di grup, bekerja sama via Google Docs, etika berkomentar.</div>
+                    </div>
+                    <div class="pilar-card" data-pilar="etis">
+                        <div class="pilar-icon"><i class="fas fa-hand-peace"></i></div>
+                        <div class="pilar-title">Kemampuan Etis</div>
+                        <div class="pilar-desc">Memahami dan menerapkan etika serta hukum di dunia digital. Contoh: menghargai hak cipta, tidak menyebar hoaks, tidak melakukan cyberbullying.</div>
+                    </div>
+                    <div class="pilar-card" data-pilar="keamanan">
+                        <div class="pilar-icon"><i class="fas fa-shield-alt"></i></div>
+                        <div class="pilar-title">Kemampuan Keamanan</div>
+                        <div class="pilar-desc">Menjaga keamanan data dan privasi pribadi. Contoh: menggunakan password kuat, tidak mudah membagikan data pribadi, mengaktifkan 2FA.</div>
+                    </div>
+                </div>
+
+                <h2>B. Memahami Hoaks</h2>
+                <p><strong>Hoaks (hoax)</strong> adalah informasi yang sengaja dibuat tidak benar atau menyesatkan, disebarkan seolah-olah sebagai kebenaran. Istilah hoaks berasal dari bahasa Inggris "hoax" yang berarti tipuan atau berita bohong.</p>
+                
+                <h3>Jenis-Jenis Hoaks Berdasarkan Niat</h3>
+                <p><strong>Klik pada setiap jenis hoaks</strong> untuk memperjelas tampilan:</p>
+                
+                <div class="hoaks-grid" id="hoaksGrid">
+                    <div class="hoaks-card misinformasi" data-hoaks="misinformasi">
+                        <div class="hoaks-icon"><i class="fas fa-question-circle" style="color: var(--info);"></i></div>
+                        <div class="hoaks-title">Misinformasi</div>
+                        <div class="hoaks-desc">Informasi salah yang disebarkan <strong>tanpa niat jahat</strong>. Penyebarnya percaya bahwa informasi itu benar. Contoh: membagikan berita lama karena mengira itu kejadian baru.</div>
+                    </div>
+                    <div class="hoaks-card disinformasi" data-hoaks="disinformasi">
+                        <div class="hoaks-icon"><i class="fas fa-bullhorn" style="color: var(--warning);"></i></div>
+                        <div class="hoaks-title">Disinformasi</div>
+                        <div class="hoaks-desc">Informasi salah yang <strong>sengaja dibuat dan disebarkan</strong> untuk menipu atau merugikan pihak tertentu. Contoh: berita palsu tentang efek samping vaksin.</div>
+                    </div>
+                    <div class="hoaks-card malinformasi" data-hoaks="malinformasi">
+                        <div class="hoaks-icon"><i class="fas fa-skull" style="color: var(--purple);"></i></div>
+                        <div class="hoaks-title">Malinformasi</div>
+                        <div class="hoaks-desc">Informasi <strong>benar tetapi disebarkan</strong> untuk menyakiti seseorang atau kelompok. Contoh: membocorkan data pribadi seseorang ke publik.</div>
+                    </div>
+                </div>
+
+                <div class="note-box">
+                    <i class="fas fa-lightbulb"></i> <strong>Ilustrasi Sederhana:</strong><br>
+                    • <strong>MISINFORMASI:</strong> "Teman saya bilang besok libur!" (dia percaya itu benar)<br>
+                    • <strong>DISINFORMASI:</strong> "Saya sengaja membuat kabar libur palsu agar teman-teman tidak masuk sekolah"<br>
+                    • <strong>MALINFORMASI:</strong> "Nilai ujian Andi bocor dan disebarkan ke seluruh kelas" (datanya benar tapi disebarkan untuk mempermalukan)
+                </div>
+
+                <h2>C. Ciri-Ciri Informasi Hoaks</h2>
+                <p>Mengenali hoaks tidaklah sulit jika kita tahu ciri-cirinya. Berikut adalah ciri utama hoaks yang perlu diwaspadai:</p>
+                
+                <div class="ciri-grid">
+                    <div class="ciri-item"><i class="fas fa-heading"></i><span><strong>Judul Provokatif</strong><br>Menggunakan kata-kata sensasional, huruf kapital semua, atau tanda seru berlebihan</span></div>
+                    <div class="ciri-item"><i class="fas fa-question"></i><span><strong>Sumber Tidak Jelas</strong><br>Tidak mencantumkan sumber yang dapat diverifikasi</span></div>
+                    <div class="ciri-item"><i class="fas fa-share-alt"></i><span><strong>Minta Diviralkan</strong><br>Mengandung ajakan untuk membagikan ke sebanyak mungkin orang</span></div>
+                    <div class="ciri-item"><i class="fas fa-calendar"></i><span><strong>Tanggal Tidak Jelas</strong><br>Tidak mencantumkan tanggal atau menggunakan tanggal lama</span></div>
+                    <div class="ciri-item"><i class="fas fa-image"></i><span><strong>Foto/Video Rekayasa</strong><br>Gambar terlihat aneh, buram, atau hasil editan</span></div>
+                    <div class="ciri-item"><i class="fas fa-angry"></i><span><strong>Manipulasi Emosi</strong><br>Memancing kemarahan, ketakutan, atau kebencian berlebihan</span></div>
+                    <div class="ciri-item"><i class="fas fa-globe"></i><span><strong>Domain Mencurigakan</strong><br>Menggunakan domain tidak resmi seperti .blogspot, .wordpress</span></div>
+                </div>
+
+                <h2>D. Mengapa Hoaks Mudah Menyebar?</h2>
+                <div class="faktor-grid">
+                    <div class="faktor-card">
+                        <div class="faktor-icon"><i class="fas fa-bolt"></i></div>
+                        <div class="faktor-title">Kecepatan Media Sosial</div>
+                        <div class="faktor-desc">Informasi menyebar dalam hitungan detik sebelum diverifikasi</div>
+                    </div>
+                    <div class="faktor-card">
+                        <div class="faktor-icon"><i class="fas fa-graduation-cap"></i></div>
+                        <div class="faktor-title">Kurang Literasi Digital</div>
+                        <div class="faktor-desc">Banyak pengguna belum memiliki kemampuan kritis</div>
+                    </div>
+                    <div class="faktor-card">
+                        <div class="faktor-icon"><i class="fas fa-robot"></i></div>
+                        <div class="faktor-title">Algoritma Platform</div>
+                        <div class="faktor-desc">Platform menampilkan konten viral meskipun tidak akurat</div>
+                    </div>
+                    <div class="faktor-card">
+                        <div class="faktor-icon"><i class="fas fa-brain"></i></div>
+                        <div class="faktor-title">Konfirmasi Bias</div>
+                        <div class="faktor-desc">Orang cenderung percaya informasi yang sesuai keyakinannya</div>
+                    </div>
+                </div>
+
+                <h2>E. Teknik Pencarian Informasi dengan Mesin Pencari</h2>
+                <p>Mesin pencari seperti Google memiliki operator khusus untuk membantu mencari informasi secara lebih efektif. Operator ini sangat berguna untuk memverifikasi informasi dan menemukan sumber yang kredibel.</p>
+
+                <div class="operator-grid" id="operatorGrid">
+                    <div class="operator-card">
+                        <div class="operator-code">site:domain</div>
+                        <div class="operator-title">Cari di Situs Tertentu</div>
+                        <div class="operator-desc">Membatasi pencarian hanya pada website tertentu. Berguna untuk mencari informasi dari sumber tepercaya.</div>
+                        <div class="search-example">Contoh: vaksin covid site:who.int</div>
+                    </div>
+                    <div class="operator-card">
+                        <div class="operator-code">-kata</div>
+                        <div class="operator-title">Kecualikan Kata</div>
+                        <div class="operator-desc">Menghilangkan hasil pencarian yang mengandung kata tertentu. Berguna untuk menyaring hoaks.</div>
+                        <div class="search-example">Contoh: vaksin covid -hoaks</div>
+                    </div>
+                    <div class="operator-card">
+                        <div class="operator-code">"frasa"</div>
+                        <div class="operator-title">Cari Frasa Tepat</div>
+                        <div class="operator-desc">Mencari kalimat/frasa secara persis sesuai dengan kata kunci. Berguna untuk mencari kutipan atau informasi spesifik.</div>
+                        <div class="search-example">Contoh: "vaksin covid-19"</div>
+                    </div>
+                    <div class="operator-card">
+                        <div class="operator-code">intitle:judul</div>
+                        <div class="operator-title">Cari di Judul Halaman</div>
+                        <div class="operator-desc">Membatasi pencarian hanya pada judul halaman. Berguna untuk mencari artikel dengan topik spesifik.</div>
+                        <div class="search-example">Contoh: intitle:"vaksin covid"</div>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <i class="fas fa-lightbulb"></i> <strong>Mengapa Operator Pencarian Penting?</strong><br>
+                    • Membantu menemukan informasi dari sumber yang <strong>kredibel</strong> (site:who.int)<br>
+                    • Menyaring hasil pencarian dari <strong>hoaks</strong> (-hoaks)<br>
+                    • Mendapatkan informasi yang <strong>spesifik dan akurat</strong> ("frasa")
+                </div>
+
+                <h2>F. Metode Verifikasi Informasi (STOP)</h2>
+                <p>Sebelum membagikan informasi, lakukan verifikasi dengan metode STOP berikut. <strong>Klik pada setiap huruf</strong> untuk melihat penjelasan detail:</p>
+                
+                <div class="stop-method">
+                    <h4><i class="fas fa-stop-circle"></i> STOP VERIFIKASI</h4>
+                    <div class="stop-grid" id="stopGrid">
+                        <div class="stop-card" data-stop="sumber"><div class="stop-letter">S</div><div><strong>Sumber</strong><br><small>Cek kredibilitas</small></div></div>
+                        <div class="stop-card" data-stop="tanggal"><div class="stop-letter">T</div><div><strong>Tanggal</strong><br><small>Cek waktu kejadian</small></div></div>
+                        <div class="stop-card" data-stop="orisinal"><div class="stop-letter">O</div><div><strong>Orisinal</strong><br><small>Cek keaslian konten</small></div></div>
+                        <div class="stop-card" data-stop="pembanding"><div class="stop-letter">P</div><div><strong>Pembanding</strong><br><small>Bandingkan sumber</small></div></div>
+                    </div>
+                    <div id="stopDetail" class="stop-detail">
+                        <strong>📌 Klik pada huruf S, T, O, atau P di atas untuk melihat penjelasan detail!</strong>
+                    </div>
+                </div>
+
+                <div class="success-box">
+                    <i class="fas fa-check-circle"></i> <strong>Tips Menjadi Detektif Digital:</strong><br>
+                    • Gunakan operator <strong>site:</strong> untuk mencari di sumber resmi (pemerintah, WHO, kementerian)<br>
+                    • Gunakan tanda minus <strong>-</strong> untuk menghilangkan kata kunci hoaks<br>
+                    • Gunakan <strong>"kutipan"</strong> untuk mencari frasa tepat<br>
+                    • Bandingkan informasi dari <strong>minimal 3 sumber</strong> berbeda<br>
+                    • Cek <strong>tanggal publikasi</strong> untuk memastikan informasi masih relevan
+                </div>
+
+                <div class="warning-box">
+                    <i class="fas fa-exclamation-triangle"></i> <strong>Ingat!</strong> Informasi yang tidak diverifikasi adalah racun bagi pemikiran. Jadilah konsumen informasi yang cerdas, bukan korban hoaks yang malas bertanya!
+                </div>
+
+                <div class="quote-box" style="margin-top: 1.5rem; text-align: center;">
+                    <i class="fas fa-search"></i> Selamat Menjelajah Dunia Informasi dengan Bijak! 🔍
+                </div>
+            </div>
+
+            <!-- Navigasi -->
+            <div class="materi-navigation">
+                <a href="../index-materi-informatika.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i> Kembali ke Daftar Materi
+                </a>
+                <a href="materi4-2.html" class="nav-btn primary">
+                    Lanjut ke Materi 4.2: Verifikasi Fakta
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script src="../../../script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                });
+            }
+            
+            // Pilar Interaktif - HANYA EFEK HIGHLIGHT
+            const pilarCards = document.querySelectorAll('.pilar-card');
+            pilarCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    pilarCards.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            if(pilarCards.length) pilarCards[0].classList.add('active');
+            
+            // Hoaks Interaktif - HANYA EFEK HIGHLIGHT
+            const hoaksCards = document.querySelectorAll('.hoaks-card');
+            hoaksCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    hoaksCards.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            
+            // STOP Method Interaktif - HANYA EFEK HIGHLIGHT
+            const stopCards = document.querySelectorAll('.stop-card');
+            const stopDetail = document.getElementById('stopDetail');
+            const stopDetails = {
+                sumber: '<strong>📌 Cek Sumber:</strong> Apakah informasi berasal dari media resmi? Apakah ada penulis yang jelas? Cek reputasi website/sumbernya. Sumber yang kredibel biasanya memiliki nama penulis, kontak yang jelas, dan reputasi baik.',
+                tanggal: '<strong>📌 Cek Tanggal:</strong> Kapan informasi ini dipublikasikan? Apakah masih relevan? Apakah berita lama yang diulang kembali? Hoaks sering menggunakan informasi lama yang diulang tanpa konteks waktu.',
+                orisinal: '<strong>📌 Cek Orisinalitas:</strong> Apakah foto/video asli atau hasil editan? Gunakan Google Images untuk mengecek keaslian gambar. Cari apakah gambar yang sama pernah muncul di konteks yang berbeda.',
+                pembanding: '<strong>📌 Cek Pembanding:</strong> Apakah media kredibel lain memberitakan hal yang sama? Bandingkan minimal 3 sumber berbeda. Jika hanya satu sumber yang memberitakan, kemungkinan besar itu hoaks.'
+            };
+            
+            stopCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    stopCards.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                    const type = this.dataset.stop;
+                    stopDetail.innerHTML = stopDetails[type];
+                });
+            });
+        });
+    </script>
+</body>
+</html>

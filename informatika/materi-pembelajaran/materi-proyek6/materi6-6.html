@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi 6.6: Presentasi Program Sederhana - Informatika Kelas X</title>
+    <link rel="stylesheet" href="../../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --informatika-primary: #3498db;
+            --informatika-secondary: #2980b9;
+            --informatika-light: #ebf5fb;
+            --informatika-dark: #21618c;
+            --informatika-semester1: #3498db;
+            --success: #27ae60;
+            --warning: #e74c3c;
+            --info: #f39c12;
+            --purple: #9b59b6;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+        
+        .materi-container {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+        
+        .materi-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 30px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(52, 152, 219, 0.15);
+            border-left: 8px solid var(--informatika-semester1);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        .materi-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(52, 152, 219, 0.1) 0%, transparent 70%);
+            z-index: 0;
+        }
+        
+        .materi-card > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .materi-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 3px solid var(--informatika-light);
+            flex-wrap: wrap;
+        }
+        
+        .materi-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--purple), var(--informatika-primary));
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+        }
+        
+        .materi-title-wrapper {
+            flex: 1;
+        }
+        
+        .materi-title-wrapper h1 {
+            color: var(--informatika-dark);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .materi-subtitle {
+            color: var(--informatika-primary);
+            font-size: 1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .materi-badge {
+            background: var(--informatika-light);
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: var(--informatika-dark);
+        }
+        
+        .materi-badge i {
+            margin-right: 4px;
+        }
+        
+        .tujuan-card {
+            background: linear-gradient(135deg, var(--informatika-light), white);
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(52, 152, 219, 0.2);
+        }
+        
+        .tujuan-card h3 {
+            color: var(--informatika-dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .tujuan-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 0.8rem;
+        }
+        
+        .tujuan-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            padding: 0.8rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .tujuan-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+        
+        .tujuan-item i {
+            color: var(--success);
+        }
+        
+        .materi-content {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid rgba(52, 152, 219, 0.1);
+        }
+        
+        .materi-content h2 {
+            color: var(--informatika-dark);
+            font-size: 1.8rem;
+            margin: 1.5rem 0 1rem 0;
+            border-bottom: 2px solid var(--informatika-light);
+            padding-bottom: 0.5rem;
+        }
+        
+        .materi-content h2:first-of-type {
+            margin-top: 0;
+        }
+        
+        .materi-content h3 {
+            color: var(--informatika-dark);
+            font-size: 1.3rem;
+            margin: 1.2rem 0 0.8rem 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .materi-content h3 i {
+            color: var(--informatika-primary);
+        }
+        
+        .materi-content p {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        
+        .materi-content ul, .materi-content ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .materi-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .quote-box {
+            margin: 1.5rem 0;
+            padding: 1rem 1.5rem;
+            background: var(--informatika-light);
+            border-left: 4px solid var(--informatika-primary);
+            border-radius: 0 12px 12px 0;
+        }
+        
+        .note-box {
+            background: #fff3e0;
+            border-left: 4px solid var(--info);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid var(--informatika-primary);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .warning-box {
+            background: #fee2e2;
+            border-left: 4px solid var(--warning);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .success-box {
+            background: #d4edda;
+            border-left: 4px solid var(--success);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+        }
+        
+        .review-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .review-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1.2rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid #e9ecef;
+        }
+        
+        .review-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .review-card.active {
+            border-color: var(--informatika-primary);
+            background: var(--informatika-light);
+        }
+        
+        .review-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .review-title {
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: var(--informatika-dark);
+            margin-bottom: 0.3rem;
+        }
+        
+        .review-code {
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: var(--info);
+            font-weight: 600;
+        }
+        
+        .review-desc {
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid #e9ecef;
+        }
+        
+        .review-card.active .review-desc {
+            color: var(--informatika-dark);
+            font-weight: 500;
+        }
+        
+        .presentation-tips {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .presentation-tip {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 0.8rem;
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--purple);
+        }
+        
+        .presentation-tip:hover {
+            transform: translateX(5px);
+            background: var(--informatika-light);
+        }
+        
+        .presentation-tip .tip-num {
+            width: 30px;
+            height: 30px;
+            background: var(--purple);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        
+        .presentation-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .presentation-item {
+            text-align: center;
+            padding: 1.2rem;
+            background: white;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            border: 1px solid #e9ecef;
+        }
+        
+        .presentation-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .presentation-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .presentation-title {
+            font-weight: bold;
+            color: var(--informatika-dark);
+        }
+        
+        .presentation-desc {
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin-top: 0.3rem;
+        }
+        
+        .commitment-box {
+            background: linear-gradient(135deg, var(--purple), #8e44ad);
+            color: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+        
+        .commitment-box h3 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .commitment-box ul {
+            text-align: left;
+            margin-left: 1.5rem;
+        }
+        
+        .materi-navigation {
+            display: flex;
+            gap: 1rem;
+            justify-content: space-between;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn.primary {
+            background: linear-gradient(135deg, var(--informatika-primary), var(--informatika-secondary));
+            color: white;
+        }
+        
+        .nav-btn.primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .nav-btn.secondary {
+            background: white;
+            color: var(--informatika-dark);
+            border: 2px solid var(--informatika-light);
+        }
+        
+        .nav-btn.secondary:hover {
+            background: var(--informatika-light);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .materi-container { padding: 1rem; }
+            .materi-card { padding: 1.5rem; }
+            .materi-header { flex-direction: column; text-align: center; }
+            .review-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="../../../assets/images/logo.png" alt="Logo Sekolah">
+                    <h1>INFORMATIKA - MATERI PEMBELAJARAN</h1>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="../../../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="../../index-informatika.html" class="nav-link"><i class="fas fa-laptop-code"></i> Beranda Informatika</a></li>
+                    <li><a href="../../aktivitas-pembelajaran/index-aktivitas-informatika.html" class="nav-link"><i class="fas fa-tasks"></i> Daftar Aktivitas</a></li>
+                    <li><a href="../index-materi-informatika.html" class="nav-link active"><i class="fas fa-book-open"></i> Daftar Materi</a></li>
+                    <li><a href="../../penilaian/index-penilaian-informatika.html" class="nav-link"><i class="fas fa-chart-line"></i> Penilaian</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="materi-container">
+        <div class="materi-card">
+            <!-- Header -->
+            <div class="materi-header">
+                <div class="materi-icon">
+                    <i class="fas fa-presentation"></i>
+                </div>
+                <div class="materi-title-wrapper">
+                    <h1>Presentasi Program Sederhana</h1>
+                    <div class="materi-subtitle">
+                        <i class="fas fa-circle"></i>
+                        <span>Proyek 6: Pemrograman Dasar - Pertemuan 6</span>
+                        <span class="materi-badge"><i class="fas fa-clock"></i> 4 JP</span>
+                        <span class="materi-badge"><i class="fas fa-tag"></i> TP 1.1, 1.2, 1.3, 1.4, 1.5</span>
+                        <span class="materi-badge"><i class="fas fa-globe"></i> Online</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tujuan Pembelajaran -->
+            <div class="tujuan-card">
+                <h3><i class="fas fa-bullseye"></i> 🎯 Tujuan Pembelajaran</h3>
+                <div class="tujuan-list">
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Mereview seluruh materi Proyek 6 (TP 1.1, 1.2, 1.3, 1.4, 1.5)</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Mempresentasikan program sederhana hasil rancangan kelompok</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Menjelaskan algoritma, pseudocode, dan implementasi program</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Memberikan dan menerima penilaian antar kelompok</div>
+                    <div class="tujuan-item"><i class="fas fa-check-circle"></i> Mengembangkan komitmen untuk terus belajar pemrograman</div>
+                </div>
+            </div>
+
+            <!-- Konten Materi -->
+            <div class="materi-content">
+                <h2>A. Review Proyek 6: Pemrograman Dasar</h2>
+                <p>Selama Proyek 6, kita telah mempelajari 5 aspek penting dalam pemrograman dasar. <strong>Klik pada setiap kartu</strong> untuk mereview kembali materi yang telah dipelajari:</p>
+                
+                <div class="review-grid" id="reviewGrid">
+                    <div class="review-card" data-review="algoritma">
+                        <div class="review-icon"><i class="fas fa-code-branch" style="color: var(--info);"></i></div>
+                        <div class="review-title">Algoritma &amp; Struktur Data</div>
+                        <div class="review-code">TP 1.1</div>
+                        <div class="review-desc">Algoritma adalah urutan langkah logis untuk menyelesaikan masalah. Struktur data adalah cara menyusun data agar efisien. Tipe data dasar: Integer, Float, String, Boolean.</div>
+                    </div>
+                    <div class="review-card" data-review="komputasi">
+                        <div class="review-icon"><i class="fas fa-users" style="color: var(--success);"></i></div>
+                        <div class="review-title">Komputasi Mandiri &amp; Kolaboratif</div>
+                        <div class="review-code">TP 1.2 &amp; 1.3</div>
+                        <div class="review-desc">Komputasi mandiri: dilakukan sendiri, melatih kemandirian. Komputasi kolaboratif: dilakukan bersama, menghasilkan ide lebih kaya dan saling mengoreksi.</div>
+                    </div>
+                    <div class="review-card" data-review="pseudocode">
+                        <div class="review-icon"><i class="fas fa-code" style="color: var(--purple);"></i></div>
+                        <div class="review-title">Pseudocode &amp; HTML</div>
+                        <div class="review-code">TP 1.4 &amp; 1.5</div>
+                        <div class="review-desc">Pseudocode adalah jembatan antara algoritma dan program. HTML digunakan untuk membuat antarmuka program. JavaScript menambahkan logika pemrograman.</div>
+                    </div>
+                </div>
+
+                <h2>B. Tips Presentasi Program</h2>
+                <div class="presentation-tips">
+                    <div class="presentation-tip">
+                        <div class="tip-num">1</div>
+                        <div><strong>Persiapan Matang</strong><br>Pastikan program berjalan, semua anggota siap, dan materi dikuasai</div>
+                    </div>
+                    <div class="presentation-tip">
+                        <div class="tip-num">2</div>
+                        <div><strong>Demonstrasi Program</strong><br>Tunjukkan program berjalan langsung, uji dengan beberapa skenario</div>
+                    </div>
+                    <div class="presentation-tip">
+                        <div class="tip-num">3</div>
+                        <div><strong>Jelaskan Proses</strong><br>Ceritakan dari algoritma → pseudocode → implementasi → testing</div>
+                    </div>
+                    <div class="presentation-tip">
+                        <div class="tip-num">4</div>
+                        <div><strong>Struktur Data &amp; Logika</strong><br>Jelaskan tipe data yang digunakan dan logika kondisi/perulangan</div>
+                    </div>
+                    <div class="presentation-tip">
+                        <div class="tip-num">5</div>
+                        <div><strong>Interaksi dengan Audiens</strong><br>Ajak audiens mencoba program atau tanya pendapat mereka</div>
+                    </div>
+                    <div class="presentation-tip">
+                        <div class="tip-num">6</div>
+                        <div><strong>Kelola Waktu</strong><br>Sampaikan dengan efisien, jangan terlalu cepat atau terlalu lambat</div>
+                    </div>
+                </div>
+
+                <h2>C. Konten Presentasi</h2>
+                <div class="presentation-content">
+                    <div class="presentation-item">
+                        <div class="presentation-icon"><i class="fas fa-bullhorn"></i></div>
+                        <div class="presentation-title">Pembukaan</div>
+                        <div class="presentation-desc">Salam, perkenalan kelompok, judul program, dan alasan memilih program</div>
+                    </div>
+                    <div class="presentation-item">
+                        <div class="presentation-icon"><i class="fas fa-code-branch"></i></div>
+                        <div class="presentation-title">Algoritma &amp; Pseudocode</div>
+                        <div class="presentation-desc">Langkah-langkah algoritma, pseudocode, dan hubungannya dengan program</div>
+                    </div>
+                    <div class="presentation-item">
+                        <div class="presentation-icon"><i class="fas fa-database"></i></div>
+                        <div class="presentation-title">Struktur Data &amp; Demo</div>
+                        <div class="presentation-desc">Tipe data yang digunakan, demo program, dan fitur-fitur program</div>
+                    </div>
+                    <div class="presentation-item">
+                        <div class="presentation-icon"><i class="fas fa-users-cog"></i></div>
+                        <div class="presentation-title">Proses &amp; Kesimpulan</div>
+                        <div class="presentation-desc">Pembagian tugas, tantangan, dan apa yang dipelajari</div>
+                    </div>
+                </div>
+
+                <h2>D. Penilaian Antar Kelompok</h2>
+                <div class="success-box">
+                    <i class="fas fa-check-circle"></i> <strong>Kriteria Penilaian Presentasi:</strong><br>
+                    • <strong>Algoritma &amp; Pseudocode (1-4):</strong> Kejelasan algoritma, kesesuaian pseudocode dengan program<br>
+                    • <strong>Program &amp; Demo (1-4):</strong> Program berjalan dengan baik, fitur lengkap, demo lancar<br>
+                    • <strong>Penyajian (1-4):</strong> Komunikasi jelas, penguasaan materi, kemampuan menjawab pertanyaan<br>
+                    • <strong>Struktur Data (1-4):</strong> Penggunaan tipe data tepat, pengolahan data benar<br>
+                    • <strong>Kerjasama (1-4):</strong> Semua anggota terlibat, pembagian tugas jelas
+                </div>
+
+                <h2>E. Komitmen Calon Programmer</h2>
+                <div class="commitment-box">
+                    <h3><i class="fas fa-star"></i> KOMITMEN CODING</h3>
+                    <ul>
+                        <li><strong>Pemahaman Algoritma &amp; Struktur Data:</strong> Terus mempelajari algoritma dan struktur data</li>
+                        <li><strong>Pemrograman &amp; Pengembangan Diri:</strong> Terus berlatih membuat program</li>
+                        <li><strong>Kolaborasi &amp; Kreativitas:</strong> Terus belajar bekerja sama dan berkreasi</li>
+                    </ul>
+                </div>
+
+                <div class="warning-box">
+                    <i class="fas fa-exclamation-triangle"></i> <strong>Ingat!</strong> Setiap presentasi adalah kesempatan untuk belajar. Dengarkan dengan baik, berikan penilaian yang jujur, dan ambil inspirasi dari karya kelompok lain!
+                </div>
+
+                <div class="quote-box" style="margin-top: 1.5rem; text-align: center;">
+                    <i class="fas fa-presentation"></i> Presentasi dengan Percaya Diri, Belajar dari Setiap Pengalaman! 🎤
+                </div>
+            </div>
+
+            <!-- Navigasi -->
+            <div class="materi-navigation">
+                <a href="materi6-5.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i> Kembali ke Materi 6.5
+                </a>
+                <a href="../index-materi-informatika.html" class="nav-btn primary">
+                    <i class="fas fa-check-circle"></i> Selesai! Kembali ke Daftar Materi
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script src="../../../script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                });
+            }
+            
+            // Review Cards Interaktif
+            const reviewCards = document.querySelectorAll('.review-card');
+            reviewCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    reviewCards.forEach(c => c.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            if(reviewCards.length) reviewCards[0].classList.add('active');
+        });
+    </script>
+</body>
+</html>
