@@ -633,7 +633,7 @@
             color: white;
         }
         
-        /* ===== JAWABAN SISWA ===== */
+        /* ===== JAWABAN SISWA - PREVIEW UNIVERSAL ===== */
         .jawaban-header {
             display: flex;
             justify-content: space-between;
@@ -688,7 +688,7 @@
         .jawaban-info span { color: #555; }
         .jawaban-info strong { color: var(--info-dark); }
         
-        /* ===== FORMAT JAWABAN ===== */
+        /* ===== FORMAT JAWABAN UNIVERSAL ===== */
         .jawaban-field {
             margin-bottom: 1rem;
         }
@@ -1552,7 +1552,47 @@
         }
     }
     
-    // ==================== FUNGSI DETEKSI LINK ====================
+    // ================================================================
+    // ==================== PREVIEW UNIVERSAL ===========================
+    // ================================================================
+    
+    // ===== FUNGSI UTILITY =====
+    function escapeHtml(text) {
+        if (!text && text !== 0 && text !== false) return '';
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
+    function formatLabel(key) {
+        return key.replace(/_/g, ' ')
+            .replace(/([A-Z])/g, ' $1')
+            .replace(/^./, str => str.toUpperCase())
+            .trim()
+            .replace(/\s+/g, ' ');
+    }
+
+    function formatTanggalDetail(timestamp) {
+        if (!timestamp) return '-';
+        try {
+            const date = new Date(timestamp);
+            if (!isNaN(date.getTime())) {
+                const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+                const months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+                const dayName = days[date.getDay()];
+                const day = date.getDate();
+                const month = months[date.getMonth()];
+                const year = date.getFullYear();
+                const hours = date.getHours().toString().padStart(2, '0');
+                const minutes = date.getMinutes().toString().padStart(2, '0');
+                const seconds = date.getSeconds().toString().padStart(2, '0');
+                return `${dayName}, ${day} ${month} ${year} ${hours}:${minutes}:${seconds}`;
+            }
+        } catch (e) {}
+        return String(timestamp).split(' ')[0] || '-';
+    }
+
+    // ===== FUNGSI DETEKSI LINK =====
     function isLink(text) {
         if (typeof text !== 'string') return false;
         const trimmed = text.trim();
@@ -1565,8 +1605,8 @@
                trimmed.includes('youtu.be') ||
                trimmed.match(/^https?:\/\/[^\s]+\.(jpg|jpeg|png|gif|webp|svg|mp4|webm|mov|pdf)/i);
     }
-    
-    // ==================== FUNGSI EKSTRAK SEMUA LINK ====================
+
+    // ===== FUNGSI EKSTRAK LINK =====
     function extractAllLinksFromObject(obj, links = []) {
         if (!obj || typeof obj !== 'object') return links;
         
@@ -1590,8 +1630,8 @@
         }
         return links;
     }
-    
-    // ==================== FUNGSI DETEKSI JENIS FILE ====================
+
+    // ===== FUNGSI DETEKSI JENIS FILE =====
     function detectDriveFileType(url) {
         const patterns = {
             video: /docs\.google\.com\/videos\/d\/([a-zA-Z0-9_-]+)/,
@@ -1636,8 +1676,8 @@
         
         return { type: 'unknown', fileId: null };
     }
-    
-    // ==================== FUNGSI COPY LINK ====================
+
+    // ===== FUNGSI COPY LINK =====
     function copyLink(url) {
         if (navigator.clipboard && navigator.clipboard.writeText) {
             navigator.clipboard.writeText(url).then(() => {
@@ -1658,7 +1698,7 @@
             fallbackCopy(url);
         }
     }
-    
+
     function fallbackCopy(url) {
         const textArea = document.createElement('textarea');
         textArea.value = url;
@@ -1674,21 +1714,37 @@
         }
         document.body.removeChild(textArea);
     }
-    
-    // ==================== FORMAT LABEL ====================
-    function formatLabel(key) {
-        return key.replace(/_/g, ' ').replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase()).trim();
+
+    // ===== RENDER BAB ARRAY =====
+    function renderBabArray(babArray) {
+        if (!babArray || !Array.isArray(babArray) || babArray.length === 0) {
+            return `<div class="field-value-box"><span class="empty-value">(kosong)</span></div>`;
+        }
+        
+        let html = '';
+        babArray.forEach((item, index) => {
+            const nama = item.nama || 'Bab ' + (index + 1);
+            const link = item.link || '';
+            const selesai = item.selesai || false;
+            const statusIcon = selesai ? '✅' : '⏳';
+            
+            html += `
+                <div style="margin-bottom:12px; border:1px solid #e8e8e8; border-radius:8px; padding:10px; background:#fafafa;">
+                    <div style="font-weight:600; color:var(--info-dark); margin-bottom:6px; font-size:0.85rem;">
+                        ${statusIcon} ${escapeHtml(nama)}
+                    </div>
+                    <div>
+                        ${link && isLink(link) ? renderLinkPreviewUniversal(link) : '<span class="empty-value">(Tidak ada link)</span>'}
+                    </div>
+                </div>
+            `;
+        });
+        
+        return html;
     }
-    
-    function escapeHtml(text) {
-        if (!text) return '';
-        const div = document.createElement('div');
-        div.textContent = text;
-        return div.innerHTML;
-    }
-    
-    // ==================== RENDER LINK PREVIEW ====================
-    function renderLinkPreview(url) {
+
+    // ===== RENDER LINK PREVIEW UNIVERSAL =====
+    function renderLinkPreviewUniversal(url) {
         if (!url || url.trim() === '') {
             return `<span class="empty-value">(kosong)</span>`;
         }
@@ -1696,17 +1752,15 @@
         let cleanUrl = url.trim();
         const driveInfo = detectDriveFileType(cleanUrl);
         
-        // ===== JIKA LINK YOUTUBE =====
+        // ===== YOUTUBE =====
         const youtubeMatch = cleanUrl.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([a-zA-Z0-9_-]+)/);
         if (youtubeMatch) {
             return `
                 <div class="file-info-card">
-                    <div class="file-icon youtube">
-                        <i class="fab fa-youtube"></i>
-                    </div>
+                    <div class="file-icon youtube"><i class="fab fa-youtube"></i></div>
                     <div class="file-details">
                         <div class="file-name">${escapeHtml(cleanUrl)}</div>
-                        <div class="file-type">YouTube Video - Buka di tab baru untuk menonton</div>
+                        <div class="file-type">YouTube Video</div>
                     </div>
                     <div class="file-actions">
                         <a href="${cleanUrl}" target="_blank" class="btn-open youtube-btn">
@@ -1720,35 +1774,58 @@
             `;
         }
         
-        // ===== JIKA SPREADSHEET, DOCUMENT, PRESENTATION =====
-        if (driveInfo.type === 'spreadsheet' || 
-            driveInfo.type === 'document' || 
-            driveInfo.type === 'presentation' ||
-            driveInfo.type === 'form') {
-            
+        // ===== GOOGLE DRIVE FILE =====
+        if (driveInfo.fileId) {
             const iconMap = {
                 spreadsheet: 'fa-table',
                 document: 'fa-file-word',
                 presentation: 'fa-file-powerpoint',
-                form: 'fa-google'
+                form: 'fa-google',
+                folder: 'fa-folder',
+                video: 'fa-video',
+                pdf: 'fa-file-pdf',
+                file: 'fa-file'
             };
             const labelMap = {
                 spreadsheet: 'Google Spreadsheet',
                 document: 'Google Document',
                 presentation: 'Google Presentation',
-                form: 'Google Form'
+                form: 'Google Form',
+                folder: 'Google Drive Folder',
+                video: 'Google Drive Video',
+                pdf: 'Google Drive PDF',
+                file: 'Google Drive File'
             };
             const icon = iconMap[driveInfo.type] || 'fa-file';
-            const label = labelMap[driveInfo.type] || 'Google File';
-            
+            const label = labelMap[driveInfo.type] || 'Google Drive';
+            const iconClass = driveInfo.type === 'folder' ? 'folder' : 
+                             driveInfo.type === 'video' ? 'youtube' : 
+                             driveInfo.type === 'spreadsheet' ? 'spreadsheet' :
+                             driveInfo.type === 'document' ? 'document' :
+                             driveInfo.type === 'presentation' ? 'presentation' :
+                             driveInfo.type === 'pdf' ? 'pdf' : '';
+
+            // Untuk folder, gunakan embedded view
+            if (driveInfo.type === 'folder') {
+                const embedUrl = `https://drive.google.com/embeddedfolderview?id=${driveInfo.fileId}#grid`;
+                return `
+                    <div class="link-preview-container">
+                        <iframe src="${embedUrl}" style="width:100%;height:400px;border:none;" allowfullscreen></iframe>
+                        <div class="preview-footer">
+                            <a href="${cleanUrl}" target="_blank">${escapeHtml(cleanUrl)}</a>
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Untuk file lainnya
+            const embedUrl = `https://drive.google.com/file/d/${driveInfo.fileId}/preview`;
             return `
                 <div class="file-info-card">
-                    <div class="file-icon ${driveInfo.type}">
-                        <i class="fas ${icon}"></i>
-                    </div>
+                    <div class="file-icon ${iconClass}"><i class="fas ${icon}"></i></div>
                     <div class="file-details">
                         <div class="file-name">${escapeHtml(cleanUrl)}</div>
-                        <div class="file-type">${label} - Tidak dapat ditampilkan di dalam halaman</div>
+                        <div class="file-type">${label}</div>
                     </div>
                     <div class="file-actions">
                         <a href="${cleanUrl}" target="_blank" class="btn-open">
@@ -1758,63 +1835,14 @@
                             <i class="fas fa-copy"></i> Salin
                         </button>
                     </div>
-                </div>
-            `;
-        }
-        
-        // ===== JIKA FOLDER =====
-        if (driveInfo.type === 'folder' && driveInfo.fileId) {
-            const embedUrl = `https://drive.google.com/embeddedfolderview?id=${driveInfo.fileId}#grid`;
-            return `
-                <div class="link-preview-container">
-                    <iframe src="${embedUrl}" style="width:100%;height:400px;border:none;" allowfullscreen></iframe>
-                    <div class="preview-footer">
-                        <a href="${cleanUrl}" target="_blank">${escapeHtml(cleanUrl)}</a>
+                    <div class="link-preview-container" style="margin-top:8px;width:100%;">
+                        <iframe src="${embedUrl}" style="width:100%;height:400px;border:none;" allow="autoplay" allowfullscreen></iframe>
                     </div>
                 </div>
             `;
         }
         
-        // ===== JIKA VIDEO (Google Drive) =====
-        if (driveInfo.type === 'video' && driveInfo.fileId) {
-            const embedUrl = `https://drive.google.com/file/d/${driveInfo.fileId}/preview`;
-            return `
-                <div class="link-preview-container">
-                    <iframe src="${embedUrl}" style="width:100%;height:400px;border:none;" allow="autoplay" allowfullscreen></iframe>
-                    <div class="preview-footer">
-                        <a href="${cleanUrl}" target="_blank">${escapeHtml(cleanUrl)}</a>
-                    </div>
-                </div>
-            `;
-        }
-        
-        // ===== JIKA PDF =====
-        if (driveInfo.type === 'pdf' && driveInfo.fileId) {
-            const embedUrl = `https://drive.google.com/file/d/${driveInfo.fileId}/preview`;
-            return `
-                <div class="link-preview-container">
-                    <iframe src="${embedUrl}" style="width:100%;height:400px;border:none;" allowfullscreen></iframe>
-                    <div class="preview-footer">
-                        <a href="${cleanUrl}" target="_blank">${escapeHtml(cleanUrl)}</a>
-                    </div>
-                </div>
-            `;
-        }
-        
-        // ===== JIKA FILE BIASA =====
-        if (driveInfo.fileId && (driveInfo.type === 'file' || driveInfo.type === 'uc' || driveInfo.type === 'open')) {
-            const embedUrl = `https://drive.google.com/file/d/${driveInfo.fileId}/preview`;
-            return `
-                <div class="link-preview-container">
-                    <iframe src="${embedUrl}" style="width:100%;height:400px;border:none;" allow="autoplay" allowfullscreen></iframe>
-                    <div class="preview-footer">
-                        <a href="${cleanUrl}" target="_blank">${escapeHtml(cleanUrl)}</a>
-                    </div>
-                </div>
-            `;
-        }
-        
-        // ===== JIKA GAMBAR LANGSUNG =====
+        // ===== GAMBAR LANGSUNG =====
         if (cleanUrl.match(/\.(jpg|jpeg|png|gif|webp|svg|bmp|ico)$/i)) {
             return `
                 <div class="link-preview-container">
@@ -1827,7 +1855,7 @@
             `;
         }
         
-        // ===== JIKA VIDEO LANGSUNG =====
+        // ===== VIDEO LANGSUNG =====
         if (cleanUrl.match(/\.(mp4|webm|mov|avi|mkv|flv)$/i)) {
             return `
                 <div class="link-preview-container">
@@ -1847,7 +1875,7 @@
             `;
         }
         
-        // ===== FALLBACK: LINK LAIN =====
+        // ===== FALLBACK =====
         return `
             <div class="link-preview-container">
                 <div class="preview-error">
@@ -1857,20 +1885,51 @@
             </div>
         `;
     }
-    
-    // ==================== RENDER JAWABAN VALUE (REKURSIF) ====================
-    function renderJawabanValue(value, level = 0) {
+
+    // ===== RENDER VALUE UNIVERSAL =====
+    function renderValueUniversal(value) {
+        // ===== NULL / UNDEFINED / KOSONG =====
         if (value === null || value === undefined || value === '') {
             return `<div class="field-value-box"><span class="empty-value">(kosong)</span></div>`;
         }
-        
-        // ===== JIKA ARRAY =====
+
+        // ===== NUMBER =====
+        if (typeof value === 'number') {
+            return `<div class="field-value-box">${escapeHtml(String(value))}</div>`;
+        }
+
+        // ===== BOOLEAN =====
+        if (typeof value === 'boolean') {
+            return `<div class="field-value-box">${value ? '✅ Ya' : '❌ Tidak'}</div>`;
+        }
+
+        // ===== STRING =====
+        if (typeof value === 'string') {
+            // Cek apakah ini link
+            if (isLink(value)) {
+                return renderLinkPreviewUniversal(value);
+            }
+            
+            // Cek apakah ini JSON string
+            if ((value.startsWith('{') || value.startsWith('[')) && (value.endsWith('}') || value.endsWith(']'))) {
+                try {
+                    const parsed = JSON.parse(value);
+                    return renderValueUniversal(parsed);
+                } catch (e) {
+                    // Bukan JSON valid, tampilkan sebagai string biasa
+                }
+            }
+            
+            return `<div class="field-value-box">${escapeHtml(value)}</div>`;
+        }
+
+        // ===== ARRAY =====
         if (Array.isArray(value)) {
             if (value.length === 0) {
                 return `<div class="field-value-box"><span class="empty-value">(kosong)</span></div>`;
             }
-            
-            // Cek apakah ini array dari checklist (berisi string)
+
+            // Cek apakah semua elemen adalah string (checklist)
             if (value.every(item => typeof item === 'string')) {
                 let listHtml = `<div class="field-value-box">`;
                 value.forEach((item, idx) => {
@@ -1879,31 +1938,67 @@
                 listHtml += `</div>`;
                 return listHtml;
             }
-            
-            // Array of objects
-            let tableHtml = `<div class="field-value-box">`;
+
+            // Array of objects (tabel)
+            if (value.every(item => typeof item === 'object' && item !== null)) {
+                // Kumpulkan semua key yang mungkin ada
+                const allKeys = new Set();
+                value.forEach(item => {
+                    Object.keys(item).forEach(k => allKeys.add(k));
+                });
+                
+                if (allKeys.size === 0) {
+                    return `<div class="field-value-box"><span class="empty-value">(kosong)</span></div>`;
+                }
+
+                const headers = Array.from(allKeys);
+                let tableHtml = `<div class="field-value-box"><table>`;
+                tableHtml += `<thead><tr>`;
+                headers.forEach(h => {
+                    tableHtml += `<th>${escapeHtml(formatLabel(h))}</th>`;
+                });
+                tableHtml += `</tr></thead><tbody>`;
+                
+                value.forEach(item => {
+                    tableHtml += `<tr>`;
+                    headers.forEach(h => {
+                        const val = item[h];
+                        let display = (val !== undefined && val !== null && val !== '') ? 
+                                      renderValueUniversal(val) : 
+                                      '<span class="empty-value">-</span>';
+                        tableHtml += `<td>${display}</td>`;
+                    });
+                    tableHtml += `</tr>`;
+                });
+                
+                tableHtml += `</tbody></table></div>`;
+                return tableHtml;
+            }
+
+            // Array campuran
+            let listHtml = `<div class="field-value-box">`;
             value.forEach((item, idx) => {
                 if (typeof item === 'object' && item !== null) {
-                    tableHtml += `<div style="border:1px solid #e8e8e8;border-radius:8px;padding:10px;margin-bottom:8px;">`;
-                    tableHtml += `<div style="font-weight:600;color:var(--info-dark);font-size:0.8rem;margin-bottom:4px;">Item ${idx + 1}</div>`;
-                    tableHtml += renderJawabanValue(item, level + 1);
-                    tableHtml += `</div>`;
+                    listHtml += `<div style="border:1px solid #e8e8e8;border-radius:8px;padding:10px;margin-bottom:8px;">`;
+                    listHtml += `<div style="font-weight:600;color:var(--info-dark);font-size:0.8rem;margin-bottom:4px;">Item ${idx + 1}</div>`;
+                    listHtml += renderValueUniversal(item);
+                    listHtml += `</div>`;
                 } else {
-                    tableHtml += `<div class="obj-item">${idx+1}. ${escapeHtml(String(item))}</div>`;
+                    listHtml += `<div class="obj-item">${idx+1}. ${escapeHtml(String(item))}</div>`;
                 }
             });
-            tableHtml += `</div>`;
-            return tableHtml;
+            listHtml += `</div>`;
+            return listHtml;
         }
-        
-        // ===== JIKA OBJECT =====
+
+        // ===== OBJECT =====
         if (typeof value === 'object') {
             const keys = Object.keys(value);
             if (keys.length === 0) {
                 return `<div class="field-value-box"><span class="empty-value">(kosong)</span></div>`;
             }
-            
-            // Prioritaskan link folder untuk ditampilkan di atas
+
+            // Prioritaskan link folder
             const linkKeys = keys.filter(k => 
                 k.toLowerCase().includes('link') || 
                 k.toLowerCase().includes('folder') || 
@@ -1911,114 +2006,137 @@
             );
             const otherKeys = keys.filter(k => !linkKeys.includes(k));
             const sortedKeys = [...linkKeys, ...otherKeys];
-            
+
             let objHtml = `<div class="field-value-box">`;
-            
-            for (const key of sortedKeys) {
+            sortedKeys.forEach(key => {
                 const val = value[key];
                 const label = formatLabel(key);
                 
                 // Cek apakah ini link
-                const isLink = typeof val === 'string' && (val.startsWith('http://') || val.startsWith('https://'));
+                const isLinkValue = typeof val === 'string' && isLink(val);
                 
-                if (isLink) {
+                if (isLinkValue) {
                     objHtml += `<div class="obj-item" style="margin-bottom:8px;">
                         <span class="obj-key">${escapeHtml(label)}:</span>
-                        ${renderLinkPreview(val)}
+                        ${renderLinkPreviewUniversal(val)}
                     </div>`;
                 } else if (typeof val === 'object' && val !== null) {
                     objHtml += `<div class="obj-item" style="margin-bottom:8px;">
                         <span class="obj-key">${escapeHtml(label)}:</span>
-                        ${renderJawabanValue(val, level + 1)}
+                        ${renderValueUniversal(val)}
                     </div>`;
                 } else {
-                    const displayVal = (val !== undefined && val !== null && val !== '') ? escapeHtml(String(val)) : '<span class="empty-value">(kosong)</span>';
+                    const displayVal = (val !== undefined && val !== null && val !== '') ? 
+                                       escapeHtml(String(val)) : 
+                                       '<span class="empty-value">(kosong)</span>';
                     objHtml += `<div class="obj-item"><span class="obj-key">${escapeHtml(label)}:</span> ${displayVal}</div>`;
                 }
-            }
-            
+            });
             objHtml += `</div>`;
             return objHtml;
         }
-        
-        // ===== STRING BIASA =====
-        if (typeof value === 'string' && (value.startsWith('http://') || value.startsWith('https://'))) {
-            return renderLinkPreview(value);
-        }
-        
+
+        // ===== FALLBACK =====
         return `<div class="field-value-box">${escapeHtml(String(value))}</div>`;
     }
-    
-    // ==================== RENDER JAWABAN SISWA ====================
-    function renderJawaban(data, namaSiswa, kelasSiswa) {
-        if (!data || Object.keys(data).length === 0) {
-            return `<div class="empty-message" style="display:block;"><i class="fas fa-info-circle"></i> Tidak ada data jawaban</div>`;
+
+    // ===== DETEKSI IKON =====
+    function detectIcon(key) {
+        const lowerKey = key.toLowerCase();
+        
+        if (lowerKey.includes('identitas') || lowerKey.includes('nama') || lowerKey.includes('kelas')) {
+            return 'fa-id-card';
+        }
+        if (lowerKey.includes('aktivitas') || lowerKey.includes('docs') || lowerKey.includes('workspace')) {
+            return 'fa-tools';
+        }
+        if (lowerKey.includes('keamanan') || lowerKey.includes('2fa') || lowerKey.includes('password')) {
+            return 'fa-user-shield';
+        }
+        if (lowerKey.includes('jaringan') || lowerKey.includes('wifi') || lowerKey.includes('internet')) {
+            return 'fa-wifi';
+        }
+        if (lowerKey.includes('refleksi') || lowerKey.includes('ref')) {
+            return 'fa-smile';
+        }
+        if (lowerKey.includes('checklist') || lowerKey.includes('cek')) {
+            return 'fa-check-double';
+        }
+        if (lowerKey.includes('timestamp') || lowerKey.includes('waktu')) {
+            return 'fa-clock';
+        }
+        if (lowerKey.includes('link') || lowerKey.includes('folder') || lowerKey.includes('screenshot')) {
+            return 'fa-link';
+        }
+        if (lowerKey.includes('literasi')) {
+            return 'fa-book-open';
+        }
+        if (lowerKey.includes('observasi')) {
+            return 'fa-binoculars';
+        }
+        if (lowerKey.includes('prediksi')) {
+            return 'fa-hand-pointer';
+        }
+        if (lowerKey.includes('pembuktian')) {
+            return 'fa-flask';
+        }
+        if (lowerKey.includes('jurusan') || lowerKey.includes('profesi')) {
+            return 'fa-briefcase';
+        }
+        if (lowerKey.includes('nilai') || lowerKey.includes('skor')) {
+            return 'fa-star';
         }
         
+        return 'fa-file-alt';
+    }
+
+    // ===== RENDER PREVIEW UNIVERSAL =====
+    function renderPreviewUniversal(data, namaSiswa, kelasSiswa) {
+        if (!data || typeof data !== 'object' || Object.keys(data).length === 0) {
+            return `<div class="empty-message" style="display:block;"><i class="fas fa-info-circle"></i> Tidak ada data jawaban</div>`;
+        }
+
         let html = '';
-        
-        const nama = namaSiswa || data.Nama || data.nama || '-';
-        const kelas = kelasSiswa || data.Kelas || data.kelas || '-';
-        
+
+        // ===== INFO SISWA =====
+        const nama = namaSiswa || data.Nama || data.nama || data['Nama Lengkap'] || data.identitas?.Nama || '-';
+        const kelas = kelasSiswa || data.Kelas || data.kelas || data['Kelas'] || data.identitas?.Kelas || '-';
+        const timestamp = data.Timestamp || data.timestamp || data['Timestamp Pengisian'] || '';
+
         html += `<div class="jawaban-info">
             <span><strong>👤 Nama:</strong> ${escapeHtml(nama)}</span>
             <span><strong>📚 Kelas:</strong> ${escapeHtml(kelas)}</span>
+            ${timestamp ? `<span><strong>📅 Waktu:</strong> ${escapeHtml(formatTanggalDetail(timestamp))}</span>` : ''}
         </div>`;
+
+        // ===== AMBIL SEMUA KEY (HANYA EXCLUDE SANGAT MINIMAL) =====
+        const excludeKeys = ['Nama', 'nama', 'Kelas', 'kelas', 'Semester', 'semester', 
+                             'Status', 'status', 'Key', 'key', '_status', '_key',
+                             'Timestamp', 'timestamp', 'Waktu', 'waktu'];
         
-        // ===== URUTAN PRIORITAS =====
-        const urutanPrioritas = [
-            'A. Identitas Kelompok',
-            'B. Aktivitas 1: Eksplorasi Google Workspace (TP 2.4)',
-            'C. Aktivitas 2: Cek Keamanan Akun Google (TP 2.5)',
-            'D. Aktivitas 3: Cek Konektivitas Jaringan (TP 2.5)',
-            'E. Refleksi',
-            'F. Checklist Bukti Screenshot',
-            'Timestamp Pengisian'
-        ];
-        
-        // Ambil semua key dari data
-        let keys = Object.keys(data);
-        
-        // Filter key yang tidak perlu ditampilkan
-        const excludeKeys = ['Nama', 'nama', 'Kelas', 'kelas', 'Semester', 'semester', 'Status', 'status', 'Key', 'key', '_status', '_key', 'aktivitas', 'identitas', 'timestamp'];
-        keys = keys.filter(key => {
+        let keys = Object.keys(data).filter(key => {
             if (key.startsWith('_')) return false;
             if (excludeKeys.includes(key)) return false;
             if (excludeKeys.includes(key.toLowerCase())) return false;
             return true;
         });
-        
-        // Urutkan berdasarkan prioritas
-        keys.sort((a, b) => {
-            const indexA = urutanPrioritas.indexOf(a);
-            const indexB = urutanPrioritas.indexOf(b);
-            if (indexA !== -1 && indexB !== -1) return indexA - indexB;
-            if (indexA !== -1) return -1;
-            if (indexB !== -1) return 1;
-            return a.localeCompare(b);
-        });
-        
+
+        // ===== URUTKAN KEY (ALFABETIS) =====
+        keys.sort((a, b) => a.localeCompare(b));
+
         if (keys.length === 0) {
-            return `<div class="empty-message" style="display:block;"><i class="fas fa-info-circle"></i> Tidak ada data jawaban untuk aktivitas ini</div>`;
+            return '<div class="empty-message" style="display:block;"><i class="fas fa-info-circle"></i> Tidak ada data untuk ditampilkan</div>';
         }
-        
+
+        // ===== RENDER SEMUA KEY =====
         for (const key of keys) {
             const value = data[key];
-            let icon = 'fa-file-alt';
-            let label = formatLabel(key);
+            const label = formatLabel(key);
+            const icon = detectIcon(key);
             
-            // Tentukan ikon berdasarkan key
-            if (key.includes('Identitas')) icon = 'fa-id-card';
-            else if (key.includes('Aktivitas 1') || key.includes('Google Workspace')) icon = 'fa-tools';
-            else if (key.includes('Aktivitas 2') || key.includes('Keamanan')) icon = 'fa-user-shield';
-            else if (key.includes('Aktivitas 3') || key.includes('Jaringan')) icon = 'fa-wifi';
-            else if (key.includes('Refleksi')) icon = 'fa-smile';
-            else if (key.includes('Checklist')) icon = 'fa-check-double';
-            else if (key.includes('Timestamp')) icon = 'fa-clock';
-            
-            // ===== RENDER VALUE =====
-            let displayValue = renderJawabanValue(value);
-            
+            // Render value dengan fungsi universal
+            const displayValue = renderValueUniversal(value);
+
             html += `
                 <div class="jawaban-field">
                     <div class="field-label"><i class="fas ${icon}"></i> ${escapeHtml(label)}</div>
@@ -2026,7 +2144,7 @@
                 </div>
             `;
         }
-        
+
         return html;
     }
     
@@ -2377,7 +2495,7 @@
         if (data && Object.keys(data).length > 0) {
             const namaSiswa = data.Nama || data.nama || nama;
             const kelasSiswa = data.Kelas || data.kelas || '-';
-            document.getElementById('jawabanContent').innerHTML = renderJawaban(data, namaSiswa, kelasSiswa);
+            document.getElementById('jawabanContent').innerHTML = renderPreviewUniversal(data, namaSiswa, kelasSiswa);
         } else {
             document.getElementById('jawabanContent').innerHTML = `
                 <div class="empty-message" style="display:block;">
