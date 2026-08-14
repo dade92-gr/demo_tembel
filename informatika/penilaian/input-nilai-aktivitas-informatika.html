@@ -633,7 +633,7 @@
             color: white;
         }
         
-        /* ===== JAWABAN SISWA - PREVIEW UNIVERSAL ===== */
+        /* ===== JAWABAN SISWA ===== */
         .jawaban-header {
             display: flex;
             justify-content: space-between;
@@ -688,7 +688,7 @@
         .jawaban-info span { color: #555; }
         .jawaban-info strong { color: var(--info-dark); }
         
-        /* ===== FORMAT JAWABAN UNIVERSAL ===== */
+        /* ===== FORMAT JAWABAN ===== */
         .jawaban-field {
             margin-bottom: 1rem;
         }
@@ -2090,7 +2090,7 @@
         return 'fa-file-alt';
     }
 
-    // ===== RENDER PREVIEW UNIVERSAL =====
+    // ===== RENDER PREVIEW UNIVERSAL (TANPA SORTING - SESUAI URUTAN JSON ASLI) =====
     function renderPreviewUniversal(data, namaSiswa, kelasSiswa) {
         if (!data || typeof data !== 'object' || Object.keys(data).length === 0) {
             return `<div class="empty-message" style="display:block;"><i class="fas fa-info-circle"></i> Tidak ada data jawaban</div>`;
@@ -2121,20 +2121,19 @@
             return true;
         });
 
-        // ===== URUTKAN KEY (ALFABETIS) =====
-        keys.sort((a, b) => a.localeCompare(b));
+        // ===== PERTAHANKAN URUTAN ASLI JSON (TIDAK DISORTING) =====
+        // keys.sort((a, b) => a.localeCompare(b)); // <-- DIHAPUS - GURU INGIN URUTAN ASLI JSON
 
         if (keys.length === 0) {
             return '<div class="empty-message" style="display:block;"><i class="fas fa-info-circle"></i> Tidak ada data untuk ditampilkan</div>';
         }
 
-        // ===== RENDER SEMUA KEY =====
+        // ===== RENDER SEMUA KEY SESUAI URUTAN ASLI =====
         for (const key of keys) {
             const value = data[key];
             const label = formatLabel(key);
             const icon = detectIcon(key);
             
-            // Render value dengan fungsi universal
             const displayValue = renderValueUniversal(value);
 
             html += `

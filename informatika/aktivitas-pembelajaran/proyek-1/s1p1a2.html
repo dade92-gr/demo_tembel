@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proyek 1 Aktivitas 2 - Praktik Produktivitas & Kolaborasi</title>
+    <link rel="stylesheet" href="../../../style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* ============ ROOT VARIABLES ============ */
@@ -523,27 +524,6 @@
             color: #2c3e50;
         }
 
-        .radio-group {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .radio-group label {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            cursor: pointer;
-            font-size: 0.93rem;
-        }
-
-        .radio-group input[type="radio"] {
-            width: 16px;
-            height: 16px;
-            accent-color: var(--informatika-primary);
-            cursor: pointer;
-        }
-
         .alert {
             padding: 1rem 1.5rem;
             border-radius: 12px;
@@ -635,7 +615,6 @@
 
         .btn-submit i { margin-right: 10px; }
 
-        /* ============ EXPORT BUTTON ============ */
         .export-button {
             background: linear-gradient(135deg, #3498db, #2980b9);
             color: white;
@@ -791,6 +770,19 @@
             margin-top: 0.3rem;
         }
 
+        .collab-step {
+            background: #e8f5e9;
+            border-radius: 10px;
+            padding: 1rem 1.5rem;
+            margin: 1rem 0;
+            border-left: 5px solid #4caf50;
+        }
+
+        .collab-step i {
+            color: #4caf50;
+            margin-right: 8px;
+        }
+
         /* ============ MODAL ============ */
         .modal {
             display: none;
@@ -936,24 +928,11 @@
 
         /* ============ RESPONSIVE ============ */
         @media (max-width: 768px) {
-            /* === NAVBAR === */
-            .navbar {
-                padding: 0.7rem 1rem;
-            }
-            
-            .logo h1 {
-                font-size: 0.8rem;
-            }
-            
-            .logo img {
-                height: 32px;
-                width: 32px;
-            }
-            
-            .hamburger {
-                display: flex;
-            }
-            
+            .navbar { padding: 0.7rem 1rem; }
+            .logo h1 { font-size: 0.8rem; }
+            .logo img { height: 32px; width: 32px; }
+            .hamburger { display: flex; }
+
             .nav-menu {
                 position: fixed;
                 top: 0;
@@ -970,15 +949,9 @@
                 z-index: 999;
                 border-left: 3px solid var(--informatika-primary);
             }
-            
-            .nav-menu.active {
-                right: 0;
-            }
-            
-            .nav-menu li {
-                width: 100%;
-            }
-            
+
+            .nav-menu.active { right: 0; }
+            .nav-menu li { width: 100%; }
             .nav-link {
                 padding: 14px 18px;
                 font-size: 1rem;
@@ -986,22 +959,10 @@
                 border-radius: 10px;
                 justify-content: flex-start;
             }
-            
-            .nav-link i {
-                width: 28px;
-                font-size: 1.1rem;
-                text-align: center;
-            }
-            
-            .nav-link:hover {
-                background: rgba(52, 152, 219, 0.2);
-            }
-            
-            .nav-link.active {
-                background: var(--informatika-primary);
-            }
+            .nav-link i { width: 28px; font-size: 1.1rem; text-align: center; }
+            .nav-link:hover { background: rgba(52, 152, 219, 0.2); }
+            .nav-link.active { background: var(--informatika-primary); }
 
-            /* === CONTENT === */
             .activity-detail-container { padding: 1rem; }
             .worksheet-container { padding: 1rem; }
             .worksheet-title { font-size: 1.5rem; }
@@ -1015,7 +976,6 @@
             .activity-navigation { flex-direction: column; }
             .nav-btn { width: 100%; justify-content: center; }
             .checkbox-grid { grid-template-columns: 1fr; }
-            .radio-group { flex-direction: column; gap: 5px; }
             .answer-field { font-size: 0.9rem !important; padding: 8px 12px !important; }
             .modal-content { margin: 15% auto; padding: 2rem; width: 95%; max-width: 400px; }
             .modal-buttons { flex-direction: column; align-items: stretch; }
@@ -1025,15 +985,8 @@
             .btn-submit { width: 100%; justify-content: center; padding: 1rem; }
             .informatika-content-card h2 { font-size: 1.6rem; }
             .informatika-content-card { padding: 1.5rem; }
-            
-            .materi-header {
-                flex-direction: column;
-                text-align: center;
-            }
-            .materi-card .btn-materi {
-                width: 100%;
-                justify-content: center;
-            }
+            .materi-header { flex-direction: column; text-align: center; }
+            .materi-card .btn-materi { width: 100%; justify-content: center; }
         }
 
         @media (max-width: 480px) {
@@ -1047,44 +1000,21 @@
             .qa-table td, .qa-table th { padding: 6px 8px; }
             .materi-section { padding: 1.2rem !important; }
             .materi-card { padding: 1rem !important; }
-            
-            .navbar {
-                padding: 0.5rem 0.7rem;
-            }
-            
-            .logo h1 {
-                font-size: 0.7rem;
-            }
-            
-            .logo img {
-                height: 28px;
-                width: 28px;
-            }
-            
-            .nav-menu {
-                width: 280px;
-                right: -280px;
-                padding: 70px 15px 15px 15px;
-            }
-            
-            .nav-link {
-                padding: 12px 14px;
-                font-size: 0.9rem;
-            }
+            .navbar { padding: 0.5rem 0.7rem; }
+            .logo h1 { font-size: 0.7rem; }
+            .logo img { height: 28px; width: 28px; }
+            .nav-menu { width: 280px; right: -280px; padding: 70px 15px 15px 15px; }
+            .nav-link { padding: 12px 14px; font-size: 0.9rem; }
         }
 
         @media print {
-            .materi-section {
-                display: none !important;
-            }
-            .navbar {
-                display: none !important;
-            }
+            .materi-section { display: none !important; }
+            .navbar { display: none !important; }
         }
     </style>
 </head>
 <body>
-    <!-- ===== NAVBAR ===== -->
+    <!-- ===== HEADER ===== -->
     <header>
         <nav class="navbar">
             <div class="nav-container">
@@ -1092,13 +1022,11 @@
                     <img src="../../../assets/images/logo.png" alt="Logo Sekolah" onerror="this.style.display='none'">
                     <h1>INFORMATIKA</h1>
                 </a>
-                
                 <button class="hamburger" id="hamburger" aria-label="Toggle Menu">
                     <span class="bar"></span>
                     <span class="bar"></span>
                     <span class="bar"></span>
                 </button>
-                
                 <ul class="nav-menu" id="nav-menu">
                     <li><a href="../../../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
                     <li><a href="../../index-informatika.html" class="nav-link"><i class="fas fa-laptop-code"></i> Beranda Informatika</a></li>
@@ -1119,7 +1047,6 @@
                 <span><i class="fas fa-clock"></i> 4 JP</span>
                 <span class="connection-status online" id="connectionStatus"><i class="fas fa-wifi"></i> Online</span>
             </div>
-            <p><i class="fas fa-quote-left"></i> Menggunakan perangkat teknologi untuk mengolah dokumen, lembar kerja, dan presentasi secara kolaboratif. <i class="fas fa-quote-right"></i></p>
         </div>
 
         <!-- ===== BAGIAN MEMBACA MATERI ===== -->
@@ -1175,16 +1102,7 @@
                 </button>
             </div>
 
-            <div class="instruction-box" style="background:#e8f5e9; border-left-color: var(--informatika-primary);">
-                <i class="fas fa-lightbulb" style="color: var(--informatika-primary); margin-right: 10px;"></i>
-                <strong>HALO, KELOMPOK HEBAT! 👋</strong><br>
-                Sekarang saatnya berkreasi! Buat produk digital secara kolaboratif menggunakan Google Workspace.
-            </div>
-
-            <h1 class="worksheet-title">LEMBAR KERJA PESERTA DIDIK (LKPD) PROYEK 1 – AKTIVITAS 2</h1>
-            <p style="text-align: center; margin-bottom: 2rem; font-size: 1.2rem; color: var(--informatika-accent);">
-                <strong>PRAKTIK PRODUKTIVITAS & KOLABORASI</strong>
-            </p>
+            <h1 class="worksheet-title">LEMBAR KERJA PESERTA DIDIK (LKPD) PROYEK 1 – AKTIVITAS 2 (PRAKTIK PRODUKTIVITAS & KOLABORASI)</h1>
             <div style="text-align: center; margin-bottom: 2rem; background: var(--informatika-light); padding: 0.8rem; border-radius: 10px;">
                 <p><i class="fas fa-bullseye"></i> <strong>Tujuan Pembelajaran (TP 2.4):</strong> Menggunakan perangkat teknologi untuk mengolah dokumen, lembar kerja, dan presentasi.</p>
             </div>
@@ -1230,284 +1148,348 @@
                 </ol>
             </div>
 
-            <!-- ===== BAGIAN A: PEMAHAMAN MATERI ===== -->
+            <!-- ===== CARA KERJA KOLABORATIF ===== -->
             <div class="section-card">
-                <h3 class="section-title"><i class="fas fa-book-reader"></i> 📖 BAGIAN A: PEMAHAMAN MATERI (INDIVIDU)</h3>
-                <div class="instruction-box">
-                    <i class="fas fa-exclamation-triangle"></i> "Pastikan kamu sudah membaca materi tentang Google Workspace!"
+                <h3 class="section-title"><i class="fas fa-handshake"></i> 🤝 CARA KERJA KOLABORATIF</h3>
+                
+                <div class="collab-step">
+                    <i class="fas fa-user-tie"></i> <strong>Langkah 1:</strong> <span style="color: var(--informatika-dark); font-weight: 600;">Ketua Kelompok</span> membuat Google Docs dan membagikan link ke anggota.
+                </div>
+                <div class="collab-step">
+                    <i class="fas fa-user-plus"></i> <strong>Langkah 2:</strong> <span style="color: var(--informatika-dark); font-weight: 600;">Anggota 2</span> membuat Google Sheets dan membagikan link ke anggota.
+                </div>
+                <div class="collab-step">
+                    <i class="fas fa-user-plus"></i> <strong>Langkah 3:</strong> <span style="color: var(--informatika-dark); font-weight: 600;">Anggota 3</span> membuat Google Slides dan membagikan link ke anggota.
+                </div>
+                <div class="collab-step" style="background: #e3f2fd; border-left-color: var(--informatika-primary);">
+                    <i class="fas fa-users"></i> <strong>Langkah 4:</strong> <span style="color: var(--informatika-dark); font-weight: 600;">SEMUA ANGGOTA</span> mengedit dan mengisi bersama-sama secara real-time!
                 </div>
 
-                <table class="qa-table" id="tabelPemahamanMateri">
-                    <thead>
-                        <tr><th class="question-col">Pertanyaan</th><th class="answer-col">Jawaban</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Apa fungsi utama Google Docs dalam produktivitas?</td>
-                            <td><textarea class="answer-field" id="pm1" placeholder="Tulis jawabanmu..." oninput="saveToLocalStorage();"></textarea></td>
-                        </tr>
-                        <tr>
-                            <td>Apa fungsi utama Google Sheets dalam pengolahan data?</td>
-                            <td><textarea class="answer-field" id="pm2" placeholder="Tulis jawabanmu..." oninput="saveToLocalStorage();"></textarea></td>
-                        </tr>
-                        <tr>
-                            <td>Apa fungsi utama Google Slides dalam presentasi?</td>
-                            <td><textarea class="answer-field" id="pm3" placeholder="Tulis jawabanmu..." oninput="saveToLocalStorage();"></textarea></td>
-                        </tr>
-                        <tr>
-                            <td>Bagaimana cara berbagi dokumen secara kolaboratif di Google Workspace?</td>
-                            <td><textarea class="answer-field" id="pm4" placeholder="Tulis jawabanmu..." oninput="saveToLocalStorage();"></textarea></td>
-                        </tr>
-                        <tr>
-                            <td>Apa keuntungan bekerja secara kolaboratif menggunakan Google Workspace?</td>
-                            <td><textarea class="answer-field" id="pm5" placeholder="Tulis jawabanmu..." oninput="saveToLocalStorage();"></textarea></td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div style="background: #fff3cd; border-radius: 10px; padding: 1rem; margin-top: 1rem; border-left: 5px solid #f39c12;">
+                    <i class="fas fa-exclamation-triangle" style="color: #f39c12;"></i>
+                    <strong>PENTING:</strong> Saat membagikan link, pastikan izin diatur ke <strong>"Siapa pun dengan tautan dapat mengedit"</strong> agar semua anggota bisa bekerja bersama!
+                </div>
             </div>
 
-            <!-- ===== BAGIAN B: PRODUK GOOGLE DOCS ===== -->
+            <!-- ===== PRODUK 1: GOOGLE DOCS ===== -->
             <div class="section-card">
-                <h3 class="section-title"><i class="fas fa-file-alt"></i> 📄 BAGIAN B: PRODUK GOOGLE DOCS (KELOMPOK)</h3>
+                <h3 class="section-title"><i class="fab fa-google"></i> 📄 PRODUK 1: Google Docs (Dokumen) - KOLABORATIF</h3>
+                
                 <div class="instruction-box">
                     <i class="fas fa-pen-fancy"></i> 
                     <strong>Buatlah dokumen tentang salah satu budaya Indonesia!</strong><br>
-                    Kerjakan secara kolaboratif dengan kelompokmu. Pastikan dokumen berisi: Judul (Heading 1), Subjudul (Heading 2), Deskripsi, Gambar/Ilustrasi, Daftar (bullet/numbered), Tabel informasi, dan Link referensi.
+                    <strong>📱 Cara buka di HP:</strong> Buka aplikasi Google Docs → Tap "+" → Pilih "Dokumen kosong"
                 </div>
 
                 <div class="product-card">
-                    <h4><i class="fab fa-google"></i> Link Google Docs</h4>
+                    <h4><i class="fas fa-share-alt"></i> 🔗 Bagikan Link ke Anggota</h4>
+                    <div style="background: #e8f5e9; padding: 0.8rem 1rem; border-radius: 8px; margin-bottom: 0.8rem;">
+                        <strong>Cara Bagikan (Share):</strong>
+                        <ol style="margin-left: 1.5rem; margin-top: 4px;">
+                            <li>Tap ikon <strong>3 titik</strong> di pojok kanan atas</li>
+                            <li>Pilih <strong>"Bagikan & ekspor"</strong> → <strong>"Bagikan"</strong></li>
+                            <li>Pilih <strong>"Siapa pun dengan tautan"</strong> dan izin <strong>"Editor"</strong></li>
+                            <li>Tap <strong>"Salin tautan"</strong> dan kirim ke grup</li>
+                        </ol>
+                    </div>
                     <div class="form-group">
-                        <label for="docsLink">Masukkan link dokumen Google Docs Anda:</label>
+                        <label for="docsLink">📎 Link Google Docs (yang sudah dibagikan):</label>
                         <input type="url" id="docsLink" placeholder="https://docs.google.com/document/d/xxx/edit" oninput="saveToLocalStorage();">
-                        <div class="hint">Pastikan link sudah diatur ke "Siapa pun dengan tautan dapat melihat/mengedit"</div>
+                        <div class="hint">Tempel link yang sudah disalin dari aplikasi Google Docs</div>
                     </div>
                 </div>
 
                 <div class="product-card">
-                    <h4><i class="fas fa-list-check"></i> Checklist Fitur yang Digunakan</h4>
-                    <div class="checkbox-grid" id="docsChecklist">
-                        <div class="checkbox-item"><input type="checkbox" id="docs_f1" onchange="saveToLocalStorage();"><label for="docs_f1">Membuat judul dengan format Heading 1</label></div>
-                        <div class="checkbox-item"><input type="checkbox" id="docs_f2" onchange="saveToLocalStorage();"><label for="docs_f2">Membuat subjudul dengan format Heading 2</label></div>
-                        <div class="checkbox-item"><input type="checkbox" id="docs_f3" onchange="saveToLocalStorage();"><label for="docs_f3">Mengetik teks deskripsi budaya</label></div>
-                        <div class="checkbox-item"><input type="checkbox" id="docs_f4" onchange="saveToLocalStorage();"><label for="docs_f4">Menambahkan gambar/ilustrasi</label></div>
-                        <div class="checkbox-item"><input type="checkbox" id="docs_f5" onchange="saveToLocalStorage();"><label for="docs_f5">Membuat daftar (bullet/numbered list)</label></div>
-                        <div class="checkbox-item"><input type="checkbox" id="docs_f6" onchange="saveToLocalStorage();"><label for="docs_f6">Menambahkan tabel untuk informasi budaya</label></div>
-                        <div class="checkbox-item"><input type="checkbox" id="docs_f7" onchange="saveToLocalStorage();"><label for="docs_f7">Mengatur spasi dan margin</label></div>
-                        <div class="checkbox-item"><input type="checkbox" id="docs_f8" onchange="saveToLocalStorage();"><label for="docs_f8">Menambahkan link referensi</label></div>
-                        <div class="checkbox-item"><input type="checkbox" id="docs_f9" onchange="saveToLocalStorage();"><label for="docs_f9">Membagikan dokumen untuk diedit bersama</label></div>
-                    </div>
+                    <h4><i class="fas fa-list-check"></i> ✅ Struktur Dokumen (Isi Bersama)</h4>
+                    <table style="width:100%; border-collapse:collapse; font-size:0.9rem;">
+                        <thead>
+                            <tr style="background:var(--informatika-light);">
+                                <th style="padding:8px; border:1px solid #ddd; text-align:left;">Bagian</th>
+                                <th style="padding:8px; border:1px solid #ddd; text-align:left;">Yang Harus Ditulis</th>
+                                <th style="padding:8px; border:1px solid #ddd; text-align:left;">Format di HP</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td style="padding:8px; border:1px solid #ddd;"><strong>Judul</strong></td><td style="padding:8px; border:1px solid #ddd;">Nama budaya (contoh: "Tari Saman")</td><td style="padding:8px; border:1px solid #ddd;">Tap ikon A → Judul</td></tr>
+                            <tr><td style="padding:8px; border:1px solid #ddd;"><strong>Subjudul 1</strong></td><td style="padding:8px; border:1px solid #ddd;">Sejarah</td><td style="padding:8px; border:1px solid #ddd;">Tap ikon A → Judul 2</td></tr>
+                            <tr><td style="padding:8px; border:1px solid #ddd;"><strong>Paragraf</strong></td><td style="padding:8px; border:1px solid #ddd;">Sejarah (3-5 kalimat)</td><td style="padding:8px; border:1px solid #ddd;">Ketik biasa</td></tr>
+                            <tr><td style="padding:8px; border:1px solid #ddd;"><strong>Subjudul 2</strong></td><td style="padding:8px; border:1px solid #ddd;">Makna/Filosofi</td><td style="padding:8px; border:1px solid #ddd;">Tap ikon A → Judul 2</td></tr>
+                            <tr><td style="padding:8px; border:1px solid #ddd;"><strong>Paragraf</strong></td><td style="padding:8px; border:1px solid #ddd;">Makna (3-5 kalimat)</td><td style="padding:8px; border:1px solid #ddd;">Ketik biasa</td></tr>
+                            <tr><td style="padding:8px; border:1px solid #ddd;"><strong>Subjudul 3</strong></td><td style="padding:8px; border:1px solid #ddd;">Perkembangan saat ini</td><td style="padding:8px; border:1px solid #ddd;">Tap ikon A → Judul 2</td></tr>
+                            <tr><td style="padding:8px; border:1px solid #ddd;"><strong>Paragraf</strong></td><td style="padding:8px; border:1px solid #ddd;">Perkembangan (3-5 kalimat)</td><td style="padding:8px; border:1px solid #ddd;">Ketik biasa</td></tr>
+                            <tr><td style="padding:8px; border:1px solid #ddd;"><strong>Gambar</strong></td><td style="padding:8px; border:1px solid #ddd;">1 gambar budaya</td><td style="padding:8px; border:1px solid #ddd;">Tap + → Gambar → Pilih dari galeri</td></tr>
+                            <tr><td style="padding:8px; border:1px solid #ddd;"><strong>Daftar</strong></td><td style="padding:8px; border:1px solid #ddd;">5 fakta menarik (bullet list)</td><td style="padding:8px; border:1px solid #ddd;">Tap ikon daftar (titik-titik)</td></tr>
+                            <tr><td style="padding:8px; border:1px solid #ddd;"><strong>Referensi</strong></td><td style="padding:8px; border:1px solid #ddd;">2 link sumber</td><td style="padding:8px; border:1px solid #ddd;">Tap + → Link</td></tr>
+                        </tbody>
+                    </table>
                 </div>
 
                 <div class="product-card">
-                    <h4><i class="fas fa-pen"></i> Catatan Penggunaan Google Docs</h4>
-                    <div class="form-group">
-                        <label>Apa fitur yang paling membantu dalam membuat dokumen ini?</label>
-                        <textarea id="docsCatatan1" placeholder="Tulis jawabanmu..." oninput="saveToLocalStorage();"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Kesulitan apa yang dialami saat menggunakan Google Docs?</label>
-                        <textarea id="docsCatatan2" placeholder="Tulis jawabanmu..." oninput="saveToLocalStorage();"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Bagaimana cara membagikan dokumen agar bisa diedit bersama?</label>
-                        <textarea id="docsCatatan3" placeholder="Tulis jawabanmu..." oninput="saveToLocalStorage();"></textarea>
+                    <h4><i class="fas fa-clipboard-check"></i> Checklist Fitur yang Digunakan</h4>
+                    <div class="checkbox-grid">
+                        <div class="checkbox-item"><input type="checkbox" id="docs_f1" onchange="saveToLocalStorage();"><label for="docs_f1">Judul (Heading 1)</label></div>
+                        <div class="checkbox-item"><input type="checkbox" id="docs_f2" onchange="saveToLocalStorage();"><label for="docs_f2">Subjudul (Heading 2)</label></div>
+                        <div class="checkbox-item"><input type="checkbox" id="docs_f3" onchange="saveToLocalStorage();"><label for="docs_f3">Paragraf deskripsi</label></div>
+                        <div class="checkbox-item"><input type="checkbox" id="docs_f4" onchange="saveToLocalStorage();"><label for="docs_f4">Gambar/ilustrasi</label></div>
+                        <div class="checkbox-item"><input type="checkbox" id="docs_f5" onchange="saveToLocalStorage();"><label for="docs_f5">Daftar bullet/numbered</label></div>
+                        <div class="checkbox-item"><input type="checkbox" id="docs_f6" onchange="saveToLocalStorage();"><label for="docs_f6">Link referensi</label></div>
+                        <div class="checkbox-item"><input type="checkbox" id="docs_f7" onchange="saveToLocalStorage();"><label for="docs_f7">Dibagikan ke anggota kelompok</label></div>
                     </div>
                 </div>
             </div>
 
-            <!-- ===== BAGIAN C: PRODUK GOOGLE SHEETS ===== -->
+            <!-- ===== PRODUK 2: GOOGLE SHEETS ===== -->
             <div class="section-card">
-                <h3 class="section-title"><i class="fas fa-table"></i> 📊 BAGIAN C: PRODUK GOOGLE SHEETS (KELOMPOK)</h3>
+                <h3 class="section-title"><i class="fab fa-google"></i> 📊 PRODUK 2: Google Sheets (Lembar Kerja) - KOLABORATIF</h3>
+                
                 <div class="instruction-box">
-                    <i class="fas fa-chart-line"></i> 
-                    <strong>Buatlah lembar kerja data budaya Indonesia!</strong><br>
-                    Kerjakan secara kolaboratif. Pastikan berisi: Judul tabel, Header kolom (Nama, Jenis, Asal, Status, Keterangan), Minimal 10 data, Format teks, Filter, Formula COUNT, dan Grafik/Chart.
+                    <i class="fas fa-table"></i> 
+                    <strong>Buatlah data "10 Budaya Indonesia" bersama kelompok!</strong><br>
+                    <strong>📱 Cara buka di HP:</strong> Buka aplikasi Google Sheets → Tap "+" → Pilih "Lembar bentang kosong"
                 </div>
 
                 <div class="product-card">
-                    <h4><i class="fab fa-google"></i> Link Google Sheets</h4>
+                    <h4><i class="fas fa-share-alt"></i> 🔗 Bagikan Link ke Anggota</h4>
+                    <div style="background: #e8f5e9; padding: 0.8rem 1rem; border-radius: 8px; margin-bottom: 0.8rem;">
+                        <strong>Cara Bagikan (Share):</strong> Ikuti langkah yang sama seperti di Google Docs!
+                    </div>
                     <div class="form-group">
-                        <label for="sheetsLink">Masukkan link lembar kerja Google Sheets Anda:</label>
+                        <label for="sheetsLink">📎 Link Google Sheets (yang sudah dibagikan):</label>
                         <input type="url" id="sheetsLink" placeholder="https://docs.google.com/spreadsheets/d/xxx/edit" oninput="saveToLocalStorage();">
-                        <div class="hint">Pastikan link sudah diatur ke "Siapa pun dengan tautan dapat melihat/mengedit"</div>
+                        <div class="hint">Tempel link yang sudah disalin dari aplikasi Google Sheets</div>
                     </div>
                 </div>
 
                 <div class="product-card">
-                    <h4><i class="fas fa-list-check"></i> Checklist Fitur yang Digunakan</h4>
-                    <div class="checkbox-grid" id="sheetsChecklist">
-                        <div class="checkbox-item"><input type="checkbox" id="sheets_f1" onchange="saveToLocalStorage();"><label for="sheets_f1">Membuat judul tabel (merge cells)</label></div>
-                        <div class="checkbox-item"><input type="checkbox" id="sheets_f2" onchange="saveToLocalStorage();"><label for="sheets_f2">Membuat header kolom (Nama, Jenis, Asal, Status, Keterangan)</label></div>
-                        <div class="checkbox-item"><input type="checkbox" id="sheets_f3" onchange="saveToLocalStorage();"><label for="sheets_f3">Mengisi data budaya (minimal 10 entri)</label></div>
-                        <div class="checkbox-item"><input type="checkbox" id="sheets_f4" onchange="saveToLocalStorage();"><label for="sheets_f4">Mengatur format teks (bold, italic, alignment)</label></div>
-                        <div class="checkbox-item"><input type="checkbox" id="sheets_f5" onchange="saveToLocalStorage();"><label for="sheets_f5">Mengatur lebar kolom</label></div>
-                        <div class="checkbox-item"><input type="checkbox" id="sheets_f6" onchange="saveToLocalStorage();"><label for="sheets_f6">Menambahkan border tabel</label></div>
-                        <div class="checkbox-item"><input type="checkbox" id="sheets_f7" onchange="saveToLocalStorage();"><label for="sheets_f7">Membuat filter data</label></div>
-                        <div class="checkbox-item"><input type="checkbox" id="sheets_f8" onchange="saveToLocalStorage();"><label for="sheets_f8">Menambahkan formula sederhana (COUNT, SUM)</label></div>
-                        <div class="checkbox-item"><input type="checkbox" id="sheets_f9" onchange="saveToLocalStorage();"><label for="sheets_f9">Membuat grafik/chart sederhana</label></div>
-                        <div class="checkbox-item"><input type="checkbox" id="sheets_f10" onchange="saveToLocalStorage();"><label for="sheets_f10">Membagikan lembar kerja</label></div>
+                    <h4><i class="fas fa-table"></i> 📋 Struktur Tabel (Isi Bersama)</h4>
+                    <div style="overflow-x:auto;">
+                        <table style="width:100%; border-collapse:collapse; font-size:0.85rem;">
+                            <thead>
+                                <tr style="background:var(--informatika-light);">
+                                    <th style="padding:8px; border:1px solid #ddd; text-align:center;">No</th>
+                                    <th style="padding:8px; border:1px solid #ddd; text-align:center;">Nama Budaya</th>
+                                    <th style="padding:8px; border:1px solid #ddd; text-align:center;">Jenis</th>
+                                    <th style="padding:8px; border:1px solid #ddd; text-align:center;">Asal Daerah</th>
+                                    <th style="padding:8px; border:1px solid #ddd; text-align:center;">Tahun Ditetapkan</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td style="padding:6px; border:1px solid #ddd; text-align:center;">1</td><td style="padding:6px; border:1px solid #ddd;">Tari Saman</td><td style="padding:6px; border:1px solid #ddd;">Tarian</td><td style="padding:6px; border:1px solid #ddd;">Aceh</td><td style="padding:6px; border:1px solid #ddd;">2011</td></tr>
+                                <tr><td style="padding:6px; border:1px solid #ddd; text-align:center;">2</td><td style="padding:6px; border:1px solid #ddd;">Batik</td><td style="padding:6px; border:1px solid #ddd;">Kain/Kerajinan</td><td style="padding:6px; border:1px solid #ddd;">Jawa</td><td style="padding:6px; border:1px solid #ddd;">2009</td></tr>
+                                <tr><td style="padding:6px; border:1px solid #ddd; text-align:center;">3</td><td style="padding:6px; border:1px solid #ddd;">Rendang</td><td style="padding:6px; border:1px solid #ddd;">Makanan</td><td style="padding:6px; border:1px solid #ddd;">Sumatera Barat</td><td style="padding:6px; border:1px solid #ddd;">2011</td></tr>
+                                <tr><td style="padding:6px; border:1px solid #ddd; text-align:center;">4</td><td style="padding:6px; border:1px solid #ddd;">Wayang Kulit</td><td style="padding:6px; border:1px solid #ddd;">Seni Pertunjukan</td><td style="padding:6px; border:1px solid #ddd;">Jawa</td><td style="padding:6px; border:1px solid #ddd;">2003</td></tr>
+                                <tr><td style="padding:6px; border:1px solid #ddd; text-align:center;">5</td><td style="padding:6px; border:1px solid #ddd;">Angklung</td><td style="padding:6px; border:1px solid #ddd;">Alat Musik</td><td style="padding:6px; border:1px solid #ddd;">Jawa Barat</td><td style="padding:6px; border:1px solid #ddd;">2010</td></tr>
+                                <tr><td style="padding:6px; border:1px solid #ddd; text-align:center;">6</td><td style="padding:6px; border:1px solid #ddd;">Tari Kecak</td><td style="padding:6px; border:1px solid #ddd;">Tarian</td><td style="padding:6px; border:1px solid #ddd;">Bali</td><td style="padding:6px; border:1px solid #ddd;">2015</td></tr>
+                                <tr><td style="padding:6px; border:1px solid #ddd; text-align:center;">7</td><td style="padding:6px; border:1px solid #ddd;">Keris</td><td style="padding:6px; border:1px solid #ddd;">Senjata Tradisional</td><td style="padding:6px; border:1px solid #ddd;">Jawa</td><td style="padding:6px; border:1px solid #ddd;">2005</td></tr>
+                                <tr><td style="padding:6px; border:1px solid #ddd; text-align:center;">8</td><td style="padding:6px; border:1px solid #ddd;">Noken</td><td style="padding:6px; border:1px solid #ddd;">Kerajinan</td><td style="padding:6px; border:1px solid #ddd;">Papua</td><td style="padding:6px; border:1px solid #ddd;">2012</td></tr>
+                                <tr><td style="padding:6px; border:1px solid #ddd; text-align:center;">9</td><td style="padding:6px; border:1px solid #ddd;">Tari Pendet</td><td style="padding:6px; border:1px solid #ddd;">Tarian</td><td style="padding:6px; border:1px solid #ddd;">Bali</td><td style="padding:6px; border:1px solid #ddd;">2015</td></tr>
+                                <tr><td style="padding:6px; border:1px solid #ddd; text-align:center;">10</td><td style="padding:6px; border:1px solid #ddd; background:#fff8e1;"><i>Cari sendiri!</i></td><td style="padding:6px; border:1px solid #ddd; background:#fff8e1;">__________</td><td style="padding:6px; border:1px solid #ddd; background:#fff8e1;">__________</td><td style="padding:6px; border:1px solid #ddd; background:#fff8e1;">______</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p style="margin-top:0.5rem; font-size:0.85rem; color:#666;"><i class="fas fa-info-circle"></i> Baris ke-10: Cari satu budaya Indonesia lainnya bersama kelompok!</p>
+                </div>
+
+                <div class="product-card">
+                    <h4><i class="fas fa-cog"></i> Fitur yang Harus Dicoba di HP</h4>
+                    <div style="background:#f0f7ff; padding:0.8rem 1rem; border-radius:8px; margin-bottom:0.8rem;">
+                        <p><strong>1. Membuat Judul Tabel (Merge Cells)</strong></p>
+                        <p style="font-size:0.9rem; color:#555;">Pilih sel A1 sampai E1 → Tap ikon A → Gabungkan sel → Ketik: <strong>"DATA BUDAYA INDONESIA"</strong></p>
+                    </div>
+                    <div style="background:#f0f7ff; padding:0.8rem 1rem; border-radius:8px; margin-bottom:0.8rem;">
+                        <p><strong>2. Membuat Grafik Sederhana</strong> 📊</p>
+                        <p style="font-size:0.9rem; color:#555;">Pilih data (No dan Tahun) → Tap + → Bagan → Pilih Diagram Batang → ✓</p>
+                    </div>
+                    <div style="background:#f0f7ff; padding:0.8rem 1rem; border-radius:8px;">
+                        <p><strong>3. Menghitung Jumlah Data (Rumus COUNT)</strong></p>
+                        <p style="font-size:0.9rem; color:#555;">Pilih sel kosong → Ketik: <strong>=COUNT(A2:A11)</strong> → Enter → Hasilnya: <strong>10</strong></p>
                     </div>
                 </div>
 
                 <div class="product-card">
-                    <h4><i class="fas fa-pen"></i> Catatan Penggunaan Google Sheets</h4>
-                    <div class="form-group">
-                        <label>Formula apa yang digunakan untuk menghitung jumlah data?</label>
-                        <textarea id="sheetsCatatan1" placeholder="Tulis jawabanmu..." oninput="saveToLocalStorage();"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Grafik/chart apa yang dibuat? Informasi apa yang ingin ditampilkan?</label>
-                        <textarea id="sheetsCatatan2" placeholder="Tulis jawabanmu..." oninput="saveToLocalStorage();"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Kesulitan apa yang dialami saat menggunakan Google Sheets?</label>
-                        <textarea id="sheetsCatatan3" placeholder="Tulis jawabanmu..." oninput="saveToLocalStorage();"></textarea>
+                    <h4><i class="fas fa-clipboard-check"></i> Checklist Fitur yang Digunakan</h4>
+                    <div class="checkbox-grid">
+                        <div class="checkbox-item"><input type="checkbox" id="sheets_f1" onchange="saveToLocalStorage();"><label for="sheets_f1">Judul tabel (merge cells)</label></div>
+                        <div class="checkbox-item"><input type="checkbox" id="sheets_f2" onchange="saveToLocalStorage();"><label for="sheets_f2">Header kolom (No, Nama, Jenis, Asal, Tahun)</label></div>
+                        <div class="checkbox-item"><input type="checkbox" id="sheets_f3" onchange="saveToLocalStorage();"><label for="sheets_f3">10 data budaya</label></div>
+                        <div class="checkbox-item"><input type="checkbox" id="sheets_f4" onchange="saveToLocalStorage();"><label for="sheets_f4">Filter data</label></div>
+                        <div class="checkbox-item"><input type="checkbox" id="sheets_f5" onchange="saveToLocalStorage();"><label for="sheets_f5">Rumus COUNT</label></div>
+                        <div class="checkbox-item"><input type="checkbox" id="sheets_f6" onchange="saveToLocalStorage();"><label for="sheets_f6">Grafik/chart</label></div>
+                        <div class="checkbox-item"><input type="checkbox" id="sheets_f7" onchange="saveToLocalStorage();"><label for="sheets_f7">Dibagikan ke anggota kelompok</label></div>
                     </div>
                 </div>
             </div>
 
-            <!-- ===== BAGIAN D: PRODUK GOOGLE SLIDES ===== -->
+            <!-- ===== PRODUK 3: GOOGLE SLIDES ===== -->
             <div class="section-card">
-                <h3 class="section-title"><i class="fas fa-chalkboard"></i> 📽️ BAGIAN D: PRODUK GOOGLE SLIDES (KELOMPOK)</h3>
+                <h3 class="section-title"><i class="fab fa-google"></i> 🎬 PRODUK 3: Google Slides (Presentasi) - KOLABORATIF</h3>
+                
                 <div class="instruction-box">
                     <i class="fas fa-chalkboard-user"></i> 
-                    <strong>Buatlah presentasi tentang budaya Indonesia!</strong><br>
-                    Kerjakan secara kolaboratif. Pastikan berisi: Cover slide, 7 slide isi (Pendahuluan, Makna, Prosesi, Keunikan, Galeri, Pelestarian, Penutup), Tema/warna, Transisi, Animasi.
+                    <strong>Buatlah presentasi "Mengenal Budaya Indonesia" bersama kelompok!</strong><br>
+                    <strong>📱 Cara buka di HP:</strong> Buka aplikasi Google Slides → Tap "+" → Pilih "Presentasi kosong"
                 </div>
 
                 <div class="product-card">
-                    <h4><i class="fab fa-google"></i> Link Google Slides</h4>
+                    <h4><i class="fas fa-share-alt"></i> 🔗 Bagikan Link ke Anggota</h4>
+                    <div style="background: #e8f5e9; padding: 0.8rem 1rem; border-radius: 8px; margin-bottom: 0.8rem;">
+                        <strong>Cara Bagikan (Share):</strong> Ikuti langkah yang sama seperti di Google Docs!
+                    </div>
                     <div class="form-group">
-                        <label for="slidesLink">Masukkan link presentasi Google Slides Anda:</label>
+                        <label for="slidesLink">📎 Link Google Slides (yang sudah dibagikan):</label>
                         <input type="url" id="slidesLink" placeholder="https://docs.google.com/presentation/d/xxx/edit" oninput="saveToLocalStorage();">
-                        <div class="hint">Pastikan link sudah diatur ke "Siapa pun dengan tautan dapat melihat/mengedit"</div>
+                        <div class="hint">Tempel link yang sudah disalin dari aplikasi Google Slides</div>
                     </div>
                 </div>
 
                 <div class="product-card">
-                    <h4><i class="fas fa-list-check"></i> Checklist Fitur yang Digunakan</h4>
-                    <div class="checkbox-grid" id="slidesChecklist">
-                        <div class="checkbox-item"><input type="checkbox" id="slides_f1" onchange="saveToLocalStorage();"><label for="slides_f1">Membuat judul slide (cover)</label></div>
-                        <div class="checkbox-item"><input type="checkbox" id="slides_f2" onchange="saveToLocalStorage();"><label for="slides_f2">Menambahkan slide baru (layout yang sesuai)</label></div>
-                        <div class="checkbox-item"><input type="checkbox" id="slides_f3" onchange="saveToLocalStorage();"><label for="slides_f3">Menambahkan teks di setiap slide</label></div>
-                        <div class="checkbox-item"><input type="checkbox" id="slides_f4" onchange="saveToLocalStorage();"><label for="slides_f4">Menambahkan gambar/ilustrasi</label></div>
-                        <div class="checkbox-item"><input type="checkbox" id="slides_f5" onchange="saveToLocalStorage();"><label for="slides_f5">Mengatur tema/warna presentasi</label></div>
-                        <div class="checkbox-item"><input type="checkbox" id="slides_f6" onchange="saveToLocalStorage();"><label for="slides_f6">Menambahkan transisi antar slide</label></div>
-                        <div class="checkbox-item"><input type="checkbox" id="slides_f7" onchange="saveToLocalStorage();"><label for="slides_f7">Menambahkan animasi pada elemen</label></div>
-                        <div class="checkbox-item"><input type="checkbox" id="slides_f8" onchange="saveToLocalStorage();"><label for="slides_f8">Menambahkan video (opsional)</label></div>
-                        <div class="checkbox-item"><input type="checkbox" id="slides_f9" onchange="saveToLocalStorage();"><label for="slides_f9">Membuat slide penutup/terima kasih</label></div>
-                        <div class="checkbox-item"><input type="checkbox" id="slides_f10" onchange="saveToLocalStorage();"><label for="slides_f10">Membagikan presentasi</label></div>
+                    <h4><i class="fas fa-layer-group"></i> 📋 Struktur Slide (Minimal 6 Slide) - Buat Bersama</h4>
+                    <table style="width:100%; border-collapse:collapse; font-size:0.9rem;">
+                        <thead>
+                            <tr style="background:var(--informatika-light);">
+                                <th style="padding:8px; border:1px solid #ddd; text-align:left;">Slide</th>
+                                <th style="padding:8px; border:1px solid #ddd; text-align:left;">Judul</th>
+                                <th style="padding:8px; border:1px solid #ddd; text-align:left;">Isi</th>
+                                <th style="padding:8px; border:1px solid #ddd; text-align:left;">Yang Mengerjakan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td style="padding:8px; border:1px solid #ddd;"><strong>1</strong></td><td style="padding:8px; border:1px solid #ddd;">Cover</td><td style="padding:8px; border:1px solid #ddd;">"Mengenal Budaya Indonesia" + Nama Kelompok</td><td style="padding:8px; border:1px solid #ddd;">Ketua</td></tr>
+                            <tr><td style="padding:8px; border:1px solid #ddd;"><strong>2</strong></td><td style="padding:8px; border:1px solid #ddd;">Pendahuluan</td><td style="padding:8px; border:1px solid #ddd;">Apa itu budaya? + 2 kalimat</td><td style="padding:8px; border:1px solid #ddd;">Anggota 1</td></tr>
+                            <tr><td style="padding:8px; border:1px solid #ddd;"><strong>3</strong></td><td style="padding:8px; border:1px solid #ddd;">Budaya Pilihan</td><td style="padding:8px; border:1px solid #ddd;">Nama budaya + Sejarah singkat</td><td style="padding:8px; border:1px solid #ddd;">Anggota 2</td></tr>
+                            <tr><td style="padding:8px; border:1px solid #ddd;"><strong>4</strong></td><td style="padding:8px; border:1px solid #ddd;">Keunikan</td><td style="padding:8px; border:1px solid #ddd;">Keunikan budaya tersebut</td><td style="padding:8px; border:1px solid #ddd;">Anggota 3</td></tr>
+                            <tr><td style="padding:8px; border:1px solid #ddd;"><strong>5</strong></td><td style="padding:8px; border:1px solid #ddd;">Galeri</td><td style="padding:8px; border:1px solid #ddd;">1-2 gambar budaya</td><td style="padding:8px; border:1px solid #ddd;">Anggota 4</td></tr>
+                            <tr><td style="padding:8px; border:1px solid #ddd;"><strong>6</strong></td><td style="padding:8px; border:1px solid #ddd;">Penutup</td><td style="padding:8px; border:1px solid #ddd;">Kesimpulan + Sumber</td><td style="padding:8px; border:1px solid #ddd;">Semua</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="product-card">
+                    <h4><i class="fas fa-paint-brush"></i> Fitur yang Bisa Dicoba di HP</h4>
+                    <div style="background:#f0f7ff; padding:0.8rem 1rem; border-radius:8px; margin-bottom:0.8rem;">
+                        <p><strong>1. Memilih Tema/Warna</strong> 🎨</p>
+                        <p style="font-size:0.9rem; color:#555;">Tap ikon palet warna → Pilih tema yang menarik</p>
+                    </div>
+                    <div style="background:#f0f7ff; padding:0.8rem 1rem; border-radius:8px; margin-bottom:0.8rem;">
+                        <p><strong>2. Menambahkan Gambar</strong> 🖼️</p>
+                        <p style="font-size:0.9rem; color:#555;">Tap + → Gambar → Pilih dari galeri</p>
+                    </div>
+                    <div style="background:#f0f7ff; padding:0.8rem 1rem; border-radius:8px;">
+                        <p><strong>3. Mengganti Latar Belakang</strong> 🎨</p>
+                        <p style="font-size:0.9rem; color:#555;">Tap slide → Tap ikon 3 titik → Ubah latar belakang → Pilih warna/gambar</p>
                     </div>
                 </div>
 
                 <div class="product-card">
-                    <h4><i class="fas fa-pen"></i> Catatan Penggunaan Google Slides</h4>
-                    <div class="form-group">
-                        <label>Tema/warna apa yang digunakan? Mengapa?</label>
-                        <textarea id="slidesCatatan1" placeholder="Tulis jawabanmu..." oninput="saveToLocalStorage();"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Transisi dan animasi apa yang ditambahkan?</label>
-                        <textarea id="slidesCatatan2" placeholder="Tulis jawabanmu..." oninput="saveToLocalStorage();"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Kesulitan apa yang dialami saat menggunakan Google Slides?</label>
-                        <textarea id="slidesCatatan3" placeholder="Tulis jawabanmu..." oninput="saveToLocalStorage();"></textarea>
+                    <h4><i class="fas fa-clipboard-check"></i> Checklist Fitur yang Digunakan</h4>
+                    <div class="checkbox-grid">
+                        <div class="checkbox-item"><input type="checkbox" id="slides_f1" onchange="saveToLocalStorage();"><label for="slides_f1">Cover slide</label></div>
+                        <div class="checkbox-item"><input type="checkbox" id="slides_f2" onchange="saveToLocalStorage();"><label for="slides_f2">Slide isi (minimal 5)</label></div>
+                        <div class="checkbox-item"><input type="checkbox" id="slides_f3" onchange="saveToLocalStorage();"><label for="slides_f3">Gambar di slide</label></div>
+                        <div class="checkbox-item"><input type="checkbox" id="slides_f4" onchange="saveToLocalStorage();"><label for="slides_f4">Tema/warna</label></div>
+                        <div class="checkbox-item"><input type="checkbox" id="slides_f5" onchange="saveToLocalStorage();"><label for="slides_f5">Penutup/terima kasih</label></div>
+                        <div class="checkbox-item"><input type="checkbox" id="slides_f6" onchange="saveToLocalStorage();"><label for="slides_f6">Dibagikan ke anggota kelompok</label></div>
                     </div>
                 </div>
             </div>
 
-            <!-- ===== BAGIAN E: DISKUSI KELOMPOK ===== -->
+            <!-- ===== DISKUSI KELOMPOK ===== -->
             <div class="section-card">
-                <h3 class="section-title"><i class="fas fa-users"></i> 💬 BAGIAN E: DISKUSI KELOMPOK</h3>
-                <div class="instruction-box"><i class="fas fa-comments"></i> "Diskusikan pengalaman menggunakan perangkat teknologi bersama kelompokmu!"</div>
+                <h3 class="section-title"><i class="fas fa-users"></i> 💬 DISKUSI KELOMPOK</h3>
+                <div class="instruction-box"><i class="fas fa-comments"></i> Diskusikan bersama kelompokmu, lalu tulis jawaban singkat!</div>
 
-                <table class="qa-table" id="tabelDiskusi">
+                <table class="qa-table">
                     <thead>
                         <tr><th class="question-col">Pertanyaan</th><th class="answer-col">Jawaban Kelompok</th></tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Aplikasi mana yang paling mudah digunakan? Mengapa?</td>
+                            <td>Bagaimana pengalaman kalian bekerja bersama (kolaborasi) menggunakan Google Workspace?</td>
                             <td><textarea class="answer-field" id="diskusi1" placeholder="Tulis jawaban kelompok..." oninput="saveToLocalStorage();"></textarea></td>
                         </tr>
                         <tr>
-                            <td>Aplikasi mana yang paling sulit digunakan? Mengapa?</td>
+                            <td>Apa kesulitan saat mengedit dokumen secara bersamaan?</td>
                             <td><textarea class="answer-field" id="diskusi2" placeholder="Tulis jawaban kelompok..." oninput="saveToLocalStorage();"></textarea></td>
                         </tr>
                         <tr>
-                            <td>Fitur apa yang paling membantu dalam pembuatan dokumen?</td>
+                            <td>Bagaimana cara kelompokmu membagi tugas agar semua anggota berkontribusi?</td>
                             <td><textarea class="answer-field" id="diskusi3" placeholder="Tulis jawaban kelompok..." oninput="saveToLocalStorage();"></textarea></td>
                         </tr>
                         <tr>
-                            <td>Apa kelebihan menggunakan perangkat teknologi ini?</td>
+                            <td>Fitur apa yang paling membantu saat bekerja bersama?</td>
                             <td><textarea class="answer-field" id="diskusi4" placeholder="Tulis jawaban kelompok..." oninput="saveToLocalStorage();"></textarea></td>
-                        </tr>
-                        <tr>
-                            <td>Apa kekurangan dari perangkat teknologi ini?</td>
-                            <td><textarea class="answer-field" id="diskusi5" placeholder="Tulis jawaban kelompok..." oninput="saveToLocalStorage();"></textarea></td>
-                        </tr>
-                        <tr>
-                            <td>Bagaimana pengalaman berkolaborasi secara real-time?</td>
-                            <td><textarea class="answer-field" id="diskusi6" placeholder="Tulis jawaban kelompok..." oninput="saveToLocalStorage();"></textarea></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
-            <!-- ===== BAGIAN F: REFLEKSI ===== -->
+            <!-- ===== REFLEKSI INDIVIDU ===== -->
             <div class="section-card">
-                <h3 class="section-title"><i class="fas fa-pen"></i> 📝 BAGIAN F: REFLEKSI INDIVIDU</h3>
-                <div class="instruction-box"><i class="fas fa-question-circle"></i> "Apa yang aku pelajari hari ini?"</div>
+                <h3 class="section-title"><i class="fas fa-pen"></i> 📝 REFLEKSI INDIVIDU</h3>
+                <div class="instruction-box"><i class="fas fa-question-circle"></i> Tulis dengan jujur (cukup 1-2 kalimat)!</div>
 
-                <table class="qa-table" id="tabelRefleksi">
+                <table class="qa-table">
                     <thead>
                         <tr><th class="question-col">Pertanyaan</th><th class="answer-col">Jawabanku</th></tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Hal baru apa yang aku pelajari tentang pengolah dokumen?</td>
+                            <td>Hal baru yang aku pelajari dari kolaborasi hari ini:</td>
                             <td><textarea class="answer-field" id="ref1" placeholder="Tulis jawabanmu..." oninput="saveToLocalStorage();"></textarea></td>
                         </tr>
                         <tr>
-                            <td>Hal baru apa yang aku pelajari tentang lembar kerja?</td>
+                            <td>Kontribusiku dalam kelompok:</td>
                             <td><textarea class="answer-field" id="ref2" placeholder="Tulis jawabanmu..." oninput="saveToLocalStorage();"></textarea></td>
                         </tr>
                         <tr>
-                            <td>Hal baru apa yang aku pelajari tentang presentasi digital?</td>
+                            <td>Aplikasi Google Workspace yang paling aku sukai, karena:</td>
                             <td><textarea class="answer-field" id="ref3" placeholder="Tulis jawabanmu..." oninput="saveToLocalStorage();"></textarea></td>
-                        </tr>
-                        <tr>
-                            <td>Apakah aku merasa kesulitan menggunakan aplikasi ini?</td>
-                            <td><textarea class="answer-field" id="ref4" placeholder="Tulis jawabanmu..." oninput="saveToLocalStorage();"></textarea></td>
-                        </tr>
-                        <tr>
-                            <td>Aplikasi mana yang paling menarik menurutku? Mengapa?</td>
-                            <td><textarea class="answer-field" id="ref5" placeholder="Tulis jawabanmu..." oninput="saveToLocalStorage();"></textarea></td>
-                        </tr>
-                        <tr>
-                            <td>Bagaimana perangkat teknologi ini dapat membantu dalam pembelajaran?</td>
-                            <td><textarea class="answer-field" id="ref6" placeholder="Tulis jawabanmu..." oninput="saveToLocalStorage();"></textarea></td>
-                        </tr>
-                        <tr>
-                            <td>Apa yang ingin aku pelajari lebih lanjut tentang pengolahan dokumen?</td>
-                            <td><textarea class="answer-field" id="ref7" placeholder="Tulis jawabanmu..." oninput="saveToLocalStorage();"></textarea></td>
                         </tr>
                     </tbody>
                 </table>
+            </div>
 
-                <div style="margin-top: 1rem; background: #f8fafc; border-radius: 10px; padding: 1rem; border: 1px dashed var(--informatika-primary);">
-                    <p><strong>Checklist Pemahaman Akhir:</strong></p>
-                    <div class="checkbox-grid">
-                        <div class="checkbox-item"><input type="checkbox" id="check1" onchange="saveToLocalStorage();"><label for="check1">Saya sudah membuat dokumen di Google Docs</label></div>
-                        <div class="checkbox-item"><input type="checkbox" id="check2" onchange="saveToLocalStorage();"><label for="check2">Saya sudah membuat lembar kerja di Google Sheets</label></div>
-                        <div class="checkbox-item"><input type="checkbox" id="check3" onchange="saveToLocalStorage();"><label for="check3">Saya sudah membuat presentasi di Google Slides</label></div>
-                        <div class="checkbox-item"><input type="checkbox" id="check4" onchange="saveToLocalStorage();"><label for="check4">Saya sudah berkolaborasi dengan kelompok</label></div>
-                        <div class="checkbox-item"><input type="checkbox" id="check5" onchange="saveToLocalStorage();"><label for="check5">Saya sudah membagikan tautan produk</label></div>
-                        <div class="checkbox-item"><input type="checkbox" id="check6" onchange="saveToLocalStorage();"><label for="check6">Saya siap untuk aktivitas berikutnya</label></div>
-                    </div>
-                </div>
+            <!-- ===== PEMBAGIAN TUGAS KELOMPOK ===== -->
+            <div class="section-card">
+                <h3 class="section-title"><i class="fas fa-list-check"></i> 📋 PEMBAGIAN TUGAS KELOMPOK</h3>
+                
+                <table class="qa-table">
+                    <thead>
+                        <tr><th style="width:45%;">Tugas</th><th style="width:35%;">Penanggung Jawab</th><th style="width:20%;">Sudah Selesai?</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Membuat & membagikan Google Docs</td>
+                            <td><input type="text" class="answer-field" id="tugas_docs" placeholder="Nama" oninput="saveToLocalStorage();" style="min-height:40px;"></td>
+                            <td style="text-align:center;"><input type="checkbox" id="tugas_docs_selesai" onchange="saveToLocalStorage();"></td>
+                        </tr>
+                        <tr>
+                            <td>Membuat & membagikan Google Sheets</td>
+                            <td><input type="text" class="answer-field" id="tugas_sheets" placeholder="Nama" oninput="saveToLocalStorage();" style="min-height:40px;"></td>
+                            <td style="text-align:center;"><input type="checkbox" id="tugas_sheets_selesai" onchange="saveToLocalStorage();"></td>
+                        </tr>
+                        <tr>
+                            <td>Membuat & membagikan Google Slides</td>
+                            <td><input type="text" class="answer-field" id="tugas_slides" placeholder="Nama" oninput="saveToLocalStorage();" style="min-height:40px;"></td>
+                            <td style="text-align:center;"><input type="checkbox" id="tugas_slides_selesai" onchange="saveToLocalStorage();"></td>
+                        </tr>
+                        <tr>
+                            <td>Mengisi dokumen bersama</td>
+                            <td style="text-align:center; font-weight:600; color:var(--informatika-dark);">SEMUA</td>
+                            <td style="text-align:center;"><input type="checkbox" id="tugas_docs_isi" onchange="saveToLocalStorage();"></td>
+                        </tr>
+                        <tr>
+                            <td>Mengisi data Sheets bersama</td>
+                            <td style="text-align:center; font-weight:600; color:var(--informatika-dark);">SEMUA</td>
+                            <td style="text-align:center;"><input type="checkbox" id="tugas_sheets_isi" onchange="saveToLocalStorage();"></td>
+                        </tr>
+                        <tr>
+                            <td>Membuat presentasi bersama</td>
+                            <td style="text-align:center; font-weight:600; color:var(--informatika-dark);">SEMUA</td>
+                            <td style="text-align:center;"><input type="checkbox" id="tugas_slides_isi" onchange="saveToLocalStorage();"></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
 
             <button class="btn-submit" id="submitBtn" onclick="submitData()" disabled>
@@ -1568,6 +1550,9 @@
         </div>
     </div>
 
+    <!-- ============================================================ -->
+    <!-- SCRIPT -->
+    <!-- ============================================================ -->
     <script>
         // ==================== HAMBURGER MENU ====================
         document.addEventListener('DOMContentLoaded', function() {
@@ -1576,12 +1561,10 @@
             const bars = hamburger.querySelectorAll('.bar');
 
             if (hamburger && navMenu) {
-                // Toggle menu saat hamburger diklik
                 hamburger.addEventListener('click', function(e) {
                     e.stopPropagation();
                     navMenu.classList.toggle('active');
                     
-                    // Animasi hamburger menjadi X
                     if (navMenu.classList.contains('active')) {
                         bars.forEach((bar, index) => {
                             if (index === 0) bar.style.transform = 'rotate(45deg) translate(5px, 5px)';
@@ -1596,7 +1579,6 @@
                     }
                 });
 
-                // Tutup menu saat klik di luar
                 document.addEventListener('click', function(event) {
                     const isClickInside = navMenu.contains(event.target) || hamburger.contains(event.target);
                     if (!isClickInside && navMenu.classList.contains('active')) {
@@ -1608,7 +1590,6 @@
                     }
                 });
 
-                // Tutup menu saat link diklik
                 navMenu.querySelectorAll('.nav-link').forEach(link => {
                     link.addEventListener('click', function() {
                         navMenu.classList.remove('active');
@@ -1619,7 +1600,6 @@
                     });
                 });
 
-                // Tutup menu dengan tombol ESC
                 document.addEventListener('keydown', function(e) {
                     if (e.key === 'Escape' && navMenu.classList.contains('active')) {
                         navMenu.classList.remove('active');
@@ -1633,7 +1613,7 @@
 
             // ==================== KONFIGURASI URL ====================
             const URL_DATA_SISWA = 'https://script.google.com/macros/s/AKfycbxZMS_o6xWMAQAkjBzzEMR9tJmHOnHCX13KJX2xZMn7WIr-A9pwVK_3DDHnMg7y_rD29Q/exec';
-            const URL_PEREKAPAN = 'https://script.google.com/macros/s/AKfycbwRlLJQQ5ypD1jzsHICPZH6kfrSFHKHGXo0hPKjzwtHH04EDrAid7dqtDv7q6TCbDRj/exec';
+            const URL_PEREKAPAN = 'https://script.google.com/macros/s/AKfycbzBn7u9sH-UrUL3Xc4PnI16c1QbkR-w2Za5JDaJM5Utak1gntOvfrbsbkTEkRBn5xB9uQ/exec';
             const STORAGE_KEY = 'proyek1_aktivitas2_draft';
             const AKTIVITAS_NAMA = 'AKTIVITAS 2 - Praktik Produktivitas & Kolaborasi';
             const SHEET_NAME = 'data_aktivitas';
@@ -1701,97 +1681,69 @@
                 const timestamp = getFormattedTimestamp();
                 
                 return {
-                    "timestamp": timestamp,
-                    "identitas": {
-                        "kelas": document.getElementById('kelas').value || '',
-                        "nama": document.getElementById('nama').value || '',
-                        "kelompok": document.getElementById('kelompok').value || '',
-                        "peran": document.getElementById('peran').value || ''
+                    "Timestamp Pengisian": timestamp,
+                    "A. Identitas Kelompok": {
+                        "Kelas": document.getElementById('kelas').value || '',
+                        "Nama Lengkap": document.getElementById('nama').value || '',
+                        "Nama Kelompok": document.getElementById('kelompok').value || '',
+                        "Peran dalam Kelompok": document.getElementById('peran').value || ''
                     },
-                    "bagian_a": {
-                        "pm1": document.getElementById('pm1').value || '',
-                        "pm2": document.getElementById('pm2').value || '',
-                        "pm3": document.getElementById('pm3').value || '',
-                        "pm4": document.getElementById('pm4').value || '',
-                        "pm5": document.getElementById('pm5').value || ''
-                    },
-                    "bagian_b": {
-                        "link": document.getElementById('docsLink').value || '',
-                        "checklist": {
-                            "f1": getChecked('docs_f1'),
-                            "f2": getChecked('docs_f2'),
-                            "f3": getChecked('docs_f3'),
-                            "f4": getChecked('docs_f4'),
-                            "f5": getChecked('docs_f5'),
-                            "f6": getChecked('docs_f6'),
-                            "f7": getChecked('docs_f7'),
-                            "f8": getChecked('docs_f8'),
-                            "f9": getChecked('docs_f9')
-                        },
-                        "catatan1": document.getElementById('docsCatatan1').value || '',
-                        "catatan2": document.getElementById('docsCatatan2').value || '',
-                        "catatan3": document.getElementById('docsCatatan3').value || ''
-                    },
-                    "bagian_c": {
-                        "link": document.getElementById('sheetsLink').value || '',
-                        "checklist": {
-                            "f1": getChecked('sheets_f1'),
-                            "f2": getChecked('sheets_f2'),
-                            "f3": getChecked('sheets_f3'),
-                            "f4": getChecked('sheets_f4'),
-                            "f5": getChecked('sheets_f5'),
-                            "f6": getChecked('sheets_f6'),
-                            "f7": getChecked('sheets_f7'),
-                            "f8": getChecked('sheets_f8'),
-                            "f9": getChecked('sheets_f9'),
-                            "f10": getChecked('sheets_f10')
-                        },
-                        "catatan1": document.getElementById('sheetsCatatan1').value || '',
-                        "catatan2": document.getElementById('sheetsCatatan2').value || '',
-                        "catatan3": document.getElementById('sheetsCatatan3').value || ''
-                    },
-                    "bagian_d": {
-                        "link": document.getElementById('slidesLink').value || '',
-                        "checklist": {
-                            "f1": getChecked('slides_f1'),
-                            "f2": getChecked('slides_f2'),
-                            "f3": getChecked('slides_f3'),
-                            "f4": getChecked('slides_f4'),
-                            "f5": getChecked('slides_f5'),
-                            "f6": getChecked('slides_f6'),
-                            "f7": getChecked('slides_f7'),
-                            "f8": getChecked('slides_f8'),
-                            "f9": getChecked('slides_f9'),
-                            "f10": getChecked('slides_f10')
-                        },
-                        "catatan1": document.getElementById('slidesCatatan1').value || '',
-                        "catatan2": document.getElementById('slidesCatatan2').value || '',
-                        "catatan3": document.getElementById('slidesCatatan3').value || ''
-                    },
-                    "bagian_e": {
-                        "diskusi1": document.getElementById('diskusi1').value || '',
-                        "diskusi2": document.getElementById('diskusi2').value || '',
-                        "diskusi3": document.getElementById('diskusi3').value || '',
-                        "diskusi4": document.getElementById('diskusi4').value || '',
-                        "diskusi5": document.getElementById('diskusi5').value || '',
-                        "diskusi6": document.getElementById('diskusi6').value || ''
-                    },
-                    "bagian_f": {
-                        "ref1": document.getElementById('ref1').value || '',
-                        "ref2": document.getElementById('ref2').value || '',
-                        "ref3": document.getElementById('ref3').value || '',
-                        "ref4": document.getElementById('ref4').value || '',
-                        "ref5": document.getElementById('ref5').value || '',
-                        "ref6": document.getElementById('ref6').value || '',
-                        "ref7": document.getElementById('ref7').value || '',
-                        "checklist": {
-                            "c1": getChecked('check1'),
-                            "c2": getChecked('check2'),
-                            "c3": getChecked('check3'),
-                            "c4": getChecked('check4'),
-                            "c5": getChecked('check5'),
-                            "c6": getChecked('check6')
+                    "B. Produk Google Docs": {
+                        "Link": document.getElementById('docsLink').value || '',
+                        "Checklist": {
+                            "Judul Heading 1": getChecked('docs_f1'),
+                            "Subjudul Heading 2": getChecked('docs_f2'),
+                            "Paragraf deskripsi": getChecked('docs_f3'),
+                            "Gambar": getChecked('docs_f4'),
+                            "Daftar bullet": getChecked('docs_f5'),
+                            "Link referensi": getChecked('docs_f6'),
+                            "Dibagikan": getChecked('docs_f7')
                         }
+                    },
+                    "C. Produk Google Sheets": {
+                        "Link": document.getElementById('sheetsLink').value || '',
+                        "Checklist": {
+                            "Judul tabel": getChecked('sheets_f1'),
+                            "Header kolom": getChecked('sheets_f2'),
+                            "10 data budaya": getChecked('sheets_f3'),
+                            "Filter data": getChecked('sheets_f4'),
+                            "Rumus COUNT": getChecked('sheets_f5'),
+                            "Grafik": getChecked('sheets_f6'),
+                            "Dibagikan": getChecked('sheets_f7')
+                        }
+                    },
+                    "D. Produk Google Slides": {
+                        "Link": document.getElementById('slidesLink').value || '',
+                        "Checklist": {
+                            "Cover slide": getChecked('slides_f1'),
+                            "Slide isi": getChecked('slides_f2'),
+                            "Gambar": getChecked('slides_f3'),
+                            "Tema/warna": getChecked('slides_f4'),
+                            "Penutup": getChecked('slides_f5'),
+                            "Dibagikan": getChecked('slides_f6')
+                        }
+                    },
+                    "E. Diskusi Kelompok": {
+                        "Pengalaman kolaborasi": document.getElementById('diskusi1').value || '',
+                        "Kesulitan mengedit bersama": document.getElementById('diskusi2').value || '',
+                        "Pembagian tugas": document.getElementById('diskusi3').value || '',
+                        "Fitur membantu": document.getElementById('diskusi4').value || ''
+                    },
+                    "F. Refleksi Individu": {
+                        "Hal baru dipelajari": document.getElementById('ref1').value || '',
+                        "Kontribusi": document.getElementById('ref2').value || '',
+                        "Aplikasi favorit": document.getElementById('ref3').value || ''
+                    },
+                    "G. Pembagian Tugas": {
+                        "Docs - Penanggung Jawab": document.getElementById('tugas_docs').value || '',
+                        "Docs - Selesai": getChecked('tugas_docs_selesai'),
+                        "Sheets - Penanggung Jawab": document.getElementById('tugas_sheets').value || '',
+                        "Sheets - Selesai": getChecked('tugas_sheets_selesai'),
+                        "Slides - Penanggung Jawab": document.getElementById('tugas_slides').value || '',
+                        "Slides - Selesai": getChecked('tugas_slides_selesai'),
+                        "Isi Docs - Selesai": getChecked('tugas_docs_isi'),
+                        "Isi Sheets - Selesai": getChecked('tugas_sheets_isi'),
+                        "Isi Slides - Selesai": getChecked('tugas_slides_isi')
                     }
                 };
             }
@@ -1800,13 +1752,15 @@
             function populateFormData(savedData) {
                 if (!savedData) return;
                 
-                // Identitas
-                if (savedData.identitas) {
+                // A. Identitas
+                if (savedData["A. Identitas Kelompok"]) {
+                    const identitas = savedData["A. Identitas Kelompok"];
                     const kelasEl = document.getElementById('kelas');
                     const namaEl = document.getElementById('nama');
+                    
                     if (kelasEl) {
                         for (let option of kelasEl.options) {
-                            if (option.value === savedData.identitas.kelas) {
+                            if (option.value === identitas["Kelas"]) {
                                 option.selected = true;
                                 break;
                             }
@@ -1815,103 +1769,92 @@
                     }
                     if (namaEl) {
                         for (let option of namaEl.options) {
-                            if (option.value === savedData.identitas.nama) {
+                            if (option.value === identitas["Nama Lengkap"]) {
                                 option.selected = true;
                                 break;
                             }
                         }
                     }
-                    document.getElementById('kelompok').value = savedData.identitas.kelompok || '';
-                    document.getElementById('peran').value = savedData.identitas.peran || '';
+                    document.getElementById('kelompok').value = identitas["Nama Kelompok"] || '';
+                    document.getElementById('peran').value = identitas["Peran dalam Kelompok"] || '';
                 }
 
-                // Bagian A
-                if (savedData.bagian_a) {
-                    document.getElementById('pm1').value = savedData.bagian_a.pm1 || '';
-                    document.getElementById('pm2').value = savedData.bagian_a.pm2 || '';
-                    document.getElementById('pm3').value = savedData.bagian_a.pm3 || '';
-                    document.getElementById('pm4').value = savedData.bagian_a.pm4 || '';
-                    document.getElementById('pm5').value = savedData.bagian_a.pm5 || '';
-                }
-
-                // Bagian B
-                if (savedData.bagian_b) {
-                    document.getElementById('docsLink').value = savedData.bagian_b.link || '';
-                    if (savedData.bagian_b.checklist) {
-                        const cl = savedData.bagian_b.checklist;
-                        document.getElementById('docs_f1').checked = cl.f1 || false;
-                        document.getElementById('docs_f2').checked = cl.f2 || false;
-                        document.getElementById('docs_f3').checked = cl.f3 || false;
-                        document.getElementById('docs_f4').checked = cl.f4 || false;
-                        document.getElementById('docs_f5').checked = cl.f5 || false;
-                        document.getElementById('docs_f6').checked = cl.f6 || false;
-                        document.getElementById('docs_f7').checked = cl.f7 || false;
-                        document.getElementById('docs_f8').checked = cl.f8 || false;
-                        document.getElementById('docs_f9').checked = cl.f9 || false;
+                // B. Google Docs
+                if (savedData["B. Produk Google Docs"]) {
+                    const b = savedData["B. Produk Google Docs"];
+                    document.getElementById('docsLink').value = b["Link"] || '';
+                    if (b["Checklist"]) {
+                        const cl = b["Checklist"];
+                        document.getElementById('docs_f1').checked = cl["Judul Heading 1"] || false;
+                        document.getElementById('docs_f2').checked = cl["Subjudul Heading 2"] || false;
+                        document.getElementById('docs_f3').checked = cl["Paragraf deskripsi"] || false;
+                        document.getElementById('docs_f4').checked = cl["Gambar"] || false;
+                        document.getElementById('docs_f5').checked = cl["Daftar bullet"] || false;
+                        document.getElementById('docs_f6').checked = cl["Link referensi"] || false;
+                        document.getElementById('docs_f7').checked = cl["Dibagikan"] || false;
                     }
-                    document.getElementById('docsCatatan1').value = savedData.bagian_b.catatan1 || '';
-                    document.getElementById('docsCatatan2').value = savedData.bagian_b.catatan2 || '';
-                    document.getElementById('docsCatatan3').value = savedData.bagian_b.catatan3 || '';
                 }
 
-                // Bagian C
-                if (savedData.bagian_c) {
-                    document.getElementById('sheetsLink').value = savedData.bagian_c.link || '';
-                    if (savedData.bagian_c.checklist) {
-                        const cl = savedData.bagian_c.checklist;
-                        for (let i = 1; i <= 10; i++) {
-                            const el = document.getElementById('sheets_f' + i);
-                            if (el) el.checked = cl['f' + i] || false;
-                        }
+                // C. Google Sheets
+                if (savedData["C. Produk Google Sheets"]) {
+                    const c = savedData["C. Produk Google Sheets"];
+                    document.getElementById('sheetsLink').value = c["Link"] || '';
+                    if (c["Checklist"]) {
+                        const cl = c["Checklist"];
+                        document.getElementById('sheets_f1').checked = cl["Judul tabel"] || false;
+                        document.getElementById('sheets_f2').checked = cl["Header kolom"] || false;
+                        document.getElementById('sheets_f3').checked = cl["10 data budaya"] || false;
+                        document.getElementById('sheets_f4').checked = cl["Filter data"] || false;
+                        document.getElementById('sheets_f5').checked = cl["Rumus COUNT"] || false;
+                        document.getElementById('sheets_f6').checked = cl["Grafik"] || false;
+                        document.getElementById('sheets_f7').checked = cl["Dibagikan"] || false;
                     }
-                    document.getElementById('sheetsCatatan1').value = savedData.bagian_c.catatan1 || '';
-                    document.getElementById('sheetsCatatan2').value = savedData.bagian_c.catatan2 || '';
-                    document.getElementById('sheetsCatatan3').value = savedData.bagian_c.catatan3 || '';
                 }
 
-                // Bagian D
-                if (savedData.bagian_d) {
-                    document.getElementById('slidesLink').value = savedData.bagian_d.link || '';
-                    if (savedData.bagian_d.checklist) {
-                        const cl = savedData.bagian_d.checklist;
-                        for (let i = 1; i <= 10; i++) {
-                            const el = document.getElementById('slides_f' + i);
-                            if (el) el.checked = cl['f' + i] || false;
-                        }
+                // D. Google Slides
+                if (savedData["D. Produk Google Slides"]) {
+                    const d = savedData["D. Produk Google Slides"];
+                    document.getElementById('slidesLink').value = d["Link"] || '';
+                    if (d["Checklist"]) {
+                        const cl = d["Checklist"];
+                        document.getElementById('slides_f1').checked = cl["Cover slide"] || false;
+                        document.getElementById('slides_f2').checked = cl["Slide isi"] || false;
+                        document.getElementById('slides_f3').checked = cl["Gambar"] || false;
+                        document.getElementById('slides_f4').checked = cl["Tema/warna"] || false;
+                        document.getElementById('slides_f5').checked = cl["Penutup"] || false;
+                        document.getElementById('slides_f6').checked = cl["Dibagikan"] || false;
                     }
-                    document.getElementById('slidesCatatan1').value = savedData.bagian_d.catatan1 || '';
-                    document.getElementById('slidesCatatan2').value = savedData.bagian_d.catatan2 || '';
-                    document.getElementById('slidesCatatan3').value = savedData.bagian_d.catatan3 || '';
                 }
 
-                // Bagian E
-                if (savedData.bagian_e) {
-                    document.getElementById('diskusi1').value = savedData.bagian_e.diskusi1 || '';
-                    document.getElementById('diskusi2').value = savedData.bagian_e.diskusi2 || '';
-                    document.getElementById('diskusi3').value = savedData.bagian_e.diskusi3 || '';
-                    document.getElementById('diskusi4').value = savedData.bagian_e.diskusi4 || '';
-                    document.getElementById('diskusi5').value = savedData.bagian_e.diskusi5 || '';
-                    document.getElementById('diskusi6').value = savedData.bagian_e.diskusi6 || '';
+                // E. Diskusi
+                if (savedData["E. Diskusi Kelompok"]) {
+                    const e = savedData["E. Diskusi Kelompok"];
+                    document.getElementById('diskusi1').value = e["Pengalaman kolaborasi"] || '';
+                    document.getElementById('diskusi2').value = e["Kesulitan mengedit bersama"] || '';
+                    document.getElementById('diskusi3').value = e["Pembagian tugas"] || '';
+                    document.getElementById('diskusi4').value = e["Fitur membantu"] || '';
                 }
 
-                // Bagian F
-                if (savedData.bagian_f) {
-                    document.getElementById('ref1').value = savedData.bagian_f.ref1 || '';
-                    document.getElementById('ref2').value = savedData.bagian_f.ref2 || '';
-                    document.getElementById('ref3').value = savedData.bagian_f.ref3 || '';
-                    document.getElementById('ref4').value = savedData.bagian_f.ref4 || '';
-                    document.getElementById('ref5').value = savedData.bagian_f.ref5 || '';
-                    document.getElementById('ref6').value = savedData.bagian_f.ref6 || '';
-                    document.getElementById('ref7').value = savedData.bagian_f.ref7 || '';
-                    if (savedData.bagian_f.checklist) {
-                        const cl = savedData.bagian_f.checklist;
-                        document.getElementById('check1').checked = cl.c1 || false;
-                        document.getElementById('check2').checked = cl.c2 || false;
-                        document.getElementById('check3').checked = cl.c3 || false;
-                        document.getElementById('check4').checked = cl.c4 || false;
-                        document.getElementById('check5').checked = cl.c5 || false;
-                        document.getElementById('check6').checked = cl.c6 || false;
-                    }
+                // F. Refleksi
+                if (savedData["F. Refleksi Individu"]) {
+                    const f = savedData["F. Refleksi Individu"];
+                    document.getElementById('ref1').value = f["Hal baru dipelajari"] || '';
+                    document.getElementById('ref2').value = f["Kontribusi"] || '';
+                    document.getElementById('ref3').value = f["Aplikasi favorit"] || '';
+                }
+
+                // G. Pembagian Tugas
+                if (savedData["G. Pembagian Tugas"]) {
+                    const g = savedData["G. Pembagian Tugas"];
+                    document.getElementById('tugas_docs').value = g["Docs - Penanggung Jawab"] || '';
+                    document.getElementById('tugas_docs_selesai').checked = g["Docs - Selesai"] || false;
+                    document.getElementById('tugas_sheets').value = g["Sheets - Penanggung Jawab"] || '';
+                    document.getElementById('tugas_sheets_selesai').checked = g["Sheets - Selesai"] || false;
+                    document.getElementById('tugas_slides').value = g["Slides - Penanggung Jawab"] || '';
+                    document.getElementById('tugas_slides_selesai').checked = g["Slides - Selesai"] || false;
+                    document.getElementById('tugas_docs_isi').checked = g["Isi Docs - Selesai"] || false;
+                    document.getElementById('tugas_sheets_isi').checked = g["Isi Sheets - Selesai"] || false;
+                    document.getElementById('tugas_slides_isi').checked = g["Isi Slides - Selesai"] || false;
                 }
             }
 
@@ -2154,7 +2097,7 @@
                 if (!navigator.onLine) { alert('Tidak ada koneksi internet.'); return; }
                 if (isSubmitting) { alert('Proses pengiriman sedang berlangsung. Mohon tunggu...'); return; }
 
-                // ===== VALIDASI: Apakah sudah membaca materi? =====
+                // VALIDASI: Apakah sudah membaca materi?
                 const sudahBaca = confirm(
                     '📖 Apakah kamu sudah membaca materi "Praktik Produktivitas & Kolaborasi dengan Google Workspace"?\n\n' +
                     'Jika belum, klik "Batal" untuk membaca materi terlebih dahulu.\n' +
@@ -2166,12 +2109,10 @@
                           'Klik tombol "Baca Materi Sekarang" di bagian atas halaman.');
                     return;
                 }
-                // ===== END VALIDASI =====
 
                 const kelas = document.getElementById('kelas').value;
                 const nama = document.getElementById('nama').value;
                 const kelompok = document.getElementById('kelompok').value;
-                const peran = document.getElementById('peran').value;
 
                 if (!kelas) {
                     alert('Silakan isi kelas terlebih dahulu');
@@ -2196,8 +2137,7 @@
                         allData: allData,
                         kelas: kelas,
                         nama: nama,
-                        kelompok: kelompok,
-                        peran: peran
+                        kelompok: kelompok
                     };
 
                     const result = await cekDataDiSpreadsheet(kelas, nama, AKTIVITAS_NAMA);
@@ -2345,6 +2285,8 @@
                                 .form-group .hint { font-size: 8pt; color: #8899aa; font-style: italic; }
                                 .qa-table .question-col { width: 40%; }
                                 .qa-table .answer-col { width: 60%; }
+                                .collab-step { background: #e8f5e9; padding: 10px 14px; margin: 8px 0; border-left: 5px solid #4caf50; border-radius: 4px; }
+                                .collab-step i { color: #4caf50; }
                                 .footer-text { text-align: center; color: #999; font-size: 9pt; margin-top: 20px; border-top: 1px solid #eee; padding-top: 10px; }
                                 .btn, .btn-submit, .export-wrapper, .connection-status, .success-message, .error-message,
                                 .loading-message, .activity-navigation, .nav-btn, .modal, .modal-content, #confirmModal, #resetModal,
@@ -2366,18 +2308,10 @@
                                     <span>📅 Pertemuan 2 • Proyek 1: Saya Siap Jadi Kreator Digital</span>
                                     <span>⏰ 4 JP</span>
                                 </div>
-                                <p><i>"Menggunakan perangkat teknologi untuk mengolah dokumen, lembar kerja, dan presentasi secara kolaboratif."</i></p>
                             </div>
-                            
-                            <div class="instruction-box" style="background:#e8f5e9; border-left-color: #3498db;">
-                                <strong>HALO, KELOMPOK HEBAT! 👋</strong><br>
-                                Sekarang saatnya berkreasi! Buat produk digital secara kolaboratif menggunakan Google Workspace.
-                            </div>
+                        
 
-                            <h1 class="worksheet-title">LEMBAR KERJA PESERTA DIDIK (LKPD) PROYEK 1 – AKTIVITAS 2</h1>
-                            <p style="text-align: center; margin-bottom: 1.5rem; font-size: 12pt; color: #9b59b6;">
-                                <strong>PRAKTIK PRODUKTIVITAS & KOLABORASI</strong>
-                            </p>
+                            <h1 class="worksheet-title">LEMBAR KERJA PESERTA DIDIK (LKPD) PROYEK 1 – AKTIVITAS 2 (PRAKTIK PRODUKTIVITAS & KOLABORASI)</h1>
                             <div style="text-align: center; margin-bottom: 1.5rem; background: #ebf5fb; padding: 0.8rem; border-radius: 8px;">
                                 <p><strong>Tujuan Pembelajaran (TP 2.4):</strong> Menggunakan perangkat teknologi untuk mengolah dokumen, lembar kerja, dan presentasi.</p>
                             </div>
@@ -2403,158 +2337,194 @@
                                 </ol>
                             </div>
 
-                            <!-- Bagian A -->
+                            <h3 style="color: #21618c; margin: 20px 0 10px 0; font-size: 13pt;">🤝 CARA KERJA KOLABORATIF</h3>
+                            <div class="collab-step"><strong>Langkah 1:</strong> Ketua Kelompok membuat Google Docs dan membagikan link ke anggota.</div>
+                            <div class="collab-step"><strong>Langkah 2:</strong> Anggota 2 membuat Google Sheets dan membagikan link ke anggota.</div>
+                            <div class="collab-step"><strong>Langkah 3:</strong> Anggota 3 membuat Google Slides dan membagikan link ke anggota.</div>
+                            <div class="collab-step" style="background:#e3f2fd; border-left-color:#3498db;"><strong>Langkah 4:</strong> SEMUA ANGGOTA mengedit dan mengisi bersama-sama secara real-time!</div>
+                            <div style="background:#fff3cd; padding:10px 14px; border-radius:4px; margin:10px 0; border-left:5px solid #f39c12;">
+                                <strong>PENTING:</strong> Saat membagikan link, pastikan izin diatur ke "Siapa pun dengan tautan dapat mengedit"!
+                            </div>
+
+                            <!-- PRODUK 1: Google Docs -->
                             <div class="section-card">
-                                <h3 class="section-title">📖 BAGIAN A: PEMAHAMAN MATERI (INDIVIDU)</h3>
-                                <div class="instruction-box">"Pastikan kamu sudah membaca materi tentang Google Workspace!"</div>
-                                <table class="qa-table">
-                                    <thead><tr><th class="question-col">Pertanyaan</th><th class="answer-col">Jawaban</th></tr></thead>
-                                    <tbody>
-                                        <tr><td>Apa fungsi utama Google Docs dalam produktivitas?</td><td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
-                                        <tr><td>Apa fungsi utama Google Sheets dalam pengolahan data?</td><td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
-                                        <tr><td>Apa fungsi utama Google Slides dalam presentasi?</td><td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
-                                        <tr><td>Bagaimana cara berbagi dokumen secara kolaboratif di Google Workspace?</td><td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
-                                        <tr><td>Apa keuntungan bekerja secara kolaboratif menggunakan Google Workspace?</td><td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
-                                    </tbody>
+                                <h3 class="section-title">📄 PRODUK 1: Google Docs (Dokumen) - KOLABORATIF</h3>
+                                <div class="instruction-box"><strong>Buatlah dokumen tentang salah satu budaya Indonesia!</strong><br>📱 Buka aplikasi Google Docs → Tap "+" → Dokumen kosong</div>
+                                <div class="product-card">
+                                    <h4>🔗 Bagikan Link ke Anggota</h4>
+                                    <div style="background:#e8f5e9; padding:0.8rem 1rem; border-radius:4px; margin-bottom:0.8rem;">
+                                        <strong>Cara Bagikan:</strong> Tap 3 titik → Bagikan & ekspor → Bagikan → "Siapa pun dengan tautan" → "Editor" → Salin tautan
+                                    </div>
+                                    <div class="form-group"><label>📎 Link Google Docs:</label><span class="tempat-jawaban">[Tempel link di sini]</span></div>
+                                </div>
+                                <div class="product-card">
+                                    <h4>✅ Struktur Dokumen</h4>
+                                    <table style="font-size:9pt;">
+                                        <tr style="background:#ebf5fb;"><th>Bagian</th><th>Yang Harus Ditulis</th><th>Format</th></tr>
+                                        <tr><td>Judul</td><td>Nama budaya</td><td>Heading 1</td></tr>
+                                        <tr><td>Subjudul 1</td><td>Sejarah</td><td>Heading 2</td></tr>
+                                        <tr><td>Paragraf</td><td>Sejarah (3-5 kalimat)</td><td>Normal</td></tr>
+                                        <tr><td>Subjudul 2</td><td>Makna/Filosofi</td><td>Heading 2</td></tr>
+                                        <tr><td>Paragraf</td><td>Makna (3-5 kalimat)</td><td>Normal</td></tr>
+                                        <tr><td>Subjudul 3</td><td>Perkembangan</td><td>Heading 2</td></tr>
+                                        <tr><td>Paragraf</td><td>Perkembangan (3-5 kalimat)</td><td>Normal</td></tr>
+                                        <tr><td>Gambar</td><td>1 gambar budaya</td><td>Insert → Image</td></tr>
+                                        <tr><td>Daftar</td><td>5 fakta menarik</td><td>Bullet list</td></tr>
+                                        <tr><td>Referensi</td><td>2 link sumber</td><td>Insert → Link</td></tr>
+                                    </table>
+                                </div>
+                                <div class="product-card">
+                                    <h4>✅ Checklist Fitur</h4>
+                                    <div class="checkbox-grid">
+                                        <div class="checkbox-item"><span class="kotak-cek"></span> Judul (Heading 1)</div>
+                                        <div class="checkbox-item"><span class="kotak-cek"></span> Subjudul (Heading 2)</div>
+                                        <div class="checkbox-item"><span class="kotak-cek"></span> Paragraf deskripsi</div>
+                                        <div class="checkbox-item"><span class="kotak-cek"></span> Gambar</div>
+                                        <div class="checkbox-item"><span class="kotak-cek"></span> Daftar bullet</div>
+                                        <div class="checkbox-item"><span class="kotak-cek"></span> Link referensi</div>
+                                        <div class="checkbox-item"><span class="kotak-cek"></span> Dibagikan</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- PRODUK 2: Google Sheets -->
+                            <div class="section-card">
+                                <h3 class="section-title">📊 PRODUK 2: Google Sheets (Lembar Kerja) - KOLABORATIF</h3>
+                                <div class="instruction-box"><strong>Buatlah data "10 Budaya Indonesia"!</strong><br>📱 Buka aplikasi Google Sheets → Tap "+" → Lembar bentang kosong</div>
+                                <div class="product-card">
+                                    <h4>🔗 Bagikan Link ke Anggota</h4>
+                                    <div style="background:#e8f5e9; padding:0.8rem 1rem; border-radius:4px; margin-bottom:0.8rem;">
+                                        <strong>Cara Bagikan:</strong> Ikuti langkah yang sama seperti di Google Docs!
+                                    </div>
+                                    <div class="form-group"><label>📎 Link Google Sheets:</label><span class="tempat-jawaban">[Tempel link di sini]</span></div>
+                                </div>
+                                <div class="product-card">
+                                    <h4>📋 Struktur Tabel</h4>
+                                    <table style="font-size:9pt;">
+                                        <tr style="background:#ebf5fb;"><th>No</th><th>Nama Budaya</th><th>Jenis</th><th>Asal Daerah</th><th>Tahun Ditetapkan</th></tr>
+                                        <tr><td>1</td><td>Tari Saman</td><td>Tarian</td><td>Aceh</td><td>2011</td></tr>
+                                        <tr><td>2</td><td>Batik</td><td>Kain</td><td>Jawa</td><td>2009</td></tr>
+                                        <tr><td>3</td><td>Rendang</td><td>Makanan</td><td>Sumatera Barat</td><td>2011</td></tr>
+                                        <tr><td>4</td><td>Wayang Kulit</td><td>Seni Pertunjukan</td><td>Jawa</td><td>2003</td></tr>
+                                        <tr><td>5</td><td>Angklung</td><td>Alat Musik</td><td>Jawa Barat</td><td>2010</td></tr>
+                                        <tr><td>6</td><td>Tari Kecak</td><td>Tarian</td><td>Bali</td><td>2015</td></tr>
+                                        <tr><td>7</td><td>Keris</td><td>Senjata</td><td>Jawa</td><td>2005</td></tr>
+                                        <tr><td>8</td><td>Noken</td><td>Kerajinan</td><td>Papua</td><td>2012</td></tr>
+                                        <tr><td>9</td><td>Tari Pendet</td><td>Tarian</td><td>Bali</td><td>2015</td></tr>
+                                        <tr><td>10</td><td><i>Cari sendiri!</i></td><td>__________</td><td>__________</td><td>______</td></tr>
+                                    </table>
+                                </div>
+                                <div class="product-card">
+                                    <h4>⚙️ Fitur yang Harus Dicoba</h4>
+                                    <div style="background:#f0f7ff; padding:0.5rem 0.8rem; border-radius:4px; margin-bottom:0.5rem;">
+                                        <strong>1. Judul Tabel:</strong> Pilih A1-E1 → Merge cells → "DATA BUDAYA INDONESIA"
+                                    </div>
+                                    <div style="background:#f0f7ff; padding:0.5rem 0.8rem; border-radius:4px; margin-bottom:0.5rem;">
+                                        <strong>2. Grafik:</strong> Pilih data → Tap + → Bagan → Diagram Batang
+                                    </div>
+                                    <div style="background:#f0f7ff; padding:0.5rem 0.8rem; border-radius:4px;">
+                                        <strong>3. Rumus COUNT:</strong> Ketik <code>=COUNT(A2:A11)</code> → Enter → Hasil: 10
+                                    </div>
+                                </div>
+                                <div class="product-card">
+                                    <h4>✅ Checklist Fitur</h4>
+                                    <div class="checkbox-grid">
+                                        <div class="checkbox-item"><span class="kotak-cek"></span> Judul tabel</div>
+                                        <div class="checkbox-item"><span class="kotak-cek"></span> Header kolom</div>
+                                        <div class="checkbox-item"><span class="kotak-cek"></span> 10 data budaya</div>
+                                        <div class="checkbox-item"><span class="kotak-cek"></span> Filter data</div>
+                                        <div class="checkbox-item"><span class="kotak-cek"></span> Rumus COUNT</div>
+                                        <div class="checkbox-item"><span class="kotak-cek"></span> Grafik</div>
+                                        <div class="checkbox-item"><span class="kotak-cek"></span> Dibagikan</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- PRODUK 3: Google Slides -->
+                            <div class="section-card">
+                                <h3 class="section-title">🎬 PRODUK 3: Google Slides (Presentasi) - KOLABORATIF</h3>
+                                <div class="instruction-box"><strong>Buatlah presentasi "Mengenal Budaya Indonesia"!</strong><br>📱 Buka aplikasi Google Slides → Tap "+" → Presentasi kosong</div>
+                                <div class="product-card">
+                                    <h4>🔗 Bagikan Link ke Anggota</h4>
+                                    <div style="background:#e8f5e9; padding:0.8rem 1rem; border-radius:4px; margin-bottom:0.8rem;">
+                                        <strong>Cara Bagikan:</strong> Ikuti langkah yang sama seperti di Google Docs!
+                                    </div>
+                                    <div class="form-group"><label>📎 Link Google Slides:</label><span class="tempat-jawaban">[Tempel link di sini]</span></div>
+                                </div>
+                                <div class="product-card">
+                                    <h4>📋 Struktur Slide (Minimal 6)</h4>
+                                    <table style="font-size:9pt;">
+                                        <tr style="background:#ebf5fb;"><th>Slide</th><th>Judul</th><th>Isi</th><th>Pengerjaan</th></tr>
+                                        <tr><td>1</td><td>Cover</td><td>"Mengenal Budaya Indonesia" + Nama Kelompok</td><td>Ketua</td></tr>
+                                        <tr><td>2</td><td>Pendahuluan</td><td>Apa itu budaya? + 2 kalimat</td><td>Anggota 1</td></tr>
+                                        <tr><td>3</td><td>Budaya Pilihan</td><td>Nama budaya + Sejarah singkat</td><td>Anggota 2</td></tr>
+                                        <tr><td>4</td><td>Keunikan</td><td>Keunikan budaya tersebut</td><td>Anggota 3</td></tr>
+                                        <tr><td>5</td><td>Galeri</td><td>1-2 gambar budaya</td><td>Anggota 4</td></tr>
+                                        <tr><td>6</td><td>Penutup</td><td>Kesimpulan + Sumber</td><td>Semua</td></tr>
+                                    </table>
+                                </div>
+                                <div class="product-card">
+                                    <h4>🎨 Fitur yang Bisa Dicoba di HP</h4>
+                                    <div style="background:#f0f7ff; padding:0.5rem 0.8rem; border-radius:4px; margin-bottom:0.5rem;">
+                                        <strong>1. Tema/Warna:</strong> Tap ikon palet warna → Pilih tema
+                                    </div>
+                                    <div style="background:#f0f7ff; padding:0.5rem 0.8rem; border-radius:4px; margin-bottom:0.5rem;">
+                                        <strong>2. Gambar:</strong> Tap + → Gambar → Pilih dari galeri
+                                    </div>
+                                    <div style="background:#f0f7ff; padding:0.5rem 0.8rem; border-radius:4px;">
+                                        <strong>3. Latar Belakang:</strong> Tap slide → 3 titik → Ubah latar belakang
+                                    </div>
+                                </div>
+                                <div class="product-card">
+                                    <h4>✅ Checklist Fitur</h4>
+                                    <div class="checkbox-grid">
+                                        <div class="checkbox-item"><span class="kotak-cek"></span> Cover slide</div>
+                                        <div class="checkbox-item"><span class="kotak-cek"></span> Slide isi</div>
+                                        <div class="checkbox-item"><span class="kotak-cek"></span> Gambar</div>
+                                        <div class="checkbox-item"><span class="kotak-cek"></span> Tema/warna</div>
+                                        <div class="checkbox-item"><span class="kotak-cek"></span> Penutup</div>
+                                        <div class="checkbox-item"><span class="kotak-cek"></span> Dibagikan</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- DISKUSI -->
+                            <div class="section-card">
+                                <h3 class="section-title">💬 DISKUSI KELOMPOK</h3>
+                                <div class="instruction-box">Diskusikan bersama kelompokmu!</div>
+                                <table>
+                                    <tr><th style="width:45%;">Pertanyaan</th><th style="width:55%;">Jawaban</th></tr>
+                                    <tr><td>Bagaimana pengalaman kolaborasi menggunakan Google Workspace?</td><td><span class="tempat-jawaban">[Tulis jawaban]</span></td></tr>
+                                    <tr><td>Apa kesulitan saat mengedit secara bersamaan?</td><td><span class="tempat-jawaban">[Tulis jawaban]</span></td></tr>
+                                    <tr><td>Bagaimana cara membagi tugas?</td><td><span class="tempat-jawaban">[Tulis jawaban]</span></td></tr>
+                                    <tr><td>Fitur apa yang paling membantu?</td><td><span class="tempat-jawaban">[Tulis jawaban]</span></td></tr>
                                 </table>
                             </div>
 
-                            <!-- Bagian B -->
+                            <!-- REFLEKSI -->
                             <div class="section-card">
-                                <h3 class="section-title">📄 BAGIAN B: PRODUK GOOGLE DOCS (KELOMPOK)</h3>
-                                <div class="instruction-box"><strong>Buatlah dokumen tentang salah satu budaya Indonesia!</strong><br>Kerjakan secara kolaboratif dengan kelompokmu.</div>
-                                <div class="product-card">
-                                    <h4>🔗 Link Google Docs</h4>
-                                    <div class="form-group"><label>Masukkan link dokumen Google Docs Anda:</label><span class="tempat-jawaban">[Tempelkan link di sini]</span></div>
-                                </div>
-                                <div class="product-card">
-                                    <h4>✅ Checklist Fitur yang Digunakan</h4>
-                                    <div class="checkbox-grid">
-                                        <div class="checkbox-item"><span class="kotak-cek"></span> Membuat judul dengan format Heading 1</div>
-                                        <div class="checkbox-item"><span class="kotak-cek"></span> Membuat subjudul dengan format Heading 2</div>
-                                        <div class="checkbox-item"><span class="kotak-cek"></span> Mengetik teks deskripsi budaya</div>
-                                        <div class="checkbox-item"><span class="kotak-cek"></span> Menambahkan gambar/ilustrasi</div>
-                                        <div class="checkbox-item"><span class="kotak-cek"></span> Membuat daftar (bullet/numbered list)</div>
-                                        <div class="checkbox-item"><span class="kotak-cek"></span> Menambahkan tabel untuk informasi budaya</div>
-                                        <div class="checkbox-item"><span class="kotak-cek"></span> Mengatur spasi dan margin</div>
-                                        <div class="checkbox-item"><span class="kotak-cek"></span> Menambahkan link referensi</div>
-                                        <div class="checkbox-item"><span class="kotak-cek"></span> Membagikan dokumen untuk diedit bersama</div>
-                                    </div>
-                                </div>
-                                <div class="product-card">
-                                    <h4>📝 Catatan Penggunaan Google Docs</h4>
-                                    <div class="form-group"><label>Apa fitur yang paling membantu dalam membuat dokumen ini?</label><span class="tempat-jawaban">[Tulis jawaban di sini]</span></div>
-                                    <div class="form-group"><label>Kesulitan apa yang dialami saat menggunakan Google Docs?</label><span class="tempat-jawaban">[Tulis jawaban di sini]</span></div>
-                                    <div class="form-group"><label>Bagaimana cara membagikan dokumen agar bisa diedit bersama?</label><span class="tempat-jawaban">[Tulis jawaban di sini]</span></div>
-                                </div>
-                            </div>
-
-                            <!-- Bagian C -->
-                            <div class="section-card">
-                                <h3 class="section-title">📊 BAGIAN C: PRODUK GOOGLE SHEETS (KELOMPOK)</h3>
-                                <div class="instruction-box"><strong>Buatlah lembar kerja data budaya Indonesia!</strong><br>Kerjakan secara kolaboratif.</div>
-                                <div class="product-card">
-                                    <h4>🔗 Link Google Sheets</h4>
-                                    <div class="form-group"><label>Masukkan link lembar kerja Google Sheets Anda:</label><span class="tempat-jawaban">[Tempelkan link di sini]</span></div>
-                                </div>
-                                <div class="product-card">
-                                    <h4>✅ Checklist Fitur yang Digunakan</h4>
-                                    <div class="checkbox-grid">
-                                        <div class="checkbox-item"><span class="kotak-cek"></span> Membuat judul tabel (merge cells)</div>
-                                        <div class="checkbox-item"><span class="kotak-cek"></span> Membuat header kolom (Nama, Jenis, Asal, Status, Keterangan)</div>
-                                        <div class="checkbox-item"><span class="kotak-cek"></span> Mengisi data budaya (minimal 10 entri)</div>
-                                        <div class="checkbox-item"><span class="kotak-cek"></span> Mengatur format teks (bold, italic, alignment)</div>
-                                        <div class="checkbox-item"><span class="kotak-cek"></span> Mengatur lebar kolom</div>
-                                        <div class="checkbox-item"><span class="kotak-cek"></span> Menambahkan border tabel</div>
-                                        <div class="checkbox-item"><span class="kotak-cek"></span> Membuat filter data</div>
-                                        <div class="checkbox-item"><span class="kotak-cek"></span> Menambahkan formula sederhana (COUNT, SUM)</div>
-                                        <div class="checkbox-item"><span class="kotak-cek"></span> Membuat grafik/chart sederhana</div>
-                                        <div class="checkbox-item"><span class="kotak-cek"></span> Membagikan lembar kerja</div>
-                                    </div>
-                                </div>
-                                <div class="product-card">
-                                    <h4>📝 Catatan Penggunaan Google Sheets</h4>
-                                    <div class="form-group"><label>Formula apa yang digunakan untuk menghitung jumlah data?</label><span class="tempat-jawaban">[Tulis jawaban di sini]</span></div>
-                                    <div class="form-group"><label>Grafik/chart apa yang dibuat? Informasi apa yang ingin ditampilkan?</label><span class="tempat-jawaban">[Tulis jawaban di sini]</span></div>
-                                    <div class="form-group"><label>Kesulitan apa yang dialami saat menggunakan Google Sheets?</label><span class="tempat-jawaban">[Tulis jawaban di sini]</span></div>
-                                </div>
-                            </div>
-
-                            <!-- Bagian D -->
-                            <div class="section-card">
-                                <h3 class="section-title">📽️ BAGIAN D: PRODUK GOOGLE SLIDES (KELOMPOK)</h3>
-                                <div class="instruction-box"><strong>Buatlah presentasi tentang budaya Indonesia!</strong><br>Kerjakan secara kolaboratif.</div>
-                                <div class="product-card">
-                                    <h4>🔗 Link Google Slides</h4>
-                                    <div class="form-group"><label>Masukkan link presentasi Google Slides Anda:</label><span class="tempat-jawaban">[Tempelkan link di sini]</span></div>
-                                </div>
-                                <div class="product-card">
-                                    <h4>✅ Checklist Fitur yang Digunakan</h4>
-                                    <div class="checkbox-grid">
-                                        <div class="checkbox-item"><span class="kotak-cek"></span> Membuat judul slide (cover)</div>
-                                        <div class="checkbox-item"><span class="kotak-cek"></span> Menambahkan slide baru (layout yang sesuai)</div>
-                                        <div class="checkbox-item"><span class="kotak-cek"></span> Menambahkan teks di setiap slide</div>
-                                        <div class="checkbox-item"><span class="kotak-cek"></span> Menambahkan gambar/ilustrasi</div>
-                                        <div class="checkbox-item"><span class="kotak-cek"></span> Mengatur tema/warna presentasi</div>
-                                        <div class="checkbox-item"><span class="kotak-cek"></span> Menambahkan transisi antar slide</div>
-                                        <div class="checkbox-item"><span class="kotak-cek"></span> Menambahkan animasi pada elemen</div>
-                                        <div class="checkbox-item"><span class="kotak-cek"></span> Menambahkan video (opsional)</div>
-                                        <div class="checkbox-item"><span class="kotak-cek"></span> Membuat slide penutup/terima kasih</div>
-                                        <div class="checkbox-item"><span class="kotak-cek"></span> Membagikan presentasi</div>
-                                    </div>
-                                </div>
-                                <div class="product-card">
-                                    <h4>📝 Catatan Penggunaan Google Slides</h4>
-                                    <div class="form-group"><label>Tema/warna apa yang digunakan? Mengapa?</label><span class="tempat-jawaban">[Tulis jawaban di sini]</span></div>
-                                    <div class="form-group"><label>Transisi dan animasi apa yang ditambahkan?</label><span class="tempat-jawaban">[Tulis jawaban di sini]</span></div>
-                                    <div class="form-group"><label>Kesulitan apa yang dialami saat menggunakan Google Slides?</label><span class="tempat-jawaban">[Tulis jawaban di sini]</span></div>
-                                </div>
-                            </div>
-
-                            <!-- Bagian E -->
-                            <div class="section-card">
-                                <h3 class="section-title">💬 BAGIAN E: DISKUSI KELOMPOK</h3>
-                                <div class="instruction-box">"Diskusikan pengalaman menggunakan perangkat teknologi bersama kelompokmu!"</div>
-                                <table class="qa-table">
-                                    <thead><tr><th class="question-col">Pertanyaan</th><th class="answer-col">Jawaban Kelompok</th></tr></thead>
-                                    <tbody>
-                                        <tr><td>Aplikasi mana yang paling mudah digunakan? Mengapa?</td><td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
-                                        <tr><td>Aplikasi mana yang paling sulit digunakan? Mengapa?</td><td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
-                                        <tr><td>Fitur apa yang paling membantu dalam pembuatan dokumen?</td><td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
-                                        <tr><td>Apa kelebihan menggunakan perangkat teknologi ini?</td><td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
-                                        <tr><td>Apa kekurangan dari perangkat teknologi ini?</td><td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
-                                        <tr><td>Bagaimana pengalaman berkolaborasi secara real-time?</td><td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
-                                    </tbody>
+                                <h3 class="section-title">📝 REFLEKSI INDIVIDU</h3>
+                                <div class="instruction-box">Tulis dengan jujur (1-2 kalimat)!</div>
+                                <table>
+                                    <tr><th style="width:45%;">Pertanyaan</th><th style="width:55%;">Jawabanku</th></tr>
+                                    <tr><td>Hal baru yang aku pelajari dari kolaborasi:</td><td><span class="tempat-jawaban">[Tulis jawaban]</span></td></tr>
+                                    <tr><td>Kontribusiku dalam kelompok:</td><td><span class="tempat-jawaban">[Tulis jawaban]</span></td></tr>
+                                    <tr><td>Aplikasi favoritku, karena:</td><td><span class="tempat-jawaban">[Tulis jawaban]</span></td></tr>
                                 </table>
                             </div>
 
-                            <!-- Bagian F -->
+                            <!-- PEMBAGIAN TUGAS -->
                             <div class="section-card">
-                                <h3 class="section-title">📝 BAGIAN F: REFLEKSI INDIVIDU</h3>
-                                <div class="instruction-box">"Apa yang aku pelajari hari ini?"</div>
-                                <table class="qa-table">
-                                    <thead><tr><th class="question-col">Pertanyaan</th><th class="answer-col">Jawabanku</th></tr></thead>
-                                    <tbody>
-                                        <tr><td>Hal baru apa yang aku pelajari tentang pengolah dokumen?</td><td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
-                                        <tr><td>Hal baru apa yang aku pelajari tentang lembar kerja?</td><td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
-                                        <tr><td>Hal baru apa yang aku pelajari tentang presentasi digital?</td><td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
-                                        <tr><td>Apakah aku merasa kesulitan menggunakan aplikasi ini?</td><td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
-                                        <tr><td>Aplikasi mana yang paling menarik menurutku? Mengapa?</td><td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
-                                        <tr><td>Bagaimana perangkat teknologi ini dapat membantu dalam pembelajaran?</td><td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
-                                        <tr><td>Apa yang ingin aku pelajari lebih lanjut tentang pengolahan dokumen?</td><td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
-                                    </tbody>
+                                <h3 class="section-title">📋 PEMBAGIAN TUGAS KELOMPOK</h3>
+                                <table>
+                                    <tr><th style="width:40%;">Tugas</th><th style="width:35%;">Penanggung Jawab</th><th style="width:25%;">Selesai?</th></tr>
+                                    <tr><td>Membuat & membagikan Google Docs</td><td><span class="tempat-jawaban">[Nama]</span></td><td style="text-align:center;">☐</td></tr>
+                                    <tr><td>Membuat & membagikan Google Sheets</td><td><span class="tempat-jawaban">[Nama]</span></td><td style="text-align:center;">☐</td></tr>
+                                    <tr><td>Membuat & membagikan Google Slides</td><td><span class="tempat-jawaban">[Nama]</span></td><td style="text-align:center;">☐</td></tr>
+                                    <tr><td>Mengisi dokumen bersama</td><td style="text-align:center; font-weight:600;">SEMUA</td><td style="text-align:center;">☐</td></tr>
+                                    <tr><td>Mengisi data Sheets bersama</td><td style="text-align:center; font-weight:600;">SEMUA</td><td style="text-align:center;">☐</td></tr>
+                                    <tr><td>Membuat presentasi bersama</td><td style="text-align:center; font-weight:600;">SEMUA</td><td style="text-align:center;">☐</td></tr>
                                 </table>
-                                <div style="margin-top: 1rem; background: #f8fafc; border-radius: 8px; padding: 1rem; border: 1px dashed #3498db;">
-                                    <p><strong>Checklist Pemahaman Akhir:</strong></p>
-                                    <div class="checkbox-grid">
-                                        <div class="checkbox-item"><span class="kotak-cek"></span> Saya sudah membuat dokumen di Google Docs</div>
-                                        <div class="checkbox-item"><span class="kotak-cek"></span> Saya sudah membuat lembar kerja di Google Sheets</div>
-                                        <div class="checkbox-item"><span class="kotak-cek"></span> Saya sudah membuat presentasi di Google Slides</div>
-                                        <div class="checkbox-item"><span class="kotak-cek"></span> Saya sudah berkolaborasi dengan kelompok</div>
-                                        <div class="checkbox-item"><span class="kotak-cek"></span> Saya sudah membagikan tautan produk</div>
-                                        <div class="checkbox-item"><span class="kotak-cek"></span> Saya siap untuk aktivitas berikutnya</div>
-                                    </div>
-                                </div>
                             </div>
 
                             <div class="footer-text">
@@ -2594,7 +2564,6 @@
             }
 
             // ==================== INIT ====================
-            // Event listener untuk semua input (auto-save)
             document.querySelectorAll('input, select, textarea').forEach(el => {
                 el.addEventListener('input', saveToLocalStorage);
                 el.addEventListener('change', saveToLocalStorage);
