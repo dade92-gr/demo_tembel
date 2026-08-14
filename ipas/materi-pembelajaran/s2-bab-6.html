@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semester Genap - Bab 6: Diseminasi Proyek - Kelas X</title>
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* IPAS THEME COLORS - Semester Genap - HANYA UNTUK KONTEN */
+        :root {
+            --ipas-primary: #3498db;
+            --ipas-secondary: #2980b9;
+            --ipas-light: #d4e6f1;
+            --ipas-dark: #1f618d;
+            --ipas-accent: #f39c12;
+            --ipas-semester2: #e67e22;
+            --ipas-celebration: #e74c3c;
+            --ipas-gray: #f5f7fa;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f5f7fa; color: #2c3e50; line-height: 1.6; }
+
+        /* ===== LOGO ZOOM EFFECT ===== */
+        .logo img { transition: transform 0.3s ease; }
+        .logo:hover img { transform: scale(1.2); }
+        
+        /* MAIN CONTENT */
+        .bab-container { padding: 2rem; max-width: 1200px; margin: 0 auto; min-height: calc(100vh - 80px); display: flex; align-items: flex-start; justify-content: center; }
+        
+        .bab-card { background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%); border-radius: 30px; padding: 3rem; box-shadow: 0 20px 40px rgba(52, 152, 219, 0.15); border-left: 8px solid var(--ipas-celebration); position: relative; overflow: hidden; width: 100%; animation: fadeInUp 0.6s ease-out; }
+        .bab-card::before { content: ''; position: absolute; top: 0; right: 0; width: 250px; height: 250px; background: radial-gradient(circle, rgba(231, 76, 60, 0.1) 0%, transparent 70%); z-index: 0; }
+        .bab-card > * { position: relative; z-index: 1; }
+        
+        .bab-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 3px solid var(--ipas-light); }
+        .bab-icon { width: 80px; height: 80px; background: linear-gradient(135deg, var(--ipas-celebration), #c0392b); border-radius: 25px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2.5rem; box-shadow: 0 10px 20px rgba(231, 76, 60, 0.3); }
+        .bab-title-wrapper h1 { color: var(--ipas-dark); font-size: 2.5rem; margin-bottom: 0.5rem; line-height: 1.2; }
+        .bab-subtitle { color: var(--ipas-celebration); font-size: 1.1rem; font-weight: 600; display: flex; align-items: center; gap: 8px; }
+        .bab-subtitle i { font-size: 0.8rem; }
+        .semester-badge { display: inline-block; background: var(--ipas-celebration); color: white; padding: 0.3rem 1rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600; margin-left: 1rem; }
+        
+        .bab-info { display: flex; gap: 2rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+        .info-item { display: flex; align-items: center; gap: 10px; background: var(--ipas-light); padding: 0.8rem 1.5rem; border-radius: 50px; color: var(--ipas-dark); font-weight: 600; }
+        .info-item i { color: var(--ipas-celebration); font-size: 1.2rem; }
+        
+        .bab-description { background: white; border-radius: 20px; padding: 2rem; margin-bottom: 2rem; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 1px solid rgba(231, 76, 60, 0.1); }
+        .bab-description h2, .bab-description h3, .bab-description h4, .bab-description h5, .bab-description p, .bab-description ul, .bab-description ol, .bab-description li, .bab-description table, .bab-description .note-box, .bab-description .activity-box, .bab-description .example-box, .bab-description .presentation-box, .bab-description .qa-box, .bab-description .reflection-box, .bab-description .format-box, .bab-description blockquote { text-align: justify; }
+        
+        .bab-description h2 { color: var(--ipas-dark); font-size: 2rem; margin: 1.5rem 0 1rem 0; border-bottom: 2px solid var(--ipas-light); padding-bottom: 0.5rem; }
+        .bab-description h3 { color: var(--ipas-dark); font-size: 1.3rem; margin: 1.5rem 0 1rem 0; display: flex; align-items: center; gap: 10px; }
+        .bab-description h4 { color: var(--ipas-dark); font-size: 1.2rem; margin: 1.2rem 0 0.8rem 0; font-weight: 600; }
+        .bab-description h5 { color: var(--ipas-celebration); font-size: 1.1rem; margin: 1rem 0 0.5rem 0; font-weight: 600; }
+        .bab-description h3 i { color: var(--ipas-celebration); }
+        .bab-description p { color: #555; font-size: 1.1rem; line-height: 1.8; margin-bottom: 1rem; text-align: justify; }
+        .bab-description ul, .bab-description ol { margin-left: 2rem; margin-bottom: 1rem; color: #555; text-align: justify; }
+        .bab-description li { margin-bottom: 0.5rem; text-align: justify; }
+        .bab-description strong { color: var(--ipas-dark); }
+        .bab-description blockquote { margin: 1.5rem 0; padding: 1rem 2rem; background: var(--ipas-light); border-left: 5px solid var(--ipas-celebration); font-style: italic; font-size: 1.1rem; color: var(--ipas-dark); border-radius: 0 15px 15px 0; }
+        
+        .activity-box { background: linear-gradient(135deg, #fef5e7, #fef9e7); border-left: 5px solid var(--ipas-celebration); padding: 1.5rem; margin: 1.5rem 0; border-radius: 10px; border: 1px solid rgba(231, 76, 60, 0.2); }
+        .activity-box h4 { color: var(--ipas-dark); margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; }
+        .activity-box h4 i { color: var(--ipas-celebration); }
+        .activity-box ul, .activity-box ol { margin-left: 1.5rem; }
+        
+        .example-box { background: #f0f9ff; border-left: 5px solid var(--ipas-primary); padding: 1.5rem; margin: 1.5rem 0; border-radius: 10px; border: 1px solid rgba(52, 152, 219, 0.2); }
+        .example-box h4 { color: var(--ipas-dark); margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; }
+        .example-box h4 i { color: var(--ipas-primary); }
+        
+        .presentation-box { background: #e8f5e9; border-left: 5px solid #388e3c; padding: 1.5rem; margin: 1.5rem 0; border-radius: 10px; border: 1px solid rgba(56, 142, 60, 0.2); }
+        .presentation-box h4 { color: var(--ipas-dark); margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; }
+        .presentation-box h4 i { color: #388e3c; }
+        .presentation-box ul, .presentation-box ol { margin-left: 1.5rem; }
+        
+        .qa-box { background: #fff3e0; border-left: 5px solid #ff9800; padding: 1.5rem; margin: 1.5rem 0; border-radius: 10px; border: 1px solid rgba(255, 152, 0, 0.2); }
+        .qa-box h4 { color: var(--ipas-dark); margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; }
+        .qa-box h4 i { color: #ff9800; }
+        .qa-box ul, .qa-box ol { margin-left: 1.5rem; }
+        
+        .reflection-box { background: #e1f5fe; border-left: 5px solid #0288d1; padding: 1.5rem; margin: 1.5rem 0; border-radius: 10px; border: 1px solid rgba(2, 136, 209, 0.2); }
+        .reflection-box h4 { color: var(--ipas-dark); margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; }
+        .reflection-box h4 i { color: #0288d1; }
+        .reflection-box ul { list-style-type: none; padding-left: 0; }
+        .reflection-box li { margin-bottom: 1rem; padding-left: 2rem; position: relative; }
+        .reflection-box li:before { content: "❓"; position: absolute; left: 0; color: #0288d1; }
+        
+        .format-box { background: #f3e5f5; border-left: 5px solid #9b59b6; padding: 1.5rem; margin: 1.5rem 0; border-radius: 10px; border: 1px solid rgba(155, 89, 182, 0.2); }
+        .format-box h4 { color: var(--ipas-dark); margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; }
+        .format-box h4 i { color: #9b59b6; }
+        .format-box ul { list-style-type: none; padding-left: 0; }
+        .format-box li { margin-bottom: 1rem; padding-left: 2rem; position: relative; }
+        .format-box li:before { content: "🎯"; position: absolute; left: 0; color: #9b59b6; }
+        
+        .note-box { background: var(--ipas-light); border-left: 5px solid var(--ipas-celebration); padding: 1.5rem; margin: 1.5rem 0; border-radius: 10px; font-style: italic; }
+        
+        .step-list { list-style-type: none; padding-left: 0; }
+        .step-list li { margin-bottom: 0.8rem; padding-left: 2rem; position: relative; }
+        .step-list li:before { content: "✓"; color: #388e3c; font-weight: bold; position: absolute; left: 0; }
+        
+        .poster-content { background: #f9f9f9; border: 2px dashed var(--ipas-celebration); padding: 1.5rem; margin: 1.5rem 0; border-radius: 10px; }
+        .poster-content h5 { color: var(--ipas-celebration); text-align: center; margin-bottom: 1rem; }
+        .poster-content ul { list-style-type: none; padding-left: 0; }
+        .poster-content li { margin-bottom: 0.8rem; padding-left: 1.8rem; position: relative; }
+        .poster-content li:before { content: "📌"; position: absolute; left: 0; color: var(--ipas-celebration); }
+        
+        .stan-content { background: #f9f9f9; border: 2px dashed #388e3c; padding: 1.5rem; margin: 1.5rem 0; border-radius: 10px; }
+        .stan-content h5 { color: #388e3c; text-align: center; margin-bottom: 1rem; }
+        .stan-content ul { list-style-type: none; padding-left: 0; }
+        .stan-content li { margin-bottom: 0.8rem; padding-left: 1.8rem; position: relative; }
+        .stan-content li:before { content: "🏪"; position: absolute; left: 0; color: #388e3c; }
+        
+        .tips-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+        .tip-card { background: white; border-radius: 15px; padding: 1.2rem; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 1px solid var(--ipas-light); text-align: center; transition: transform 0.3s ease; }
+        .tip-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(231, 76, 60, 0.15); }
+        .tip-card i { font-size: 2rem; color: var(--ipas-celebration); margin-bottom: 0.8rem; }
+        .tip-card h5 { color: var(--ipas-dark); margin-bottom: 0.5rem; border-bottom: 1px solid var(--ipas-light); padding-bottom: 0.5rem; }
+        .tip-card p { font-size: 0.95rem; color: #555; margin-bottom: 0; }
+        
+        .bab-navigation { display: flex; gap: 1rem; justify-content: space-between; margin-top: 2rem; }
+        .nav-btn { display: inline-flex; align-items: center; gap: 10px; padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; border: none; cursor: pointer; }
+        .nav-btn.primary { background: linear-gradient(135deg, var(--ipas-celebration), #c0392b); color: white; box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3); }
+        .nav-btn.primary:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(231, 76, 60, 0.4); }
+        .nav-btn.secondary { background: white; color: var(--ipas-dark); border: 2px solid var(--ipas-light); }
+        .nav-btn.secondary:hover { background: var(--ipas-light); transform: translateX(-5px); }
+        
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
+        @media (max-width: 768px) {
+            .bab-container { padding: 1rem; }
+            .bab-card { padding: 2rem; }
+            .bab-header { flex-direction: column; text-align: center; }
+            .bab-title-wrapper h1 { font-size: 2rem; }
+            .bab-info { justify-content: center; }
+            .bab-navigation { flex-direction: column; }
+            .nav-btn { justify-content: center; }
+            .tips-grid { grid-template-columns: 1fr; }
+        }
+        
+        @media (max-width: 480px) {
+            .bab-card { padding: 1.5rem; }
+            .bab-title-wrapper h1 { font-size: 1.8rem; }
+            .bab-icon { width: 60px; height: 60px; font-size: 2rem; }
+            .info-item { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="../../assets/images/logo.png" alt="Logo Sekolah">
+                    <h1>TEMBOK BELAJAR - PROJEK IPAS</h1>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="../../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="../index-ipas.html" class="nav-link"><i class="fas fa-flask"></i> Beranda IPAS</a></li>
+                    <li><a href="../aktivitas-pembelajaran/index-aktifitas-ipas.html" class="nav-link"><i class="fas fa-tasks"></i> Daftar Aktivitas</a></li>
+                    <li><a href="index-materi-ipas.html" class="nav-link active"><i class="fas fa-book-open"></i> Daftar Materi</a></li>
+                    <li><a href="../penilaian/index-penilaian-ipas.html" class="nav-link"><i class="fas fa-chart-line"></i> Penilaian</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="bab-container">
+        <div class="bab-card">
+            <div class="bab-header">
+                <div class="bab-icon"><i class="fas fa-bullhorn"></i></div>
+                <div class="bab-title-wrapper">
+                    <h1>Bab 6 : Diseminasi Proyek <span class="semester-badge">Semester Genap</span></h1>
+                    <div class="bab-subtitle"><i class="fas fa-circle"></i> <span>"Berbagi Cerita dan Merayakan Pembelajaran"</span></div>
+                </div>
+            </div>
+
+            <div class="bab-description">
+                <h2>A. Pendahuluan: Puncak Petualangan</h2>
+                
+                <p>Selamat! Kalian telah menempuh perjalanan panjang dan penuh tantangan. Kalian telah berhasil mengidentifikasi masalah, merancang solusi, bekerja keras mewujudkannya, mengumpulkan data, dan menuangkannya dalam laporan yang rapi. Kini tibalah saat yang paling dinanti sekaligus paling mendebarkan: Bab 6, Diseminasi Proyek.</p>
+                
+                <p>Apa itu diseminasi? Secara sederhana, diseminasi adalah kegiatan berbagi. Kalian akan "memajang" hasil kerja keras kalian di etalase. Bukan etalase kaca, melainkan sebuah presentasi, pameran, atau gelar karya. Di sinilah kalian akan bercerita kepada dunia (atau setidaknya kepada teman, guru, dan orang tua) tentang petualangan proyek kalian. Bab ini adalah perayaan atas proses belajar yang telah kalian lalui.</p>
+
+                <h2>B. Tujuan Pembelajaran Bab 6</h2>
+                
+                <p>Setelah mempelajari materi ini, kalian diharapkan mampu:</p>
+                <ul class="step-list">
+                    <li>Menyiapkan materi presentasi atau pameran yang menarik dan informatif.</li>
+                    <li>Menyampaikan hasil proyek dengan percaya diri, jelas, dan terstruktur.</li>
+                    <li>Menjawab pertanyaan dari audiens dengan baik dan terbuka.</li>
+                    <li>Menerima masukan dan kritik sebagai bahan untuk belajar.</li>
+                    <li>Melakukan refleksi terhadap seluruh proses dan hasil proyek yang telah dijalani.</li>
+                </ul>
+
+                <h2>C. Pilih Bentuk Diseminasi Kalian</h2>
+                
+                <p>Ada banyak cara untuk berbagi. Diskusikan dengan kelompok dan guru, bentuk mana yang paling cocok untuk proyek kalian.</p>
+
+                <div class="format-box">
+                    <h4><i class="fas fa-chalkboard-teacher"></i> Presentasi di Kelas</h4>
+                    <p>Bentuk paling umum. Kelompok kalian akan maju ke depan kelas dan mempresentasikan proyek menggunakan slide (PPT/Canva), poster, atau sekadar menjelaskan sambil menunjukkan produk.</p>
+                </div>
+
+                <div class="format-box">
+                    <h4><i class="fas fa-store-alt"></i> Gelar Karya/Pameran</h4>
+                    <p>Semua kelompok menyiapkan stan. Setiap stan dihias menarik, lengkap dengan poster, produk, logbook, dan alat peraga lainnya. Pengunjung (kelas lain, guru, orang tua) berkeliling dan kelompok menjelaskan proyek mereka secara bergantian.</p>
+                </div>
+
+                <div class="format-box">
+                    <h4><i class="fas fa-globe"></i> Pameran Virtual</h4>
+                    <p>Jika tidak memungkinkan bertemu fisik, kalian bisa membuat pameran online. Buat video presentasi, unggah foto-foto proses, dan buat laporan digital yang bisa diakses melalui website sederhana atau media sosial sekolah.</p>
+                </div>
+
+                <div class="format-box">
+                    <h4><i class="fas fa-flask"></i> Demonstrasi Langsung</h4>
+                    <p>Jika proyek kalian berupa alat atau produk yang bisa didemonstrasikan, lakukan aksi langsung! Misal: Alat penjernih air, cara membuat komposter sederhana, atau cara membuat ecoprint.</p>
+                </div>
+
+                <h2>D. Menyiapkan Materi Diseminasi</h2>
+                
+                <p>Apa pun bentuknya, materi diseminasi harus mampu menjawab tiga pertanyaan besar dari audiens: <strong>APA, BAGAIMANA, dan MENGAPA</strong>.</p>
+
+                <div class="presentation-box">
+                    <h4><i class="fas fa-file-powerpoint"></i> 1. Untuk Presentasi Slide atau Poster</h4>
+                    <p>Pastikan memuat:</p>
+                    
+                    <div class="poster-content">
+                        <h5>Struktur Poster/Slide yang Ideal</h5>
+                        <ul>
+                            <li><strong>Judul Proyek:</strong> Yang menarik dan mencerminkan isi proyek.</li>
+                            <li><strong>Latar Belakang (Mengapa?):</strong> Masalah apa yang kalian temukan? Tunjukkan foto atau data awal yang memprihatinkan.</li>
+                            <li><strong>Tujuan:</strong> Apa yang ingin kalian capai dengan proyek ini?</li>
+                            <li><strong>Proses (Bagaimana?):</strong> Tunjukkan foto-foto saat kalian bekerja, diagram alur proses, atau video singkat.</li>
+                            <li><strong>Hasil (Apa?):</strong> Tunjukkan produk jadi, data dalam bentuk grafik, atau bukti keberhasilan lainnya.</li>
+                            <li><strong>Kesimpulan:</strong> Apa pelajaran utama yang kalian dapatkan? Apakah proyek ini berhasil menjawab masalah?</li>
+                            <li><strong>Ucapan Terima Kasih:</strong> Jangan lupa berterima kasih kepada guru, narasumber, dan semua yang telah membantu.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="presentation-box">
+                    <h4><i class="fas fa-store"></i> 2. Untuk Stan Pameran</h4>
+                    
+                    <div class="stan-content">
+                        <h5>Perlengkapan Stan Pameran</h5>
+                        <ul>
+                            <li><strong>Poster Utama:</strong> Berisi informasi inti seperti poin di atas.</li>
+                            <li><strong>Produk Asli:</strong> Letakkan produk kalian di tempat yang mudah dilihat.</li>
+                            <li><strong>Logbook dan Laporan:</strong> Buka halaman-halaman menarik dari logbook kalian.</li>
+                            <li><strong>Alat Peraga Interaktif:</strong> Jika memungkinkan, buatlah sesuatu yang bisa dicoba pengunjung.</li>
+                            <li><strong>Dokumentasi:</strong> Tempel foto-foto proses di sekeliling stan atau putar video di laptop/tablet.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h2>E. Tips Presentasi yang Memukau</h2>
+                
+                <div class="tips-grid">
+                    <div class="tip-card">
+                        <i class="fas fa-users"></i>
+                        <h5>Latihan</h5>
+                        <p>Latihan dalam kelompok, saling memberi masukan. Latih cara menjelaskan, cara memegang alat peraga, dan cara membagi waktu bicara antar anggota.</p>
+                    </div>
+                    <div class="tip-card">
+                        <i class="fas fa-book-open"></i>
+                        <h5>Kuasai Materi</h5>
+                        <p>Pahami betul proyek kalian, bukan hanya bagian kalian saja, tapi seluruh alur proyek.</p>
+                    </div>
+                    <div class="tip-card">
+                        <i class="fas fa-eye"></i>
+                        <h5>Kontak Mata</h5>
+                        <p>Jangan hanya membaca kertas atau melihat layar. Pandanglah audiens. Tersenyumlah.</p>
+                    </div>
+                    <div class="tip-card">
+                        <i class="fas fa-microphone-alt"></i>
+                        <h5>Suara Jelas</h5>
+                        <p>Bicaralah dengan suara yang cukup keras dan jelas. Tunjukkan antusiasme kalian terhadap proyek ini.</p>
+                    </div>
+                    <div class="tip-card">
+                        <i class="fas fa-people-arrows"></i>
+                        <h5>Bahasa Tubuh</h5>
+                        <p>Berdiri tegak, jangan bersandar, gunakan gerakan tangan untuk menekankan poin-poin penting.</p>
+                    </div>
+                </div>
+
+                <h2>F. Sesi Tanya Jawab: Hadapi dengan Percaya Diri</h2>
+                
+                <p>Sesi tanya jawab sering kali menjadi bagian yang paling menegangkan. Anggap saja ini sebagai kesempatan untuk berdiskusi lebih dalam, bukan sebagai ujian.</p>
+
+                <div class="qa-box">
+                    <h4><i class="fas fa-question-circle"></i> Tips Menghadapi Sesi Tanya Jawab</h4>
+                    <ul>
+                        <li><strong>Dengarkan Pertanyaan dengan Baik:</strong> Pastikan kalian memahami pertanyaannya. Jika tidak jelas, minta pertanyaan diulang.</li>
+                        <li><strong>Jawab dengan Tenang:</strong> Ambil napas sejenak sebelum menjawab. Jawablah dengan singkat, padat, dan jelas.</li>
+                        <li><strong>Jujur Jika Tidak Tahu:</strong> Jika ada pertanyaan yang tidak bisa kalian jawab, tidak apa-apa mengakuinya.</li>
+                        <li><strong>Bagi Tugas:</strong> Sepakati sebelumnya, jika ada pertanyaan tentang bagian teknis, siapa yang menjawab. Jika tentang latar belakang, siapa yang menjawab.</li>
+                    </ul>
+                </div>
+
+                <h2>G. Refleksi: Melihat ke Belakang, Melangkah ke Depan</h2>
+                
+                <p>Setelah semua kegiatan diseminasi selesai, luangkan waktu bersama kelompok untuk melakukan refleksi. Refleksi adalah proses merenungkan kembali apa yang sudah kalian alami.</p>
+
+                <div class="reflection-box">
+                    <h4><i class="fas fa-feather-alt"></i> Pertanyaan Refleksi Kelompok</h4>
+                    <ul>
+                        <li>Apa hal terbaik yang kami pelajari dari proyek ini?</li>
+                        <li>Apa tantangan terbesar yang kami hadapi dan bagaimana kami mengatasinya?</li>
+                        <li>Apa yang akan kami lakukan secara berbeda jika kami mengulang proyek ini dari awal?</li>
+                        <li>Keterampilan baru apa yang kami dapatkan?</li>
+                        <li>Bagaimana perasaan kami setelah menyelesaikan proyek ini?</li>
+                    </ul>
+                    <p style="margin-top: 1rem;">Tuliskan hasil refleksi ini, bisa secara individu atau kelompok.</p>
+                </div>
+
+                <h2>H. Kesimpulan</h2>
+                
+                <p>Bab 6 adalah garis akhir sekaligus awal yang baru. Kalian tidak hanya merayakan keberhasilan menghasilkan sebuah produk atau laporan, tetapi yang lebih penting, kalian merayakan proses pembelajaran dan pertumbuhan diri.</p>
+                
+                <div class="note-box">
+                    <i class="fas fa-quote-left" style="color: var(--ipas-celebration); margin-right: 10px;"></i>
+                    Selamat, para ilmuwan muda! Karya kalian luar biasa.
+                </div>
+            </div>
+
+            <div class="bab-navigation">
+                <a href="s2-bab-5.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i> Kembali ke Bab 5
+                </a>
+                <a href="index-materi-ipas.html" class="nav-btn primary">
+                    <i class="fas fa-check-circle"></i> Selesai
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // ===== HAMBURGER MENU - SAMA PERSIS DENGAN REFERENSI =====
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

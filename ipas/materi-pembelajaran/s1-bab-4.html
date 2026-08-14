@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 4: Energi dan Perubahannya - Kelas X</title>
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* IPAS THEME COLORS - HANYA UNTUK KONTEN */
+        :root {
+            --ipas-primary: #2ecc71;
+            --ipas-secondary: #27ae60;
+            --ipas-light: #d5f4e6;
+            --ipas-dark: #229954;
+            --ipas-accent: #3498db;
+            --ipas-semester1: #3498db;
+            --ipas-gray: #f5f7fa;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f5f7fa; color: #2c3e50; line-height: 1.6; }
+
+        /* ===== LOGO ZOOM EFFECT ===== */
+        .logo img { transition: transform 0.3s ease; }
+        .logo:hover img { transform: scale(1.2); }
+        
+        /* MAIN CONTENT */
+        .bab-container { padding: 2rem; max-width: 1200px; margin: 0 auto; min-height: calc(100vh - 80px); display: flex; align-items: flex-start; justify-content: center; }
+        
+        .bab-card { background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%); border-radius: 30px; padding: 3rem; box-shadow: 0 20px 40px rgba(46, 204, 113, 0.15); border-left: 8px solid var(--ipas-semester1); position: relative; overflow: hidden; width: 100%; animation: fadeInUp 0.6s ease-out; }
+        .bab-card::before { content: ''; position: absolute; top: 0; right: 0; width: 250px; height: 250px; background: radial-gradient(circle, rgba(52, 152, 219, 0.1) 0%, transparent 70%); z-index: 0; }
+        .bab-card > * { position: relative; z-index: 1; }
+        
+        .bab-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 3px solid var(--ipas-light); }
+        .bab-icon { width: 80px; height: 80px; background: linear-gradient(135deg, var(--ipas-semester1), var(--ipas-primary)); border-radius: 25px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2.5rem; box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3); }
+        .bab-title-wrapper h1 { color: var(--ipas-dark); font-size: 2.5rem; margin-bottom: 0.5rem; line-height: 1.2; }
+        .bab-subtitle { color: var(--ipas-semester1); font-size: 1.1rem; font-weight: 600; display: flex; align-items: center; gap: 8px; }
+        .bab-subtitle i { font-size: 0.8rem; }
+        
+        .bab-info { display: flex; gap: 2rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+        .info-item { display: flex; align-items: center; gap: 10px; background: var(--ipas-light); padding: 0.8rem 1.5rem; border-radius: 50px; color: var(--ipas-dark); font-weight: 600; }
+        .info-item i { color: var(--ipas-semester1); font-size: 1.2rem; }
+        
+        .bab-description { background: white; border-radius: 20px; padding: 2rem; margin-bottom: 2rem; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 1px solid rgba(52, 152, 219, 0.1); }
+        .bab-description h2, .bab-description h3, .bab-description h4, .bab-description p, .bab-description ul, .bab-description ol, .bab-description li, .bab-description table, .bab-description .note-box, .bab-description blockquote, .bab-description .energy-note { text-align: justify; }
+        
+        .bab-description h2 { color: var(--ipas-dark); font-size: 2rem; margin: 1.5rem 0 1rem 0; border-bottom: 2px solid var(--ipas-light); padding-bottom: 0.5rem; }
+        .bab-description h3 { color: var(--ipas-dark); font-size: 1.3rem; margin: 1.5rem 0 1rem 0; display: flex; align-items: center; gap: 10px; }
+        .bab-description h4 { color: var(--ipas-dark); font-size: 1.2rem; margin: 1.2rem 0 0.8rem 0; font-weight: 600; }
+        .bab-description h3 i { color: var(--ipas-semester1); }
+        .bab-description p { color: #555; font-size: 1.1rem; line-height: 1.8; margin-bottom: 1rem; text-align: justify; }
+        .bab-description ul, .bab-description ol { margin-left: 2rem; margin-bottom: 1rem; color: #555; text-align: justify; }
+        .bab-description li { margin-bottom: 0.5rem; text-align: justify; }
+        .bab-description strong { color: var(--ipas-dark); }
+        .bab-description blockquote { margin: 1.5rem 0; padding: 1rem 2rem; background: var(--ipas-light); border-left: 5px solid var(--ipas-semester1); font-style: italic; font-size: 1.1rem; color: var(--ipas-dark); border-radius: 0 15px 15px 0; }
+        
+        .custom-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 1rem; box-shadow: 0 0 20px rgba(0, 0, 0, 0.05); border-radius: 10px; overflow: hidden; }
+        .custom-table th { background-color: var(--ipas-semester1); color: white; font-weight: 600; padding: 12px 15px; text-align: left; }
+        .custom-table td { padding: 12px 15px; border-bottom: 1px solid #dddddd; text-align: justify; }
+        .custom-table tr:nth-child(even) { background-color: #f8f8f8; }
+        .custom-table tr:hover { background-color: var(--ipas-light); }
+        
+        .note-box { background: var(--ipas-light); border-left: 5px solid var(--ipas-semester1); padding: 1.5rem; margin: 1.5rem 0; border-radius: 10px; font-style: italic; }
+        .energy-note { background: linear-gradient(135deg, #fff9e6, #fff); border-left: 5px solid #f39c12; padding: 1.5rem; margin: 1.5rem 0; border-radius: 10px; font-style: italic; box-shadow: 0 3px 10px rgba(0,0,0,0.05); }
+        
+        .image-container { margin: 2rem 0; text-align: center; width: 100%; }
+        .image-container img { max-width: 100%; max-height: 400px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); border: 3px solid white; display: block; margin: 0 auto; }
+        .image-caption { font-style: italic; color: #6c757d; margin-top: 0.5rem; font-size: 0.95rem; text-align: center; width: 100%; }
+        .image-placeholder { background: #e9ecef; border: 2px dashed var(--ipas-semester1); border-radius: 15px; padding: 2rem; margin: 2rem 0; text-align: center; color: #6c757d; font-weight: 600; transition: all 0.3s ease; width: 100%; }
+        .image-placeholder i { font-size: 3rem; color: var(--ipas-semester1); margin-bottom: 1rem; display: block; }
+        .image-placeholder:hover { background: #dee2e6; border-color: var(--ipas-primary); color: #495057; }
+        
+        .bab-navigation { display: flex; gap: 1rem; justify-content: space-between; margin-top: 2rem; }
+        .nav-btn { display: inline-flex; align-items: center; gap: 10px; padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; border: none; cursor: pointer; }
+        .nav-btn.primary { background: linear-gradient(135deg, var(--ipas-semester1), var(--ipas-primary)); color: white; box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3); }
+        .nav-btn.primary:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4); }
+        .nav-btn.secondary { background: white; color: var(--ipas-dark); border: 2px solid var(--ipas-light); }
+        .nav-btn.secondary:hover { background: var(--ipas-light); transform: translateX(-5px); }
+        
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
+        @media (max-width: 768px) {
+            .bab-container { padding: 1rem; }
+            .bab-card { padding: 2rem; }
+            .bab-header { flex-direction: column; text-align: center; }
+            .bab-title-wrapper h1 { font-size: 2rem; }
+            .bab-info { justify-content: center; }
+            .bab-navigation { flex-direction: column; }
+            .nav-btn { justify-content: center; }
+        }
+        
+        @media (max-width: 480px) {
+            .bab-card { padding: 1.5rem; }
+            .bab-title-wrapper h1 { font-size: 1.8rem; }
+            .bab-icon { width: 60px; height: 60px; font-size: 2rem; }
+            .info-item { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="../../assets/images/logo.png" alt="Logo Sekolah">
+                    <h1>TEMBOK BELAJAR - PROJEK IPAS</h1>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="../../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="../index-ipas.html" class="nav-link"><i class="fas fa-flask"></i> Beranda IPAS</a></li>
+                    <li><a href="../aktivitas-pembelajaran/index-aktifitas-ipas.html" class="nav-link"><i class="fas fa-tasks"></i> Daftar Aktivitas</a></li>
+                    <li><a href="index-materi-ipas.html" class="nav-link active"><i class="fas fa-book-open"></i> Daftar Materi</a></li>
+                    <li><a href="../penilaian/index-penilaian-ipas.html" class="nav-link"><i class="fas fa-chart-line"></i> Penilaian</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="bab-container">
+        <div class="bab-card">
+            <div class="bab-header">
+                <div class="bab-icon"><i class="fas fa-bolt"></i></div>
+                <div class="bab-title-wrapper">
+                    <h1>Bab 4: Energi dan Perubahannya</h1>
+                    <div class="bab-subtitle"><i class="fas fa-circle"></i> <span>Semester Ganjil - Kelas X</span></div>
+                </div>
+            </div>
+
+            <div class="bab-description">
+                <h2>A. Pengantar Konsep Energi</h2>
+                <p>Coba bayangkan kehidupan tanpa energi: lampu tak menyala, kendaraan tak bergerak, tumbuhan tak tumbuh, tubuh manusia tak bisa berdiri, bahkan Bumi berhenti berputar. Semuanya berhenti.</p>
+                
+                <div class="energy-note">
+                    <i class="fas fa-quote-left" style="color: #f39c12; margin-right: 10px;"></i>
+                    "Energi adalah denyut nadi alam semesta — kekuatan yang membuat segala sesuatu terjadi."
+                </div>
+                
+                <p>Dalam sains, energi didefinisikan sebagai kemampuan untuk melakukan usaha (work) atau menyebabkan perubahan. Ia tak selalu tampak, tapi kehadirannya bisa dirasakan dari akibat yang ditimbulkan. Setiap kali sesuatu bergerak, berpindah, atau berubah bentuk, energi sedang bekerja.</p>
+
+                <div class="image-container" id="gambar1-container">
+                    <img src="s1-bab-4/gambar1.jpg" alt="Rantai Transformasi Energi" 
+                         onerror="this.style.display='none'; document.getElementById('gambar1-placeholder').style.display='block';"
+                         onload="this.style.display='block'; document.getElementById('gambar1-placeholder').style.display='none';">
+                    <div class="image-placeholder" id="gambar1-placeholder" style="display:block;">
+                        <i class="fas fa-image"></i>
+                        <span>[Gambar 1: Rantai Transformasi Energi]</span>
+                        <p style="font-size:0.9rem; margin-top:1rem;">Letakkan file gambar dengan nama "gambar1" di folder "s1-bab-4"</p>
+                    </div>
+                    <div class="image-caption">Gambar 1: Rantai Transformasi Energi</div>
+                </div>
+
+                <h3>1. Energi sebagai Penggerak Kehidupan</h3>
+                <p>Energi bukan hanya urusan mesin dan laboratorium; ia adalah bagian dari kehidupan itu sendiri. Tumbuhan mendapatkan energi dari cahaya matahari melalui fotosintesis. Hewan dan manusia kemudian memakan tumbuhan atau hewan lain untuk memperoleh energi kimia yang tersimpan dalam makanan. Lalu tubuh kita mengubah energi kimia itu menjadi gerak, panas, dan pikiran.</p>
+
+                <h3>2. Energi dalam Kehidupan Sehari-hari</h3>
+                <p>Energi hadir dalam setiap aktivitas manusia, baik disadari maupun tidak.</p>
+                <ul>
+                    <li>Ketika seseorang menyalakan ponsel, energi listrik diubah menjadi energi cahaya dan suara.</li>
+                    <li>Saat memasak, energi kimia dalam gas diubah menjadi energi panas.</li>
+                    <li>Dan ketika seseorang bersepeda, energi kimia dari makanan diubah oleh otot menjadi energi gerak.</li>
+                </ul>
+
+                <h3>3. Sifat Dasar Energi</h3>
+                <ul>
+                    <li><strong>Energi tidak dapat diciptakan maupun dimusnahkan, hanya dapat diubah bentuknya</strong> (Hukum Kekekalan Energi).</li>
+                    <li><strong>Energi dapat berpindah dari satu benda ke benda lain.</strong></li>
+                </ul>
+
+                <h2>B. Besaran dan Pengukuran</h2>
+                <p>Ilmu pengetahuan tumbuh karena manusia belajar mengukur. Tanpa ukuran, energi hanya akan menjadi konsep kabur — terasa, tapi tak bisa dibuktikan.</p>
+
+                <div class="image-container" id="gambar2-container">
+                    <img src="s1-bab-4/gambar2.jpg" alt="Berbagai alat ukur energi" 
+                         onerror="this.style.display='none'; document.getElementById('gambar2-placeholder').style.display='block';"
+                         onload="this.style.display='block'; document.getElementById('gambar2-placeholder').style.display='none';">
+                    <div class="image-placeholder" id="gambar2-placeholder" style="display:block;">
+                        <i class="fas fa-image"></i>
+                        <span>[Gambar 2: Berbagai alat ukur energi]</span>
+                        <p style="font-size:0.9rem; margin-top:1rem;">Letakkan file gambar dengan nama "gambar2" di folder "s1-bab-4"</p>
+                    </div>
+                    <div class="image-caption">Gambar 2: Berbagai alat ukur energi</div>
+                </div>
+
+                <h3>1. Pengertian Besaran dan Satuan</h3>
+                <p>Besaran adalah segala sesuatu yang dapat diukur dan dinyatakan dengan angka. Untuk energi, satuan yang digunakan dalam Sistem Internasional (SI) adalah Joule (J).</p>
+
+                <table class="custom-table">
+                    <thead>
+                        <tr>
+                            <th>Satuan</th>
+                            <th>Penggunaan</th>
+                            <th>Konversi ke Joule</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Kalori (cal)</td>
+                            <td>Energi panas dalam makanan</td>
+                            <td>1 kalori = 4,184 Joule</td>
+                        </tr>
+                        <tr>
+                            <td>Kilowatt-jam (kWh)</td>
+                            <td>Energi listrik (tagihan listrik)</td>
+                            <td>1 kWh = 3.600.000 Joule</td>
+                        </tr>
+                        <tr>
+                            <td>Elektronvolt (eV)</td>
+                            <td>Energi partikel subatomik</td>
+                            <td>1 eV = 1,602 × 10⁻¹⁹ Joule</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h2>C. Bentuk-Bentuk Energi</h2>
+                <p>Energi hadir dalam berbagai rupa, mengalir dari satu bentuk ke bentuk lain tanpa pernah benar-benar hilang.</p>
+
+                <div class="image-container" id="gambar3-container">
+                    <img src="s1-bab-4/gambar3.png" alt="Berbagai bentuk energi" 
+                         onerror="this.style.display='none'; document.getElementById('gambar3-placeholder').style.display='block';"
+                         onload="this.style.display='block'; document.getElementById('gambar3-placeholder').style.display='none';">
+                    <div class="image-placeholder" id="gambar3-placeholder" style="display:block;">
+                        <i class="fas fa-image"></i>
+                        <span>[Gambar 3: Berbagai bentuk energi]</span>
+                        <p style="font-size:0.9rem; margin-top:1rem;">Letakkan file gambar dengan nama "gambar3" di folder "s1-bab-4"</p>
+                    </div>
+                    <div class="image-caption">Gambar 3: Berbagai bentuk energi</div>
+                </div>
+
+                <h3>a. Energi Mekanik</h3>
+                <p>Energi mekanik adalah gabungan dari energi kinetik (energi gerak) dan energi potensial (energi yang tersimpan karena posisi).</p>
+                <ul>
+                    <li><strong>Energi kinetik (Eₖ = ½mv²)</strong> dimiliki benda yang bergerak.</li>
+                    <li><strong>Energi potensial (Eₚ = mgh)</strong> dimiliki benda karena posisinya terhadap permukaan bumi.</li>
+                </ul>
+
+                <h3>b. Energi Panas (Kalor)</h3>
+                <p>Energi panas adalah bentuk energi yang berpindah karena perbedaan suhu. Setiap partikel dalam zat selalu bergerak — semakin cepat geraknya, semakin tinggi suhunya.</p>
+
+                <h3>c. Energi Listrik</h3>
+                <p>Energi listrik berasal dari pergerakan muatan listrik melalui suatu penghantar. Energi listrik sangat mudah diubah ke bentuk lain: menjadi cahaya, panas, atau gerak.</p>
+
+                <h3>d. Energi Kimia</h3>
+                <p>Energi kimia tersimpan dalam ikatan antar atom dan molekul suatu zat. Contohnya: pembakaran bensin, energi dari makanan, dan baterai.</p>
+
+                <h3>e. Energi Cahaya</h3>
+                <p>Energi cahaya (energi radiasi) berasal dari gelombang elektromagnetik, terutama yang dipancarkan oleh matahari.</p>
+
+                <h3>f. Energi Bunyi</h3>
+                <p>Energi bunyi dihasilkan oleh getaran suatu benda yang merambat melalui medium (udara, air, atau padatan).</p>
+
+                <h3>g. Energi Nuklir</h3>
+                <p>Energi nuklir berasal dari reaksi di dalam inti atom — baik melalui fisi (pemecahan inti berat) maupun fusi (penggabungan inti ringan).</p>
+
+                <h2>D. Perubahan Energi</h2>
+                <p>Energi tidak pernah diam. Ia seperti arus yang mengalir tanpa henti, berpindah dari panas ke gerak, dari gerak ke listrik, dari listrik ke cahaya, dan seterusnya.</p>
+
+                <div class="image-container" id="gambar4-container">
+                    <img src="s1-bab-4/gambar4.jpg" alt="Ilustrasi perubahan energi" 
+                         onerror="this.style.display='none'; document.getElementById('gambar4-placeholder').style.display='block';"
+                         onload="this.style.display='block'; document.getElementById('gambar4-placeholder').style.display='none';">
+                    <div class="image-placeholder" id="gambar4-placeholder" style="display:block;">
+                        <i class="fas fa-image"></i>
+                        <span>[Gambar 4: Ilustrasi perubahan energi]</span>
+                        <p style="font-size:0.9rem; margin-top:1rem;">Letakkan file gambar dengan nama "gambar4" di folder "s1-bab-4"</p>
+                    </div>
+                    <div class="image-caption">Gambar 4: Ilustrasi perubahan energi</div>
+                </div>
+
+                <table class="custom-table">
+                    <thead>
+                        <tr>
+                            <th>Perubahan Energi</th>
+                            <th>Contoh Perangkat</th>
+                            <th>Penjelasan Singkat</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Listrik → Panas</td>
+                            <td>Setrika, kompor listrik, oven</td>
+                            <td>Elemen pemanas mengubah listrik menjadi panas</td>
+                        </tr>
+                        <tr>
+                            <td>Listrik → Cahaya</td>
+                            <td>Lampu pijar, layar ponsel</td>
+                            <td>Filamen atau LED mengubah listrik menjadi cahaya</td>
+                        </tr>
+                        <tr>
+                            <td>Kimia → Gerak</td>
+                            <td>Mesin kendaraan</td>
+                            <td>Pembakaran bahan bakar menghasilkan gerak piston</td>
+                        </tr>
+                        <tr>
+                            <td>Cahaya → Listrik</td>
+                            <td>Panel surya</td>
+                            <td>Sel fotovoltaik mengubah cahaya matahari menjadi listrik</td>
+                        </tr>
+                        <tr>
+                            <td>Gerak → Listrik</td>
+                            <td>Turbin air, kincir angin</td>
+                            <td>Gerakan air/angin memutar turbin yang menghasilkan listrik</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h2>E. Energi Terbarukan dan Tak Terbarukan</h2>
+                <p>Energi adalah urat nadi peradaban. Namun, tidak semua sumber energi diciptakan setara. Ada yang bisa diperbarui terus-menerus oleh alam, ada pula yang terbatas dan akan habis jika dieksploitasi tanpa henti.</p>
+
+                <div class="image-container" id="gambar5-container">
+                    <img src="s1-bab-4/gambar5.jpg" alt="Sumber energi terbarukan" 
+                         onerror="this.style.display='none'; document.getElementById('gambar5-placeholder').style.display='block';"
+                         onload="this.style.display='block'; document.getElementById('gambar5-placeholder').style.display='none';">
+                    <div class="image-placeholder" id="gambar5-placeholder" style="display:block;">
+                        <i class="fas fa-image"></i>
+                        <span>[Gambar 5: Sumber energi terbarukan]</span>
+                        <p style="font-size:0.9rem; margin-top:1rem;">Letakkan file gambar dengan nama "gambar5" di folder "s1-bab-4"</p>
+                    </div>
+                    <div class="image-caption">Gambar 5: Sumber energi terbarukan</div>
+                </div>
+
+                <h3>a. Energi Tak Terbarukan</h3>
+                <p>Energi tak terbarukan adalah energi yang berasal dari sumber daya alam yang memerlukan waktu jutaan tahun untuk terbentuk. Contoh: minyak bumi, batu bara, dan gas alam.</p>
+
+                <h3>b. Energi Terbarukan</h3>
+                <p>Energi terbarukan adalah energi yang berasal dari sumber daya alam yang tidak akan habis atau dapat diperbarui secara alami. Contoh: energi matahari, angin, air, biomassa, dan panas bumi.</p>
+
+                <table class="custom-table">
+                    <thead>
+                        <tr>
+                            <th>Jenis Energi Terbarukan</th>
+                            <th>Prinsip Kerja</th>
+                            <th>Keunggulan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Energi Matahari</td>
+                            <td>Panel surya mengubah radiasi matahari menjadi listrik</td>
+                            <td>Bersih, melimpah, cocok untuk daerah tropis</td>
+                        </tr>
+                        <tr>
+                            <td>Energi Angin</td>
+                            <td>Turbin angin mengubah gerakan udara menjadi listrik</td>
+                            <td>Bersih, tidak menghasilkan emisi</td>
+                        </tr>
+                        <tr>
+                            <td>Energi Air</td>
+                            <td>Turbin air mengubah aliran air menjadi listrik</td>
+                            <td>Stabil, efisien, dapat dikendalikan</td>
+                        </tr>
+                        <tr>
+                            <td>Energi Biomassa</td>
+                            <td>Bahan organik diubah menjadi panas/bahan bakar</td>
+                            <td>Manfaatkan limbah, mengurangi sampah</td>
+                        </tr>
+                        <tr>
+                            <td>Energi Panas Bumi</td>
+                            <td>Panas bumi menghasilkan uap untuk turbin</td>
+                            <td>Stabil, berkelanjutan, rendah emisi</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h2>F. Energi dan Kehidupan Modern</h2>
+                <p>Energi adalah bahasa universal dari kemajuan. Segala hal yang kita sebut sebagai "modern" berakar pada kemampuan manusia menguasai dan mengubah energi.</p>
+
+                <div class="image-container" id="gambar6-container">
+                    <img src="s1-bab-4/gambar6.png" alt="Energi dalam kehidupan modern" 
+                         onerror="this.style.display='none'; document.getElementById('gambar6-placeholder').style.display='block';"
+                         onload="this.style.display='block'; document.getElementById('gambar6-placeholder').style.display='none';">
+                    <div class="image-placeholder" id="gambar6-placeholder" style="display:block;">
+                        <i class="fas fa-image"></i>
+                        <span>[Gambar 6: Energi dalam kehidupan modern]</span>
+                        <p style="font-size:0.9rem; margin-top:1rem;">Letakkan file gambar dengan nama "gambar6" di folder "s1-bab-4"</p>
+                    </div>
+                    <div class="image-caption">Gambar 6: Energi dalam kehidupan modern</div>
+                </div>
+
+                <h3>a. Peran Energi dalam Perkembangan Teknologi dan Industri</h3>
+                <p>Revolusi industri yang dimulai pada abad ke-18 mengubah wajah dunia dengan satu hal: penemuan mesin uap. Sejak itu, energi menjadi pusat dari setiap loncatan teknologi.</p>
+
+                <h3>b. Energi dan Ketergantungan Sosial-Ekonomi</h3>
+                <p>Di dunia modern, energi bukan hanya kebutuhan fisik, tetapi juga sumber kekuasaan ekonomi dan politik. Negara-negara dengan cadangan minyak dan gas melimpah sering memiliki pengaruh besar dalam perekonomian global.</p>
+
+                <div class="energy-note">
+                    <i class="fas fa-quote-left" style="color: #f39c12; margin-right: 10px;"></i>
+                    "Memahami energi bukan hanya tentang menguasai sains, tetapi tentang menjadi manusia yang bertanggung jawab terhadap bumi dan masa depan peradaban."
+                </div>
+
+                <div class="note-box">
+                    <i class="fas fa-lightbulb" style="color: var(--ipas-semester1); margin-right: 10px;"></i>
+                    <strong>Catatan:</strong> Gambar-gambar di atas harus disimpan di folder <code>s1-bab-4</code> dengan nama gambar1, gambar2, gambar3, gambar4, gambar5, dan gambar6.
+                </div>
+            </div>
+
+            <div class="bab-navigation">
+                <a href="s1-bab-3.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i> Kembali ke Bab 3
+                </a>
+                <a href="s1-bab-5.html" class="nav-btn primary">
+                    Lanjut ke Bab 5 <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // ===== HAMBURGER MENU - SAMA PERSIS DENGAN REFERENSI =====
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

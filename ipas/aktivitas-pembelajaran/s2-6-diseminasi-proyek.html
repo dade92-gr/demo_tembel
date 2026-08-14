@@ -1,0 +1,1862 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aktivitas 6: Diseminasi Proyek (Pembuatan Video) - IPAS SMK</title>
+    <link rel="stylesheet" href="../../style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        /* ================================================================
+           ROOT & RESET
+           ================================================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2ecc71;
+            --primary-dark: #27ae60;
+            --primary-light: #d5f4e6;
+            --accent: #3498db;
+            --gray-bg: #f5f7fa;
+            --text: #2c3e50;
+            --text-light: #666;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            --radius: 16px;
+            --border: #e0e0e0;
+            --orange: #f39c12;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--gray-bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .logo img {
+            transition: transform 0.3s ease;
+        }
+        .logo:hover img {
+            transform: scale(1.2);
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: var(--radius);
+            padding: 2rem 2.5rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 1.5rem;
+            border-left: 5px solid var(--primary);
+        }
+
+        .header-title {
+            text-align: center;
+            font-size: 1.8rem;
+            color: var(--primary-dark);
+            margin-bottom: 0.3rem;
+        }
+
+        .header-sub {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* ===== IDENTITAS ===== */
+        .identitas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            background: var(--primary-light);
+            padding: 1.2rem 1.5rem;
+            border-radius: 12px;
+        }
+
+        .identitas-item label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--primary-dark);
+            margin-bottom: 0.2rem;
+        }
+
+        .identitas-item select,
+        .identitas-item textarea {
+            width: 100%;
+            padding: 0.6rem 0.8rem;
+            border: 2px solid #fff;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            background: #fff;
+            transition: 0.2s;
+            font-family: inherit;
+            resize: vertical;
+            min-height: 42px;
+            overflow: hidden;
+        }
+
+        .identitas-item select:focus,
+        .identitas-item textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        /* ===== SECTION ===== */
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin: 1.5rem 0 0.8rem 0;
+            padding-bottom: 0.4rem;
+            border-bottom: 3px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title i {
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .section-desc {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            padding: 0.8rem 1.2rem;
+            background: #f0faf0;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .section-desc strong {
+            color: var(--text);
+        }
+
+        /* ===== TABEL ===== */
+        .table-wrap {
+            overflow-x: auto;
+            margin: 0.8rem 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 0 1px #eee;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            padding: 10px 12px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        td {
+            padding: 8px 10px;
+            border-bottom: 1px solid #f0f0f0;
+            vertical-align: top;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* ===== DINAMIC TEXTAREA ===== */
+        .dynamic-textarea {
+            width: 100%;
+            border: 2px solid #e8e8e8;
+            border-radius: 8px;
+            padding: 8px 10px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            background: #fff;
+            transition: 0.2s;
+            resize: vertical;
+            min-height: 42px;
+            line-height: 1.6;
+            overflow: hidden;
+        }
+
+        .dynamic-textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.15);
+        }
+
+        .dynamic-textarea-sm {
+            min-height: 36px;
+            padding: 6px 10px;
+            font-size: 0.9rem;
+        }
+
+        .dynamic-textarea-lg {
+            min-height: 70px;
+        }
+
+        /* ===== SELECT UNIFORM ===== */
+        .select-uniform {
+            width: 100%;
+            padding: 0.6rem 0.8rem;
+            border: 2px solid #e8e8e8;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            background: #fff;
+            transition: 0.2s;
+            font-family: inherit;
+            color: var(--text);
+            appearance: auto;
+            cursor: pointer;
+        }
+
+        .select-uniform:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.15);
+        }
+
+        .select-uniform:disabled {
+            background: #f5f5f5;
+            color: #999;
+            cursor: not-allowed;
+        }
+
+        /* ===== RADIO & CHECKBOX ===== */
+        .options-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 20px;
+            padding: 6px 0;
+        }
+
+        .options-group label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.92rem;
+            cursor: pointer;
+        }
+
+        .options-group input[type="radio"],
+        .options-group input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary);
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 10px 0;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 10px 0;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        /* ===== TOMBOL ===== */
+        .btn-submit {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: #fff;
+            border: none;
+            padding: 0.9rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            display: block;
+            margin: 2rem auto 1rem;
+            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(46, 204, 113, 0.4);
+        }
+        .btn-submit:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .btn-export {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: #fff;
+            border: none;
+            padding: 0.7rem 1.8rem;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.25);
+        }
+
+        .btn-export:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.35);
+        }
+        .btn-export:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .toolbar {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        /* ===== STATUS ===== */
+        .status-bar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 16px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            margin-bottom: 1.2rem;
+            font-size: 0.9rem;
+        }
+
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #28a745;
+            animation: pulse 2s infinite;
+        }
+        .status-dot.offline {
+            background: #dc3545;
+            animation: none;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.5);
+            }
+            70% {
+                box-shadow: 0 0 0 8px rgba(40, 167, 69, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(40, 167, 69, 0);
+            }
+        }
+
+        .msg {
+            padding: 0.8rem 1.2rem;
+            border-radius: 10px;
+            margin: 0.8rem 0;
+            display: none;
+        }
+        .msg-success {
+            background: #d4edda;
+            color: #155724;
+            border-left: 5px solid #28a745;
+        }
+        .msg-error {
+            background: #f8d7da;
+            color: #721c24;
+            border-left: 5px solid #dc3545;
+        }
+        .msg-loading {
+            background: #fff3cd;
+            color: #856404;
+            border-left: 5px solid #ffc107;
+        }
+
+        .msg i {
+            margin-right: 8px;
+        }
+
+        /* ===== MODAL ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.25s ease;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .modal-box {
+            background: #fff;
+            margin: 8% auto;
+            padding: 2rem;
+            border-radius: 20px;
+            max-width: 440px;
+            text-align: center;
+            animation: slideDown 0.3s ease;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-40px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-icon {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .modal-icon.success {
+            color: var(--primary);
+        }
+        .modal-icon.warning {
+            color: #f39c12;
+        }
+
+        .modal-box h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.4rem;
+        }
+        .modal-box .sub {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 1.2rem;
+            line-height: 1.6;
+        }
+        .modal-box .sub strong {
+            color: var(--text);
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 0.8rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .modal-btn {
+            padding: 0.7rem 1.6rem;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: 0.2s;
+            min-width: 110px;
+            flex: 1;
+        }
+        .modal-btn:hover {
+            transform: translateY(-2px);
+        }
+        .modal-btn.primary {
+            background: var(--primary);
+            color: #fff;
+        }
+        .modal-btn.primary:hover {
+            background: var(--primary-dark);
+        }
+        .modal-btn.danger {
+            background: #e74c3c;
+            color: #fff;
+        }
+        .modal-btn.danger:hover {
+            background: #c0392b;
+        }
+        .modal-btn.secondary {
+            background: #6c757d;
+            color: #fff;
+        }
+        .modal-btn.secondary:hover {
+            background: #5a6268;
+        }
+
+        /* ===== INFO BOX ===== */
+        .info-hijau {
+            background: #e8f5e9;
+            border-left: 5px solid var(--primary);
+            padding: 1rem;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .info-biru {
+            background: #e3f2fd;
+            border-left: 5px solid var(--accent);
+            padding: 1rem;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .kotak-checklist {
+            border: 1px solid var(--primary-light);
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            background: #f9f9f9;
+            margin: 15px 0;
+        }
+
+        .materi-box {
+            background: #e3f2fd;
+            border-radius: 12px;
+            padding: 15px;
+            margin: 15px 0;
+            border-left: 4px solid var(--accent);
+        }
+
+        .btn-materi {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+        .btn-materi:hover {
+            background: #2980b9;
+        }
+
+        .soal-cek {
+            background: #fff8e1;
+            padding: 15px;
+            border-radius: 12px;
+            margin-top: 10px;
+        }
+
+        .soal-cek textarea {
+            margin-bottom: 10px;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 0.8rem;
+                margin: 1rem auto;
+            }
+            .card {
+                padding: 1.2rem 1.2rem;
+            }
+            .identitas-grid {
+                grid-template-columns: 1fr;
+            }
+            .header-title {
+                font-size: 1.4rem;
+            }
+            .section-title {
+                font-size: 1.1rem;
+            }
+            .toolbar {
+                justify-content: center;
+            }
+            .btn-submit {
+                width: 100%;
+                justify-content: center;
+                padding: 0.8rem;
+            }
+            .modal-box {
+                margin: 15% auto;
+                padding: 1.5rem;
+            }
+            .modal-actions {
+                flex-direction: column;
+            }
+            .modal-btn {
+                flex: none;
+                width: 100%;
+            }
+            .checkbox-group,
+            .radio-group {
+                flex-direction: column;
+                gap: 8px;
+            }
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                padding: 0.8rem 0.8rem;
+            }
+            table {
+                font-size: 0.85rem;
+            }
+            th,
+            td {
+                padding: 6px 8px;
+            }
+            .dynamic-textarea {
+                font-size: 0.85rem;
+                min-height: 36px;
+                padding: 6px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER NAV ===== -->
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="../../assets/images/logo.png" alt="Logo" />
+                    <h1>TEMBOK BELAJAR - PROJEK IPAS SMK</h1>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="../../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="../index-ipas.html" class="nav-link"><i class="fas fa-flask"></i> Beranda IPAS</a></li>
+                    <li><a href="index-aktifitas-ipas.html" class="nav-link active"><i class="fas fa-tasks"></i> Daftar Aktivitas</a></li>
+                    <li><a href="../materi-pembelajaran/index-materi-ipas.html" class="nav-link"><i class="fas fa-book-open"></i> Daftar Materi</a></li>
+                    <li><a href="../penilaian/index-penilaian-ipas.html" class="nav-link"><i class="fas fa-chart-line"></i> Penilaian</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ===== MAIN ===== -->
+    <div class="container">
+
+        <!-- HEADER -->
+        <div class="card" style="text-align:center; border-left-color:var(--primary);">
+            <h1 class="header-title">📹 Diseminasi Proyek (Pembuatan Video)</h1>
+            <p class="header-sub">
+                <i class="fas fa-calendar"></i> Semester Genap &nbsp;·&nbsp;
+                <i class="fas fa-clock"></i> 12 JP (2 minggu)
+            </p>
+            <p style="color:var(--text-light); font-size:0.95rem; max-width:600px; margin:0 auto;">
+                Buat video diseminasi untuk menyebarluaskan hasil proyek kepada publik!
+            </p>
+        </div>
+
+        <!-- STATUS -->
+        <div class="status-bar">
+            <div class="status-dot" id="statusDot"></div>
+            <span id="statusText">Memeriksa koneksi...</span>
+        </div>
+
+        <!-- LOADING / ERROR -->
+        <div id="loadingMsg" class="msg msg-loading" style="display:none;">
+            <i class="fas fa-spinner fa-spin"></i> Memuat data...
+        </div>
+        <div id="errorMsg" class="msg msg-error" style="display:none;">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span id="errorText">Gagal terhubung ke server. Refresh halaman.</span>
+            <br />
+            <button onclick="location.reload()" style="margin-top:8px; padding:6px 20px; background:#dc3545; color:#fff; border:none; border-radius:6px; cursor:pointer;">
+                <i class="fas fa-sync-alt"></i> Refresh
+            </button>
+        </div>
+
+        <!-- ===== FORM ===== -->
+        <div id="formContainer">
+
+            <!-- TOOLBAR -->
+            <div class="toolbar">
+                <button class="btn-export" id="exportBtn" onclick="exportTemplate()" disabled>
+                    <i class="fas fa-file-word"></i> Export Template
+                </button>
+            </div>
+
+            <!-- ============================================================ -->
+            <!-- A. IDENTITAS -->
+            <!-- ============================================================ -->
+            <div class="card">
+                <h2 class="section-title"><i class="fas fa-id-card"></i> Identitas</h2>
+                <div class="identitas-grid">
+                    <div class="identitas-item">
+                        <label>Kelas</label>
+                        <select id="kelas" onchange="onKelasChange(); saveDraft();" disabled>
+                            <option value="">-- Pilih --</option>
+                        </select>
+                    </div>
+                    <div class="identitas-item">
+                        <label>Nama (Pengisi)</label>
+                        <select id="nama" onchange="saveDraft();" disabled>
+                            <option value="">-- Pilih --</option>
+                        </select>
+                    </div>
+                    <div class="identitas-item">
+                        <label>Kelompok</label>
+                        <textarea class="dynamic-textarea dynamic-textarea-sm" id="kelompok" rows="1" placeholder="Contoh: Kelompok 1" oninput="saveDraft(); autoResize(this);" disabled></textarea>
+                    </div>
+                    <div class="identitas-item">
+                        <label>Tugas/Peran</label>
+                        <textarea class="dynamic-textarea dynamic-textarea-sm" id="tugas" rows="1" placeholder="Contoh: Ketua" oninput="saveDraft(); autoResize(this);" disabled></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============================================================ -->
+            <!-- B. CEK PEMAHAMAN MATERI -->
+            <!-- ============================================================ -->
+            <div class="card">
+                <h2 class="section-title"><i class="fas fa-book-open"></i> Cek Pemahaman Materi</h2>
+                <div class="section-desc">
+                    <i class="fas fa-info-circle"></i>
+                    Sebelum membuat video, baca dulu materi
+                    <a href="../materi-pembelajaran/s2-bab-6.html" target="_blank" style="color:var(--primary-dark); font-weight:600;">
+                        "Diseminasi Proyek"
+                    </a>
+                    , lalu jawab pertanyaan di bawah ini.
+                </div>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th style="width:50px;">No</th><th style="width:38%;">Pertanyaan</th><th>Jawaban</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Apa yang dimaksud dengan diseminasi proyek?</td>
+                                <td><textarea class="dynamic-textarea" id="cek1" rows="2" oninput="saveDraft(); autoResize(this);"></textarea></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Sebutkan 3 platform yang bisa digunakan untuk mendiseminasikan proyek!</td>
+                                <td>
+                                    <textarea class="dynamic-textarea dynamic-textarea-sm" id="cek2a" rows="1" placeholder="Platform 1..." oninput="saveDraft(); autoResize(this);" style="margin-bottom:4px;"></textarea>
+                                    <textarea class="dynamic-textarea dynamic-textarea-sm" id="cek2b" rows="1" placeholder="Platform 2..." oninput="saveDraft(); autoResize(this);" style="margin-bottom:4px;"></textarea>
+                                    <textarea class="dynamic-textarea dynamic-textarea-sm" id="cek2c" rows="1" placeholder="Platform 3..." oninput="saveDraft(); autoResize(this);"></textarea>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ============================================================ -->
+            <!-- C. INFORMASI PROYEK -->
+            <!-- ============================================================ -->
+            <div class="card">
+                <h2 class="section-title"><i class="fas fa-info-circle"></i> Informasi Proyek</h2>
+
+                <div class="info-biru">
+                    <strong>📝 PETUNJUK:</strong> Tuliskan informasi tentang proyek yang akan dibuatkan video diseminasi.
+                </div>
+
+                <div class="kotak-checklist">
+                    <div style="margin-bottom:0.8rem;">
+                        <label style="font-weight:600; display:block; margin-bottom:4px;">C1. Tema Proyek</label>
+                        <textarea class="dynamic-textarea dynamic-textarea-sm" id="tema_proyek" rows="1" placeholder="Tulis tema proyek..." oninput="saveDraft(); autoResize(this);"></textarea>
+                    </div>
+                    <div style="margin-bottom:0.8rem;">
+                        <label style="font-weight:600; display:block; margin-bottom:4px;">C2. Masalah yang Diselesaikan</label>
+                        <textarea class="dynamic-textarea" id="masalah_proyek" rows="2" placeholder="Tulis masalah yang diselesaikan..." oninput="saveDraft(); autoResize(this);"></textarea>
+                    </div>
+                    <div style="margin-bottom:0.8rem;">
+                        <label style="font-weight:600; display:block; margin-bottom:4px;">C3. Solusi/Produk yang Dibuat</label>
+                        <textarea class="dynamic-textarea" id="solusi_proyek" rows="2" placeholder="Tulis solusi/produk yang dibuat..." oninput="saveDraft(); autoResize(this);"></textarea>
+                    </div>
+                    <div>
+                        <label style="font-weight:600; display:block; margin-bottom:4px;">C4. Hasil Proyek</label>
+                        <textarea class="dynamic-textarea" id="hasil_proyek" rows="2" placeholder="Tulis hasil yang dicapai..." oninput="saveDraft(); autoResize(this);"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============================================================ -->
+            <!-- D. PESAN UTAMA VIDEO -->
+            <!-- ============================================================ -->
+            <div class="card">
+                <h2 class="section-title"><i class="fas fa-comment-dots"></i> Pesan Utama Video</h2>
+
+                <div class="info-biru">
+                    <strong>📝 PETUNJUK:</strong> Tentukan pesan-pesan utama yang ingin disampaikan dalam video.
+                </div>
+
+                <div style="margin-bottom:0.8rem;">
+                    <label style="font-weight:600; display:block; margin-bottom:4px;">D1. Pesan tentang Masalah</label>
+                    <textarea class="dynamic-textarea" id="pesan_masalah" rows="2" placeholder="Tulis pesan tentang masalah yang diangkat..." oninput="saveDraft(); autoResize(this);"></textarea>
+                </div>
+                <div style="margin-bottom:0.8rem;">
+                    <label style="font-weight:600; display:block; margin-bottom:4px;">D2. Pesan tentang Solusi / Produk</label>
+                    <textarea class="dynamic-textarea" id="pesan_solusi" rows="2" placeholder="Tulis pesan tentang solusi/produk..." oninput="saveDraft(); autoResize(this);"></textarea>
+                </div>
+                <div>
+                    <label style="font-weight:600; display:block; margin-bottom:4px;">D3. Pesan tentang Hasil Proyek</label>
+                    <textarea class="dynamic-textarea" id="pesan_hasil" rows="2" placeholder="Tulis pesan tentang hasil yang dicapai..." oninput="saveDraft(); autoResize(this);"></textarea>
+                </div>
+            </div>
+
+            <!-- ============================================================ -->
+            <!-- E. RENCANA VIDEO -->
+            <!-- ============================================================ -->
+            <div class="card">
+                <h2 class="section-title"><i class="fas fa-video"></i> Rencana Video</h2>
+
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1rem;">
+                    <div>
+                        <label style="font-weight:600; display:block; margin-bottom:4px;">E1. Judul Video</label>
+                        <textarea class="dynamic-textarea dynamic-textarea-sm" id="judul_video" rows="1" placeholder="Masukkan judul video" oninput="saveDraft(); autoResize(this);"></textarea>
+                    </div>
+                    <div>
+                        <label style="font-weight:600; display:block; margin-bottom:4px;">E2. Durasi Rencana</label>
+                        <textarea class="dynamic-textarea dynamic-textarea-sm" id="durasi_rencana" rows="1" placeholder="Contoh: 3 menit" oninput="saveDraft(); autoResize(this);"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label style="font-weight:600; display:block; margin-bottom:4px;">E3. Platform Unggah</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" id="platform_youtube" onchange="saveDraft();" /> YouTube</label>
+                        <label><input type="checkbox" id="platform_instagram" onchange="saveDraft();" /> Instagram</label>
+                        <label><input type="checkbox" id="platform_tiktok" onchange="saveDraft();" /> TikTok</label>
+                        <label>
+                            <input type="checkbox" id="platform_lain" onchange="togglePlatformLain(); saveDraft();" /> Lainnya:
+                            <textarea class="dynamic-textarea dynamic-textarea-sm" id="platform_lain_isi" rows="1" placeholder="sebutkan" style="width:150px; display:inline-block;" oninput="saveDraft(); autoResize(this);"></textarea>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label style="font-weight:600; display:block; margin-bottom:4px;">E4. Target Penonton</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="target_penonton" value="Guru/Teman" onchange="saveDraft();" /> Guru/Teman</label>
+                        <label><input type="radio" name="target_penonton" value="Masyarakat umum" onchange="saveDraft();" /> Masyarakat umum</label>
+                        <label><input type="radio" name="target_penonton" value="Kedua-duanya" onchange="saveDraft();" /> Kedua-duanya</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============================================================ -->
+            <!-- F. ALUR VIDEO (STORYLINE) - TABEL -->
+            <!-- ============================================================ -->
+            <div class="card">
+                <h2 class="section-title"><i class="fas fa-film"></i> Alur Video (Storyline)</h2>
+
+                <div class="info-biru">
+                    <strong>📝 PETUNJUK:</strong> Isi durasi dan deskripsi adegan untuk setiap bagian video.
+                </div>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width:15%;">Bagian</th>
+                                <th style="width:25%;">Durasi (detik)</th>
+                                <th style="width:60%;">Deskripsi Adegan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>1. PEMBUKAAN</strong></td>
+                                <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="durasi_pembukaan" rows="1" placeholder="Durasi..." oninput="saveDraft(); autoResize(this);"></textarea></td>
+                                <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="adegan_pembukaan" rows="1" placeholder="Deskripsi adegan..." oninput="saveDraft(); autoResize(this);"></textarea></td>
+                            </tr>
+                            <tr>
+                                <td><strong>2. MASALAH</strong></td>
+                                <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="durasi_masalah" rows="1" placeholder="Durasi..." oninput="saveDraft(); autoResize(this);"></textarea></td>
+                                <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="adegan_masalah" rows="1" placeholder="Deskripsi adegan..." oninput="saveDraft(); autoResize(this);"></textarea></td>
+                            </tr>
+                            <tr>
+                                <td><strong>3. SOLUSI & PRODUK</strong></td>
+                                <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="durasi_solusi" rows="1" placeholder="Durasi..." oninput="saveDraft(); autoResize(this);"></textarea></td>
+                                <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="adegan_solusi" rows="1" placeholder="Deskripsi adegan..." oninput="saveDraft(); autoResize(this);"></textarea></td>
+                            </tr>
+                            <tr>
+                                <td><strong>4. HASIL</strong></td>
+                                <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="durasi_hasil" rows="1" placeholder="Durasi..." oninput="saveDraft(); autoResize(this);"></textarea></td>
+                                <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="adegan_hasil" rows="1" placeholder="Deskripsi adegan..." oninput="saveDraft(); autoResize(this);"></textarea></td>
+                            </tr>
+                            <tr>
+                                <td><strong>5. PENUTUP</strong></td>
+                                <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="durasi_penutup" rows="1" placeholder="Durasi..." oninput="saveDraft(); autoResize(this);"></textarea></td>
+                                <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="adegan_penutup" rows="1" placeholder="Deskripsi adegan..." oninput="saveDraft(); autoResize(this);"></textarea></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ============================================================ -->
+            <!-- G. KEBUTUHAN PRODUKSI -->
+            <!-- ============================================================ -->
+            <div class="card">
+                <h2 class="section-title"><i class="fas fa-clipboard-list"></i> Kebutuhan Produksi</h2>
+
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+                    <div>
+                        <label style="font-weight:600; display:block; margin-bottom:4px;">G1. Alat rekam (HP/kamera)</label>
+                        <textarea class="dynamic-textarea dynamic-textarea-sm" id="kebutuhan_alat_rekam" rows="1" placeholder="Sebutkan..." oninput="saveDraft(); autoResize(this);"></textarea>
+                    </div>
+                    <div>
+                        <label style="font-weight:600; display:block; margin-bottom:4px;">G2. Alat bantu (tripod/dll)</label>
+                        <textarea class="dynamic-textarea dynamic-textarea-sm" id="kebutuhan_alat_bantu" rows="1" placeholder="Sebutkan..." oninput="saveDraft(); autoResize(this);"></textarea>
+                    </div>
+                    <div>
+                        <label style="font-weight:600; display:block; margin-bottom:4px;">G3. Lokasi syuting</label>
+                        <textarea class="dynamic-textarea dynamic-textarea-sm" id="kebutuhan_lokasi" rows="1" placeholder="Sebutkan..." oninput="saveDraft(); autoResize(this);"></textarea>
+                    </div>
+                    <div>
+                        <label style="font-weight:600; display:block; margin-bottom:4px;">G4. Properti</label>
+                        <textarea class="dynamic-textarea dynamic-textarea-sm" id="kebutuhan_properti" rows="1" placeholder="Sebutkan..." oninput="saveDraft(); autoResize(this);"></textarea>
+                    </div>
+                    <div>
+                        <label style="font-weight:600; display:block; margin-bottom:4px;">G5. Aplikasi editing</label>
+                        <textarea class="dynamic-textarea dynamic-textarea-sm" id="kebutuhan_edit" rows="1" placeholder="Sebutkan..." oninput="saveDraft(); autoResize(this);"></textarea>
+                    </div>
+                    <div>
+                        <label style="font-weight:600; display:block; margin-bottom:4px;">G6. Kebutuhan lain</label>
+                        <textarea class="dynamic-textarea dynamic-textarea-sm" id="kebutuhan_lain" rows="1" placeholder="Sebutkan..." oninput="saveDraft(); autoResize(this);"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============================================================ -->
+            <!-- H. JADWAL PRODUKSI -->
+            <!-- ============================================================ -->
+            <div class="card">
+                <h2 class="section-title"><i class="fas fa-calendar-alt"></i> Jadwal Produksi</h2>
+
+                <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:1rem;">
+                    <div>
+                        <label style="font-weight:600; display:block; margin-bottom:4px;">H1. Hari/Tanggal</label>
+                        <textarea class="dynamic-textarea dynamic-textarea-sm" id="jadwal_tanggal" rows="1" placeholder="Contoh: Senin, 10 Maret 2025" oninput="saveDraft(); autoResize(this);"></textarea>
+                    </div>
+                    <div>
+                        <label style="font-weight:600; display:block; margin-bottom:4px;">H2. Kegiatan</label>
+                        <textarea class="dynamic-textarea dynamic-textarea-sm" id="jadwal_kegiatan" rows="1" placeholder="Contoh: Pengambilan gambar" oninput="saveDraft(); autoResize(this);"></textarea>
+                    </div>
+                    <div>
+                        <label style="font-weight:600; display:block; margin-bottom:4px;">H3. Anggota yang Terlibat</label>
+                        <textarea class="dynamic-textarea dynamic-textarea-sm" id="jadwal_anggota" rows="1" placeholder="Sebutkan nama anggota..." oninput="saveDraft(); autoResize(this);"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============================================================ -->
+            <!-- I. KENDALA PRODUKSI -->
+            <!-- ============================================================ -->
+            <div class="card">
+                <h2 class="section-title"><i class="fas fa-exclamation-triangle"></i> Kendala Produksi</h2>
+
+                <div style="margin-bottom:0.8rem;">
+                    <label style="font-weight:600; display:block; margin-bottom:4px;">I1. Kendala saat pengambilan gambar</label>
+                    <textarea class="dynamic-textarea" id="kendala_syuting" rows="2" placeholder="Tulis kendala jika ada..." oninput="saveDraft(); autoResize(this);"></textarea>
+                </div>
+                <div>
+                    <label style="font-weight:600; display:block; margin-bottom:4px;">I2. Kendala saat editing</label>
+                    <textarea class="dynamic-textarea" id="kendala_editing" rows="2" placeholder="Tulis kendala jika ada..." oninput="saveDraft(); autoResize(this);"></textarea>
+                </div>
+            </div>
+
+            <!-- ============================================================ -->
+            <!-- J. SPESIFIKASI VIDEO FINAL -->
+            <!-- ============================================================ -->
+            <div class="card">
+                <h2 class="section-title"><i class="fas fa-check-circle"></i> Spesifikasi Video Final</h2>
+
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+                    <div>
+                        <label style="font-weight:600; display:block; margin-bottom:4px;">J1. Judul Video Final</label>
+                        <textarea class="dynamic-textarea dynamic-textarea-sm" id="judul_video_final" rows="1" placeholder="Judul akhir video..." oninput="saveDraft(); autoResize(this);"></textarea>
+                    </div>
+                    <div>
+                        <label style="font-weight:600; display:block; margin-bottom:4px;">J2. Durasi Final</label>
+                        <textarea class="dynamic-textarea dynamic-textarea-sm" id="durasi_final" rows="1" placeholder="Contoh: 3 menit 20 detik" oninput="saveDraft(); autoResize(this);"></textarea>
+                    </div>
+                    <div>
+                        <label style="font-weight:600; display:block; margin-bottom:4px;">J3. Link Video</label>
+                        <textarea class="dynamic-textarea dynamic-textarea-sm" id="link_video" rows="1" placeholder="Masukkan link video..." oninput="saveDraft(); autoResize(this);"></textarea>
+                    </div>
+                    <div>
+                        <label style="font-weight:600; display:block; margin-bottom:4px;">J4. Tanggal Unggah</label>
+                        <input type="date" id="tanggal_unggah" class="select-uniform" oninput="saveDraft();" />
+                    </div>
+                    <div>
+                        <label style="font-weight:600; display:block; margin-bottom:4px;">J5. Jumlah Views</label>
+                        <textarea class="dynamic-textarea dynamic-textarea-sm" id="jumlah_views" rows="1" placeholder="Contoh: 150" oninput="saveDraft(); autoResize(this);"></textarea>
+                    </div>
+                    <div>
+                        <label style="font-weight:600; display:block; margin-bottom:4px;">J6. Jumlah Likes</label>
+                        <textarea class="dynamic-textarea dynamic-textarea-sm" id="jumlah_likes" rows="1" placeholder="Contoh: 45" oninput="saveDraft(); autoResize(this);"></textarea>
+                    </div>
+                    <div>
+                        <label style="font-weight:600; display:block; margin-bottom:4px;">J7. Jumlah Komentar</label>
+                        <textarea class="dynamic-textarea dynamic-textarea-sm" id="jumlah_komentar" rows="1" placeholder="Contoh: 12" oninput="saveDraft(); autoResize(this);"></textarea>
+                    </div>
+                    <div>
+                        <label style="font-weight:600; display:block; margin-bottom:4px;">J8. Komentar Menarik dari Penonton</label>
+                        <textarea class="dynamic-textarea" id="komentar_menarik" rows="2" placeholder="Tulis komentar menarik..." oninput="saveDraft(); autoResize(this);"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============================================================ -->
+            <!-- K. REFLEKSI AKHIR PROYEK -->
+            <!-- ============================================================ -->
+            <div class="card">
+                <h2 class="section-title"><i class="fas fa-smile"></i> Refleksi Akhir Proyek</h2>
+                <div class="section-desc">
+                    <i class="fas fa-comment"></i>
+                    Renungkan seluruh perjalanan proyek IPAS yang telah kalian lalui!
+                </div>
+
+                <div style="margin-bottom:0.8rem;">
+                    <label style="font-weight:600; display:block; margin-bottom:4px;">1. Hal terbaik dari proyek ini</label>
+                    <textarea class="dynamic-textarea" id="ref1" rows="2" oninput="saveDraft(); autoResize(this);"></textarea>
+                </div>
+                <div style="margin-bottom:0.8rem;">
+                    <label style="font-weight:600; display:block; margin-bottom:4px;">2. Hal tersulit dan cara mengatasinya</label>
+                    <textarea class="dynamic-textarea" id="ref2" rows="2" oninput="saveDraft(); autoResize(this);"></textarea>
+                </div>
+                <div style="margin-bottom:0.8rem;">
+                    <label style="font-weight:600; display:block; margin-bottom:4px;">3. Keterampilan baru yang didapatkan</label>
+                    <textarea class="dynamic-textarea" id="ref3" rows="2" oninput="saveDraft(); autoResize(this);"></textarea>
+                </div>
+                <div>
+                    <label style="font-weight:600; display:block; margin-bottom:4px;">4. Pesan untuk kelompok lain</label>
+                    <textarea class="dynamic-textarea" id="ref4" rows="2" oninput="saveDraft(); autoResize(this);"></textarea>
+                </div>
+            </div>
+
+            <!-- ============================================================ -->
+            <!-- L. NILAI DIRI KELOMPOK -->
+            <!-- ============================================================ -->
+            <div class="card">
+                <h2 class="section-title"><i class="fas fa-star"></i> Nilai Diri Kelompok</h2>
+                <div class="section-desc">
+                    <i class="fas fa-hand-peace"></i>
+                    Berikan nilai untuk kelompokmu (1 = Kurang, 4 = Sangat Baik)!
+                </div>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead><tr><th style="width:40px;">No</th><th>Aspek</th><th style="width:130px;">Nilai (1-4)</th></tr></thead>
+                        <tbody>
+                            <tr><td>1</td><td>Kualitas video diseminasi</td><td>
+                                    <select id="nilai1" class="select-uniform" onchange="saveDraft();">
+                                        <option value="">--</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3" selected>3</option>
+                                        <option value="4">4</option>
+                                    </select>
+                            </td></tr>
+                            <tr><td>2</td><td>Kerja sama dalam pembuatan video</td><td>
+                                    <select id="nilai2" class="select-uniform" onchange="saveDraft();">
+                                        <option value="">--</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3" selected>3</option>
+                                        <option value="4">4</option>
+                                    </select>
+                            </td></tr>
+                            <tr><td>3</td><td>Ketepatan waktu penyelesaian</td><td>
+                                    <select id="nilai3" class="select-uniform" onchange="saveDraft();">
+                                        <option value="">--</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3" selected>3</option>
+                                        <option value="4">4</option>
+                                    </select>
+                            </td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ===== SUBMIT ===== -->
+            <button class="btn-submit" id="submitBtn" onclick="submitData()" disabled>
+                <i class="fas fa-paper-plane"></i> Kirim Data
+            </button>
+
+            <div id="successMsg" class="msg msg-success" style="display:none;">
+                <i class="fas fa-check-circle"></i>
+                <span id="successText">Data berhasil dikirim!</span>
+            </div>
+
+        </div><!-- end formContainer -->
+    </div><!-- end container -->
+
+    <!-- ===== MODAL SUKSES ===== -->
+    <div id="modalSuccess" class="modal">
+        <div class="modal-box">
+            <div class="modal-icon success"><i class="fas fa-check-circle"></i></div>
+            <h3>✅ Data Berhasil Dikirim!</h3>
+            <p class="sub">Data Anda telah tersimpan di Google Spreadsheet.</p>
+            <div class="modal-actions">
+                <button class="modal-btn primary" onclick="resetForm(); closeModal('modalSuccess');">
+                    <i class="fas fa-undo"></i> Reset Form
+                </button>
+                <button class="modal-btn secondary" onclick="closeModal('modalSuccess');">
+                    <i class="fas fa-times"></i> Tutup
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== MODAL KONFIRMASI GANTI ===== -->
+    <div id="modalConfirm" class="modal">
+        <div class="modal-box">
+            <div class="modal-icon warning"><i class="fas fa-exclamation-triangle"></i></div>
+            <h3>⚠️ Data Sudah Ada!</h3>
+            <p class="sub">
+                Data dengan kombinasi <br />
+                <strong id="confirmKeyDisplay"></strong> <br />
+                sudah ada di spreadsheet.<br /><br />
+                Apakah Anda yakin ingin <strong>mengganti</strong> data lama?
+            </p>
+            <div class="modal-actions">
+                <button class="modal-btn danger" id="confirmGantiBtn" onclick="confirmGanti()">
+                    <i class="fas fa-exchange-alt"></i> Ya, Ganti
+                </button>
+                <button class="modal-btn secondary" onclick="closeModal('modalConfirm');">
+                    <i class="fas fa-times"></i> Batal
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SCRIPT -->
+    <!-- ============================================================ -->
+    <script>
+        // ================================================================
+        // KONFIGURASI
+        // ================================================================
+        const URL_DATA_SISWA = 'https://script.google.com/macros/s/AKfycbxZMS_o6xWMAQAkjBzzEMR9tJmHOnHCX13KJX2xZMn7WIr-A9pwVK_3DDHnMg7y_rD29Q/exec';
+        const URL_PEREKAPAN = 'https://script.google.com/macros/s/AKfycbyOV0q9vp8bVeVXCoYWa7qNUqzSPTA7BgTTjwEO0qjUGeHy-mrx7O0hFhcEHxK57oVY/exec';
+        const STORAGE_KEY = 'ipas_s2_a6_draft_v2';
+        const AKTIVITAS_NAMA = 'AKTIVITAS 6 - DISEMINASI VIDEO';
+        const SHEET_NAME = 'data_aktivitas';
+
+        let dataKelas = [];
+        let dataSiswa = {};
+        let isLoading = true;
+        let isOnline = true;
+        let isSubmitting = false;
+        let pendingData = null;
+        let autoSaveTimer;
+
+        // ================================================================
+        // AUTO-RESIZE
+        // ================================================================
+        function autoResize(el) {
+            if (!el || el.tagName !== 'TEXTAREA') return;
+            el.style.height = 'auto';
+            el.style.height = Math.min(el.scrollHeight, 350) + 'px';
+        }
+
+        function refreshAutoResize() {
+            document.querySelectorAll('.dynamic-textarea, .dynamic-textarea-sm, .dynamic-textarea-lg').forEach(el => {
+                if (el.tagName === 'TEXTAREA') autoResize(el);
+            });
+        }
+
+        // ================================================================
+        // FUNGSI TOGGLE PLATFORM LAIN
+        // ================================================================
+        function togglePlatformLain() {
+            const checkbox = document.getElementById('platform_lain');
+            const input = document.getElementById('platform_lain_isi');
+            if (checkbox && input) {
+                input.disabled = !checkbox.checked;
+                if (!checkbox.checked) input.value = '';
+            }
+            saveDraft();
+        }
+
+        // ================================================================
+        // CONNECTION
+        // ================================================================
+        function checkConnection() {
+            const dot = document.getElementById('statusDot');
+            const text = document.getElementById('statusText');
+            if (navigator.onLine) {
+                dot.classList.remove('offline');
+                text.textContent = 'Terhubung ke internet';
+                isOnline = true;
+            } else {
+                dot.classList.add('offline');
+                text.textContent = 'Tidak terhubung ke internet';
+                isOnline = false;
+                showError('Tidak ada koneksi internet. Refresh setelah koneksi pulih.');
+            }
+        }
+
+        window.addEventListener('online', checkConnection);
+        window.addEventListener('offline', checkConnection);
+
+        // ================================================================
+        // LOAD DATA SISWA
+        // ================================================================
+        function loadDataSiswa() {
+            if (!navigator.onLine) {
+                showError('Tidak ada koneksi internet.');
+                return;
+            }
+
+            document.getElementById('loadingMsg').style.display = 'block';
+            const cb = 'jsonp_' + Date.now();
+
+            window[cb] = function(result) {
+                const script = document.querySelector(`script[src*="${cb}"]`);
+                if (script) script.remove();
+                delete window[cb];
+
+                if (result && result.success) {
+                    dataKelas = result.kelasList || [];
+                    dataSiswa = result.siswaPerKelas || {};
+                    const sel = document.getElementById('kelas');
+                    sel.innerHTML = '<option value="">-- Pilih Kelas --</option>';
+                    dataKelas.forEach(k => {
+                        if (k && k.trim()) {
+                            const opt = document.createElement('option');
+                            opt.value = k;
+                            opt.textContent = k;
+                            sel.appendChild(opt);
+                        }
+                    });
+                    enableForm();
+                } else {
+                    showError('Gagal memuat data siswa. Refresh halaman.');
+                }
+                document.getElementById('loadingMsg').style.display = 'none';
+                isLoading = false;
+            };
+
+            const script = document.createElement('script');
+            script.src = URL_DATA_SISWA + '?callback=' + cb;
+            script.onerror = function() {
+                const s = document.querySelector(`script[src*="${cb}"]`);
+                if (s) s.remove();
+                delete window[cb];
+                showError('Gagal terhubung ke server. Refresh halaman.');
+                document.getElementById('loadingMsg').style.display = 'none';
+                isLoading = false;
+            };
+            document.head.appendChild(script);
+        }
+
+        function enableForm() {
+            if (isOnline) {
+                ['kelas', 'nama', 'kelompok', 'tugas', 'submitBtn', 'exportBtn'].forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) el.disabled = false;
+                });
+                loadDraft();
+            }
+        }
+
+        function showError(msg) {
+            const el = document.getElementById('errorMsg');
+            document.getElementById('errorText').textContent = msg;
+            el.style.display = 'block';
+        }
+
+        // ================================================================
+        // FUNGSI KELAS
+        // ================================================================
+        function onKelasChange() {
+            updateNama();
+            saveDraft();
+        }
+
+        function updateNama() {
+            const kelas = document.getElementById('kelas').value;
+            const namaSel = document.getElementById('nama');
+            namaSel.innerHTML = '<option value="">-- Pilih Nama --</option>';
+            if (kelas && dataSiswa[kelas]) {
+                (dataSiswa[kelas] || []).sort().forEach(n => {
+                    if (n && n.trim()) {
+                        const opt = document.createElement('option');
+                        opt.value = n;
+                        opt.textContent = n;
+                        namaSel.appendChild(opt);
+                    }
+                });
+            }
+            saveDraft();
+        }
+
+        // ================================================================
+        // TIMESTAMP
+        // ================================================================
+        function getTimestamp() {
+            const now = new Date();
+            const d = String(now.getDate()).padStart(2, '0');
+            const m = String(now.getMonth() + 1).padStart(2, '0');
+            const y = now.getFullYear();
+            const h = String(now.getHours()).padStart(2, '0');
+            const min = String(now.getMinutes()).padStart(2, '0');
+            const s = String(now.getSeconds()).padStart(2, '0');
+            return `${d}/${m}/${y} ${h}:${min}:${s}`;
+        }
+
+        // ================================================================
+        // DRAFT - SAVE & LOAD
+        // ================================================================
+        function saveDraft() {
+            if (!isOnline) return;
+            clearTimeout(autoSaveTimer);
+            autoSaveTimer = setTimeout(() => {
+                const data = collectData();
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+            }, 800);
+        }
+
+        function loadDraft() {
+            const raw = localStorage.getItem(STORAGE_KEY);
+            if (raw) {
+                try {
+                    const data = JSON.parse(raw);
+                    restoreData(data);
+                } catch (e) {
+                    console.warn('Gagal load draft:', e);
+                }
+            }
+            refreshAutoResize();
+            setTimeout(togglePlatformLain, 300);
+        }
+
+        function clearDraft() {
+            localStorage.removeItem(STORAGE_KEY);
+        }
+
+        // ================================================================
+        // COLLECT DATA
+        // ================================================================
+        function collectData() {
+            const data = { timestamp: getTimestamp() };
+
+            // Identitas
+            data.identitas = {
+                "Kelas": document.getElementById('kelas').value || '',
+                "Nama": document.getElementById('nama').value || '',
+                "Kelompok": document.getElementById('kelompok').value || '',
+                "Tugas/Peran": document.getElementById('tugas').value || ''
+            };
+
+            // Cek Pemahaman
+            data.cek_pemahaman = {
+                "Apa yang dimaksud dengan diseminasi proyek": document.getElementById('cek1').value || '',
+                "Platform 1": document.getElementById('cek2a').value || '',
+                "Platform 2": document.getElementById('cek2b').value || '',
+                "Platform 3": document.getElementById('cek2c').value || ''
+            };
+
+            // Informasi Proyek
+            data.informasi_proyek = {
+                "Tema Proyek": document.getElementById('tema_proyek').value || '',
+                "Masalah yang diselesaikan": document.getElementById('masalah_proyek').value || '',
+                "Solusi/Produk yang dibuat": document.getElementById('solusi_proyek').value || '',
+                "Hasil Proyek": document.getElementById('hasil_proyek').value || ''
+            };
+
+            // Pesan Utama
+            data.pesan_utama = {
+                "Pesan tentang Masalah": document.getElementById('pesan_masalah').value || '',
+                "Pesan tentang Solusi": document.getElementById('pesan_solusi').value || '',
+                "Pesan tentang Hasil": document.getElementById('pesan_hasil').value || ''
+            };
+
+            // Rencana Video
+            data.rencana_video = {
+                "Judul Video": document.getElementById('judul_video').value || '',
+                "Durasi Rencana": document.getElementById('durasi_rencana').value || '',
+                "Platform YouTube": document.getElementById('platform_youtube').checked || false,
+                "Platform Instagram": document.getElementById('platform_instagram').checked || false,
+                "Platform TikTok": document.getElementById('platform_tiktok').checked || false,
+                "Platform Lainnya": document.getElementById('platform_lain').checked || false,
+                "Platform Lainnya Isi": document.getElementById('platform_lain_isi').value || '',
+                "Target Penonton": document.querySelector('input[name="target_penonton"]:checked')?.value || ''
+            };
+
+            // Alur Video - dari tabel
+            data.alur_video = {
+                "Durasi Pembukaan": document.getElementById('durasi_pembukaan').value || '',
+                "Adegan Pembukaan": document.getElementById('adegan_pembukaan').value || '',
+                "Durasi Masalah": document.getElementById('durasi_masalah').value || '',
+                "Adegan Masalah": document.getElementById('adegan_masalah').value || '',
+                "Durasi Solusi": document.getElementById('durasi_solusi').value || '',
+                "Adegan Solusi": document.getElementById('adegan_solusi').value || '',
+                "Durasi Hasil": document.getElementById('durasi_hasil').value || '',
+                "Adegan Hasil": document.getElementById('adegan_hasil').value || '',
+                "Durasi Penutup": document.getElementById('durasi_penutup').value || '',
+                "Adegan Penutup": document.getElementById('adegan_penutup').value || ''
+            };
+
+            // Kebutuhan Produksi
+            data.kebutuhan_produksi = {
+                "Alat rekam": document.getElementById('kebutuhan_alat_rekam').value || '',
+                "Alat bantu": document.getElementById('kebutuhan_alat_bantu').value || '',
+                "Lokasi syuting": document.getElementById('kebutuhan_lokasi').value || '',
+                "Properti": document.getElementById('kebutuhan_properti').value || '',
+                "Aplikasi editing": document.getElementById('kebutuhan_edit').value || '',
+                "Kebutuhan lain": document.getElementById('kebutuhan_lain').value || ''
+            };
+
+            // Jadwal Produksi
+            data.jadwal_produksi = {
+                "Hari/Tanggal": document.getElementById('jadwal_tanggal').value || '',
+                "Kegiatan": document.getElementById('jadwal_kegiatan').value || '',
+                "Anggota yang Terlibat": document.getElementById('jadwal_anggota').value || ''
+            };
+
+            // Kendala Produksi
+            data.kendala_produksi = {
+                "Kendala syuting": document.getElementById('kendala_syuting').value || '',
+                "Kendala editing": document.getElementById('kendala_editing').value || ''
+            };
+
+            // Spesifikasi Final
+            data.spesifikasi_final = {
+                "Judul Video Final": document.getElementById('judul_video_final').value || '',
+                "Durasi Final": document.getElementById('durasi_final').value || '',
+                "Link Video": document.getElementById('link_video').value || '',
+                "Tanggal Unggah": document.getElementById('tanggal_unggah').value || '',
+                "Jumlah Views": document.getElementById('jumlah_views').value || '',
+                "Jumlah Likes": document.getElementById('jumlah_likes').value || '',
+                "Jumlah Komentar": document.getElementById('jumlah_komentar').value || '',
+                "Komentar Menarik": document.getElementById('komentar_menarik').value || ''
+            };
+
+            // Refleksi
+            data.refleksi = {
+                "Hal terbaik": document.getElementById('ref1').value || '',
+                "Hal tersulit": document.getElementById('ref2').value || '',
+                "Keterampilan baru": document.getElementById('ref3').value || '',
+                "Pesan untuk kelompok lain": document.getElementById('ref4').value || ''
+            };
+
+            // Nilai
+            data.nilai = {
+                "Kualitas video": document.getElementById('nilai1').value || '3',
+                "Kerja sama": document.getElementById('nilai2').value || '3',
+                "Ketepatan waktu": document.getElementById('nilai3').value || '3'
+            };
+
+            return data;
+        }
+
+        // ================================================================
+        // RESTORE DATA
+        // ================================================================
+        function restoreData(data) {
+            if (!data) return;
+
+            if (data.identitas) {
+                const sel = document.getElementById('kelas');
+                for (let opt of sel.options) {
+                    if (opt.value === data.identitas["Kelas"]) { opt.selected = true; break; }
+                }
+                updateNama();
+                const selNama = document.getElementById('nama');
+                for (let opt of selNama.options) {
+                    if (opt.value === data.identitas["Nama"]) { opt.selected = true; break; }
+                }
+                document.getElementById('kelompok').value = data.identitas["Kelompok"] || '';
+                document.getElementById('tugas').value = data.identitas["Tugas/Peran"] || '';
+            }
+
+            if (data.cek_pemahaman) {
+                document.getElementById('cek1').value = data.cek_pemahaman["Apa yang dimaksud dengan diseminasi proyek"] || '';
+                document.getElementById('cek2a').value = data.cek_pemahaman["Platform 1"] || '';
+                document.getElementById('cek2b').value = data.cek_pemahaman["Platform 2"] || '';
+                document.getElementById('cek2c').value = data.cek_pemahaman["Platform 3"] || '';
+            }
+
+            if (data.informasi_proyek) {
+                document.getElementById('tema_proyek').value = data.informasi_proyek["Tema Proyek"] || '';
+                document.getElementById('masalah_proyek').value = data.informasi_proyek["Masalah yang diselesaikan"] || '';
+                document.getElementById('solusi_proyek').value = data.informasi_proyek["Solusi/Produk yang dibuat"] || '';
+                document.getElementById('hasil_proyek').value = data.informasi_proyek["Hasil Proyek"] || '';
+            }
+
+            if (data.pesan_utama) {
+                document.getElementById('pesan_masalah').value = data.pesan_utama["Pesan tentang Masalah"] || '';
+                document.getElementById('pesan_solusi').value = data.pesan_utama["Pesan tentang Solusi"] || '';
+                document.getElementById('pesan_hasil').value = data.pesan_utama["Pesan tentang Hasil"] || '';
+            }
+
+            if (data.rencana_video) {
+                document.getElementById('judul_video').value = data.rencana_video["Judul Video"] || '';
+                document.getElementById('durasi_rencana').value = data.rencana_video["Durasi Rencana"] || '';
+                document.getElementById('platform_youtube').checked = data.rencana_video["Platform YouTube"] || false;
+                document.getElementById('platform_instagram').checked = data.rencana_video["Platform Instagram"] || false;
+                document.getElementById('platform_tiktok').checked = data.rencana_video["Platform TikTok"] || false;
+                document.getElementById('platform_lain').checked = data.rencana_video["Platform Lainnya"] || false;
+                document.getElementById('platform_lain_isi').value = data.rencana_video["Platform Lainnya Isi"] || '';
+                if (data.rencana_video["Target Penonton"]) {
+                    const radio = document.querySelector(`input[name="target_penonton"][value="${data.rencana_video["Target Penonton"]}"]`);
+                    if (radio) radio.checked = true;
+                }
+                setTimeout(togglePlatformLain, 100);
+            }
+
+            if (data.alur_video) {
+                document.getElementById('durasi_pembukaan').value = data.alur_video["Durasi Pembukaan"] || '';
+                document.getElementById('adegan_pembukaan').value = data.alur_video["Adegan Pembukaan"] || '';
+                document.getElementById('durasi_masalah').value = data.alur_video["Durasi Masalah"] || '';
+                document.getElementById('adegan_masalah').value = data.alur_video["Adegan Masalah"] || '';
+                document.getElementById('durasi_solusi').value = data.alur_video["Durasi Solusi"] || '';
+                document.getElementById('adegan_solusi').value = data.alur_video["Adegan Solusi"] || '';
+                document.getElementById('durasi_hasil').value = data.alur_video["Durasi Hasil"] || '';
+                document.getElementById('adegan_hasil').value = data.alur_video["Adegan Hasil"] || '';
+                document.getElementById('durasi_penutup').value = data.alur_video["Durasi Penutup"] || '';
+                document.getElementById('adegan_penutup').value = data.alur_video["Adegan Penutup"] || '';
+            }
+
+            if (data.kebutuhan_produksi) {
+                document.getElementById('kebutuhan_alat_rekam').value = data.kebutuhan_produksi["Alat rekam"] || '';
+                document.getElementById('kebutuhan_alat_bantu').value = data.kebutuhan_produksi["Alat bantu"] || '';
+                document.getElementById('kebutuhan_lokasi').value = data.kebutuhan_produksi["Lokasi syuting"] || '';
+                document.getElementById('kebutuhan_properti').value = data.kebutuhan_produksi["Properti"] || '';
+                document.getElementById('kebutuhan_edit').value = data.kebutuhan_produksi["Aplikasi editing"] || '';
+                document.getElementById('kebutuhan_lain').value = data.kebutuhan_produksi["Kebutuhan lain"] || '';
+            }
+
+            if (data.jadwal_produksi) {
+                document.getElementById('jadwal_tanggal').value = data.jadwal_produksi["Hari/Tanggal"] || '';
+                document.getElementById('jadwal_kegiatan').value = data.jadwal_produksi["Kegiatan"] || '';
+                document.getElementById('jadwal_anggota').value = data.jadwal_produksi["Anggota yang Terlibat"] || '';
+            }
+
+            if (data.kendala_produksi) {
+                document.getElementById('kendala_syuting').value = data.kendala_produksi["Kendala syuting"] || '';
+                document.getElementById('kendala_editing').value = data.kendala_produksi["Kendala editing"] || '';
+            }
+
+            if (data.spesifikasi_final) {
+                document.getElementById('judul_video_final').value = data.spesifikasi_final["Judul Video Final"] || '';
+                document.getElementById('durasi_final').value = data.spesifikasi_final["Durasi Final"] || '';
+                document.getElementById('link_video').value = data.spesifikasi_final["Link Video"] || '';
+                document.getElementById('tanggal_unggah').value = data.spesifikasi_final["Tanggal Unggah"] || '';
+                document.getElementById('jumlah_views').value = data.spesifikasi_final["Jumlah Views"] || '';
+                document.getElementById('jumlah_likes').value = data.spesifikasi_final["Jumlah Likes"] || '';
+                document.getElementById('jumlah_komentar').value = data.spesifikasi_final["Jumlah Komentar"] || '';
+                document.getElementById('komentar_menarik').value = data.spesifikasi_final["Komentar Menarik"] || '';
+            }
+
+            if (data.refleksi) {
+                document.getElementById('ref1').value = data.refleksi["Hal terbaik"] || '';
+                document.getElementById('ref2').value = data.refleksi["Hal tersulit"] || '';
+                document.getElementById('ref3').value = data.refleksi["Keterampilan baru"] || '';
+                document.getElementById('ref4').value = data.refleksi["Pesan untuk kelompok lain"] || '';
+            }
+
+            if (data.nilai) {
+                document.getElementById('nilai1').value = data.nilai["Kualitas video"] || '3';
+                document.getElementById('nilai2').value = data.nilai["Kerja sama"] || '3';
+                document.getElementById('nilai3').value = data.nilai["Ketepatan waktu"] || '3';
+            }
+
+            refreshAutoResize();
+        }
+
+        // ================================================================
+        // RESET FORM
+        // ================================================================
+        function resetForm() {
+            document.querySelectorAll('textarea, select, input[type="date"]').forEach(el => {
+                if (el.tagName === 'SELECT') el.selectedIndex = 0;
+                else el.value = '';
+            });
+            document.querySelectorAll('input[type="checkbox"], input[type="radio"]').forEach(el => el.checked = false);
+            document.getElementById('nama').innerHTML = '<option value="">-- Pilih Nama --</option>';
+            ['nilai1', 'nilai2', 'nilai3'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.value = '3';
+            });
+
+            clearDraft();
+            document.getElementById('successMsg').style.display = 'none';
+            refreshAutoResize();
+        }
+
+        // ================================================================
+        // MODAL
+        // ================================================================
+        function closeModal(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+
+        document.querySelectorAll('.modal').forEach(m => {
+            m.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.style.display = 'none';
+                }
+            });
+        });
+
+        function confirmGanti() {
+            const btn = document.getElementById('confirmGantiBtn');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengganti...';
+            if (pendingData) {
+                doSubmit(pendingData, true).finally(() => {
+                    btn.disabled = false;
+                    btn.innerHTML = '<i class="fas fa-exchange-alt"></i> Ya, Ganti';
+                });
+            }
+        }
+
+        // ================================================================
+        // CEK DATA
+        // ================================================================
+        async function cekDataSpreadsheet(kelas, nama) {
+            const url =
+                `${URL_PEREKAPAN}?action=getDataSiswa&kelas=${encodeURIComponent(kelas)}&nama=${encodeURIComponent(nama)}&aktivitas=${encodeURIComponent(AKTIVITAS_NAMA)}`;
+            const resp = await fetch(url);
+            const result = await resp.json();
+            if (result.success && result.data) {
+                return { found: true, key: `${kelas}_${nama}_${AKTIVITAS_NAMA}_AKTIF` };
+            }
+            return { found: false };
+        }
+
+        // ================================================================
+        // SUBMIT DATA
+        // ================================================================
+        function submitData() {
+            if (!isOnline) {
+                alert('Tidak ada koneksi internet. Periksa koneksi Anda.');
+                return;
+            }
+            if (isLoading) {
+                alert('Data masih dimuat. Tunggu sebentar.');
+                return;
+            }
+            if (isSubmitting) {
+                alert('Proses pengiriman sedang berlangsung...');
+                return;
+            }
+
+            const kelas = document.getElementById('kelas').value;
+            const nama = document.getElementById('nama').value;
+            const kelompok = document.getElementById('kelompok').value;
+
+            if (!kelas) { alert('Pilih kelas dulu!'); return; }
+            if (!nama) { alert('Pilih nama dulu!'); return; }
+            if (!kelompok) { alert('Isi nama kelompok!'); return; }
+
+            const btn = document.getElementById('submitBtn');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memeriksa...';
+
+            const allData = collectData();
+            pendingData = { allData, kelas, nama, kelompok };
+
+            cekDataSpreadsheet(kelas, nama)
+                .then(result => {
+                    if (result.found) {
+                        document.getElementById('confirmKeyDisplay').textContent = result.key;
+                        document.getElementById('modalConfirm').style.display = 'block';
+                        btn.innerHTML = '<i class="fas fa-paper-plane"></i> Kirim Data';
+                        btn.disabled = false;
+                        return;
+                    }
+                    return doSubmit(pendingData, false);
+                })
+                .catch(err => {
+                    alert('❌ Gagal: ' + err.message);
+                    btn.innerHTML = '<i class="fas fa-paper-plane"></i> Kirim Data';
+                    btn.disabled = false;
+                    pendingData = null;
+                });
+        }
+
+        async function doSubmit(data, isReplace) {
+            isSubmitting = true;
+            const btn = document.getElementById('submitBtn');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> ' + (isReplace ? 'Mengganti...' : 'Mengirim...');
+
+            try {
+                const { allData, kelas, nama } = data;
+                const formData = new URLSearchParams();
+                formData.append('sheetName', SHEET_NAME);
+                formData.append('data', JSON.stringify(allData));
+                formData.append('kelas', kelas);
+                formData.append('nama', nama);
+                formData.append('aktivitas', AKTIVITAS_NAMA);
+                if (isReplace) formData.append('replace', 'true');
+
+                const resp = await fetch(URL_PEREKAPAN, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: formData
+                });
+
+                const result = await resp.json();
+
+                if (result.success) {
+                    closeModal('modalConfirm');
+                    document.getElementById('successText').textContent =
+                        '✅ Data berhasil ' + (isReplace ? 'diganti' : 'dikirim') + '! Key: ' + (result.key || '-');
+                    document.getElementById('successMsg').style.display = 'block';
+                    clearDraft();
+                    document.getElementById('modalSuccess').style.display = 'block';
+                } else {
+                    alert('❌ Gagal: ' + (result.error || 'Terjadi kesalahan.'));
+                }
+            } catch (err) {
+                alert('❌ Error: ' + err.message);
+                showError('Gagal kirim: ' + err.message);
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-paper-plane"></i> Kirim Data';
+                isSubmitting = false;
+                pendingData = null;
+            }
+        }
+
+        // ================================================================
+        // EXPORT TEMPLATE
+        // ================================================================
+        function exportTemplate() {
+            const btn = document.getElementById('exportBtn');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memproses...';
+
+            try {
+                const clone = document.getElementById('formContainer').cloneNode(true);
+                clone.querySelectorAll('.btn-submit, .btn-export, .status-bar, .msg, .toolbar').forEach(el => el
+                    .remove());
+
+                clone.querySelectorAll('textarea, select, input[type="date"]').forEach(el => {
+                    const p = document.createElement('span');
+                    p.textContent = el.value || '[_________________]';
+                    p.style.cssText = 'color:#666; font-style:italic;';
+                    el.replaceWith(p);
+                });
+
+                clone.querySelectorAll('input[type="checkbox"], input[type="radio"]').forEach(el => {
+                    const span = document.createElement('span');
+                    span.textContent = el.checked ? '☑' : '☐';
+                    span.style.cssText = 'font-size:1.2rem; margin-right:4px;';
+                    el.replaceWith(span);
+                });
+
+                const html = `
+                    <html><head><meta charset="UTF-8"><title>Template Diseminasi Proyek</title>
+                    <style>
+                        body { font-family: 'Segoe UI', Arial, sans-serif; padding:30px; max-width:960px; margin:auto; line-height:1.6; }
+                        .card { background:#fff; border-radius:12px; padding:20px; margin-bottom:16px; border-left:5px solid #2ecc71; }
+                        .section-title { font-size:1.2rem; font-weight:700; margin:0 0 8px 0; border-bottom:2px solid #d5f4e6; padding-bottom:4px; }
+                        .section-desc { background:#f0faf0; padding:8px 14px; border-radius:8px; margin-bottom:12px; }
+                        table { width:100%; border-collapse:collapse; margin:8px 0; }
+                        th { background:#2ecc71; color:#fff; padding:8px 10px; text-align:left; }
+                        td { padding:6px 10px; border-bottom:1px solid #eee; }
+                        .identitas-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; background:#d5f4e6; padding:12px 16px; border-radius:10px; }
+                        .kotak-checklist { border:1px solid #d5f4e6; padding:12px 16px; border-radius:12px; background:#f9f9f9; margin:15px 0; }
+                        .info-biru { background:#e3f2fd; padding:8px 14px; border-radius:8px; border-left:4px solid #3498db; margin-bottom:12px; }
+                        .info-hijau { background:#e8f5e9; padding:8px 14px; border-radius:8px; border-left:4px solid #2ecc71; margin-bottom:12px; }
+                        .header-title { text-align:center; font-size:1.6rem; color:#27ae60; }
+                        .header-sub { text-align:center; color:#666; }
+                        .checkbox-group { display:flex; gap:15px; flex-wrap:wrap; }
+                        .radio-group { display:flex; gap:15px; flex-wrap:wrap; }
+                        .form-group { margin-bottom:1rem; }
+                        .form-group label { display:block; margin-bottom:5px; font-weight:600; }
+                        .select-uniform { width:100%; padding:6px 10px; border:2px solid #e0e0e0; border-radius:8px; }
+                    </style>
+                    </head><body>
+                    <h1 class="header-title">📹 Diseminasi Proyek (Pembuatan Video)</h1>
+                    <p class="header-sub">Lembar Kerja IPAS SMK - Semester Genap</p>
+                    ${clone.innerHTML}
+                    <p style="text-align:center; color:#999; font-size:0.85rem; margin-top:30px; border-top:1px solid #eee; padding-top:12px;">
+                        Dicetak dari Sistem IPAS Tembok Belajar
+                    </p>
+                    </body></html>
+                `;
+
+                const blob = new Blob([html], { type: 'application/msword;charset=utf-8' });
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                const date = new Date().toISOString().slice(0, 10);
+                link.download = `Template_Diseminasi_Video_${date}.doc`;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                setTimeout(() => URL.revokeObjectURL(link.href), 1000);
+
+            } catch (e) {
+                alert('Gagal export: ' + e.message);
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-file-word"></i> Export Template';
+            }
+        }
+
+        // ================================================================
+        // HAMBURGER MENU
+        // ================================================================
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                });
+            }
+
+            checkConnection();
+            loadDataSiswa();
+            setInterval(checkConnection, 5000);
+            setTimeout(refreshAutoResize, 500);
+
+            // Expose functions globally
+            window.togglePlatformLain = togglePlatformLain;
+            window.autoResize = autoResize;
+        });
+    </script>
+</body>
+</html>

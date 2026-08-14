@@ -1,0 +1,23 @@
+id p1
+https://script.google.com/macros/s/AKfycbzKGEcwDHHjWza6iSghSDtgwahTIClGQsDmCjVqVzQPuovu82XUkchCigSSZMxcYjmRkw/exec
+
+id p2
+https://script.google.com/macros/s/AKfycbz6oBgz9hrztA6gH8a19LP7gsC5jPZc1O8TbRoO-7L55ySxtIAVxLRMLaeftDnNY4NYzw/exec
+
+id p3
+https://script.google.com/macros/s/AKfycbz7AZPKvC4J1bUFZj-ymxNoSioEKXVP5OktRRYMqPTEaKfyhNIOOTE3UeO0SIdHRylV6g/exec
+
+id p4
+https://script.google.com/macros/s/AKfycbzW07H7G34WG3FLajOBNBtWeh2EXBc9qzvOe1oETMNHtFghlnXUmvzg2Qa3v7OS6uUUrg/exec
+
+id p5
+https://script.google.com/macros/s/AKfycbwRlLJQQ5ypD1jzsHICPZH6kfrSFHKHGXo0hPKjzwtHH04EDrAid7dqtDv7q6TCbDRj/exec
+
+id p6
+https://script.google.com/macros/s/AKfycbwVlC43L4zLXVoUS1-lx9Che_9nAcmXAghlDJ_4nMROUOjH5Gx3uw5tGmfmDoJXLKEwsA/exec
+
+id kka ganjil
+https://script.google.com/macros/s/AKfycbzYIVPu-d_uJAYQ6vvFll38AXt5pKCyl3ckg2OhULVQxjBSsEI-Ww1X0J8CZEYl-By4hA/exec
+
+id kka genap
+https://script.google.com/macros/s/AKfycbyIYF3NX2fK2u4QNi9uPR238_bKb9bOkNA1gonV8UHysoiChUd_pHzw3zOXiUB5_1t7/exec

@@ -1,0 +1,762 @@
+form_1': {
+    sheetName: 'Aktivitas_perkenalan',
+headers: [
+    'Timestamp',
+    'Kelas',
+    'Nama',
+    'Kelompok',
+    'Tugas_Peran',
+    
+    // Ceklis Pemahaman (16 kolom: 8 baca + 8 paham)
+    'Baca_1', 'Paham_1', 'Baca_2', 'Paham_2', 'Baca_3', 'Paham_3', 'Baca_4', 'Paham_4',
+    'Baca_5', 'Paham_5', 'Baca_6', 'Paham_6', 'Baca_7', 'Paham_7', 'Baca_8', 'Paham_8',
+    
+    // Jawaban Pertanyaan Bagian 1 (8 kolom: 4 jawaban saya + 4 jawaban kelompok)
+    'Jwb1_1_Saya', 'Jwb1_1_Kel', 'Jwb1_2_Saya', 'Jwb1_2_Kel', 
+    'Jwb1_3_Saya', 'Jwb1_3_Kel', 'Jwb1_4_Saya', 'Jwb1_4_Kel',
+    
+    // Jawaban Pertanyaan Bagian 2 (6 kolom: 3 jawaban saya + 3 jawaban kelompok)
+    'Jwb2_1_Saya', 'Jwb2_1_Kel', 'Jwb2_2_Saya', 'Jwb2_2_Kel', 'Jwb2_3_Saya', 'Jwb2_3_Kel',
+    
+    // Drag and Drop (6 kolom pencocokan aspek)
+    'Aspek_1_Match', 'Aspek_2_Match', 'Aspek_3_Match', 'Aspek_4_Match', 'Aspek_5_Match', 'Aspek_6_Match',
+    
+    // Target Semester
+    'Target_Ganjil',
+    'Target_Genap',
+    
+    // Refleksi (5 kolom)
+    'Refleksi_1', 'Refleksi_2', 'Refleksi_3', 'Refleksi_4', 'Refleksi_5',
+    
+    // Penilaian Diri (5 kolom)
+    'Nilai_1', 'Nilai_2', 'Nilai_3', 'Nilai_4', 'Nilai_5'
+]
+}
+
+'form_2': {
+    sheetName: 'Aktivitas_Eksplorasi_Makhluk_Hidup',
+    headers: [
+        'Timestamp',
+        'Kelas',
+        'Nama',
+        'Kelompok',
+        'Tugas_Peran',
+        
+        // LITERASI (5 kolom)
+        'Literasi1',
+        'Literasi2a',
+        'Literasi2b',
+        'Literasi2c',
+        'Literasi3',
+        
+        // INTERAKSI 1-5 (20 kolom: 5 interaksi × 4 field)
+        'Interaksi1_Nama', 'Interaksi1_Makhluk', 'Interaksi1_Lingkungan', 'Interaksi1_Deskripsi',
+        'Interaksi2_Nama', 'Interaksi2_Makhluk', 'Interaksi2_Lingkungan', 'Interaksi2_Deskripsi',
+        'Interaksi3_Nama', 'Interaksi3_Makhluk', 'Interaksi3_Lingkungan', 'Interaksi3_Deskripsi',
+        'Interaksi4_Nama', 'Interaksi4_Makhluk', 'Interaksi4_Lingkungan', 'Interaksi4_Deskripsi',
+        'Interaksi5_Nama', 'Interaksi5_Makhluk', 'Interaksi5_Lingkungan', 'Interaksi5_Deskripsi',
+        
+        // PILIHAN & PENJELASAN (2 kolom)
+        'Pilihan_Interaksi',
+        'Penjelasan_Ilmiah',
+        
+        // ISTILAH (6 kolom: 5 checkbox + 1 input lainnya)
+        'Istilah_Ekosistem',
+        'Istilah_Habitat',
+        'Istilah_Rantai_Makanan',
+        'Istilah_Populasi',
+        'Istilah_Komunitas',
+        'Istilah_Lainnya',
+        
+        // OBSERVASI DETAIL (15 kolom: judul + 7 waktu + 7 kondisi)
+        'Observasi_Judul',
+        'Observasi_Waktu0', 'Observasi_Kondisi0',
+        'Observasi_Waktu5', 'Observasi_Kondisi5',
+        'Observasi_Waktu10', 'Observasi_Kondisi10',
+        'Observasi_Waktu15', 'Observasi_Kondisi15',
+        'Observasi_Waktu20', 'Observasi_Kondisi20',
+        'Observasi_Waktu25', 'Observasi_Kondisi25',
+        'Observasi_Waktu30', 'Observasi_Kondisi30',
+        
+        // POLA (1 kolom)
+        'Pola_Temuan',
+        
+        // PREDIKSI 1 (3 kolom)
+        'Prediksi1_Opsi',
+        'Prediksi1_Perubahan',
+        'Prediksi1_Alasan',
+        
+        // PREDIKSI 2 (4 kolom)
+        'Prediksi2_Skenario',
+        'Prediksi2_Skenario_Lain',
+        'Prediksi2_Hasil',
+        'Prediksi2_Alasan',
+        
+        // FENOMENA (4 kolom)
+        'Tipe_Fenomena',
+        'Komponen_Pusat',
+        'Komponen_Kegiatan',
+        'Komponen_Lingkungan',
+        
+        // PREDIKSI TERPILIH (2 kolom)
+        'Pilihan_Prediksi',
+        'Prediksi_Terpilih',
+        
+        // CARA 1 (4 kolom)
+        'Cara1_Waktu_Sama',
+        'Cara1_Waktu_Beda',
+        'Cara1_Lokasi_Beda',
+        'Cara1_Bandingkan',
+        
+        // CARA 2 (4 kolom)
+        'Cara2_Fisik',
+        'Cara2_Objek',
+        'Cara2_Langsung',
+        'Cara2_Perubahan',
+        
+        // LANGKAH (5 kolom)
+        'Langkah1',
+        'Langkah2',
+        'Langkah3',
+        'Langkah4',
+        'Langkah5',
+        
+        // ALAT (4 kolom)
+        'Alat_Tidak',
+        'Alat_Tulis',
+        'Alat_Lain',
+        'Alat_Lain_Isi',
+        
+        // ETIKA (4 kolom)
+        'Etika1_Tidak_Merusak',
+        'Etika2_Tidak_Buang_Sampah',
+        'Etika3_Tidak_Ganggu_Kelas',
+        'Etika4_Kembalikan_Semula',
+        
+        // HASIL PEMBUKTIAN (8 kolom: 4 waktu + 4 hasil)
+        'Hasil_Waktu1', 'Hasil_Isi1',
+        'Hasil_Waktu2', 'Hasil_Isi2',
+        'Hasil_Waktu3', 'Hasil_Isi3',
+        'Hasil_Waktu4', 'Hasil_Isi4',
+        
+        // ANALISIS (3 kolom)
+        'Kesesuaian_Hasil',
+        'Analisis_Penjelasan',
+        'Kesimpulan',
+        
+        // JURUSAN (2 kolom)
+        'Jurusan',
+        'Jurusan_Lain',
+        
+        // ASPEK JURUSAN (4 kolom)
+        'Aspek_Bahan_Baku',
+        'Aspek_Proses_Produksi',
+        'Aspek_Limbah',
+        'Aspek_Produk',
+        
+        // SOLUSI (3 kolom)
+        'Solusi_Masalah',
+        'Solusi_Ide',
+        'Solusi_Cara_Penerapan',
+        
+        // REFLEKSI (3 kolom)
+        'Refleksi_Paling_Menarik',
+        'Refleksi_Kesulitan',
+        'Refleksi_Keinginan_Belajar',
+        
+        // PENILAIAN DIRI (3 kolom)
+        'Nilai_Partisipasi_Observasi',
+        'Nilai_Partisipasi_Diskusi',
+        'Nilai_Ketepatan_Waktu'
+    ]
+}
+'form_3': {
+    sheetName: 'Aktivitas_Eksplorasi_Zat',
+    headers: [
+        'Timestamp',
+        'Kelas',
+        'Nama',
+        'Kelompok',
+        'Tugas_Peran',
+        
+        // LITERASI (14 kolom)
+        'Literasi1',
+        'Literasi_Contoh_Padat',
+        'Literasi_Contoh_Cair',
+        'Literasi_Contoh_Gas',
+        'Fisika1', 'Fisika2', 'Fisika3',
+        'Kimia1', 'Kimia2', 'Kimia3',
+        'Unsur_Pengertian', 'Unsur_Contoh',
+        'Senyawa_Pengertian', 'Senyawa_Contoh',
+        'Campuran_Pengertian', 'Campuran_Contoh',
+        
+        // BENDA 1-5 (25 kolom: 5 benda × 5 field)
+        'Benda1_Nama', 'Benda1_Wujud', 'Benda1_Jenis', 'Benda1_Sifat', 'Benda1_Kegunaan',
+        'Benda2_Nama', 'Benda2_Wujud', 'Benda2_Jenis', 'Benda2_Sifat', 'Benda2_Kegunaan',
+        'Benda3_Nama', 'Benda3_Wujud', 'Benda3_Jenis', 'Benda3_Sifat', 'Benda3_Kegunaan',
+        'Benda4_Nama', 'Benda4_Wujud', 'Benda4_Jenis', 'Benda4_Sifat', 'Benda4_Kegunaan',
+        'Benda5_Nama', 'Benda5_Wujud', 'Benda5_Jenis', 'Benda5_Sifat', 'Benda5_Kegunaan',
+        
+        // PILIHAN & PENJELASAN (2 kolom)
+        'Pilihan_Benda',
+        'Penjelasan_Ilmiah',
+        
+        // ISTILAH (6 kolom: 5 checkbox + 1 input lainnya)
+        'Istilah_Unsur',
+        'Istilah_Senyawa',
+        'Istilah_Campuran',
+        'Istilah_Perubahan_Fisika',
+        'Istilah_Perubahan_Kimia',
+        'Istilah_Lainnya',
+        
+        // OBSERVASI DETAIL (17 kolom)
+        'Observasi_Benda',
+        'Jenis_Perubahan',
+        'Obs_Waktu0', 'Obs_Kondisi0',
+        'Obs_Waktu5', 'Obs_Kondisi5',
+        'Obs_Waktu10', 'Obs_Kondisi10',
+        'Obs_Waktu15', 'Obs_Kondisi15',
+        'Obs_Waktu20', 'Obs_Kondisi20',
+        'Obs_Waktu25', 'Obs_Kondisi25',
+        'Obs_Waktu30', 'Obs_Kondisi30',
+        
+        // POLA (2 kolom)
+        'Pola_Temuan',
+        'Pola_Faktor',
+        
+        // PREDIKSI 1 (3 kolom)
+        'Prediksi1_Opsi',
+        'Prediksi1_Lain',
+        'Prediksi1_Alasan',
+        
+        // PREDIKSI 2 (5 kolom)
+        'Prediksi2_Skenario',
+        'Prediksi2_Campur',
+        'Prediksi2_Lain',
+        'Prediksi2_Hasil',
+        'Prediksi2_Alasan',
+        
+        // FENOMENA (4 kolom)
+        'Tipe_Fenomena',
+        'Komponen_Pusat',
+        'Komponen_Perubahan',
+        'Komponen_Lingkungan',
+        
+        // PREDIKSI TERPILIH (2 kolom)
+        'Pilihan_Prediksi',
+        'Prediksi_Terpilih',
+        
+        // CARA 1 (5 kolom)
+        'Cara1_Waktu_Sama',
+        'Cara1_Waktu_Beda',
+        'Cara1_Kondisi_Beda',
+        'Cara1_Kecepatan',
+        'Cara1_Hasil',
+        
+        // CARA 2 (9 kolom)
+        'Cara2_Suhu',
+        'Cara2_Kelembaban',
+        'Cara2_Campur',
+        'Cara2_Campur_Isi',
+        'Cara2_Permukaan',
+        'Cara2_Lain',
+        'Cara2_Lain_Isi',
+        'Cara2_Perlakukan',
+        'Cara2_Kontrol',
+        
+        // LANGKAH (5 kolom)
+        'Langkah1', 'Langkah2', 'Langkah3', 'Langkah4', 'Langkah5',
+        
+        // ALAT (10 kolom: 3 alat × 3 field + 1 checkbox)
+        'Alat1_Nama', 'Alat1_Kegunaan', 'Alat1_Ketersediaan',
+        'Alat2_Nama', 'Alat2_Kegunaan', 'Alat2_Ketersediaan',
+        'Alat3_Nama', 'Alat3_Kegunaan', 'Alat3_Ketersediaan',
+        'Alat_Tidak',
+        
+        // ETIKA (6 kolom)
+        'Etika1_Bahan_Berbahaya',
+        'Etika2_Api_Benda_Panas',
+        'Etika3_Cium_Cicip',
+        'Etika4_Cuci_Tangan',
+        'Etika5_Bersih_Alat',
+        'Etika6_Buang_Limbah',
+        
+        // HASIL PEMBUKTIAN (12 kolom: 6 waktu + 6 hasil)
+        'Hasil_Waktu1', 'Hasil_Isi1',
+        'Hasil_Waktu2', 'Hasil_Isi2',
+        'Hasil_Waktu3', 'Hasil_Isi3',
+        'Hasil_Waktu4', 'Hasil_Isi4',
+        'Hasil_Waktu5', 'Hasil_Isi5',
+        'Hasil_Waktu6', 'Hasil_Isi6',
+        
+        // ANALISIS (5 kolom)
+        'Kesesuaian_Hasil',
+        'Analisis_Data',
+        'Analisis_Penjelasan',
+        'Analisis_Faktor',
+        'Kesimpulan',
+        
+        // JURUSAN (2 kolom)
+        'Jurusan',
+        'Jurusan_Lain',
+        
+        // ASPEK JURUSAN (4 kolom)
+        'Aspek_Bahan_Baku',
+        'Aspek_Proses_Produksi',
+        'Aspek_Limbah',
+        'Aspek_Produk',
+        
+        // SOLUSI (6 kolom)
+        'Solusi_Masalah',
+        'Solusi_Lokasi',
+        'Solusi_Zat',
+        'Solusi_Dampak',
+        'Solusi_Ide',
+        'Solusi_Cara_Penerapan',
+        
+        // REFLEKSI (4 kolom)
+        'Refleksi_Paling_Menarik',
+        'Refleksi_Kesulitan',
+        'Refleksi_Penemuan_Baru',
+        'Refleksi_Keinginan_Belajar',
+        
+        // PENILAIAN DIRI (5 kolom)
+        'Nilai_Partisipasi_Observasi',
+        'Nilai_Partisipasi_Diskusi',
+        'Nilai_Ketepatan_Waktu',
+        'Nilai_Kerja_Sama',
+        'Nilai_Kebersihan_Keamanan'
+    ]
+}
+'form_4': {
+    sheetName: 'Aktivitas_Eksplorasi_Energi',
+    headers: [
+        'Timestamp',
+        'Kelas',
+        'Nama',
+        'Kelompok',
+        'Tugas_Peran',
+        
+        // LITERASI (18 kolom)
+        'Literasi1',
+        'Energi_A', 'Contoh_A', 'Energi_B', 'Contoh_B', 'Energi_C', 'Contoh_C', 
+        'Energi_D', 'Contoh_D', 'Energi_E', 'Contoh_E',
+        'Literasi3',
+        'Terbarukan_Pengertian', 'Terbarukan_Contoh1', 'Terbarukan_Contoh2',
+        'Tak_Terbarukan_Pengertian', 'Tak_Terbarukan_Contoh1', 'Tak_Terbarukan_Contoh2',
+        
+        // PERISTIWA 1-5 (25 kolom: 5 peristiwa × 5 field)
+        'Peristiwa1_Nama', 'Peristiwa1_Energi_Awal', 'Peristiwa1_Energi_Akhir', 'Peristiwa1_Sumber', 'Peristiwa1_Manfaat',
+        'Peristiwa2_Nama', 'Peristiwa2_Energi_Awal', 'Peristiwa2_Energi_Akhir', 'Peristiwa2_Sumber', 'Peristiwa2_Manfaat',
+        'Peristiwa3_Nama', 'Peristiwa3_Energi_Awal', 'Peristiwa3_Energi_Akhir', 'Peristiwa3_Sumber', 'Peristiwa3_Manfaat',
+        'Peristiwa4_Nama', 'Peristiwa4_Energi_Awal', 'Peristiwa4_Energi_Akhir', 'Peristiwa4_Sumber', 'Peristiwa4_Manfaat',
+        'Peristiwa5_Nama', 'Peristiwa5_Energi_Awal', 'Peristiwa5_Energi_Akhir', 'Peristiwa5_Sumber', 'Peristiwa5_Manfaat',
+        
+        // PILIHAN & PENJELASAN (5 kolom)
+        'Pilihan_Peristiwa',
+        'Pilihan_Energi_Awal',
+        'Pilihan_Energi_Akhir',
+        'Pilihan_Energi_Lain',
+        'Penjelasan_Ilmiah',
+        
+        // ISTILAH (10 checkbox + 1 input)
+        'Istilah_Kinetik',
+        'Istilah_Potensial',
+        'Istilah_Panas',
+        'Istilah_Listrik',
+        'Istilah_Kimia',
+        'Istilah_Cahaya',
+        'Istilah_Bunyi',
+        'Istilah_Kekekalan_Energi',
+        'Istilah_Perubahan_Energi',
+        'Istilah_Lainnya',
+        
+        // OBSERVASI DETAIL (16 kolom)
+        'Observasi_Peristiwa',
+        'Observasi_Energi',
+        'Obs_Waktu0', 'Obs_Kondisi0',
+        'Obs_Waktu5', 'Obs_Kondisi5',
+        'Obs_Waktu10', 'Obs_Kondisi10',
+        'Obs_Waktu15', 'Obs_Kondisi15',
+        'Obs_Waktu20', 'Obs_Kondisi20',
+        'Obs_Waktu25', 'Obs_Kondisi25',
+        'Obs_Waktu30', 'Obs_Kondisi30',
+        
+        // POLA (2 kolom)
+        'Pola_Temuan',
+        'Pola_Faktor',
+        
+        // PREDIKSI 1 (3 kolom)
+        'Prediksi1_Opsi',
+        'Prediksi1_Lain',
+        'Prediksi1_Alasan',
+        
+        // PREDIKSI 2 (4 kolom)
+        'Prediksi2_Skenario',
+        'Prediksi2_Lain',
+        'Prediksi2_Hasil',
+        'Prediksi2_Alasan',
+        
+        // FENOMENA (6 kolom)
+        'Tipe_Fenomena',
+        'Komponen_Peristiwa',
+        'Komponen_Energi_Awal',
+        'Komponen_Energi_Akhir',
+        'Komponen_Sumber',
+        'Komponen_Manfaat',
+        
+        // PREDIKSI TERPILIH (2 kolom)
+        'Pilihan_Prediksi',
+        'Prediksi_Terpilih',
+        
+        // CARA 1 (7 kolom)
+        'Cara1_Waktu',
+        'Cara1_Kondisi',
+        'Cara1_Objek',
+        'Cara1_Bandingkan',
+        'Cara1_Langkah1',
+        'Cara1_Langkah2',
+        'Cara1_Langkah3',
+        
+        // CARA 2 (12 kolom)
+        'Cara2_Sumber',
+        'Cara2_Suhu',
+        'Cara2_Tinggi',
+        'Cara2_Jarak',
+        'Cara2_Lain',
+        'Cara2_Lain_Isi',
+        'Cara2_Perlakukan',
+        'Cara2_Kontrol',
+        'Cara2_Langkah1',
+        'Cara2_Langkah2',
+        'Cara2_Langkah3',
+        'Cara2_Langkah4',
+        'Cara2_Langkah5',
+        
+        // ALAT 1-4 (12 kolom: 4 alat × 3 field)
+        'Alat1_Nama', 'Alat1_Kegunaan', 'Alat1_Ketersediaan',
+        'Alat2_Nama', 'Alat2_Kegunaan', 'Alat2_Ketersediaan',
+        'Alat3_Nama', 'Alat3_Kegunaan', 'Alat3_Ketersediaan',
+        'Alat4_Nama', 'Alat4_Kegunaan', 'Alat4_Ketersediaan',
+        
+        // ALAT UKUR (6 kolom)
+        'Alat_Ukur_Stopwatch',
+        'Alat_Ukur_Thermometer',
+        'Alat_Ukur_Penggaris',
+        'Alat_Ukur_Meteran',
+        'Alat_Ukur_Lain',
+        'Alat_Tidak',
+        
+        // ETIKA (7 kolom)
+        'Etika_Listrik',
+        'Etika_Panas',
+        'Etika_Jatuh',
+        'Etika_Kerja_Sama',
+        'Etika_Sampah',
+        'Etika_Bersih',
+        'Etika_Kembali_Semula',
+        
+        // HASIL PEMBUKTIAN (12 kolom: 6 waktu + 6 hasil)
+        'Hasil_Waktu1', 'Hasil_Isi1',
+        'Hasil_Waktu2', 'Hasil_Isi2',
+        'Hasil_Waktu3', 'Hasil_Isi3',
+        'Hasil_Waktu4', 'Hasil_Isi4',
+        'Hasil_Waktu5', 'Hasil_Isi5',
+        'Hasil_Waktu6', 'Hasil_Isi6',
+        
+        // ANALISIS (13 kolom)
+        'Kesesuaian_Hasil',
+        'Analisis_Data',
+        'Analisis_Penjelasan',
+        'Energi1', 'Sumber1', 'Tujuan1',
+        'Energi2', 'Sumber2', 'Tujuan2',
+        'Energi3', 'Sumber3', 'Tujuan3',
+        'Analisis_Energi_Hilang',
+        'Kesimpulan',
+        
+        // JURUSAN (2 kolom)
+        'Jurusan',
+        'Jurusan_Lain',
+        
+        // ASPEK JURUSAN (5 kolom)
+        'Aspek_Sumber_Energi',
+        'Aspek_Peralatan',
+        'Aspek_Proses_Produksi',
+        'Aspek_Produk',
+        'Aspek_Limbah_Energi',
+        
+        // SOLUSI (5 kolom)
+        'Solusi_Masalah',
+        'Solusi_Lokasi',
+        'Solusi_Penyebab',
+        'Solusi_Ide',
+        'Solusi_Cara_Penerapan',
+        
+        // POTENSI ENERGI TERBARUKAN (12 kolom)
+        'Potensi_Matahari_Sumber', 'Potensi_Matahari_Guna',
+        'Potensi_Angin_Sumber', 'Potensi_Angin_Guna',
+        'Potensi_Air_Sumber', 'Potensi_Air_Guna',
+        'Potensi_Biomassa_Sumber', 'Potensi_Biomassa_Guna',
+        'Potensi_Lain_Sumber', 'Potensi_Lain_Guna',
+        'Potensi_Terpilih',
+        'Potensi_Ide',
+        
+        // REFLEKSI (4 kolom)
+        'Refleksi_Paling_Menarik',
+        'Refleksi_Hal_Baru',
+        'Refleksi_Kebiasaan_Boros',
+        'Refleksi_Rencana_Hemat',
+        
+        // PENILAIAN DIRI (6 kolom)
+        'Nilai_Partisipasi_Observasi',
+        'Nilai_Partisipasi_Diskusi',
+        'Nilai_Ketepatan_Waktu',
+        'Nilai_Kerja_Sama',
+        'Nilai_Keselamatan_Kebersihan',
+        'Nilai_Kreativitas'
+    ]
+}
+'form_5': {
+    sheetName: 'Aktivitas_Eksplorasi_Keruangan',
+    headers: [
+        'Timestamp',
+        'Kelas',
+        'Nama',
+        'Kelompok',
+        'Tugas_Peran',
+        
+        // LITERASI (placeholder)
+        'Literasi1',
+        'Literasi2',
+        'Literasi3',
+        
+        // TP 1.1: Pengetahuan Ilmiah
+        'Observasi1_Nama',
+        'Observasi1_Lokasi',
+        'Observasi1_Konektivitas',
+        
+        // TP 1.2: Prediksi
+        'Prediksi_Perubahan_Ruang',
+        'Prediksi_Alasan',
+        
+        // TP 1.3: Pembuktian
+        'Metode_Pembuktian',
+        'Hasil_Pembuktian',
+        
+        // TP 1.4: Koneksi Keahlian
+        'Koneksi_Keahlian',
+        
+        // Refleksi
+        'Refleksi_Pembelajaran',
+        
+        // Penilaian Diri
+        'Nilai_Partisipasi',
+        'Nilai_Kerja_Sama',
+        'Nilai_Ketepatan_Waktu',
+        
+        // Status (karena masih coming soon)
+        'Status_Konten',
+        'Catatan_Pengguna'
+    ]
+}
+'form_6': {
+    sheetName: 'Aktivitas_Eksplorasi_Interaksi_Sosial',
+    headers: [
+        'Timestamp',
+        'Kelas',
+        'Nama',
+        'Kelompok',
+        'Tugas_Peran',
+        
+        // LITERASI (placeholder - menyesuaikan tema interaksi sosial)
+        'Literasi_Konsep_Interaksi_Sosial',
+        'Literasi_Bentuk_Interaksi',
+        'Literasi_Dampak_Interaksi',
+        'Literasi_Contoh_di_Lingkungan',
+        
+        // OBSERVASI INTERAKSI SOSIAL
+        'Observasi_Lokasi',
+        'Observasi_Waktu',
+        'Observasi_Pelaku1',
+        'Observasi_Pelaku2',
+        'Observasi_Jenis_Interaksi',
+        'Observasi_Tujuan_Interaksi',
+        'Observasi_Hasil_Interaksi',
+        
+        // ANALISIS INTERAKSI
+        'Analisis_Faktor_Pendorong',
+        'Analisis_Faktor_Penghambat',
+        'Analisis_Dampak_Positif',
+        'Analisis_Dampak_Negatif',
+        
+        // PREDIKSI & SOLUSI
+        'Prediksi_Perkembangan_Interaksi',
+        'Solusi_Masalah_Interaksi',
+        
+        // KONEKSI DENGAN BIDANG KEAHLIAN
+        'Koneksi_Keahlian_Jenis_Interaksi',
+        'Koneksi_Keahlian_Pelaku_Interaksi',
+        'Koneksi_Keahlian_Dampak_Interaksi',
+        
+        // REFLEKSI
+        'Refleksi_Pembelajaran',
+        'Refleksi_Penerapan_di_Kehidupan',
+        
+        // PENILAIAN DIRI
+        'Nilai_Partisipasi_Observasi',
+        'Nilai_Partisipasi_Diskusi',
+        'Nilai_Kerja_Sama',
+        'Nilai_Ketepatan_Waktu',
+        
+        // STATUS (karena masih coming soon)
+        'Status_Konten',
+        'Catatan_Pengguna'
+    ]
+}
+'form_7': {
+    sheetName: 'Aktivitas_Eksplorasi_Perilaku_Ekonomi',
+    headers: [
+        'Timestamp',
+        'Kelas',
+        'Nama',
+        'Kelompok',
+        'Tugas_Peran',
+        
+        // LITERASI (konsep dasar ekonomi)
+        'Literasi_Pengertian_Ekonomi',
+        'Literasi_Kebutuhan_dan_Keinginan',
+        'Literasi_Kelangkaan_Sumber_Daya',
+        'Literasi_Pilihan_dan_Skala_Prioritas',
+        'Literasi_Pelaku_Ekonomi',
+        
+        // OBSERVASI PERILAKU EKONOMI DI LINGKUNGAN
+        'Observasi_Tempat',
+        'Observasi_Waktu',
+        'Observasi_Jenis_Kegiatan_Ekonomi',
+        'Observasi_Pelaku_Penjual',
+        'Observasi_Pelaku_Pembeli',
+        'Observasi_Barang_Jasa_yang_Diperjualbelikan',
+        'Observasi_Harga',
+        'Observasi_Cara_Transaksi',
+        
+        // ANALISIS PERILAKU EKONOMI
+        'Analisis_Faktor_yang_Mempengaruhi_Permintaan',
+        'Analisis_Faktor_yang_Mempengaruhi_Penawaran',
+        'Analisis_Motif_Ekonomi_Pelaku',
+        'Analisis_Prinsip_Ekonomi_yang_Diterapkan',
+        
+        // PREDIKSI DAN SOLUSI MASALAH EKONOMI
+        'Prediksi_Perkembangan_Kegiatan_Ekonomi',
+        'Prediksi_Dampak_Perubahan_Harga',
+        'Masalah_Ekonomi_yang_Diamati',
+        'Solusi_Masalah_Ekonomi_Sederhana',
+        
+        // KONEKSI DENGAN BIDANG KEAHLIAN
+        'Koneksi_Keahlian_Kegiatan_Ekonomi',
+        'Koneksi_Keahlian_Produk_Jasa',
+        'Koneksi_Keahlian_Peluang_Usaha',
+        'Koneksi_Keahlian_Strategi_Pemasaran',
+        
+        // PERENCANAAN KEUANGAN SEDERHANA
+        'Perencanaan_Pemasukan',
+        'Perencanaan_Pengeluaran',
+        'Perencanaan_Tabungan',
+        'Perencanaan_Investasi',
+        'Perencanaan_Donasi_Sosial',
+        
+        // REFLEKSI
+        'Refleksi_Kebiasaan_Menabung',
+        'Refleksi_Kebiasaan_Belanja',
+        'Refleksi_Prinsip_Ekonomi_dalam_Kehidupan',
+        'Refleksi_Rencana_Pengelolaan_Uang',
+        
+        // PENILAIAN DIRI
+        'Nilai_Partisipasi_Observasi',
+        'Nilai_Partisipasi_Diskusi',
+        'Nilai_Kerja_Sama',
+        'Nilai_Ketepatan_Waktu',
+        'Nilai_Pemahaman_Konsep_Ekonomi',
+        
+        // STATUS (karena masih coming soon)
+        'Status_Konten',
+        'Catatan_Pengguna'
+    ]
+}
+'form_8': {
+    sheetName: 'Aktivitas_Review_Materi',
+    headers: [
+        'Timestamp',
+        'Kelas',
+        'Nama',
+        'Kelompok',
+        'Tugas_Peran',
+        
+        // REVIEW 6 ASPEK IPAS
+        'Review_Makhluk_Hidup_Tingkat_Pemahaman',
+        'Review_Makhluk_Hidup_Materi_Sulit',
+        'Review_Makhluk_Hidup_Materi_Mudah',
+        'Review_Makhluk_Hidup_Pertanyaan',
+        
+        'Review_Zat_Tingkat_Pemahaman',
+        'Review_Zat_Materi_Sulit',
+        'Review_Zat_Materi_Mudah',
+        'Review_Zat_Pertanyaan',
+        
+        'Review_Energi_Tingkat_Pemahaman',
+        'Review_Energi_Materi_Sulit',
+        'Review_Energi_Materi_Mudah',
+        'Review_Energi_Pertanyaan',
+        
+        'Review_Keruangan_Tingkat_Pemahaman',
+        'Review_Keruangan_Materi_Sulit',
+        'Review_Keruangan_Materi_Mudah',
+        'Review_Keruangan_Pertanyaan',
+        
+        'Review_Interaksi_Sosial_Tingkat_Pemahaman',
+        'Review_Interaksi_Sosial_Materi_Sulit',
+        'Review_Interaksi_Sosial_Materi_Mudah',
+        'Review_Interaksi_Sosial_Pertanyaan',
+        
+        'Review_Perilaku_Ekonomi_Tingkat_Pemahaman',
+        'Review_Perilaku_Ekonomi_Materi_Sulit',
+        'Review_Perilaku_Ekonomi_Materi_Mudah',
+        'Review_Perilaku_Ekonomi_Pertanyaan',
+        
+        // KESULITAN UMUM
+        'Kesulitan_Umum_dalam_Pembelajaran',
+        'Kesulitan_dalam_Praktik_Observasi',
+        'Kesulitan_dalam_Membuat_Prediksi',
+        'Kesulitan_dalam_Pembuktian',
+        'Kesulitan_dalam_Mengkaitkan_dengan_Keahlian',
+        
+        // MATERI YANG PALING DISUKAI
+        'Materi_Paling_Menarik',
+        'Alasan_Menyukai_Materi',
+        
+        // MATERI YANG PALING SULIT
+        'Materi_Paling_Sulit',
+        'Alasan_Materi_Sulit',
+        
+        // TANYA JAWAB
+        'Pertanyaan_untuk_Guru',
+        'Hal_yang_Ingin_Dipelajari_Lebih_Lanjut',
+        
+        // REFLEKSI PEMBELAJARAN SEMESTER
+        'Refleksi_Peningkatan_Pemahaman',
+        'Refleksi_Keterampilan_Baru',
+        'Refleksi_Sikap_Ilmiah_yang_Berkembang',
+        'Refleksi_Manfaat_IPAS_untuk_Keahlian',
+        'Refleksi_Target_untuk_Semester_Depan',
+        
+        // PENILAIAN DIRI REVIEW
+        'Nilai_Keaktifan_dalam_Review',
+        'Nilai_Kemampuan_Menjelaskan_Kembali',
+        'Nilai_Kemampuan_Menjawab_Pertanyaan',
+        'Nilai_Kerja_Sama_dalam_Kelompok',
+        'Nilai_Kesiapan_Menghadapi_Evaluasi',
+        
+        // STATUS (karena masih coming soon)
+        'Status_Konten',
+        'Catatan_Pengguna'
+    ]
+}

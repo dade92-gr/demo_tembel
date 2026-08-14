@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bab 2: Makhluk Hidup dan Lingkungannya - Kelas X</title>
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* IPAS THEME COLORS - HANYA UNTUK KONTEN */
+        :root {
+            --ipas-primary: #2ecc71;
+            --ipas-secondary: #27ae60;
+            --ipas-light: #d5f4e6;
+            --ipas-dark: #229954;
+            --ipas-accent: #3498db;
+            --ipas-semester1: #3498db;
+            --ipas-gray: #f5f7fa;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f5f7fa; color: #2c3e50; line-height: 1.6; }
+
+        /* ===== LOGO ZOOM EFFECT ===== */
+        .logo img { transition: transform 0.3s ease; }
+        .logo:hover img { transform: scale(1.2); }
+        
+        /* MAIN CONTENT */
+        .bab-container { padding: 2rem; max-width: 1200px; margin: 0 auto; min-height: calc(100vh - 80px); display: flex; align-items: flex-start; justify-content: center; }
+        
+        .bab-card { background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%); border-radius: 30px; padding: 3rem; box-shadow: 0 20px 40px rgba(46, 204, 113, 0.15); border-left: 8px solid var(--ipas-semester1); position: relative; overflow: hidden; width: 100%; animation: fadeInUp 0.6s ease-out; }
+        .bab-card::before { content: ''; position: absolute; top: 0; right: 0; width: 250px; height: 250px; background: radial-gradient(circle, rgba(52, 152, 219, 0.1) 0%, transparent 70%); z-index: 0; }
+        .bab-card > * { position: relative; z-index: 1; }
+        
+        .bab-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 3px solid var(--ipas-light); }
+        .bab-icon { width: 80px; height: 80px; background: linear-gradient(135deg, var(--ipas-semester1), var(--ipas-primary)); border-radius: 25px; display: flex; align-items: center; justify-content: center; color: white; font-size: 2.5rem; box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3); }
+        .bab-title-wrapper h1 { color: var(--ipas-dark); font-size: 2.5rem; margin-bottom: 0.5rem; line-height: 1.2; }
+        .bab-subtitle { color: var(--ipas-semester1); font-size: 1.1rem; font-weight: 600; display: flex; align-items: center; gap: 8px; }
+        .bab-subtitle i { font-size: 0.8rem; }
+        
+        .bab-info { display: flex; gap: 2rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+        .info-item { display: flex; align-items: center; gap: 10px; background: var(--ipas-light); padding: 0.8rem 1.5rem; border-radius: 50px; color: var(--ipas-dark); font-weight: 600; }
+        .info-item i { color: var(--ipas-semester1); font-size: 1.2rem; }
+        
+        .bab-description { background: white; border-radius: 20px; padding: 2rem; margin-bottom: 2rem; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 1px solid rgba(52, 152, 219, 0.1); }
+        .bab-description h2, .bab-description h3, .bab-description p, .bab-description ul, .bab-description ol, .bab-description li, .bab-description table, .bab-description .note-box { text-align: justify; }
+        
+        .bab-description h2 { color: var(--ipas-dark); font-size: 2rem; margin: 1.5rem 0 1rem 0; border-bottom: 2px solid var(--ipas-light); padding-bottom: 0.5rem; }
+        .bab-description h3 { color: var(--ipas-dark); font-size: 1.3rem; margin: 1.5rem 0 1rem 0; display: flex; align-items: center; gap: 10px; }
+        .bab-description h3 i { color: var(--ipas-semester1); }
+        .bab-description p { color: #555; font-size: 1.1rem; line-height: 1.8; margin-bottom: 1rem; text-align: justify; }
+        .bab-description ul, .bab-description ol { margin-left: 2rem; margin-bottom: 1rem; color: #555; text-align: justify; }
+        .bab-description li { margin-bottom: 0.5rem; text-align: justify; }
+        .bab-description strong { color: var(--ipas-dark); }
+        
+        .custom-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 1rem; box-shadow: 0 0 20px rgba(0, 0, 0, 0.05); border-radius: 10px; overflow: hidden; }
+        .custom-table th { background-color: var(--ipas-semester1); color: white; font-weight: 600; padding: 12px 15px; text-align: left; }
+        .custom-table td { padding: 12px 15px; border-bottom: 1px solid #dddddd; text-align: justify; }
+        .custom-table tr:nth-child(even) { background-color: #f8f8f8; }
+        .custom-table tr:hover { background-color: var(--ipas-light); }
+        
+        .note-box { background: var(--ipas-light); border-left: 5px solid var(--ipas-semester1); padding: 1.5rem; margin: 1.5rem 0; border-radius: 10px; font-style: italic; }
+        
+        .image-container { margin: 2rem 0; text-align: center; width: 100%; }
+        .image-container img { max-width: 100%; max-height: 400px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); border: 3px solid white; display: block; margin: 0 auto; }
+        .image-caption { font-style: italic; color: #6c757d; margin-top: 0.5rem; font-size: 0.95rem; text-align: center; width: 100%; }
+        .image-placeholder { background: #e9ecef; border: 2px dashed var(--ipas-semester1); border-radius: 15px; padding: 2rem; margin: 2rem 0; text-align: center; color: #6c757d; font-weight: 600; transition: all 0.3s ease; width: 100%; }
+        .image-placeholder i { font-size: 3rem; color: var(--ipas-semester1); margin-bottom: 1rem; display: block; }
+        .image-placeholder:hover { background: #dee2e6; border-color: var(--ipas-primary); color: #495057; }
+        
+        .bab-navigation { display: flex; gap: 1rem; justify-content: space-between; margin-top: 2rem; }
+        .nav-btn { display: inline-flex; align-items: center; gap: 10px; padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; border: none; cursor: pointer; }
+        .nav-btn.primary { background: linear-gradient(135deg, var(--ipas-semester1), var(--ipas-primary)); color: white; box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3); }
+        .nav-btn.primary:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4); }
+        .nav-btn.secondary { background: white; color: var(--ipas-dark); border: 2px solid var(--ipas-light); }
+        .nav-btn.secondary:hover { background: var(--ipas-light); transform: translateX(-5px); }
+        .nav-btn:active { transform: scale(0.95); }
+        
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
+        @media (max-width: 768px) {
+            .bab-container { padding: 1rem; }
+            .bab-card { padding: 2rem; }
+            .bab-header { flex-direction: column; text-align: center; }
+            .bab-title-wrapper h1 { font-size: 2rem; }
+            .bab-info { justify-content: center; }
+            .bab-navigation { flex-direction: column; }
+            .nav-btn { justify-content: center; }
+        }
+        
+        @media (max-width: 480px) {
+            .bab-card { padding: 1.5rem; }
+            .bab-title-wrapper h1 { font-size: 1.8rem; }
+            .bab-icon { width: 60px; height: 60px; font-size: 2rem; }
+            .info-item { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="../../assets/images/logo.png" alt="Logo Sekolah">
+                    <h1>TEMBOK BELAJAR - PROJEK IPAS</h1>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="../../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="../index-ipas.html" class="nav-link"><i class="fas fa-flask"></i> Beranda IPAS</a></li>
+                    <li><a href="../aktivitas-pembelajaran/index-aktifitas-ipas.html" class="nav-link"><i class="fas fa-tasks"></i> Daftar Aktivitas</a></li>
+                    <li><a href="index-materi-ipas.html" class="nav-link active"><i class="fas fa-book-open"></i> Daftar Materi</a></li>
+                    <li><a href="../penilaian/index-penilaian-ipas.html" class="nav-link"><i class="fas fa-chart-line"></i> Penilaian</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="bab-container">
+        <div class="bab-card">
+            <div class="bab-header">
+                <div class="bab-icon"><i class="fas fa-leaf"></i></div>
+                <div class="bab-title-wrapper">
+                    <h1>Bab 2: Makhluk Hidup dan Lingkungannya</h1>
+                    <div class="bab-subtitle"><i class="fas fa-circle"></i> <span>Semester Ganjil</span></div>
+                </div>
+            </div>
+
+            <div class="bab-description">
+                <h2>Pengantar Konseptual: Kehidupan dan Lingkungannya</h2>
+                <p>Setiap makhluk hidup—manusia, tumbuhan, dan hewan—tidak dapat hidup sendiri. Mereka saling membutuhkan dan bergantung pada lingkungannya untuk bertahan hidup.</p>
+                <p>Manusia membutuhkan udara untuk bernapas, air untuk minum dan bertani, serta hewan dan tumbuhan sebagai sumber pangan. Tumbuhan memerlukan air, tanah yang subur, dan cahaya matahari untuk tumbuh. Sementara hewan bergantung pada tumbuhan atau hewan lain sebagai makanan, serta membutuhkan tempat berlindung yang aman.</p>
+
+                <h3>Komponen Lingkungan</h3>
+                <p>Lingkungan tempat makhluk hidup berada terdiri dari dua jenis unsur:</p>
+                <ol>
+                    <li><strong>Komponen biotik</strong>, yaitu makhluk hidup (manusia, tumbuhan, hewan, dan mikroorganisme).</li>
+                    <li><strong>Komponen abiotik</strong>, yaitu benda tak hidup seperti tanah, air, udara, cahaya, suhu, dan energi matahari.</li>
+                </ol>
+                <p>Keduanya membentuk sistem kehidupan yang saling memengaruhi. Bila satu bagian terganggu, seluruh sistem bisa ikut berubah.</p>
+                <p><strong>Contoh:</strong> Ketika pohon di sekitar sungai ditebang, tanah menjadi gundul dan mudah longsor; air hujan tidak terserap, menyebabkan banjir. Dampaknya tidak hanya dirasakan oleh tumbuhan, tetapi juga oleh hewan dan manusia yang tinggal di sekitarnya.</p>
+                <p>Di desa, keterkaitan antara makhluk hidup dan lingkungan sangat mudah diamati. Petani, misalnya, bergantung pada tanah yang subur dan air yang cukup. Hewan ternak memberi manfaat bagi manusia tetapi juga membutuhkan rumput dan air bersih. Setiap tindakan manusia—seperti membuang sampah ke sungai atau membakar lahan pertanian—akan memberi efek balik terhadap keseimbangan lingkungan.</p>
+                <p>Hubungan saling bergantung ini dapat dilihat sebagai sistem ekosistem: sekumpulan makhluk hidup yang berinteraksi dengan lingkungannya sebagai satu kesatuan. Di dalam ekosistem terdapat aliran energi dan siklus materi yang menjaga kehidupan tetap seimbang. Energi dari matahari digunakan tumbuhan untuk fotosintesis, hasilnya dimakan oleh hewan, dan akhirnya kembali ke tanah melalui sisa makhluk hidup yang mati dan diuraikan oleh mikroorganisme.</p>
+                <p>Keseimbangan sistem ini sangat bergantung pada cara manusia memperlakukan alam. Jika manusia menggunakan sumber daya secara bijak, kehidupan di bumi dapat berlangsung berkelanjutan. Namun, jika manusia serakah atau tidak peduli, kerusakan lingkungan akan berbalik memengaruhi kehidupan manusia sendiri.</p>
+                <p>Dengan memahami keterkaitan antara makhluk hidup dan lingkungannya secara ilmiah, kita belajar bahwa menjaga alam bukan hanya tanggung jawab moral, tetapi juga kebutuhan untuk kelangsungan hidup bersama.</p>
+
+                <h2>Tingkat Organisasi Kehidupan</h2>
+                <p>Kehidupan di bumi tersusun secara bertingkat, dari yang paling sederhana hingga yang paling kompleks. Setiap tingkat menunjukkan hubungan dan ketergantungan antara makhluk hidup dengan lingkungannya.</p>
+
+                <h3>a. Individu</h3>
+                <p>Individu adalah satu makhluk hidup tunggal. Contoh: satu pohon mangga di kebun, seekor ayam di kandang, atau seorang petani di sawah. Individu memiliki kebutuhan hidup yang harus dipenuhi agar tetap bertahan, seperti makanan, air, udara, dan tempat tinggal.</p>
+
+                <h3>b. Populasi</h3>
+                <p>Populasi adalah sekumpulan individu sejenis yang hidup di suatu tempat pada waktu yang sama. Contoh: sekumpulan ikan nila di kolam, segerombolan ayam di halaman, atau banyak pohon pisang di satu kebun. Jumlah populasi bisa naik atau turun tergantung pada ketersediaan makanan, air, dan tempat hidup.</p>
+                
+                <div class="image-container" id="gambar1-container">
+                    <img src="s1-bab-2/gambar1.jpg" alt="Dua orang sedang membersihkan populasi eceng gondok" 
+                         onerror="this.style.display='none'; document.getElementById('gambar1-placeholder').style.display='block';"
+                         onload="this.style.display='block'; document.getElementById('gambar1-placeholder').style.display='none';">
+                    <div class="image-placeholder" id="gambar1-placeholder" style="display:block;">
+                        <i class="fas fa-image"></i>
+                        <span>[Gambar 1: Dua orang sedang membersihkan populasi eceng gondok]</span>
+                        <p style="font-size:0.9rem; margin-top:1rem;">Letakkan file gambar dengan nama "gambar1" (format: jpg, png, webp, gif, dll) di folder "s1-bab-2"</p>
+                    </div>
+                    <div class="image-caption">Gambar 1: Dua orang sedang membersihkan populasi eceng gondok</div>
+                </div>
+
+                <h3>c. Komunitas</h3>
+                <p>Komunitas merupakan kumpulan dari berbagai populasi makhluk hidup yang saling berinteraksi di suatu wilayah. Contohnya di sawah terdapat tanaman padi, belalang, burung pipit, dan katak. Semua saling bergantung: belalang memakan daun padi, burung memakan belalang, dan katak memangsa serangga kecil lainnya.</p>
+                
+                <div class="image-container" id="gambar2-container">
+                    <img src="s1-bab-2/gambar2.jpg" alt="Ekosistem sawah dengan komunitas burung kuntul" 
+                         onerror="this.style.display='none'; document.getElementById('gambar2-placeholder').style.display='block';"
+                         onload="this.style.display='block'; document.getElementById('gambar2-placeholder').style.display='none';">
+                    <div class="image-placeholder" id="gambar2-placeholder" style="display:block;">
+                        <i class="fas fa-image"></i>
+                        <span>[Gambar 2: Ekosistem sawah dengan komunitas burung kuntul]</span>
+                        <p style="font-size:0.9rem; margin-top:1rem;">Letakkan file gambar dengan nama "gambar2" (format: jpg, png, webp, gif, dll) di folder "s1-bab-2"</p>
+                    </div>
+                    <div class="image-caption">Gambar 2: Ekosistem sawah dengan komunitas burung kuntul</div>
+                </div>
+
+                <h3>d. Ekosistem</h3>
+                <p>Ekosistem adalah hubungan timbal balik antara makhluk hidup (biotik) dengan lingkungan fisiknya (abiotik), seperti air, tanah, cahaya, dan udara. Dalam ekosistem, makhluk hidup saling berinteraksi untuk memenuhi kebutuhan hidupnya dan menjaga keseimbangan. Contoh ekosistem di sekitar sekolah: kebun, kolam, halaman sekolah, atau sawah.</p>
+
+                <h3>e. Biosfer</h3>
+                <div class="image-container" id="gambar3-container">
+                    <img src="s1-bab-2/gambar3.jpg" alt="Biosfer" 
+                         onerror="this.style.display='none'; document.getElementById('gambar3-placeholder').style.display='block';"
+                         onload="this.style.display='block'; document.getElementById('gambar3-placeholder').style.display='none';">
+                    <div class="image-placeholder" id="gambar3-placeholder" style="display:block;">
+                        <i class="fas fa-image"></i>
+                        <span>[Gambar 3: Biosfer]</span>
+                        <p style="font-size:0.9rem; margin-top:1rem;">Letakkan file gambar dengan nama "gambar3" (format: jpg, png, webp, gif, dll) di folder "s1-bab-2"</p>
+                    </div>
+                    <div class="image-caption">Gambar 3: Biosfer</div>
+                </div>
+                <p>Biosfer adalah seluruh bagian bumi yang dihuni makhluk hidup, mencakup daratan, perairan, dan udara. Semua ekosistem di dunia—hutan, laut, padang rumput, gunung, dan desa—terhubung menjadi satu sistem besar yang menopang kehidupan di planet ini.</p>
+
+                <h2>Pertumbuhan dan Perkembangan Makhluk Hidup</h2>
+                <p>Setiap makhluk hidup mengalami perubahan sepanjang hidupnya. Perubahan itu disebut pertumbuhan dan perkembangan.</p>
+
+                <h3>a. Pengertian Pertumbuhan dan Perkembangan</h3>
+                <ul>
+                    <li><strong>Pertumbuhan</strong> adalah perubahan yang bersifat kuantitatif, artinya dapat diukur secara nyata, misalnya tinggi batang, berat badan, atau jumlah daun. Pertumbuhan bersifat tidak dapat balik (irreversibel). Contoh: tanaman padi yang sudah tinggi tidak akan kembali pendek.</li>
+                    <li><strong>Perkembangan</strong> adalah perubahan yang bersifat kualitatif, yaitu menuju tahap yang lebih sempurna dalam fungsi dan struktur. Contoh: dari biji menjadi tanaman dewasa yang bisa berbunga dan berbuah.</li>
+                </ul>
+
+                <h3>b. Ciri-Ciri Makhluk Hidup yang Tumbuh dan Berkembang</h3>
+                <p>Semua makhluk hidup memiliki tanda-tanda kehidupan yang serupa, yaitu:</p>
+                <ol>
+                    <li>Bernapas — membutuhkan oksigen untuk menghasilkan energi.</li>
+                    <li>Tumbuh — bertambah besar, panjang, dan berat.</li>
+                    <li>Berkembang biak — menghasilkan keturunan agar jenisnya tidak punah.</li>
+                    <li>Peka terhadap rangsang — merespons cahaya, suhu, atau sentuhan.</li>
+                    <li>Bergerak — berpindah tempat atau mengubah posisi bagian tubuh.</li>
+                    <li>Memerlukan makanan dan air.</li>
+                    <li>Mengeluarkan sisa metabolisme (ekskresi).</li>
+                </ol>
+
+                <h3>c. Faktor-Faktor yang Mempengaruhi Pertumbuhan</h3>
+                <table class="custom-table">
+                    <thead>
+                        <tr><th>Faktor Internal</th><th>Faktor Eksternal</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Genetik (pembawa sifat dari induk)</td><td>Cahaya → dibutuhkan untuk fotosintesis pada tumbuhan</td></tr>
+                        <tr><td>Hormon pertumbuhan</td><td>Air → pelarut zat makanan dan pengangkut nutrisi</td></tr>
+                        <tr><td></td><td>Nutrisi → bahan penyusun tubuh</td></tr>
+                        <tr><td></td><td>Suhu → memengaruhi aktivitas metabolisme</td></tr>
+                        <tr><td></td><td>Tanah dan udara → media hidup dan sumber gas oksigen/karbon dioksida</td></tr>
+                    </tbody>
+                </table>
+
+                <h3>d. Pertumbuhan pada Manusia dan Hewan</h3>
+                <p>Manusia dan hewan juga tumbuh dan berkembang dengan cara berbeda, tetapi prinsipnya sama: memanfaatkan makanan untuk membentuk sel baru. Anak sapi tumbuh menjadi sapi dewasa, anak ayam menjadi ayam jantan atau betina dewasa. Pertumbuhan berlangsung cepat saat masih muda dan melambat setelah dewasa.</p>
+
+                <h3>e. Hubungan Pertumbuhan dengan Lingkungan</h3>
+                <p>Pertumbuhan makhluk hidup tidak bisa dipisahkan dari lingkungannya. Lingkungan menyediakan sumber energi, air, dan nutrisi yang dibutuhkan untuk bertahan hidup.</p>
+
+                <div class="image-container" id="gambar4-container">
+                    <img src="s1-bab-2/gambar4.jpg" alt="Perbandingan hutan Atlantik sebelum dan sesudah penanaman pohon" 
+                         onerror="this.style.display='none'; document.getElementById('gambar4-placeholder').style.display='block';"
+                         onload="this.style.display='block'; document.getElementById('gambar4-placeholder').style.display='none';">
+                    <div class="image-placeholder" id="gambar4-placeholder" style="display:block;">
+                        <i class="fas fa-image"></i>
+                        <span>[Gambar 4: Perbandingan hutan Atlantik sebelum dan sesudah penanaman pohon]</span>
+                        <p style="font-size:0.9rem; margin-top:1rem;">Letakkan file gambar dengan nama "gambar4" (format: jpg, png, webp, gif, dll) di folder "s1-bab-2"</p>
+                    </div>
+                    <div class="image-caption">Gambar 4: Perbandingan hutan Atlantik sebelum dan sesudah penanaman pohon</div>
+                </div>
+
+                <h2>Keragaman Hayati (Biodiversitas)</h2>
+                <h3>a. Pengertian Keragaman Hayati</h3>
+                <p>Keragaman hayati atau biodiversitas adalah istilah yang menggambarkan keanekaragaman makhluk hidup di bumi, mulai dari tumbuhan, hewan, hingga mikroorganisme.</p>
+
+                <div class="image-container" id="gambar5-container">
+                    <img src="s1-bab-2/gambar5.jpg" alt="Keragaman Hayati" 
+                         onerror="this.style.display='none'; document.getElementById('gambar5-placeholder').style.display='block';"
+                         onload="this.style.display='block'; document.getElementById('gambar5-placeholder').style.display='none';">
+                    <div class="image-placeholder" id="gambar5-placeholder" style="display:block;">
+                        <i class="fas fa-image"></i>
+                        <span>[Gambar 5: Keragaman Hayati]</span>
+                        <p style="font-size:0.9rem; margin-top:1rem;">Letakkan file gambar dengan nama "gambar5" (format: jpg, png, webp, gif, dll) di folder "s1-bab-2"</p>
+                    </div>
+                    <div class="image-caption">Gambar 5: Keragaman Hayati</div>
+                </div>
+
+                <h3>b. Tingkatan Keragaman Hayati</h3>
+                <div class="image-container" id="gambar6-container">
+                    <img src="s1-bab-2/gambar6.jpg" alt="Tingkatan Keragaman Hayati" 
+                         onerror="this.style.display='none'; document.getElementById('gambar6-placeholder').style.display='block';"
+                         onload="this.style.display='block'; document.getElementById('gambar6-placeholder').style.display='none';">
+                    <div class="image-placeholder" id="gambar6-placeholder" style="display:block;">
+                        <i class="fas fa-image"></i>
+                        <span>[Gambar 6: Tingkatan Keragaman Hayati]</span>
+                        <p style="font-size:0.9rem; margin-top:1rem;">Letakkan file gambar dengan nama "gambar6" (format: jpg, png, webp, gif, dll) di folder "s1-bab-2"</p>
+                    </div>
+                    <div class="image-caption">Gambar 6: Tingkatan Keragaman Hayati</div>
+                </div>
+
+                <ol>
+                    <li><strong>Keragaman genetik</strong> - Variasi gen dalam satu spesies. Contoh: berbagai varietas padi lokal.</li>
+                    <li><strong>Keragaman spesies (jenis)</strong> - Keanekaragaman antarspesies dalam ekosistem. Contoh: di sawah terdapat padi, belalang, katak, ular, dan burung.</li>
+                    <li><strong>Keragaman ekosistem</strong> - Perbedaan antar ekosistem. Contoh: ekosistem sawah berbeda dengan hutan, kolam, atau pesisir pantai.</li>
+                </ol>
+
+                <h3>c. Pentingnya Keragaman Hayati</h3>
+                <ol>
+                    <li><strong>Sumber pangan dan obat-obatan</strong> - Tumbuhan dan hewan menyediakan bahan makanan serta obat alami.</li>
+                    <li><strong>Menjaga keseimbangan ekosistem</strong> - Setiap makhluk hidup punya peran. Hilangnya satu jenis dapat mengganggu rantai makanan.</li>
+                    <li><strong>Sumber ekonomi dan budaya</strong> - Mendukung pertanian, perikanan, pariwisata alam, dan nilai budaya.</li>
+                    <li><strong>Penunjang ilmu pengetahuan dan teknologi</strong> - Variasi genetik menjadi bahan penelitian untuk mengembangkan varietas unggul.</li>
+                </ol>
+
+                <h3>d. Keragaman Hayati di Lingkungan Desa</h3>
+                <div class="image-container" id="gambar7-container">
+                    <img src="s1-bab-2/gambar7.png" alt="Keragaman Hayati di Lingkungan Desa" 
+                         onerror="this.style.display='none'; document.getElementById('gambar7-placeholder').style.display='block';"
+                         onload="this.style.display='block'; document.getElementById('gambar7-placeholder').style.display='none';">
+                    <div class="image-placeholder" id="gambar7-placeholder" style="display:block;">
+                        <i class="fas fa-image"></i>
+                        <span>[Gambar 7: Keragaman Hayati di Lingkungan Desa]</span>
+                        <p style="font-size:0.9rem; margin-top:1rem;">Letakkan file gambar dengan nama "gambar7" (format: jpg, png, webp, gif, dll) di folder "s1-bab-2"</p>
+                    </div>
+                    <div class="image-caption">Gambar 7: Keragaman Hayati di Lingkungan Desa</div>
+                </div>
+
+                <ul>
+                    <li>Tanaman pangan dan hortikultura: padi, jagung, sayur, buah, dan tanaman obat keluarga.</li>
+                    <li>Hewan ternak: ayam, sapi, kambing, itik.</li>
+                    <li>Serangga bermanfaat: lebah, kupu-kupu, capung, dan cacing tanah.</li>
+                    <li>Mikroorganisme tanah: jamur dan bakteri pengurai yang membantu menyuburkan tanah.</li>
+                </ul>
+
+                <h2>Keseimbangan Alam dan Dampaknya</h2>
+                <h3>a. Pengertian Keseimbangan Alam</h3>
+                <div class="image-container" id="gambar8-container">
+                    <img src="s1-bab-2/gambar8.jpg" alt="Keseimbangan Alam" 
+                         onerror="this.style.display='none'; document.getElementById('gambar8-placeholder').style.display='block';"
+                         onload="this.style.display='block'; document.getElementById('gambar8-placeholder').style.display='none';">
+                    <div class="image-placeholder" id="gambar8-placeholder" style="display:block;">
+                        <i class="fas fa-image"></i>
+                        <span>[Gambar 8: Keseimbangan Alam]</span>
+                        <p style="font-size:0.9rem; margin-top:1rem;">Letakkan file gambar dengan nama "gambar8" (format: jpg, png, webp, gif, dll) di folder "s1-bab-2"</p>
+                    </div>
+                    <div class="image-caption">Gambar 8: Keseimbangan Alam</div>
+                </div>
+
+                <p>Keseimbangan alam adalah kondisi ketika komponen biotik dan abiotik saling berinteraksi secara stabil dan harmonis.</p>
+
+                <h3>b. Faktor yang Mempengaruhi Keseimbangan Alam</h3>
+                <table class="custom-table">
+                    <thead>
+                        <tr><th>Faktor Alamiah</th><th>Faktor Aktivitas Manusia</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Letusan gunung berapi</td><td>Deforestasi (penebangan hutan berlebihan)</td></tr>
+                        <tr><td>Gempa bumi dan tsunami</td><td>Penggunaan pestisida dan pupuk kimia berlebihan</td></tr>
+                        <tr><td>Perubahan cuaca ekstrem</td><td>Polusi udara, air, dan tanah</td></tr>
+                        <tr><td>Kekeringan panjang</td><td>Penangkapan ikan atau hewan secara berlebihan</td></tr>
+                    </tbody>
+                </table>
+
+                <h3>c. Perubahan Iklim dan Cuaca</h3>
+                <div class="image-container" id="gambar9-container">
+                    <img src="s1-bab-2/gambar9.jpg" alt="Efek Rumah Kaca" 
+                         onerror="this.style.display='none'; document.getElementById('gambar9-placeholder').style.display='block';"
+                         onload="this.style.display='block'; document.getElementById('gambar9-placeholder').style.display='none';">
+                    <div class="image-placeholder" id="gambar9-placeholder" style="display:block;">
+                        <i class="fas fa-image"></i>
+                        <span>[Gambar 9: Efek Rumah Kaca]</span>
+                        <p style="font-size:0.9rem; margin-top:1rem;">Letakkan file gambar dengan nama "gambar9" (format: jpg, png, webp, gif, dll) di folder "s1-bab-2"</p>
+                    </div>
+                    <div class="image-caption">Gambar 9: Efek Rumah Kaca</div>
+                </div>
+
+                <p><strong>Dampak perubahan iklim:</strong></p>
+                <ul>
+                    <li>Musim kemarau lebih panjang, musim hujan tidak menentu.</li>
+                    <li>Tanaman gagal panen karena suhu ekstrem.</li>
+                    <li>Hewan kehilangan habitat atau berpindah tempat.</li>
+                    <li>Permukaan laut naik karena mencairnya es di kutub.</li>
+                </ul>
+
+                <h3>d. Cuaca dan Musim di Indonesia</h3>
+                <div class="image-container" id="gambar10-container">
+                    <img src="s1-bab-2/gambar10.jpg" alt="Musim di Indonesia" 
+                         onerror="this.style.display='none'; document.getElementById('gambar10-placeholder').style.display='block';"
+                         onload="this.style.display='block'; document.getElementById('gambar10-placeholder').style.display='none';">
+                    <div class="image-placeholder" id="gambar10-placeholder" style="display:block;">
+                        <i class="fas fa-image"></i>
+                        <span>[Gambar 10: Musim di Indonesia]</span>
+                        <p style="font-size:0.9rem; margin-top:1rem;">Letakkan file gambar dengan nama "gambar10" (format: jpg, png, webp, gif, dll) di folder "s1-bab-2"</p>
+                    </div>
+                    <div class="image-caption">Gambar 10: Musim di Indonesia</div>
+                </div>
+
+                <ol>
+                    <li><strong>Musim Hujan</strong> (Oktober–Maret) — curah hujan tinggi.</li>
+                    <li><strong>Musim Kemarau</strong> (April–September) — curah hujan rendah, suhu tinggi.</li>
+                </ol>
+
+                <h3>e. Dampak Ketidakseimbangan Alam terhadap Kehidupan</h3>
+                <table class="custom-table">
+                    <thead>
+                        <tr><th>Bidang</th><th>Dampak</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Pertanian</td><td>Gagal panen akibat cuaca ekstrem, tanah kehilangan unsur hara</td></tr>
+                        <tr><td>Perikanan</td><td>Menurunnya populasi ikan karena polusi air atau suhu meningkat</td></tr>
+                        <tr><td>Kesehatan</td><td>Penyebaran penyakit akibat lingkungan kotor dan air tercemar</td></tr>
+                        <tr><td>Sosial-Ekonomi</td><td>Pendapatan petani menurun, migrasi penduduk meningkat</td></tr>
+                    </tbody>
+                </table>
+
+                <h3>f. Upaya Menjaga Keseimbangan Alam</h3>
+                <ol>
+                    <li>Reboisasi dan penghijauan kembali.</li>
+                    <li>Pengelolaan sampah dan limbah rumah tangga secara bijak.</li>
+                    <li>Mengurangi emisi karbon dengan menanam pohon dan bersepeda.</li>
+                    <li>Menghemat energi dan air dalam kegiatan harian.</li>
+                    <li>Mengembangkan pertanian berkelanjutan (organik dan ramah lingkungan).</li>
+                    <li>Edukasi lingkungan di sekolah dan masyarakat.</li>
+                </ol>
+
+                <h2>Struktur dan Interior Bumi (Litosfer, Hidrosfer, dan Atmosfer)</h2>
+
+                <h3>a. Pengantar</h3>
+                <p>Bumi adalah satu-satunya planet dalam tata surya yang diketahui mendukung kehidupan. Tiga lapisan utama penopang kehidupan: litosfer, hidrosfer, dan atmosfer.</p>
+
+                <h3>b. Litosfer (Lapisan Padat Bumi)</h3>
+                <div class="image-container" id="gambar11-container">
+                    <img src="s1-bab-2/gambar11.jpg" alt="Litosfer" 
+                         onerror="this.style.display='none'; document.getElementById('gambar11-placeholder').style.display='block';"
+                         onload="this.style.display='block'; document.getElementById('gambar11-placeholder').style.display='none';">
+                    <div class="image-placeholder" id="gambar11-placeholder" style="display:block;">
+                        <i class="fas fa-image"></i>
+                        <span>[Gambar 11: Litosfer]</span>
+                        <p style="font-size:0.9rem; margin-top:1rem;">Letakkan file gambar dengan nama "gambar11" (format: jpg, png, webp, gif, dll) di folder "s1-bab-2"</p>
+                    </div>
+                    <div class="image-caption">Gambar 11: Litosfer</div>
+                </div>
+
+                <p><strong>Ciri-ciri:</strong></p>
+                <ul>
+                    <li>Tebal ±70 km di bawah benua dan ±30 km di bawah lautan.</li>
+                    <li>Tersusun dari lapisan batuan: kerak, mantel, dan sebagian inti atas.</li>
+                    <li>Menjadi tempat berlangsungnya proses geologi seperti gempa bumi, gunung berapi, dan pembentukan pegunungan.</li>
+                </ul>
+
+                <h3>c. Hidrosfer (Lapisan Air Bumi)</h3>
+                <div class="image-container" id="gambar12-container">
+                    <img src="s1-bab-2/gambar12.gif" alt="Hidrosfer" 
+                         onerror="this.style.display='none'; document.getElementById('gambar12-placeholder').style.display='block';"
+                         onload="this.style.display='block'; document.getElementById('gambar12-placeholder').style.display='none';">
+                    <div class="image-placeholder" id="gambar12-placeholder" style="display:block;">
+                        <i class="fas fa-image"></i>
+                        <span>[Gambar 12: Hidrosfer]</span>
+                        <p style="font-size:0.9rem; margin-top:1rem;">Letakkan file gambar dengan nama "gambar12" (format: jpg, png, webp, gif, dll) di folder "s1-bab-2"</p>
+                    </div>
+                    <div class="image-caption">Gambar 12: Hidrosfer</div>
+                </div>
+
+                <p><strong>Fakta penting:</strong></p>
+                <ul>
+                    <li>Sekitar 70% permukaan bumi tertutup air.</li>
+                    <li>Sebagian besar (±97%) berupa air laut asin, sisanya air tawar.</li>
+                </ul>
+
+                <h3>d. Atmosfer (Lapisan Udara Bumi)</h3>
+                <div class="image-container" id="gambar13-container">
+                    <img src="s1-bab-2/gambar13.png" alt="Atmosfer" 
+                         onerror="this.style.display='none'; document.getElementById('gambar13-placeholder').style.display='block';"
+                         onload="this.style.display='block'; document.getElementById('gambar13-placeholder').style.display='none';">
+                    <div class="image-placeholder" id="gambar13-placeholder" style="display:block;">
+                        <i class="fas fa-image"></i>
+                        <span>[Gambar 13: Atmosfer]</span>
+                        <p style="font-size:0.9rem; margin-top:1rem;">Letakkan file gambar dengan nama "gambar13" (format: jpg, png, webp, gif, dll) di folder "s1-bab-2"</p>
+                    </div>
+                    <div class="image-caption">Gambar 13: Atmosfer</div>
+                </div>
+
+                <p><strong>Fungsi Atmosfer:</strong></p>
+                <ul>
+                    <li>Melindungi bumi dari radiasi matahari berlebih.</li>
+                    <li>Mengatur suhu dan cuaca global.</li>
+                    <li>Menyediakan oksigen untuk respirasi dan karbon dioksida untuk fotosintesis.</li>
+                </ul>
+
+                <h3>e. Hubungan Litosfer, Hidrosfer, dan Atmosfer</h3>
+                <div class="image-container" id="gambar14-container">
+                    <img src="s1-bab-2/gambar14.png" alt="Hubungan Litosfer, Hidrosfer, dan Atmosfer" 
+                         onerror="this.style.display='none'; document.getElementById('gambar14-placeholder').style.display='block';"
+                         onload="this.style.display='block'; document.getElementById('gambar14-placeholder').style.display='none';">
+                    <div class="image-placeholder" id="gambar14-placeholder" style="display:block;">
+                        <i class="fas fa-image"></i>
+                        <span>[Gambar 14: Hubungan Litosfer, Hidrosfer, dan Atmosfer]</span>
+                        <p style="font-size:0.9rem; margin-top:1rem;">Letakkan file gambar dengan nama "gambar14" (format: jpg, png, webp, gif, dll) di folder "s1-bab-2"</p>
+                    </div>
+                    <div class="image-caption">Gambar 14: Hubungan Litosfer, Hidrosfer, dan Atmosfer</div>
+                </div>
+
+                <p>Ketiga lapisan ini saling berinteraksi membentuk sistem bumi. Contoh keterkaitan:</p>
+                <ul>
+                    <li>Hujan (atmosfer) membasahi tanah (litosfer) dan mengisi sungai (hidrosfer).</li>
+                    <li>Letusan gunung (litosfer) memengaruhi kualitas udara (atmosfer) dan suhu air (hidrosfer).</li>
+                    <li>Polusi udara (atmosfer) dapat mengasamkan hujan dan merusak tanah serta air.</li>
+                </ul>
+            </div>
+
+            <div class="bab-navigation">
+                <a href="s1-bab-1.html" class="nav-btn secondary">
+                    <i class="fas fa-arrow-left"></i> Kembali ke Bab 1
+                </a>
+                <a href="s1-bab-3.html" class="nav-btn primary">
+                    Lanjut ke Bab 3 <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // ===== HAMBURGER MENU - SAMA PERSIS DENGAN REFERENSI =====
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

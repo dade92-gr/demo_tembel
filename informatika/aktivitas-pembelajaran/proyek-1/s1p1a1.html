@@ -1,0 +1,2758 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyek 1 Aktivitas 1 - Eksplorasi Google Workspace & Keamanan Akun</title>
+    <link rel="stylesheet" href="../../../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ============ ROOT VARIABLES ============ */
+        :root {
+            --informatika-primary: #3498db;
+            --informatika-secondary: #2980b9;
+            --informatika-light: #ebf5fb;
+            --informatika-dark: #21618c;
+            --informatika-accent: #9b59b6;
+            --informatika-gray: #f5f7fa;
+            --informatika-orange: #f39c12;
+            --informatika-red: #e74c3c;
+        }
+
+        /* ============ RESET & BASE ============ */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+
+        /* ================================================================
+           MAIN CONTENT
+           ================================================================ */
+        .activity-detail-container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .informatika-content-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(52, 152, 219, 0.1);
+            border-left: 5px solid var(--informatika-primary);
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .informatika-content-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(52, 152, 219, 0.1) 0%, transparent 70%);
+            z-index: 0;
+        }
+
+        .informatika-content-card > * { position: relative; z-index: 1; }
+
+        .informatika-content-card h2 {
+            color: var(--informatika-dark);
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .informatika-content-card h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--informatika-primary), var(--informatika-secondary));
+            border-radius: 2px;
+        }
+
+        .informatika-content-card .subtitle {
+            color: #666;
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .informatika-content-card .subtitle i { color: var(--informatika-primary); }
+
+        .informatika-content-card > p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #555;
+            margin-bottom: 2.5rem;
+            padding: 1rem 1.5rem;
+            background: var(--informatika-light);
+            border-radius: 10px;
+            border-left: 4px solid var(--informatika-primary);
+        }
+
+        /* ============ TP CARD ============ */
+        .tp-card {
+            background: linear-gradient(135deg, #e8f4fd 0%, #d6eaf8 100%);
+            border-radius: 16px;
+            padding: 1.2rem 1.8rem;
+            margin-bottom: 1.5rem;
+            border-left: 5px solid var(--informatika-primary);
+        }
+
+        .tp-card .tp-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 4px 0;
+            font-size: 0.95rem;
+        }
+
+        .tp-card .tp-item .tp-code {
+            background: var(--informatika-primary);
+            color: white;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            min-width: 45px;
+            text-align: center;
+        }
+
+        .tp-card .tp-item .tp-desc {
+            color: var(--informatika-dark);
+        }
+
+        /* ============ MATERI SECTION ============ */
+        .materi-section {
+            background: linear-gradient(135deg, #fff5e6 0%, #fffaf0 100%);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 2px solid #f39c12;
+            box-shadow: 0 4px 15px rgba(243, 156, 18, 0.15);
+            animation: fadeInUp 0.6s ease;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .materi-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .materi-icon {
+            background: #f39c12;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .materi-icon i {
+            color: white;
+            font-size: 28px;
+        }
+
+        .materi-title h3 {
+            color: #e67e22;
+            margin-bottom: 0.3rem;
+            font-size: 1.4rem;
+        }
+
+        .materi-title p {
+            color: #6c5b3d;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .materi-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.2rem 1.5rem;
+            margin-top: 0.8rem;
+            border-left: 5px solid #f39c12;
+        }
+
+        .materi-card .badge {
+            background: #f39c12;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .materi-card h4 {
+            color: #2c3e50;
+            margin: 0.5rem 0 0 0;
+            font-size: 1.1rem;
+        }
+
+        .materi-card p {
+            color: #666;
+            margin: 0.5rem 0 0 0;
+            font-size: 0.9rem;
+        }
+
+        .materi-card .btn-materi {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 0.8rem;
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            color: white;
+            padding: 0.7rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(243, 156, 18, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+
+        .materi-card .btn-materi:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(243, 156, 18, 0.4);
+        }
+
+        .materi-card .btn-materi i {
+            transition: transform 0.3s ease;
+        }
+
+        .materi-card .btn-materi:hover i {
+            transform: translateX(5px);
+        }
+
+        .materi-tip {
+            margin-top: 0.8rem;
+            padding: 0.8rem 1.2rem;
+            background: #fef9e7;
+            border-radius: 8px;
+            border: 1px dashed #f39c12;
+        }
+
+        .materi-tip p {
+            color: #7d6608;
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        .materi-tip i {
+            color: #f39c12;
+        }
+
+        /* ============ WORKSHEET ============ */
+        .worksheet-container {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid var(--informatika-light);
+        }
+
+        .worksheet-title {
+            color: var(--informatika-dark);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            border-bottom: 3px solid var(--informatika-light);
+            padding-bottom: 1rem;
+        }
+
+        .worksheet-subtitle {
+            color: var(--informatika-primary);
+            font-size: 1.2rem;
+            margin: 1.5rem 0 1rem 0;
+            font-weight: 600;
+            border-left: 5px solid var(--informatika-primary);
+            padding-left: 15px;
+        }
+
+        .section-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.8rem;
+            margin-bottom: 2rem;
+            border: 1px solid #e0e7ff;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        .section-title {
+            color: var(--informatika-dark);
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--informatika-light);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title i {
+            color: var(--informatika-primary);
+            font-size: 1.6rem;
+        }
+
+        .instruction-box {
+            background: var(--informatika-light);
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--informatika-primary);
+        }
+
+        .instruction-box ol { margin-left: 20px; }
+        .instruction-box li { margin-bottom: 5px; }
+
+        .identitas-box {
+            background: var(--informatika-light);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .identitas-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .identitas-item label {
+            font-weight: 600;
+            color: var(--informatika-dark);
+        }
+
+        .identitas-item input,
+        .identitas-item select {
+            padding: 0.8rem 1rem;
+            border: 2px solid #c5d5e6;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: white;
+            width: 100%;
+            font-family: inherit;
+        }
+
+        .identitas-item input:focus,
+        .identitas-item select:focus {
+            outline: none;
+            border-color: var(--informatika-primary);
+            box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.15);
+        }
+
+        .qa-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .qa-table th {
+            background: var(--informatika-primary);
+            color: white;
+            font-weight: 600;
+            padding: 12px 14px;
+            text-align: left;
+            font-size: 0.95rem;
+        }
+
+        .qa-table td {
+            padding: 10px 14px;
+            border-bottom: 1px solid #e8edf4;
+            vertical-align: top;
+        }
+
+        .qa-table tr:last-child td { border-bottom: none; }
+        .qa-table tr:hover { background: #f8fafc; }
+
+        .qa-table .question-col { width: 42%; font-weight: 500; color: #2c3e50; }
+        .qa-table .answer-col { width: 58%; }
+
+        .answer-field {
+            width: 100% !important;
+            padding: 10px 14px !important;
+            border: 2px solid #d0dbe8 !important;
+            border-radius: 10px !important;
+            font-size: 0.95rem !important;
+            font-family: inherit !important;
+            transition: all 0.3s ease !important;
+            background: #fafcfe !important;
+            color: #2c3e50 !important;
+            box-sizing: border-box !important;
+            resize: vertical;
+        }
+
+        .answer-field:hover {
+            border-color: #a0b8d0 !important;
+            background: #ffffff !important;
+        }
+
+        .answer-field:focus {
+            outline: none !important;
+            border-color: var(--informatika-primary) !important;
+            box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.12) !important;
+            background: #ffffff !important;
+        }
+
+        .answer-field::placeholder {
+            color: #aab8c9;
+            font-style: italic;
+            font-size: 0.9rem;
+        }
+
+        .qa-table input[type="text"].answer-field { min-height: 44px; }
+        .qa-table textarea.answer-field { min-height: 50px; }
+
+        .checkbox-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 0.5rem 1.5rem;
+            margin: 0.5rem 0;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 6px 0;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--informatika-primary);
+            flex-shrink: 0;
+            cursor: pointer;
+        }
+
+        .checkbox-item label {
+            font-size: 0.93rem;
+            cursor: pointer;
+            color: #2c3e50;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .radio-group label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            font-size: 0.93rem;
+        }
+
+        .radio-group input[type="radio"] {
+            width: 16px;
+            height: 16px;
+            accent-color: var(--informatika-primary);
+            cursor: pointer;
+        }
+
+        .folder-link-box {
+            background: #e8f5e9;
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            margin-top: 1.5rem;
+            border-left: 5px solid #4caf50;
+        }
+
+        .folder-link-box .label-link {
+            font-weight: 600;
+            color: #2e7d32;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .folder-link-box .sub-text {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 6px;
+        }
+
+        .folder-link-box input {
+            width: 100% !important;
+        }
+
+        .alert {
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            margin: 1rem 0;
+            display: none;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border-left: 5px solid #28a745;
+        }
+
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border-left: 5px solid #dc3545;
+        }
+
+        .alert-loading {
+            background: #fff3cd;
+            color: #856404;
+            border-left: 5px solid #ffc107;
+        }
+
+        .alert-loading i { margin-right: 10px; }
+
+        .connection-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .connection-status.online {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .connection-status.offline {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .refresh-btn {
+            background: var(--informatika-primary);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+
+        .refresh-btn:hover { background: var(--informatika-secondary); }
+
+        .btn-submit {
+            background: linear-gradient(135deg, var(--informatika-primary), var(--informatika-secondary));
+            color: white;
+            border: none;
+            padding: 1rem 2.8rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            width: fit-content;
+            margin: 2rem auto;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .btn-submit:hover:not(:disabled) {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4);
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .btn-submit i { margin-right: 10px; }
+
+        .activity-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: white;
+            color: var(--informatika-dark);
+            padding: 0.8rem 1.5rem;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 1px solid var(--informatika-light);
+        }
+
+        .nav-btn:hover {
+            background: var(--informatika-primary);
+            color: white;
+        }
+
+        .nav-btn.primary {
+            background: var(--informatika-primary);
+            color: white;
+            border: none;
+        }
+
+        .nav-btn.primary:hover {
+            background: var(--informatika-secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .form-disabled {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        /* ============ EXPORT BUTTON ============ */
+        .export-button {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .export-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4);
+        }
+
+        .export-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .export-wrapper {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        /* ============ MODAL ============ */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 99999 !important;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.6);
+            animation: fadeIn 0.3s ease;
+            overflow-y: auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 2.5rem;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 450px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: slideDown 0.3s ease;
+            position: relative;
+            z-index: 100000 !important;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-50px) scale(0.95); opacity: 0; }
+            to { transform: translateY(0) scale(1); opacity: 1; }
+        }
+
+        .modal-content .modal-icon { font-size: 4rem; margin-bottom: 1rem; }
+        .modal-content .icon-success { color: var(--informatika-primary); }
+        .modal-content .icon-warning { color: var(--informatika-orange); }
+        .modal-content .icon-danger { color: var(--informatika-red); }
+
+        .modal-content h3 {
+            margin-bottom: 0.5rem;
+            color: var(--informatika-dark);
+            font-size: 1.4rem;
+        }
+
+        .modal-content .sub-text {
+            margin-bottom: 1.5rem;
+            color: #666;
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        .modal-content .sub-text strong {
+            color: var(--informatika-dark);
+            word-break: break-word;
+            background: var(--informatika-light);
+            padding: 2px 10px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 0.5rem;
+        }
+
+        .modal-btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            min-width: 120px;
+            justify-content: center;
+            flex: 1;
+        }
+
+        .modal-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .modal-btn.yes {
+            background: var(--informatika-primary);
+            color: white;
+        }
+
+        .modal-btn.yes:hover {
+            background: var(--informatika-secondary);
+        }
+
+        .modal-btn.danger {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .modal-btn.danger:hover {
+            background: #c0392b;
+        }
+
+        .modal-btn.danger:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .modal-btn.no {
+            background: #6c757d;
+            color: white;
+        }
+
+        .modal-btn.no:hover {
+            background: #5a6268;
+        }
+
+        .modal-btn.secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .modal-btn.secondary:hover {
+            background: #5a6268;
+        }
+
+        body.modal-open {
+            overflow: hidden !important;
+        }
+
+        .security-tip {
+            background: #e8f5e9;
+            border-radius: 10px;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 4px solid #4caf50;
+        }
+
+        .security-tip i {
+            color: #4caf50;
+            margin-right: 8px;
+        }
+
+        .screenshot-instruction {
+            background: #fff3cd;
+            border-radius: 10px;
+            padding: 0.8rem 1.2rem;
+            margin: 0.5rem 0 1rem 0;
+            border-left: 4px solid #f39c12;
+        }
+
+        .screenshot-instruction i {
+            color: #f39c12;
+            margin-right: 8px;
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 768px) {
+            .activity-detail-container { padding: 1rem; }
+            .worksheet-container { padding: 1rem; }
+            .worksheet-title { font-size: 1.5rem; }
+            .section-card { padding: 1rem; }
+            .section-title { font-size: 1.2rem; }
+            .qa-table { font-size: 0.9rem; }
+            .qa-table td, .qa-table th { padding: 8px 10px; }
+            .qa-table .question-col { width: 45%; }
+            .qa-table .answer-col { width: 55%; }
+            .identitas-box { grid-template-columns: 1fr; }
+            .activity-navigation { flex-direction: column; }
+            .nav-btn { width: 100%; justify-content: center; }
+            .checkbox-grid { grid-template-columns: 1fr; }
+            .radio-group { flex-direction: column; gap: 5px; }
+            .answer-field { font-size: 0.9rem !important; padding: 8px 12px !important; }
+            .informatika-content-card h2 { font-size: 1.6rem; }
+            .informatika-content-card { padding: 1.5rem; }
+            .modal-content { margin: 15% auto; padding: 2rem; width: 95%; max-width: 400px; }
+            .modal-buttons { flex-direction: column; align-items: stretch; }
+            .modal-btn { flex: none; min-width: unset; width: 100%; justify-content: center; padding: 0.8rem; }
+            .export-wrapper { justify-content: center; }
+            .export-button { width: 100%; justify-content: center; }
+            .btn-submit { width: 100%; justify-content: center; padding: 1rem; }
+            
+            .materi-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            .materi-card .btn-materi {
+                width: 100%;
+                justify-content: center;
+            }
+            .tp-card .tp-item {
+                flex-wrap: wrap;
+            }
+            .folder-link-box {
+                padding: 0.8rem 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .activity-detail-container { padding: 0.5rem; }
+            .worksheet-container { padding: 0.8rem; }
+            .informatika-content-card { padding: 1rem; }
+            .modal-content { margin: 20% auto; padding: 1.5rem; width: 98%; }
+            .modal-content .modal-icon { font-size: 3rem; }
+            .modal-btn { font-size: 0.9rem; padding: 0.7rem; }
+            .qa-table { font-size: 0.8rem; }
+            .qa-table td, .qa-table th { padding: 6px 8px; }
+            .materi-section { padding: 1.2rem !important; }
+            .materi-card { padding: 1rem !important; }
+        }
+
+        @media print {
+            .materi-section {
+                display: none !important;
+            }
+            header {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== HEADER ===== -->
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="../../../assets/images/logo.png" alt="Logo Sekolah">
+                    <h1>INFORMATIKA - PROJEK 1</h1>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="../../../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="../../index-informatika.html" class="nav-link"><i class="fas fa-laptop-code"></i> Beranda Informatika</a></li>
+                    <li><a href="../index-aktivitas-informatika.html" class="nav-link active"><i class="fas fa-tasks"></i> Daftar Aktivitas</a></li>
+                    <li><a href="../../materi-pembelajaran/index-materi-informatika.html" class="nav-link"><i class="fas fa-book-open"></i> Daftar Materi</a></li>
+                    <li><a href="../../penilaian/index-penilaian-informatika.html" class="nav-link"><i class="fas fa-chart-line"></i> Penilaian</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <section class="activity-detail-container">
+        <div class="informatika-content-card">
+            <h2>Proyek 1 Aktivitas 1: Eksplorasi Google Workspace &amp; Keamanan Akun</h2>
+            <div class="subtitle">
+                <span><i class="fas fa-calendar"></i> Pertemuan 1 • Proyek 1: Saya Siap Jadi Kreator Digital</span>
+                <span><i class="fas fa-clock"></i> 4 JP</span>
+                <span class="connection-status online" id="connectionStatus"><i class="fas fa-wifi"></i> Online</span>
+            </div>
+            <p><i class="fas fa-quote-left"></i> Eksplorasi Google Workspace dan cek keamanan akun sebagai bekal menjadi kreator digital. <i class="fas fa-quote-right"></i></p>
+        </div>
+
+        <!-- ===== TP CARD ===== -->
+        <div class="tp-card">
+            <div style="font-weight:700; color:var(--informatika-dark); margin-bottom:6px; font-size:1.1rem;">
+                <i class="fas fa-bullseye"></i> Tujuan Pembelajaran
+            </div>
+            <div class="tp-item">
+                <span class="tp-code">TP 2.4</span>
+                <span class="tp-desc">Menggunakan perangkat teknologi untuk mengolah dokumen, lembar kerja, dan presentasi</span>
+            </div>
+            <div class="tp-item">
+                <span class="tp-code">TP 2.5</span>
+                <span class="tp-desc">Memahami dan menerapkan konfigurasi keamanan dasar untuk konektivitas jaringan lokal dan internet</span>
+            </div>
+        </div>
+
+        <!-- ===== BAGIAN MEMBACA MATERI ===== -->
+        <div class="materi-section">
+            <div class="materi-header">
+                <div class="materi-icon">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <div class="materi-title">
+                    <h3>📖 BACA MATERI TERLEBIH DAHULU</h3>
+                    <p>Sebelum mengerjakan LKPD ini, pastikan kamu sudah membaca dan memahami materi berikut:</p>
+                </div>
+            </div>
+            
+            <div class="materi-card">
+                <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+                    <span class="badge">MATERI 1.1</span>
+                    <h4 style="margin: 0;">Pengenalan Google Workspace &amp; Keamanan Akun</h4>
+                </div>
+                <p>
+                    <i class="fas fa-check-circle" style="color: #27ae60;"></i> 
+                    Materi ini akan membantu kamu memahami Google Workspace dan cara mengamankan akun Google.
+                </p>
+                <a href="../../materi-pembelajaran/materi-proyek1/materi1-1.html" 
+                   target="_blank" 
+                   class="btn-materi">
+                    <i class="fas fa-arrow-right"></i> Baca Materi Sekarang
+                </a>
+            </div>
+            
+            <div class="materi-tip">
+                <p>
+                    <i class="fas fa-info-circle"></i> 
+                    <strong>Tips:</strong> Baca materi dengan saksama agar kamu lebih mudah mengerjakan LKPD ini. Materi akan terbuka di tab baru.
+                </p>
+            </div>
+        </div>
+
+        <div id="loadingMessage" class="alert alert-loading" style="display:none;">
+            <i class="fas fa-spinner fa-spin"></i> Memuat data siswa...
+        </div>
+
+        <div id="errorMessage" class="alert alert-error" style="display:none;">
+            <i class="fas fa-exclamation-triangle"></i> <span id="errorText">Gagal terhubung ke server.</span>
+            <br><button class="refresh-btn" onclick="location.reload()"><i class="fas fa-sync-alt"></i> Refresh Halaman</button>
+        </div>
+
+        <div class="worksheet-container" id="worksheetForm">
+            <!-- Tombol Export -->
+            <div class="export-wrapper">
+                <button class="export-button" id="exportBtn" onclick="exportToDocx()" disabled>
+                    <i class="fas fa-file-word"></i> Export Template DOCX
+                </button>
+            </div>
+
+            <div class="instruction-box" style="background:#e8f5e9; border-left-color: var(--informatika-primary);">
+                <i class="fas fa-lightbulb" style="color: var(--informatika-primary); margin-right: 10px;"></i>
+                <strong>HALO, KELOMPOK HEBAT! 👋</strong><br>
+                Pada pertemuan ini, kita akan mengenal Google Workspace dan mengecek keamanan akun Google.
+                Pastikan kamu sudah memiliki akun Google (Gmail) sebelum memulai!
+            </div>
+
+            <h1 class="worksheet-title">LEMBAR KERJA PESERTA DIDIK (LKPD) PROYEK 1 – AKTIVITAS 1</h1>
+            <p style="text-align: center; margin-bottom: 2rem; font-size: 1.2rem; color: var(--informatika-accent);">
+                <strong>EKSPLORASI GOOGLE WORKSPACE &amp; KEAMANAN AKUN</strong>
+            </p>
+            <div style="text-align: center; margin-bottom: 2rem; background: var(--informatika-light); padding: 0.8rem; border-radius: 10px;">
+                <p><i class="fas fa-bullseye"></i> <strong>Fokus Tujuan Pembelajaran:</strong> TP 2.4 (Google Workspace) &amp; TP 2.5 (Keamanan Akun &amp; Jaringan)</p>
+            </div>
+
+            <!-- ===== IDENTITAS ===== -->
+            <h3 class="worksheet-subtitle"><i class="fas fa-users"></i> IDENTITAS KELOMPOK</h3>
+            <div class="identitas-box">
+                <div class="identitas-item">
+                    <label><i class="fas fa-building"></i> Kelas</label>
+                    <select id="kelas" onchange="updateNamaDropdown(); saveToLocalStorage();" disabled>
+                        <option value="">-- Pilih Kelas --</option>
+                    </select>
+                </div>
+                <div class="identitas-item">
+                    <label><i class="fas fa-user"></i> Nama Lengkap</label>
+                    <select id="nama" onchange="saveToLocalStorage();" disabled>
+                        <option value="">-- Pilih Nama --</option>
+                    </select>
+                </div>
+                <div class="identitas-item">
+                    <label><i class="fas fa-users"></i> Nama Kelompok</label>
+                    <input type="text" id="kelompok" placeholder="Contoh: Kelompok 1 - Digital" oninput="saveToLocalStorage();" disabled>
+                </div>
+                <div class="identitas-item">
+                    <label><i class="fas fa-tasks"></i> Peran dalam Kelompok</label>
+                    <input type="text" id="peran" placeholder="Contoh: Ketua / Analis" oninput="saveToLocalStorage();" disabled>
+                </div>
+            </div>
+
+            <!-- ===== PETUNJUK ===== -->
+            <div class="instruction-box">
+                <i class="fas fa-info-circle" style="margin-right: 10px;"></i>
+                <strong>📚 PETUNJUK PENGGUNAAN LKPD</strong><br><br>
+                <ol>
+                    <li>Pastikan kamu sudah memiliki akun Google (Gmail).</li>
+                    <li>Kerjakan setiap bagian dengan HP atau laptop.</li>
+                    <li><strong>Setiap bagian wajib menyertakan link folder screenshot</strong> sebagai bukti.</li>
+                    <li>Data akan <strong>tersimpan otomatis</strong> di browser Anda.</li>
+                    <li>Klik tombol <strong>Kumpulkan LKPD</strong> di bagian bawah untuk mengirimkan data.</li>
+                </ol>
+            </div>
+
+            <!-- ============================================================ -->
+            <!-- AKTIVITAS 1: EKSPLORASI GOOGLE WORKSPACE (TP 2.4) -->
+            <!-- ============================================================ -->
+            <div class="section-card">
+                <h3 class="section-title"><i class="fas fa-tools"></i> 🛠️ AKTIVITAS 1: EKSPLORASI GOOGLE WORKSPACE</h3>
+                
+                <div class="instruction-box">
+                    <i class="fas fa-laptop"></i> 
+                    <strong>Instruksi:</strong>
+                    <ol style="margin-left:1.5rem; margin-top:4px;">
+                        <li>Buka <strong>docs.google.com</strong>, <strong>sheets.google.com</strong>, dan <strong>slides.google.com</strong>.</li>
+                        <li>Jelajahi halaman utama dan fitur-fitur yang tersedia.</li>
+                        <li>Ambil <strong>screenshot</strong> halaman utama dari ketiga aplikasi tersebut.</li>
+                        <li>Kumpulkan semua screenshot dalam <strong>1 folder Google Drive</strong>.</li>
+                        <li>Atur akses folder menjadi <strong>"Siapa saja dengan link dapat melihat"</strong>.</li>
+                        <li>Tempel link folder di kolom yang disediakan di bagian bawah aktivitas ini.</li>
+                    </ol>
+                </div>
+
+                <div class="screenshot-instruction">
+                    <i class="fas fa-camera"></i>
+                    <strong>📸 Cara Screenshot:</strong>
+                    <ul style="margin-left:1.5rem; margin-top:4px;">
+                        <li><strong>HP Android:</strong> Tekan tombol Power + Volume Bawah secara bersamaan.</li>
+                        <li><strong>iPhone:</strong> Tekan tombol Power + Volume Naik secara bersamaan.</li>
+                        <li><strong>Laptop Windows:</strong> Tekan tombol PrtSc atau gunakan Snipping Tool.</li>
+                        <li><strong>Laptop Mac:</strong> Tekan Cmd + Shift + 4.</li>
+                    </ul>
+                </div>
+
+                <!-- PERTANYAAN -->
+                <p style="margin-bottom: 0.5rem; font-weight:600; color:var(--informatika-dark);">📄 Eksplorasi Google Docs</p>
+
+                <table class="qa-table">
+                    <thead>
+                        <tr><th class="question-col">Pertanyaan</th><th class="answer-col">Jawaban</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Apa fungsi utama Google Docs?</td>
+                            <td><textarea class="answer-field" id="docs_fungsi" placeholder="Tulis jawabanmu..." oninput="saveToLocalStorage();"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td>Fitur apa saja yang kamu lihat di halaman utama Google Docs?</td>
+                            <td><textarea class="answer-field" id="docs_fitur" placeholder="Tulis jawabanmu..." oninput="saveToLocalStorage();"></textarea></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p style="margin-bottom: 0.5rem; font-weight:600; color:var(--informatika-dark); margin-top:1.5rem;">📊 Eksplorasi Google Sheets</p>
+
+                <table class="qa-table">
+                    <thead>
+                        <tr><th class="question-col">Pertanyaan</th><th class="answer-col">Jawaban</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Apa fungsi utama Google Sheets?</td>
+                            <td><textarea class="answer-field" id="sheets_fungsi" placeholder="Tulis jawabanmu..." oninput="saveToLocalStorage();"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td>Apa perbedaan tampilan Google Sheets dengan Google Docs?</td>
+                            <td><textarea class="answer-field" id="sheets_perbedaan" placeholder="Tulis jawabanmu..." oninput="saveToLocalStorage();"></textarea></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p style="margin-bottom: 0.5rem; font-weight:600; color:var(--informatika-dark); margin-top:1.5rem;">📽️ Eksplorasi Google Slides</p>
+
+                <table class="qa-table">
+                    <thead>
+                        <tr><th class="question-col">Pertanyaan</th><th class="answer-col">Jawaban</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Apa fungsi utama Google Slides?</td>
+                            <td><textarea class="answer-field" id="slides_fungsi" placeholder="Tulis jawabanmu..." oninput="saveToLocalStorage();"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td>Apa yang kamu lihat di halaman utama Google Slides?</td>
+                            <td><textarea class="answer-field" id="slides_tampilan" placeholder="Tulis jawabanmu..." oninput="saveToLocalStorage();"></textarea></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- CHECKLIST BUKTI -->
+                <div style="margin-top: 1.5rem; background: #f8fafc; border-radius: 10px; padding: 1rem; border: 1px dashed var(--informatika-primary);">
+                    <p><strong>☑️ Checklist Bukti Aktivitas 1:</strong></p>
+                    <div class="checkbox-grid">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="cek_docs" onchange="saveToLocalStorage();">
+                            <label for="cek_docs">Saya sudah membuka Google Docs</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="cek_sheets" onchange="saveToLocalStorage();">
+                            <label for="cek_sheets">Saya sudah membuka Google Sheets</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="cek_slides" onchange="saveToLocalStorage();">
+                            <label for="cek_slides">Saya sudah membuka Google Slides</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="cek_screenshot_1" onchange="saveToLocalStorage();">
+                            <label for="cek_screenshot_1">Saya sudah mengupload screenshot ke folder Google Drive</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LINK FOLDER - DILETAKKAN DI BAWAH CHECKLIST -->
+                <div class="folder-link-box">
+                    <span class="label-link"><i class="fas fa-folder-open"></i> 📁 Link Folder Screenshot - Aktivitas 1</span>
+                    <div class="sub-text">Tempel link folder Google Drive yang berisi screenshot Google Docs, Sheets, dan Slides:</div>
+                    <input type="text" class="answer-field" id="link_folder_1" placeholder="https://drive.google.com/drive/folders/xxxxxxxxxxxx" oninput="saveToLocalStorage();">
+                </div>
+            </div>
+
+            <!-- ============================================================ -->
+            <!-- AKTIVITAS 2: CEK KEAMANAN AKUN GOOGLE (TP 2.5) -->
+            <!-- ============================================================ -->
+            <div class="section-card">
+                <h3 class="section-title"><i class="fas fa-user-shield"></i> 🔒 AKTIVITAS 2: CEK KEAMANAN AKUN GOOGLE</h3>
+                
+                <div class="instruction-box">
+                    <i class="fas fa-check-circle"></i> 
+                    <strong>Instruksi:</strong>
+                    <ol style="margin-left:1.5rem; margin-top:4px;">
+                        <li>Buka <strong>myaccount.google.com</strong> dari HP atau laptop-mu.</li>
+                        <li>Cek pengaturan keamanan akunmu (2FA, perangkat terhubung, dll).</li>
+                        <li>Ambil <strong>screenshot</strong> halaman keamanan akun Google.</li>
+                        <li>Kumpulkan screenshot dalam <strong>1 folder Google Drive</strong> khusus untuk aktivitas ini.</li>
+                        <li>Tempel link folder di kolom yang disediakan di bagian bawah aktivitas ini.</li>
+                    </ol>
+                </div>
+
+                <table class="qa-table">
+                    <thead>
+                        <tr><th class="question-col">Pertanyaan</th><th class="answer-col">Jawaban</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Apakah kamu bisa mengakses halaman "Keamanan" di akun Google?</td>
+                            <td>
+                                <div class="radio-group">
+                                    <label><input type="radio" name="keamanan_akses" value="Ya" onchange="saveToLocalStorage();"> Ya</label>
+                                    <label><input type="radio" name="keamanan_akses" value="Tidak" onchange="saveToLocalStorage();"> Tidak</label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Apakah kamu sudah mengaktifkan verifikasi 2 langkah (2FA)?</td>
+                            <td>
+                                <div class="radio-group">
+                                    <label><input type="radio" name="keamanan_2fa" value="Sudah" onchange="saveToLocalStorage();"> Sudah</label>
+                                    <label><input type="radio" name="keamanan_2fa" value="Belum" onchange="saveToLocalStorage();"> Belum</label>
+                                    <label><input type="radio" name="keamanan_2fa" value="Tidak Tahu" onchange="saveToLocalStorage();"> Tidak Tahu</label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Perangkat apa saja yang terhubung ke akun Google-mu?</td>
+                            <td><textarea class="answer-field" id="keamanan_perangkat" placeholder="Sebutkan perangkat yang terlihat..." oninput="saveToLocalStorage();"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td>Apakah ada perangkat yang tidak dikenal?</td>
+                            <td>
+                                <div class="radio-group">
+                                    <label><input type="radio" name="keamanan_tidak_dikenal" value="Ya" onchange="saveToLocalStorage();"> Ya</label>
+                                    <label><input type="radio" name="keamanan_tidak_dikenal" value="Tidak" onchange="saveToLocalStorage();"> Tidak</label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Jika ada perangkat tidak dikenal, apa yang akan kamu lakukan?</td>
+                            <td><textarea class="answer-field" id="keamanan_tindakan" placeholder="Tulis jawabanmu..." oninput="saveToLocalStorage();"></textarea></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="security-tip">
+                    <i class="fas fa-lightbulb"></i>
+                    <strong>Tips Keamanan:</strong> Aktifkan verifikasi 2 langkah dan atur nomor HP pemulihan. Ini akan melindungi akunmu jika ada yang mencoba masuk tanpa izin!
+                </div>
+
+                <!-- CHECKLIST BUKTI -->
+                <div style="margin-top: 1.5rem; background: #f8fafc; border-radius: 10px; padding: 1rem; border: 1px dashed var(--informatika-primary);">
+                    <p><strong>☑️ Checklist Bukti Aktivitas 2:</strong></p>
+                    <div class="checkbox-grid">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="cek_keamanan" onchange="saveToLocalStorage();">
+                            <label for="cek_keamanan">Saya sudah mengecek pengaturan keamanan akun Google</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="cek_screenshot_2" onchange="saveToLocalStorage();">
+                            <label for="cek_screenshot_2">Saya sudah mengupload screenshot ke folder Google Drive</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LINK FOLDER - DILETAKKAN DI BAWAH CHECKLIST -->
+                <div class="folder-link-box">
+                    <span class="label-link"><i class="fas fa-folder-open"></i> 📁 Link Folder Screenshot - Aktivitas 2</span>
+                    <div class="sub-text">Tempel link folder Google Drive yang berisi screenshot halaman keamanan akun:</div>
+                    <input type="text" class="answer-field" id="link_folder_2" placeholder="https://drive.google.com/drive/folders/xxxxxxxxxxxx" oninput="saveToLocalStorage();">
+                </div>
+            </div>
+
+            <!-- ============================================================ -->
+            <!-- AKTIVITAS 3: CEK KONEKTIVITAS JARINGAN (TP 2.5) -->
+            <!-- ============================================================ -->
+            <div class="section-card">
+                <h3 class="section-title"><i class="fas fa-wifi"></i> 📶 AKTIVITAS 3: CEK KONEKTIVITAS JARINGAN</h3>
+                
+                <div class="instruction-box">
+                    <i class="fas fa-network-wired"></i> 
+                    <strong>Instruksi:</strong>
+                    <ol style="margin-left:1.5rem; margin-top:4px;">
+                        <li>Cek jaringan Wi-Fi yang terhubung ke perangkatmu.</li>
+                        <li>Cek apakah internet berjalan lancar.</li>
+                        <li>Ambil <strong>screenshot</strong> daftar jaringan Wi-Fi yang tersedia.</li>
+                        <li>Kumpulkan screenshot dalam <strong>1 folder Google Drive</strong> khusus untuk aktivitas ini.</li>
+                        <li>Tempel link folder di kolom yang disediakan di bagian bawah aktivitas ini.</li>
+                    </ol>
+                </div>
+
+                <table class="qa-table">
+                    <thead>
+                        <tr><th class="question-col">Pertanyaan</th><th class="answer-col">Jawaban</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Jaringan Wi-Fi apa yang sedang terhubung dengan perangkatmu?</td>
+                            <td><input type="text" class="answer-field" id="jaringan_nama" placeholder="Contoh: WiFi_Sekolah" oninput="saveToLocalStorage();"></td>
+                        </tr>
+                        <tr>
+                            <td>Apakah koneksi internet berjalan lancar?</td>
+                            <td>
+                                <div class="radio-group">
+                                    <label><input type="radio" name="jaringan_lancar" value="Ya" onchange="saveToLocalStorage();"> Ya</label>
+                                    <label><input type="radio" name="jaringan_lancar" value="Tidak" onchange="saveToLocalStorage();"> Tidak</label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Sebutkan 3 langkah menjaga keamanan saat menggunakan Wi-Fi publik!</td>
+                            <td><textarea class="answer-field" id="jaringan_aman" placeholder="1. ... 2. ... 3. ..." oninput="saveToLocalStorage();"></textarea></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- CHECKLIST BUKTI -->
+                <div style="margin-top: 1.5rem; background: #f8fafc; border-radius: 10px; padding: 1rem; border: 1px dashed var(--informatika-primary);">
+                    <p><strong>☑️ Checklist Bukti Aktivitas 3:</strong></p>
+                    <div class="checkbox-grid">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="cek_wifi" onchange="saveToLocalStorage();">
+                            <label for="cek_wifi">Saya sudah mengecek jaringan Wi-Fi yang terhubung</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="cek_screenshot_3" onchange="saveToLocalStorage();">
+                            <label for="cek_screenshot_3">Saya sudah mengupload screenshot ke folder Google Drive</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LINK FOLDER - DILETAKKAN DI BAWAH CHECKLIST -->
+                <div class="folder-link-box">
+                    <span class="label-link"><i class="fas fa-folder-open"></i> 📁 Link Folder Screenshot - Aktivitas 3</span>
+                    <div class="sub-text">Tempel link folder Google Drive yang berisi screenshot daftar Wi-Fi:</div>
+                    <input type="text" class="answer-field" id="link_folder_3" placeholder="https://drive.google.com/drive/folders/xxxxxxxxxxxx" oninput="saveToLocalStorage();">
+                </div>
+            </div>
+
+            <!-- ============================================================ -->
+            <!-- REFLEKSI -->
+            <!-- ============================================================ -->
+            <div class="section-card">
+                <h3 class="section-title"><i class="fas fa-smile"></i> 📝 REFLEKSI</h3>
+                <div class="instruction-box">
+                    <i class="fas fa-comment"></i>
+                    Tulis dengan jujur, ya! Tidak ada jawaban benar atau salah.
+                </div>
+
+                <table class="qa-table">
+                    <thead>
+                        <tr><th class="question-col">Pertanyaan</th><th class="answer-col">Jawaban</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Hal baru apa yang kamu pelajari dari kegiatan hari ini?</td>
+                            <td><textarea class="answer-field" id="refleksi_baru" placeholder="Tulis jawabanmu..." oninput="saveToLocalStorage();"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td>Apa kesulitan yang kamu hadapi saat mengeksplorasi Google Workspace?</td>
+                            <td><textarea class="answer-field" id="refleksi_kesulitan" placeholder="Tulis jawabanmu..." oninput="saveToLocalStorage();"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td>Apa yang akan kamu lakukan setelah ini untuk mengamankan akun Google-mu?</td>
+                            <td><textarea class="answer-field" id="refleksi_rencana" placeholder="Tulis jawabanmu..." oninput="saveToLocalStorage();"></textarea></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- ===== SUBMIT ===== -->
+            <button class="btn-submit" id="submitBtn" onclick="submitData()" disabled>
+                <i class="fas fa-paper-plane"></i> Kumpulkan LKPD
+            </button>
+
+            <div id="successMessage" class="alert alert-success" style="display:none;">
+                <i class="fas fa-check-circle"></i> LKPD berhasil dikumpulkan!
+            </div>
+        </div>
+
+        <div class="activity-navigation">
+            <a href="../index-aktivitas-informatika.html" class="nav-btn"><i class="fas fa-arrow-left"></i> Kembali ke Daftar Aktivitas</a>
+            <a href="s1p1a2.html" class="nav-btn primary">Lanjut ke Aktivitas 2 <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </section>
+
+    <!-- ===== MODAL KONFIRMASI RESET (SUKSES) ===== -->
+    <div id="resetModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-icon icon-success">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3>✅ LKPD Berhasil Dikirim!</h3>
+            <p class="sub-text">Data Anda telah berhasil disimpan di Google Spreadsheet.</p>
+            <div class="modal-buttons">
+                <button class="modal-btn yes" onclick="confirmReset()">
+                    <i class="fas fa-undo"></i> Ya, Reset Form
+                </button>
+                <button class="modal-btn secondary" onclick="closeModal()">
+                    <i class="fas fa-times"></i> Tutup
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== MODAL KONFIRMASI GANTI TUGAS ===== -->
+    <div id="confirmModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-icon icon-warning">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <h3>⚠️ Data Sudah Ada!</h3>
+            <p class="sub-text">
+                Data dengan kombinasi <br>
+                <strong id="confirmKeyDisplay"></strong> <br>
+                sudah ada di spreadsheet.<br><br>
+                Apakah Anda yakin ingin <strong>mengganti</strong> tugas yang lama dengan data yang baru?
+            </p>
+            <div class="modal-buttons">
+                <button class="modal-btn danger" id="confirmGantiBtn" onclick="confirmGantiTugas()">
+                    <i class="fas fa-exchange-alt"></i> Ya, Ganti Data
+                </button>
+                <button class="modal-btn secondary" onclick="closeConfirmModal()">
+                    <i class="fas fa-times"></i> Tidak, Batal
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SCRIPT -->
+    <!-- ============================================================ -->
+    <script>
+        // ==================== HAMBURGER MENU ====================
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            const bars = hamburger.querySelectorAll('.bar');
+
+            if (hamburger && navMenu) {
+                hamburger.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    navMenu.classList.toggle('active');
+                    
+                    if (navMenu.classList.contains('active')) {
+                        bars.forEach((bar, index) => {
+                            if (index === 0) bar.style.transform = 'rotate(45deg) translate(5px, 5px)';
+                            else if (index === 1) bar.style.opacity = '0';
+                            else if (index === 2) bar.style.transform = 'rotate(-45deg) translate(5px, -5px)';
+                        });
+                    } else {
+                        bars.forEach(bar => {
+                            bar.style.transform = 'none';
+                            bar.style.opacity = '1';
+                        });
+                    }
+                });
+
+                document.addEventListener('click', function(event) {
+                    const isClickInside = navMenu.contains(event.target) || hamburger.contains(event.target);
+                    if (!isClickInside && navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                        bars.forEach(bar => {
+                            bar.style.transform = 'none';
+                            bar.style.opacity = '1';
+                        });
+                    }
+                });
+
+                navMenu.querySelectorAll('.nav-link').forEach(link => {
+                    link.addEventListener('click', function() {
+                        navMenu.classList.remove('active');
+                        bars.forEach(bar => {
+                            bar.style.transform = 'none';
+                            bar.style.opacity = '1';
+                        });
+                    });
+                });
+
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                        bars.forEach(bar => {
+                            bar.style.transform = 'none';
+                            bar.style.opacity = '1';
+                        });
+                    }
+                });
+            }
+
+            // ==================== KONFIGURASI URL ====================
+            const URL_DATA_SISWA = 'https://script.google.com/macros/s/AKfycbxZMS_o6xWMAQAkjBzzEMR9tJmHOnHCX13KJX2xZMn7WIr-A9pwVK_3DDHnMg7y_rD29Q/exec';
+            const URL_PEREKAPAN = 'https://script.google.com/macros/s/AKfycbzBn7u9sH-UrUL3Xc4PnI16c1QbkR-w2Za5JDaJM5Utak1gntOvfrbsbkTEkRBn5xB9uQ/exec';
+            const STORAGE_KEY = 'proyek1_aktivitas1_draft';
+            const AKTIVITAS_NAMA = 'AKTIVITAS 1 - Pengenalan Google Workspace & Keamanan Akun';
+            const SHEET_NAME = 'data_aktivitas';
+
+            let dataKelas = [];
+            let dataSiswa = {};
+            let isLoading = true;
+            let isOnline = true;
+            let autoSaveTimeout;
+            let isSubmitting = false;
+            let pendingSubmitData = null;
+
+            // ==================== FUNGSI UTILITY ====================
+            function getValue(id) { const el = document.getElementById(id); return el ? el.value : ''; }
+            function getChecked(id) { const el = document.getElementById(id); return el ? el.checked : false; }
+            function getRadioValue(name) { const el = document.querySelector(`input[name="${name}"]:checked`); return el ? el.value : ''; }
+
+            function getChecklistArray() {
+                const items = [];
+                if (getChecked('cek_docs')) items.push('Saya sudah membuka Google Docs');
+                if (getChecked('cek_sheets')) items.push('Saya sudah membuka Google Sheets');
+                if (getChecked('cek_slides')) items.push('Saya sudah membuka Google Slides');
+                if (getChecked('cek_screenshot_1')) items.push('Saya sudah mengupload screenshot Aktivitas 1 ke Google Drive');
+                if (getChecked('cek_keamanan')) items.push('Saya sudah mengecek pengaturan keamanan akun Google');
+                if (getChecked('cek_screenshot_2')) items.push('Saya sudah mengupload screenshot Aktivitas 2 ke Google Drive');
+                if (getChecked('cek_wifi')) items.push('Saya sudah mengecek jaringan Wi-Fi yang terhubung');
+                if (getChecked('cek_screenshot_3')) items.push('Saya sudah mengupload screenshot Aktivitas 3 ke Google Drive');
+                return items;
+            }
+
+            function getFormattedTimestamp() {
+                const now = new Date();
+                const hari = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+                const bulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 
+                               'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+                
+                const hariName = hari[now.getDay()];
+                const tanggal = now.getDate().toString().padStart(2, '0');
+                const bulanName = bulan[now.getMonth()];
+                const tahun = now.getFullYear();
+                const jam = now.getHours().toString().padStart(2, '0');
+                const menit = now.getMinutes().toString().padStart(2, '0');
+                const detik = now.getSeconds().toString().padStart(2, '0');
+                
+                return `${hariName}, ${tanggal} ${bulanName} ${tahun} - ${jam}:${menit}:${detik}`;
+            }
+
+            // ==================== LOCAL STORAGE ====================
+            function saveToLocalStorage() {
+                if (!isOnline) return;
+                
+                if (autoSaveTimeout) clearTimeout(autoSaveTimeout);
+                
+                autoSaveTimeout = setTimeout(() => {
+                    const formData = collectAllFormData();
+                    localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
+                    console.log('Data tersimpan otomatis', new Date().toLocaleTimeString());
+                }, 1000);
+            }
+
+            function loadFromLocalStorage() {
+                const savedData = localStorage.getItem(STORAGE_KEY);
+                if (savedData) {
+                    try {
+                        const data = JSON.parse(savedData);
+                        populateFormData(data);
+                    } catch (e) {
+                        console.error('Error loading saved data:', e);
+                    }
+                }
+            }
+
+            function clearLocalStorage() {
+                localStorage.removeItem(STORAGE_KEY);
+            }
+
+            // ==================== COLLECT ALL FORM DATA ====================
+            function collectAllFormData() {
+                const timestamp = getFormattedTimestamp();
+                
+                return {
+                    "Timestamp Pengisian": timestamp,
+                    "A. Identitas Kelompok": {
+                        "Kelas": document.getElementById('kelas').value || '',
+                        "Nama Lengkap": document.getElementById('nama').value || '',
+                        "Nama Kelompok": document.getElementById('kelompok').value || '',
+                        "Peran dalam Kelompok": document.getElementById('peran').value || ''
+                    },
+                    "B. Aktivitas 1: Eksplorasi Google Workspace (TP 2.4)": {
+                        "Link Folder Screenshot": document.getElementById('link_folder_1').value || '',
+                        "Google Docs - Fungsi utama": document.getElementById('docs_fungsi').value || '',
+                        "Google Docs - Fitur yang terlihat": document.getElementById('docs_fitur').value || '',
+                        "Google Sheets - Fungsi utama": document.getElementById('sheets_fungsi').value || '',
+                        "Google Sheets - Perbedaan dengan Docs": document.getElementById('sheets_perbedaan').value || '',
+                        "Google Slides - Fungsi utama": document.getElementById('slides_fungsi').value || '',
+                        "Google Slides - Tampilan halaman utama": document.getElementById('slides_tampilan').value || ''
+                    },
+                    "C. Aktivitas 2: Cek Keamanan Akun Google (TP 2.5)": {
+                        "Link Folder Screenshot": document.getElementById('link_folder_2').value || '',
+                        "Akses halaman Keamanan": getRadioValue('keamanan_akses'),
+                        "Verifikasi 2 langkah (2FA)": getRadioValue('keamanan_2fa'),
+                        "Perangkat terhubung": document.getElementById('keamanan_perangkat').value || '',
+                        "Ada perangkat tidak dikenal": getRadioValue('keamanan_tidak_dikenal'),
+                        "Tindakan jika ada perangkat tidak dikenal": document.getElementById('keamanan_tindakan').value || ''
+                    },
+                    "D. Aktivitas 3: Cek Konektivitas Jaringan (TP 2.5)": {
+                        "Link Folder Screenshot": document.getElementById('link_folder_3').value || '',
+                        "Jaringan Wi-Fi terhubung": document.getElementById('jaringan_nama').value || '',
+                        "Koneksi internet lancar": getRadioValue('jaringan_lancar'),
+                        "3 Langkah keamanan Wi-Fi publik": document.getElementById('jaringan_aman').value || ''
+                    },
+                    "E. Refleksi": {
+                        "Hal baru yang dipelajari": document.getElementById('refleksi_baru').value || '',
+                        "Kesulitan yang dihadapi": document.getElementById('refleksi_kesulitan').value || '',
+                        "Rencana mengamankan akun": document.getElementById('refleksi_rencana').value || ''
+                    },
+                    "F. Checklist Bukti Screenshot": {
+                        "Daftar Aktivitas yang Sudah Dilakukan": getChecklistArray()
+                    }
+                };
+            }
+
+            // ==================== POPULATE FORM DATA ====================
+            function populateFormData(savedData) {
+                if (!savedData) return;
+                
+                // A. Identitas
+                if (savedData["A. Identitas Kelompok"]) {
+                    const identitas = savedData["A. Identitas Kelompok"];
+                    const kelasEl = document.getElementById('kelas');
+                    const namaEl = document.getElementById('nama');
+                    
+                    if (kelasEl) {
+                        for (let option of kelasEl.options) {
+                            if (option.value === identitas["Kelas"]) {
+                                option.selected = true;
+                                break;
+                            }
+                        }
+                        updateNamaDropdown();
+                    }
+                    if (namaEl) {
+                        for (let option of namaEl.options) {
+                            if (option.value === identitas["Nama Lengkap"]) {
+                                option.selected = true;
+                                break;
+                            }
+                        }
+                    }
+                    document.getElementById('kelompok').value = identitas["Nama Kelompok"] || '';
+                    document.getElementById('peran').value = identitas["Peran dalam Kelompok"] || '';
+                }
+
+                // B. Aktivitas 1
+                if (savedData["B. Aktivitas 1: Eksplorasi Google Workspace (TP 2.4)"]) {
+                    const b = savedData["B. Aktivitas 1: Eksplorasi Google Workspace (TP 2.4)"];
+                    document.getElementById('link_folder_1').value = b["Link Folder Screenshot"] || '';
+                    document.getElementById('docs_fungsi').value = b["Google Docs - Fungsi utama"] || '';
+                    document.getElementById('docs_fitur').value = b["Google Docs - Fitur yang terlihat"] || '';
+                    document.getElementById('sheets_fungsi').value = b["Google Sheets - Fungsi utama"] || '';
+                    document.getElementById('sheets_perbedaan').value = b["Google Sheets - Perbedaan dengan Docs"] || '';
+                    document.getElementById('slides_fungsi').value = b["Google Slides - Fungsi utama"] || '';
+                    document.getElementById('slides_tampilan').value = b["Google Slides - Tampilan halaman utama"] || '';
+                }
+
+                // C. Aktivitas 2
+                if (savedData["C. Aktivitas 2: Cek Keamanan Akun Google (TP 2.5)"]) {
+                    const c = savedData["C. Aktivitas 2: Cek Keamanan Akun Google (TP 2.5)"];
+                    document.getElementById('link_folder_2').value = c["Link Folder Screenshot"] || '';
+                    document.getElementById('keamanan_perangkat').value = c["Perangkat terhubung"] || '';
+                    document.getElementById('keamanan_tindakan').value = c["Tindakan jika ada perangkat tidak dikenal"] || '';
+                    
+                    const radioFields = ['keamanan_akses', 'keamanan_2fa', 'keamanan_tidak_dikenal'];
+                    const radioLabels = ['Akses halaman Keamanan', 'Verifikasi 2 langkah (2FA)', 'Ada perangkat tidak dikenal'];
+                    radioFields.forEach((field, index) => {
+                        const value = c[radioLabels[index]];
+                        if (value) {
+                            const radio = document.querySelector(`input[name="${field}"][value="${value}"]`);
+                            if (radio) radio.checked = true;
+                        }
+                    });
+                }
+
+                // D. Aktivitas 3
+                if (savedData["D. Aktivitas 3: Cek Konektivitas Jaringan (TP 2.5)"]) {
+                    const d = savedData["D. Aktivitas 3: Cek Konektivitas Jaringan (TP 2.5)"];
+                    document.getElementById('link_folder_3').value = d["Link Folder Screenshot"] || '';
+                    document.getElementById('jaringan_nama').value = d["Jaringan Wi-Fi terhubung"] || '';
+                    document.getElementById('jaringan_aman').value = d["3 Langkah keamanan Wi-Fi publik"] || '';
+                    
+                    const value = d["Koneksi internet lancar"];
+                    if (value) {
+                        const radio = document.querySelector(`input[name="jaringan_lancar"][value="${value}"]`);
+                        if (radio) radio.checked = true;
+                    }
+                }
+
+                // E. Refleksi
+                if (savedData["E. Refleksi"]) {
+                    const e = savedData["E. Refleksi"];
+                    document.getElementById('refleksi_baru').value = e["Hal baru yang dipelajari"] || '';
+                    document.getElementById('refleksi_kesulitan').value = e["Kesulitan yang dihadapi"] || '';
+                    document.getElementById('refleksi_rencana').value = e["Rencana mengamankan akun"] || '';
+                }
+
+                // F. Checklist
+                if (savedData["F. Checklist Bukti Screenshot"]) {
+                    const checklist = savedData["F. Checklist Bukti Screenshot"]["Daftar Aktivitas yang Sudah Dilakukan"] || [];
+                    
+                    document.getElementById('cek_docs').checked = checklist.includes('Saya sudah membuka Google Docs');
+                    document.getElementById('cek_sheets').checked = checklist.includes('Saya sudah membuka Google Sheets');
+                    document.getElementById('cek_slides').checked = checklist.includes('Saya sudah membuka Google Slides');
+                    document.getElementById('cek_screenshot_1').checked = checklist.includes('Saya sudah mengupload screenshot Aktivitas 1 ke Google Drive');
+                    document.getElementById('cek_keamanan').checked = checklist.includes('Saya sudah mengecek pengaturan keamanan akun Google');
+                    document.getElementById('cek_screenshot_2').checked = checklist.includes('Saya sudah mengupload screenshot Aktivitas 2 ke Google Drive');
+                    document.getElementById('cek_wifi').checked = checklist.includes('Saya sudah mengecek jaringan Wi-Fi yang terhubung');
+                    document.getElementById('cek_screenshot_3').checked = checklist.includes('Saya sudah mengupload screenshot Aktivitas 3 ke Google Drive');
+                }
+            }
+
+            // ==================== RESET FORM ====================
+            function resetAllForm() {
+                document.querySelectorAll('input, select, textarea').forEach(el => {
+                    if (el.type === 'checkbox') el.checked = false;
+                    else if (el.type === 'radio') el.checked = false;
+                    else if (el.tagName === 'SELECT') el.selectedIndex = 0;
+                    else if (el.tagName !== 'SELECT') el.value = '';
+                });
+                
+                const kelasEl = document.getElementById('kelas');
+                const namaEl = document.getElementById('nama');
+                if (kelasEl) kelasEl.value = '';
+                if (namaEl) namaEl.innerHTML = '<option value="">-- Pilih Nama --</option>';
+                document.getElementById('kelompok').value = '';
+                document.getElementById('peran').value = '';
+                
+                clearLocalStorage();
+            }
+
+            // ==================== MODAL FUNCTIONS ====================
+            function showModal() { 
+                const modal = document.getElementById('resetModal');
+                modal.style.display = 'block'; 
+                document.body.classList.add('modal-open');
+            }
+
+            function closeModal() { 
+                const modal = document.getElementById('resetModal');
+                modal.style.display = 'none'; 
+                document.body.classList.remove('modal-open');
+            }
+
+            function showConfirmModal(key) {
+                document.getElementById('confirmKeyDisplay').textContent = key;
+                const modal = document.getElementById('confirmModal');
+                modal.style.display = 'block';
+                document.body.classList.add('modal-open');
+            }
+
+            function closeConfirmModal() {
+                const modal = document.getElementById('confirmModal');
+                modal.style.display = 'none';
+                document.body.classList.remove('modal-open');
+                pendingSubmitData = null;
+            }
+
+            function confirmReset() {
+                closeModal();
+                resetAllForm();
+                const successMsg = document.getElementById('successMessage');
+                successMsg.style.display = 'block';
+                successMsg.innerHTML = '<i class="fas fa-check-circle"></i> Form berhasil direset! Anda dapat mengisi ulang data.';
+                setTimeout(() => {
+                    successMsg.style.display = 'none';
+                    successMsg.innerHTML = '<i class="fas fa-check-circle"></i> LKPD berhasil dikumpulkan!';
+                }, 3000);
+            }
+
+            function confirmGantiTugas() {
+                const confirmBtn = document.getElementById('confirmGantiBtn');
+                confirmBtn.disabled = true;
+                confirmBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengirim...';
+                
+                if (pendingSubmitData) {
+                    doSubmit(pendingSubmitData, true);
+                }
+            }
+
+            document.addEventListener('click', function(event) {
+                const resetModal = document.getElementById('resetModal');
+                const confirmModal = document.getElementById('confirmModal');
+                
+                if (event.target === resetModal) {
+                    closeModal();
+                }
+                if (event.target === confirmModal) {
+                    closeConfirmModal();
+                }
+            });
+
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape') {
+                    const resetModal = document.getElementById('resetModal');
+                    const confirmModal = document.getElementById('confirmModal');
+                    
+                    if (resetModal.style.display === 'block') {
+                        closeModal();
+                    }
+                    if (confirmModal.style.display === 'block') {
+                        closeConfirmModal();
+                    }
+                }
+            });
+
+            // ==================== KONEKSI ====================
+            function updateConnectionStatus() {
+                const statusEl = document.getElementById('connectionStatus');
+                if (navigator.onLine) {
+                    isOnline = true;
+                    statusEl.className = 'connection-status online';
+                    statusEl.innerHTML = '<i class="fas fa-wifi"></i> Online';
+                    document.getElementById('errorMessage').style.display = 'none';
+                } else {
+                    isOnline = false;
+                    statusEl.className = 'connection-status offline';
+                    statusEl.innerHTML = '<i class="fas fa-plug"></i> Offline';
+                    showError('Koneksi internet terputus.');
+                }
+            }
+
+            function showError(message) {
+                document.getElementById('errorText').innerHTML = message;
+                document.getElementById('errorMessage').style.display = 'block';
+            }
+
+            function disableForm() {
+                document.querySelectorAll('input, select, textarea, button').forEach(el => el.disabled = true);
+                document.getElementById('worksheetForm').classList.add('form-disabled');
+            }
+
+            function enableForm() {
+                if (!isOnline) return;
+                document.querySelectorAll('input, select, textarea').forEach(el => {
+                    if (el.id !== 'kelas' && el.id !== 'nama' && el.id !== 'kelompok' && el.id !== 'peran') el.disabled = false;
+                });
+                ['kelas', 'nama', 'kelompok', 'peran', 'submitBtn', 'exportBtn'].forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) el.disabled = false;
+                });
+                document.getElementById('worksheetForm').classList.remove('form-disabled');
+            }
+
+            // ==================== LOAD DATA SISWA ====================
+            function loadDataFromGoogleSheets() {
+                if (!navigator.onLine) { updateConnectionStatus(); return; }
+
+                const loadingEl = document.getElementById('loadingMessage');
+                loadingEl.style.display = 'block';
+
+                const callbackName = 'jsonp_callback_' + Date.now();
+
+                window[callbackName] = function(result) {
+                    const script = document.querySelector(`script[src*="${callbackName}"]`);
+                    if (script) script.remove();
+                    delete window[callbackName];
+
+                    loadingEl.style.display = 'none';
+
+                    if (result && result.success) {
+                        dataKelas = result.kelasList || [];
+                        dataSiswa = result.siswaPerKelas || {};
+
+                        const kelasSelect = document.getElementById('kelas');
+                        kelasSelect.innerHTML = '<option value="">-- Pilih Kelas --</option>';
+                        dataKelas.forEach(kelas => {
+                            const opt = document.createElement('option');
+                            opt.value = kelas;
+                            opt.textContent = kelas;
+                            kelasSelect.appendChild(opt);
+                        });
+
+                        enableForm();
+                        document.getElementById('errorMessage').style.display = 'none';
+                        
+                        loadFromLocalStorage();
+                    } else {
+                        showError('Gagal memuat data siswa: ' + (result?.error || 'Unknown error'));
+                        disableForm();
+                    }
+                    isLoading = false;
+                };
+
+                const script = document.createElement('script');
+                script.src = URL_DATA_SISWA + '?callback=' + callbackName + '&_=' + Date.now();
+                script.onerror = function() {
+                    loadingEl.style.display = 'none';
+                    showError('Gagal terhubung ke server.');
+                    disableForm();
+                    isLoading = false;
+                };
+                document.head.appendChild(script);
+
+                setTimeout(() => {
+                    if (isLoading) {
+                        loadingEl.style.display = 'none';
+                        showError('Waktu tunggu habis. Server tidak merespons.');
+                        disableForm();
+                        isLoading = false;
+                    }
+                }, 10000);
+            }
+
+            function updateNamaDropdown() {
+                const kelas = document.getElementById('kelas').value;
+                const namaSelect = document.getElementById('nama');
+                if (!kelas || !dataSiswa[kelas]) {
+                    namaSelect.innerHTML = '<option value="">-- Pilih Nama --</option>';
+                    return;
+                }
+                namaSelect.innerHTML = '<option value="">-- Pilih Nama --</option>';
+                (dataSiswa[kelas] || []).sort().forEach(nama => {
+                    const opt = document.createElement('option');
+                    opt.value = nama;
+                    opt.textContent = nama;
+                    namaSelect.appendChild(opt);
+                });
+            }
+
+            // ==================== CEK DATA DI SPREADSHEET ====================
+            async function cekDataDiSpreadsheet(kelas, nama, aktivitas) {
+                try {
+                    const url = `${URL_PEREKAPAN}?action=getDataSiswa&kelas=${encodeURIComponent(kelas)}&nama=${encodeURIComponent(nama)}&aktivitas=${encodeURIComponent(aktivitas)}`;
+                    
+                    const response = await fetch(url);
+                    const result = await response.json();
+                    
+                    if (result.success && result.data) {
+                        return {
+                            found: true,
+                            key: `${kelas}_${nama}_${aktivitas}_AKTIF`,
+                            data: result.data
+                        };
+                    }
+                    
+                    return { found: false };
+                } catch (error) {
+                    console.error('Error cek data:', error);
+                    return { found: false, error: error.message };
+                }
+            }
+
+            // ==================== SUBMIT DATA ====================
+            async function submitData() {
+                if (isLoading) { alert('Data masih dimuat. Silakan tunggu.'); return; }
+                if (!navigator.onLine) { alert('Tidak ada koneksi internet.'); return; }
+                if (isSubmitting) { alert('Proses pengiriman sedang berlangsung. Mohon tunggu...'); return; }
+
+                const sudahBaca = confirm(
+                    '📖 Apakah kamu sudah membaca materi "Pengenalan Google Workspace & Keamanan Akun"?\n\n' +
+                    'Jika belum, klik "Batal" untuk membaca materi terlebih dahulu.\n' +
+                    'Klik "OK" jika sudah membaca dan siap mengerjakan LKPD.'
+                );
+                
+                if (!sudahBaca) {
+                    alert('📖 Silakan baca materi terlebih dahulu sebelum mengerjakan LKPD.\n\n' +
+                          'Klik tombol "Baca Materi Sekarang" di bagian atas halaman.');
+                    return;
+                }
+
+                const kelas = document.getElementById('kelas').value;
+                const nama = document.getElementById('nama').value;
+                const kelompok = document.getElementById('kelompok').value;
+
+                if (!kelas) {
+                    alert('Silakan isi kelas terlebih dahulu');
+                    return;
+                }
+                if (!nama) {
+                    alert('Silakan isi nama terlebih dahulu');
+                    return;
+                }
+                if (!kelompok) {
+                    alert('Silakan isi nama kelompok');
+                    return;
+                }
+
+                const submitBtn = document.getElementById('submitBtn');
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memeriksa data...';
+
+                try {
+                    const allData = collectAllFormData();
+                    pendingSubmitData = {
+                        allData: allData,
+                        kelas: kelas,
+                        nama: nama,
+                        kelompok: kelompok
+                    };
+
+                    const result = await cekDataDiSpreadsheet(kelas, nama, AKTIVITAS_NAMA);
+                    
+                    if (result.found) {
+                        submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Kumpulkan LKPD';
+                        submitBtn.disabled = false;
+                        showConfirmModal(result.key);
+                        return;
+                    }
+                    
+                    await doSubmit(pendingSubmitData, false);
+                    
+                } catch (error) {
+                    alert('❌ Gagal memeriksa data: ' + error.message);
+                    submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Kumpulkan LKPD';
+                    submitBtn.disabled = false;
+                    pendingSubmitData = null;
+                }
+            }
+
+            async function doSubmit(data, isReplace = false) {
+                isSubmitting = true;
+                
+                const submitBtn = document.getElementById('submitBtn');
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> ' + (isReplace ? 'Mengganti data...' : 'Mengirim...');
+
+                try {
+                    const { allData, kelas, nama } = data;
+                    
+                    const formData = new URLSearchParams();
+                    
+                    formData.append('sheetName', SHEET_NAME);
+                    formData.append('data', JSON.stringify(allData));
+                    formData.append('kelas', kelas);
+                    formData.append('nama', nama);
+                    formData.append('aktivitas', AKTIVITAS_NAMA);
+                    if (isReplace) {
+                        formData.append('replace', 'true');
+                    }
+
+                    const response = await fetch(URL_PEREKAPAN, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        body: formData
+                    });
+
+                    const result = await response.json();
+                    
+                    if (result.success) {
+                        document.getElementById('confirmGantiBtn').disabled = false;
+                        document.getElementById('confirmGantiBtn').innerHTML = '<i class="fas fa-exchange-alt"></i> Ya, Ganti Data';
+                        
+                        const successMsg = document.getElementById('successMessage');
+                        successMsg.style.display = 'block';
+                        successMsg.innerHTML = '<i class="fas fa-check-circle"></i> ✅ LKPD berhasil ' + (isReplace ? 'diganti' : 'dikirim') + '!<br>' +
+                            'Key: ' + result.key + '<br>' +
+                            'Status: ' + (result.status || 'Berhasil');
+                        
+                        clearLocalStorage();
+                        
+                        setTimeout(() => {
+                            successMsg.style.display = 'none';
+                            successMsg.innerHTML = '<i class="fas fa-check-circle"></i> LKPD berhasil dikumpulkan!';
+                        }, 5000);
+
+                        closeConfirmModal();
+                        showModal();
+                    } else {
+                        alert('❌ Gagal ' + (isReplace ? 'mengganti' : 'mengirim') + ': ' + (result.error || 'Terjadi kesalahan pada server.'));
+                    }
+
+                } catch (error) {
+                    alert('❌ Terjadi kesalahan: ' + error.message);
+                    showError('Gagal ' + (isReplace ? 'mengganti' : 'mengirim') + ': ' + error.message);
+                    setTimeout(() => {
+                        document.getElementById('errorMessage').style.display = 'none';
+                    }, 5000);
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Kumpulkan LKPD';
+                    isSubmitting = false;
+                    pendingSubmitData = null;
+                    
+                    document.getElementById('confirmGantiBtn').disabled = false;
+                    document.getElementById('confirmGantiBtn').innerHTML = '<i class="fas fa-exchange-alt"></i> Ya, Ganti Data';
+                }
+            }
+
+            // ==================== EXPORT TO DOCX ====================
+            function exportToDocx() {
+                const exportBtn = document.getElementById('exportBtn');
+                exportBtn.disabled = true;
+                exportBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memproses...';
+
+                try {
+                    const now = new Date();
+                    const dateStr = now.toLocaleDateString('id-ID', {
+                        day: 'numeric', month: 'long', year: 'numeric'
+                    });
+                    
+                    let htmlContent = `
+                        <html xmlns:o='urn:schemas-microsoft-com:office:office' 
+                              xmlns:w='urn:schemas-microsoft-com:office:word' 
+                              xmlns='http://www.w3.org/TR/REC-html40'>
+                        <head>
+                            <meta charset="UTF-8">
+                            <title>LKPD - Proyek 1 Aktivitas 1</title>
+                            <!--[if gte mso 9]>
+                            <xml>
+                                <w:WordDocument>
+                                    <w:View>Print</w:View>
+                                    <w:Zoom>100</w:Zoom>
+                                </w:WordDocument>
+                            </xml>
+                            <![endif]-->
+                            <style>
+                                body {
+                                    font-family: 'Calibri', 'Segoe UI', Arial, sans-serif;
+                                    font-size: 11pt;
+                                    line-height: 1.5;
+                                    color: #222;
+                                    padding: 30px 40px;
+                                    margin: 0;
+                                }
+                                
+                                .worksheet-title {
+                                    color: #21618c;
+                                    font-size: 18pt;
+                                    text-align: center;
+                                    font-weight: bold;
+                                    border-bottom: 2px solid #d5f4e6;
+                                    padding-bottom: 8px;
+                                    margin: 0 0 15px 0;
+                                }
+                                
+                                .worksheet-subtitle {
+                                    color: #2980b9;
+                                    font-size: 13pt;
+                                    font-weight: 600;
+                                    border-left: 4px solid #2980b9;
+                                    padding-left: 12px;
+                                    margin: 18px 0 8px 0;
+                                }
+                                
+                                .section-title {
+                                    color: #21618c;
+                                    font-size: 12pt;
+                                    font-weight: 600;
+                                    border-bottom: 2px solid #ebf5fb;
+                                    padding-bottom: 6px;
+                                    margin: 15px 0 8px 0;
+                                }
+                                
+                                .subtitle {
+                                    color: #666;
+                                    font-size: 10pt;
+                                    margin-bottom: 12px;
+                                }
+                                .subtitle span {
+                                    margin-right: 15px;
+                                }
+                                
+                                .identitas-box {
+                                    background: #f0f8f0;
+                                    padding: 12px 15px;
+                                    margin-bottom: 15px;
+                                    border-radius: 4px;
+                                }
+                                .identitas-box table {
+                                    width: 100%;
+                                    border: none;
+                                }
+                                .identitas-box td {
+                                    padding: 4px 8px;
+                                    border: none;
+                                    vertical-align: middle;
+                                }
+                                .identitas-box .label {
+                                    font-weight: 600;
+                                    color: #21618c;
+                                    width: 80px;
+                                }
+                                .identitas-box .kosong {
+                                    border-bottom: 1px solid #999;
+                                    min-width: 150px;
+                                    display: inline-block;
+                                    padding: 0 20px 0 5px;
+                                    color: #999;
+                                    font-style: italic;
+                                }
+                                
+                                table {
+                                    width: 100%;
+                                    border-collapse: collapse;
+                                    margin: 8px 0;
+                                    font-size: 10pt;
+                                }
+                                
+                                th {
+                                    background: #3498db;
+                                    color: white;
+                                    padding: 6px 8px;
+                                    text-align: left;
+                                    font-weight: 600;
+                                    border: 1px solid #3498db;
+                                }
+                                
+                                td {
+                                    padding: 6px 8px;
+                                    border: 1px solid #ddd;
+                                    vertical-align: top;
+                                }
+                                
+                                .checkbox-grid {
+                                    display: flex;
+                                    flex-wrap: wrap;
+                                    gap: 8px 20px;
+                                    margin: 8px 0;
+                                }
+                                .checkbox-item {
+                                    display: flex;
+                                    align-items: center;
+                                    gap: 6px;
+                                }
+                                .checkbox-item .kotak-cek {
+                                    display: inline-block;
+                                    width: 14px;
+                                    height: 14px;
+                                    border: 2px solid #999;
+                                    background: white;
+                                    margin-right: 5px;
+                                }
+                                
+                                .radio-group {
+                                    display: flex;
+                                    gap: 15px;
+                                    flex-wrap: wrap;
+                                }
+                                .radio-group label {
+                                    display: inline-flex;
+                                    align-items: center;
+                                    gap: 5px;
+                                }
+                                .radio-group .lingkaran-cek {
+                                    display: inline-block;
+                                    width: 14px;
+                                    height: 14px;
+                                    border: 2px solid #999;
+                                    border-radius: 50%;
+                                    background: white;
+                                    margin-right: 5px;
+                                }
+                                
+                                .tempat-jawaban {
+                                    background: #fafafa;
+                                    padding: 4px 8px;
+                                    border-radius: 3px;
+                                    border: 1px dashed #ccc;
+                                    display: block;
+                                    min-height: 35px;
+                                    color: #999;
+                                    font-style: italic;
+                                }
+                                
+                                .instruction-box {
+                                    background: #ebf5fb;
+                                    padding: 8px 12px;
+                                    border-left: 4px solid #3498db;
+                                    margin: 8px 0;
+                                    border-radius: 4px;
+                                }
+                                
+                                .security-tip {
+                                    background: #e8f5e9;
+                                    padding: 8px 12px;
+                                    border-left: 4px solid #4caf50;
+                                    margin: 8px 0;
+                                    border-radius: 4px;
+                                }
+                                
+                                .section-card {
+                                    border: 1px solid #e0e7ff;
+                                    border-radius: 8px;
+                                    padding: 12px 15px;
+                                    margin-bottom: 15px;
+                                }
+                                
+                                .qa-table .question-col { width: 40%; }
+                                .qa-table .answer-col { width: 60%; }
+                                
+                                .folder-link-box {
+                                    background: #e8f5e9;
+                                    padding: 10px 14px;
+                                    border-radius: 8px;
+                                    margin: 12px 0 0 0;
+                                    border-left: 5px solid #4caf50;
+                                }
+                                .folder-link-box .label-link {
+                                    font-weight: 600;
+                                    color: #2e7d32;
+                                }
+                                
+                                .footer-text {
+                                    text-align: center;
+                                    color: #999;
+                                    font-size: 9pt;
+                                    margin-top: 20px;
+                                    border-top: 1px solid #eee;
+                                    padding-top: 10px;
+                                }
+                                
+                                .btn, .btn-submit, .export-wrapper, 
+                                .connection-status, .success-message, .error-message,
+                                .loading-message, .activity-navigation, .nav-btn,
+                                .modal, .modal-content, #confirmModal, #resetModal,
+                                .reset-button, .hamburger, .navbar, header,
+                                .alert, .refresh-btn, .materi-section,
+                                .screenshot-instruction {
+                                    display: none !important;
+                                }
+                                
+                                .informatika-content-card {
+                                    padding: 15px;
+                                    border-left: 5px solid #3498db;
+                                    margin-bottom: 15px;
+                                }
+                                
+                                .informatika-content-card h2 {
+                                    color: #21618c;
+                                    font-size: 18pt;
+                                }
+                                
+                                .informatika-content-card > p {
+                                    font-size: 11pt;
+                                    padding: 8px 12px;
+                                    background: #ebf5fb;
+                                    border-radius: 6px;
+                                    border-left: 4px solid #3498db;
+                                }
+                                
+                                hr {
+                                    border: 0;
+                                    border-top: 2px solid #d5f4e6;
+                                    margin: 15px 0;
+                                }
+                                
+                                ol {
+                                    margin-left: 20px;
+                                    color: #555;
+                                }
+                                
+                                .worksheet-container {
+                                    padding: 0;
+                                    margin: 0;
+                                    border: none;
+                                    box-shadow: none;
+                                }
+                                
+                                .tp-card {
+                                    background: #e8f4fd;
+                                    padding: 12px 16px;
+                                    border-radius: 8px;
+                                    margin-bottom: 15px;
+                                    border-left: 5px solid #3498db;
+                                }
+                                .tp-card .tp-item {
+                                    padding: 2px 0;
+                                }
+                                .tp-card .tp-code {
+                                    background: #3498db;
+                                    color: white;
+                                    padding: 2px 10px;
+                                    border-radius: 12px;
+                                    font-weight: 700;
+                                    font-size: 0.8rem;
+                                    display: inline-block;
+                                    min-width: 45px;
+                                    text-align: center;
+                                    margin-right: 10px;
+                                }
+                            </style>
+                        </head>
+                        <body>
+                            <div class="informatika-content-card">
+                                <h2>Proyek 1 Aktivitas 1: Eksplorasi Google Workspace & Keamanan Akun</h2>
+                                <div class="subtitle">
+                                    <span>📅 Pertemuan 1 • Proyek 1: Saya Siap Jadi Kreator Digital</span>
+                                    <span>⏰ 4 JP</span>
+                                </div>
+                                <p><i>"Eksplorasi Google Workspace dan cek keamanan akun sebagai bekal menjadi kreator digital."</i></p>
+                            </div>
+
+                            <div class="tp-card">
+                                <div style="font-weight:700; color:#21618c; margin-bottom:4px;">Tujuan Pembelajaran</div>
+                                <div class="tp-item"><span class="tp-code">TP 2.4</span> Menggunakan perangkat teknologi untuk mengolah dokumen, lembar kerja, dan presentasi</div>
+                                <div class="tp-item"><span class="tp-code">TP 2.5</span> Memahami dan menerapkan konfigurasi keamanan dasar untuk konektivitas jaringan lokal dan internet</div>
+                            </div>
+
+                            <div class="instruction-box" style="background:#e8f5e9; border-left-color: #3498db;">
+                                <strong>HALO, KELOMPOK HEBAT! 👋</strong><br>
+                                Pada pertemuan ini, kita akan mengenal Google Workspace dan mengecek keamanan akun Google.
+                                Pastikan kamu sudah memiliki akun Google (Gmail) sebelum memulai!
+                            </div>
+
+                            <h1 class="worksheet-title">LEMBAR KERJA PESERTA DIDIK (LKPD) PROYEK 1 – AKTIVITAS 1</h1>
+                            <p style="text-align: center; margin-bottom: 1.5rem; font-size: 12pt; color: #9b59b6;">
+                                <strong>EKSPLORASI GOOGLE WORKSPACE &amp; KEAMANAN AKUN</strong>
+                            </p>
+                            <div style="text-align: center; margin-bottom: 1.5rem; background: #ebf5fb; padding: 0.8rem; border-radius: 8px;">
+                                <p><strong>Fokus Tujuan Pembelajaran:</strong> TP 2.4 (Google Workspace) &amp; TP 2.5 (Keamanan Akun &amp; Jaringan)</p>
+                            </div>
+
+                            <h3 class="worksheet-subtitle">IDENTITAS KELOMPOK</h3>
+                            <div class="identitas-box">
+                                <table>
+                                    <tr><td class="label">Kelas</td><td>: <span class="kosong">_________________</span></td></tr>
+                                    <tr><td class="label">Nama Lengkap</td><td>: <span class="kosong">_________________</span></td></tr>
+                                    <tr><td class="label">Nama Kelompok</td><td>: <span class="kosong">_________________</span></td></tr>
+                                    <tr><td class="label">Peran dalam Kelompok</td><td>: <span class="kosong">_________________</span></td></tr>
+                                </table>
+                            </div>
+
+                            <div class="instruction-box">
+                                <strong>📚 PETUNJUK PENGGUNAAN LKPD</strong><br><br>
+                                <ol>
+                                    <li>Pastikan kamu sudah memiliki akun Google (Gmail).</li>
+                                    <li>Kerjakan setiap bagian dengan HP atau laptop.</li>
+                                    <li><strong>Setiap bagian wajib menyertakan link folder screenshot</strong> sebagai bukti.</li>
+                                    <li>Kumpulkan LKPD setelah selesai dikerjakan.</li>
+                                </ol>
+                            </div>
+
+                            <!-- AKTIVITAS 1 -->
+                            <div class="section-card">
+                                <h3 class="section-title">🛠️ AKTIVITAS 1: EKSPLORASI GOOGLE WORKSPACE</h3>
+                                
+                                <div class="instruction-box">
+                                    <strong>Instruksi:</strong>
+                                    <ol style="margin-left:1.5rem; margin-top:4px;">
+                                        <li>Buka <strong>docs.google.com</strong>, <strong>sheets.google.com</strong>, dan <strong>slides.google.com</strong>.</li>
+                                        <li>Jelajahi halaman utama dan fitur-fitur yang tersedia.</li>
+                                        <li>Ambil <strong>screenshot</strong> halaman utama dari ketiga aplikasi tersebut.</li>
+                                        <li>Kumpulkan semua screenshot dalam <strong>1 folder Google Drive</strong>.</li>
+                                        <li>Tempel link folder di kolom yang disediakan di bagian bawah aktivitas ini.</li>
+                                    </ol>
+                                </div>
+
+                                <p style="margin-bottom: 0.5rem; font-weight:600; color:#21618c;">📄 Eksplorasi Google Docs</p>
+
+                                <table class="qa-table">
+                                    <thead>
+                                        <tr><th class="question-col">Pertanyaan</th><th class="answer-col">Jawaban</th></tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Apa fungsi utama Google Docs?</td>
+                                            <td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Fitur apa saja yang kamu lihat di halaman utama Google Docs?</td>
+                                            <td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <p style="margin-bottom: 0.5rem; font-weight:600; color:#21618c; margin-top:1.5rem;">📊 Eksplorasi Google Sheets</p>
+
+                                <table class="qa-table">
+                                    <thead>
+                                        <tr><th class="question-col">Pertanyaan</th><th class="answer-col">Jawaban</th></tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Apa fungsi utama Google Sheets?</td>
+                                            <td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Apa perbedaan tampilan Google Sheets dengan Google Docs?</td>
+                                            <td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <p style="margin-bottom: 0.5rem; font-weight:600; color:#21618c; margin-top:1.5rem;">📽️ Eksplorasi Google Slides</p>
+
+                                <table class="qa-table">
+                                    <thead>
+                                        <tr><th class="question-col">Pertanyaan</th><th class="answer-col">Jawaban</th></tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Apa fungsi utama Google Slides?</td>
+                                            <td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Apa yang kamu lihat di halaman utama Google Slides?</td>
+                                            <td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <div style="margin-top: 1.5rem; background: #f8fafc; border-radius: 8px; padding: 1rem; border: 1px dashed #3498db;">
+                                    <p><strong>☑️ Checklist Bukti Aktivitas 1:</strong></p>
+                                    <div class="checkbox-grid">
+                                        <div class="checkbox-item"><span class="kotak-cek"></span> Saya sudah membuka Google Docs</div>
+                                        <div class="checkbox-item"><span class="kotak-cek"></span> Saya sudah membuka Google Sheets</div>
+                                        <div class="checkbox-item"><span class="kotak-cek"></span> Saya sudah membuka Google Slides</div>
+                                        <div class="checkbox-item"><span class="kotak-cek"></span> Saya sudah mengupload screenshot ke folder Google Drive</div>
+                                    </div>
+                                </div>
+
+                                <div class="folder-link-box">
+                                    <span class="label-link">📁 Link Folder Screenshot - Aktivitas 1</span>
+                                    <div style="font-size:0.9rem; color:#555; margin-top:4px;">Tempel link folder Google Drive yang berisi screenshot Google Docs, Sheets, dan Slides:</div>
+                                    <div style="margin-top:6px; background:white; padding:6px 10px; border-radius:6px; border:1px solid #ddd;">
+                                        <span class="tempat-jawaban">[Tempel link folder di sini]</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- AKTIVITAS 2 -->
+                            <div class="section-card">
+                                <h3 class="section-title">🔒 AKTIVITAS 2: CEK KEAMANAN AKUN GOOGLE</h3>
+                                
+                                <div class="instruction-box">
+                                    <strong>Instruksi:</strong>
+                                    <ol style="margin-left:1.5rem; margin-top:4px;">
+                                        <li>Buka <strong>myaccount.google.com</strong> dari HP atau laptop-mu.</li>
+                                        <li>Cek pengaturan keamanan akunmu (2FA, perangkat terhubung, dll).</li>
+                                        <li>Ambil <strong>screenshot</strong> halaman keamanan akun Google.</li>
+                                        <li>Kumpulkan screenshot dalam <strong>1 folder Google Drive</strong>.</li>
+                                        <li>Tempel link folder di kolom yang disediakan di bagian bawah aktivitas ini.</li>
+                                    </ol>
+                                </div>
+
+                                <table class="qa-table">
+                                    <thead>
+                                        <tr><th class="question-col">Pertanyaan</th><th class="answer-col">Jawaban</th></tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Apakah kamu bisa mengakses halaman "Keamanan" di akun Google?</td>
+                                            <td>
+                                                <div class="radio-group">
+                                                    <label><span class="lingkaran-cek"></span> Ya</label>
+                                                    <label><span class="lingkaran-cek"></span> Tidak</label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Apakah kamu sudah mengaktifkan verifikasi 2 langkah (2FA)?</td>
+                                            <td>
+                                                <div class="radio-group">
+                                                    <label><span class="lingkaran-cek"></span> Sudah</label>
+                                                    <label><span class="lingkaran-cek"></span> Belum</label>
+                                                    <label><span class="lingkaran-cek"></span> Tidak Tahu</label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Perangkat apa saja yang terhubung ke akun Google-mu?</td>
+                                            <td><span class="tempat-jawaban">[Tulis perangkat di sini]</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Apakah ada perangkat yang tidak dikenal?</td>
+                                            <td>
+                                                <div class="radio-group">
+                                                    <label><span class="lingkaran-cek"></span> Ya</label>
+                                                    <label><span class="lingkaran-cek"></span> Tidak</label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Jika ada perangkat tidak dikenal, apa yang akan kamu lakukan?</td>
+                                            <td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <div class="security-tip">
+                                    <strong>Tips Keamanan:</strong> Aktifkan verifikasi 2 langkah dan atur nomor HP pemulihan. Ini akan melindungi akunmu jika ada yang mencoba masuk tanpa izin!
+                                </div>
+
+                                <div style="margin-top: 1.5rem; background: #f8fafc; border-radius: 8px; padding: 1rem; border: 1px dashed #3498db;">
+                                    <p><strong>☑️ Checklist Bukti Aktivitas 2:</strong></p>
+                                    <div class="checkbox-grid">
+                                        <div class="checkbox-item"><span class="kotak-cek"></span> Saya sudah mengecek pengaturan keamanan akun Google</div>
+                                        <div class="checkbox-item"><span class="kotak-cek"></span> Saya sudah mengupload screenshot ke folder Google Drive</div>
+                                    </div>
+                                </div>
+
+                                <div class="folder-link-box">
+                                    <span class="label-link">📁 Link Folder Screenshot - Aktivitas 2</span>
+                                    <div style="font-size:0.9rem; color:#555; margin-top:4px;">Tempel link folder Google Drive yang berisi screenshot halaman keamanan akun:</div>
+                                    <div style="margin-top:6px; background:white; padding:6px 10px; border-radius:6px; border:1px solid #ddd;">
+                                        <span class="tempat-jawaban">[Tempel link folder di sini]</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- AKTIVITAS 3 -->
+                            <div class="section-card">
+                                <h3 class="section-title">📶 AKTIVITAS 3: CEK KONEKTIVITAS JARINGAN</h3>
+                                
+                                <div class="instruction-box">
+                                    <strong>Instruksi:</strong>
+                                    <ol style="margin-left:1.5rem; margin-top:4px;">
+                                        <li>Cek jaringan Wi-Fi yang terhubung ke perangkatmu.</li>
+                                        <li>Cek apakah internet berjalan lancar.</li>
+                                        <li>Ambil <strong>screenshot</strong> daftar jaringan Wi-Fi yang tersedia.</li>
+                                        <li>Kumpulkan screenshot dalam <strong>1 folder Google Drive</strong>.</li>
+                                        <li>Tempel link folder di kolom yang disediakan di bagian bawah aktivitas ini.</li>
+                                    </ol>
+                                </div>
+
+                                <table class="qa-table">
+                                    <thead>
+                                        <tr><th class="question-col">Pertanyaan</th><th class="answer-col">Jawaban</th></tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Jaringan Wi-Fi apa yang sedang terhubung dengan perangkatmu?</td>
+                                            <td><span class="tempat-jawaban">[Tulis nama Wi-Fi di sini]</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Apakah koneksi internet berjalan lancar?</td>
+                                            <td>
+                                                <div class="radio-group">
+                                                    <label><span class="lingkaran-cek"></span> Ya</label>
+                                                    <label><span class="lingkaran-cek"></span> Tidak</label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sebutkan 3 langkah menjaga keamanan saat menggunakan Wi-Fi publik!</td>
+                                            <td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <div style="margin-top: 1.5rem; background: #f8fafc; border-radius: 8px; padding: 1rem; border: 1px dashed #3498db;">
+                                    <p><strong>☑️ Checklist Bukti Aktivitas 3:</strong></p>
+                                    <div class="checkbox-grid">
+                                        <div class="checkbox-item"><span class="kotak-cek"></span> Saya sudah mengecek jaringan Wi-Fi yang terhubung</div>
+                                        <div class="checkbox-item"><span class="kotak-cek"></span> Saya sudah mengupload screenshot ke folder Google Drive</div>
+                                    </div>
+                                </div>
+
+                                <div class="folder-link-box">
+                                    <span class="label-link">📁 Link Folder Screenshot - Aktivitas 3</span>
+                                    <div style="font-size:0.9rem; color:#555; margin-top:4px;">Tempel link folder Google Drive yang berisi screenshot daftar Wi-Fi:</div>
+                                    <div style="margin-top:6px; background:white; padding:6px 10px; border-radius:6px; border:1px solid #ddd;">
+                                        <span class="tempat-jawaban">[Tempel link folder di sini]</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- REFLEKSI -->
+                            <div class="section-card">
+                                <h3 class="section-title">📝 REFLEKSI</h3>
+                                <div class="instruction-box">Tulis dengan jujur, ya! Tidak ada jawaban benar atau salah.</div>
+
+                                <table class="qa-table">
+                                    <thead>
+                                        <tr><th class="question-col">Pertanyaan</th><th class="answer-col">Jawaban</th></tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Hal baru apa yang kamu pelajari dari kegiatan hari ini?</td>
+                                            <td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Apa kesulitan yang kamu hadapi saat mengeksplorasi Google Workspace?</td>
+                                            <td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Apa yang akan kamu lakukan setelah ini untuk mengamankan akun Google-mu?</td>
+                                            <td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="footer-text">
+                                LKPD Proyek 1 Aktivitas 1 - Eksplorasi Google Workspace & Keamanan Akun | ${dateStr}
+                            </div>
+                        </body>
+                        </html>
+                    `;
+
+                    const blob = new Blob([htmlContent], {
+                        type: 'application/msword;charset=utf-8'
+                    });
+
+                    const link = document.createElement('a');
+                    link.href = URL.createObjectURL(blob);
+                    const today = new Date();
+                    const dateStr2 = today.getFullYear() + '-' + 
+                                   String(today.getMonth()+1).padStart(2,'0') + '-' + 
+                                   String(today.getDate()).padStart(2,'0');
+                    link.download = `LKPD_Proyek1_Aktivitas1_Template_${dateStr2}.doc`;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    setTimeout(() => {
+                        URL.revokeObjectURL(link.href);
+                    }, 1000);
+
+                    exportBtn.innerHTML = '<i class="fas fa-file-word"></i> Export Template DOCX';
+                    exportBtn.disabled = false;
+
+                } catch (error) {
+                    console.error('Error export:', error);
+                    alert('❌ Gagal mengekspor template: ' + error.message);
+                    exportBtn.innerHTML = '<i class="fas fa-file-word"></i> Export Template DOCX';
+                    exportBtn.disabled = false;
+                }
+            }
+
+            // ==================== INIT ====================
+            document.querySelectorAll('input, select, textarea').forEach(el => {
+                el.addEventListener('input', saveToLocalStorage);
+                el.addEventListener('change', saveToLocalStorage);
+            });
+
+            window.addEventListener('online', () => { 
+                isOnline = true; 
+                updateConnectionStatus(); 
+                loadDataFromGoogleSheets(); 
+            });
+            window.addEventListener('offline', () => { 
+                isOnline = false; 
+                updateConnectionStatus(); 
+            });
+
+            loadDataFromGoogleSheets();
+            updateConnectionStatus();
+            setInterval(checkConnection, 5000);
+
+            function checkConnection() {
+                updateConnectionStatus();
+            }
+
+            // ==================== EXPOSE FUNCTIONS ====================
+            window.updateNamaDropdown = updateNamaDropdown;
+            window.saveToLocalStorage = saveToLocalStorage;
+            window.submitData = submitData;
+            window.exportToDocx = exportToDocx;
+            window.confirmGantiTugas = confirmGantiTugas;
+            window.confirmReset = confirmReset;
+            window.closeModal = closeModal;
+            window.closeConfirmModal = closeConfirmModal;
+        });
+    </script>
+</body>
+</html>

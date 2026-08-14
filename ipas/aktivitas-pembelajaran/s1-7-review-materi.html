@@ -1,0 +1,1556 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Review Semester Ganjil - Lembar Kerja IPAS</title>
+    <link rel="stylesheet" href="../../style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        /* ================================================================
+           ROOT & RESET
+           ================================================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2ecc71;
+            --primary-dark: #27ae60;
+            --primary-light: #d5f4e6;
+            --accent: #3498db;
+            --gray-bg: #f5f7fa;
+            --text: #2c3e50;
+            --text-light: #666;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            --radius: 16px;
+            --border: #e0e0e0;
+            --ipas-orange: #f39c12;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--gray-bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* ===== LOGO ZOOM EFFECT ===== */
+        .logo img {
+            transition: transform 0.3s ease;
+        }
+        .logo:hover img {
+            transform: scale(1.2);
+        }
+
+        /* ================================================================
+           KONTEN UTAMA
+           ================================================================ */
+        .container {
+            max-width: 960px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: var(--radius);
+            padding: 2rem 2.5rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 1.5rem;
+            border-left: 5px solid var(--primary);
+        }
+
+        .header-title {
+            text-align: center;
+            font-size: 1.8rem;
+            color: var(--primary-dark);
+            margin-bottom: 0.3rem;
+        }
+
+        .header-sub {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* ===== IDENTITAS ===== */
+        .identitas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            background: var(--primary-light);
+            padding: 1.2rem 1.5rem;
+            border-radius: 12px;
+        }
+
+        .identitas-item label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--primary-dark);
+            margin-bottom: 0.2rem;
+        }
+
+        .identitas-item select,
+        .identitas-item textarea {
+            width: 100%;
+            padding: 0.6rem 0.8rem;
+            border: 2px solid #fff;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            background: #fff;
+            transition: 0.2s;
+            font-family: inherit;
+            resize: vertical;
+            min-height: 42px;
+            overflow: hidden;
+        }
+
+        .identitas-item select:focus,
+        .identitas-item textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        /* ===== SECTION ===== */
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin: 1.5rem 0 0.8rem 0;
+            padding-bottom: 0.4rem;
+            border-bottom: 3px solid var(--primary-light);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title i {
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .section-desc {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            padding: 0.8rem 1.2rem;
+            background: #f0faf0;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .section-desc strong {
+            color: var(--text);
+        }
+
+        /* ===== TABEL ===== */
+        .table-wrap {
+            overflow-x: auto;
+            margin: 0.8rem 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 0 1px #eee;
+        }
+
+        th {
+            background: var(--primary);
+            color: #fff;
+            padding: 10px 12px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        td {
+            padding: 8px 10px;
+            border-bottom: 1px solid #f0f0f0;
+            vertical-align: top;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* ===== DINAMIC TEXTAREA ===== */
+        .dynamic-textarea {
+            width: 100%;
+            border: 2px solid #e8e8e8;
+            border-radius: 8px;
+            padding: 8px 10px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            background: #fff;
+            transition: 0.2s;
+            resize: vertical;
+            min-height: 42px;
+            line-height: 1.6;
+            overflow: hidden;
+        }
+
+        .dynamic-textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.15);
+        }
+
+        .dynamic-textarea-sm {
+            min-height: 36px;
+            padding: 6px 10px;
+            font-size: 0.9rem;
+        }
+
+        .dynamic-textarea-lg {
+            min-height: 70px;
+        }
+
+        /* ===== RADIO & CHECKBOX ===== */
+        .options-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 20px;
+            padding: 6px 0;
+        }
+
+        .options-group label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.92rem;
+            cursor: pointer;
+        }
+
+        .options-group input[type="radio"],
+        .options-group input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary);
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        /* ===== TOMBOL ===== */
+        .btn-row {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 16px;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            margin: 4px 4px 0 0;
+        }
+
+        .btn-add {
+            background: var(--primary);
+            color: #fff;
+        }
+        .btn-add:hover {
+            background: var(--primary-dark);
+            transform: scale(1.02);
+        }
+
+        .btn-remove {
+            background: #e74c3c;
+            color: #fff;
+        }
+        .btn-remove:hover {
+            background: #c0392b;
+            transform: scale(1.02);
+        }
+        .btn-remove:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: #fff;
+            border: none;
+            padding: 0.9rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+            display: block;
+            margin: 2rem auto 1rem;
+            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(46, 204, 113, 0.4);
+        }
+        .btn-submit:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .btn-export {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: #fff;
+            border: none;
+            padding: 0.7rem 1.8rem;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.25);
+        }
+
+        .btn-export:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.35);
+        }
+        .btn-export:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .toolbar {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        /* ===== STATUS ===== */
+        .status-bar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 16px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            margin-bottom: 1.2rem;
+            font-size: 0.9rem;
+        }
+
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #28a745;
+            animation: pulse 2s infinite;
+        }
+        .status-dot.offline {
+            background: #dc3545;
+            animation: none;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.5);
+            }
+            70% {
+                box-shadow: 0 0 0 8px rgba(40, 167, 69, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(40, 167, 69, 0);
+            }
+        }
+
+        .msg {
+            padding: 0.8rem 1.2rem;
+            border-radius: 10px;
+            margin: 0.8rem 0;
+            display: none;
+        }
+        .msg-success {
+            background: #d4edda;
+            color: #155724;
+            border-left: 5px solid #28a745;
+        }
+        .msg-error {
+            background: #f8d7da;
+            color: #721c24;
+            border-left: 5px solid #dc3545;
+        }
+        .msg-loading {
+            background: #fff3cd;
+            color: #856404;
+            border-left: 5px solid #ffc107;
+        }
+
+        .msg i {
+            margin-right: 8px;
+        }
+
+        /* ===== MODAL ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.25s ease;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .modal-box {
+            background: #fff;
+            margin: 8% auto;
+            padding: 2rem;
+            border-radius: 20px;
+            max-width: 440px;
+            text-align: center;
+            animation: slideDown 0.3s ease;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-40px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-icon {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .modal-icon.success {
+            color: var(--primary);
+        }
+        .modal-icon.warning {
+            color: #f39c12;
+        }
+
+        .modal-box h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.4rem;
+        }
+        .modal-box .sub {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 1.2rem;
+            line-height: 1.6;
+        }
+        .modal-box .sub strong {
+            color: var(--text);
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 0.8rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .modal-btn {
+            padding: 0.7rem 1.6rem;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: 0.2s;
+            min-width: 110px;
+            flex: 1;
+        }
+        .modal-btn:hover {
+            transform: translateY(-2px);
+        }
+        .modal-btn.primary {
+            background: var(--primary);
+            color: #fff;
+        }
+        .modal-btn.primary:hover {
+            background: var(--primary-dark);
+        }
+        .modal-btn.danger {
+            background: #e74c3c;
+            color: #fff;
+        }
+        .modal-btn.danger:hover {
+            background: #c0392b;
+        }
+        .modal-btn.secondary {
+            background: #6c757d;
+            color: #fff;
+        }
+        .modal-btn.secondary:hover {
+            background: #5a6268;
+        }
+
+        /* ===== BAB CARD ===== */
+        .bab-card {
+            border: 1px solid var(--primary-light);
+            border-radius: 12px;
+            padding: 15px 20px;
+            margin: 10px 0;
+            background: #fafafa;
+            transition: all 0.3s ease;
+        }
+
+        .bab-card:hover {
+            border-color: var(--primary);
+            background: #f0faf0;
+            box-shadow: 0 2px 10px rgba(46, 204, 113, 0.1);
+        }
+
+        .bab-card .bab-title {
+            font-weight: 600;
+            color: var(--primary-dark);
+            font-size: 1.05rem;
+        }
+
+        .bab-card .bab-status {
+            float: right;
+            font-size: 0.9rem;
+            color: #999;
+        }
+
+        .bab-card .bab-status.done {
+            color: var(--primary);
+        }
+
+        .bab-card .bab-status.pending {
+            color: var(--ipas-orange);
+        }
+
+        .bab-card .bab-link {
+            margin-top: 8px;
+        }
+
+        .bab-card .bab-link textarea {
+            width: 100%;
+            padding: 8px 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            resize: vertical;
+            min-height: 42px;
+            overflow: hidden;
+        }
+
+        .bab-card .bab-link textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.15);
+        }
+
+        .bab-card .bab-link label {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            display: block;
+            margin-bottom: 4px;
+            font-weight: 500;
+        }
+
+        .bab-card .bab-color {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 0.8rem;
+                margin: 1rem auto;
+            }
+            .card {
+                padding: 1.2rem 1.2rem;
+            }
+            .identitas-grid {
+                grid-template-columns: 1fr;
+            }
+            .header-title {
+                font-size: 1.4rem;
+            }
+            .section-title {
+                font-size: 1.1rem;
+            }
+            .toolbar {
+                justify-content: center;
+            }
+            .btn-submit {
+                width: 100%;
+                justify-content: center;
+                padding: 0.8rem;
+            }
+            .modal-box {
+                margin: 15% auto;
+                padding: 1.5rem;
+            }
+            .modal-actions {
+                flex-direction: column;
+            }
+            .modal-btn {
+                flex: none;
+                width: 100%;
+            }
+            .options-group {
+                gap: 8px 14px;
+            }
+            .bab-card {
+                padding: 12px 15px;
+            }
+            .bab-card .bab-status {
+                float: none;
+                display: block;
+                margin-top: 5px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                padding: 0.8rem 0.8rem;
+            }
+            table {
+                font-size: 0.85rem;
+            }
+            th,
+            td {
+                padding: 6px 8px;
+            }
+            .dynamic-textarea {
+                font-size: 0.85rem;
+                min-height: 36px;
+                padding: 6px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER NAV ===== -->
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="../../assets/images/logo.png" alt="Logo" />
+                    <h1>TEMBOK BELAJAR - PROJEK IPAS</h1>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="../../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="../index-ipas.html" class="nav-link"><i class="fas fa-flask"></i> Beranda IPAS</a></li>
+                    <li><a href="index-aktifitas-ipas.html" class="nav-link active"><i class="fas fa-tasks"></i> Daftar Aktivitas</a></li>
+                    <li><a href="../materi-pembelajaran/index-materi-ipas.html" class="nav-link"><i class="fas fa-book-open"></i> Daftar Materi</a></li>
+                    <li><a href="../penilaian/index-penilaian-ipas.html" class="nav-link"><i class="fas fa-chart-line"></i> Penilaian</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ===== MAIN ===== -->
+    <div class="container">
+
+        <!-- HEADER -->
+        <div class="card" style="text-align:center; border-left-color:var(--primary);">
+            <h1 class="header-title">📚 Review Semester Ganjil</h1>
+            <p class="header-sub">
+                <i class="fas fa-calendar"></i> Akhir Semester Ganjil &nbsp;·&nbsp;
+                <i class="fas fa-clock"></i> 6 JP
+            </p>
+            <p style="color:var(--text-light); font-size:0.95rem; max-width:600px; margin:0 auto;">
+                Buat infografis/peta konsep untuk setiap bab, upload ke Google Drive, dan tempel linknya di sini!
+            </p>
+            <ul style="color: var(--text-light); font-size: 0.95rem; max-width: 900px; margin: 0 auto; text-align: left; list-style-position: inside;">
+                <li>TP 1.1 Menjelaskan pengetahuan ilmiah yang berkaitan dengan fenomena alam dan sosial di lingkungan sekitar</li>
+            </ul>
+        </div>
+
+        <!-- STATUS -->
+        <div class="status-bar">
+            <div class="status-dot" id="statusDot"></div>
+            <span id="statusText">Memeriksa koneksi...</span>
+        </div>
+
+        <!-- LOADING / ERROR -->
+        <div id="loadingMsg" class="msg msg-loading" style="display:none;">
+            <i class="fas fa-spinner fa-spin"></i> Memuat data...
+        </div>
+        <div id="errorMsg" class="msg msg-error" style="display:none;">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span id="errorText">Gagal terhubung ke server. Refresh halaman.</span>
+            <br />
+            <button onclick="location.reload()" style="margin-top:8px; padding:6px 20px; background:#dc3545; color:#fff; border:none; border-radius:6px; cursor:pointer;">
+                <i class="fas fa-sync-alt"></i> Refresh
+            </button>
+        </div>
+
+        <!-- ===== FORM ===== -->
+        <div id="formContainer">
+
+            <!-- TOOLBAR -->
+            <div class="toolbar">
+                <button class="btn-export" id="exportBtn" onclick="exportTemplate()" disabled>
+                    <i class="fas fa-file-word"></i> Export Template
+                </button>
+            </div>
+
+            <!-- ============================================================ -->
+            <!-- A. IDENTITAS -->
+            <!-- ============================================================ -->
+            <div class="card">
+                <h2 class="section-title"><i class="fas fa-id-card"></i> Identitas</h2>
+                <div class="identitas-grid">
+                    <div class="identitas-item">
+                        <label>Kelas</label>
+                        <select id="kelas" onchange="updateNama(); saveDraft();" disabled>
+                            <option value="">-- Pilih --</option>
+                        </select>
+                    </div>
+                    <div class="identitas-item">
+                        <label>Nama</label>
+                        <select id="nama" onchange="saveDraft();" disabled>
+                            <option value="">-- Pilih --</option>
+                        </select>
+                    </div>
+                    <div class="identitas-item">
+                        <label>Kelompok</label>
+                        <textarea class="dynamic-textarea dynamic-textarea-sm" id="kelompok" rows="1" placeholder="Contoh: Kelompok 1" oninput="saveDraft(); autoResize(this);" disabled></textarea>
+                    </div>
+                    <div class="identitas-item">
+                        <label>Tugas/Peran</label>
+                        <textarea class="dynamic-textarea dynamic-textarea-sm" id="tugas" rows="1" placeholder="Contoh: Ketua" oninput="saveDraft(); autoResize(this);" disabled></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============================================================ -->
+            <!-- B. PANDUAN -->
+            <!-- ============================================================ -->
+            <div class="card">
+                <h2 class="section-title"><i class="fas fa-paint-brush"></i> Panduan</h2>
+
+                <div class="section-desc" style="background:#e8f5e9; border-left-color:#2e7d32;">
+                    <i class="fas fa-lightbulb" style="color:#2e7d32;"></i>
+                    <strong>Cara Membuat Infografis/Peta Konsep:</strong>
+                    <ul style="margin-left:1.5rem; margin-top:6px;">
+                        <li><strong>Gambar di kertas</strong> (boleh pakai pensil warna/spidol).</li>
+                        <li><strong>Isi minimal:</strong> Judul bab, 3-5 poin penting, dan ilustrasi sederhana.</li>
+                        <li><strong>Foto hasil gambar</strong> dengan HP (pastikan jelas).</li>
+                        <li><strong>Upload ke Google Drive</strong> (folder IPAS).</li>
+                        <li><strong>Salin link</strong> dan tempel di kolom yang tersedia.</li>
+                    </ul>
+                    <div style="margin-top:8px; background:#fff; padding:8px 12px; border-radius:8px; border:1px solid #a5d6a7;">
+                        <strong>🤖 Tips AI:</strong> Upload foto coretanmu ke <strong>Gemini AI</strong> dan minta:
+                        <em>"Ubah gambar ini menjadi infografis yang rapi dan menarik untuk presentasi"</em>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============================================================ -->
+            <!-- C. 6 BAB + LINK GOOGLE DRIVE -->
+            <!-- ============================================================ -->
+            <div class="card">
+                <h2 class="section-title"><i class="fas fa-link"></i> Link Infografis/Peta Konsep</h2>
+                <div class="section-desc">
+                    <i class="fas fa-info-circle"></i>
+                    Centang bab yang sudah selesai, lalu tempel link Google Drive infografismu di kolom yang tersedia.
+                </div>
+
+                <div id="babList">
+                    <!-- JS akan generate -->
+                </div>
+            </div>
+
+            <!-- ============================================================ -->
+            <!-- D. REFLEKSI -->
+            <!-- ============================================================ -->
+            <div class="card">
+                <h2 class="section-title"><i class="fas fa-smile"></i> Refleksi</h2>
+                <div class="section-desc">
+                    <i class="fas fa-comment"></i>
+                    Tulis dengan jujur, ya! Tidak ada jawaban benar atau salah.
+                </div>
+
+                <div style="margin-bottom:0.8rem;">
+                    <label style="font-weight:600; display:block; margin-bottom:4px;">1. Materi apa yang paling kamu sukai dan paling sulit?</label>
+                    <textarea class="dynamic-textarea" id="ref1" rows="2" oninput="saveDraft(); autoResize(this);"></textarea>
+                </div>
+                <div style="margin-bottom:0.8rem;">
+                    <label style="font-weight:600; display:block; margin-bottom:4px;">2. Aktivitas/lab apa yang paling berkesan?</label>
+                    <textarea class="dynamic-textarea" id="ref2" rows="2" oninput="saveDraft(); autoResize(this);"></textarea>
+                </div>
+                <div style="margin-bottom:0.5rem;">
+                    <label style="font-weight:600; display:block; margin-bottom:4px;">3. Target & harapan untuk semester genap?</label>
+                    <textarea class="dynamic-textarea" id="ref3" rows="2" oninput="saveDraft(); autoResize(this);"></textarea>
+                </div>
+            </div>
+
+            <!-- ============================================================ -->
+            <!-- E. NILAI DIRI -->
+            <!-- ============================================================ -->
+            <div class="card">
+                <h2 class="section-title"><i class="fas fa-star"></i> Nilai Diri</h2>
+                <div class="section-desc">
+                    <i class="fas fa-hand-peace"></i>
+                    Berikan nilai untuk dirimu selama semester ini (1 = Kurang, 4 = Sangat Baik)!
+                </div>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead><tr><th style="width:40px;">No</th><th>Aspek</th><th style="width:130px;">Nilai (1-4)</th></tr></thead>
+                        <tbody>
+                            <tr><td>1</td><td>Pemahaman konsep IPAS</td><td>
+                                    <select id="nilai1" onchange="saveDraft();" style="width:100%; padding:6px 8px; border:2px solid #e8e8e8; border-radius:8px; font-size:0.9rem;">
+                                        <option value="">--</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3" selected>3</option>
+                                        <option value="4">4</option>
+                                    </select>
+                            </td></tr>
+                            <tr><td>2</td><td>Kemampuan observasi & eksplorasi</td><td>
+                                    <select id="nilai2" onchange="saveDraft();" style="width:100%; padding:6px 8px; border:2px solid #e8e8e8; border-radius:8px; font-size:0.9rem;">
+                                        <option value="">--</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3" selected>3</option>
+                                        <option value="4">4</option>
+                                    </select>
+                            </td></tr>
+                            <tr><td>3</td><td>Kerja sama dalam kelompok</td><td>
+                                    <select id="nilai3" onchange="saveDraft();" style="width:100%; padding:6px 8px; border:2px solid #e8e8e8; border-radius:8px; font-size:0.9rem;">
+                                        <option value="">--</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3" selected>3</option>
+                                        <option value="4">4</option>
+                                    </select>
+                            </td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ===== SUBMIT ===== -->
+            <button class="btn-submit" id="submitBtn" onclick="submitData()" disabled>
+                <i class="fas fa-paper-plane"></i> Kirim Data
+            </button>
+
+            <div id="successMsg" class="msg msg-success" style="display:none;">
+                <i class="fas fa-check-circle"></i>
+                <span id="successText">Data berhasil dikirim!</span>
+            </div>
+
+        </div><!-- end formContainer -->
+    </div><!-- end container -->
+
+    <!-- ===== MODAL SUKSES ===== -->
+    <div id="modalSuccess" class="modal">
+        <div class="modal-box">
+            <div class="modal-icon success"><i class="fas fa-check-circle"></i></div>
+            <h3>✅ Data Berhasil Dikirim!</h3>
+            <p class="sub">Data Anda telah tersimpan di Google Spreadsheet.</p>
+            <div class="modal-actions">
+                <button class="modal-btn primary" onclick="resetForm(); closeModal('modalSuccess');">
+                    <i class="fas fa-undo"></i> Reset Form
+                </button>
+                <button class="modal-btn secondary" onclick="closeModal('modalSuccess');">
+                    <i class="fas fa-times"></i> Tutup
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== MODAL KONFIRMASI GANTI ===== -->
+    <div id="modalConfirm" class="modal">
+        <div class="modal-box">
+            <div class="modal-icon warning"><i class="fas fa-exclamation-triangle"></i></div>
+            <h3>⚠️ Data Sudah Ada!</h3>
+            <p class="sub">
+                Data dengan kombinasi <br />
+                <strong id="confirmKeyDisplay"></strong> <br />
+                sudah ada di spreadsheet.<br /><br />
+                Apakah Anda yakin ingin <strong>mengganti</strong> data lama?
+            </p>
+            <div class="modal-actions">
+                <button class="modal-btn danger" id="confirmGantiBtn" onclick="confirmGanti()">
+                    <i class="fas fa-exchange-alt"></i> Ya, Ganti
+                </button>
+                <button class="modal-btn secondary" onclick="closeModal('modalConfirm');">
+                    <i class="fas fa-times"></i> Batal
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SCRIPT -->
+    <!-- ============================================================ -->
+    <script>
+        // ================================================================
+        // KONFIGURASI
+        // ================================================================
+        const URL_DATA_SISWA = 'https://script.google.com/macros/s/AKfycbxZMS_o6xWMAQAkjBzzEMR9tJmHOnHCX13KJX2xZMn7WIr-A9pwVK_3DDHnMg7y_rD29Q/exec';
+        const URL_PEREKAPAN = 'https://script.google.com/macros/s/AKfycbxyGnBMWRIQKRtHa3ogqvT_66Tt3gTEcxZ7dsPPnob3tsVU9IuPWTEpxWH7mGX7YPZj/exec';
+        const STORAGE_KEY = 'ipas_review_draft_v3';
+        const AKTIVITAS_NAMA = 'REVIEW MATERI SEMESTER GANJIL';
+        const SHEET_NAME = 'data_aktivitas';
+
+        let dataKelas = [];
+        let dataSiswa = {};
+        let isLoading = true;
+        let isOnline = true;
+        let isSubmitting = false;
+        let pendingData = null;
+        let autoSaveTimer;
+
+        // ================================================================
+        // DATA BAB
+        // ================================================================
+        const BAB_DATA = [
+            { id: 1, nama: 'Makhluk Hidup & Lingkungannya', icon: 'fa-leaf', color: '#2ecc71' },
+            { id: 2, nama: 'Zat dan Perubahannya', icon: 'fa-flask', color: '#3498db' },
+            { id: 3, nama: 'Energi dan Perubahannya', icon: 'fa-bolt', color: '#f39c12' },
+            { id: 4, nama: 'Keruangan & Konektivitas', icon: 'fa-map', color: '#e67e22' },
+            { id: 5, nama: 'Interaksi & Dinamika Sosial', icon: 'fa-users', color: '#9b59b6' },
+            { id: 6, nama: 'Perilaku Ekonomi', icon: 'fa-coins', color: '#f1c40f' }
+        ];
+
+        // ================================================================
+        // AUTO-RESIZE
+        // ================================================================
+        function autoResize(el) {
+            if (!el || el.tagName !== 'TEXTAREA') return;
+            el.style.height = 'auto';
+            el.style.height = Math.min(el.scrollHeight, 350) + 'px';
+        }
+
+        function refreshAutoResize() {
+            document.querySelectorAll('.dynamic-textarea, .dynamic-textarea-sm, .dynamic-textarea-lg').forEach(el => {
+                if (el.tagName === 'TEXTAREA') autoResize(el);
+            });
+        }
+
+        // ================================================================
+        // INIT BAB LIST
+        // ================================================================
+        function initBabList() {
+            const container = document.getElementById('babList');
+            if (!container) return;
+            container.innerHTML = '';
+
+            BAB_DATA.forEach((bab) => {
+                container.innerHTML += `
+                    <div class="bab-card" id="bab_card_${bab.id}">
+                        <span class="bab-title">
+                            <span class="bab-color" style="background:${bab.color};"></span>
+                            <i class="fas ${bab.icon}" style="color:${bab.color};"></i>
+                            ${bab.nama}
+                        </span>
+                        <span class="bab-status pending" id="bab_status_${bab.id}">
+                            <i class="fas fa-clock"></i> Belum
+                        </span>
+                        <div style="margin-top: 8px;">
+                            <label style="cursor: pointer; font-size: 0.9rem;">
+                                <input type="checkbox" id="bab_${bab.id}" onchange="toggleBab(${bab.id}); saveDraft();">
+                                Saya sudah selesai
+                            </label>
+                        </div>
+                        <div class="bab-link">
+                            <label><i class="fas fa-link"></i> Link Google Drive Infografis</label>
+                            <textarea class="dynamic-textarea dynamic-textarea-sm" id="link_${bab.id}" rows="1" placeholder="Tempel link Google Drive di sini..." oninput="saveDraft(); autoResize(this);"></textarea>
+                        </div>
+                    </div>
+                `;
+            });
+
+            refreshAutoResize();
+        }
+
+        // ================================================================
+        // TOGGLE BAB
+        // ================================================================
+        function toggleBab(id) {
+            const checkbox = document.getElementById(`bab_${id}`);
+            const status = document.getElementById(`bab_status_${id}`);
+            if (!checkbox || !status) return;
+
+            if (checkbox.checked) {
+                status.className = 'bab-status done';
+                status.innerHTML = '<i class="fas fa-check-circle"></i> Selesai';
+            } else {
+                status.className = 'bab-status pending';
+                status.innerHTML = '<i class="fas fa-clock"></i> Belum';
+            }
+        }
+
+        // ================================================================
+        // CONNECTION
+        // ================================================================
+        function checkConnection() {
+            const dot = document.getElementById('statusDot');
+            const text = document.getElementById('statusText');
+            if (navigator.onLine) {
+                dot.classList.remove('offline');
+                text.textContent = 'Terhubung ke internet';
+                isOnline = true;
+            } else {
+                dot.classList.add('offline');
+                text.textContent = 'Tidak terhubung ke internet';
+                isOnline = false;
+                showError('Tidak ada koneksi internet. Refresh setelah koneksi pulih.');
+            }
+        }
+
+        window.addEventListener('online', checkConnection);
+        window.addEventListener('offline', checkConnection);
+
+        // ================================================================
+        // LOAD DATA SISWA
+        // ================================================================
+        function loadDataSiswa() {
+            if (!navigator.onLine) {
+                showError('Tidak ada koneksi internet.');
+                return;
+            }
+
+            document.getElementById('loadingMsg').style.display = 'block';
+            const cb = 'jsonp_' + Date.now();
+
+            window[cb] = function(result) {
+                const script = document.querySelector(`script[src*="${cb}"]`);
+                if (script) script.remove();
+                delete window[cb];
+
+                if (result && result.success) {
+                    dataKelas = result.kelasList || [];
+                    dataSiswa = result.siswaPerKelas || {};
+                    const sel = document.getElementById('kelas');
+                    sel.innerHTML = '<option value="">-- Pilih Kelas --</option>';
+                    dataKelas.forEach(k => {
+                        if (k && k.trim()) {
+                            const opt = document.createElement('option');
+                            opt.value = k;
+                            opt.textContent = k;
+                            sel.appendChild(opt);
+                        }
+                    });
+                    enableForm();
+                } else {
+                    showError('Gagal memuat data siswa. Refresh halaman.');
+                }
+                document.getElementById('loadingMsg').style.display = 'none';
+                isLoading = false;
+            };
+
+            const script = document.createElement('script');
+            script.src = URL_DATA_SISWA + '?callback=' + cb;
+            script.onerror = function() {
+                const s = document.querySelector(`script[src*="${cb}"]`);
+                if (s) s.remove();
+                delete window[cb];
+                showError('Gagal terhubung ke server. Refresh halaman.');
+                document.getElementById('loadingMsg').style.display = 'none';
+                isLoading = false;
+            };
+            document.head.appendChild(script);
+        }
+
+        function enableForm() {
+            if (isOnline) {
+                ['kelas', 'nama', 'kelompok', 'tugas', 'submitBtn', 'exportBtn'].forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) el.disabled = false;
+                });
+                loadDraft();
+            }
+        }
+
+        function showError(msg) {
+            const el = document.getElementById('errorMsg');
+            document.getElementById('errorText').textContent = msg;
+            el.style.display = 'block';
+        }
+
+        // ================================================================
+        // UPDATE NAMA
+        // ================================================================
+        function updateNama() {
+            const kelas = document.getElementById('kelas').value;
+            const namaSel = document.getElementById('nama');
+            namaSel.innerHTML = '<option value="">-- Pilih Nama --</option>';
+            if (kelas && dataSiswa[kelas]) {
+                (dataSiswa[kelas] || []).sort().forEach(n => {
+                    if (n && n.trim()) {
+                        const opt = document.createElement('option');
+                        opt.value = n;
+                        opt.textContent = n;
+                        namaSel.appendChild(opt);
+                    }
+                });
+            }
+            saveDraft();
+        }
+
+        // ================================================================
+        // TIMESTAMP
+        // ================================================================
+        function getTimestamp() {
+            const now = new Date();
+            const d = String(now.getDate()).padStart(2, '0');
+            const m = String(now.getMonth() + 1).padStart(2, '0');
+            const y = now.getFullYear();
+            const h = String(now.getHours()).padStart(2, '0');
+            const min = String(now.getMinutes()).padStart(2, '0');
+            const s = String(now.getSeconds()).padStart(2, '0');
+            return `${d}/${m}/${y} ${h}:${min}:${s}`;
+        }
+
+        // ================================================================
+        // DRAFT - SAVE & LOAD
+        // ================================================================
+        function saveDraft() {
+            if (!isOnline) return;
+            clearTimeout(autoSaveTimer);
+            autoSaveTimer = setTimeout(() => {
+                const data = collectData();
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+            }, 800);
+        }
+
+        function loadDraft() {
+            const raw = localStorage.getItem(STORAGE_KEY);
+            if (raw) {
+                try {
+                    const data = JSON.parse(raw);
+                    restoreData(data);
+                } catch (e) {
+                    console.warn('Gagal load draft:', e);
+                }
+            }
+            refreshAutoResize();
+        }
+
+        function clearDraft() {
+            localStorage.removeItem(STORAGE_KEY);
+        }
+
+        // ================================================================
+        // COLLECT DATA - 🔥 PERUBAHAN: bab menjadi ARRAY
+        // ================================================================
+        function collectData() {
+            const data = { timestamp: getTimestamp() };
+
+            data.identitas = {
+                "Kelas": document.getElementById('kelas').value || '',
+                "Nama": document.getElementById('nama').value || '',
+                "Kelompok": document.getElementById('kelompok').value || '',
+                "Tugas/Peran": document.getElementById('tugas').value || ''
+            };
+
+            // ============================================================
+            // 🔥 PERUBAHAN: bab berubah dari objek menjadi ARRAY
+            // ============================================================
+            data.bab = [];
+            BAB_DATA.forEach((bab) => {
+                const checkbox = document.getElementById(`bab_${bab.id}`);
+                const link = document.getElementById(`link_${bab.id}`);
+                data.bab.push({
+                    nama: bab.nama,
+                    selesai: checkbox ? checkbox.checked : false,
+                    link: link ? link.value || '' : ''
+                });
+            });
+
+            data.refleksi = {
+                "Materi apa yang paling kamu sukai dan paling sulit?": document.getElementById('ref1').value || '',
+                "Aktivitas/lab apa yang paling berkesan?": document.getElementById('ref2').value || '',
+                "Target & harapan untuk semester genap?": document.getElementById('ref3').value || ''
+            };
+
+            data.nilai = {
+                "Pemahaman konsep IPAS": document.getElementById('nilai1').value || '3',
+                "Kemampuan observasi & eksplorasi": document.getElementById('nilai2').value || '3',
+                "Kerja sama dalam kelompok": document.getElementById('nilai3').value || '3'
+            };
+
+            return data;
+        }
+
+        // ================================================================
+        // RESTORE DATA - 🔥 PERUBAHAN: restore bab sebagai ARRAY
+        // ================================================================
+        function restoreData(data) {
+            if (!data) return;
+
+            if (data.identitas) {
+                const sel = document.getElementById('kelas');
+                for (let opt of sel.options) {
+                    if (opt.value === data.identitas["Kelas"]) { opt.selected = true; break; }
+                }
+                updateNama();
+                const selNama = document.getElementById('nama');
+                for (let opt of selNama.options) {
+                    if (opt.value === data.identitas["Nama"]) { opt.selected = true; break; }
+                }
+                document.getElementById('kelompok').value = data.identitas["Kelompok"] || '';
+                document.getElementById('tugas').value = data.identitas["Tugas/Peran"] || '';
+            }
+
+            // ============================================================
+            // 🔥 PERUBAHAN: restore bab dari ARRAY
+            // ============================================================
+            if (data.bab && Array.isArray(data.bab)) {
+                data.bab.forEach((item) => {
+                    const bab = BAB_DATA.find(b => b.nama === item.nama);
+                    if (bab) {
+                        const checkbox = document.getElementById(`bab_${bab.id}`);
+                        const link = document.getElementById(`link_${bab.id}`);
+                        if (checkbox) checkbox.checked = item.selesai || false;
+                        if (link) link.value = item.link || '';
+
+                        if (checkbox && checkbox.checked) {
+                            const status = document.getElementById(`bab_status_${bab.id}`);
+                            if (status) {
+                                status.className = 'bab-status done';
+                                status.innerHTML = '<i class="fas fa-check-circle"></i> Selesai';
+                            }
+                        }
+                    }
+                });
+            }
+            // ============================================================
+            // 🔥 KOMPATIBILITAS: jika data lama masih berupa objek
+            // ============================================================
+            else if (data.bab && typeof data.bab === 'object') {
+                BAB_DATA.forEach((bab) => {
+                    if (data.bab[bab.nama]) {
+                        const checkbox = document.getElementById(`bab_${bab.id}`);
+                        const link = document.getElementById(`link_${bab.id}`);
+                        if (checkbox) checkbox.checked = data.bab[bab.nama].selesai || false;
+                        if (link) link.value = data.bab[bab.nama].link || '';
+
+                        if (checkbox && checkbox.checked) {
+                            const status = document.getElementById(`bab_status_${bab.id}`);
+                            if (status) {
+                                status.className = 'bab-status done';
+                                status.innerHTML = '<i class="fas fa-check-circle"></i> Selesai';
+                            }
+                        }
+                    }
+                });
+            }
+
+            if (data.refleksi) {
+                document.getElementById('ref1').value = data.refleksi[
+                    "Materi apa yang paling kamu sukai dan paling sulit?"] || '';
+                document.getElementById('ref2').value = data.refleksi["Aktivitas/lab apa yang paling berkesan?"] || '';
+                document.getElementById('ref3').value = data.refleksi["Target & harapan untuk semester genap?"] || '';
+            }
+
+            if (data.nilai) {
+                document.getElementById('nilai1').value = data.nilai["Pemahaman konsep IPAS"] || '3';
+                document.getElementById('nilai2').value = data.nilai["Kemampuan observasi & eksplorasi"] || '3';
+                document.getElementById('nilai3').value = data.nilai["Kerja sama dalam kelompok"] || '3';
+            }
+
+            refreshAutoResize();
+        }
+
+        // ================================================================
+        // RESET FORM
+        // ================================================================
+        function resetForm() {
+            document.querySelectorAll('textarea, select').forEach(el => {
+                if (el.tagName === 'SELECT') el.selectedIndex = 0;
+                else el.value = '';
+            });
+            document.querySelectorAll('input[type="radio"], input[type="checkbox"]').forEach(el => el.checked = false);
+            document.getElementById('nama').innerHTML = '<option value="">-- Pilih Nama --</option>';
+            ['nilai1', 'nilai2', 'nilai3'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.value = '3';
+            });
+
+            BAB_DATA.forEach((bab) => {
+                const status = document.getElementById(`bab_status_${bab.id}`);
+                if (status) {
+                    status.className = 'bab-status pending';
+                    status.innerHTML = '<i class="fas fa-clock"></i> Belum';
+                }
+            });
+
+            clearDraft();
+            document.getElementById('successMsg').style.display = 'none';
+            refreshAutoResize();
+        }
+
+        // ================================================================
+        // MODAL
+        // ================================================================
+        function showModal() {
+            document.getElementById('modalSuccess').style.display = 'block';
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+
+        function showConfirmModal(key) {
+            document.getElementById('confirmKeyDisplay').textContent = key;
+            document.getElementById('modalConfirm').style.display = 'block';
+        }
+
+        function closeConfirmModal() {
+            document.getElementById('modalConfirm').style.display = 'none';
+            pendingData = null;
+        }
+
+        function confirmGanti() {
+            const btn = document.getElementById('confirmGantiBtn');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengganti...';
+            if (pendingData) {
+                doSubmit(pendingData, true).finally(() => {
+                    btn.disabled = false;
+                    btn.innerHTML = '<i class="fas fa-exchange-alt"></i> Ya, Ganti';
+                });
+            }
+        }
+
+        // ================================================================
+        // CEK DATA
+        // ================================================================
+        async function cekDataSpreadsheet(kelas, nama) {
+            const url =
+                `${URL_PEREKAPAN}?action=getDataSiswa&kelas=${encodeURIComponent(kelas)}&nama=${encodeURIComponent(nama)}&aktivitas=${encodeURIComponent(AKTIVITAS_NAMA)}`;
+            const resp = await fetch(url);
+            const result = await resp.json();
+            if (result.success && result.data) {
+                return { found: true, key: `${kelas}_${nama}_${AKTIVITAS_NAMA}_AKTIF` };
+            }
+            return { found: false };
+        }
+
+        // ================================================================
+        // SUBMIT DATA
+        // ================================================================
+        function submitData() {
+            if (!isOnline) {
+                alert('Tidak ada koneksi internet. Periksa koneksi Anda.');
+                return;
+            }
+            if (isLoading) {
+                alert('Data masih dimuat. Tunggu sebentar.');
+                return;
+            }
+            if (isSubmitting) {
+                alert('Proses pengiriman sedang berlangsung...');
+                return;
+            }
+
+            const kelas = document.getElementById('kelas').value;
+            const nama = document.getElementById('nama').value;
+            const kelompok = document.getElementById('kelompok').value;
+
+            if (!kelas) { alert('Pilih kelas dulu!'); return; }
+            if (!nama) { alert('Pilih nama dulu!'); return; }
+            if (!kelompok) { alert('Isi nama kelompok!'); return; }
+
+            const btn = document.getElementById('submitBtn');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memeriksa...';
+
+            const allData = collectData();
+            pendingData = { allData, kelas, nama, kelompok };
+
+            cekDataSpreadsheet(kelas, nama)
+                .then(result => {
+                    if (result.found) {
+                        document.getElementById('confirmKeyDisplay').textContent = result.key;
+                        document.getElementById('modalConfirm').style.display = 'block';
+                        btn.innerHTML = '<i class="fas fa-paper-plane"></i> Kirim Data';
+                        btn.disabled = false;
+                        return;
+                    }
+                    return doSubmit(pendingData, false);
+                })
+                .catch(err => {
+                    alert('❌ Gagal: ' + err.message);
+                    btn.innerHTML = '<i class="fas fa-paper-plane"></i> Kirim Data';
+                    btn.disabled = false;
+                    pendingData = null;
+                });
+        }
+
+        async function doSubmit(data, isReplace) {
+            isSubmitting = true;
+            const btn = document.getElementById('submitBtn');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> ' + (isReplace ? 'Mengganti...' : 'Mengirim...');
+
+            try {
+                const { allData, kelas, nama } = data;
+                const formData = new URLSearchParams();
+                formData.append('sheetName', SHEET_NAME);
+                formData.append('data', JSON.stringify(allData));
+                formData.append('kelas', kelas);
+                formData.append('nama', nama);
+                formData.append('aktivitas', AKTIVITAS_NAMA);
+                if (isReplace) formData.append('replace', 'true');
+
+                const resp = await fetch(URL_PEREKAPAN, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: formData
+                });
+
+                const result = await resp.json();
+
+                if (result.success) {
+                    closeModal('modalConfirm');
+                    document.getElementById('successText').textContent =
+                        '✅ Data berhasil ' + (isReplace ? 'diganti' : 'dikirim') + '! Key: ' + (result.key || '-');
+                    document.getElementById('successMsg').style.display = 'block';
+                    clearDraft();
+                    document.getElementById('modalSuccess').style.display = 'block';
+                } else {
+                    alert('❌ Gagal: ' + (result.error || 'Terjadi kesalahan.'));
+                }
+            } catch (err) {
+                alert('❌ Error: ' + err.message);
+                showError('Gagal kirim: ' + err.message);
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-paper-plane"></i> Kirim Data';
+                isSubmitting = false;
+                pendingData = null;
+            }
+        }
+
+        // ================================================================
+        // EXPORT TEMPLATE
+        // ================================================================
+        function exportTemplate() {
+            const btn = document.getElementById('exportBtn');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memproses...';
+
+            try {
+                const clone = document.getElementById('formContainer').cloneNode(true);
+                clone.querySelectorAll('.btn-row, .btn-submit, .btn-export, .status-bar, .msg, .toolbar').forEach(el => el
+                    .remove());
+
+                clone.querySelectorAll('textarea, select').forEach(el => {
+                    const p = document.createElement('span');
+                    p.textContent = el.value || '[_________________]';
+                    p.style.cssText = 'color:#666; font-style:italic;';
+                    el.replaceWith(p);
+                });
+
+                clone.querySelectorAll('input[type="radio"], input[type="checkbox"]').forEach(el => {
+                    const span = document.createElement('span');
+                    span.textContent = el.checked ? '☑' : '☐';
+                    span.style.cssText = 'font-size:1.2rem; margin-right:4px;';
+                    el.replaceWith(span);
+                });
+
+                const html = `
+                    <html><head><meta charset="UTF-8"><title>Template Review Semester</title>
+                    <style>
+                        body { font-family: 'Segoe UI', Arial, sans-serif; padding:30px; max-width:960px; margin:auto; line-height:1.6; }
+                        .card { background:#fff; border-radius:12px; padding:20px; margin-bottom:16px; border-left:5px solid #2ecc71; }
+                        .section-title { font-size:1.2rem; font-weight:700; margin:0 0 8px 0; border-bottom:2px solid #d5f4e6; padding-bottom:4px; }
+                        .section-desc { background:#f0faf0; padding:8px 14px; border-radius:8px; margin-bottom:12px; }
+                        table { width:100%; border-collapse:collapse; margin:8px 0; }
+                        th { background:#2ecc71; color:#fff; padding:8px 10px; text-align:left; }
+                        td { padding:6px 10px; border-bottom:1px solid #eee; }
+                        .identitas-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; background:#d5f4e6; padding:12px 16px; border-radius:10px; }
+                        .options-group { display:flex; flex-wrap:wrap; gap:10px 20px; }
+                        .bab-card { border:1px solid #d5f4e6; border-radius:8px; padding:12px 16px; margin:8px 0; background:#fafafa; }
+                        .bab-card .bab-title { font-weight:600; color:#229954; }
+                        .bab-color { display:inline-block; width:12px; height:12px; border-radius:50%; margin-right:8px; }
+                        .header-title { text-align:center; font-size:1.6rem; color:#27ae60; }
+                        .header-sub { text-align:center; color:#666; }
+                    </style>
+                    </head><body>
+                    <h1 class="header-title">📚 Review Semester Ganjil</h1>
+                    <p class="header-sub">Lembar Kerja IPAS</p>
+                    ${clone.innerHTML}
+                    <p style="text-align:center; color:#999; font-size:0.85rem; margin-top:30px; border-top:1px solid #eee; padding-top:12px;">
+                        Dicetak dari Sistem IPAS Tembok Belajar
+                    </p>
+                    </body></html>
+                `;
+
+                const blob = new Blob([html], { type: 'application/msword;charset=utf-8' });
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                const date = new Date().toISOString().slice(0, 10);
+                link.download = `Template_Review_IPAS_${date}.doc`;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                setTimeout(() => URL.revokeObjectURL(link.href), 1000);
+
+            } catch (e) {
+                alert('Gagal export: ' + e.message);
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-file-word"></i> Export Template';
+            }
+        }
+
+        // ================================================================
+        // HAMBURGER MENU
+        // ================================================================
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                });
+            }
+
+            initBabList();
+            checkConnection();
+            loadDataSiswa();
+            setInterval(checkConnection, 5000);
+            setTimeout(refreshAutoResize, 500);
+        });
+    </script>
+</body>
+</html>
