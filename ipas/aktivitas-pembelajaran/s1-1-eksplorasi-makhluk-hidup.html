@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <style>
         /* ================================================================
-           ROOT & RESET
+           ROOT & RESET - TEMA UNGU (MAKHLUK HIDUP)
            ================================================================ */
         * {
             margin: 0;
@@ -17,9 +17,9 @@
         }
 
         :root {
-            --primary: #2ecc71;
-            --primary-dark: #27ae60;
-            --primary-light: #d5f4e6;
+            --primary: #8e44ad;
+            --primary-dark: #7d3c98;
+            --primary-light: #e8daef;
             --accent: #3498db;
             --gray-bg: #f5f7fa;
             --text: #2c3e50;
@@ -36,7 +36,6 @@
             line-height: 1.7;
         }
 
-        /* ===== LOGO ZOOM EFFECT ===== */
         .logo img {
             transition: transform 0.3s ease;
         }
@@ -44,9 +43,6 @@
             transform: scale(1.2);
         }
 
-        /* ================================================================
-           KONTEN UTAMA
-           ================================================================ */
         .container {
             max-width: 960px;
             margin: 2rem auto;
@@ -76,7 +72,42 @@
             margin-bottom: 1.5rem;
         }
 
-        /* ===== IDENTITAS ===== */
+        /* ============ TP CARD ============ */
+        .tp-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 16px;
+            padding: 1.2rem 1.8rem;
+            margin-bottom: 1.5rem;
+            border-left: 5px solid var(--primary);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        .tp-card .tp-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 4px 0;
+            font-size: 0.95rem;
+        }
+
+        .tp-card .tp-item .tp-code {
+            background: var(--primary);
+            color: white;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            min-width: 45px;
+            text-align: center;
+        }
+
+        .tp-card .tp-item .tp-desc {
+            color: var(--primary-dark);
+        }
+
+        /* ================================================================
+           SISA CSS
+           ================================================================ */
         .identitas-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -104,9 +135,9 @@
             background: #fff;
             transition: 0.2s;
             font-family: inherit;
-            resize: vertical;
+            resize: none !important;
+            overflow: hidden !important;
             min-height: 42px;
-            overflow: hidden;
         }
 
         .identitas-item select:focus,
@@ -115,7 +146,6 @@
             border-color: var(--primary);
         }
 
-        /* ===== SECTION ===== */
         .section-title {
             font-size: 1.3rem;
             font-weight: 700;
@@ -146,7 +176,6 @@
             color: var(--text);
         }
 
-        /* ===== TABEL ===== */
         .table-wrap {
             overflow-x: auto;
             margin: 0.8rem 0;
@@ -179,7 +208,6 @@
             border-bottom: none;
         }
 
-        /* ===== DINAMIC TEXTAREA - SEMUA PAKAI TEXTAREA ===== */
         .dynamic-textarea {
             width: 100%;
             border: 2px solid #e8e8e8;
@@ -189,16 +217,16 @@
             font-size: 0.95rem;
             background: #fff;
             transition: 0.2s;
-            resize: vertical;
+            resize: none !important;
+            overflow: hidden !important;
             min-height: 42px;
             line-height: 1.6;
-            overflow: hidden;
         }
 
         .dynamic-textarea:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.15);
+            box-shadow: 0 0 0 3px rgba(142, 68, 173, 0.15);
         }
 
         .dynamic-textarea-sm {
@@ -211,7 +239,79 @@
             min-height: 70px;
         }
 
-        /* ===== RADIO & CHECKBOX ===== */
+        /* ============ EMOJI RADIO GROUP ============ */
+        .emoji-group {
+            display: flex;
+            gap: 0.4rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 4px;
+        }
+
+        .emoji-group label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            cursor: pointer;
+            padding: 4px 6px;
+            border-radius: 10px;
+            transition: 0.2s;
+            font-size: 1.8rem;
+            min-width: 44px;
+        }
+
+        .emoji-group label:hover {
+            background: var(--primary-light);
+            transform: scale(1.05);
+        }
+
+        .emoji-group label input[type="radio"] {
+            width: 16px;
+            height: 16px;
+            accent-color: var(--primary);
+            cursor: pointer;
+        }
+
+        .emoji-group label .emoji-label {
+            font-size: 0.6rem;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        .emoji-card {
+            background: #f4ecf7;
+            padding: 0.8rem 1rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: 0.2s;
+        }
+
+        .emoji-card:hover {
+            border-color: var(--primary-light);
+        }
+
+        .emoji-card .emoji-title {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text);
+            margin-bottom: 2px;
+        }
+
+        .emoji-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.8rem;
+            margin: 1rem 0;
+        }
+
+        @media (max-width: 600px) {
+            .emoji-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         .options-group {
             display: flex;
             flex-wrap: wrap;
@@ -236,7 +336,6 @@
             flex-shrink: 0;
         }
 
-        /* ===== TOMBOL ===== */
         .btn-row {
             display: inline-flex;
             align-items: center;
@@ -286,12 +385,12 @@
             transition: 0.3s;
             display: block;
             margin: 2rem auto 1rem;
-            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+            box-shadow: 0 4px 15px rgba(142, 68, 173, 0.3);
         }
 
         .btn-submit:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(46, 204, 113, 0.4);
+            box-shadow: 0 8px 25px rgba(142, 68, 173, 0.4);
         }
         .btn-submit:disabled {
             background: #ccc;
@@ -335,7 +434,6 @@
             margin-bottom: 1rem;
         }
 
-        /* ===== STATUS ===== */
         .status-bar {
             display: flex;
             align-items: center;
@@ -360,15 +458,9 @@
         }
 
         @keyframes pulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.5);
-            }
-            70% {
-                box-shadow: 0 0 0 8px rgba(40, 167, 69, 0);
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(40, 167, 69, 0);
-            }
+            0% { box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.5); }
+            70% { box-shadow: 0 0 0 8px rgba(40, 167, 69, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(40, 167, 69, 0); }
         }
 
         .msg {
@@ -397,7 +489,84 @@
             margin-right: 8px;
         }
 
-        /* ===== MODAL ===== */
+        .dokumentasi-instruction {
+            background: #fff3cd;
+            border-radius: 10px;
+            padding: 0.8rem 1.2rem;
+            margin: 0.5rem 0 1rem 0;
+            border-left: 4px solid #f39c12;
+        }
+
+        .dokumentasi-instruction i {
+            color: #f39c12;
+            margin-right: 8px;
+        }
+
+        .dokumentasi-instruction .contoh-dok {
+            margin-top: 6px;
+            font-size: 0.85rem;
+            color: #666;
+            background: #fff8e1;
+            padding: 6px 12px;
+            border-radius: 6px;
+        }
+
+        .folder-link-box {
+            background: #e8f5e9;
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            margin-top: 1rem;
+            border-left: 5px solid #4caf50;
+        }
+
+        .folder-link-box .label-link {
+            font-weight: 600;
+            color: #2e7d32;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .folder-link-box .sub-text {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 6px;
+        }
+
+        .folder-link-box input {
+            width: 100% !important;
+        }
+
+        .interaksi-panduan {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 6px;
+            font-size: 0.9rem;
+        }
+
+        .interaksi-panduan .contoh-benar {
+            background: #fff;
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid #a5d6a7;
+        }
+
+        .interaksi-panduan .contoh-salah {
+            background: #fff3cd;
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid #ffc107;
+        }
+
+        .interaksi-panduan ul {
+            margin-left: 1.2rem;
+            margin-top: 4px;
+        }
+
+        .interaksi-panduan ul li {
+            margin-bottom: 2px;
+        }
+
         .modal {
             display: none;
             position: fixed;
@@ -410,12 +579,8 @@
         }
 
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .modal-box {
@@ -430,14 +595,8 @@
         }
 
         @keyframes slideDown {
-            from {
-                transform: translateY(-40px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
+            from { transform: translateY(-40px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
         .modal-icon {
@@ -508,69 +667,6 @@
             background: #5a6268;
         }
 
-        /* ===== PANDUAN INTERAKSI ===== */
-        .interaksi-panduan {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-top: 6px;
-            font-size: 0.9rem;
-        }
-
-        .interaksi-panduan .contoh-benar {
-            background: #fff;
-            padding: 8px 12px;
-            border-radius: 8px;
-            border: 1px solid #a5d6a7;
-        }
-
-        .interaksi-panduan .contoh-salah {
-            background: #fff3cd;
-            padding: 8px 12px;
-            border-radius: 8px;
-            border: 1px solid #ffc107;
-        }
-
-        .interaksi-panduan ul {
-            margin-left: 1.2rem;
-            margin-top: 4px;
-        }
-
-        .interaksi-panduan ul li {
-            margin-bottom: 2px;
-        }
-
-        /* ===== PANDUAN JURUSAN ===== */
-        .jurusan-panduan {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-top: 6px;
-            font-size: 0.9rem;
-        }
-
-        .jurusan-panduan .card-example {
-            background: #e3f2fd;
-            padding: 8px 12px;
-            border-radius: 8px;
-            border: 1px solid #90caf9;
-        }
-
-        .jurusan-panduan .card-example strong {
-            color: #1565c0;
-        }
-
-        .jurusan-panduan ul {
-            margin-left: 1.2rem;
-            margin-top: 4px;
-        }
-
-        .jurusan-panduan ul li {
-            margin-bottom: 2px;
-            font-size: 0.85rem;
-        }
-
-        /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             .container {
                 padding: 0 0.8rem;
@@ -610,9 +706,16 @@
             .options-group {
                 gap: 8px 14px;
             }
-            .interaksi-panduan,
-            .jurusan-panduan {
+            .interaksi-panduan {
                 grid-template-columns: 1fr;
+            }
+            .tp-card .tp-item {
+                flex-wrap: wrap;
+            }
+            .emoji-group label {
+                font-size: 1.5rem;
+                min-width: 36px;
+                padding: 2px 4px;
             }
         }
 
@@ -623,14 +726,26 @@
             table {
                 font-size: 0.85rem;
             }
-            th,
-            td {
+            th, td {
                 padding: 6px 8px;
             }
             .dynamic-textarea {
                 font-size: 0.85rem;
                 min-height: 36px;
                 padding: 6px 8px;
+            }
+            .tp-card {
+                padding: 0.8rem 1rem;
+            }
+            .tp-card .tp-item {
+                font-size: 0.85rem;
+            }
+            .emoji-group label {
+                font-size: 1.3rem;
+                min-width: 32px;
+            }
+            .emoji-group label .emoji-label {
+                font-size: 0.5rem;
             }
         }
     </style>
@@ -672,17 +787,31 @@
                 <i class="fas fa-clock"></i> 6 JP
             </p>
             <p style="color:var(--text-light); font-size:0.95rem; max-width:600px; margin:0 auto;">
-                <b>Ayo amati, tebak, buktikan, dan hubungkan dengan jurusanmu!</b>
+                Ayo amati, tebak, buktikan, dan hubungkan dengan jurusanmu!
             </p>
-            <ul style="color: var(--text-light); font-size: 0.95rem; max-width: 900px; margin: 0 auto; text-align: left; list-style-position: inside;">
-                <li>TP 1.1 Menjelaskan pengetahuan ilmiah yang berkaitan dengan fenomena alam dan sosial di lingkungan sekitar</li>
-                <li>TP 1.2 Membuat prediksi sederhana terhadap fenomena alam dan sosial berdasarkan pola ilmiah</li>
-                <li>TP 1.3 Melakukan pembuktian sederhana terhadap prediksi yang telah dibuat</li>
-                <li>TP 1.4 Mengaitkan fenomena alam dan sosial dengan keterampilan teknis pada bidang keahliannya</li>
-            </ul>
+        </div>
 
-
-
+        <!-- ===== TP CARD ===== -->
+        <div class="tp-card">
+            <div style="font-weight:700; color:var(--primary-dark); margin-bottom:6px; font-size:1.1rem;">
+                <i class="fas fa-bullseye"></i> Tujuan Pembelajaran
+            </div>
+            <div class="tp-item">
+                <span class="tp-code">TP 1.1</span>
+                <span class="tp-desc">Menjelaskan pengetahuan ilmiah yang berkaitan dengan fenomena alam dan sosial di lingkungan sekitar</span>
+            </div>
+            <div class="tp-item">
+                <span class="tp-code">TP 1.2</span>
+                <span class="tp-desc">Membuat prediksi sederhana terhadap fenomena alam dan sosial berdasarkan pola ilmiah</span>
+            </div>
+            <div class="tp-item">
+                <span class="tp-code">TP 1.3</span>
+                <span class="tp-desc">Melakukan pembuktian sederhana terhadap prediksi yang telah dibuat</span>
+            </div>
+            <div class="tp-item">
+                <span class="tp-code">TP 1.4</span>
+                <span class="tp-desc">Mengaitkan fenomena alam dan sosial dengan keterampilan teknis pada bidang keahliannya</span>
+            </div>
         </div>
 
         <!-- STATUS -->
@@ -718,7 +847,7 @@
             <!-- A. IDENTITAS -->
             <!-- ============================================================ -->
             <div class="card">
-                <h2 class="section-title"><i class="fas fa-id-card"></i> Identitas</h2>
+                <h2 class="section-title"><i class="fas fa-id-card"></i> A. Identitas</h2>
                 <div class="identitas-grid">
                     <div class="identitas-item">
                         <label>Kelas</label>
@@ -747,7 +876,7 @@
             <!-- B. SEBELUM MULAI (Literasi) -->
             <!-- ============================================================ -->
             <div class="card">
-                <h2 class="section-title"><i class="fas fa-book-open"></i> Sebelum Mulai...</h2>
+                <h2 class="section-title"><i class="fas fa-book-open"></i> B. Sebelum Mulai...</h2>
                 <div class="section-desc">
                     <i class="fas fa-info-circle"></i>
                     Baca dulu materi
@@ -755,6 +884,12 @@
                         "Makhluk Hidup dan Lingkungannya"
                     </a>
                     , lalu jawab pertanyaan di bawah ini dengan bahasamu sendiri.
+                </div>
+
+                <div class="dokumentasi-instruction">
+                    <i class="fas fa-camera"></i>
+                    <strong>📸 Instruksi Dokumentasi:</strong> 
+                    Screenshot halaman materi yang sudah kamu baca → Upload ke Google Drive → Tempel link folder di bawah.
                 </div>
 
                 <div class="table-wrap">
@@ -772,9 +907,9 @@
                                 <td>2</td>
                                 <td>Sebutkan 3 contoh interaksi makhluk hidup!</td>
                                 <td>
-                                    <textarea class="dynamic-textarea dynamic-textarea-sm" id="lit2a" rows="1" placeholder="Contoh 1" oninput="saveDraft(); autoResize(this);" style="margin-bottom:4px;"></textarea>
-                                    <textarea class="dynamic-textarea dynamic-textarea-sm" id="lit2b" rows="1" placeholder="Contoh 2" oninput="saveDraft(); autoResize(this);" style="margin-bottom:4px;"></textarea>
-                                    <textarea class="dynamic-textarea dynamic-textarea-sm" id="lit2c" rows="1" placeholder="Contoh 3" oninput="saveDraft(); autoResize(this);"></textarea>
+                                    <textarea class="dynamic-textarea dynamic-textarea-sm" id="lit2a" rows="1" placeholder="Contoh 1..." oninput="saveDraft(); autoResize(this);" style="margin-bottom:4px;"></textarea>
+                                    <textarea class="dynamic-textarea dynamic-textarea-sm" id="lit2b" rows="1" placeholder="Contoh 2..." oninput="saveDraft(); autoResize(this);" style="margin-bottom:4px;"></textarea>
+                                    <textarea class="dynamic-textarea dynamic-textarea-sm" id="lit2c" rows="1" placeholder="Contoh 3..." oninput="saveDraft(); autoResize(this);"></textarea>
                                 </td>
                             </tr>
                             <tr>
@@ -785,58 +920,67 @@
                         </tbody>
                     </table>
                 </div>
+
+                <div style="margin-top:1rem; background:#f8fafc; border-radius:10px; padding:1rem; border:1px dashed var(--primary);">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="bacaMateri" onchange="saveDraft();" style="width:18px; height:18px; accent-color:var(--primary);">
+                        <label for="bacaMateri" style="font-weight:600; margin-left:8px;">☐ Ya, saya sudah membaca materi "Makhluk Hidup dan Lingkungannya"</label>
+                    </div>
+                </div>
+
+                <div class="folder-link-box">
+                    <span class="label-link"><i class="fas fa-folder-open"></i> 📁 Link Dokumentasi - Bagian B</span>
+                    <div class="sub-text">Tempel link folder/screenshot bukti membaca materi:</div>
+                    <input type="text" class="dynamic-textarea dynamic-textarea-sm" id="link_screenshot_b" placeholder="https://drive.google.com/drive/folders/xxx" oninput="saveDraft(); autoResize(this);">
+                </div>
             </div>
 
             <!-- ============================================================ -->
             <!-- C. YUK, KE LUAR KELAS! (Observasi) -->
             <!-- ============================================================ -->
             <div class="card">
-                <h2 class="section-title"><i class="fas fa-binoculars"></i> Yuk, Ke Luar Kelas!</h2>
+                <h2 class="section-title"><i class="fas fa-binoculars"></i> C. Yuk, Ke Luar Kelas!</h2>
 
-                <!-- PANDUAN APA ITU INTERAKSI -->
-                <div class="section-desc" style="background:#e8f5e9; border-left-color:#2e7d32;">
-                    <i class="fas fa-lightbulb" style="color:#2e7d32;"></i>
-                    <strong>Apa itu "interaksi"?</strong>
-                    <p style="margin:6px 0 4px 0;">
-                        Interaksi adalah <strong>hubungan timbal balik</strong> antara makhluk hidup dengan
-                        makhluk hidup lain <strong>atau</strong> dengan lingkungannya.
+                <div class="section-desc" style="background:#f4ecf7; border-left-color:#7d3c98;">
+                    <i class="fas fa-lightbulb" style="color:#7d3c98;"></i>
+                    <strong>Apa yang harus kamu lakukan?</strong>
+                    <p style="margin:6px 0 4px 0;">Amati 3 interaksi makhluk hidup di lingkungan sekolahmu. Catat interaksi, makhluk hidup, lingkungan, dan deskripsinya!</p>
+                    <p style="margin:6px 0 4px 0; font-size:0.9rem; color:#7d3c98;">
+                        <i class="fas fa-info-circle"></i> Kamu boleh keluar kelas dan berjalan di area sekolah, <strong>asalkan tidak keluar gerbang/tembok sekolah!</strong>
                     </p>
                     <div class="interaksi-panduan">
                         <div class="contoh-benar">
-                            ✅ <strong>Contoh interaksi yang BENAR:</strong>
+                            ✅ <strong>Contoh yang BENAR:</strong>
                             <ul>
-                                <li>"Semut mengangkut daun ke sarang"</li>
-                                <li>"Burung memakan biji di tanah"</li>
-                                <li>"Tanaman cabe tumbuh di tanah lembab"</li>
-                                <li>"Kucing berjemur di bawah sinar matahari"</li>
+                                <li><strong>Interaksi:</strong> Semut mengangkut daun</li>
+                                <li><strong>Makhluk Hidup:</strong> Semut</li>
+                                <li><strong>Lingkungan:</strong> Tanah, daun</li>
+                                <li><strong>Deskripsi:</strong> Semut berjalan membawa daun ke sarang</li>
                             </ul>
                         </div>
                         <div class="contoh-salah">
-                            ❌ <strong>BUKAN interaksi (hanya objek):</strong>
+                            ❌ <strong>BUKAN interaksi:</strong>
                             <ul>
                                 <li>"Semut" (nama hewan saja)</li>
                                 <li>"Daun" (benda saja)</li>
-                                <li>"Tanah" (lingkungan saja)</li>
-                                <li>"Pohon" (nama tumbuhan saja)</li>
                             </ul>
                         </div>
                     </div>
-                    <p style="margin-top:6px; font-size:0.9rem; color:#2e7d32;">
+                    <p style="margin-top:6px; font-size:0.9rem; color:#7d3c98;">
                         <i class="fas fa-arrow-right"></i>
                         <strong>Tips:</strong> Tuliskan <u>kegiatan/kejadian</u> yang kamu lihat, bukan hanya nama bendanya!
                     </p>
                 </div>
 
-                <div class="section-desc" style="background:#e3f2fd; border-left-color:#1976d2;">
-                    <i class="fas fa-walking"></i>
-                    <strong>Langkah-langkah:</strong>
-                    <ol style="margin-left:1.5rem; margin-top:4px;">
-                        <li>Keluar kelas bersama kelompokmu (15 menit).</li>
-                        <li>Amati sekelilingmu dengan <strong>teliti</strong>.</li>
-                        <li>Catat <strong>3 interaksi</strong> yang kamu lihat di tabel bawah.</li>
-                        <li>Isi <strong>setiap kolom</strong> dengan lengkap!</li>
-                        <li><strong>Jangan lupa dokumentasi!</strong> Foto setiap interaksi yang kamu amati.</li>
-                    </ol>
+                <div class="dokumentasi-instruction">
+                    <i class="fas fa-video"></i>
+                    <strong>📸 Instruksi Dokumentasi:</strong> 
+                    Ambil <strong>foto atau video</strong> saat kamu mengamati interaksi makhluk hidup di lingkungan sekolah.
+                    Upload semua dokumentasi ke Google Drive → Tempel link folder di bawah.
+                    <div class="contoh-dok">
+                        <i class="fas fa-lightbulb" style="color:#f39c12;"></i>
+                        <strong>Contoh:</strong> Foto semut mengangkut daun, video burung memakan biji, atau foto tanaman di lingkungan sekolah.
+                    </div>
                 </div>
 
                 <div class="table-wrap">
@@ -851,7 +995,7 @@
                             </tr>
                         </thead>
                         <tbody id="obsBody">
-                            <!-- JS akan generate 3 baris - SEMUA DINAMIS (TEXTAREA) -->
+                            <!-- JS akan generate 3 baris -->
                         </tbody>
                     </table>
                 </div>
@@ -865,11 +1009,10 @@
             <!-- D. PILIH & PREDIKSI -->
             <!-- ============================================================ -->
             <div class="card">
-                <h2 class="section-title"><i class="fas fa-hand-pointer"></i> Pilih &amp; Prediksi</h2>
+                <h2 class="section-title"><i class="fas fa-hand-pointer"></i> D. Pilih &amp; Prediksi</h2>
                 <div class="section-desc">
                     <i class="fas fa-magic"></i>
-                    Dari 3 interaksi di atas, pilih <strong>satu</strong> yang paling menarik.
-                    Lalu buat prediksi dan beri alasannya!
+                    Dari 3 interaksi di atas, pilih <strong>satu</strong> yang paling menarik. Lalu buat prediksi dan beri alasannya!
                 </div>
 
                 <div style="margin-bottom:1rem;">
@@ -886,17 +1029,34 @@
                     <label style="font-weight:600; display:block; margin-bottom:4px;">Saya berpendapat demikian karena...</label>
                     <textarea class="dynamic-textarea" id="predAlasan" rows="2" placeholder="Tulis alasannya..." oninput="saveDraft(); autoResize(this);"></textarea>
                 </div>
+
+                <div class="folder-link-box">
+                    <span class="label-link"><i class="fas fa-folder-open"></i> 📁 Link Dokumentasi (Foto/Video) - Bagian C & D</span>
+                    <div class="sub-text">Tempel link folder dokumentasi hasil observasi interaksi:</div>
+                    <input type="text" class="dynamic-textarea dynamic-textarea-sm" id="link_screenshot_c" placeholder="https://drive.google.com/drive/folders/xxx" oninput="saveDraft(); autoResize(this);">
+                </div>
             </div>
 
             <!-- ============================================================ -->
             <!-- E. BUKTIKAN! (Pembuktian) -->
             <!-- ============================================================ -->
             <div class="card">
-                <h2 class="section-title"><i class="fas fa-flask"></i> Buktikan!</h2>
+                <h2 class="section-title"><i class="fas fa-flask"></i> E. Buktikan!</h2>
                 <div class="section-desc">
                     <i class="fas fa-vial"></i>
-                    Saatnya menguji tebakanmu! Lakukan pengamatan lebih lanjut untuk membuktikan prediksi yang sudah kamu buat.
-                    <strong>Jangan lupa dokumentasikan setiap langkah!</strong>
+                    <strong>Uji prediksimu!</strong> Rancang dan lakukan pembuktian sederhana. Kamu bisa observasi ulang, wawancara guru/siswa, atau membandingkan dengan area lain di sekolah.
+                </div>
+
+                <div class="dokumentasi-instruction">
+                    <i class="fas fa-video"></i>
+                    <strong>📸 Instruksi Dokumentasi:</strong> 
+                    Ambil <strong>foto atau video</strong> saat kamu melakukan pembuktian. 
+                    Dokumentasikan setiap tahapan (persiapan, proses, hasil).
+                    Upload semua dokumentasi ke Google Drive → Tempel link folder di bawah.
+                    <div class="contoh-dok">
+                        <i class="fas fa-lightbulb" style="color:#f39c12;"></i>
+                        <strong>Contoh:</strong> Foto saat observasi ulang, video wawancara dengan guru, foto perbandingan area sekolah.
+                    </div>
                 </div>
 
                 <!-- Prediksi yang akan dibuktikan -->
@@ -911,11 +1071,11 @@
                     <textarea class="dynamic-textarea" id="buktiRencana" rows="2" placeholder="Jelaskan caramu membuktikan..." oninput="saveDraft(); autoResize(this);"></textarea>
                 </div>
 
-                <!-- Langkah-langkah -->
+                <!-- Langkah -->
                 <div style="margin-bottom:1rem;">
                     <label style="font-weight:600; display:block; margin-bottom:4px;">Langkah-langkah</label>
                     <div id="langkahContainer">
-                        <!-- JS akan generate - SEMUA DINAMIS (TEXTAREA) -->
+                        <!-- JS generate -->
                     </div>
                     <div style="margin-top:6px; display:flex; gap:8px; flex-wrap:wrap;">
                         <button class="btn-row btn-add" onclick="tambahLangkah()"><i class="fas fa-plus"></i> Tambah</button>
@@ -923,20 +1083,16 @@
                     </div>
                 </div>
 
-                <!-- Alat dan Bahan (TABEL - SEMUA DINAMIS TEXTAREA) -->
+                <!-- Alat -->
                 <div style="margin-bottom:1rem;">
                     <label style="font-weight:600; display:block; margin-bottom:4px;">Alat dan Bahan</label>
                     <div class="table-wrap">
                         <table>
                             <thead>
-                                <tr>
-                                    <th style="width:35%;">Nama Alat/Bahan</th>
-                                    <th style="width:20%;">Jumlah</th>
-                                    <th style="width:45%;">Kegunaan</th>
-                                </tr>
+                                <tr><th style="width:35%;">Nama Alat/Bahan</th><th style="width:20%;">Jumlah</th><th style="width:45%;">Kegunaan</th></tr>
                             </thead>
                             <tbody id="alatBody">
-                                <!-- JS akan generate 2 baris - SEMUA DINAMIS TEXTAREA -->
+                                <!-- JS generate 2 baris -->
                             </tbody>
                         </table>
                     </div>
@@ -946,14 +1102,14 @@
                     </div>
                 </div>
 
-                <!-- Hasil pengamatan (SEMUA DINAMIS TEXTAREA) -->
+                <!-- Hasil -->
                 <div style="margin-bottom:1rem;">
                     <label style="font-weight:600; display:block; margin-bottom:4px;">Hasil pengamatan</label>
                     <div class="table-wrap">
                         <table>
                             <thead><tr><th style="width:30%;">Waktu</th><th>Yang Terjadi</th></tr></thead>
                             <tbody id="hasilBody">
-                                <!-- JS akan generate - SEMUA DINAMIS TEXTAREA -->
+                                <!-- JS generate -->
                             </tbody>
                         </table>
                     </div>
@@ -966,12 +1122,12 @@
                 <!-- ===== LINK DOKUMENTASI GOOGLE DRIVE ===== -->
                 <div style="margin-bottom:1.5rem; background:#e3f2fd; padding:1rem 1.5rem; border-radius:12px; border-left:5px solid #1976d2;">
                     <label style="font-weight:600; display:block; margin-bottom:4px; font-size:1rem;">
-                        📁 Link Dokumentasi (Google Drive)
+                        📁 Link Dokumentasi (Google Drive) - Kumpulkan Semua Dokumentasi di Sini
                     </label>
                     <div style="margin-bottom:6px; font-size:0.9rem; color:#555; background:#fff; padding:6px 12px; border-radius:6px;">
                         <strong>💡 Panduan:</strong>
                         <ul style="margin-left:1.5rem; margin-top:2px;">
-                            <li>Kumpulkan foto/video hasil observasi dan pembuktian kalian.</li>
+                            <li>Kumpulkan semua dokumentasi (screenshot materi, foto/video observasi, foto/video pembuktian).</li>
                             <li>Upload semua dokumentasi ke <strong>Google Drive</strong> dalam satu folder.</li>
                             <li>Klik kanan folder → <strong>"Bagikan"</strong> → ubah akses menjadi <strong>"Siapa saja dengan link dapat melihat"</strong>.</li>
                             <li>Salin link folder dan tempel di kolom di bawah ini.</li>
@@ -985,22 +1141,31 @@
                 </div>
 
                 <!-- Analisis -->
-                <div style="margin-bottom:0.8rem;">
-                    <label style="font-weight:600; display:block; margin-bottom:4px;">Apakah hasilnya sesuai prediksi?</label>
-                    <div class="options-group">
-                        <label><input type="radio" name="kesesuaian" value="sesuai" onchange="saveDraft();" /> Sesuai — prediksi tepat!</label>
-                        <label><input type="radio" name="kesesuaian" value="tidak" onchange="saveDraft();" /> Tidak sesuai — prediksi meleset</label>
+                <div style="margin-top:1rem; background:#f9f9f9; padding:1rem 1.5rem; border-radius:12px;">
+                    <h4 style="color:var(--primary-dark); margin-bottom:0.5rem;"><i class="fas fa-chart-bar" style="color:var(--primary);"></i> Analisis Hasil</h4>
+
+                    <div style="margin-bottom:0.8rem;">
+                        <label style="font-weight:600; display:block; margin-bottom:4px;">Apakah hasilnya sesuai prediksi?</label>
+                        <div class="options-group">
+                            <label><input type="radio" name="kesesuaian" value="sesuai" onchange="saveDraft();" /> Sesuai — prediksi tepat!</label>
+                            <label><input type="radio" name="kesesuaian" value="tidak" onchange="saveDraft();" /> Tidak sesuai — prediksi meleset</label>
+                            <label><input type="radio" name="kesesuaian" value="sebagian" onchange="saveDraft();" /> Sebagian sesuai</label>
+                        </div>
+                    </div>
+                    <div style="margin-bottom:0.8rem;">
+                        <label style="font-weight:600; display:block; margin-bottom:4px;">Penjelasan</label>
+                        <textarea class="dynamic-textarea" id="buktiPenjelasan" rows="2" placeholder="Mengapa bisa demikian?" oninput="saveDraft(); autoResize(this);"></textarea>
+                    </div>
+                    <div>
+                        <label style="font-weight:600; display:block; margin-bottom:4px;">Kesimpulan</label>
+                        <textarea class="dynamic-textarea" id="buktiKesimpulan" rows="2" placeholder="Apa yang kamu pelajari?" oninput="saveDraft(); autoResize(this);"></textarea>
                     </div>
                 </div>
 
-                <div style="margin-bottom:1rem;">
-                    <label style="font-weight:600; display:block; margin-bottom:4px;">Penjelasan</label>
-                    <textarea class="dynamic-textarea" id="buktiPenjelasan" rows="2" placeholder="Mengapa bisa demikian?" oninput="saveDraft(); autoResize(this);"></textarea>
-                </div>
-
-                <div style="margin-bottom:0.5rem;">
-                    <label style="font-weight:600; display:block; margin-bottom:4px;">Kesimpulan</label>
-                    <textarea class="dynamic-textarea" id="buktiKesimpulan" rows="2" placeholder="Apa yang kamu pelajari?" oninput="saveDraft(); autoResize(this);"></textarea>
+                <div class="folder-link-box">
+                    <span class="label-link"><i class="fas fa-folder-open"></i> 📁 Link Dokumentasi (Foto/Video) - Bagian E</span>
+                    <div class="sub-text">Tempel link folder dokumentasi proses pembuktian:</div>
+                    <input type="text" class="dynamic-textarea dynamic-textarea-sm" id="link_screenshot_d" placeholder="https://drive.google.com/drive/folders/xxx" oninput="saveDraft(); autoResize(this);">
                 </div>
             </div>
 
@@ -1008,12 +1173,11 @@
             <!-- F. HUBUNGKAN DENGAN JURUSANMU -->
             <!-- ============================================================ -->
             <div class="card">
-                <h2 class="section-title"><i class="fas fa-briefcase"></i> Hubungkan dengan Jurusanmu</h2>
+                <h2 class="section-title"><i class="fas fa-briefcase"></i> F. Hubungkan dengan Jurusanmu</h2>
 
-                <!-- PANDUAN PENGISIAN -->
                 <div class="section-desc" style="background:#fff3e0; border-left-color:#e65100;">
                     <i class="fas fa-lightbulb" style="color:#e65100;"></i>
-                    <strong>Panduan mengisi kolom "Hubungkan dengan Jurusanmu"</strong>
+                    <strong>Panduan mengisi:</strong>
                     <p style="margin:6px 0 4px 0;">
                         Pikirkan bagaimana ilmu tentang makhluk hidup dan lingkungan berhubungan dengan jurusanmu.
                         Jawablah setiap pertanyaan di bawah ini dengan bahasamu sendiri!
@@ -1038,46 +1202,52 @@
                         <thead><tr><th style="width:30%;">Aspek</th><th style="width:70%;">Pertanyaan Panduan</th></tr></thead>
                         <tbody>
                             <tr>
-                                <td>Bahan baku</td>
+                                <td>Makhluk Hidup dalam Jurusan</td>
                                 <td>
-                                    <label style="font-weight:500; display:block; margin-bottom:4px; color:#1565c0;">Apa saja bahan baku yang digunakan dalam jurusanmu? Apakah bahan itu berasal dari alam?</label>
-                                    <textarea class="dynamic-textarea dynamic-textarea-sm" id="hubBahan" rows="1" placeholder="Tulis jawabanmu..." oninput="saveDraft(); autoResize(this);"></textarea>
+                                    <label style="font-weight:500; display:block; margin-bottom:4px; color:#1565c0;">Makhluk hidup apa saja yang terlibat dalam jurusanmu? (hewan/tumbuhan)</label>
+                                    <textarea class="dynamic-textarea dynamic-textarea-sm" id="hubMakhluk" rows="1" placeholder="Tulis jawabanmu..." oninput="saveDraft(); autoResize(this);"></textarea>
                                 </td>
                             </tr>
                             <tr>
-                                <td>Proses produksi</td>
+                                <td>Interaksi dengan Alam</td>
                                 <td>
-                                    <label style="font-weight:500; display:block; margin-bottom:4px; color:#1565c0;">Bagaimana proses produksi di jurusanmu? Apakah menghasilkan polusi atau menggunakan sumber daya alam?</label>
-                                    <textarea class="dynamic-textarea dynamic-textarea-sm" id="hubProses" rows="1" placeholder="Tulis jawabanmu..." oninput="saveDraft(); autoResize(this);"></textarea>
+                                    <label style="font-weight:500; display:block; margin-bottom:4px; color:#1565c0;">Bagaimana jurusanmu berinteraksi dengan alam/lingkungan sekitar?</label>
+                                    <textarea class="dynamic-textarea dynamic-textarea-sm" id="hubInteraksi" rows="1" placeholder="Tulis jawabanmu..." oninput="saveDraft(); autoResize(this);"></textarea>
                                 </td>
                             </tr>
                             <tr>
-                                <td>Limbah</td>
+                                <td>Dampak Lingkungan</td>
                                 <td>
-                                    <label style="font-weight:500; display:block; margin-bottom:4px; color:#1565c0;">Apa saja limbah yang dihasilkan dari jurusanmu? Bagaimana dampaknya terhadap lingkungan?</label>
-                                    <textarea class="dynamic-textarea dynamic-textarea-sm" id="hubLimbah" rows="1" placeholder="Tulis jawabanmu..." oninput="saveDraft(); autoResize(this);"></textarea>
+                                    <label style="font-weight:500; display:block; margin-bottom:4px; color:#1565c0;">Apa dampak kegiatan jurusanmu terhadap lingkungan sekitar?</label>
+                                    <textarea class="dynamic-textarea dynamic-textarea-sm" id="hubDampak" rows="1" placeholder="Tulis jawabanmu..." oninput="saveDraft(); autoResize(this);"></textarea>
                                 </td>
                             </tr>
                             <tr>
-                                <td>Produk</td>
+                                <td>Pelestarian</td>
                                 <td>
-                                    <label style="font-weight:500; display:block; margin-bottom:4px; color:#1565c0;">Apa produk yang dihasilkan jurusanmu? Apakah produk tersebut ramah lingkungan atau justru merusak?</label>
-                                    <textarea class="dynamic-textarea dynamic-textarea-sm" id="hubProduk" rows="1" placeholder="Tulis jawabanmu..." oninput="saveDraft(); autoResize(this);"></textarea>
+                                    <label style="font-weight:500; display:block; margin-bottom:4px; color:#1565c0;">Bagaimana jurusanmu menjaga keseimbangan lingkungan?</label>
+                                    <textarea class="dynamic-textarea dynamic-textarea-sm" id="hubLestari" rows="1" placeholder="Tulis jawabanmu..." oninput="saveDraft(); autoResize(this);"></textarea>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
 
-                <div style="margin-top:1rem;">
-                    <label style="font-weight:600; display:block; margin-bottom:4px;">
-                    🌍 Masalah lingkungan yang muncul dari jurusan/proses produksi yang saya pelajari
-                    </label>
-                    <textarea class="dynamic-textarea" id="solusiMasalah" rows="1" placeholder="Tulis masalah yang kamu lihat terkait jurusanmu..." oninput="saveDraft(); autoResize(this);"></textarea>
-                </div>
-                <div style="margin-top:0.8rem;">
-                    <label style="font-weight:600; display:block; margin-bottom:4px;">Solusi sederhana saya</label>
-                    <textarea class="dynamic-textarea" id="solusiIde" rows="1" placeholder="Tulis solusi yang kamu tawarkan..." oninput="saveDraft(); autoResize(this);"></textarea>
+                <div style="margin-top:1rem; background:#f0f7f0; padding:1rem 1.5rem; border-radius:12px; border-left:5px solid var(--primary-dark);">
+                    <div style="margin-bottom:0.8rem;">
+                        <label style="font-weight:600; display:block; margin-bottom:4px;">🌍 Masalah lingkungan yang saya lihat di sekolah/jurusan</label>
+                        <div style="margin-bottom:4px; font-size:0.9rem; color:#555;">
+                            <strong>💡 Panduan:</strong> Apakah ada sampah berserakan? Pohon ditebang? Polusi? Atau ada hal lain yang mengganggu lingkungan?
+                        </div>
+                        <textarea class="dynamic-textarea" id="solusiMasalah" rows="1" placeholder="Tulis masalah yang kamu lihat..." oninput="saveDraft(); autoResize(this);"></textarea>
+                    </div>
+                    <div>
+                        <label style="font-weight:600; display:block; margin-bottom:4px;">💡 Ide solusi sederhana</label>
+                        <div style="margin-bottom:4px; font-size:0.9rem; color:#555;">
+                            <strong>💡 Panduan:</strong> Bagaimana cara mengatasi masalah lingkungan tersebut?
+                        </div>
+                        <textarea class="dynamic-textarea" id="solusiIde" rows="1" placeholder="Tulis ide solusimu..." oninput="saveDraft(); autoResize(this);"></textarea>
+                    </div>
                 </div>
             </div>
 
@@ -1085,69 +1255,172 @@
             <!-- G. REFLEKSI -->
             <!-- ============================================================ -->
             <div class="card">
-                <h2 class="section-title"><i class="fas fa-smile"></i> Refleksi</h2>
+                <h2 class="section-title"><i class="fas fa-smile"></i> G. Refleksi</h2>
                 <div class="section-desc">
                     <i class="fas fa-comment"></i>
                     Tulis dengan jujur, ya! Tidak ada jawaban benar atau salah.
                 </div>
 
                 <div style="margin-bottom:0.8rem;">
-                    <label style="font-weight:600; display:block; margin-bottom:4px;">1 hal paling menarik</label>
+                    <label style="font-weight:600; display:block; margin-bottom:4px;">1 hal paling menarik tentang makhluk hidup & lingkungan</label>
                     <textarea class="dynamic-textarea" id="ref1" rows="1" oninput="saveDraft(); autoResize(this);"></textarea>
                 </div>
                 <div style="margin-bottom:0.8rem;">
-                    <label style="font-weight:600; display:block; margin-bottom:4px;">1 kesulitan yang saya hadapi</label>
+                    <label style="font-weight:600; display:block; margin-bottom:4px;">1 interaksi yang paling saya andalkan di sekolah</label>
                     <textarea class="dynamic-textarea" id="ref2" rows="1" oninput="saveDraft(); autoResize(this);"></textarea>
                 </div>
                 <div style="margin-bottom:0.5rem;">
-                    <label style="font-weight:600; display:block; margin-bottom:4px;">1 hal yang ingin saya pelajari lebih lanjut</label>
+                    <label style="font-weight:600; display:block; margin-bottom:4px;">1 hal yang akan saya lakukan untuk menjaga lingkungan sekolah</label>
                     <textarea class="dynamic-textarea" id="ref3" rows="1" oninput="saveDraft(); autoResize(this);"></textarea>
                 </div>
             </div>
 
             <!-- ============================================================ -->
-            <!-- H. NILAI DIRI KELOMPOK -->
+            <!-- H. REFLEKSI KELOMPOK (EMOJI + CERITA) -->
             <!-- ============================================================ -->
             <div class="card">
-                <h2 class="section-title"><i class="fas fa-star"></i> Nilai Diri Kelompok</h2>
+                <h2 class="section-title"><i class="fas fa-star"></i> H. Refleksi Kelompok</h2>
                 <div class="section-desc">
                     <i class="fas fa-hand-peace"></i>
-                    Berikan nilai untuk kelompokmu (1 = Kurang, 4 = Sangat Baik)!
+                    Pilih emoji yang paling menggambarkan kelompokmu! Lalu tulis cerita singkatnya.
                 </div>
 
-                <div class="table-wrap">
-                    <table>
-                        <thead><tr><th style="width:40px;">No</th><th>Aspek</th><th style="width:130px;">Nilai (1-4)</th></tr></thead>
-                        <tbody>
-                            <tr><td>1</td><td>Semua anggota ikut observasi</td><td>
-                                    <select id="nilai1" onchange="saveDraft();" style="width:100%; padding:6px 8px; border:2px solid #e8e8e8; border-radius:8px; font-size:0.9rem;">
-                                        <option value="">--</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3" selected>3</option>
-                                        <option value="4">4</option>
-                                    </select>
-                            </td></tr>
-                            <tr><td>2</td><td>Semua anggota ikut diskusi</td><td>
-                                    <select id="nilai2" onchange="saveDraft();" style="width:100%; padding:6px 8px; border:2px solid #e8e8e8; border-radius:8px; font-size:0.9rem;">
-                                        <option value="">--</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3" selected>3</option>
-                                        <option value="4">4</option>
-                                    </select>
-                            </td></tr>
-                            <tr><td>3</td><td>Selesai tepat waktu</td><td>
-                                    <select id="nilai3" onchange="saveDraft();" style="width:100%; padding:6px 8px; border:2px solid #e8e8e8; border-radius:8px; font-size:0.9rem;">
-                                        <option value="">--</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3" selected>3</option>
-                                        <option value="4">4</option>
-                                    </select>
-                            </td></tr>
-                        </tbody>
-                    </table>
+                <div class="emoji-grid">
+                    <!-- 1. Kerjasama -->
+                    <div class="emoji-card">
+                        <div class="emoji-title">🤝 Kerjasama</div>
+                        <div class="emoji-group">
+                            <label>
+                                <input type="radio" name="g_kerjasama" value="5" onchange="saveDraft();">
+                                😊
+                                <span class="emoji-label">Sangat Baik</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kerjasama" value="4" onchange="saveDraft();">
+                                🙂
+                                <span class="emoji-label">Baik</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kerjasama" value="3" onchange="saveDraft();" checked>
+                                😐
+                                <span class="emoji-label">Cukup</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kerjasama" value="2" onchange="saveDraft();">
+                                😕
+                                <span class="emoji-label">Kurang</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kerjasama" value="1" onchange="saveDraft();">
+                                😞
+                                <span class="emoji-label">Perlu Perbaikan</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- 2. Kontribusi -->
+                    <div class="emoji-card">
+                        <div class="emoji-title">📊 Kontribusi</div>
+                        <div class="emoji-group">
+                            <label>
+                                <input type="radio" name="g_kontribusi" value="5" onchange="saveDraft();">
+                                😊
+                                <span class="emoji-label">Sangat Baik</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kontribusi" value="4" onchange="saveDraft();">
+                                🙂
+                                <span class="emoji-label">Baik</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kontribusi" value="3" onchange="saveDraft();" checked>
+                                😐
+                                <span class="emoji-label">Cukup</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kontribusi" value="2" onchange="saveDraft();">
+                                😕
+                                <span class="emoji-label">Kurang</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kontribusi" value="1" onchange="saveDraft();">
+                                😞
+                                <span class="emoji-label">Perlu Perbaikan</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- 3. Tepat Waktu -->
+                    <div class="emoji-card">
+                        <div class="emoji-title">⏰ Tepat Waktu</div>
+                        <div class="emoji-group">
+                            <label>
+                                <input type="radio" name="g_waktu" value="5" onchange="saveDraft();">
+                                😊
+                                <span class="emoji-label">Sangat Baik</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_waktu" value="4" onchange="saveDraft();">
+                                🙂
+                                <span class="emoji-label">Baik</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_waktu" value="3" onchange="saveDraft();" checked>
+                                😐
+                                <span class="emoji-label">Cukup</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_waktu" value="2" onchange="saveDraft();">
+                                😕
+                                <span class="emoji-label">Kurang</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_waktu" value="1" onchange="saveDraft();">
+                                😞
+                                <span class="emoji-label">Perlu Perbaikan</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- 4. Kualitas Hasil -->
+                    <div class="emoji-card">
+                        <div class="emoji-title">💡 Kualitas Hasil</div>
+                        <div class="emoji-group">
+                            <label>
+                                <input type="radio" name="g_kualitas" value="5" onchange="saveDraft();">
+                                😊
+                                <span class="emoji-label">Sangat Baik</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kualitas" value="4" onchange="saveDraft();">
+                                🙂
+                                <span class="emoji-label">Baik</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kualitas" value="3" onchange="saveDraft();" checked>
+                                😐
+                                <span class="emoji-label">Cukup</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kualitas" value="2" onchange="saveDraft();">
+                                😕
+                                <span class="emoji-label">Kurang</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kualitas" value="1" onchange="saveDraft();">
+                                😞
+                                <span class="emoji-label">Perlu Perbaikan</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cerita Kelompok -->
+                <div style="margin-top:0.8rem;">
+                    <label style="font-weight:600; display:block; margin-bottom:4px;">
+                        📝 Ceritakan pengalaman kerjamu dalam kelompok ini (1-2 kalimat):
+                    </label>
+                    <textarea class="dynamic-textarea" id="refleksiCerita" rows="2" placeholder="Contoh: Kami bekerja sama dengan baik, semua saling membantu menyelesaikan tugas..." oninput="saveDraft(); autoResize(this);"></textarea>
                 </div>
             </div>
 
@@ -1212,7 +1485,7 @@
         // ================================================================
         const URL_DATA_SISWA = 'https://script.google.com/macros/s/AKfycbxZMS_o6xWMAQAkjBzzEMR9tJmHOnHCX13KJX2xZMn7WIr-A9pwVK_3DDHnMg7y_rD29Q/exec';
         const URL_PEREKAPAN = 'https://script.google.com/macros/s/AKfycbxyGnBMWRIQKRtHa3ogqvT_66Tt3gTEcxZ7dsPPnob3tsVU9IuPWTEpxWH7mGX7YPZj/exec';
-        const STORAGE_KEY = 'ipas_aktivitas2_draft_v6';
+        const STORAGE_KEY = 'ipas_aktivitas2_draft_v5';
         const AKTIVITAS_NAMA = 'AKTIVITAS 2 - EKSPLORASI MAKHLUK HIDUP';
         const SHEET_NAME = 'data_aktivitas';
 
@@ -1225,7 +1498,7 @@
         let autoSaveTimer;
 
         // ================================================================
-        // AUTO-RESIZE - KHUSUS UNTUK TEXTAREA (100% BERFUNGSI)
+        // AUTO-RESIZE
         // ================================================================
         function autoResize(el) {
             if (!el || el.tagName !== 'TEXTAREA') return;
@@ -1235,17 +1508,15 @@
 
         function refreshAutoResize() {
             document.querySelectorAll('.dynamic-textarea, .dynamic-textarea-sm, .dynamic-textarea-lg').forEach(el => {
-                if (el.tagName === 'TEXTAREA') {
-                    autoResize(el);
-                }
+                if (el.tagName === 'TEXTAREA') autoResize(el);
             });
         }
 
         // ================================================================
-        // INISIALISASI TABEL - SEMUA KOLOM TEXTAREA DINAMIS
+        // INISIALISASI TABEL
         // ================================================================
         function initTables() {
-            // Observasi: 3 baris - SEMUA KOLOM TEXTAREA
+            // Observasi: 3 baris
             const obsBody = document.getElementById('obsBody');
             obsBody.innerHTML = '';
             for (let i = 1; i <= 3; i++) {
@@ -1261,7 +1532,7 @@
             }
             document.getElementById('hapusObsBtn').disabled = true;
 
-            // Langkah: 1 baris - TEXTAREA
+            // Langkah: 1 baris
             const langkahContainer = document.getElementById('langkahContainer');
             langkahContainer.innerHTML = `
                 <div style="display:flex; gap:8px; align-items:center; margin-bottom:4px;">
@@ -1271,25 +1542,25 @@
             `;
             document.getElementById('hapusLangkahBtn').disabled = true;
 
-            // Alat dan Bahan: 2 baris - SEMUA KOLOM TEXTAREA
+            // Alat: 2 baris
             const alatBody = document.getElementById('alatBody');
             alatBody.innerHTML = '';
             for (let i = 1; i <= 2; i++) {
                 alatBody.innerHTML += `
                     <tr>
-                        <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="alat_${i}_nama" rows="1" placeholder="Contoh: Buku catatan" oninput="saveDraft(); autoResize(this);"></textarea></td>
-                        <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="alat_${i}_jumlah" rows="1" placeholder="Contoh: 1" oninput="saveDraft(); autoResize(this);"></textarea></td>
-                        <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="alat_${i}_kegunaan" rows="1" placeholder="Contoh: Mencatat hasil pengamatan" oninput="saveDraft(); autoResize(this);"></textarea></td>
+                        <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="alat_${i}_nama" rows="1" placeholder="Nama alat/bahan..." oninput="saveDraft(); autoResize(this);"></textarea></td>
+                        <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="alat_${i}_jumlah" rows="1" placeholder="Jumlah..." oninput="saveDraft(); autoResize(this);"></textarea></td>
+                        <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="alat_${i}_kegunaan" rows="1" placeholder="Kegunaan..." oninput="saveDraft(); autoResize(this);"></textarea></td>
                     </tr>
                 `;
             }
             document.getElementById('hapusAlatBtn').disabled = true;
 
-            // Hasil: 1 baris - SEMUA KOLOM TEXTAREA
+            // Hasil: 1 baris
             const hasilBody = document.getElementById('hasilBody');
             hasilBody.innerHTML = `
                 <tr>
-                    <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="hasil_1_waktu" rows="1" placeholder="Contoh: Menit ke-5" oninput="saveDraft(); autoResize(this);"></textarea></td>
+                    <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="hasil_1_waktu" rows="1" placeholder="Waktu..." oninput="saveDraft(); autoResize(this);"></textarea></td>
                     <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="hasil_1_isi" rows="1" placeholder="Apa yang terjadi?" oninput="saveDraft(); autoResize(this);"></textarea></td>
                 </tr>
             `;
@@ -1299,7 +1570,7 @@
         }
 
         // ================================================================
-        // TAMBAH / HAPUS BARIS - SEMUA TEXTAREA
+        // TAMBAH / HAPUS BARIS
         // ================================================================
         function tambahObs() {
             const body = document.getElementById('obsBody');
@@ -1428,7 +1699,7 @@
             const count = body.querySelectorAll('tr').length + 1;
             const tr = document.createElement('tr');
             tr.innerHTML = `
-                <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="hasil_${count}_waktu" rows="1" placeholder="Contoh: Menit ke-5" oninput="saveDraft(); autoResize(this);"></textarea></td>
+                <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="hasil_${count}_waktu" rows="1" placeholder="Waktu..." oninput="saveDraft(); autoResize(this);"></textarea></td>
                 <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="hasil_${count}_isi" rows="1" placeholder="Apa yang terjadi?" oninput="saveDraft(); autoResize(this);"></textarea></td>
             `;
             body.appendChild(tr);
@@ -1567,12 +1838,8 @@
             el.style.display = 'block';
         }
 
-        function hideError() {
-            document.getElementById('errorMsg').style.display = 'none';
-        }
-
         // ================================================================
-        // UPDATE NAMA DROPDOWN
+        // UPDATE NAMA
         // ================================================================
         function updateNama() {
             const kelas = document.getElementById('kelas').value;
@@ -1594,15 +1861,22 @@
         // ================================================================
         // TIMESTAMP
         // ================================================================
-        function getTimestamp() {
+        function getFormattedTimestamp() {
             const now = new Date();
-            const d = String(now.getDate()).padStart(2, '0');
-            const m = String(now.getMonth() + 1).padStart(2, '0');
-            const y = now.getFullYear();
-            const h = String(now.getHours()).padStart(2, '0');
-            const min = String(now.getMinutes()).padStart(2, '0');
-            const s = String(now.getSeconds()).padStart(2, '0');
-            return `${d}/${m}/${y} ${h}:${min}:${s}`;
+            const hari = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+            const bulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+                'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+            ];
+
+            const hariName = hari[now.getDay()];
+            const tanggal = String(now.getDate()).padStart(2, '0');
+            const bulanName = bulan[now.getMonth()];
+            const tahun = now.getFullYear();
+            const jam = String(now.getHours()).padStart(2, '0');
+            const menit = String(now.getMinutes()).padStart(2, '0');
+            const detik = String(now.getSeconds()).padStart(2, '0');
+
+            return `${hariName}, ${tanggal} ${bulanName} ${tahun} - ${jam}:${menit}:${detik}`;
         }
 
         // ================================================================
@@ -1635,31 +1909,18 @@
         }
 
         // ================================================================
-        // COLLECT DATA
+        // COLLECT DATA - STRUKTUR JSON SESUAI STANDAR
         // ================================================================
         function collectData() {
-            const data = { timestamp: getTimestamp() };
+            const timestamp = getFormattedTimestamp();
 
-            data.identitas = {
-                "Kelas": document.getElementById('kelas').value || '',
-                "Nama": document.getElementById('nama').value || '',
-                "Kelompok": document.getElementById('kelompok').value || '',
-                "Tugas/Peran": document.getElementById('tugas').value || ''
-            };
-
-            data.literasi = {
-                "Apa itu ekosistem?": document.getElementById('lit1').value || '',
-                "Sebutkan 3 contoh interaksi makhluk hidup - contoh 1": document.getElementById('lit2a').value || '',
-                "Sebutkan 3 contoh interaksi makhluk hidup - contoh 2": document.getElementById('lit2b').value || '',
-                "Sebutkan 3 contoh interaksi makhluk hidup - contoh 3": document.getElementById('lit2c').value || '',
-                "Mengapa manusia dan lingkungan tidak bisa dipisahkan?": document.getElementById('lit3').value || ''
-            };
-
-            data.observasi = [];
-            document.querySelectorAll('#obsBody tr').forEach(row => {
+            // Collect observasi data
+            const observasiData = [];
+            document.querySelectorAll('#obsBody tr').forEach((row, idx) => {
                 const inputs = row.querySelectorAll('textarea');
                 if (inputs.length >= 4) {
-                    data.observasi.push({
+                    observasiData.push({
+                        "No": idx + 1,
                         "Interaksi yang Terjadi": inputs[0].value || '',
                         "Makhluk Hidup": inputs[1].value || '',
                         "Lingkungan": inputs[2].value || '',
@@ -1668,78 +1929,137 @@
                 }
             });
 
-            data.prediksi = {
-                "Interaksi pilihan saya": document.getElementById('predPilihan').value || '',
-                "Menurut saya, jika diamati lebih lama, yang akan terjadi adalah...": document.getElementById('predHasil')
-                .value || '',
-                "Saya berpendapat demikian karena...": document.getElementById('predAlasan').value || ''
-            };
-
-            const langkah = [];
-            document.querySelectorAll('#langkahContainer div textarea').forEach(inp => {
-                if (inp.value) langkah.push(inp.value);
+            // Collect langkah data
+            const langkahData = [];
+            document.querySelectorAll('#langkahContainer div textarea').forEach((inp, idx) => {
+                if (inp.value) {
+                    langkahData.push({ "No": idx + 1, "Langkah": inp.value });
+                }
             });
+            if (langkahData.length === 0) {
+                langkahData.push({ "No": 1, "Langkah": "" });
+            }
 
-            const alat = [];
+            // Collect alat data
+            const alatData = [];
             document.querySelectorAll('#alatBody tr').forEach(row => {
                 const inputs = row.querySelectorAll('textarea');
                 if (inputs.length >= 3) {
-                    alat.push({
+                    alatData.push({
                         "Nama Alat/Bahan": inputs[0].value || '',
                         "Jumlah": inputs[1].value || '',
                         "Kegunaan": inputs[2].value || ''
                     });
                 }
             });
+            if (alatData.length === 0) {
+                alatData.push({ "Nama Alat/Bahan": "", "Jumlah": "", "Kegunaan": "" });
+                alatData.push({ "Nama Alat/Bahan": "", "Jumlah": "", "Kegunaan": "" });
+            }
 
-            const hasil = [];
+            // Collect hasil data
+            const hasilData = [];
             document.querySelectorAll('#hasilBody tr').forEach(row => {
                 const inputs = row.querySelectorAll('textarea');
                 if (inputs.length >= 2) {
-                    hasil.push({
+                    hasilData.push({
                         "Waktu": inputs[0].value || '',
                         "Yang Terjadi": inputs[1].value || ''
                     });
                 }
             });
+            if (hasilData.length === 0) {
+                hasilData.push({ "Waktu": "", "Yang Terjadi": "" });
+            }
 
-            data.pembuktian = {
-                "Prediksi yang akan dibuktikan": document.getElementById('buktiPrediksi').value || '',
-                "Rencana pembuktian": document.getElementById('buktiRencana').value || '',
-                "Langkah-langkah": langkah,
-                "Alat dan Bahan": alat,
-                "Hasil pengamatan": hasil,
-                "Link Dokumentasi (Google Drive)": document.getElementById('linkDokumentasi').value || '',
-                "Apakah hasilnya sesuai prediksi?": document.querySelector('input[name="kesesuaian"]:checked')?.value ||
-                '',
-                "Penjelasan": document.getElementById('buktiPenjelasan').value || '',
-                "Kesimpulan": document.getElementById('buktiKesimpulan').value || ''
+            // Get emoji values
+            const getEmojiValue = (name) => {
+                const el = document.querySelector(`input[name="${name}"]:checked`);
+                return el ? el.value : '3';
             };
 
-            data["hubungan dengan jurusan"] = {
-                "Program Keahlian": document.querySelector('input[name="jurusan"]:checked')?.value || '',
-                "Program Keahlian (lainnya)": document.getElementById('jurusanLain').value || '',
-                "Bahan baku yang digunakan - keterkaitan": document.getElementById('hubBahan').value || '',
-                "Proses produksi - keterkaitan": document.getElementById('hubProses').value || '',
-                "Limbah yang dihasilkan - keterkaitan": document.getElementById('hubLimbah').value || '',
-                "Produk yang dibuat - keterkaitan": document.getElementById('hubProduk').value || '',
-                "Masalah yang saya lihat": document.getElementById('solusiMasalah').value || '',
-                "Solusi sederhana saya": document.getElementById('solusiIde').value || ''
+            return {
+                "Timestamp Pengisian": timestamp,
+                "A. Identitas Kelompok": [
+                    ["Field", "Nilai"],
+                    ["Kelas", document.getElementById('kelas').value || ''],
+                    ["Nama", document.getElementById('nama').value || ''],
+                    ["Kelompok", document.getElementById('kelompok').value || ''],
+                    ["Tugas/Peran", document.getElementById('tugas').value || '']
+                ],
+                "B. Literasi Makhluk Hidup": {
+                    "Pertanyaan": [
+                        ["Pertanyaan", "Jawaban"],
+                        ["Apa itu ekosistem?", document.getElementById('lit1').value || ''],
+                        ["Sebutkan 3 contoh interaksi makhluk hidup!", document.getElementById('lit2a').value || ''],
+                        ["Sebutkan 3 contoh interaksi makhluk hidup!", document.getElementById('lit2b').value || ''],
+                        ["Sebutkan 3 contoh interaksi makhluk hidup!", document.getElementById('lit2c').value || ''],
+                        ["Mengapa manusia dan lingkungan tidak bisa dipisahkan?", document.getElementById('lit3').value || '']
+                    ],
+                    "Checklist": [
+                        ["Item", "Status"],
+                        ["Sudah membaca materi Makhluk Hidup dan Lingkungannya", document.getElementById('bacaMateri')?.checked || false]
+                    ],
+                    "Link Dokumentasi": document.getElementById('link_screenshot_b').value || ''
+                },
+                "C. Observasi Makhluk Hidup": {
+                    "Tabel Observasi": observasiData,
+                    "Prediksi": [
+                        ["Pertanyaan", "Jawaban"],
+                        ["Interaksi pilihan saya", document.getElementById('predPilihan').value || ''],
+                        ["Jika diamati lebih lama, yang akan terjadi", document.getElementById('predHasil').value || ''],
+                        ["Saya berpendapat demikian karena", document.getElementById('predAlasan').value || '']
+                    ],
+                    "Link Dokumentasi": document.getElementById('link_screenshot_c').value || ''
+                },
+                "D. Pembuktian": {
+                    "Rencana": [
+                        ["Pertanyaan", "Jawaban"],
+                        ["Prediksi yang akan dibuktikan", document.getElementById('buktiPrediksi').value || ''],
+                        ["Rencana pembuktian", document.getElementById('buktiRencana').value || ''],
+                        ["Kesesuaian hasil", document.querySelector('input[name="kesesuaian"]:checked')?.value || ''],
+                        ["Penjelasan", document.getElementById('buktiPenjelasan').value || ''],
+                        ["Kesimpulan", document.getElementById('buktiKesimpulan').value || '']
+                    ],
+                    "Langkah-langkah": langkahData,
+                    "Alat dan Bahan": alatData,
+                    "Hasil Pengamatan": hasilData,
+                    "Link Dokumentasi": document.getElementById('link_screenshot_d').value || ''
+                },
+                "E. Hubungan dengan Jurusan": {
+                    "Program Keahlian": [
+                        ["Pertanyaan", "Jawaban"],
+                        ["Program Keahlian", document.querySelector('input[name="jurusan"]:checked')?.value || ''],
+                        ["Program Keahlian (lainnya)", document.getElementById('jurusanLain').value || '']
+                    ],
+                    "Keterkaitan dengan Makhluk Hidup": [
+                        ["Aspek", "Jawaban"],
+                        ["Makhluk Hidup dalam Jurusan", document.getElementById('hubMakhluk').value || ''],
+                        ["Interaksi dengan Alam", document.getElementById('hubInteraksi').value || ''],
+                        ["Dampak Lingkungan", document.getElementById('hubDampak').value || ''],
+                        ["Pelestarian Lingkungan", document.getElementById('hubLestari').value || '']
+                    ],
+                    "Kesimpulan": document.getElementById('solusiMasalah').value || ''
+                },
+                "F. Refleksi": {
+                    "Pertanyaan": [
+                        ["Pertanyaan", "Jawaban"],
+                        ["1 hal paling menarik", document.getElementById('ref1').value || ''],
+                        ["1 interaksi yang paling saya andalkan", document.getElementById('ref2').value || ''],
+                        ["1 hal yang akan saya lakukan untuk menjaga lingkungan", document.getElementById('ref3').value || '']
+                    ]
+                },
+                "G. Refleksi Kelompok (Emoji)": {
+                    "Aspek": [
+                        ["Aspek", "Nilai (1-5)"],
+                        ["Kerjasama", getEmojiValue('g_kerjasama')],
+                        ["Kontribusi", getEmojiValue('g_kontribusi')],
+                        ["Tepat Waktu", getEmojiValue('g_waktu')],
+                        ["Kualitas Hasil", getEmojiValue('g_kualitas')]
+                    ],
+                    "Cerita Kelompok": document.getElementById('refleksiCerita').value || ''
+                }
             };
-
-            data.refleksi = {
-                "1 hal paling menarik": document.getElementById('ref1').value || '',
-                "1 kesulitan yang saya hadapi": document.getElementById('ref2').value || '',
-                "1 hal yang ingin saya pelajari lebih lanjut": document.getElementById('ref3').value || ''
-            };
-
-            data["nilai diri kelompok"] = {
-                "Semua anggota ikut observasi": document.getElementById('nilai1').value || '3',
-                "Semua anggota ikut diskusi": document.getElementById('nilai2').value || '3',
-                "Selesai tepat waktu": document.getElementById('nilai3').value || '3'
-            };
-
-            return data;
         }
 
         // ================================================================
@@ -1748,144 +2068,275 @@
         function restoreData(data) {
             if (!data) return;
 
-            if (data.identitas) {
+            // A. Identitas (Array 2D)
+            if (data["A. Identitas Kelompok"] && Array.isArray(data["A. Identitas Kelompok"])) {
+                const identitasArray = data["A. Identitas Kelompok"];
+                let kelasValue = '', namaValue = '', kelompokValue = '', tugasValue = '';
+                identitasArray.forEach(item => {
+                    if (Array.isArray(item) && item.length === 2) {
+                        if (item[0] === "Kelas") kelasValue = item[1];
+                        else if (item[0] === "Nama") namaValue = item[1];
+                        else if (item[0] === "Kelompok") kelompokValue = item[1];
+                        else if (item[0] === "Tugas/Peran") tugasValue = item[1];
+                    }
+                });
                 const sel = document.getElementById('kelas');
                 for (let opt of sel.options) {
-                    if (opt.value === data.identitas["Kelas"]) { opt.selected = true; break; }
+                    if (opt.value === kelasValue) { opt.selected = true; break; }
                 }
                 updateNama();
                 const selNama = document.getElementById('nama');
                 for (let opt of selNama.options) {
-                    if (opt.value === data.identitas["Nama"]) { opt.selected = true; break; }
+                    if (opt.value === namaValue) { opt.selected = true; break; }
                 }
-                document.getElementById('kelompok').value = data.identitas["Kelompok"] || '';
-                document.getElementById('tugas').value = data.identitas["Tugas/Peran"] || '';
+                document.getElementById('kelompok').value = kelompokValue;
+                document.getElementById('tugas').value = tugasValue;
             }
 
-            if (data.literasi) {
-                document.getElementById('lit1').value = data.literasi["Apa itu ekosistem?"] || '';
-                document.getElementById('lit2a').value = data.literasi[
-                    "Sebutkan 3 contoh interaksi makhluk hidup - contoh 1"] || '';
-                document.getElementById('lit2b').value = data.literasi[
-                    "Sebutkan 3 contoh interaksi makhluk hidup - contoh 2"] || '';
-                document.getElementById('lit2c').value = data.literasi[
-                    "Sebutkan 3 contoh interaksi makhluk hidup - contoh 3"] || '';
-                document.getElementById('lit3').value = data.literasi["Mengapa manusia dan lingkungan tidak bisa dipisahkan?"] ||
-                    '';
+            // B. Literasi
+            if (data["B. Literasi Makhluk Hidup"]) {
+                const b = data["B. Literasi Makhluk Hidup"];
+                if (b["Pertanyaan"] && Array.isArray(b["Pertanyaan"])) {
+                    const qMap = {
+                        "Apa itu ekosistem?": 'lit1',
+                        "Sebutkan 3 contoh interaksi makhluk hidup!": 'lit2a'
+                    };
+                    let index = 0;
+                    b["Pertanyaan"].forEach(item => {
+                        if (Array.isArray(item) && item.length === 2) {
+                            const pertanyaan = item[0];
+                            const jawaban = item[1] || '';
+                            if (pertanyaan === "Apa itu ekosistem?") document.getElementById('lit1').value = jawaban;
+                            else if (pertanyaan === "Sebutkan 3 contoh interaksi makhluk hidup!" && index === 0) {
+                                document.getElementById('lit2a').value = jawaban;
+                                index++;
+                            } else if (pertanyaan === "Sebutkan 3 contoh interaksi makhluk hidup!" && index === 1) {
+                                document.getElementById('lit2b').value = jawaban;
+                                index++;
+                            } else if (pertanyaan === "Sebutkan 3 contoh interaksi makhluk hidup!" && index === 2) {
+                                document.getElementById('lit2c').value = jawaban;
+                                index++;
+                            } else if (pertanyaan === "Mengapa manusia dan lingkungan tidak bisa dipisahkan?") {
+                                document.getElementById('lit3').value = jawaban;
+                            }
+                        }
+                    });
+                }
+                if (b["Checklist"] && Array.isArray(b["Checklist"])) {
+                    const el = document.getElementById('bacaMateri');
+                    if (el) {
+                        b["Checklist"].forEach(item => {
+                            if (Array.isArray(item) && item.length === 2 && item[0] === "Sudah membaca materi Makhluk Hidup dan Lingkungannya") {
+                                el.checked = item[1] || false;
+                            }
+                        });
+                    }
+                }
+                const linkEl = document.getElementById('link_screenshot_b');
+                if (linkEl) linkEl.value = b["Link Dokumentasi"] || '';
             }
 
-            if (data.observasi && data.observasi.length > 0) {
-                const body = document.getElementById('obsBody');
-                body.innerHTML = '';
-                data.observasi.forEach((item, i) => {
-                    const num = i + 1;
-                    const tr = document.createElement('tr');
-                    tr.innerHTML = `
-                        <td>${num}</td>
-                        <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="obs_${num}_nama" rows="1" placeholder="Contoh: Semut mengangkut daun" oninput="saveDraft(); autoResize(this);">${item["Interaksi yang Terjadi"] || ''}</textarea></td>
-                        <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="obs_${num}_makhluk" rows="1" placeholder="Contoh: Semut" oninput="saveDraft(); autoResize(this);">${item["Makhluk Hidup"] || ''}</textarea></td>
-                        <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="obs_${num}_lingkungan" rows="1" placeholder="Contoh: Tanah, daun" oninput="saveDraft(); autoResize(this);">${item["Lingkungan"] || ''}</textarea></td>
-                        <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="obs_${num}_deskripsi" rows="1" placeholder="Ceritakan apa yang terjadi..." oninput="saveDraft(); autoResize(this);">${item["Deskripsi Singkat"] || ''}</textarea></td>
-                    `;
-                    body.appendChild(tr);
-                });
-                updateHapus('obs');
+            // C. Observasi
+            if (data["C. Observasi Makhluk Hidup"]) {
+                const c = data["C. Observasi Makhluk Hidup"];
+                if (c["Tabel Observasi"] && c["Tabel Observasi"].length > 0) {
+                    const body = document.getElementById('obsBody');
+                    body.innerHTML = '';
+                    c["Tabel Observasi"].forEach((item, i) => {
+                        const num = i + 1;
+                        body.innerHTML += `
+                            <tr>
+                                <td>${num}</td>
+                                <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="obs_${num}_nama" rows="1" placeholder="Contoh: Semut mengangkut daun" oninput="saveDraft(); autoResize(this);">${item["Interaksi yang Terjadi"] || ''}</textarea></td>
+                                <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="obs_${num}_makhluk" rows="1" placeholder="Contoh: Semut" oninput="saveDraft(); autoResize(this);">${item["Makhluk Hidup"] || ''}</textarea></td>
+                                <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="obs_${num}_lingkungan" rows="1" placeholder="Contoh: Tanah, daun" oninput="saveDraft(); autoResize(this);">${item["Lingkungan"] || ''}</textarea></td>
+                                <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="obs_${num}_deskripsi" rows="1" placeholder="Ceritakan apa yang terjadi..." oninput="saveDraft(); autoResize(this);">${item["Deskripsi Singkat"] || ''}</textarea></td>
+                            </tr>
+                        `;
+                    });
+                    updateHapus('obs');
+                }
+                if (c["Prediksi"] && Array.isArray(c["Prediksi"])) {
+                    const qMap = {
+                        "Interaksi pilihan saya": 'predPilihan',
+                        "Jika diamati lebih lama, yang akan terjadi": 'predHasil',
+                        "Saya berpendapat demikian karena": 'predAlasan'
+                    };
+                    c["Prediksi"].forEach(item => {
+                        if (Array.isArray(item) && item.length === 2) {
+                            const id = qMap[item[0]];
+                            if (id) {
+                                const el = document.getElementById(id);
+                                if (el) el.value = item[1] || '';
+                            }
+                        }
+                    });
+                }
+                const linkEl = document.getElementById('link_screenshot_c');
+                if (linkEl) linkEl.value = c["Link Dokumentasi"] || '';
             }
 
-            if (data.prediksi) {
-                document.getElementById('predPilihan').value = data.prediksi["Interaksi pilihan saya"] || '';
-                document.getElementById('predHasil').value = data.prediksi[
-                    "Menurut saya, jika diamati lebih lama, yang akan terjadi adalah..."] || '';
-                document.getElementById('predAlasan').value = data.prediksi["Saya berpendapat demikian karena..."] || '';
-            }
-
-            if (data.pembuktian) {
-                const p = data.pembuktian;
-                document.getElementById('buktiPrediksi').value = p["Prediksi yang akan dibuktikan"] || '';
-                document.getElementById('buktiRencana').value = p["Rencana pembuktian"] || '';
-                document.getElementById('buktiPenjelasan').value = p["Penjelasan"] || '';
-                document.getElementById('buktiKesimpulan').value = p["Kesimpulan"] || '';
-                document.getElementById('linkDokumentasi').value = p["Link Dokumentasi (Google Drive)"] || '';
-
-                if (p["Langkah-langkah"] && p["Langkah-langkah"].length > 0) {
+            // D. Pembuktian
+            if (data["D. Pembuktian"]) {
+                const d = data["D. Pembuktian"];
+                if (d["Rencana"] && Array.isArray(d["Rencana"])) {
+                    const qMap = {
+                        "Prediksi yang akan dibuktikan": 'buktiPrediksi',
+                        "Rencana pembuktian": 'buktiRencana',
+                        "Penjelasan": 'buktiPenjelasan',
+                        "Kesimpulan": 'buktiKesimpulan'
+                    };
+                    d["Rencana"].forEach(item => {
+                        if (Array.isArray(item) && item.length === 2) {
+                            const id = qMap[item[0]];
+                            if (id) {
+                                const el = document.getElementById(id);
+                                if (el) el.value = item[1] || '';
+                            }
+                            if (item[0] === "Kesesuaian hasil" && item[1]) {
+                                document.querySelectorAll('input[name="kesesuaian"]').forEach(r => {
+                                    if (r.value === item[1]) r.checked = true;
+                                });
+                            }
+                        }
+                    });
+                }
+                if (d["Langkah-langkah"] && d["Langkah-langkah"].length > 0) {
                     const container = document.getElementById('langkahContainer');
                     container.innerHTML = '';
-                    p["Langkah-langkah"].forEach((item, i) => {
+                    d["Langkah-langkah"].forEach((item, i) => {
                         const num = i + 1;
                         const div = document.createElement('div');
                         div.style.cssText = 'display:flex; gap:8px; align-items:center; margin-bottom:4px;';
                         div.innerHTML = `
                             <span style="font-weight:600; min-width:24px;">${num}.</span>
-                            <textarea class="dynamic-textarea dynamic-textarea-sm" id="langkah_${num}" rows="1" placeholder="Tulis langkah..." oninput="saveDraft(); autoResize(this);" style="flex:1;">${item || ''}</textarea>
+                            <textarea class="dynamic-textarea dynamic-textarea-sm" id="langkah_${num}" rows="1" placeholder="Tulis langkah..." oninput="saveDraft(); autoResize(this);" style="flex:1;">${item["Langkah"] || ''}</textarea>
                         `;
                         container.appendChild(div);
                     });
                     updateHapus('langkah');
                 }
-
-                if (p["Alat dan Bahan"] && p["Alat dan Bahan"].length > 0) {
+                if (d["Alat dan Bahan"] && d["Alat dan Bahan"].length > 0) {
                     const body = document.getElementById('alatBody');
                     body.innerHTML = '';
-                    p["Alat dan Bahan"].forEach((item, i) => {
+                    d["Alat dan Bahan"].forEach((item, i) => {
                         const num = i + 1;
-                        const tr = document.createElement('tr');
-                        tr.innerHTML = `
-                            <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="alat_${num}_nama" rows="1" placeholder="Nama alat/bahan..." oninput="saveDraft(); autoResize(this);">${item["Nama Alat/Bahan"] || ''}</textarea></td>
-                            <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="alat_${num}_jumlah" rows="1" placeholder="Jumlah..." oninput="saveDraft(); autoResize(this);">${item["Jumlah"] || ''}</textarea></td>
-                            <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="alat_${num}_kegunaan" rows="1" placeholder="Kegunaan..." oninput="saveDraft(); autoResize(this);">${item["Kegunaan"] || ''}</textarea></td>
+                        body.innerHTML += `
+                            <tr>
+                                <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="alat_${num}_nama" rows="1" placeholder="Nama alat/bahan..." oninput="saveDraft(); autoResize(this);">${item["Nama Alat/Bahan"] || ''}</textarea></td>
+                                <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="alat_${num}_jumlah" rows="1" placeholder="Jumlah..." oninput="saveDraft(); autoResize(this);">${item["Jumlah"] || ''}</textarea></td>
+                                <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="alat_${num}_kegunaan" rows="1" placeholder="Kegunaan..." oninput="saveDraft(); autoResize(this);">${item["Kegunaan"] || ''}</textarea></td>
+                            </tr>
                         `;
-                        body.appendChild(tr);
                     });
                     updateHapus('alat');
                 }
-
-                if (p["Hasil pengamatan"] && p["Hasil pengamatan"].length > 0) {
+                if (d["Hasil Pengamatan"] && d["Hasil Pengamatan"].length > 0) {
                     const body = document.getElementById('hasilBody');
                     body.innerHTML = '';
-                    p["Hasil pengamatan"].forEach((item, i) => {
+                    d["Hasil Pengamatan"].forEach((item, i) => {
                         const num = i + 1;
-                        const tr = document.createElement('tr');
-                        tr.innerHTML = `
-                            <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="hasil_${num}_waktu" rows="1" placeholder="Contoh: Menit ke-5" oninput="saveDraft(); autoResize(this);">${item["Waktu"] || ''}</textarea></td>
-                            <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="hasil_${num}_isi" rows="1" placeholder="Apa yang terjadi?" oninput="saveDraft(); autoResize(this);">${item["Yang Terjadi"] || ''}</textarea></td>
+                        body.innerHTML += `
+                            <tr>
+                                <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="hasil_${num}_waktu" rows="1" placeholder="Waktu..." oninput="saveDraft(); autoResize(this);">${item["Waktu"] || ''}</textarea></td>
+                                <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="hasil_${num}_isi" rows="1" placeholder="Apa yang terjadi?" oninput="saveDraft(); autoResize(this);">${item["Yang Terjadi"] || ''}</textarea></td>
+                            </tr>
                         `;
-                        body.appendChild(tr);
                     });
                     updateHapus('hasil');
                 }
+                const linkEl = document.getElementById('link_screenshot_d');
+                if (linkEl) linkEl.value = d["Link Dokumentasi"] || '';
+            }
 
-                if (p["Apakah hasilnya sesuai prediksi?"]) {
-                    document.querySelectorAll('input[name="kesesuaian"]').forEach(r => {
-                        if (r.value === p["Apakah hasilnya sesuai prediksi?"]) r.checked = true;
+            // E. Hubungan dengan Jurusan
+            if (data["E. Hubungan dengan Jurusan"]) {
+                const e = data["E. Hubungan dengan Jurusan"];
+                if (e["Program Keahlian"] && Array.isArray(e["Program Keahlian"])) {
+                    e["Program Keahlian"].forEach(item => {
+                        if (Array.isArray(item) && item.length === 2) {
+                            if (item[0] === "Program Keahlian" && item[1]) {
+                                document.querySelectorAll('input[name="jurusan"]').forEach(r => {
+                                    if (r.value === item[1]) r.checked = true;
+                                });
+                            }
+                            if (item[0] === "Program Keahlian (lainnya)") {
+                                const el = document.getElementById('jurusanLain');
+                                if (el) el.value = item[1] || '';
+                            }
+                        }
+                    });
+                }
+                if (e["Keterkaitan dengan Makhluk Hidup"] && Array.isArray(e["Keterkaitan dengan Makhluk Hidup"])) {
+                    const qMap = {
+                        "Makhluk Hidup dalam Jurusan": 'hubMakhluk',
+                        "Interaksi dengan Alam": 'hubInteraksi',
+                        "Dampak Lingkungan": 'hubDampak',
+                        "Pelestarian Lingkungan": 'hubLestari'
+                    };
+                    e["Keterkaitan dengan Makhluk Hidup"].forEach(item => {
+                        if (Array.isArray(item) && item.length === 2) {
+                            const id = qMap[item[0]];
+                            if (id) {
+                                const el = document.getElementById(id);
+                                if (el) el.value = item[1] || '';
+                            }
+                        }
+                    });
+                }
+                if (e["Kesimpulan"]) {
+                    const el = document.getElementById('solusiMasalah');
+                    if (el) el.value = e["Kesimpulan"] || '';
+                }
+            }
+
+            // F. Refleksi
+            if (data["F. Refleksi"]) {
+                const f = data["F. Refleksi"];
+                if (f["Pertanyaan"] && Array.isArray(f["Pertanyaan"])) {
+                    const qMap = {
+                        "1 hal paling menarik": 'ref1',
+                        "1 interaksi yang paling saya andalkan": 'ref2',
+                        "1 hal yang akan saya lakukan untuk menjaga lingkungan": 'ref3'
+                    };
+                    f["Pertanyaan"].forEach(item => {
+                        if (Array.isArray(item) && item.length === 2) {
+                            const id = qMap[item[0]];
+                            if (id) {
+                                const el = document.getElementById(id);
+                                if (el) el.value = item[1] || '';
+                            }
+                        }
                     });
                 }
             }
 
-            if (data["hubungan dengan jurusan"]) {
-                const h = data["hubungan dengan jurusan"];
-                document.querySelectorAll('input[name="jurusan"]').forEach(r => {
-                    if (r.value === h["Program Keahlian"]) r.checked = true;
-                });
-                document.getElementById('jurusanLain').value = h["Program Keahlian (lainnya)"] || '';
-                document.getElementById('hubBahan').value = h["Bahan baku yang digunakan - keterkaitan"] || '';
-                document.getElementById('hubProses').value = h["Proses produksi - keterkaitan"] || '';
-                document.getElementById('hubLimbah').value = h["Limbah yang dihasilkan - keterkaitan"] || '';
-                document.getElementById('hubProduk').value = h["Produk yang dibuat - keterkaitan"] || '';
-                document.getElementById('solusiMasalah').value = h["Masalah yang saya lihat"] || '';
-                document.getElementById('solusiIde').value = h["Solusi sederhana saya"] || '';
-            }
-
-            if (data.refleksi) {
-                document.getElementById('ref1').value = data.refleksi["1 hal paling menarik"] || '';
-                document.getElementById('ref2').value = data.refleksi["1 kesulitan yang saya hadapi"] || '';
-                document.getElementById('ref3').value = data.refleksi["1 hal yang ingin saya pelajari lebih lanjut"] || '';
-            }
-
-            if (data["nilai diri kelompok"]) {
-                document.getElementById('nilai1').value = data["nilai diri kelompok"]["Semua anggota ikut observasi"] ||
-                '3';
-                document.getElementById('nilai2').value = data["nilai diri kelompok"]["Semua anggota ikut diskusi"] || '3';
-                document.getElementById('nilai3').value = data["nilai diri kelompok"]["Selesai tepat waktu"] || '3';
+            // G. Refleksi Kelompok (Emoji)
+            if (data["G. Refleksi Kelompok (Emoji)"]) {
+                const g = data["G. Refleksi Kelompok (Emoji)"];
+                if (g["Aspek"] && Array.isArray(g["Aspek"])) {
+                    const qMap = {
+                        "Kerjasama": 'g_kerjasama',
+                        "Kontribusi": 'g_kontribusi',
+                        "Tepat Waktu": 'g_waktu',
+                        "Kualitas Hasil": 'g_kualitas'
+                    };
+                    g["Aspek"].forEach(item => {
+                        if (Array.isArray(item) && item.length === 2) {
+                            const name = qMap[item[0]];
+                            if (name) {
+                                const value = item[1] || '3';
+                                document.querySelectorAll(`input[name="${name}"]`).forEach(r => {
+                                    if (r.value === value) r.checked = true;
+                                });
+                            }
+                        }
+                    });
+                }
+                const ceritaEl = document.getElementById('refleksiCerita');
+                if (ceritaEl && g["Cerita Kelompok"]) {
+                    ceritaEl.value = g["Cerita Kelompok"];
+                }
             }
 
             refreshAutoResize();
@@ -1895,24 +2346,62 @@
         // RESET FORM
         // ================================================================
         function resetForm() {
-            document.querySelectorAll('input, textarea, select').forEach(el => {
-                if (el.type === 'checkbox' || el.type === 'radio') {
-                    el.checked = false;
-                } else if (el.tagName === 'SELECT') {
-                    el.selectedIndex = 0;
-                } else {
-                    el.value = '';
-                }
+            document.querySelectorAll('textarea, select').forEach(el => {
+                if (el.tagName === 'SELECT') el.selectedIndex = 0;
+                else el.value = '';
             });
+            document.querySelectorAll('input[type="radio"], input[type="checkbox"]').forEach(el => el.checked = false);
+
+            document.querySelectorAll('.emoji-group input[type="radio"][value="3"]').forEach(r => {
+                r.checked = true;
+            });
+
             document.getElementById('nama').innerHTML = '<option value="">-- Pilih Nama --</option>';
-            ['nilai1', 'nilai2', 'nilai3'].forEach(id => {
-                const el = document.getElementById(id);
-                if (el) el.value = '3';
-            });
             initTables();
             clearDraft();
             document.getElementById('successMsg').style.display = 'none';
             refreshAutoResize();
+        }
+
+        // ================================================================
+        // MODAL
+        // ================================================================
+        function closeModal(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+
+        document.querySelectorAll('.modal').forEach(m => {
+            m.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.style.display = 'none';
+                }
+            });
+        });
+
+        // ================================================================
+        // CEK DATA
+        // ================================================================
+        async function cekDataSpreadsheet(kelas, nama) {
+            const url =
+                `${URL_PEREKAPAN}?action=getDataSiswa&kelas=${encodeURIComponent(kelas)}&nama=${encodeURIComponent(nama)}&aktivitas=${encodeURIComponent(AKTIVITAS_NAMA)}`;
+            const resp = await fetch(url);
+            const result = await resp.json();
+            if (result.success && result.data) {
+                return { found: true, key: `${kelas}_${nama}_${AKTIVITAS_NAMA}_AKTIF` };
+            }
+            return { found: false };
+        }
+
+        function confirmGanti() {
+            const btn = document.getElementById('confirmGantiBtn');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengganti...';
+            if (pendingData) {
+                doSubmit(pendingData, true).finally(() => {
+                    btn.disabled = false;
+                    btn.innerHTML = '<i class="fas fa-exchange-alt"></i> Ya, Ganti';
+                });
+            }
         }
 
         // ================================================================
@@ -1966,29 +2455,6 @@
                 });
         }
 
-        async function cekDataSpreadsheet(kelas, nama) {
-            const url =
-                `${URL_PEREKAPAN}?action=getDataSiswa&kelas=${encodeURIComponent(kelas)}&nama=${encodeURIComponent(nama)}&aktivitas=${encodeURIComponent(AKTIVITAS_NAMA)}`;
-            const resp = await fetch(url);
-            const result = await resp.json();
-            if (result.success && result.data) {
-                return { found: true, key: `${kelas}_${nama}_${AKTIVITAS_NAMA}_AKTIF` };
-            }
-            return { found: false };
-        }
-
-        function confirmGanti() {
-            const btn = document.getElementById('confirmGantiBtn');
-            btn.disabled = true;
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengganti...';
-            if (pendingData) {
-                doSubmit(pendingData, true).finally(() => {
-                    btn.disabled = false;
-                    btn.innerHTML = '<i class="fas fa-exchange-alt"></i> Ya, Ganti';
-                });
-            }
-        }
-
         async function doSubmit(data, isReplace) {
             isSubmitting = true;
             const btn = document.getElementById('submitBtn');
@@ -2035,21 +2501,6 @@
         }
 
         // ================================================================
-        // MODAL
-        // ================================================================
-        function closeModal(id) {
-            document.getElementById(id).style.display = 'none';
-        }
-
-        document.querySelectorAll('.modal').forEach(m => {
-            m.addEventListener('click', function(e) {
-                if (e.target === this) {
-                    this.style.display = 'none';
-                }
-            });
-        });
-
-        // ================================================================
         // EXPORT TEMPLATE
         // ================================================================
         function exportTemplate() {
@@ -2062,14 +2513,14 @@
                 clone.querySelectorAll('.btn-row, .btn-submit, .btn-export, .status-bar, .msg, .toolbar').forEach(el => el
                     .remove());
 
-                clone.querySelectorAll('input, textarea, select').forEach(el => {
+                clone.querySelectorAll('textarea, select').forEach(el => {
                     const p = document.createElement('span');
                     p.textContent = el.value || '[_________________]';
                     p.style.cssText = 'color:#666; font-style:italic;';
                     el.replaceWith(p);
                 });
 
-                clone.querySelectorAll('input[type="checkbox"], input[type="radio"]').forEach(el => {
+                clone.querySelectorAll('input[type="radio"], input[type="checkbox"]').forEach(el => {
                     const span = document.createElement('span');
                     span.textContent = el.checked ? '☑' : '☐';
                     span.style.cssText = 'font-size:1.2rem; margin-right:4px;';
@@ -2080,27 +2531,44 @@
                     <html><head><meta charset="UTF-8"><title>Template Lembar Kerja</title>
                     <style>
                         body { font-family: 'Segoe UI', Arial, sans-serif; padding:30px; max-width:960px; margin:auto; line-height:1.6; }
-                        .card { background:#fff; border-radius:12px; padding:20px; margin-bottom:16px; border-left:5px solid #2ecc71; }
-                        .section-title { font-size:1.2rem; font-weight:700; margin:0 0 8px 0; border-bottom:2px solid #d5f4e6; padding-bottom:4px; }
-                        .section-desc { background:#f0faf0; padding:8px 14px; border-radius:8px; margin-bottom:12px; }
+                        .card { background:#fff; border-radius:12px; padding:20px; margin-bottom:16px; border-left:5px solid #8e44ad; }
+                        .section-title { font-size:1.2rem; font-weight:700; margin:0 0 8px 0; border-bottom:2px solid #e8daef; padding-bottom:4px; }
+                        .section-desc { background:#f4ecf7; padding:8px 14px; border-radius:8px; margin-bottom:12px; }
                         table { width:100%; border-collapse:collapse; margin:8px 0; }
-                        th { background:#2ecc71; color:#fff; padding:8px 10px; text-align:left; }
+                        th { background:#8e44ad; color:#fff; padding:8px 10px; text-align:left; }
                         td { padding:6px 10px; border-bottom:1px solid #eee; }
-                        .identitas-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; background:#d5f4e6; padding:12px 16px; border-radius:10px; }
+                        .identitas-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; background:#e8daef; padding:12px 16px; border-radius:10px; }
                         .options-group { display:flex; flex-wrap:wrap; gap:10px 20px; }
-                        .interaksi-panduan, .jurusan-panduan { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
-                        .interaksi-panduan .contoh-benar, .interaksi-panduan .contoh-salah, .jurusan-panduan .card-example { padding:8px 12px; border-radius:8px; }
-                        .interaksi-panduan .contoh-benar { background:#e8f5e9; border:1px solid #a5d6a7; }
-                        .interaksi-panduan .contoh-salah { background:#fff3cd; border:1px solid #ffc107; }
-                        .jurusan-panduan .card-example { background:#e3f2fd; border:1px solid #90caf9; }
-                        .interaksi-panduan ul, .jurusan-panduan ul { margin-left:1.2rem; }
-                        .header-title { text-align:center; font-size:1.6rem; color:#27ae60; }
+                        .interaksi-panduan { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+                        .interaksi-panduan .contoh-benar { background:#e8f5e9; border:1px solid #a5d6a7; padding:8px 12px; border-radius:8px; }
+                        .interaksi-panduan .contoh-salah { background:#fff3cd; border:1px solid #ffc107; padding:8px 12px; border-radius:8px; }
+                        .interaksi-panduan ul { margin-left:1.2rem; }
+                        .header-title { text-align:center; font-size:1.6rem; color:#7d3c98; }
                         .header-sub { text-align:center; color:#666; }
-                        @media (max-width:768px) { .interaksi-panduan, .jurusan-panduan { grid-template-columns:1fr; } }
+                        .tp-card { background:#fff; border-radius:12px; padding:12px 18px; margin-bottom:16px; border-left:5px solid #8e44ad; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+                        .tp-card .tp-item { display:flex; align-items:center; gap:12px; padding:3px 0; }
+                        .tp-card .tp-item .tp-code { background:#8e44ad; color:#fff; padding:2px 10px; border-radius:12px; font-weight:700; font-size:0.8rem; min-width:45px; text-align:center; }
+                        .tp-card .tp-item .tp-desc { color:#7d3c98; }
+                        .emoji-grid { display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; margin:1rem 0; }
+                        .emoji-card { background:#f4ecf7; padding:0.8rem 1rem; border-radius:12px; text-align:center; }
+                        .emoji-card .emoji-title { font-weight:600; font-size:0.9rem; margin-bottom:2px; }
+                        .emoji-group { display:flex; gap:0.4rem; justify-content:center; flex-wrap:wrap; }
+                        .dokumentasi-instruction { background:#fff3cd; padding:8px 12px; border-radius:8px; border-left:4px solid #f39c12; margin:8px 0; }
+                        .dokumentasi-instruction .contoh-dok { margin-top:6px; font-size:0.85rem; color:#666; background:#fff8e1; padding:6px 12px; border-radius:6px; }
+                        .folder-link-box { background:#e8f5e9; padding:10px 14px; border-radius:8px; border-left:5px solid #4caf50; margin:10px 0; }
+                        .folder-link-box .label-link { font-weight:600; color:#2e7d32; }
+                        @media (max-width:768px) { .interaksi-panduan { grid-template-columns:1fr; } .emoji-grid { grid-template-columns:1fr; } }
                     </style>
                     </head><body>
                     <h1 class="header-title">🌿 Eksplorasi Makhluk Hidup & Lingkungannya</h1>
                     <p class="header-sub">Lembar Kerja IPAS</p>
+                    <div class="tp-card">
+                        <div style="font-weight:700; color:#7d3c98; margin-bottom:6px; font-size:1.1rem;">Tujuan Pembelajaran</div>
+                        <div class="tp-item"><span class="tp-code">TP 1.1</span><span class="tp-desc">Menjelaskan pengetahuan ilmiah yang berkaitan dengan fenomena alam dan sosial di lingkungan sekitar</span></div>
+                        <div class="tp-item"><span class="tp-code">TP 1.2</span><span class="tp-desc">Membuat prediksi sederhana terhadap fenomena alam dan sosial berdasarkan pola ilmiah</span></div>
+                        <div class="tp-item"><span class="tp-code">TP 1.3</span><span class="tp-desc">Melakukan pembuktian sederhana terhadap prediksi yang telah dibuat</span></div>
+                        <div class="tp-item"><span class="tp-code">TP 1.4</span><span class="tp-desc">Mengaitkan fenomena alam dan sosial dengan keterampilan teknis pada bidang keahliannya</span></div>
+                    </div>
                     ${clone.innerHTML}
                     <p style="text-align:center; color:#999; font-size:0.85rem; margin-top:30px; border-top:1px solid #eee; padding-top:12px;">
                         Dicetak dari Sistem IPAS Tembok Belajar
@@ -2112,7 +2580,7 @@
                 const link = document.createElement('a');
                 link.href = URL.createObjectURL(blob);
                 const date = new Date().toISOString().slice(0, 10);
-                link.download = `Lembar_Kerja_Eksplorasi_${date}.doc`;
+                link.download = `Lembar_Kerja_Makhluk_Hidup_${date}.doc`;
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);

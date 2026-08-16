@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <style>
         /* ================================================================
-           ROOT & RESET
+           ROOT & RESET - TEMA ORANGE (ENERGI)
            ================================================================ */
         * {
             margin: 0;
@@ -17,9 +17,9 @@
         }
 
         :root {
-            --primary: #2ecc71;
-            --primary-dark: #27ae60;
-            --primary-light: #d5f4e6;
+            --primary: #f39c12;
+            --primary-dark: #e67e22;
+            --primary-light: #fdebd0;
             --accent: #3498db;
             --gray-bg: #f5f7fa;
             --text: #2c3e50;
@@ -36,7 +36,6 @@
             line-height: 1.7;
         }
 
-        /* ===== LOGO ZOOM EFFECT ===== */
         .logo img {
             transition: transform 0.3s ease;
         }
@@ -44,9 +43,6 @@
             transform: scale(1.2);
         }
 
-        /* ================================================================
-           KONTEN UTAMA
-           ================================================================ */
         .container {
             max-width: 960px;
             margin: 2rem auto;
@@ -76,7 +72,42 @@
             margin-bottom: 1.5rem;
         }
 
-        /* ===== IDENTITAS ===== */
+        /* ============ TP CARD ============ */
+        .tp-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 16px;
+            padding: 1.2rem 1.8rem;
+            margin-bottom: 1.5rem;
+            border-left: 5px solid var(--primary);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        .tp-card .tp-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 4px 0;
+            font-size: 0.95rem;
+        }
+
+        .tp-card .tp-item .tp-code {
+            background: var(--primary);
+            color: white;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            min-width: 45px;
+            text-align: center;
+        }
+
+        .tp-card .tp-item .tp-desc {
+            color: var(--primary-dark);
+        }
+
+        /* ================================================================
+           SISA CSS
+           ================================================================ */
         .identitas-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -104,9 +135,9 @@
             background: #fff;
             transition: 0.2s;
             font-family: inherit;
-            resize: vertical;
+            resize: none !important;
+            overflow: hidden !important;
             min-height: 42px;
-            overflow: hidden;
         }
 
         .identitas-item select:focus,
@@ -115,7 +146,6 @@
             border-color: var(--primary);
         }
 
-        /* ===== SECTION ===== */
         .section-title {
             font-size: 1.3rem;
             font-weight: 700;
@@ -137,7 +167,7 @@
             font-size: 0.95rem;
             margin-bottom: 1rem;
             padding: 0.8rem 1.2rem;
-            background: #f0faf0;
+            background: #fef9e7;
             border-radius: 10px;
             border-left: 4px solid var(--primary);
         }
@@ -146,7 +176,6 @@
             color: var(--text);
         }
 
-        /* ===== TABEL ===== */
         .table-wrap {
             overflow-x: auto;
             margin: 0.8rem 0;
@@ -179,7 +208,6 @@
             border-bottom: none;
         }
 
-        /* ===== DINAMIC TEXTAREA - SEMUA PAKAI TEXTAREA ===== */
         .dynamic-textarea {
             width: 100%;
             border: 2px solid #e8e8e8;
@@ -189,16 +217,16 @@
             font-size: 0.95rem;
             background: #fff;
             transition: 0.2s;
-            resize: vertical;
+            resize: none !important;
+            overflow: hidden !important;
             min-height: 42px;
             line-height: 1.6;
-            overflow: hidden;
         }
 
         .dynamic-textarea:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.15);
+            box-shadow: 0 0 0 3px rgba(243, 156, 18, 0.15);
         }
 
         .dynamic-textarea-sm {
@@ -211,7 +239,79 @@
             min-height: 70px;
         }
 
-        /* ===== RADIO & CHECKBOX ===== */
+        /* ============ EMOJI RADIO GROUP ============ */
+        .emoji-group {
+            display: flex;
+            gap: 0.4rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 4px;
+        }
+
+        .emoji-group label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            cursor: pointer;
+            padding: 4px 6px;
+            border-radius: 10px;
+            transition: 0.2s;
+            font-size: 1.8rem;
+            min-width: 44px;
+        }
+
+        .emoji-group label:hover {
+            background: var(--primary-light);
+            transform: scale(1.05);
+        }
+
+        .emoji-group label input[type="radio"] {
+            width: 16px;
+            height: 16px;
+            accent-color: var(--primary);
+            cursor: pointer;
+        }
+
+        .emoji-group label .emoji-label {
+            font-size: 0.6rem;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        .emoji-card {
+            background: #fef9e7;
+            padding: 0.8rem 1rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: 0.2s;
+        }
+
+        .emoji-card:hover {
+            border-color: var(--primary-light);
+        }
+
+        .emoji-card .emoji-title {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text);
+            margin-bottom: 2px;
+        }
+
+        .emoji-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.8rem;
+            margin: 1rem 0;
+        }
+
+        @media (max-width: 600px) {
+            .emoji-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         .options-group {
             display: flex;
             flex-wrap: wrap;
@@ -236,7 +336,6 @@
             flex-shrink: 0;
         }
 
-        /* ===== TOMBOL ===== */
         .btn-row {
             display: inline-flex;
             align-items: center;
@@ -286,12 +385,12 @@
             transition: 0.3s;
             display: block;
             margin: 2rem auto 1rem;
-            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+            box-shadow: 0 4px 15px rgba(243, 156, 18, 0.3);
         }
 
         .btn-submit:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(46, 204, 113, 0.4);
+            box-shadow: 0 8px 25px rgba(243, 156, 18, 0.4);
         }
         .btn-submit:disabled {
             background: #ccc;
@@ -335,7 +434,6 @@
             margin-bottom: 1rem;
         }
 
-        /* ===== STATUS ===== */
         .status-bar {
             display: flex;
             align-items: center;
@@ -360,15 +458,9 @@
         }
 
         @keyframes pulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.5);
-            }
-            70% {
-                box-shadow: 0 0 0 8px rgba(40, 167, 69, 0);
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(40, 167, 69, 0);
-            }
+            0% { box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.5); }
+            70% { box-shadow: 0 0 0 8px rgba(40, 167, 69, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(40, 167, 69, 0); }
         }
 
         .msg {
@@ -397,7 +489,84 @@
             margin-right: 8px;
         }
 
-        /* ===== MODAL ===== */
+        .dokumentasi-instruction {
+            background: #fff3cd;
+            border-radius: 10px;
+            padding: 0.8rem 1.2rem;
+            margin: 0.5rem 0 1rem 0;
+            border-left: 4px solid #f39c12;
+        }
+
+        .dokumentasi-instruction i {
+            color: #f39c12;
+            margin-right: 8px;
+        }
+
+        .dokumentasi-instruction .contoh-dok {
+            margin-top: 6px;
+            font-size: 0.85rem;
+            color: #666;
+            background: #fff8e1;
+            padding: 6px 12px;
+            border-radius: 6px;
+        }
+
+        .folder-link-box {
+            background: #e8f5e9;
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            margin-top: 1rem;
+            border-left: 5px solid #4caf50;
+        }
+
+        .folder-link-box .label-link {
+            font-weight: 600;
+            color: #2e7d32;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .folder-link-box .sub-text {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 6px;
+        }
+
+        .folder-link-box input {
+            width: 100% !important;
+        }
+
+        .panduan-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 6px;
+            font-size: 0.9rem;
+        }
+
+        .panduan-box .contoh-benar {
+            background: #fff;
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid #a5d6a7;
+        }
+
+        .panduan-box .contoh-salah {
+            background: #fff3cd;
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid #ffc107;
+        }
+
+        .panduan-box ul {
+            margin-left: 1.2rem;
+            margin-top: 4px;
+        }
+
+        .panduan-box ul li {
+            margin-bottom: 2px;
+        }
+
         .modal {
             display: none;
             position: fixed;
@@ -410,12 +579,8 @@
         }
 
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .modal-box {
@@ -430,14 +595,8 @@
         }
 
         @keyframes slideDown {
-            from {
-                transform: translateY(-40px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
+            from { transform: translateY(-40px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
         .modal-icon {
@@ -508,39 +667,6 @@
             background: #5a6268;
         }
 
-        /* ===== PANDUAN ===== */
-        .panduan-box {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-top: 6px;
-            font-size: 0.9rem;
-        }
-
-        .panduan-box .contoh-benar {
-            background: #fff;
-            padding: 8px 12px;
-            border-radius: 8px;
-            border: 1px solid #a5d6a7;
-        }
-
-        .panduan-box .contoh-salah {
-            background: #fff3cd;
-            padding: 8px 12px;
-            border-radius: 8px;
-            border: 1px solid #ffc107;
-        }
-
-        .panduan-box ul {
-            margin-left: 1.2rem;
-            margin-top: 4px;
-        }
-
-        .panduan-box ul li {
-            margin-bottom: 2px;
-        }
-
-        /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             .container {
                 padding: 0 0.8rem;
@@ -583,6 +709,14 @@
             .panduan-box {
                 grid-template-columns: 1fr;
             }
+            .tp-card .tp-item {
+                flex-wrap: wrap;
+            }
+            .emoji-group label {
+                font-size: 1.5rem;
+                min-width: 36px;
+                padding: 2px 4px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -592,14 +726,26 @@
             table {
                 font-size: 0.85rem;
             }
-            th,
-            td {
+            th, td {
                 padding: 6px 8px;
             }
             .dynamic-textarea {
                 font-size: 0.85rem;
                 min-height: 36px;
                 padding: 6px 8px;
+            }
+            .tp-card {
+                padding: 0.8rem 1rem;
+            }
+            .tp-card .tp-item {
+                font-size: 0.85rem;
+            }
+            .emoji-group label {
+                font-size: 1.3rem;
+                min-width: 32px;
+            }
+            .emoji-group label .emoji-label {
+                font-size: 0.5rem;
             }
         }
     </style>
@@ -643,12 +789,29 @@
             <p style="color:var(--text-light); font-size:0.95rem; max-width:600px; margin:0 auto;">
                 Ayo amati, tebak, buktikan, dan hubungkan dengan jurusanmu!
             </p>
-            <ul style="color: var(--text-light); font-size: 0.95rem; max-width: 900px; margin: 0 auto; text-align: left; list-style-position: inside;">
-                <li>TP 1.1 Menjelaskan pengetahuan ilmiah yang berkaitan dengan fenomena alam dan sosial di lingkungan sekitar</li>
-                <li>TP 1.2 Membuat prediksi sederhana terhadap fenomena alam dan sosial berdasarkan pola ilmiah</li>
-                <li>TP 1.3 Melakukan pembuktian sederhana terhadap prediksi yang telah dibuat</li>
-                <li>TP 1.4 Mengaitkan fenomena alam dan sosial dengan keterampilan teknis pada bidang keahliannya</li>
-            </ul>
+        </div>
+
+        <!-- ===== TP CARD ===== -->
+        <div class="tp-card">
+            <div style="font-weight:700; color:var(--primary-dark); margin-bottom:6px; font-size:1.1rem;">
+                <i class="fas fa-bullseye"></i> Tujuan Pembelajaran
+            </div>
+            <div class="tp-item">
+                <span class="tp-code">TP 1.1</span>
+                <span class="tp-desc">Menjelaskan pengetahuan ilmiah yang berkaitan dengan fenomena alam dan sosial di lingkungan sekitar</span>
+            </div>
+            <div class="tp-item">
+                <span class="tp-code">TP 1.2</span>
+                <span class="tp-desc">Membuat prediksi sederhana terhadap fenomena alam dan sosial berdasarkan pola ilmiah</span>
+            </div>
+            <div class="tp-item">
+                <span class="tp-code">TP 1.3</span>
+                <span class="tp-desc">Melakukan pembuktian sederhana terhadap prediksi yang telah dibuat</span>
+            </div>
+            <div class="tp-item">
+                <span class="tp-code">TP 1.4</span>
+                <span class="tp-desc">Mengaitkan fenomena alam dan sosial dengan keterampilan teknis pada bidang keahliannya</span>
+            </div>
         </div>
 
         <!-- STATUS -->
@@ -684,7 +847,7 @@
             <!-- A. IDENTITAS -->
             <!-- ============================================================ -->
             <div class="card">
-                <h2 class="section-title"><i class="fas fa-id-card"></i> Identitas</h2>
+                <h2 class="section-title"><i class="fas fa-id-card"></i> A. Identitas</h2>
                 <div class="identitas-grid">
                     <div class="identitas-item">
                         <label>Kelas</label>
@@ -713,7 +876,7 @@
             <!-- B. SEBELUM MULAI (Literasi) -->
             <!-- ============================================================ -->
             <div class="card">
-                <h2 class="section-title"><i class="fas fa-book-open"></i> Sebelum Mulai...</h2>
+                <h2 class="section-title"><i class="fas fa-book-open"></i> B. Sebelum Mulai...</h2>
                 <div class="section-desc">
                     <i class="fas fa-info-circle"></i>
                     Baca dulu materi
@@ -721,6 +884,12 @@
                         "Energi dan Perubahannya"
                     </a>
                     , lalu jawab pertanyaan di bawah ini dengan bahasamu sendiri.
+                </div>
+
+                <div class="dokumentasi-instruction">
+                    <i class="fas fa-camera"></i>
+                    <strong>📸 Instruksi Dokumentasi:</strong> 
+                    Screenshot halaman materi yang sudah kamu baca → Upload ke Google Drive → Tempel link folder di bawah (kolom Link Dokumentasi di bagian D).
                 </div>
 
                 <div class="table-wrap">
@@ -757,11 +926,11 @@
             <!-- C. YUK, AMATI ENERGI DI SEKITAR! (Observasi) -->
             <!-- ============================================================ -->
             <div class="card">
-                <h2 class="section-title"><i class="fas fa-binoculars"></i> Yuk, Amati Energi di Sekitar!</h2>
+                <h2 class="section-title"><i class="fas fa-binoculars"></i> C. Yuk, Amati Energi di Sekitar!</h2>
 
                 <!-- PANDUAN -->
-                <div class="section-desc" style="background:#e8f5e9; border-left-color:#2e7d32;">
-                    <i class="fas fa-lightbulb" style="color:#2e7d32;"></i>
+                <div class="section-desc" style="background:#fef9e7; border-left-color:#e67e22;">
+                    <i class="fas fa-lightbulb" style="color:#e67e22;"></i>
                     <strong>Apa yang harus kamu lakukan?</strong>
                     <p style="margin:6px 0 4px 0;">Amati 3 peristiwa perubahan energi di sekitarmu. Catat energi awal → akhir, sumber, dan manfaatnya!</p>
                     <div class="panduan-box">
@@ -782,10 +951,21 @@
                             </ul>
                         </div>
                     </div>
-                    <p style="margin-top:6px; font-size:0.9rem; color:#2e7d32;">
+                    <p style="margin-top:6px; font-size:0.9rem; color:#e67e22;">
                         <i class="fas fa-arrow-right"></i>
                         <strong>Tips:</strong> Tuliskan <u>perubahan energi</u> yang terjadi, bukan hanya nama bendanya!
                     </p>
+                </div>
+
+                <div class="dokumentasi-instruction">
+                    <i class="fas fa-video"></i>
+                    <strong>📸 Instruksi Dokumentasi:</strong> 
+                    Ambil <strong>foto atau video</strong> saat kamu mengamati peristiwa perubahan energi di sekitarmu.
+                    Upload semua dokumentasi ke Google Drive → Tempel link folder di bawah.
+                    <div class="contoh-dok">
+                        <i class="fas fa-lightbulb" style="color:#f39c12;"></i>
+                        <strong>Contoh:</strong> Foto lampu yang menyala, video kipas angin yang berputar, atau foto alat elektronik yang digunakan.
+                    </div>
                 </div>
 
                 <div class="table-wrap">
@@ -807,6 +987,13 @@
                 <div style="margin-top:8px; display:flex; gap:8px; flex-wrap:wrap;">
                     <button class="btn-row btn-add" onclick="tambahEnergi()"><i class="fas fa-plus"></i> Tambah</button>
                     <button class="btn-row btn-remove" id="hapusEnergiBtn" onclick="hapusEnergi()" disabled><i class="fas fa-minus"></i> Hapus</button>
+                </div>
+
+                <!-- ===== LINK DOKUMENTASI OBSERVASI - BAGIAN C ===== -->
+                <div class="folder-link-box">
+                    <span class="label-link"><i class="fas fa-folder-open"></i> 📁 Link Dokumentasi (Foto/Video) - Bagian C</span>
+                    <div class="sub-text">Tempel link folder dokumentasi hasil observasi energi:</div>
+                    <input type="text" class="dynamic-textarea dynamic-textarea-sm" id="link_screenshot_c" placeholder="https://drive.google.com/drive/folders/xxx" oninput="saveDraft(); autoResize(this);">
                 </div>
 
                 <!-- PILIH & PREDIKSI -->
@@ -831,10 +1018,22 @@
             <!-- D. BUKTIKAN! (Pembuktian) -->
             <!-- ============================================================ -->
             <div class="card">
-                <h2 class="section-title"><i class="fas fa-flask"></i> Buktikan!</h2>
+                <h2 class="section-title"><i class="fas fa-flask"></i> D. Buktikan!</h2>
                 <div class="section-desc">
                     <i class="fas fa-vial"></i>
                     <strong>Uji prediksimu!</strong> Rancang dan lakukan pembuktian sederhana. Gunakan apa yang ada di sekitarmu!
+                </div>
+
+                <div class="dokumentasi-instruction">
+                    <i class="fas fa-video"></i>
+                    <strong>📸 Instruksi Dokumentasi:</strong> 
+                    Ambil <strong>foto atau video</strong> saat kamu melakukan pembuktian/eksperimen. 
+                    Dokumentasikan setiap tahapan (persiapan, proses, hasil).
+                    Upload semua dokumentasi ke Google Drive → Tempel link folder di bawah.
+                    <div class="contoh-dok">
+                        <i class="fas fa-lightbulb" style="color:#f39c12;"></i>
+                        <strong>Contoh:</strong> Foto alat dan bahan, video proses pembuktian, foto hasil akhir.
+                    </div>
                 </div>
 
                 <!-- Prediksi yang akan dibuktikan -->
@@ -900,12 +1099,12 @@
                 <!-- ===== LINK DOKUMENTASI GOOGLE DRIVE ===== -->
                 <div style="margin-bottom:1.5rem; background:#e3f2fd; padding:1rem 1.5rem; border-radius:12px; border-left:5px solid #1976d2;">
                     <label style="font-weight:600; display:block; margin-bottom:4px; font-size:1rem;">
-                        📁 Link Dokumentasi (Google Drive)
+                        📁 Link Dokumentasi (Google Drive) - Kumpulkan Semua Dokumentasi di Sini
                     </label>
                     <div style="margin-bottom:6px; font-size:0.9rem; color:#555; background:#fff; padding:6px 12px; border-radius:6px;">
                         <strong>💡 Panduan:</strong>
                         <ul style="margin-left:1.5rem; margin-top:2px;">
-                            <li>Kumpulkan foto/video hasil observasi dan pembuktian kalian.</li>
+                            <li>Kumpulkan semua dokumentasi (screenshot materi, foto/video observasi, foto/video pembuktian).</li>
                             <li>Upload semua dokumentasi ke <strong>Google Drive</strong> dalam satu folder.</li>
                             <li>Klik kanan folder → <strong>"Bagikan"</strong> → ubah akses menjadi <strong>"Siapa saja dengan link dapat melihat"</strong>.</li>
                             <li>Salin link folder dan tempel di kolom di bawah ini.</li>
@@ -945,7 +1144,7 @@
             <!-- E. HUBUNGKAN DENGAN JURUSANMU -->
             <!-- ============================================================ -->
             <div class="card">
-                <h2 class="section-title"><i class="fas fa-briefcase"></i> Hubungkan dengan Jurusanmu</h2>
+                <h2 class="section-title"><i class="fas fa-briefcase"></i> E. Hubungkan dengan Jurusanmu</h2>
 
                 <div class="section-desc" style="background:#fff3e0; border-left-color:#e65100;">
                     <i class="fas fa-lightbulb" style="color:#e65100;"></i>
@@ -1035,7 +1234,7 @@
             <!-- F. REFLEKSI -->
             <!-- ============================================================ -->
             <div class="card">
-                <h2 class="section-title"><i class="fas fa-smile"></i> Refleksi</h2>
+                <h2 class="section-title"><i class="fas fa-smile"></i> F. Refleksi</h2>
                 <div class="section-desc">
                     <i class="fas fa-comment"></i>
                     Tulis dengan jujur, ya! Tidak ada jawaban benar atau salah.
@@ -1056,48 +1255,151 @@
             </div>
 
             <!-- ============================================================ -->
-            <!-- G. NILAI DIRI KELOMPOK -->
+            <!-- G. REFLEKSI KELOMPOK (EMOJI + CERITA) -->
             <!-- ============================================================ -->
             <div class="card">
-                <h2 class="section-title"><i class="fas fa-star"></i> Nilai Diri Kelompok</h2>
+                <h2 class="section-title"><i class="fas fa-star"></i> G. Refleksi Kelompok</h2>
                 <div class="section-desc">
                     <i class="fas fa-hand-peace"></i>
-                    Berikan nilai untuk kelompokmu (1 = Kurang, 4 = Sangat Baik)!
+                    Pilih emoji yang paling menggambarkan kelompokmu! Lalu tulis cerita singkatnya.
                 </div>
 
-                <div class="table-wrap">
-                    <table>
-                        <thead><tr><th style="width:40px;">No</th><th>Aspek</th><th style="width:130px;">Nilai (1-4)</th></tr></thead>
-                        <tbody>
-                            <tr><td>1</td><td>Semua anggota ikut observasi</td><td>
-                                    <select id="nilai1" onchange="saveDraft();" style="width:100%; padding:6px 8px; border:2px solid #e8e8e8; border-radius:8px; font-size:0.9rem;">
-                                        <option value="">--</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3" selected>3</option>
-                                        <option value="4">4</option>
-                                    </select>
-                            </td></tr>
-                            <tr><td>2</td><td>Semua anggota ikut diskusi</td><td>
-                                    <select id="nilai2" onchange="saveDraft();" style="width:100%; padding:6px 8px; border:2px solid #e8e8e8; border-radius:8px; font-size:0.9rem;">
-                                        <option value="">--</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3" selected>3</option>
-                                        <option value="4">4</option>
-                                    </select>
-                            </td></tr>
-                            <tr><td>3</td><td>Selesai tepat waktu</td><td>
-                                    <select id="nilai3" onchange="saveDraft();" style="width:100%; padding:6px 8px; border:2px solid #e8e8e8; border-radius:8px; font-size:0.9rem;">
-                                        <option value="">--</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3" selected>3</option>
-                                        <option value="4">4</option>
-                                    </select>
-                            </td></tr>
-                        </tbody>
-                    </table>
+                <div class="emoji-grid">
+                    <!-- 1. Kerjasama -->
+                    <div class="emoji-card">
+                        <div class="emoji-title">🤝 Kerjasama</div>
+                        <div class="emoji-group">
+                            <label>
+                                <input type="radio" name="g_kerjasama" value="5" onchange="saveDraft();">
+                                😊
+                                <span class="emoji-label">Sangat Baik</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kerjasama" value="4" onchange="saveDraft();">
+                                🙂
+                                <span class="emoji-label">Baik</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kerjasama" value="3" onchange="saveDraft();" checked>
+                                😐
+                                <span class="emoji-label">Cukup</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kerjasama" value="2" onchange="saveDraft();">
+                                😕
+                                <span class="emoji-label">Kurang</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kerjasama" value="1" onchange="saveDraft();">
+                                😞
+                                <span class="emoji-label">Perlu Perbaikan</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- 2. Kontribusi -->
+                    <div class="emoji-card">
+                        <div class="emoji-title">📊 Kontribusi</div>
+                        <div class="emoji-group">
+                            <label>
+                                <input type="radio" name="g_kontribusi" value="5" onchange="saveDraft();">
+                                😊
+                                <span class="emoji-label">Sangat Baik</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kontribusi" value="4" onchange="saveDraft();">
+                                🙂
+                                <span class="emoji-label">Baik</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kontribusi" value="3" onchange="saveDraft();" checked>
+                                😐
+                                <span class="emoji-label">Cukup</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kontribusi" value="2" onchange="saveDraft();">
+                                😕
+                                <span class="emoji-label">Kurang</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kontribusi" value="1" onchange="saveDraft();">
+                                😞
+                                <span class="emoji-label">Perlu Perbaikan</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- 3. Tepat Waktu -->
+                    <div class="emoji-card">
+                        <div class="emoji-title">⏰ Tepat Waktu</div>
+                        <div class="emoji-group">
+                            <label>
+                                <input type="radio" name="g_waktu" value="5" onchange="saveDraft();">
+                                😊
+                                <span class="emoji-label">Sangat Baik</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_waktu" value="4" onchange="saveDraft();">
+                                🙂
+                                <span class="emoji-label">Baik</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_waktu" value="3" onchange="saveDraft();" checked>
+                                😐
+                                <span class="emoji-label">Cukup</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_waktu" value="2" onchange="saveDraft();">
+                                😕
+                                <span class="emoji-label">Kurang</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_waktu" value="1" onchange="saveDraft();">
+                                😞
+                                <span class="emoji-label">Perlu Perbaikan</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- 4. Kualitas Hasil -->
+                    <div class="emoji-card">
+                        <div class="emoji-title">💡 Kualitas Hasil</div>
+                        <div class="emoji-group">
+                            <label>
+                                <input type="radio" name="g_kualitas" value="5" onchange="saveDraft();">
+                                😊
+                                <span class="emoji-label">Sangat Baik</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kualitas" value="4" onchange="saveDraft();">
+                                🙂
+                                <span class="emoji-label">Baik</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kualitas" value="3" onchange="saveDraft();" checked>
+                                😐
+                                <span class="emoji-label">Cukup</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kualitas" value="2" onchange="saveDraft();">
+                                😕
+                                <span class="emoji-label">Kurang</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kualitas" value="1" onchange="saveDraft();">
+                                😞
+                                <span class="emoji-label">Perlu Perbaikan</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cerita Kelompok -->
+                <div style="margin-top:0.8rem;">
+                    <label style="font-weight:600; display:block; margin-bottom:4px;">
+                        📝 Ceritakan pengalaman kerjamu dalam kelompok ini (1-2 kalimat):
+                    </label>
+                    <textarea class="dynamic-textarea" id="refleksiCerita" rows="2" placeholder="Contoh: Kami bekerja sama dengan baik, semua saling membantu menyelesaikan tugas..." oninput="saveDraft(); autoResize(this);"></textarea>
                 </div>
             </div>
 
@@ -1162,7 +1464,7 @@
         // ================================================================
         const URL_DATA_SISWA = 'https://script.google.com/macros/s/AKfycbxZMS_o6xWMAQAkjBzzEMR9tJmHOnHCX13KJX2xZMn7WIr-A9pwVK_3DDHnMg7y_rD29Q/exec';
         const URL_PEREKAPAN = 'https://script.google.com/macros/s/AKfycbxyGnBMWRIQKRtHa3ogqvT_66Tt3gTEcxZ7dsPPnob3tsVU9IuPWTEpxWH7mGX7YPZj/exec';
-        const STORAGE_KEY = 'ipas_aktivitas4_draft_v3';
+        const STORAGE_KEY = 'ipas_aktivitas4_draft_v5';
         const AKTIVITAS_NAMA = 'AKTIVITAS 4 - EKSPLORASI ENERGI';
         const SHEET_NAME = 'data_aktivitas';
 
@@ -1538,72 +1840,74 @@
         // ================================================================
         // TIMESTAMP
         // ================================================================
-        function getTimestamp() {
+        function getFormattedTimestamp() {
             const now = new Date();
-            const d = String(now.getDate()).padStart(2, '0');
-            const m = String(now.getMonth() + 1).padStart(2, '0');
-            const y = now.getFullYear();
-            const h = String(now.getHours()).padStart(2, '0');
-            const min = String(now.getMinutes()).padStart(2, '0');
-            const s = String(now.getSeconds()).padStart(2, '0');
-            return `${d}/${m}/${y} ${h}:${min}:${s}`;
+            const hari = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+            const bulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+                'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+            ];
+
+            const hariName = hari[now.getDay()];
+            const tanggal = String(now.getDate()).padStart(2, '0');
+            const bulanName = bulan[now.getMonth()];
+            const tahun = now.getFullYear();
+            const jam = String(now.getHours()).padStart(2, '0');
+            const menit = String(now.getMinutes()).padStart(2, '0');
+            const detik = String(now.getSeconds()).padStart(2, '0');
+
+            return `${hariName}, ${tanggal} ${bulanName} ${tahun} - ${jam}:${menit}:${detik}`;
         }
 
         // ================================================================
-        // DRAFT - SAVE & LOAD
+        // DRAFT - SAVE & LOAD (LOCALSTORAGE)
         // ================================================================
         function saveDraft() {
             if (!isOnline) return;
             clearTimeout(autoSaveTimer);
             autoSaveTimer = setTimeout(() => {
                 const data = collectData();
-                localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+                try {
+                    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+                } catch (e) {
+                    console.warn('Gagal menyimpan draft:', e);
+                }
             }, 800);
         }
 
         function loadDraft() {
-            const raw = localStorage.getItem(STORAGE_KEY);
-            if (raw) {
-                try {
+            try {
+                const raw = localStorage.getItem(STORAGE_KEY);
+                if (raw) {
                     const data = JSON.parse(raw);
                     restoreData(data);
-                } catch (e) {
-                    console.warn('Gagal load draft:', e);
                 }
+            } catch (e) {
+                console.warn('Gagal load draft:', e);
             }
             refreshAutoResize();
         }
 
         function clearDraft() {
-            localStorage.removeItem(STORAGE_KEY);
+            try {
+                localStorage.removeItem(STORAGE_KEY);
+            } catch (e) {
+                console.warn('Gagal hapus draft:', e);
+            }
         }
 
         // ================================================================
-        // COLLECT DATA
+        // COLLECT DATA - STRUKTUR JSON KONSISTEN
         // ================================================================
         function collectData() {
-            const data = { timestamp: getTimestamp() };
+            const timestamp = getFormattedTimestamp();
 
-            data.identitas = {
-                "Kelas": document.getElementById('kelas').value || '',
-                "Nama": document.getElementById('nama').value || '',
-                "Kelompok": document.getElementById('kelompok').value || '',
-                "Tugas/Peran": document.getElementById('tugas').value || ''
-            };
-
-            data.literasi = {
-                "Apa itu energi?": document.getElementById('lit1').value || '',
-                "Sebutkan 3 bentuk energi - contoh 1": document.getElementById('lit2a').value || '',
-                "Sebutkan 3 bentuk energi - contoh 2": document.getElementById('lit2b').value || '',
-                "Sebutkan 3 bentuk energi - contoh 3": document.getElementById('lit2c').value || '',
-                "Jelaskan Hukum Kekekalan Energi": document.getElementById('lit3').value || ''
-            };
-
-            data.observasi = [];
-            document.querySelectorAll('#energiBody tr').forEach(row => {
+            // Collect observasi data
+            const observasiData = [];
+            document.querySelectorAll('#energiBody tr').forEach((row, idx) => {
                 const inputs = row.querySelectorAll('textarea');
                 if (inputs.length >= 4) {
-                    data.observasi.push({
+                    observasiData.push({
+                        "No": idx + 1,
                         "Peristiwa": inputs[0].value || '',
                         "Energi Awal → Akhir": inputs[1].value || '',
                         "Sumber Energi": inputs[2].value || '',
@@ -1612,141 +1916,238 @@
                 }
             });
 
-            data.prediksi = {
-                "Peristiwa pilihan saya": document.getElementById('predPilihan').value || '',
-                "Menurut saya, jika diamati lebih lama, yang akan terjadi adalah...": document.getElementById('predHasil')
-                    .value || '',
-                "Saya berpendapat demikian karena...": document.getElementById('predAlasan').value || ''
-            };
-
-            const langkah = [];
-            document.querySelectorAll('#langkahContainer div textarea').forEach(inp => {
-                if (inp.value) langkah.push(inp.value);
+            // Collect langkah data
+            const langkahData = [];
+            document.querySelectorAll('#langkahContainer div textarea').forEach((inp, idx) => {
+                if (inp.value) {
+                    langkahData.push({ "No": idx + 1, "Langkah": inp.value });
+                }
             });
+            if (langkahData.length === 0) {
+                langkahData.push({ "No": 1, "Langkah": "" });
+            }
 
-            const alat = [];
+            // Collect alat data
+            const alatData = [];
             document.querySelectorAll('#alatBody tr').forEach(row => {
                 const inputs = row.querySelectorAll('textarea');
                 if (inputs.length >= 3) {
-                    alat.push({
+                    alatData.push({
                         "Nama Alat/Bahan": inputs[0].value || '',
                         "Jumlah": inputs[1].value || '',
                         "Kegunaan": inputs[2].value || ''
                     });
                 }
             });
+            if (alatData.length === 0) {
+                alatData.push({ "Nama Alat/Bahan": "", "Jumlah": "", "Kegunaan": "" });
+                alatData.push({ "Nama Alat/Bahan": "", "Jumlah": "", "Kegunaan": "" });
+            }
 
-            const hasil = [];
+            // Collect hasil data
+            const hasilData = [];
             document.querySelectorAll('#hasilBody tr').forEach(row => {
                 const inputs = row.querySelectorAll('textarea');
                 if (inputs.length >= 2) {
-                    hasil.push({
+                    hasilData.push({
                         "Waktu": inputs[0].value || '',
                         "Yang Terjadi": inputs[1].value || ''
                     });
                 }
             });
+            if (hasilData.length === 0) {
+                hasilData.push({ "Waktu": "", "Yang Terjadi": "" });
+            }
 
-            data.pembuktian = {
-                "Prediksi yang akan dibuktikan": document.getElementById('buktiPrediksi').value || '',
-                "Rencana pembuktian": document.getElementById('buktiRencana').value || '',
-                "Langkah-langkah": langkah,
-                "Alat dan Bahan": alat,
-                "Hasil pengamatan": hasil,
-                "Link Dokumentasi (Google Drive)": document.getElementById('linkDokumentasi').value || '',
-                "Apakah hasilnya sesuai prediksi?": document.querySelector('input[name="kesesuaian"]:checked')?.value || '',
-                "Penjelasan": document.getElementById('buktiPenjelasan').value || '',
-                "Kesimpulan": document.getElementById('buktiKesimpulan').value || ''
+            // Get emoji values
+            const getEmojiValue = (name) => {
+                const el = document.querySelector(`input[name="${name}"]:checked`);
+                return el ? el.value : '3';
             };
 
-            data["hubungan dengan jurusan"] = {
-                "Program Keahlian": document.querySelector('input[name="jurusan"]:checked')?.value || '',
-                "Program Keahlian (lainnya)": document.getElementById('jurusanLain').value || '',
-                "Sumber energi yang digunakan": document.getElementById('hubSumber').value || '',
-                "Peralatan yang membutuhkan energi": document.getElementById('hubAlat').value || '',
-                "Proses produksi yang memerlukan energi": document.getElementById('hubProses').value || '',
-                "Produk/jasa yang dihasilkan": document.getElementById('hubProduk').value || '',
-                "Masalah pemborosan energi": document.getElementById('solusiMasalah').value || '',
-                "Ide hemat energi": document.getElementById('solusiIde').value || '',
-                "Potensi energi terbarukan": document.getElementById('solusiTerbarukan').value || ''
+            return {
+                "Timestamp Pengisian": timestamp,
+                "A. Identitas Kelompok": [
+                    ["Field", "Nilai"],
+                    ["Kelas", document.getElementById('kelas').value || ''],
+                    ["Nama", document.getElementById('nama').value || ''],
+                    ["Kelompok", document.getElementById('kelompok').value || ''],
+                    ["Tugas/Peran", document.getElementById('tugas').value || '']
+                ],
+                "B. Literasi Energi": [
+                    ["Pertanyaan", "Jawaban"],
+                    ["Apa itu energi?", document.getElementById('lit1').value || ''],
+                    ["Bentuk energi 1", document.getElementById('lit2a').value || ''],
+                    ["Bentuk energi 2", document.getElementById('lit2b').value || ''],
+                    ["Bentuk energi 3", document.getElementById('lit2c').value || ''],
+                    ["Hukum Kekekalan Energi", document.getElementById('lit3').value || '']
+                ],
+                "C. Observasi Energi": {
+                    "Tabel Observasi": observasiData,
+                    "Prediksi": {
+                        "Peristiwa pilihan": document.getElementById('predPilihan').value || '',
+                        "Prediksi hasil": document.getElementById('predHasil').value || '',
+                        "Alasan": document.getElementById('predAlasan').value || ''
+                    },
+                    "Link Dokumentasi": document.getElementById('link_screenshot_c').value || ''
+                },
+                "D. Pembuktian": {
+                    "Rencana": [
+                        ["Pertanyaan", "Jawaban"],
+                        ["Prediksi yang dibuktikan", document.getElementById('buktiPrediksi').value || ''],
+                        ["Rencana pembuktian", document.getElementById('buktiRencana').value || ''],
+                        ["Kesesuaian hasil", document.querySelector('input[name="kesesuaian"]:checked')?.value || ''],
+                        ["Penjelasan", document.getElementById('buktiPenjelasan').value || ''],
+                        ["Kesimpulan", document.getElementById('buktiKesimpulan').value || '']
+                    ],
+                    "Langkah-langkah": langkahData,
+                    "Alat dan Bahan": alatData,
+                    "Hasil Pengamatan": hasilData,
+                    "Link Dokumentasi": document.getElementById('linkDokumentasi').value || ''
+                },
+                "E. Hubungan dengan Jurusan": [
+                    ["Aspek", "Jawaban"],
+                    ["Program Keahlian", document.querySelector('input[name="jurusan"]:checked')?.value || ''],
+                    ["Program Keahlian (lainnya)", document.getElementById('jurusanLain').value || ''],
+                    ["Sumber energi", document.getElementById('hubSumber').value || ''],
+                    ["Peralatan berenergi", document.getElementById('hubAlat').value || ''],
+                    ["Proses produksi", document.getElementById('hubProses').value || ''],
+                    ["Produk/jasa", document.getElementById('hubProduk').value || ''],
+                    ["Masalah pemborosan", document.getElementById('solusiMasalah').value || ''],
+                    ["Ide hemat energi", document.getElementById('solusiIde').value || ''],
+                    ["Potensi terbarukan", document.getElementById('solusiTerbarukan').value || '']
+                ],
+                "F. Refleksi": [
+                    ["Pertanyaan", "Jawaban"],
+                    ["Hal paling menarik", document.getElementById('ref1').value || ''],
+                    ["Kebiasaan boros", document.getElementById('ref2').value || ''],
+                    ["Rencana hemat", document.getElementById('ref3').value || '']
+                ],
+                "G. Refleksi Kelompok (Emoji)": [
+                    ["Aspek", "Nilai"],
+                    ["Kerjasama", getEmojiValue('g_kerjasama')],
+                    ["Kontribusi", getEmojiValue('g_kontribusi')],
+                    ["Tepat Waktu", getEmojiValue('g_waktu')],
+                    ["Kualitas Hasil", getEmojiValue('g_kualitas')],
+                    ["Cerita Kelompok", document.getElementById('refleksiCerita').value || '']
+                ]
             };
-
-            data.refleksi = {
-                "1 hal paling menarik tentang energi": document.getElementById('ref1').value || '',
-                "1 kebiasaan boros energi yang saya sadari": document.getElementById('ref2').value || '',
-                "1 rencana hemat energi yang akan saya mulai": document.getElementById('ref3').value || ''
-            };
-
-            data["nilai diri kelompok"] = {
-                "Semua anggota ikut observasi": document.getElementById('nilai1').value || '3',
-                "Semua anggota ikut diskusi": document.getElementById('nilai2').value || '3',
-                "Selesai tepat waktu": document.getElementById('nilai3').value || '3'
-            };
-
-            return data;
         }
 
         // ================================================================
-        // RESTORE DATA
+        // RESTORE DATA - DARI LOCALSTORAGE
         // ================================================================
         function restoreData(data) {
             if (!data) return;
 
-            if (data.identitas) {
+            // A. Identitas (Array 2D)
+            if (data["A. Identitas Kelompok"] && Array.isArray(data["A. Identitas Kelompok"])) {
+                const identitasArray = data["A. Identitas Kelompok"];
+                let kelasValue = '', namaValue = '', kelompokValue = '', tugasValue = '';
+                
+                identitasArray.forEach(item => {
+                    if (Array.isArray(item) && item.length === 2) {
+                        const field = item[0];
+                        const value = item[1] || '';
+                        if (field === "Kelas") kelasValue = value;
+                        else if (field === "Nama") namaValue = value;
+                        else if (field === "Kelompok") kelompokValue = value;
+                        else if (field === "Tugas/Peran") tugasValue = value;
+                    }
+                });
+                
                 const sel = document.getElementById('kelas');
                 for (let opt of sel.options) {
-                    if (opt.value === data.identitas["Kelas"]) { opt.selected = true; break; }
+                    if (opt.value === kelasValue) { opt.selected = true; break; }
                 }
                 updateNama();
+                
                 const selNama = document.getElementById('nama');
                 for (let opt of selNama.options) {
-                    if (opt.value === data.identitas["Nama"]) { opt.selected = true; break; }
+                    if (opt.value === namaValue) { opt.selected = true; break; }
                 }
-                document.getElementById('kelompok').value = data.identitas["Kelompok"] || '';
-                document.getElementById('tugas').value = data.identitas["Tugas/Peran"] || '';
+                document.getElementById('kelompok').value = kelompokValue;
+                document.getElementById('tugas').value = tugasValue;
             }
 
-            if (data.literasi) {
-                document.getElementById('lit1').value = data.literasi["Apa itu energi?"] || '';
-                document.getElementById('lit2a').value = data.literasi["Sebutkan 3 bentuk energi - contoh 1"] || '';
-                document.getElementById('lit2b').value = data.literasi["Sebutkan 3 bentuk energi - contoh 2"] || '';
-                document.getElementById('lit2c').value = data.literasi["Sebutkan 3 bentuk energi - contoh 3"] || '';
-                document.getElementById('lit3').value = data.literasi["Jelaskan Hukum Kekekalan Energi"] || '';
-            }
-
-            if (data.observasi && data.observasi.length > 0) {
-                const body = document.getElementById('energiBody');
-                body.innerHTML = '';
-                data.observasi.forEach((item, i) => {
-                    const num = i + 1;
-                    body.innerHTML += `
-                        <tr>
-                            <td>${num}</td>
-                            <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="energi_${num}_nama" rows="1" placeholder="Contoh: Lampu menyala" oninput="saveDraft(); autoResize(this);">${item["Peristiwa"] || ''}</textarea></td>
-                            <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="energi_${num}_ubah" rows="1" placeholder="Contoh: Listrik → Cahaya+Panas" oninput="saveDraft(); autoResize(this);">${item["Energi Awal → Akhir"] || ''}</textarea></td>
-                            <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="energi_${num}_sumber" rows="1" placeholder="Contoh: PLN" oninput="saveDraft(); autoResize(this);">${item["Sumber Energi"] || ''}</textarea></td>
-                            <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="energi_${num}_manfaat" rows="1" placeholder="Contoh: Penerangan" oninput="saveDraft(); autoResize(this);">${item["Manfaat"] || ''}</textarea></td>
-                        </tr>
-                    `;
+            // B. Literasi (Array 2D)
+            if (data["B. Literasi Energi"] && Array.isArray(data["B. Literasi Energi"])) {
+                const lit = data["B. Literasi Energi"];
+                lit.forEach(item => {
+                    if (Array.isArray(item) && item.length === 2) {
+                        const pertanyaan = item[0];
+                        const jawaban = item[1] || '';
+                        if (pertanyaan === "Apa itu energi?") document.getElementById('lit1').value = jawaban;
+                        else if (pertanyaan === "Bentuk energi 1") document.getElementById('lit2a').value = jawaban;
+                        else if (pertanyaan === "Bentuk energi 2") document.getElementById('lit2b').value = jawaban;
+                        else if (pertanyaan === "Bentuk energi 3") document.getElementById('lit2c').value = jawaban;
+                        else if (pertanyaan === "Hukum Kekekalan Energi") document.getElementById('lit3').value = jawaban;
+                    }
                 });
-                updateHapus('energi');
             }
 
-            if (data.prediksi) {
-                document.getElementById('predPilihan').value = data.prediksi["Peristiwa pilihan saya"] || '';
-                document.getElementById('predHasil').value = data.prediksi[
-                    "Menurut saya, jika diamati lebih lama, yang akan terjadi adalah..."] || '';
-                document.getElementById('predAlasan').value = data.prediksi["Saya berpendapat demikian karena..."] || '';
+            // C. Observasi
+            if (data["C. Observasi Energi"]) {
+                const obs = data["C. Observasi Energi"];
+                if (obs["Tabel Observasi"] && obs["Tabel Observasi"].length > 0) {
+                    const body = document.getElementById('energiBody');
+                    body.innerHTML = '';
+                    obs["Tabel Observasi"].forEach((item, i) => {
+                        const num = i + 1;
+                        body.innerHTML += `
+                            <tr>
+                                <td>${num}</td>
+                                <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="energi_${num}_nama" rows="1" placeholder="Contoh: Lampu menyala" oninput="saveDraft(); autoResize(this);">${item["Peristiwa"] || ''}</textarea></td>
+                                <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="energi_${num}_ubah" rows="1" placeholder="Contoh: Listrik → Cahaya+Panas" oninput="saveDraft(); autoResize(this);">${item["Energi Awal → Akhir"] || ''}</textarea></td>
+                                <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="energi_${num}_sumber" rows="1" placeholder="Contoh: PLN" oninput="saveDraft(); autoResize(this);">${item["Sumber Energi"] || ''}</textarea></td>
+                                <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="energi_${num}_manfaat" rows="1" placeholder="Contoh: Penerangan" oninput="saveDraft(); autoResize(this);">${item["Manfaat"] || ''}</textarea></td>
+                            </tr>
+                        `;
+                    });
+                    updateHapus('energi');
+                }
+                if (obs["Prediksi"]) {
+                    const pred = obs["Prediksi"];
+                    document.getElementById('predPilihan').value = pred["Peristiwa pilihan"] || '';
+                    document.getElementById('predHasil').value = pred["Prediksi hasil"] || '';
+                    document.getElementById('predAlasan').value = pred["Alasan"] || '';
+                }
+                // Link Dokumentasi Observasi
+                if (obs["Link Dokumentasi"]) {
+                    document.getElementById('link_screenshot_c').value = obs["Link Dokumentasi"] || '';
+                }
             }
 
-            if (data.pembuktian) {
-                const p = data.pembuktian;
-                document.getElementById('buktiPrediksi').value = p["Prediksi yang akan dibuktikan"] || '';
-                document.getElementById('buktiRencana').value = p["Rencana pembuktian"] || '';
-                document.getElementById('buktiPenjelasan').value = p["Penjelasan"] || '';
-                document.getElementById('buktiKesimpulan').value = p["Kesimpulan"] || '';
-                document.getElementById('linkDokumentasi').value = p["Link Dokumentasi (Google Drive)"] || '';
+            // D. Pembuktian
+            if (data["D. Pembuktian"]) {
+                const p = data["D. Pembuktian"];
 
+                // Rencana (Array 2D)
+                if (p["Rencana"] && Array.isArray(p["Rencana"])) {
+                    p["Rencana"].forEach(item => {
+                        if (Array.isArray(item) && item.length === 2) {
+                            const pertanyaan = item[0];
+                            const jawaban = item[1] || '';
+                            if (pertanyaan === "Prediksi yang dibuktikan") document.getElementById('buktiPrediksi')
+                                .value = jawaban;
+                            else if (pertanyaan === "Rencana pembuktian") document.getElementById('buktiRencana')
+                                .value = jawaban;
+                            else if (pertanyaan === "Kesesuaian hasil") {
+                                document.querySelectorAll('input[name="kesesuaian"]').forEach(r => {
+                                    if (r.value === jawaban) r.checked = true;
+                                });
+                            } else if (pertanyaan === "Penjelasan") document.getElementById('buktiPenjelasan')
+                                .value = jawaban;
+                            else if (pertanyaan === "Kesimpulan") document.getElementById('buktiKesimpulan')
+                                .value = jawaban;
+                        }
+                    });
+                }
+
+                // Link Dokumentasi
+                document.getElementById('linkDokumentasi').value = p["Link Dokumentasi"] || '';
+
+                // Langkah-langkah
                 if (p["Langkah-langkah"] && p["Langkah-langkah"].length > 0) {
                     const container = document.getElementById('langkahContainer');
                     container.innerHTML = '';
@@ -1756,13 +2157,14 @@
                         div.style.cssText = 'display:flex; gap:8px; align-items:center; margin-bottom:4px;';
                         div.innerHTML = `
                             <span style="font-weight:600; min-width:24px;">${num}.</span>
-                            <textarea class="dynamic-textarea dynamic-textarea-sm" id="langkah_${num}" rows="1" placeholder="Tulis langkah..." oninput="saveDraft(); autoResize(this);" style="flex:1;">${item || ''}</textarea>
+                            <textarea class="dynamic-textarea dynamic-textarea-sm" id="langkah_${num}" rows="1" placeholder="Tulis langkah..." oninput="saveDraft(); autoResize(this);" style="flex:1;">${item["Langkah"] || ''}</textarea>
                         `;
                         container.appendChild(div);
                     });
                     updateHapus('langkah');
                 }
 
+                // Alat dan Bahan
                 if (p["Alat dan Bahan"] && p["Alat dan Bahan"].length > 0) {
                     const body = document.getElementById('alatBody');
                     body.innerHTML = '';
@@ -1779,10 +2181,11 @@
                     updateHapus('alat');
                 }
 
-                if (p["Hasil pengamatan"] && p["Hasil pengamatan"].length > 0) {
+                // Hasil Pengamatan
+                if (p["Hasil Pengamatan"] && p["Hasil Pengamatan"].length > 0) {
                     const body = document.getElementById('hasilBody');
                     body.innerHTML = '';
-                    p["Hasil pengamatan"].forEach((item, i) => {
+                    p["Hasil Pengamatan"].forEach((item, i) => {
                         const num = i + 1;
                         body.innerHTML += `
                             <tr>
@@ -1793,40 +2196,72 @@
                     });
                     updateHapus('hasil');
                 }
-
-                if (p["Apakah hasilnya sesuai prediksi?"]) {
-                    document.querySelectorAll('input[name="kesesuaian"]').forEach(r => {
-                        if (r.value === p["Apakah hasilnya sesuai prediksi?"]) r.checked = true;
-                    });
-                }
             }
 
-            if (data["hubungan dengan jurusan"]) {
-                const h = data["hubungan dengan jurusan"];
-                document.querySelectorAll('input[name="jurusan"]').forEach(r => {
-                    if (r.value === h["Program Keahlian"]) r.checked = true;
+            // E. Hubungan dengan Jurusan (Array 2D)
+            if (data["E. Hubungan dengan Jurusan"] && Array.isArray(data["E. Hubungan dengan Jurusan"])) {
+                const e = data["E. Hubungan dengan Jurusan"];
+                e.forEach(item => {
+                    if (Array.isArray(item) && item.length === 2) {
+                        const aspek = item[0];
+                        const jawaban = item[1] || '';
+                        if (aspek === "Program Keahlian") {
+                            document.querySelectorAll('input[name="jurusan"]').forEach(r => {
+                                if (r.value === jawaban) r.checked = true;
+                            });
+                        } else if (aspek === "Program Keahlian (lainnya)") document.getElementById('jurusanLain')
+                            .value = jawaban;
+                        else if (aspek === "Sumber energi") document.getElementById('hubSumber').value = jawaban;
+                        else if (aspek === "Peralatan berenergi") document.getElementById('hubAlat').value = jawaban;
+                        else if (aspek === "Proses produksi") document.getElementById('hubProses').value = jawaban;
+                        else if (aspek === "Produk/jasa") document.getElementById('hubProduk').value = jawaban;
+                        else if (aspek === "Masalah pemborosan") document.getElementById('solusiMasalah').value =
+                            jawaban;
+                        else if (aspek === "Ide hemat energi") document.getElementById('solusiIde').value = jawaban;
+                        else if (aspek === "Potensi terbarukan") document.getElementById('solusiTerbarukan')
+                            .value = jawaban;
+                    }
                 });
-                document.getElementById('jurusanLain').value = h["Program Keahlian (lainnya)"] || '';
-                document.getElementById('hubSumber').value = h["Sumber energi yang digunakan"] || '';
-                document.getElementById('hubAlat').value = h["Peralatan yang membutuhkan energi"] || '';
-                document.getElementById('hubProses').value = h["Proses produksi yang memerlukan energi"] || '';
-                document.getElementById('hubProduk').value = h["Produk/jasa yang dihasilkan"] || '';
-                document.getElementById('solusiMasalah').value = h["Masalah pemborosan energi"] || '';
-                document.getElementById('solusiIde').value = h["Ide hemat energi"] || '';
-                document.getElementById('solusiTerbarukan').value = h["Potensi energi terbarukan"] || '';
             }
 
-            if (data.refleksi) {
-                document.getElementById('ref1').value = data.refleksi["1 hal paling menarik tentang energi"] || '';
-                document.getElementById('ref2').value = data.refleksi["1 kebiasaan boros energi yang saya sadari"] || '';
-                document.getElementById('ref3').value = data.refleksi["1 rencana hemat energi yang akan saya mulai"] || '';
+            // F. Refleksi (Array 2D)
+            if (data["F. Refleksi"] && Array.isArray(data["F. Refleksi"])) {
+                const f = data["F. Refleksi"];
+                f.forEach(item => {
+                    if (Array.isArray(item) && item.length === 2) {
+                        const pertanyaan = item[0];
+                        const jawaban = item[1] || '';
+                        if (pertanyaan === "Hal paling menarik") document.getElementById('ref1').value = jawaban;
+                        else if (pertanyaan === "Kebiasaan boros") document.getElementById('ref2').value = jawaban;
+                        else if (pertanyaan === "Rencana hemat") document.getElementById('ref3').value = jawaban;
+                    }
+                });
             }
 
-            if (data["nilai diri kelompok"]) {
-                document.getElementById('nilai1').value = data["nilai diri kelompok"]["Semua anggota ikut observasi"] ||
-                    '3';
-                document.getElementById('nilai2').value = data["nilai diri kelompok"]["Semua anggota ikut diskusi"] || '3';
-                document.getElementById('nilai3').value = data["nilai diri kelompok"]["Selesai tepat waktu"] || '3';
+            // G. Refleksi Kelompok (Emoji) - Array 2D
+            if (data["G. Refleksi Kelompok (Emoji)"] && Array.isArray(data["G. Refleksi Kelompok (Emoji)"])) {
+                const g = data["G. Refleksi Kelompok (Emoji)"];
+                const map = {
+                    "Kerjasama": 'g_kerjasama',
+                    "Kontribusi": 'g_kontribusi',
+                    "Tepat Waktu": 'g_waktu',
+                    "Kualitas Hasil": 'g_kualitas'
+                };
+                g.forEach(item => {
+                    if (Array.isArray(item) && item.length === 2) {
+                        const aspek = item[0];
+                        const nilai = item[1] || '3';
+                        if (map[aspek]) {
+                            const name = map[aspek];
+                            document.querySelectorAll(`input[name="${name}"]`).forEach(r => {
+                                if (r.value === nilai) r.checked = true;
+                            });
+                        }
+                        if (aspek === "Cerita Kelompok") {
+                            document.getElementById('refleksiCerita').value = nilai;
+                        }
+                    }
+                });
             }
 
             refreshAutoResize();
@@ -1841,11 +2276,13 @@
                 else el.value = '';
             });
             document.querySelectorAll('input[type="radio"], input[type="checkbox"]').forEach(el => el.checked = false);
-            document.getElementById('nama').innerHTML = '<option value="">-- Pilih Nama --</option>';
-            ['nilai1', 'nilai2', 'nilai3'].forEach(id => {
-                const el = document.getElementById(id);
-                if (el) el.value = '3';
+
+            // Reset emoji to default '3' (😐)
+            document.querySelectorAll('.emoji-group input[type="radio"][value="3"]').forEach(r => {
+                r.checked = true;
             });
+
+            document.getElementById('nama').innerHTML = '<option value="">-- Pilih Nama --</option>';
             initTables();
             clearDraft();
             document.getElementById('successMsg').style.display = 'none';
@@ -1855,22 +2292,30 @@
         // ================================================================
         // MODAL
         // ================================================================
-        function showModal() {
-            document.getElementById('modalSuccess').style.display = 'block';
-        }
-
         function closeModal(id) {
             document.getElementById(id).style.display = 'none';
         }
 
-        function showConfirmModal(key) {
-            document.getElementById('confirmKeyDisplay').textContent = key;
-            document.getElementById('modalConfirm').style.display = 'block';
-        }
+        document.querySelectorAll('.modal').forEach(m => {
+            m.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.style.display = 'none';
+                }
+            });
+        });
 
-        function closeConfirmModal() {
-            document.getElementById('modalConfirm').style.display = 'none';
-            pendingData = null;
+        // ================================================================
+        // CEK DATA SPREADSHEET
+        // ================================================================
+        async function cekDataSpreadsheet(kelas, nama) {
+            const url =
+                `${URL_PEREKAPAN}?action=getDataSiswa&kelas=${encodeURIComponent(kelas)}&nama=${encodeURIComponent(nama)}&aktivitas=${encodeURIComponent(AKTIVITAS_NAMA)}`;
+            const resp = await fetch(url);
+            const result = await resp.json();
+            if (result.success && result.data) {
+                return { found: true, key: `${kelas}_${nama}_${AKTIVITAS_NAMA}_AKTIF` };
+            }
+            return { found: false };
         }
 
         function confirmGanti() {
@@ -1883,20 +2328,6 @@
                     btn.innerHTML = '<i class="fas fa-exchange-alt"></i> Ya, Ganti';
                 });
             }
-        }
-
-        // ================================================================
-        // CEK DATA
-        // ================================================================
-        async function cekDataSpreadsheet(kelas, nama) {
-            const url =
-                `${URL_PEREKAPAN}?action=getDataSiswa&kelas=${encodeURIComponent(kelas)}&nama=${encodeURIComponent(nama)}&aktivitas=${encodeURIComponent(AKTIVITAS_NAMA)}`;
-            const resp = await fetch(url);
-            const result = await resp.json();
-            if (result.success && result.data) {
-                return { found: true, key: `${kelas}_${nama}_${AKTIVITAS_NAMA}_AKTIF` };
-            }
-            return { found: false };
         }
 
         // ================================================================
@@ -2026,25 +2457,44 @@
                     <html><head><meta charset="UTF-8"><title>Template Lembar Kerja</title>
                     <style>
                         body { font-family: 'Segoe UI', Arial, sans-serif; padding:30px; max-width:960px; margin:auto; line-height:1.6; }
-                        .card { background:#fff; border-radius:12px; padding:20px; margin-bottom:16px; border-left:5px solid #2ecc71; }
-                        .section-title { font-size:1.2rem; font-weight:700; margin:0 0 8px 0; border-bottom:2px solid #d5f4e6; padding-bottom:4px; }
-                        .section-desc { background:#f0faf0; padding:8px 14px; border-radius:8px; margin-bottom:12px; }
+                        .card { background:#fff; border-radius:12px; padding:20px; margin-bottom:16px; border-left:5px solid #f39c12; }
+                        .section-title { font-size:1.2rem; font-weight:700; margin:0 0 8px 0; border-bottom:2px solid #fdebd0; padding-bottom:4px; }
+                        .section-desc { background:#fef9e7; padding:8px 14px; border-radius:8px; margin-bottom:12px; }
                         table { width:100%; border-collapse:collapse; margin:8px 0; }
-                        th { background:#2ecc71; color:#fff; padding:8px 10px; text-align:left; }
+                        th { background:#f39c12; color:#fff; padding:8px 10px; text-align:left; }
                         td { padding:6px 10px; border-bottom:1px solid #eee; }
-                        .identitas-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; background:#d5f4e6; padding:12px 16px; border-radius:10px; }
+                        .identitas-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; background:#fdebd0; padding:12px 16px; border-radius:10px; }
                         .options-group { display:flex; flex-wrap:wrap; gap:10px 20px; }
                         .panduan-box { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
                         .panduan-box .contoh-benar { background:#e8f5e9; border:1px solid #a5d6a7; padding:8px 12px; border-radius:8px; }
                         .panduan-box .contoh-salah { background:#fff3cd; border:1px solid #ffc107; padding:8px 12px; border-radius:8px; }
                         .panduan-box ul { margin-left:1.2rem; }
-                        .header-title { text-align:center; font-size:1.6rem; color:#27ae60; }
+                        .header-title { text-align:center; font-size:1.6rem; color:#e67e22; }
                         .header-sub { text-align:center; color:#666; }
-                        @media (max-width:768px) { .panduan-box { grid-template-columns:1fr; } }
+                        .tp-card { background:#fff; border-radius:12px; padding:12px 18px; margin-bottom:16px; border-left:5px solid #f39c12; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+                        .tp-card .tp-item { display:flex; align-items:center; gap:12px; padding:3px 0; }
+                        .tp-card .tp-item .tp-code { background:#f39c12; color:#fff; padding:2px 10px; border-radius:12px; font-weight:700; font-size:0.8rem; min-width:45px; text-align:center; }
+                        .tp-card .tp-item .tp-desc { color:#e67e22; }
+                        .emoji-grid { display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; margin:1rem 0; }
+                        .emoji-card { background:#fef9e7; padding:0.8rem 1rem; border-radius:12px; text-align:center; }
+                        .emoji-card .emoji-title { font-weight:600; font-size:0.9rem; margin-bottom:2px; }
+                        .emoji-group { display:flex; gap:0.4rem; justify-content:center; flex-wrap:wrap; }
+                        .dokumentasi-instruction { background:#fff3cd; padding:8px 12px; border-radius:8px; border-left:4px solid #f39c12; margin:8px 0; }
+                        .dokumentasi-instruction .contoh-dok { margin-top:6px; font-size:0.85rem; color:#666; background:#fff8e1; padding:6px 12px; border-radius:6px; }
+                        .folder-link-box { background:#e8f5e9; padding:10px 14px; border-radius:8px; border-left:5px solid #4caf50; margin:10px 0; }
+                        .folder-link-box .label-link { font-weight:600; color:#2e7d32; }
+                        @media (max-width:768px) { .panduan-box { grid-template-columns:1fr; } .emoji-grid { grid-template-columns:1fr; } }
                     </style>
                     </head><body>
                     <h1 class="header-title">⚡ Eksplorasi Energi dan Perubahannya</h1>
                     <p class="header-sub">Lembar Kerja IPAS</p>
+                    <div class="tp-card">
+                        <div style="font-weight:700; color:#e67e22; margin-bottom:6px; font-size:1.1rem;">Tujuan Pembelajaran</div>
+                        <div class="tp-item"><span class="tp-code">TP 1.1</span><span class="tp-desc">Menjelaskan pengetahuan ilmiah yang berkaitan dengan fenomena alam dan sosial di lingkungan sekitar</span></div>
+                        <div class="tp-item"><span class="tp-code">TP 1.2</span><span class="tp-desc">Membuat prediksi sederhana terhadap fenomena alam dan sosial berdasarkan pola ilmiah</span></div>
+                        <div class="tp-item"><span class="tp-code">TP 1.3</span><span class="tp-desc">Melakukan pembuktian sederhana terhadap prediksi yang telah dibuat</span></div>
+                        <div class="tp-item"><span class="tp-code">TP 1.4</span><span class="tp-desc">Mengaitkan fenomena alam dan sosial dengan keterampilan teknis pada bidang keahliannya</span></div>
+                    </div>
                     ${clone.innerHTML}
                     <p style="text-align:center; color:#999; font-size:0.85rem; margin-top:30px; border-top:1px solid #eee; padding-top:12px;">
                         Dicetak dari Sistem IPAS Tembok Belajar

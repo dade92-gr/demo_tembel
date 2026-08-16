@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <style>
         /* ================================================================
-           ROOT & RESET
+           ROOT & RESET - TEMA BIRU TUA (REVIEW)
            ================================================================ */
         * {
             margin: 0;
@@ -17,9 +17,9 @@
         }
 
         :root {
-            --primary: #2ecc71;
-            --primary-dark: #27ae60;
-            --primary-light: #d5f4e6;
+            --primary: #2c3e50;
+            --primary-dark: #1a252f;
+            --primary-light: #d5dbe0;
             --accent: #3498db;
             --gray-bg: #f5f7fa;
             --text: #2c3e50;
@@ -37,7 +37,6 @@
             line-height: 1.7;
         }
 
-        /* ===== LOGO ZOOM EFFECT ===== */
         .logo img {
             transition: transform 0.3s ease;
         }
@@ -45,9 +44,6 @@
             transform: scale(1.2);
         }
 
-        /* ================================================================
-           KONTEN UTAMA
-           ================================================================ */
         .container {
             max-width: 960px;
             margin: 2rem auto;
@@ -77,7 +73,42 @@
             margin-bottom: 1.5rem;
         }
 
-        /* ===== IDENTITAS ===== */
+        /* ============ TP CARD ============ */
+        .tp-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 16px;
+            padding: 1.2rem 1.8rem;
+            margin-bottom: 1.5rem;
+            border-left: 5px solid var(--primary);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        .tp-card .tp-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 4px 0;
+            font-size: 0.95rem;
+        }
+
+        .tp-card .tp-item .tp-code {
+            background: var(--primary);
+            color: white;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            min-width: 45px;
+            text-align: center;
+        }
+
+        .tp-card .tp-item .tp-desc {
+            color: var(--primary-dark);
+        }
+
+        /* ================================================================
+           SISA CSS
+           ================================================================ */
         .identitas-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -105,9 +136,9 @@
             background: #fff;
             transition: 0.2s;
             font-family: inherit;
-            resize: vertical;
+            resize: none !important;
+            overflow: hidden !important;
             min-height: 42px;
-            overflow: hidden;
         }
 
         .identitas-item select:focus,
@@ -116,7 +147,6 @@
             border-color: var(--primary);
         }
 
-        /* ===== SECTION ===== */
         .section-title {
             font-size: 1.3rem;
             font-weight: 700;
@@ -138,7 +168,7 @@
             font-size: 0.95rem;
             margin-bottom: 1rem;
             padding: 0.8rem 1.2rem;
-            background: #f0faf0;
+            background: #eef1f3;
             border-radius: 10px;
             border-left: 4px solid var(--primary);
         }
@@ -147,7 +177,6 @@
             color: var(--text);
         }
 
-        /* ===== TABEL ===== */
         .table-wrap {
             overflow-x: auto;
             margin: 0.8rem 0;
@@ -180,7 +209,6 @@
             border-bottom: none;
         }
 
-        /* ===== DINAMIC TEXTAREA ===== */
         .dynamic-textarea {
             width: 100%;
             border: 2px solid #e8e8e8;
@@ -190,16 +218,16 @@
             font-size: 0.95rem;
             background: #fff;
             transition: 0.2s;
-            resize: vertical;
+            resize: none !important;
+            overflow: hidden !important;
             min-height: 42px;
             line-height: 1.6;
-            overflow: hidden;
         }
 
         .dynamic-textarea:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.15);
+            box-shadow: 0 0 0 3px rgba(44, 62, 80, 0.15);
         }
 
         .dynamic-textarea-sm {
@@ -212,7 +240,79 @@
             min-height: 70px;
         }
 
-        /* ===== RADIO & CHECKBOX ===== */
+        /* ============ EMOJI RADIO GROUP ============ */
+        .emoji-group {
+            display: flex;
+            gap: 0.4rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 4px;
+        }
+
+        .emoji-group label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            cursor: pointer;
+            padding: 4px 6px;
+            border-radius: 10px;
+            transition: 0.2s;
+            font-size: 1.8rem;
+            min-width: 44px;
+        }
+
+        .emoji-group label:hover {
+            background: var(--primary-light);
+            transform: scale(1.05);
+        }
+
+        .emoji-group label input[type="radio"] {
+            width: 16px;
+            height: 16px;
+            accent-color: var(--primary);
+            cursor: pointer;
+        }
+
+        .emoji-group label .emoji-label {
+            font-size: 0.6rem;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        .emoji-card {
+            background: #eef1f3;
+            padding: 0.8rem 1rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: 0.2s;
+        }
+
+        .emoji-card:hover {
+            border-color: var(--primary-light);
+        }
+
+        .emoji-card .emoji-title {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text);
+            margin-bottom: 2px;
+        }
+
+        .emoji-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.8rem;
+            margin: 1rem 0;
+        }
+
+        @media (max-width: 600px) {
+            .emoji-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         .options-group {
             display: flex;
             flex-wrap: wrap;
@@ -237,7 +337,6 @@
             flex-shrink: 0;
         }
 
-        /* ===== TOMBOL ===== */
         .btn-row {
             display: inline-flex;
             align-items: center;
@@ -287,12 +386,12 @@
             transition: 0.3s;
             display: block;
             margin: 2rem auto 1rem;
-            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+            box-shadow: 0 4px 15px rgba(44, 62, 80, 0.3);
         }
 
         .btn-submit:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(46, 204, 113, 0.4);
+            box-shadow: 0 8px 25px rgba(44, 62, 80, 0.4);
         }
         .btn-submit:disabled {
             background: #ccc;
@@ -336,7 +435,6 @@
             margin-bottom: 1rem;
         }
 
-        /* ===== STATUS ===== */
         .status-bar {
             display: flex;
             align-items: center;
@@ -361,15 +459,9 @@
         }
 
         @keyframes pulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.5);
-            }
-            70% {
-                box-shadow: 0 0 0 8px rgba(40, 167, 69, 0);
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(40, 167, 69, 0);
-            }
+            0% { box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.5); }
+            70% { box-shadow: 0 0 0 8px rgba(40, 167, 69, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(40, 167, 69, 0); }
         }
 
         .msg {
@@ -398,7 +490,128 @@
             margin-right: 8px;
         }
 
-        /* ===== MODAL ===== */
+        .dokumentasi-instruction {
+            background: #fff3cd;
+            border-radius: 10px;
+            padding: 0.8rem 1.2rem;
+            margin: 0.5rem 0 1rem 0;
+            border-left: 4px solid #f39c12;
+        }
+
+        .dokumentasi-instruction i {
+            color: #f39c12;
+            margin-right: 8px;
+        }
+
+        .dokumentasi-instruction .contoh-dok {
+            margin-top: 6px;
+            font-size: 0.85rem;
+            color: #666;
+            background: #fff8e1;
+            padding: 6px 12px;
+            border-radius: 6px;
+        }
+
+        .folder-link-box {
+            background: #e8f5e9;
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            margin-top: 1rem;
+            border-left: 5px solid #4caf50;
+        }
+
+        .folder-link-box .label-link {
+            font-weight: 600;
+            color: #2e7d32;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .folder-link-box .sub-text {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 6px;
+        }
+
+        .folder-link-box input {
+            width: 100% !important;
+        }
+
+        /* ===== BAB CARD ===== */
+        .bab-card {
+            border: 1px solid var(--primary-light);
+            border-radius: 12px;
+            padding: 15px 20px;
+            margin: 10px 0;
+            background: #fafafa;
+            transition: all 0.3s ease;
+        }
+
+        .bab-card:hover {
+            border-color: var(--primary);
+            background: #eef1f3;
+            box-shadow: 0 2px 10px rgba(44, 62, 80, 0.1);
+        }
+
+        .bab-card .bab-title {
+            font-weight: 600;
+            color: var(--primary-dark);
+            font-size: 1.05rem;
+        }
+
+        .bab-card .bab-status {
+            float: right;
+            font-size: 0.9rem;
+            color: #999;
+        }
+
+        .bab-card .bab-status.done {
+            color: #27ae60;
+        }
+
+        .bab-card .bab-status.pending {
+            color: var(--ipas-orange);
+        }
+
+        .bab-card .bab-link {
+            margin-top: 8px;
+        }
+
+        .bab-card .bab-link textarea {
+            width: 100%;
+            padding: 8px 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            resize: none;
+            min-height: 42px;
+            overflow: hidden;
+        }
+
+        .bab-card .bab-link textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(44, 62, 80, 0.15);
+        }
+
+        .bab-card .bab-link label {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            display: block;
+            margin-bottom: 4px;
+            font-weight: 500;
+        }
+
+        .bab-card .bab-color {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+
         .modal {
             display: none;
             position: fixed;
@@ -411,12 +624,8 @@
         }
 
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .modal-box {
@@ -431,14 +640,8 @@
         }
 
         @keyframes slideDown {
-            from {
-                transform: translateY(-40px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
+            from { transform: translateY(-40px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
         .modal-icon {
@@ -509,82 +712,6 @@
             background: #5a6268;
         }
 
-        /* ===== BAB CARD ===== */
-        .bab-card {
-            border: 1px solid var(--primary-light);
-            border-radius: 12px;
-            padding: 15px 20px;
-            margin: 10px 0;
-            background: #fafafa;
-            transition: all 0.3s ease;
-        }
-
-        .bab-card:hover {
-            border-color: var(--primary);
-            background: #f0faf0;
-            box-shadow: 0 2px 10px rgba(46, 204, 113, 0.1);
-        }
-
-        .bab-card .bab-title {
-            font-weight: 600;
-            color: var(--primary-dark);
-            font-size: 1.05rem;
-        }
-
-        .bab-card .bab-status {
-            float: right;
-            font-size: 0.9rem;
-            color: #999;
-        }
-
-        .bab-card .bab-status.done {
-            color: var(--primary);
-        }
-
-        .bab-card .bab-status.pending {
-            color: var(--ipas-orange);
-        }
-
-        .bab-card .bab-link {
-            margin-top: 8px;
-        }
-
-        .bab-card .bab-link textarea {
-            width: 100%;
-            padding: 8px 12px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-family: inherit;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-            resize: vertical;
-            min-height: 42px;
-            overflow: hidden;
-        }
-
-        .bab-card .bab-link textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.15);
-        }
-
-        .bab-card .bab-link label {
-            font-size: 0.85rem;
-            color: var(--text-light);
-            display: block;
-            margin-bottom: 4px;
-            font-weight: 500;
-        }
-
-        .bab-card .bab-color {
-            display: inline-block;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            margin-right: 8px;
-        }
-
-        /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             .container {
                 padding: 0 0.8rem;
@@ -632,6 +759,11 @@
                 display: block;
                 margin-top: 5px;
             }
+            .emoji-group label {
+                font-size: 1.5rem;
+                min-width: 36px;
+                padding: 2px 4px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -641,14 +773,20 @@
             table {
                 font-size: 0.85rem;
             }
-            th,
-            td {
+            th, td {
                 padding: 6px 8px;
             }
             .dynamic-textarea {
                 font-size: 0.85rem;
                 min-height: 36px;
                 padding: 6px 8px;
+            }
+            .emoji-group label {
+                font-size: 1.3rem;
+                min-width: 32px;
+            }
+            .emoji-group label .emoji-label {
+                font-size: 0.5rem;
             }
         }
     </style>
@@ -692,9 +830,17 @@
             <p style="color:var(--text-light); font-size:0.95rem; max-width:600px; margin:0 auto;">
                 Buat infografis/peta konsep untuk setiap bab, upload ke Google Drive, dan tempel linknya di sini!
             </p>
-            <ul style="color: var(--text-light); font-size: 0.95rem; max-width: 900px; margin: 0 auto; text-align: left; list-style-position: inside;">
-                <li>TP 1.1 Menjelaskan pengetahuan ilmiah yang berkaitan dengan fenomena alam dan sosial di lingkungan sekitar</li>
-            </ul>
+        </div>
+
+        <!-- ===== TP CARD ===== -->
+        <div class="tp-card">
+            <div style="font-weight:700; color:var(--primary-dark); margin-bottom:6px; font-size:1.1rem;">
+                <i class="fas fa-bullseye"></i> Tujuan Pembelajaran
+            </div>
+            <div class="tp-item">
+                <span class="tp-code">TP 1.1</span>
+                <span class="tp-desc">Menjelaskan pengetahuan ilmiah yang berkaitan dengan fenomena alam dan sosial di lingkungan sekitar</span>
+            </div>
         </div>
 
         <!-- STATUS -->
@@ -730,7 +876,7 @@
             <!-- A. IDENTITAS -->
             <!-- ============================================================ -->
             <div class="card">
-                <h2 class="section-title"><i class="fas fa-id-card"></i> Identitas</h2>
+                <h2 class="section-title"><i class="fas fa-id-card"></i> A. Identitas</h2>
                 <div class="identitas-grid">
                     <div class="identitas-item">
                         <label>Kelas</label>
@@ -759,10 +905,10 @@
             <!-- B. PANDUAN -->
             <!-- ============================================================ -->
             <div class="card">
-                <h2 class="section-title"><i class="fas fa-paint-brush"></i> Panduan</h2>
+                <h2 class="section-title"><i class="fas fa-paint-brush"></i> B. Panduan</h2>
 
-                <div class="section-desc" style="background:#e8f5e9; border-left-color:#2e7d32;">
-                    <i class="fas fa-lightbulb" style="color:#2e7d32;"></i>
+                <div class="section-desc" style="background:#eef1f3; border-left-color:var(--primary-dark);">
+                    <i class="fas fa-lightbulb" style="color:var(--primary-dark);"></i>
                     <strong>Cara Membuat Infografis/Peta Konsep:</strong>
                     <ul style="margin-left:1.5rem; margin-top:6px;">
                         <li><strong>Gambar di kertas</strong> (boleh pakai pensil warna/spidol).</li>
@@ -782,7 +928,7 @@
             <!-- C. 6 BAB + LINK GOOGLE DRIVE -->
             <!-- ============================================================ -->
             <div class="card">
-                <h2 class="section-title"><i class="fas fa-link"></i> Link Infografis/Peta Konsep</h2>
+                <h2 class="section-title"><i class="fas fa-link"></i> C. Link Infografis/Peta Konsep</h2>
                 <div class="section-desc">
                     <i class="fas fa-info-circle"></i>
                     Centang bab yang sudah selesai, lalu tempel link Google Drive infografismu di kolom yang tersedia.
@@ -791,13 +937,20 @@
                 <div id="babList">
                     <!-- JS akan generate -->
                 </div>
+
+                <!-- ===== LINK DOKUMENTASI GABUNGAN ===== -->
+                <div class="folder-link-box" style="margin-top:1.5rem;">
+                    <span class="label-link"><i class="fas fa-folder-open"></i> 📁 Link Dokumentasi Google Drive</span>
+                    <div class="sub-text">Tempel link folder utama Google Drive (opsional, jika semua infografis dalam satu folder):</div>
+                    <input type="text" class="dynamic-textarea dynamic-textarea-sm" id="linkDokumentasi" placeholder="https://drive.google.com/drive/folders/xxx" oninput="saveDraft(); autoResize(this);">
+                </div>
             </div>
 
             <!-- ============================================================ -->
             <!-- D. REFLEKSI -->
             <!-- ============================================================ -->
             <div class="card">
-                <h2 class="section-title"><i class="fas fa-smile"></i> Refleksi</h2>
+                <h2 class="section-title"><i class="fas fa-smile"></i> D. Refleksi</h2>
                 <div class="section-desc">
                     <i class="fas fa-comment"></i>
                     Tulis dengan jujur, ya! Tidak ada jawaban benar atau salah.
@@ -818,48 +971,151 @@
             </div>
 
             <!-- ============================================================ -->
-            <!-- E. NILAI DIRI -->
+            <!-- E. REFLEKSI KELOMPOK (EMOJI + CERITA) -->
             <!-- ============================================================ -->
             <div class="card">
-                <h2 class="section-title"><i class="fas fa-star"></i> Nilai Diri</h2>
+                <h2 class="section-title"><i class="fas fa-star"></i> E. Refleksi Kelompok</h2>
                 <div class="section-desc">
                     <i class="fas fa-hand-peace"></i>
-                    Berikan nilai untuk dirimu selama semester ini (1 = Kurang, 4 = Sangat Baik)!
+                    Pilih emoji yang paling menggambarkan kelompokmu! Lalu tulis cerita singkatnya.
                 </div>
 
-                <div class="table-wrap">
-                    <table>
-                        <thead><tr><th style="width:40px;">No</th><th>Aspek</th><th style="width:130px;">Nilai (1-4)</th></tr></thead>
-                        <tbody>
-                            <tr><td>1</td><td>Pemahaman konsep IPAS</td><td>
-                                    <select id="nilai1" onchange="saveDraft();" style="width:100%; padding:6px 8px; border:2px solid #e8e8e8; border-radius:8px; font-size:0.9rem;">
-                                        <option value="">--</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3" selected>3</option>
-                                        <option value="4">4</option>
-                                    </select>
-                            </td></tr>
-                            <tr><td>2</td><td>Kemampuan observasi & eksplorasi</td><td>
-                                    <select id="nilai2" onchange="saveDraft();" style="width:100%; padding:6px 8px; border:2px solid #e8e8e8; border-radius:8px; font-size:0.9rem;">
-                                        <option value="">--</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3" selected>3</option>
-                                        <option value="4">4</option>
-                                    </select>
-                            </td></tr>
-                            <tr><td>3</td><td>Kerja sama dalam kelompok</td><td>
-                                    <select id="nilai3" onchange="saveDraft();" style="width:100%; padding:6px 8px; border:2px solid #e8e8e8; border-radius:8px; font-size:0.9rem;">
-                                        <option value="">--</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3" selected>3</option>
-                                        <option value="4">4</option>
-                                    </select>
-                            </td></tr>
-                        </tbody>
-                    </table>
+                <div class="emoji-grid">
+                    <!-- 1. Kerjasama -->
+                    <div class="emoji-card">
+                        <div class="emoji-title">🤝 Kerjasama</div>
+                        <div class="emoji-group">
+                            <label>
+                                <input type="radio" name="g_kerjasama" value="5" onchange="saveDraft();">
+                                😊
+                                <span class="emoji-label">Sangat Baik</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kerjasama" value="4" onchange="saveDraft();">
+                                🙂
+                                <span class="emoji-label">Baik</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kerjasama" value="3" onchange="saveDraft();" checked>
+                                😐
+                                <span class="emoji-label">Cukup</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kerjasama" value="2" onchange="saveDraft();">
+                                😕
+                                <span class="emoji-label">Kurang</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kerjasama" value="1" onchange="saveDraft();">
+                                😞
+                                <span class="emoji-label">Perlu Perbaikan</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- 2. Kontribusi -->
+                    <div class="emoji-card">
+                        <div class="emoji-title">📊 Kontribusi</div>
+                        <div class="emoji-group">
+                            <label>
+                                <input type="radio" name="g_kontribusi" value="5" onchange="saveDraft();">
+                                😊
+                                <span class="emoji-label">Sangat Baik</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kontribusi" value="4" onchange="saveDraft();">
+                                🙂
+                                <span class="emoji-label">Baik</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kontribusi" value="3" onchange="saveDraft();" checked>
+                                😐
+                                <span class="emoji-label">Cukup</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kontribusi" value="2" onchange="saveDraft();">
+                                😕
+                                <span class="emoji-label">Kurang</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kontribusi" value="1" onchange="saveDraft();">
+                                😞
+                                <span class="emoji-label">Perlu Perbaikan</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- 3. Tepat Waktu -->
+                    <div class="emoji-card">
+                        <div class="emoji-title">⏰ Tepat Waktu</div>
+                        <div class="emoji-group">
+                            <label>
+                                <input type="radio" name="g_waktu" value="5" onchange="saveDraft();">
+                                😊
+                                <span class="emoji-label">Sangat Baik</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_waktu" value="4" onchange="saveDraft();">
+                                🙂
+                                <span class="emoji-label">Baik</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_waktu" value="3" onchange="saveDraft();" checked>
+                                😐
+                                <span class="emoji-label">Cukup</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_waktu" value="2" onchange="saveDraft();">
+                                😕
+                                <span class="emoji-label">Kurang</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_waktu" value="1" onchange="saveDraft();">
+                                😞
+                                <span class="emoji-label">Perlu Perbaikan</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- 4. Kualitas Hasil -->
+                    <div class="emoji-card">
+                        <div class="emoji-title">💡 Kualitas Hasil</div>
+                        <div class="emoji-group">
+                            <label>
+                                <input type="radio" name="g_kualitas" value="5" onchange="saveDraft();">
+                                😊
+                                <span class="emoji-label">Sangat Baik</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kualitas" value="4" onchange="saveDraft();">
+                                🙂
+                                <span class="emoji-label">Baik</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kualitas" value="3" onchange="saveDraft();" checked>
+                                😐
+                                <span class="emoji-label">Cukup</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kualitas" value="2" onchange="saveDraft();">
+                                😕
+                                <span class="emoji-label">Kurang</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kualitas" value="1" onchange="saveDraft();">
+                                😞
+                                <span class="emoji-label">Perlu Perbaikan</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cerita Kelompok -->
+                <div style="margin-top:0.8rem;">
+                    <label style="font-weight:600; display:block; margin-bottom:4px;">
+                        📝 Ceritakan pengalaman kerjamu dalam kelompok ini (1-2 kalimat):
+                    </label>
+                    <textarea class="dynamic-textarea" id="refleksiCerita" rows="2" placeholder="Contoh: Kami bekerja sama dengan baik, semua saling membantu menyelesaikan tugas..." oninput="saveDraft(); autoResize(this);"></textarea>
                 </div>
             </div>
 
@@ -924,7 +1180,7 @@
         // ================================================================
         const URL_DATA_SISWA = 'https://script.google.com/macros/s/AKfycbxZMS_o6xWMAQAkjBzzEMR9tJmHOnHCX13KJX2xZMn7WIr-A9pwVK_3DDHnMg7y_rD29Q/exec';
         const URL_PEREKAPAN = 'https://script.google.com/macros/s/AKfycbxyGnBMWRIQKRtHa3ogqvT_66Tt3gTEcxZ7dsPPnob3tsVU9IuPWTEpxWH7mGX7YPZj/exec';
-        const STORAGE_KEY = 'ipas_review_draft_v3';
+        const STORAGE_KEY = 'ipas_review_draft_v5';
         const AKTIVITAS_NAMA = 'REVIEW MATERI SEMESTER GANJIL';
         const SHEET_NAME = 'data_aktivitas';
 
@@ -935,18 +1191,6 @@
         let isSubmitting = false;
         let pendingData = null;
         let autoSaveTimer;
-
-        // ================================================================
-        // DATA BAB
-        // ================================================================
-        const BAB_DATA = [
-            { id: 1, nama: 'Makhluk Hidup & Lingkungannya', icon: 'fa-leaf', color: '#2ecc71' },
-            { id: 2, nama: 'Zat dan Perubahannya', icon: 'fa-flask', color: '#3498db' },
-            { id: 3, nama: 'Energi dan Perubahannya', icon: 'fa-bolt', color: '#f39c12' },
-            { id: 4, nama: 'Keruangan & Konektivitas', icon: 'fa-map', color: '#e67e22' },
-            { id: 5, nama: 'Interaksi & Dinamika Sosial', icon: 'fa-users', color: '#9b59b6' },
-            { id: 6, nama: 'Perilaku Ekonomi', icon: 'fa-coins', color: '#f1c40f' }
-        ];
 
         // ================================================================
         // AUTO-RESIZE
@@ -962,6 +1206,18 @@
                 if (el.tagName === 'TEXTAREA') autoResize(el);
             });
         }
+
+        // ================================================================
+        // DATA BAB
+        // ================================================================
+        const BAB_DATA = [
+            { id: 1, nama: 'Makhluk Hidup & Lingkungannya', icon: 'fa-leaf', color: '#2ecc71' },
+            { id: 2, nama: 'Zat dan Perubahannya', icon: 'fa-flask', color: '#3498db' },
+            { id: 3, nama: 'Energi dan Perubahannya', icon: 'fa-bolt', color: '#f39c12' },
+            { id: 4, nama: 'Keruangan & Konektivitas', icon: 'fa-map', color: '#e67e22' },
+            { id: 5, nama: 'Interaksi & Dinamika Sosial', icon: 'fa-users', color: '#9b59b6' },
+            { id: 6, nama: 'Perilaku Ekonomi', icon: 'fa-coins', color: '#f1c40f' }
+        ];
 
         // ================================================================
         // INIT BAB LIST
@@ -1127,15 +1383,22 @@
         // ================================================================
         // TIMESTAMP
         // ================================================================
-        function getTimestamp() {
+        function getFormattedTimestamp() {
             const now = new Date();
-            const d = String(now.getDate()).padStart(2, '0');
-            const m = String(now.getMonth() + 1).padStart(2, '0');
-            const y = now.getFullYear();
-            const h = String(now.getHours()).padStart(2, '0');
-            const min = String(now.getMinutes()).padStart(2, '0');
-            const s = String(now.getSeconds()).padStart(2, '0');
-            return `${d}/${m}/${y} ${h}:${min}:${s}`;
+            const hari = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+            const bulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+                'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+            ];
+
+            const hariName = hari[now.getDay()];
+            const tanggal = String(now.getDate()).padStart(2, '0');
+            const bulanName = bulan[now.getMonth()];
+            const tahun = now.getFullYear();
+            const jam = String(now.getHours()).padStart(2, '0');
+            const menit = String(now.getMinutes()).padStart(2, '0');
+            const detik = String(now.getSeconds()).padStart(2, '0');
+
+            return `${hariName}, ${tanggal} ${bulanName} ${tahun} - ${jam}:${menit}:${detik}`;
         }
 
         // ================================================================
@@ -1168,99 +1431,103 @@
         }
 
         // ================================================================
-        // COLLECT DATA - 🔥 PERUBAHAN: bab menjadi ARRAY
+        // COLLECT DATA - STRUKTUR JSON KONSISTEN
         // ================================================================
         function collectData() {
-            const data = { timestamp: getTimestamp() };
+            const timestamp = getFormattedTimestamp();
 
-            data.identitas = {
-                "Kelas": document.getElementById('kelas').value || '',
-                "Nama": document.getElementById('nama').value || '',
-                "Kelompok": document.getElementById('kelompok').value || '',
-                "Tugas/Peran": document.getElementById('tugas').value || ''
+            // Get emoji values
+            const getEmojiValue = (name) => {
+                const el = document.querySelector(`input[name="${name}"]:checked`);
+                return el ? el.value : '3';
             };
 
-            // ============================================================
-            // 🔥 PERUBAHAN: bab berubah dari objek menjadi ARRAY
-            // ============================================================
-            data.bab = [];
+            // Collect bab data
+            const babData = [];
             BAB_DATA.forEach((bab) => {
                 const checkbox = document.getElementById(`bab_${bab.id}`);
                 const link = document.getElementById(`link_${bab.id}`);
-                data.bab.push({
-                    nama: bab.nama,
-                    selesai: checkbox ? checkbox.checked : false,
-                    link: link ? link.value || '' : ''
+                babData.push({
+                    "No": bab.id,
+                    "Bab": bab.nama,
+                    "Selesai": checkbox ? checkbox.checked : false,
+                    "Link Infografis": link ? link.value || '' : ''
                 });
             });
 
-            data.refleksi = {
-                "Materi apa yang paling kamu sukai dan paling sulit?": document.getElementById('ref1').value || '',
-                "Aktivitas/lab apa yang paling berkesan?": document.getElementById('ref2').value || '',
-                "Target & harapan untuk semester genap?": document.getElementById('ref3').value || ''
+            return {
+                "Timestamp Pengisian": timestamp,
+                "A. Identitas Kelompok": [
+                    ["Field", "Nilai"],
+                    ["Kelas", document.getElementById('kelas').value || ''],
+                    ["Nama", document.getElementById('nama').value || ''],
+                    ["Kelompok", document.getElementById('kelompok').value || ''],
+                    ["Tugas/Peran", document.getElementById('tugas').value || '']
+                ],
+                "B. Bab": babData,
+                "C. Link Dokumentasi": document.getElementById('linkDokumentasi').value || '',
+                "D. Refleksi": [
+                    ["Pertanyaan", "Jawaban"],
+                    ["Materi paling disukai & paling sulit", document.getElementById('ref1').value || ''],
+                    ["Aktivitas/lab paling berkesan", document.getElementById('ref2').value || ''],
+                    ["Target & harapan semester genap", document.getElementById('ref3').value || '']
+                ],
+                "E. Refleksi Kelompok (Emoji)": [
+                    ["Aspek", "Nilai"],
+                    ["Kerjasama", getEmojiValue('g_kerjasama')],
+                    ["Kontribusi", getEmojiValue('g_kontribusi')],
+                    ["Tepat Waktu", getEmojiValue('g_waktu')],
+                    ["Kualitas Hasil", getEmojiValue('g_kualitas')],
+                    ["Cerita Kelompok", document.getElementById('refleksiCerita').value || '']
+                ]
             };
-
-            data.nilai = {
-                "Pemahaman konsep IPAS": document.getElementById('nilai1').value || '3',
-                "Kemampuan observasi & eksplorasi": document.getElementById('nilai2').value || '3',
-                "Kerja sama dalam kelompok": document.getElementById('nilai3').value || '3'
-            };
-
-            return data;
         }
 
         // ================================================================
-        // RESTORE DATA - 🔥 PERUBAHAN: restore bab sebagai ARRAY
+        // RESTORE DATA
         // ================================================================
         function restoreData(data) {
             if (!data) return;
 
-            if (data.identitas) {
+            // A. Identitas (Array 2D)
+            if (data["A. Identitas Kelompok"] && Array.isArray(data["A. Identitas Kelompok"])) {
+                const identitasArray = data["A. Identitas Kelompok"];
+                let kelasValue = '', namaValue = '', kelompokValue = '', tugasValue = '';
+
+                identitasArray.forEach(item => {
+                    if (Array.isArray(item) && item.length === 2) {
+                        const field = item[0];
+                        const value = item[1] || '';
+                        if (field === "Kelas") kelasValue = value;
+                        else if (field === "Nama") namaValue = value;
+                        else if (field === "Kelompok") kelompokValue = value;
+                        else if (field === "Tugas/Peran") tugasValue = value;
+                    }
+                });
+
                 const sel = document.getElementById('kelas');
                 for (let opt of sel.options) {
-                    if (opt.value === data.identitas["Kelas"]) { opt.selected = true; break; }
+                    if (opt.value === kelasValue) { opt.selected = true; break; }
                 }
                 updateNama();
+
                 const selNama = document.getElementById('nama');
                 for (let opt of selNama.options) {
-                    if (opt.value === data.identitas["Nama"]) { opt.selected = true; break; }
+                    if (opt.value === namaValue) { opt.selected = true; break; }
                 }
-                document.getElementById('kelompok').value = data.identitas["Kelompok"] || '';
-                document.getElementById('tugas').value = data.identitas["Tugas/Peran"] || '';
+                document.getElementById('kelompok').value = kelompokValue;
+                document.getElementById('tugas').value = tugasValue;
             }
 
-            // ============================================================
-            // 🔥 PERUBAHAN: restore bab dari ARRAY
-            // ============================================================
-            if (data.bab && Array.isArray(data.bab)) {
-                data.bab.forEach((item) => {
-                    const bab = BAB_DATA.find(b => b.nama === item.nama);
+            // B. Bab
+            if (data["B. Bab"] && Array.isArray(data["B. Bab"])) {
+                data["B. Bab"].forEach((item) => {
+                    const bab = BAB_DATA.find(b => b.id === item["No"]);
                     if (bab) {
                         const checkbox = document.getElementById(`bab_${bab.id}`);
                         const link = document.getElementById(`link_${bab.id}`);
-                        if (checkbox) checkbox.checked = item.selesai || false;
-                        if (link) link.value = item.link || '';
-
-                        if (checkbox && checkbox.checked) {
-                            const status = document.getElementById(`bab_status_${bab.id}`);
-                            if (status) {
-                                status.className = 'bab-status done';
-                                status.innerHTML = '<i class="fas fa-check-circle"></i> Selesai';
-                            }
-                        }
-                    }
-                });
-            }
-            // ============================================================
-            // 🔥 KOMPATIBILITAS: jika data lama masih berupa objek
-            // ============================================================
-            else if (data.bab && typeof data.bab === 'object') {
-                BAB_DATA.forEach((bab) => {
-                    if (data.bab[bab.nama]) {
-                        const checkbox = document.getElementById(`bab_${bab.id}`);
-                        const link = document.getElementById(`link_${bab.id}`);
-                        if (checkbox) checkbox.checked = data.bab[bab.nama].selesai || false;
-                        if (link) link.value = data.bab[bab.nama].link || '';
+                        if (checkbox) checkbox.checked = item["Selesai"] || false;
+                        if (link) link.value = item["Link Infografis"] || '';
 
                         if (checkbox && checkbox.checked) {
                             const status = document.getElementById(`bab_status_${bab.id}`);
@@ -1273,17 +1540,51 @@
                 });
             }
 
-            if (data.refleksi) {
-                document.getElementById('ref1').value = data.refleksi[
-                    "Materi apa yang paling kamu sukai dan paling sulit?"] || '';
-                document.getElementById('ref2').value = data.refleksi["Aktivitas/lab apa yang paling berkesan?"] || '';
-                document.getElementById('ref3').value = data.refleksi["Target & harapan untuk semester genap?"] || '';
+            // C. Link Dokumentasi
+            if (data["C. Link Dokumentasi"]) {
+                document.getElementById('linkDokumentasi').value = data["C. Link Dokumentasi"] || '';
             }
 
-            if (data.nilai) {
-                document.getElementById('nilai1').value = data.nilai["Pemahaman konsep IPAS"] || '3';
-                document.getElementById('nilai2').value = data.nilai["Kemampuan observasi & eksplorasi"] || '3';
-                document.getElementById('nilai3').value = data.nilai["Kerja sama dalam kelompok"] || '3';
+            // D. Refleksi (Array 2D)
+            if (data["D. Refleksi"] && Array.isArray(data["D. Refleksi"])) {
+                data["D. Refleksi"].forEach(item => {
+                    if (Array.isArray(item) && item.length === 2) {
+                        const pertanyaan = item[0];
+                        const jawaban = item[1] || '';
+                        if (pertanyaan === "Materi paling disukai & paling sulit") document.getElementById('ref1')
+                            .value = jawaban;
+                        else if (pertanyaan === "Aktivitas/lab paling berkesan") document.getElementById('ref2')
+                            .value = jawaban;
+                        else if (pertanyaan === "Target & harapan semester genap") document.getElementById('ref3')
+                            .value = jawaban;
+                    }
+                });
+            }
+
+            // E. Refleksi Kelompok (Emoji) - Array 2D
+            if (data["E. Refleksi Kelompok (Emoji)"] && Array.isArray(data["E. Refleksi Kelompok (Emoji)"])) {
+                const g = data["E. Refleksi Kelompok (Emoji)"];
+                const map = {
+                    "Kerjasama": 'g_kerjasama',
+                    "Kontribusi": 'g_kontribusi',
+                    "Tepat Waktu": 'g_waktu',
+                    "Kualitas Hasil": 'g_kualitas'
+                };
+                g.forEach(item => {
+                    if (Array.isArray(item) && item.length === 2) {
+                        const aspek = item[0];
+                        const nilai = item[1] || '3';
+                        if (map[aspek]) {
+                            const name = map[aspek];
+                            document.querySelectorAll(`input[name="${name}"]`).forEach(r => {
+                                if (r.value === nilai) r.checked = true;
+                            });
+                        }
+                        if (aspek === "Cerita Kelompok") {
+                            document.getElementById('refleksiCerita').value = nilai;
+                        }
+                    }
+                });
             }
 
             refreshAutoResize();
@@ -1298,11 +1599,13 @@
                 else el.value = '';
             });
             document.querySelectorAll('input[type="radio"], input[type="checkbox"]').forEach(el => el.checked = false);
-            document.getElementById('nama').innerHTML = '<option value="">-- Pilih Nama --</option>';
-            ['nilai1', 'nilai2', 'nilai3'].forEach(id => {
-                const el = document.getElementById(id);
-                if (el) el.value = '3';
+
+            // Reset emoji to default '3' (😐)
+            document.querySelectorAll('.emoji-group input[type="radio"][value="3"]').forEach(r => {
+                r.checked = true;
             });
+
+            document.getElementById('nama').innerHTML = '<option value="">-- Pilih Nama --</option>';
 
             BAB_DATA.forEach((bab) => {
                 const status = document.getElementById(`bab_status_${bab.id}`);
@@ -1320,22 +1623,30 @@
         // ================================================================
         // MODAL
         // ================================================================
-        function showModal() {
-            document.getElementById('modalSuccess').style.display = 'block';
-        }
-
         function closeModal(id) {
             document.getElementById(id).style.display = 'none';
         }
 
-        function showConfirmModal(key) {
-            document.getElementById('confirmKeyDisplay').textContent = key;
-            document.getElementById('modalConfirm').style.display = 'block';
-        }
+        document.querySelectorAll('.modal').forEach(m => {
+            m.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.style.display = 'none';
+                }
+            });
+        });
 
-        function closeConfirmModal() {
-            document.getElementById('modalConfirm').style.display = 'none';
-            pendingData = null;
+        // ================================================================
+        // CEK DATA SPREADSHEET
+        // ================================================================
+        async function cekDataSpreadsheet(kelas, nama) {
+            const url =
+                `${URL_PEREKAPAN}?action=getDataSiswa&kelas=${encodeURIComponent(kelas)}&nama=${encodeURIComponent(nama)}&aktivitas=${encodeURIComponent(AKTIVITAS_NAMA)}`;
+            const resp = await fetch(url);
+            const result = await resp.json();
+            if (result.success && result.data) {
+                return { found: true, key: `${kelas}_${nama}_${AKTIVITAS_NAMA}_AKTIF` };
+            }
+            return { found: false };
         }
 
         function confirmGanti() {
@@ -1348,20 +1659,6 @@
                     btn.innerHTML = '<i class="fas fa-exchange-alt"></i> Ya, Ganti';
                 });
             }
-        }
-
-        // ================================================================
-        // CEK DATA
-        // ================================================================
-        async function cekDataSpreadsheet(kelas, nama) {
-            const url =
-                `${URL_PEREKAPAN}?action=getDataSiswa&kelas=${encodeURIComponent(kelas)}&nama=${encodeURIComponent(nama)}&aktivitas=${encodeURIComponent(AKTIVITAS_NAMA)}`;
-            const resp = await fetch(url);
-            const result = await resp.json();
-            if (result.success && result.data) {
-                return { found: true, key: `${kelas}_${nama}_${AKTIVITAS_NAMA}_AKTIF` };
-            }
-            return { found: false };
         }
 
         // ================================================================
@@ -1491,23 +1788,38 @@
                     <html><head><meta charset="UTF-8"><title>Template Review Semester</title>
                     <style>
                         body { font-family: 'Segoe UI', Arial, sans-serif; padding:30px; max-width:960px; margin:auto; line-height:1.6; }
-                        .card { background:#fff; border-radius:12px; padding:20px; margin-bottom:16px; border-left:5px solid #2ecc71; }
-                        .section-title { font-size:1.2rem; font-weight:700; margin:0 0 8px 0; border-bottom:2px solid #d5f4e6; padding-bottom:4px; }
-                        .section-desc { background:#f0faf0; padding:8px 14px; border-radius:8px; margin-bottom:12px; }
+                        .card { background:#fff; border-radius:12px; padding:20px; margin-bottom:16px; border-left:5px solid #2c3e50; }
+                        .section-title { font-size:1.2rem; font-weight:700; margin:0 0 8px 0; border-bottom:2px solid #d5dbe0; padding-bottom:4px; }
+                        .section-desc { background:#eef1f3; padding:8px 14px; border-radius:8px; margin-bottom:12px; }
                         table { width:100%; border-collapse:collapse; margin:8px 0; }
-                        th { background:#2ecc71; color:#fff; padding:8px 10px; text-align:left; }
+                        th { background:#2c3e50; color:#fff; padding:8px 10px; text-align:left; }
                         td { padding:6px 10px; border-bottom:1px solid #eee; }
-                        .identitas-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; background:#d5f4e6; padding:12px 16px; border-radius:10px; }
+                        .identitas-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; background:#d5dbe0; padding:12px 16px; border-radius:10px; }
                         .options-group { display:flex; flex-wrap:wrap; gap:10px 20px; }
-                        .bab-card { border:1px solid #d5f4e6; border-radius:8px; padding:12px 16px; margin:8px 0; background:#fafafa; }
-                        .bab-card .bab-title { font-weight:600; color:#229954; }
+                        .bab-card { border:1px solid #d5dbe0; border-radius:8px; padding:12px 16px; margin:8px 0; background:#fafafa; }
+                        .bab-card .bab-title { font-weight:600; color:#1a252f; }
                         .bab-color { display:inline-block; width:12px; height:12px; border-radius:50%; margin-right:8px; }
-                        .header-title { text-align:center; font-size:1.6rem; color:#27ae60; }
+                        .header-title { text-align:center; font-size:1.6rem; color:#1a252f; }
                         .header-sub { text-align:center; color:#666; }
+                        .tp-card { background:#fff; border-radius:12px; padding:12px 18px; margin-bottom:16px; border-left:5px solid #2c3e50; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+                        .tp-card .tp-item { display:flex; align-items:center; gap:12px; padding:3px 0; }
+                        .tp-card .tp-item .tp-code { background:#2c3e50; color:#fff; padding:2px 10px; border-radius:12px; font-weight:700; font-size:0.8rem; min-width:45px; text-align:center; }
+                        .tp-card .tp-item .tp-desc { color:#1a252f; }
+                        .emoji-grid { display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; margin:1rem 0; }
+                        .emoji-card { background:#eef1f3; padding:0.8rem 1rem; border-radius:12px; text-align:center; }
+                        .emoji-card .emoji-title { font-weight:600; font-size:0.9rem; margin-bottom:2px; }
+                        .emoji-group { display:flex; gap:0.4rem; justify-content:center; flex-wrap:wrap; }
+                        .folder-link-box { background:#e8f5e9; padding:10px 14px; border-radius:8px; border-left:5px solid #4caf50; margin:10px 0; }
+                        .folder-link-box .label-link { font-weight:600; color:#2e7d32; }
+                        @media (max-width:768px) { .emoji-grid { grid-template-columns:1fr; } }
                     </style>
                     </head><body>
                     <h1 class="header-title">📚 Review Semester Ganjil</h1>
                     <p class="header-sub">Lembar Kerja IPAS</p>
+                    <div class="tp-card">
+                        <div style="font-weight:700; color:#1a252f; margin-bottom:6px; font-size:1.1rem;">Tujuan Pembelajaran</div>
+                        <div class="tp-item"><span class="tp-code">TP 1.1</span><span class="tp-desc">Menjelaskan pengetahuan ilmiah yang berkaitan dengan fenomena alam dan sosial di lingkungan sekitar</span></div>
+                    </div>
                     ${clone.innerHTML}
                     <p style="text-align:center; color:#999; font-size:0.85rem; margin-top:30px; border-top:1px solid #eee; padding-top:12px;">
                         Dicetak dari Sistem IPAS Tembok Belajar
