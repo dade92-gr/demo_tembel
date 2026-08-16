@@ -12,8 +12,6 @@
             --informatika-secondary: #2980b9;
             --informatika-light: #ebf5fb;
             --informatika-dark: #21618c;
-            --informatika-accent: #9b59b6;
-            --informatika-gray: #f5f7fa;
             --informatika-orange: #f39c12;
             --informatika-red: #e74c3c;
         }
@@ -25,6 +23,37 @@
             background-color: #f5f7fa;
             color: #2c3e50;
             line-height: 1.6;
+        }
+
+        .tp-card {
+            background: linear-gradient(135deg, #e8f4fd 0%, #d6eaf8 100%);
+            border-radius: 16px;
+            padding: 1.2rem 1.8rem;
+            margin-bottom: 1.5rem;
+            border-left: 5px solid var(--informatika-primary);
+        }
+
+        .tp-card .tp-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 4px 0;
+            font-size: 0.95rem;
+        }
+
+        .tp-card .tp-item .tp-code {
+            background: var(--informatika-primary);
+            color: white;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            min-width: 45px;
+            text-align: center;
+        }
+
+        .tp-card .tp-item .tp-desc {
+            color: var(--informatika-dark);
         }
 
         .activity-detail-container {
@@ -80,7 +109,7 @@
         .informatika-content-card .subtitle {
             color: #666;
             font-size: 1rem;
-            margin-bottom: 2rem;
+            margin-bottom: 0;
             display: flex;
             align-items: center;
             gap: 15px;
@@ -89,18 +118,6 @@
 
         .informatika-content-card .subtitle i { color: var(--informatika-primary); }
 
-        .informatika-content-card > p {
-            font-size: 1.1rem;
-            line-height: 1.7;
-            color: #555;
-            margin-bottom: 2.5rem;
-            padding: 1rem 1.5rem;
-            background: var(--informatika-light);
-            border-radius: 10px;
-            border-left: 4px solid var(--informatika-primary);
-        }
-
-        /* ============ MATERI SECTION ============ */
         .materi-section {
             background: linear-gradient(135deg, #fff5e6 0%, #fffaf0 100%);
             border-radius: 20px;
@@ -108,18 +125,6 @@
             margin: 2rem 0;
             border: 2px solid #f39c12;
             box-shadow: 0 4px 15px rgba(243, 156, 18, 0.15);
-            animation: fadeInUp 0.6s ease;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         .materi-header {
@@ -278,6 +283,17 @@
             font-size: 1.6rem;
         }
 
+        .section-badge {
+            display: inline-block;
+            background: var(--informatika-primary);
+            color: white;
+            padding: 2px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
         .instruction-box {
             background: var(--informatika-light);
             padding: 1rem 1.5rem;
@@ -329,7 +345,6 @@
             box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.15);
         }
 
-        /* ===== TABEL 3 KOLOM: No, Pertanyaan, Jawaban ===== */
         .qa-table {
             width: 100%;
             border-collapse: collapse;
@@ -354,12 +369,10 @@
         .qa-table tr:last-child td { border-bottom: none; }
         .qa-table tr:hover { background: #f8fafc; }
 
-        /* Lebar proporsional: No kecil, Pertanyaan sedang, Jawaban lebar */
         .qa-table .no-col { width: 6%; text-align: center; font-weight: 600; color: #7f8c8d; }
         .qa-table .question-col { width: 34%; font-weight: 500; color: #2c3e50; }
         .qa-table .answer-col { width: 60%; }
 
-        /* ===== TABEL 4 KOLOM ===== */
         .qa-table.four-col .no-col { width: 6%; text-align: center; font-weight: 600; color: #7f8c8d; }
         .qa-table.four-col .col1 { width: 22%; font-weight: 500; color: #2c3e50; }
         .qa-table.four-col .col2 { width: 32%; }
@@ -376,7 +389,10 @@
             background: #fafcfe !important;
             color: #2c3e50 !important;
             box-sizing: border-box !important;
-            resize: vertical;
+            resize: none !important;
+            overflow: hidden !important;
+            min-height: 50px !important;
+            line-height: 1.6 !important;
         }
 
         .answer-field:hover {
@@ -402,7 +418,7 @@
 
         .checkbox-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 0.5rem 1.5rem;
             margin: 0.5rem 0;
         }
@@ -447,6 +463,57 @@
             height: 16px;
             accent-color: var(--informatika-primary);
             cursor: pointer;
+        }
+
+        .screenshot-instruction {
+            background: #fff3cd;
+            border-radius: 10px;
+            padding: 0.8rem 1.2rem;
+            margin: 0.5rem 0 1rem 0;
+            border-left: 4px solid #f39c12;
+        }
+
+        .screenshot-instruction i {
+            color: #f39c12;
+            margin-right: 8px;
+        }
+
+        .folder-link-box {
+            background: #e8f5e9;
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            margin-top: 1rem;
+            border-left: 5px solid #4caf50;
+        }
+
+        .folder-link-box .label-link {
+            font-weight: 600;
+            color: #2e7d32;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .folder-link-box .sub-text {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 6px;
+        }
+
+        .folder-link-box input {
+            width: 100% !important;
+        }
+
+        .culture-tip {
+            background: #e8f5e9;
+            border-radius: 10px;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 4px solid #4caf50;
+        }
+
+        .culture-tip i {
+            color: #4caf50;
+            margin-right: 8px;
         }
 
         .alert {
@@ -540,7 +607,6 @@
 
         .btn-submit i { margin-right: 10px; }
 
-        /* ============ EXPORT BUTTON ============ */
         .export-button {
             background: linear-gradient(135deg, #3498db, #2980b9);
             color: white;
@@ -624,20 +690,6 @@
             pointer-events: none;
         }
 
-        .culture-tip {
-            background: #e8f5e9;
-            border-radius: 10px;
-            padding: 1rem;
-            margin: 1rem 0;
-            border-left: 4px solid #4caf50;
-        }
-
-        .culture-tip i {
-            color: #4caf50;
-            margin-right: 8px;
-        }
-
-        /* ============ MODAL ============ */
         .modal {
             display: none;
             position: fixed;
@@ -758,15 +810,6 @@
             box-shadow: none;
         }
 
-        .modal-btn.no {
-            background: #6c757d;
-            color: white;
-        }
-
-        .modal-btn.no:hover {
-            background: #5a6268;
-        }
-
         .modal-btn.secondary {
             background: #6c757d;
             color: white;
@@ -805,15 +848,11 @@
             .btn-submit { width: 100%; justify-content: center; padding: 1rem; }
             .informatika-content-card h2 { font-size: 1.6rem; }
             .informatika-content-card { padding: 1.5rem; }
-            
-            .materi-header {
-                flex-direction: column;
-                text-align: center;
-            }
-            .materi-card .btn-materi {
-                width: 100%;
-                justify-content: center;
-            }
+            .materi-header { flex-direction: column; text-align: center; }
+            .materi-card .btn-materi { width: 100%; justify-content: center; }
+            .tp-card .tp-item { flex-wrap: wrap; }
+            .screenshot-instruction { padding: 0.6rem 1rem; }
+            .folder-link-box { padding: 0.8rem 1rem; }
         }
 
         @media (max-width: 480px) {
@@ -830,9 +869,11 @@
         }
 
         @media print {
-            .materi-section {
-                display: none !important;
-            }
+            .materi-section { display: none !important; }
+            .export-wrapper { display: none !important; }
+            .btn-submit { display: none !important; }
+            .activity-navigation { display: none !important; }
+            .connection-status { display: none !important; }
         }
     </style>
 </head>
@@ -842,7 +883,7 @@
             <div class="nav-container">
                 <div class="logo">
                     <img src="../../../assets/images/logo.png" alt="Logo Sekolah">
-                    <h1>INFORMATIKA - AKTIVITAS PEMBELAJARAN</h1>
+                    <h1>INFORMATIKA - PROJEK 2</h1>
                 </div>
                 <ul class="nav-menu" id="nav-menu">
                     <li><a href="../../../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
@@ -862,16 +903,26 @@
 
     <section class="activity-detail-container">
         <div class="informatika-content-card">
-            <h2>Proyek 2 Aktivitas 1: Mengenal Budaya & Dunia Digital</h2>
+            <h2>Proyek 2 Aktivitas 1: Mengenal Budaya &amp; Dunia Digital</h2>
             <div class="subtitle">
                 <span><i class="fas fa-calendar"></i> Pertemuan 1 • Proyek 2: Digitalisasi Budaya</span>
                 <span><i class="fas fa-clock"></i> 4 JP</span>
                 <span class="connection-status online" id="connectionStatus"><i class="fas fa-wifi"></i> Online</span>
             </div>
-            <p><i class="fas fa-quote-left"></i> Memahami dan memberikan contoh penerapan digitalisasi budaya Indonesia. <i class="fas fa-quote-right"></i></p>
         </div>
 
-        <!-- ===== BAGIAN MEMBACA MATERI ===== -->
+        <!-- TP CARD -->
+        <div class="tp-card">
+            <div style="font-weight:700; color:var(--informatika-dark); margin-bottom:6px; font-size:1.1rem;">
+                <i class="fas fa-bullseye"></i> Tujuan Pembelajaran
+            </div>
+            <div class="tp-item">
+                <span class="tp-code">TP 2.9</span>
+                <span class="tp-desc">Memahami dan memberikan contoh penerapan digitalisasi budaya Indonesia</span>
+            </div>
+        </div>
+
+        <!-- MATERI SECTION -->
         <div class="materi-section">
             <div class="materi-header">
                 <div class="materi-icon">
@@ -882,7 +933,7 @@
                     <p>Sebelum mengerjakan LKPD ini, pastikan kamu sudah membaca dan memahami materi berikut:</p>
                 </div>
             </div>
-            
+
             <div class="materi-card">
                 <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
                     <span class="badge">MATERI 2.1</span>
@@ -898,11 +949,11 @@
                     <i class="fas fa-arrow-right"></i> Baca Materi Sekarang
                 </a>
             </div>
-            
+
             <div class="materi-tip">
                 <p>
                     <i class="fas fa-info-circle"></i> 
-                    <strong>Tips:</strong> Baca materi dengan saksama agar kamu lebih mudah mengerjakan LKPD ini. Materi akan terbuka di tab baru.
+                    <strong>Tips:</strong> Baca materi dengan saksama agar kamu lebih mudah mengerjakan LKPD ini.
                 </p>
             </div>
         </div>
@@ -917,28 +968,15 @@
         </div>
 
         <div class="worksheet-container" id="worksheetForm">
-            <!-- Tombol Export -->
             <div class="export-wrapper">
                 <button class="export-button" id="exportBtn" onclick="exportToDocx()" disabled>
                     <i class="fas fa-file-word"></i> Export Template DOCX
                 </button>
             </div>
 
-            <div class="instruction-box" style="background:#e8f5e9; border-left-color: var(--informatika-primary);">
-                <i class="fas fa-lightbulb" style="color: var(--informatika-primary); margin-right: 10px;"></i>
-                <strong>HALO, KELOMPOK HEBAT! 👋</strong><br>
-                Silakan isi lembar kerja ini untuk mempelajari digitalisasi budaya Indonesia.
-            </div>
+            <h1 class="worksheet-title">LEMBAR KERJA PESERTA DIDIK (LKPD) PROYEK 2 – AKTIVITAS 1 (MENGENAL BUDAYA &amp; DUNIA DIGITAL)</h1>
 
-            <h1 class="worksheet-title">LEMBAR KERJA PESERTA DIDIK (LKPD) PROYEK 2 – AKTIVITAS 1</h1>
-            <p style="text-align: center; margin-bottom: 2rem; font-size: 1.2rem; color: var(--informatika-accent);">
-                <strong>MENGENAL BUDAYA & DUNIA DIGITAL</strong>
-            </p>
-            <div style="text-align: center; margin-bottom: 2rem; background: var(--informatika-light); padding: 0.8rem; border-radius: 10px;">
-                <p><i class="fas fa-bullseye"></i> <strong>Tujuan Pembelajaran (TP 2.9):</strong> Memahami dan memberikan contoh penerapan digitalisasi budaya Indonesia.</p>
-            </div>
-
-            <!-- ===== IDENTITAS ===== -->
+            <!-- IDENTITAS -->
             <h3 style="margin: 2rem 0 1rem 0; color: var(--informatika-dark);">
                 <i class="fas fa-users"></i> Identitas Kelompok
             </h3>
@@ -957,7 +995,7 @@
                 </div>
                 <div class="identitas-item">
                     <label><i class="fas fa-users"></i> Nama Kelompok</label>
-                    <input type="text" id="kelompok" placeholder="Contoh: Kelompok 1 - Budaya" oninput="saveToLocalStorage();" disabled>
+                    <input type="text" id="kelompok" placeholder="Contoh: Kelompok Budaya" oninput="saveToLocalStorage();" disabled>
                 </div>
                 <div class="identitas-item">
                     <label><i class="fas fa-tasks"></i> Peran dalam Kelompok</label>
@@ -965,90 +1003,150 @@
                 </div>
             </div>
 
-            <!-- ===== PETUNJUK ===== -->
             <div class="instruction-box">
                 <i class="fas fa-info-circle" style="margin-right: 10px;"></i>
                 <strong>📚 PETUNJUK PENGGUNAAN LKPD</strong><br><br>
                 <ol>
-                    <li>Pastikan kamu sudah membaca materi <strong>"Digitalisasi Budaya Indonesia"</strong> yang tersedia di menu Daftar Materi.</li>
+                    <li>Pastikan kamu sudah membaca materi <strong>"Digitalisasi Budaya Indonesia"</strong>.</li>
                     <li>Kerjakan setiap bagian dengan berdiskusi bersama kelompok.</li>
-                    <li>Tulis jawaban dengan jelas dan lengkap.</li>
+                    <li>Ambil screenshot sebagai bukti pengerjaan setiap bagian.</li>
                     <li>Data akan <strong>tersimpan otomatis</strong> di browser Anda.</li>
-                    <li>Klik tombol <strong>Kumpulkan LKPD</strong> di bagian bawah untuk mengirimkan data ke Google Spreadsheet.</li>
+                    <li>Klik <strong>Kumpulkan LKPD</strong> di bagian bawah untuk mengirimkan data.</li>
                 </ol>
             </div>
 
-            <!-- ===== BAGIAN A: PEMAHAMAN MATERI ===== -->
+            <!-- ============================================================ -->
+            <!-- BAGIAN A: PEMAHAMAN MATERI -->
+            <!-- ============================================================ -->
             <div class="section-card">
-                <h3 class="section-title"><i class="fas fa-book-reader"></i> 📖 BAGIAN A: PEMAHAMAN MATERI (INDIVIDU)</h3>
+                <h3 class="section-title">
+                    <i class="fas fa-book-reader"></i> A. PEMAHAMAN MATERI
+                    <span class="section-badge">Individu</span>
+                </h3>
                 <div class="instruction-box">
-                    <i class="fas fa-question-circle"></i> "Pastikan kamu sudah membaca materi sebelum mengerjakan!"
+                    <i class="fas fa-question-circle"></i> Pastikan kamu sudah membaca materi sebelum mengerjakan!
                 </div>
 
-                <table class="qa-table" id="tabelPemahaman">
+                <div class="screenshot-instruction">
+                    <i class="fas fa-camera"></i>
+                    <strong>📸 Instruksi Screenshot:</strong> Screenshot halaman materi yang sudah kamu baca → Upload ke Google Drive → Tempel link di bawah
+                </div>
+
+                <table class="qa-table">
                     <thead>
                         <tr><th class="no-col">No</th><th class="question-col">Pertanyaan</th><th class="answer-col">Jawaban</th></tr>
                     </thead>
                     <tbody>
-                        <tr><td class="no-col">1</td><td>Apa yang dimaksud dengan digitalisasi budaya?</td><td><textarea class="answer-field" id="review1" placeholder="Tulis jawabanmu..." oninput="saveToLocalStorage();"></textarea></td></tr>
-                        <tr><td class="no-col">2</td><td>Mengapa budaya Indonesia perlu didigitalisasi?</td><td><textarea class="answer-field" id="review2" placeholder="Tulis jawabanmu..." oninput="saveToLocalStorage();"></textarea></td></tr>
-                        <tr><td class="no-col">3</td><td>Sebutkan 3 contoh budaya Indonesia yang sudah didigitalisasi!</td><td><textarea class="answer-field" id="review3" placeholder="1.&#10;2.&#10;3." oninput="saveToLocalStorage();"></textarea></td></tr>
-                        <tr><td class="no-col">4</td><td>Apa manfaat digitalisasi budaya bagi generasi muda?</td><td><textarea class="answer-field" id="review4" placeholder="Tulis jawabanmu..." oninput="saveToLocalStorage();"></textarea></td></tr>
+                        <tr><td class="no-col">1</td><td>Apa yang dimaksud dengan digitalisasi budaya?</td><td><textarea class="answer-field" id="review1" placeholder="Tulis jawabanmu..." oninput="autoResize(this); saveToLocalStorage();"></textarea></td></tr>
+                        <tr><td class="no-col">2</td><td>Mengapa budaya Indonesia perlu didigitalisasi?</td><td><textarea class="answer-field" id="review2" placeholder="Tulis jawabanmu..." oninput="autoResize(this); saveToLocalStorage();"></textarea></td></tr>
+                        <tr><td class="no-col">3</td><td>Sebutkan 3 contoh budaya Indonesia yang sudah didigitalisasi!</td><td><textarea class="answer-field" id="review3" placeholder="1.&#10;2.&#10;3." oninput="autoResize(this); saveToLocalStorage();"></textarea></td></tr>
+                        <tr><td class="no-col">4</td><td>Apa manfaat digitalisasi budaya bagi generasi muda?</td><td><textarea class="answer-field" id="review4" placeholder="Tulis jawabanmu..." oninput="autoResize(this); saveToLocalStorage();"></textarea></td></tr>
                     </tbody>
                 </table>
 
                 <div style="margin-top: 1rem; background: #f8fafc; border-radius: 10px; padding: 1rem; border: 1px dashed var(--informatika-primary);">
-                    <div class="checkbox-item"><input type="checkbox" id="bacaMateri" onchange="saveToLocalStorage();"><label for="bacaMateri"><strong>☐ Ya, saya sudah membaca materi "Digitalisasi Budaya Indonesia"</strong></label></div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="bacaMateri" onchange="saveToLocalStorage();">
+                        <label for="bacaMateri"><strong>☐ Ya, saya sudah membaca materi "Digitalisasi Budaya Indonesia"</strong></label>
+                    </div>
+                </div>
+
+                <div class="folder-link-box">
+                    <span class="label-link"><i class="fas fa-camera"></i> 📸 Link Screenshot - Bagian A</span>
+                    <div class="sub-text">Tempel link folder/screenshot bukti membaca materi:</div>
+                    <input type="text" class="answer-field" id="link_screenshot_a" placeholder="https://drive.google.com/drive/folders/xxx" oninput="saveToLocalStorage();">
                 </div>
             </div>
 
-            <!-- ===== BAGIAN B: REFLEKSI PENGALAMAN ===== -->
+            <!-- ============================================================ -->
+            <!-- BAGIAN B: REFLEKSI PENGALAMAN BUDAYA -->
+            <!-- ============================================================ -->
             <div class="section-card">
-                <h3 class="section-title"><i class="fas fa-landmark"></i> 🏯 BAGIAN B: REFLEKSI PENGALAMAN BUDAYA (INDIVIDU)</h3>
+                <h3 class="section-title">
+                    <i class="fas fa-landmark"></i> B. REFLEKSI PENGALAMAN BUDAYA
+                    <span class="section-badge">Individu</span>
+                </h3>
                 <div class="instruction-box">
-                    <i class="fas fa-question-circle"></i> "Apa yang kamu ketahui tentang budaya Indonesia?"
+                    <i class="fas fa-question-circle"></i> Apa yang kamu ketahui tentang budaya Indonesia?
                 </div>
 
-                <table class="qa-table" id="tabelRefleksiPengalaman">
+                <div class="screenshot-instruction">
+                    <i class="fas fa-camera"></i>
+                    <strong>📸 Instruksi Screenshot:</strong> Screenshot foto/kegiatan budaya yang pernah kamu ikuti → Upload ke Google Drive → Tempel link di bawah
+                </div>
+
+                <table class="qa-table">
                     <thead>
                         <tr><th class="no-col">No</th><th class="question-col">Pertanyaan</th><th class="answer-col">Jawaban</th></tr>
                     </thead>
                     <tbody>
-                        <tr><td class="no-col">1</td><td>Apakah kamu pernah mengikuti upacara adat atau festival budaya? Ceritakan!</td><td><textarea class="answer-field" id="refleksi1" oninput="saveToLocalStorage();"></textarea></td></tr>
-                        <tr><td class="no-col">2</td><td>Apakah kamu bisa memainkan alat musik tradisional? Sebutkan!</td><td><textarea class="answer-field" id="refleksi2" oninput="saveToLocalStorage();"></textarea></td></tr>
-                        <tr><td class="no-col">3</td><td>Apakah kamu pernah mengenakan pakaian adat? Kapan?</td><td><textarea class="answer-field" id="refleksi3" oninput="saveToLocalStorage();"></textarea></td></tr>
-                        <tr><td class="no-col">4</td><td>Menurutmu, apakah generasi muda masih peduli dengan budaya Indonesia? Jelaskan!</td><td><textarea class="answer-field" id="refleksi4" oninput="saveToLocalStorage();"></textarea></td></tr>
-                        <tr><td class="no-col">5</td><td>Sebutkan 3 budaya Indonesia yang paling kamu kenal!</td><td><textarea class="answer-field" id="refleksi5" placeholder="1.&#10;2.&#10;3." oninput="saveToLocalStorage();"></textarea></td></tr>
+                        <tr><td class="no-col">1</td><td>Apakah kamu pernah mengikuti upacara adat atau festival budaya? Ceritakan!</td><td><textarea class="answer-field" id="refleksi1" placeholder="Tulis jawabanmu..." oninput="autoResize(this); saveToLocalStorage();"></textarea></td></tr>
+                        <tr><td class="no-col">2</td><td>Apakah kamu bisa memainkan alat musik tradisional? Sebutkan!</td><td><textarea class="answer-field" id="refleksi2" placeholder="Tulis jawabanmu..." oninput="autoResize(this); saveToLocalStorage();"></textarea></td></tr>
+                        <tr><td class="no-col">3</td><td>Apakah kamu pernah mengenakan pakaian adat? Kapan?</td><td><textarea class="answer-field" id="refleksi3" placeholder="Tulis jawabanmu..." oninput="autoResize(this); saveToLocalStorage();"></textarea></td></tr>
+                        <tr><td class="no-col">4</td><td>Menurutmu, apakah generasi muda masih peduli dengan budaya Indonesia? Jelaskan!</td><td><textarea class="answer-field" id="refleksi4" placeholder="Tulis jawabanmu..." oninput="autoResize(this); saveToLocalStorage();"></textarea></td></tr>
+                        <tr><td class="no-col">5</td><td>Sebutkan 3 budaya Indonesia yang paling kamu kenal!</td><td><textarea class="answer-field" id="refleksi5" placeholder="1.&#10;2.&#10;3." oninput="autoResize(this); saveToLocalStorage();"></textarea></td></tr>
                     </tbody>
                 </table>
+
+                <div class="folder-link-box">
+                    <span class="label-link"><i class="fas fa-camera"></i> 📸 Link Screenshot - Bagian B</span>
+                    <div class="sub-text">Tempel link folder/screenshot kegiatan budaya yang pernah diikuti:</div>
+                    <input type="text" class="answer-field" id="link_screenshot_b" placeholder="https://drive.google.com/drive/folders/xxx" oninput="saveToLocalStorage();">
+                </div>
             </div>
 
-            <!-- ===== BAGIAN C: VIDEO PROMOSI ===== -->
+            <!-- ============================================================ -->
+            <!-- BAGIAN C: VIDEO PROMOSI BUDAYA -->
+            <!-- ============================================================ -->
             <div class="section-card">
-                <h3 class="section-title"><i class="fas fa-video"></i> 🎬 BAGIAN C: VIDEO PROMOSI BUDAYA (KELOMPOK)</h3>
+                <h3 class="section-title">
+                    <i class="fas fa-video"></i> C. VIDEO PROMOSI BUDAYA
+                    <span class="section-badge">Kelompok</span>
+                </h3>
                 <div class="instruction-box">
-                    <i class="fas fa-play-circle"></i> "Lihat bagaimana budaya dipromosikan di dunia digital!"
+                    <i class="fas fa-play-circle"></i> Lihat bagaimana budaya dipromosikan di dunia digital!
                 </div>
 
-                <table class="qa-table" id="tabelVideo">
+                <div class="screenshot-instruction">
+                    <i class="fas fa-camera"></i>
+                    <strong>📸 Instruksi Screenshot:</strong> Screenshot video promosi budaya yang kamu tonton → Upload ke Google Drive → Tempel link di bawah
+                </div>
+
+                <table class="qa-table">
                     <thead>
                         <tr><th class="no-col">No</th><th class="question-col">Pertanyaan</th><th class="answer-col">Jawaban</th></tr>
                     </thead>
                     <tbody>
                         <tr><td class="no-col">1</td><td>Judul Video</td><td><input type="text" class="answer-field" id="video_judul" placeholder="Judul video..." oninput="saveToLocalStorage();"></td></tr>
                         <tr><td class="no-col">2</td><td>Sumber/Platform</td><td><input type="text" class="answer-field" id="video_sumber" placeholder="YouTube, Instagram, dll..." oninput="saveToLocalStorage();"></td></tr>
-                        <tr><td class="no-col">3</td><td>Hal-Hal Penting dari Video</td><td><textarea class="answer-field" id="video_poin" placeholder="1.&#10;2.&#10;3.&#10;4.&#10;5." oninput="saveToLocalStorage();"></textarea></td></tr>
-                        <tr><td class="no-col">4</td><td>Budaya apa saja yang ditampilkan dalam video?</td><td><textarea class="answer-field" id="video_pertanyaan1" oninput="saveToLocalStorage();"></textarea></td></tr>
-                        <tr><td class="no-col">5</td><td>Bagaimana video tersebut mempromosikan budaya Indonesia?</td><td><textarea class="answer-field" id="video_pertanyaan2" oninput="saveToLocalStorage();"></textarea></td></tr>
+                        <tr><td class="no-col">3</td><td>Hal-Hal Penting dari Video</td><td><textarea class="answer-field" id="video_poin" placeholder="1.&#10;2.&#10;3.&#10;4.&#10;5." oninput="autoResize(this); saveToLocalStorage();"></textarea></td></tr>
+                        <tr><td class="no-col">4</td><td>Budaya apa saja yang ditampilkan dalam video?</td><td><textarea class="answer-field" id="video_pertanyaan1" placeholder="Tulis jawabanmu..." oninput="autoResize(this); saveToLocalStorage();"></textarea></td></tr>
+                        <tr><td class="no-col">5</td><td>Bagaimana video tersebut mempromosikan budaya Indonesia?</td><td><textarea class="answer-field" id="video_pertanyaan2" placeholder="Tulis jawabanmu..." oninput="autoResize(this); saveToLocalStorage();"></textarea></td></tr>
                     </tbody>
                 </table>
+
+                <div class="folder-link-box">
+                    <span class="label-link"><i class="fas fa-camera"></i> 📸 Link Screenshot - Bagian C</span>
+                    <div class="sub-text">Tempel link folder/screenshot video promosi budaya:</div>
+                    <input type="text" class="answer-field" id="link_screenshot_c" placeholder="https://drive.google.com/drive/folders/xxx" oninput="saveToLocalStorage();">
+                </div>
             </div>
 
-            <!-- ===== BAGIAN D: DIGITALISASI BUDAYA ===== -->
+            <!-- ============================================================ -->
+            <!-- BAGIAN D: DIGITALISASI BUDAYA -->
+            <!-- ============================================================ -->
             <div class="section-card">
-                <h3 class="section-title"><i class="fas fa-laptop-code"></i> 💻 BAGIAN D: DIGITALISASI BUDAYA (KELOMPOK)</h3>
+                <h3 class="section-title">
+                    <i class="fas fa-laptop-code"></i> D. DIGITALISASI BUDAYA
+                    <span class="section-badge">Kelompok</span>
+                </h3>
                 <div class="instruction-box">
-                    <i class="fas fa-search"></i> "Jelajahi bagaimana budaya hadir di dunia digital!"
+                    <i class="fas fa-search"></i> Jelajahi bagaimana budaya hadir di dunia digital!
+                </div>
+
+                <div class="screenshot-instruction">
+                    <i class="fas fa-camera"></i>
+                    <strong>📸 Instruksi Screenshot:</strong> Screenshot contoh digitalisasi budaya dari setiap platform → Upload ke Google Drive → Tempel link di bawah
                 </div>
 
                 <h4 style="color: var(--informatika-dark); margin: 1rem 0 0.5rem 0;">
@@ -1072,18 +1170,34 @@
                     </thead>
                     <tbody id="diskusiBody"></tbody>
                 </table>
+
+                <div class="folder-link-box">
+                    <span class="label-link"><i class="fas fa-camera"></i> 📸 Link Screenshot - Bagian D</span>
+                    <div class="sub-text">Tempel link folder/screenshot eksplorasi digitalisasi budaya:</div>
+                    <input type="text" class="answer-field" id="link_screenshot_d" placeholder="https://drive.google.com/drive/folders/xxx" oninput="saveToLocalStorage();">
+                </div>
             </div>
 
-            <!-- ===== BAGIAN E: BUDAYA LOKAL ===== -->
+            <!-- ============================================================ -->
+            <!-- BAGIAN E: BUDAYA LOKAL KITA -->
+            <!-- ============================================================ -->
             <div class="section-card">
-                <h3 class="section-title"><i class="fas fa-map-marker-alt"></i> 🌍 BAGIAN E: BUDAYA LOKAL KITA (KELOMPOK)</h3>
+                <h3 class="section-title">
+                    <i class="fas fa-map-marker-alt"></i> E. BUDAYA LOKAL KITA
+                    <span class="section-badge">Kelompok</span>
+                </h3>
                 <div class="instruction-box">
-                    <i class="fas fa-heart"></i> "Angkat budaya dari daerahmu!"
+                    <i class="fas fa-heart"></i> Angkat budaya dari daerahmu!
                 </div>
 
                 <div class="culture-tip">
                     <i class="fas fa-info-circle"></i>
                     <strong>Info:</strong> Pilih satu budaya dari daerahmu yang ingin kamu angkat!
+                </div>
+
+                <div class="screenshot-instruction">
+                    <i class="fas fa-camera"></i>
+                    <strong>📸 Instruksi Screenshot:</strong> Screenshot foto/artikel tentang budaya yang dipilih → Upload ke Google Drive → Tempel link di bawah
                 </div>
 
                 <table class="qa-table" id="tabelBudayaLokal">
@@ -1092,30 +1206,41 @@
                     </thead>
                     <tbody id="budayaFormBody"></tbody>
                 </table>
+
+                <div class="folder-link-box">
+                    <span class="label-link"><i class="fas fa-camera"></i> 📸 Link Screenshot - Bagian E</span>
+                    <div class="sub-text">Tempel link folder/screenshot budaya lokal yang dipilih:</div>
+                    <input type="text" class="answer-field" id="link_screenshot_e" placeholder="https://drive.google.com/drive/folders/xxx" oninput="saveToLocalStorage();">
+                </div>
             </div>
 
-            <!-- ===== BAGIAN F: REFLEKSI AKHIR ===== -->
+            <!-- ============================================================ -->
+            <!-- BAGIAN F: REFLEKSI AKHIR -->
+            <!-- ============================================================ -->
             <div class="section-card">
-                <h3 class="section-title"><i class="fas fa-pen"></i> 📝 BAGIAN F: REFLEKSI AKHIR (INDIVIDU)</h3>
+                <h3 class="section-title">
+                    <i class="fas fa-pen"></i> F. REFLEKSI AKHIR
+                    <span class="section-badge">Individu</span>
+                </h3>
                 <div class="instruction-box">
-                    <i class="fas fa-question-circle"></i> "Apa yang aku pelajari hari ini?"
+                    <i class="fas fa-question-circle"></i> "Apa yang aku pelajari hari ini? Tulis dengan jujur!"
                 </div>
 
-                <table class="qa-table" id="tabelRefleksiAkhir">
+                <table class="qa-table">
                     <thead>
                         <tr><th class="no-col">No</th><th class="question-col">Pertanyaan</th><th class="answer-col">Jawabanku</th></tr>
                     </thead>
                     <tbody>
-                        <tr><td class="no-col">1</td><td>Hal baru apa yang aku pelajari tentang digitalisasi budaya hari ini?</td><td><textarea class="answer-field" id="ref1" oninput="saveToLocalStorage();"></textarea></td></tr>
-                        <tr><td class="no-col">2</td><td>Budaya Indonesia apa yang paling menarik menurutku? Mengapa?</td><td><textarea class="answer-field" id="ref2" oninput="saveToLocalStorage();"></textarea></td></tr>
-                        <tr><td class="no-col">3</td><td>Apakah aku merasa bangga dengan kekayaan budaya Indonesia?</td><td><textarea class="answer-field" id="ref3" oninput="saveToLocalStorage();"></textarea></td></tr>
-                        <tr><td class="no-col">4</td><td>Apa yang bisa aku lakukan untuk ikut melestarikan budaya Indonesia?</td><td><textarea class="answer-field" id="ref4" oninput="saveToLocalStorage();"></textarea></td></tr>
-                        <tr><td class="no-col">5</td><td>Apakah budaya daerahku sudah dikenal secara digital?</td><td><textarea class="answer-field" id="ref5" oninput="saveToLocalStorage();"></textarea></td></tr>
+                        <tr><td class="no-col">1</td><td>Hal baru apa yang aku pelajari tentang digitalisasi budaya hari ini?</td><td><textarea class="answer-field" id="ref1" placeholder="Tulis jawabanmu..." oninput="autoResize(this); saveToLocalStorage();"></textarea></td></tr>
+                        <tr><td class="no-col">2</td><td>Budaya Indonesia apa yang paling menarik menurutku? Mengapa?</td><td><textarea class="answer-field" id="ref2" placeholder="Tulis jawabanmu..." oninput="autoResize(this); saveToLocalStorage();"></textarea></td></tr>
+                        <tr><td class="no-col">3</td><td>Apakah aku merasa bangga dengan kekayaan budaya Indonesia?</td><td><textarea class="answer-field" id="ref3" placeholder="Tulis jawabanmu..." oninput="autoResize(this); saveToLocalStorage();"></textarea></td></tr>
+                        <tr><td class="no-col">4</td><td>Apa yang bisa aku lakukan untuk ikut melestarikan budaya Indonesia?</td><td><textarea class="answer-field" id="ref4" placeholder="Tulis jawabanmu..." oninput="autoResize(this); saveToLocalStorage();"></textarea></td></tr>
+                        <tr><td class="no-col">5</td><td>Apakah budaya daerahku sudah dikenal secara digital?</td><td><textarea class="answer-field" id="ref5" placeholder="Tulis jawabanmu..." oninput="autoResize(this); saveToLocalStorage();"></textarea></td></tr>
                     </tbody>
                 </table>
 
-                <div style="margin-top: 1rem; background: #f8fafc; border-radius: 10px; padding: 1rem; border: 1px dashed var(--informatika-primary);">
-                    <p><strong>Checklist Pemahaman:</strong></p>
+                <div style="margin-top: 1.5rem; background: #f8fafc; border-radius: 10px; padding: 1rem; border: 1px dashed var(--informatika-primary);">
+                    <p><strong>✅ Checklist Pemahaman Akhir:</strong></p>
                     <div class="checkbox-grid">
                         <div class="checkbox-item"><input type="checkbox" id="chk1" onchange="saveToLocalStorage();"><label for="chk1">Saya sudah membaca materi "Digitalisasi Budaya Indonesia"</label></div>
                         <div class="checkbox-item"><input type="checkbox" id="chk2" onchange="saveToLocalStorage();"><label for="chk2">Saya sudah mengenal berbagai budaya Indonesia</label></div>
@@ -1125,6 +1250,7 @@
                 </div>
             </div>
 
+            <!-- SUBMIT -->
             <button class="btn-submit" id="submitBtn" onclick="submitData()" disabled>
                 <i class="fas fa-paper-plane"></i> Kumpulkan LKPD
             </button>
@@ -1140,7 +1266,7 @@
         </div>
     </section>
 
-    <!-- ===== MODAL KONFIRMASI RESET (SUKSES) ===== -->
+    <!-- MODAL RESET -->
     <div id="resetModal" class="modal">
         <div class="modal-content">
             <div class="modal-icon icon-success">
@@ -1159,7 +1285,7 @@
         </div>
     </div>
 
-    <!-- ===== MODAL KONFIRMASI GANTI TUGAS ===== -->
+    <!-- MODAL KONFIRMASI GANTI -->
     <div id="confirmModal" class="modal">
         <div class="modal-content">
             <div class="modal-icon icon-warning">
@@ -1183,11 +1309,74 @@
         </div>
     </div>
 
-    <script src="../../../script.js"></script>
     <script>
-        // ==================== KONFIGURASI URL ====================
+        // ==================== AUTO RESIZE TEXTAREA ====================
+        function autoResize(element) {
+            element.style.height = 'auto';
+            element.style.height = element.scrollHeight + 'px';
+        }
+
+        // ==================== HAMBURGER MENU ====================
+        (function() {
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            const bars = hamburger ? hamburger.querySelectorAll('.bar') : [];
+
+            if (hamburger && navMenu) {
+                hamburger.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    navMenu.classList.toggle('active');
+                    
+                    if (navMenu.classList.contains('active')) {
+                        bars.forEach((bar, index) => {
+                            if (index === 0) bar.style.transform = 'rotate(45deg) translate(5px, 5px)';
+                            else if (index === 1) bar.style.opacity = '0';
+                            else if (index === 2) bar.style.transform = 'rotate(-45deg) translate(5px, -5px)';
+                        });
+                    } else {
+                        bars.forEach(bar => {
+                            bar.style.transform = 'none';
+                            bar.style.opacity = '1';
+                        });
+                    }
+                });
+
+                document.addEventListener('click', function(event) {
+                    const isClickInside = navMenu.contains(event.target) || hamburger.contains(event.target);
+                    if (!isClickInside && navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                        bars.forEach(bar => {
+                            bar.style.transform = 'none';
+                            bar.style.opacity = '1';
+                        });
+                    }
+                });
+
+                navMenu.querySelectorAll('.nav-link').forEach(link => {
+                    link.addEventListener('click', function() {
+                        navMenu.classList.remove('active');
+                        bars.forEach(bar => {
+                            bar.style.transform = 'none';
+                            bar.style.opacity = '1';
+                        });
+                    });
+                });
+
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                        bars.forEach(bar => {
+                            bar.style.transform = 'none';
+                            bar.style.opacity = '1';
+                        });
+                    }
+                });
+            }
+        })();
+
+        // ==================== KONFIGURASI ====================
         const URL_DATA_SISWA = 'https://script.google.com/macros/s/AKfycbxZMS_o6xWMAQAkjBzzEMR9tJmHOnHCX13KJX2xZMn7WIr-A9pwVK_3DDHnMg7y_rD29Q/exec';
-        const URL_PEREKAPAN = 'https://script.google.com/macros/s/AKfycbwRlLJQQ5ypD1jzsHICPZH6kfrSFHKHGXo0hPKjzwtHH04EDrAid7dqtDv7q6TCbDRj/exec';
+        const URL_PEREKAPAN = 'https://script.google.com/macros/s/AKfycbzBn7u9sH-UrUL3Xc4PnI16c1QbkR-w2Za5JDaJM5Utak1gntOvfrbsbkTEkRBn5xB9uQ/exec';
         const STORAGE_KEY = 'proyek2_aktivitas1_draft';
         const AKTIVITAS_NAMA = 'AKTIVITAS 1 - Mengenal Budaya & Dunia Digital';
         const SHEET_NAME = 'data_aktivitas';
@@ -1200,8 +1389,7 @@
         let isSubmitting = false;
         let pendingSubmitData = null;
 
-        // ==================== FUNGSI UTILITY ====================
-        function getValue(id) { const el = document.getElementById(id); return el ? el.value : ''; }
+        // ==================== UTILITY ====================
         function getChecked(id) { const el = document.getElementById(id); return el ? el.checked : false; }
         function getRadioValue(name) { const el = document.querySelector(`input[name="${name}"]:checked`); return el ? el.value : ''; }
 
@@ -1231,8 +1419,7 @@
             autoSaveTimeout = setTimeout(() => {
                 const formData = collectAllFormData();
                 localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
-                console.log('Data tersimpan otomatis', new Date().toLocaleTimeString());
-            }, 1000);
+            }, 500);
         }
 
         function loadFromLocalStorage() {
@@ -1241,6 +1428,9 @@
                 try {
                     const data = JSON.parse(savedData);
                     populateFormData(data);
+                    document.querySelectorAll('textarea.answer-field').forEach(el => {
+                        autoResize(el);
+                    });
                 } catch (e) {
                     console.error('Error loading saved data:', e);
                 }
@@ -1251,100 +1441,130 @@
             localStorage.removeItem(STORAGE_KEY);
         }
 
-        // ==================== COLLECT ALL FORM DATA ====================
+        // ==================== COLLECT FORM DATA ====================
         function collectAllFormData() {
             const timestamp = getFormattedTimestamp();
             
-            // Collect all textarea and input values
-            const bagianA = {
-                review1: document.getElementById('review1')?.value || '',
-                review2: document.getElementById('review2')?.value || '',
-                review3: document.getElementById('review3')?.value || '',
-                review4: document.getElementById('review4')?.value || '',
-                bacaMateri: getChecked('bacaMateri')
-            };
-
-            const bagianB = {
-                refleksi1: document.getElementById('refleksi1')?.value || '',
-                refleksi2: document.getElementById('refleksi2')?.value || '',
-                refleksi3: document.getElementById('refleksi3')?.value || '',
-                refleksi4: document.getElementById('refleksi4')?.value || '',
-                refleksi5: document.getElementById('refleksi5')?.value || ''
-            };
-
-            const bagianC = {
-                video_judul: document.getElementById('video_judul')?.value || '',
-                video_sumber: document.getElementById('video_sumber')?.value || '',
-                video_poin: document.getElementById('video_poin')?.value || '',
-                video_pertanyaan1: document.getElementById('video_pertanyaan1')?.value || '',
-                video_pertanyaan2: document.getElementById('video_pertanyaan2')?.value || ''
-            };
-
-            const bagianD = {
-                digital_contoh_1: document.getElementById('digital_contoh_1')?.value || '',
-                digital_deskripsi_1: document.getElementById('digital_deskripsi_1')?.value || '',
-                digital_contoh_2: document.getElementById('digital_contoh_2')?.value || '',
-                digital_deskripsi_2: document.getElementById('digital_deskripsi_2')?.value || '',
-                digital_contoh_3: document.getElementById('digital_contoh_3')?.value || '',
-                digital_deskripsi_3: document.getElementById('digital_deskripsi_3')?.value || '',
-                diskusi_1: document.getElementById('diskusi_1')?.value || '',
-                diskusi_2: document.getElementById('diskusi_2')?.value || '',
-                diskusi_3: document.getElementById('diskusi_3')?.value || '',
-                diskusi_4: document.getElementById('diskusi_4')?.value || ''
-            };
-
-            const bagianE = {
-                budaya_1: document.getElementById('budaya_1')?.value || '',
-                budaya_jenis: getRadioValue('budaya_jenis'),
-                budaya_jenis_lain: document.getElementById('budaya_jenis_lain')?.value || '',
-                budaya_3: document.getElementById('budaya_3')?.value || '',
-                budaya_4: document.getElementById('budaya_4')?.value || '',
-                budaya_5: document.getElementById('budaya_5')?.value || '',
-                budaya_6: document.getElementById('budaya_6')?.value || ''
-            };
-
-            const bagianF = {
-                ref1: document.getElementById('ref1')?.value || '',
-                ref2: document.getElementById('ref2')?.value || '',
-                ref3: document.getElementById('ref3')?.value || '',
-                ref4: document.getElementById('ref4')?.value || '',
-                ref5: document.getElementById('ref5')?.value || '',
-                checklist: {
-                    chk1: getChecked('chk1'),
-                    chk2: getChecked('chk2'),
-                    chk3: getChecked('chk3'),
-                    chk4: getChecked('chk4')
-                }
-            };
-
             return {
-                "timestamp": timestamp,
-                "identitas": {
-                    "kelas": document.getElementById('kelas').value || '',
-                    "nama": document.getElementById('nama').value || '',
-                    "kelompok": document.getElementById('kelompok').value || '',
-                    "peran": document.getElementById('peran').value || ''
+                "Timestamp Pengisian": timestamp,
+                "A. Identitas Kelompok": [
+                    ["Field", "Nilai"],
+                    ["Kelas", document.getElementById('kelas').value || ''],
+                    ["Nama Lengkap", document.getElementById('nama').value || ''],
+                    ["Nama Kelompok", document.getElementById('kelompok').value || ''],
+                    ["Peran dalam Kelompok", document.getElementById('peran').value || '']
+                ],
+                "B. Pemahaman Materi": {
+                    "Pertanyaan": [
+                        ["Pertanyaan", "Jawaban"],
+                        ["Apa yang dimaksud dengan digitalisasi budaya?", document.getElementById('review1').value || ''],
+                        ["Mengapa budaya Indonesia perlu didigitalisasi?", document.getElementById('review2').value || ''],
+                        ["Sebutkan 3 contoh budaya Indonesia yang sudah didigitalisasi!", document.getElementById('review3').value || ''],
+                        ["Apa manfaat digitalisasi budaya bagi generasi muda?", document.getElementById('review4').value || '']
+                    ],
+                    "Checklist": [
+                        ["Item", "Status"],
+                        ["Sudah membaca materi Digitalisasi Budaya Indonesia", getChecked('bacaMateri')]
+                    ],
+                    "Link Screenshot": document.getElementById('link_screenshot_a').value || ''
                 },
-                "bagian_a": bagianA,
-                "bagian_b": bagianB,
-                "bagian_c": bagianC,
-                "bagian_d": bagianD,
-                "bagian_e": bagianE,
-                "bagian_f": bagianF
+                "C. Refleksi Pengalaman Budaya": {
+                    "Pertanyaan": [
+                        ["Pertanyaan", "Jawaban"],
+                        ["Apakah kamu pernah mengikuti upacara adat atau festival budaya? Ceritakan!", document.getElementById('refleksi1').value || ''],
+                        ["Apakah kamu bisa memainkan alat musik tradisional? Sebutkan!", document.getElementById('refleksi2').value || ''],
+                        ["Apakah kamu pernah mengenakan pakaian adat? Kapan?", document.getElementById('refleksi3').value || ''],
+                        ["Menurutmu, apakah generasi muda masih peduli dengan budaya Indonesia? Jelaskan!", document.getElementById('refleksi4').value || ''],
+                        ["Sebutkan 3 budaya Indonesia yang paling kamu kenal!", document.getElementById('refleksi5').value || '']
+                    ],
+                    "Link Screenshot": document.getElementById('link_screenshot_b').value || ''
+                },
+                "D. Video Promosi Budaya": {
+                    "Pertanyaan": [
+                        ["Pertanyaan", "Jawaban"],
+                        ["Judul Video", document.getElementById('video_judul').value || ''],
+                        ["Sumber/Platform", document.getElementById('video_sumber').value || ''],
+                        ["Hal-Hal Penting dari Video", document.getElementById('video_poin').value || ''],
+                        ["Budaya apa saja yang ditampilkan dalam video?", document.getElementById('video_pertanyaan1').value || ''],
+                        ["Bagaimana video tersebut mempromosikan budaya Indonesia?", document.getElementById('video_pertanyaan2').value || '']
+                    ],
+                    "Link Screenshot": document.getElementById('link_screenshot_c').value || ''
+                },
+                "E. Digitalisasi Budaya": {
+                    "Platform": [
+                        ["Platform/Media", "Contoh Budaya", "Deskripsi"],
+                        ["Website/Museum Digital", document.getElementById('digital_contoh_1').value || '', document.getElementById('digital_deskripsi_1').value || ''],
+                        ["YouTube", document.getElementById('digital_contoh_2').value || '', document.getElementById('digital_deskripsi_2').value || ''],
+                        ["Media Sosial (IG/TikTok)", document.getElementById('digital_contoh_3').value || '', document.getElementById('digital_deskripsi_3').value || '']
+                    ],
+                    "Diskusi": [
+                        ["Pertanyaan", "Jawaban Kelompok"],
+                        ["Apa contoh digitalisasi budaya yang paling menarik menurut kelompok? Mengapa?", document.getElementById('diskusi_1').value || ''],
+                        ["Bagaimana digitalisasi dapat membantu melestarikan budaya yang hampir punah?", document.getElementById('diskusi_2').value || ''],
+                        ["Bagaimana cara memastikan digitalisasi budaya tidak menghilangkan nilai aslinya?", document.getElementById('diskusi_3').value || ''],
+                        ["Apakah digitalisasi budaya bisa membuat budaya Indonesia dikenal dunia? Jelaskan!", document.getElementById('diskusi_4').value || '']
+                    ],
+                    "Link Screenshot": document.getElementById('link_screenshot_d').value || ''
+                },
+                "F. Budaya Lokal Kita": {
+                    "Pertanyaan": [
+                        ["Pertanyaan", "Jawaban"],
+                        ["Nama Budaya", document.getElementById('budaya_1').value || ''],
+                        ["Jenis Budaya", document.getElementById('budaya_jenis_lain').value || getRadioValue('budaya_jenis') || ''],
+                        ["Asal Daerah", document.getElementById('budaya_3').value || ''],
+                        ["Deskripsi Singkat", document.getElementById('budaya_4').value || ''],
+                        ["Keunikan", document.getElementById('budaya_5').value || ''],
+                        ["Alasan Memilih", document.getElementById('budaya_6').value || '']
+                    ],
+                    "Link Screenshot": document.getElementById('link_screenshot_e').value || ''
+                },
+                "G. Refleksi Akhir": {
+                    "Pertanyaan": [
+                        ["Pertanyaan", "Jawabanku"],
+                        ["Hal baru yang aku pelajari tentang digitalisasi budaya hari ini?", document.getElementById('ref1').value || ''],
+                        ["Budaya Indonesia apa yang paling menarik menurutku? Mengapa?", document.getElementById('ref2').value || ''],
+                        ["Apakah aku merasa bangga dengan kekayaan budaya Indonesia?", document.getElementById('ref3').value || ''],
+                        ["Apa yang bisa aku lakukan untuk ikut melestarikan budaya Indonesia?", document.getElementById('ref4').value || ''],
+                        ["Apakah budaya daerahku sudah dikenal secara digital?", document.getElementById('ref5').value || '']
+                    ],
+                    "Checklist": [
+                        ["Pemahaman", "Status"],
+                        ["Membaca materi Digitalisasi Budaya Indonesia", getChecked('chk1')],
+                        ["Mengenal berbagai budaya Indonesia", getChecked('chk2')],
+                        ["Memilih budaya untuk proyek kelompok", getChecked('chk3')],
+                        ["Siap untuk aktivitas berikutnya", getChecked('chk4')]
+                    ]
+                }
             };
         }
 
-        // ==================== POPULATE FORM DATA ====================
+        // ==================== POPULATE FORM ====================
         function populateFormData(savedData) {
             if (!savedData) return;
             
-            // Identitas
-            if (savedData.identitas) {
+            // A. Identitas
+            if (savedData["A. Identitas Kelompok"] && Array.isArray(savedData["A. Identitas Kelompok"])) {
+                const identitasArray = savedData["A. Identitas Kelompok"];
                 const kelasEl = document.getElementById('kelas');
                 const namaEl = document.getElementById('nama');
+                
+                let kelasValue = '';
+                let namaValue = '';
+                let kelompokValue = '';
+                let peranValue = '';
+                
+                identitasArray.forEach(item => {
+                    if (Array.isArray(item) && item.length === 2) {
+                        if (item[0] === "Kelas") kelasValue = item[1];
+                        else if (item[0] === "Nama Lengkap") namaValue = item[1];
+                        else if (item[0] === "Nama Kelompok") kelompokValue = item[1];
+                        else if (item[0] === "Peran dalam Kelompok") peranValue = item[1];
+                    }
+                });
+                
                 if (kelasEl) {
                     for (let option of kelasEl.options) {
-                        if (option.value === savedData.identitas.kelas) {
+                        if (option.value === kelasValue) {
                             option.selected = true;
                             break;
                         }
@@ -1353,89 +1573,214 @@
                 }
                 if (namaEl) {
                     for (let option of namaEl.options) {
-                        if (option.value === savedData.identitas.nama) {
+                        if (option.value === namaValue) {
                             option.selected = true;
                             break;
                         }
                     }
                 }
-                document.getElementById('kelompok').value = savedData.identitas.kelompok || '';
-                document.getElementById('peran').value = savedData.identitas.peran || '';
+                document.getElementById('kelompok').value = kelompokValue;
+                document.getElementById('peran').value = peranValue;
             }
 
-            // Bagian A
-            if (savedData.bagian_a) {
-                const a = savedData.bagian_a;
-                document.getElementById('review1').value = a.review1 || '';
-                document.getElementById('review2').value = a.review2 || '';
-                document.getElementById('review3').value = a.review3 || '';
-                document.getElementById('review4').value = a.review4 || '';
-                document.getElementById('bacaMateri').checked = a.bacaMateri || false;
-            }
-
-            // Bagian B
-            if (savedData.bagian_b) {
-                const b = savedData.bagian_b;
-                document.getElementById('refleksi1').value = b.refleksi1 || '';
-                document.getElementById('refleksi2').value = b.refleksi2 || '';
-                document.getElementById('refleksi3').value = b.refleksi3 || '';
-                document.getElementById('refleksi4').value = b.refleksi4 || '';
-                document.getElementById('refleksi5').value = b.refleksi5 || '';
-            }
-
-            // Bagian C
-            if (savedData.bagian_c) {
-                const c = savedData.bagian_c;
-                document.getElementById('video_judul').value = c.video_judul || '';
-                document.getElementById('video_sumber').value = c.video_sumber || '';
-                document.getElementById('video_poin').value = c.video_poin || '';
-                document.getElementById('video_pertanyaan1').value = c.video_pertanyaan1 || '';
-                document.getElementById('video_pertanyaan2').value = c.video_pertanyaan2 || '';
-            }
-
-            // Bagian D
-            if (savedData.bagian_d) {
-                const d = savedData.bagian_d;
-                document.getElementById('digital_contoh_1').value = d.digital_contoh_1 || '';
-                document.getElementById('digital_deskripsi_1').value = d.digital_deskripsi_1 || '';
-                document.getElementById('digital_contoh_2').value = d.digital_contoh_2 || '';
-                document.getElementById('digital_deskripsi_2').value = d.digital_deskripsi_2 || '';
-                document.getElementById('digital_contoh_3').value = d.digital_contoh_3 || '';
-                document.getElementById('digital_deskripsi_3').value = d.digital_deskripsi_3 || '';
-                document.getElementById('diskusi_1').value = d.diskusi_1 || '';
-                document.getElementById('diskusi_2').value = d.diskusi_2 || '';
-                document.getElementById('diskusi_3').value = d.diskusi_3 || '';
-                document.getElementById('diskusi_4').value = d.diskusi_4 || '';
-            }
-
-            // Bagian E
-            if (savedData.bagian_e) {
-                const e = savedData.bagian_e;
-                document.getElementById('budaya_1').value = e.budaya_1 || '';
-                if (e.budaya_jenis) {
-                    const radio = document.querySelector(`input[name="budaya_jenis"][value="${e.budaya_jenis}"]`);
-                    if (radio) radio.checked = true;
+            // B. Pemahaman Materi
+            if (savedData["B. Pemahaman Materi"]) {
+                const b = savedData["B. Pemahaman Materi"];
+                if (b["Pertanyaan"] && Array.isArray(b["Pertanyaan"])) {
+                    const qMap = {
+                        "Apa yang dimaksud dengan digitalisasi budaya?": 'review1',
+                        "Mengapa budaya Indonesia perlu didigitalisasi?": 'review2',
+                        "Sebutkan 3 contoh budaya Indonesia yang sudah didigitalisasi!": 'review3',
+                        "Apa manfaat digitalisasi budaya bagi generasi muda?": 'review4'
+                    };
+                    b["Pertanyaan"].forEach(item => {
+                        if (Array.isArray(item) && item.length === 2) {
+                            const id = qMap[item[0]];
+                            if (id) {
+                                const el = document.getElementById(id);
+                                if (el) el.value = item[1] || '';
+                            }
+                        }
+                    });
                 }
-                document.getElementById('budaya_jenis_lain').value = e.budaya_jenis_lain || '';
-                document.getElementById('budaya_3').value = e.budaya_3 || '';
-                document.getElementById('budaya_4').value = e.budaya_4 || '';
-                document.getElementById('budaya_5').value = e.budaya_5 || '';
-                document.getElementById('budaya_6').value = e.budaya_6 || '';
+                if (b["Checklist"] && Array.isArray(b["Checklist"])) {
+                    const el = document.getElementById('bacaMateri');
+                    if (el) {
+                        b["Checklist"].forEach(item => {
+                            if (Array.isArray(item) && item.length === 2 && item[0] === "Sudah membaca materi Digitalisasi Budaya Indonesia") {
+                                el.checked = item[1] || false;
+                            }
+                        });
+                    }
+                }
+                const linkEl = document.getElementById('link_screenshot_a');
+                if (linkEl) linkEl.value = b["Link Screenshot"] || '';
             }
 
-            // Bagian F
-            if (savedData.bagian_f) {
-                const f = savedData.bagian_f;
-                document.getElementById('ref1').value = f.ref1 || '';
-                document.getElementById('ref2').value = f.ref2 || '';
-                document.getElementById('ref3').value = f.ref3 || '';
-                document.getElementById('ref4').value = f.ref4 || '';
-                document.getElementById('ref5').value = f.ref5 || '';
-                if (f.checklist) {
-                    document.getElementById('chk1').checked = f.checklist.chk1 || false;
-                    document.getElementById('chk2').checked = f.checklist.chk2 || false;
-                    document.getElementById('chk3').checked = f.checklist.chk3 || false;
-                    document.getElementById('chk4').checked = f.checklist.chk4 || false;
+            // C. Refleksi Pengalaman Budaya
+            if (savedData["C. Refleksi Pengalaman Budaya"]) {
+                const c = savedData["C. Refleksi Pengalaman Budaya"];
+                if (c["Pertanyaan"] && Array.isArray(c["Pertanyaan"])) {
+                    const qMap = {
+                        "Apakah kamu pernah mengikuti upacara adat atau festival budaya? Ceritakan!": 'refleksi1',
+                        "Apakah kamu bisa memainkan alat musik tradisional? Sebutkan!": 'refleksi2',
+                        "Apakah kamu pernah mengenakan pakaian adat? Kapan?": 'refleksi3',
+                        "Menurutmu, apakah generasi muda masih peduli dengan budaya Indonesia? Jelaskan!": 'refleksi4',
+                        "Sebutkan 3 budaya Indonesia yang paling kamu kenal!": 'refleksi5'
+                    };
+                    c["Pertanyaan"].forEach(item => {
+                        if (Array.isArray(item) && item.length === 2) {
+                            const id = qMap[item[0]];
+                            if (id) {
+                                const el = document.getElementById(id);
+                                if (el) el.value = item[1] || '';
+                            }
+                        }
+                    });
+                }
+                const linkEl = document.getElementById('link_screenshot_b');
+                if (linkEl) linkEl.value = c["Link Screenshot"] || '';
+            }
+
+            // D. Video Promosi Budaya
+            if (savedData["D. Video Promosi Budaya"]) {
+                const d = savedData["D. Video Promosi Budaya"];
+                if (d["Pertanyaan"] && Array.isArray(d["Pertanyaan"])) {
+                    const qMap = {
+                        "Judul Video": 'video_judul',
+                        "Sumber/Platform": 'video_sumber',
+                        "Hal-Hal Penting dari Video": 'video_poin',
+                        "Budaya apa saja yang ditampilkan dalam video?": 'video_pertanyaan1',
+                        "Bagaimana video tersebut mempromosikan budaya Indonesia?": 'video_pertanyaan2'
+                    };
+                    d["Pertanyaan"].forEach(item => {
+                        if (Array.isArray(item) && item.length === 2) {
+                            const id = qMap[item[0]];
+                            if (id) {
+                                const el = document.getElementById(id);
+                                if (el) el.value = item[1] || '';
+                            }
+                        }
+                    });
+                }
+                const linkEl = document.getElementById('link_screenshot_c');
+                if (linkEl) linkEl.value = d["Link Screenshot"] || '';
+            }
+
+            // E. Digitalisasi Budaya
+            if (savedData["E. Digitalisasi Budaya"]) {
+                const e = savedData["E. Digitalisasi Budaya"];
+                if (e["Platform"] && Array.isArray(e["Platform"])) {
+                    const platformMap = {
+                        "Website/Museum Digital": { contoh: 'digital_contoh_1', deskripsi: 'digital_deskripsi_1' },
+                        "YouTube": { contoh: 'digital_contoh_2', deskripsi: 'digital_deskripsi_2' },
+                        "Media Sosial (IG/TikTok)": { contoh: 'digital_contoh_3', deskripsi: 'digital_deskripsi_3' }
+                    };
+                    e["Platform"].forEach(item => {
+                        if (Array.isArray(item) && item.length === 3) {
+                            const map = platformMap[item[0]];
+                            if (map) {
+                                const elContoh = document.getElementById(map.contoh);
+                                if (elContoh) elContoh.value = item[1] || '';
+                                const elDesk = document.getElementById(map.deskripsi);
+                                if (elDesk) elDesk.value = item[2] || '';
+                            }
+                        }
+                    });
+                }
+                if (e["Diskusi"] && Array.isArray(e["Diskusi"])) {
+                    const qMap = {
+                        "Apa contoh digitalisasi budaya yang paling menarik menurut kelompok? Mengapa?": 'diskusi_1',
+                        "Bagaimana digitalisasi dapat membantu melestarikan budaya yang hampir punah?": 'diskusi_2',
+                        "Bagaimana cara memastikan digitalisasi budaya tidak menghilangkan nilai aslinya?": 'diskusi_3',
+                        "Apakah digitalisasi budaya bisa membuat budaya Indonesia dikenal dunia? Jelaskan!": 'diskusi_4'
+                    };
+                    e["Diskusi"].forEach(item => {
+                        if (Array.isArray(item) && item.length === 2) {
+                            const id = qMap[item[0]];
+                            if (id) {
+                                const el = document.getElementById(id);
+                                if (el) el.value = item[1] || '';
+                            }
+                        }
+                    });
+                }
+                const linkEl = document.getElementById('link_screenshot_d');
+                if (linkEl) linkEl.value = e["Link Screenshot"] || '';
+            }
+
+            // F. Budaya Lokal Kita
+            if (savedData["F. Budaya Lokal Kita"]) {
+                const f = savedData["F. Budaya Lokal Kita"];
+                if (f["Pertanyaan"] && Array.isArray(f["Pertanyaan"])) {
+                    const qMap = {
+                        "Nama Budaya": 'budaya_1',
+                        "Jenis Budaya": 'budaya_jenis',
+                        "Asal Daerah": 'budaya_3',
+                        "Deskripsi Singkat": 'budaya_4',
+                        "Keunikan": 'budaya_5',
+                        "Alasan Memilih": 'budaya_6'
+                    };
+                    f["Pertanyaan"].forEach(item => {
+                        if (Array.isArray(item) && item.length === 2) {
+                            const id = qMap[item[0]];
+                            if (id === 'budaya_jenis') {
+                                // Coba cari radio button dengan value yang sama
+                                if (item[1]) {
+                                    const radio = document.querySelector(`input[name="budaya_jenis"][value="${item[1]}"]`);
+                                    if (radio) radio.checked = true;
+                                    // Jika tidak ada yang cocok, masukkan ke input lain
+                                    const elLain = document.getElementById('budaya_jenis_lain');
+                                    if (elLain) elLain.value = item[1] || '';
+                                }
+                            } else if (id) {
+                                const el = document.getElementById(id);
+                                if (el) el.value = item[1] || '';
+                            }
+                        }
+                    });
+                }
+                const linkEl = document.getElementById('link_screenshot_e');
+                if (linkEl) linkEl.value = f["Link Screenshot"] || '';
+            }
+
+            // G. Refleksi Akhir
+            if (savedData["G. Refleksi Akhir"]) {
+                const g = savedData["G. Refleksi Akhir"];
+                if (g["Pertanyaan"] && Array.isArray(g["Pertanyaan"])) {
+                    const qMap = {
+                        "Hal baru yang aku pelajari tentang digitalisasi budaya hari ini?": 'ref1',
+                        "Budaya Indonesia apa yang paling menarik menurutku? Mengapa?": 'ref2',
+                        "Apakah aku merasa bangga dengan kekayaan budaya Indonesia?": 'ref3',
+                        "Apa yang bisa aku lakukan untuk ikut melestarikan budaya Indonesia?": 'ref4',
+                        "Apakah budaya daerahku sudah dikenal secara digital?": 'ref5'
+                    };
+                    g["Pertanyaan"].forEach(item => {
+                        if (Array.isArray(item) && item.length === 2) {
+                            const id = qMap[item[0]];
+                            if (id) {
+                                const el = document.getElementById(id);
+                                if (el) el.value = item[1] || '';
+                            }
+                        }
+                    });
+                }
+                if (g["Checklist"] && Array.isArray(g["Checklist"])) {
+                    const clMap = {
+                        "Membaca materi Digitalisasi Budaya Indonesia": 'chk1',
+                        "Mengenal berbagai budaya Indonesia": 'chk2',
+                        "Memilih budaya untuk proyek kelompok": 'chk3',
+                        "Siap untuk aktivitas berikutnya": 'chk4'
+                    };
+                    g["Checklist"].forEach(item => {
+                        if (Array.isArray(item) && item.length === 2) {
+                            const id = clMap[item[0]];
+                            if (id) {
+                                const el = document.getElementById(id);
+                                if (el) el.checked = item[1] || false;
+                            }
+                        }
+                    });
                 }
             }
         }
@@ -1456,32 +1801,32 @@
             document.getElementById('kelompok').value = '';
             document.getElementById('peran').value = '';
             
+            document.querySelectorAll('textarea.answer-field').forEach(el => {
+                el.style.height = 'auto';
+            });
+            
             clearLocalStorage();
         }
 
-        // ==================== MODAL FUNCTIONS ====================
+        // ==================== MODAL ====================
         function showModal() { 
-            const modal = document.getElementById('resetModal');
-            modal.style.display = 'block'; 
+            document.getElementById('resetModal').style.display = 'block'; 
             document.body.classList.add('modal-open');
         }
 
         function closeModal() { 
-            const modal = document.getElementById('resetModal');
-            modal.style.display = 'none'; 
+            document.getElementById('resetModal').style.display = 'none'; 
             document.body.classList.remove('modal-open');
         }
 
         function showConfirmModal(key) {
             document.getElementById('confirmKeyDisplay').textContent = key;
-            const modal = document.getElementById('confirmModal');
-            modal.style.display = 'block';
+            document.getElementById('confirmModal').style.display = 'block';
             document.body.classList.add('modal-open');
         }
 
         function closeConfirmModal() {
-            const modal = document.getElementById('confirmModal');
-            modal.style.display = 'none';
+            document.getElementById('confirmModal').style.display = 'none';
             document.body.classList.remove('modal-open');
             pendingSubmitData = null;
         }
@@ -1508,31 +1853,15 @@
             }
         }
 
-        // Tutup modal jika klik di luar
         document.addEventListener('click', function(event) {
-            const resetModal = document.getElementById('resetModal');
-            const confirmModal = document.getElementById('confirmModal');
-            
-            if (event.target === resetModal) {
-                closeModal();
-            }
-            if (event.target === confirmModal) {
-                closeConfirmModal();
-            }
+            if (event.target === document.getElementById('resetModal')) closeModal();
+            if (event.target === document.getElementById('confirmModal')) closeConfirmModal();
         });
 
-        // Tutup modal dengan tombol ESC
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
-                const resetModal = document.getElementById('resetModal');
-                const confirmModal = document.getElementById('confirmModal');
-                
-                if (resetModal.style.display === 'block') {
-                    closeModal();
-                }
-                if (confirmModal.style.display === 'block') {
-                    closeConfirmModal();
-                }
+                if (document.getElementById('resetModal').style.display === 'block') closeModal();
+                if (document.getElementById('confirmModal').style.display === 'block') closeConfirmModal();
             }
         });
 
@@ -1572,6 +1901,74 @@
                 if (el) el.disabled = false;
             });
             document.getElementById('worksheetForm').classList.remove('form-disabled');
+        }
+
+        // ==================== GENERATE TABLES ====================
+        function generateTables() {
+            // Digitalisasi Body - 3 platform
+            const digitalisasiBody = document.getElementById('digitalisasiBody');
+            if (digitalisasiBody) {
+                digitalisasiBody.innerHTML = '';
+                const platforms = ["Website/Museum Digital", "YouTube", "Media Sosial (IG/TikTok)"];
+                for (let i = 1; i <= platforms.length; i++) {
+                    const row = digitalisasiBody.insertRow();
+                    row.insertCell(0).innerHTML = i;
+                    row.insertCell(1).innerHTML = platforms[i-1];
+                    row.insertCell(2).innerHTML = `<input type="text" class="answer-field" id="digital_contoh_${i}" placeholder="Contoh budaya" oninput="saveToLocalStorage();">`;
+                    row.insertCell(3).innerHTML = `<textarea class="answer-field" id="digital_deskripsi_${i}" placeholder="Deskripsi" oninput="autoResize(this); saveToLocalStorage();"></textarea>`;
+                }
+            }
+
+            // Diskusi Body - 4 pertanyaan
+            const diskusiBody = document.getElementById('diskusiBody');
+            if (diskusiBody) {
+                diskusiBody.innerHTML = '';
+                const pertanyaan = [
+                    "Apa contoh digitalisasi budaya yang paling menarik menurut kelompok? Mengapa?",
+                    "Bagaimana digitalisasi dapat membantu melestarikan budaya yang hampir punah?",
+                    "Bagaimana cara memastikan digitalisasi budaya tidak menghilangkan nilai aslinya?",
+                    "Apakah digitalisasi budaya bisa membuat budaya Indonesia dikenal dunia? Jelaskan!"
+                ];
+                for (let i = 1; i <= pertanyaan.length; i++) {
+                    const row = diskusiBody.insertRow();
+                    row.insertCell(0).innerHTML = i;
+                    row.insertCell(1).innerHTML = pertanyaan[i-1];
+                    row.insertCell(2).innerHTML = `<textarea class="answer-field" id="diskusi_${i}" placeholder="Jawaban kelompok..." oninput="autoResize(this); saveToLocalStorage();"></textarea>`;
+                }
+            }
+
+            // Budaya Form Body - 6 bagian
+            const budayaFormBody = document.getElementById('budayaFormBody');
+            if (budayaFormBody) {
+                budayaFormBody.innerHTML = '';
+                const bagian = [
+                    "Nama Budaya",
+                    "Jenis Budaya",
+                    "Asal Daerah",
+                    "Deskripsi Singkat (apa itu?)",
+                    "Keunikan (apa yang membuatnya istimewa?)",
+                    "Mengapa kami memilih budaya ini?"
+                ];
+                for (let i = 1; i <= bagian.length; i++) {
+                    const row = budayaFormBody.insertRow();
+                    row.insertCell(0).innerHTML = i;
+                    row.insertCell(1).innerHTML = bagian[i-1];
+                    if (i === 2) {
+                        row.insertCell(2).innerHTML = `
+                            <div class="radio-group">
+                                <label><input type="radio" name="budaya_jenis" value="Tarian" onchange="saveToLocalStorage();"> Tarian</label>
+                                <label><input type="radio" name="budaya_jenis" value="Musik" onchange="saveToLocalStorage();"> Musik</label>
+                                <label><input type="radio" name="budaya_jenis" value="Pakaian Adat" onchange="saveToLocalStorage();"> Pakaian Adat</label>
+                                <label><input type="radio" name="budaya_jenis" value="Makanan" onchange="saveToLocalStorage();"> Makanan</label>
+                                <label><input type="radio" name="budaya_jenis" value="Upacara Adat" onchange="saveToLocalStorage();"> Upacara Adat</label>
+                                <label><input type="radio" name="budaya_jenis" value="Lainnya" onchange="saveToLocalStorage();"> Lainnya: <input type="text" class="answer-field" id="budaya_jenis_lain" style="width:150px; display:inline-block;" oninput="saveToLocalStorage();"></label>
+                            </div>
+                        `;
+                    } else {
+                        row.insertCell(2).innerHTML = `<textarea class="answer-field" id="budaya_${i}" placeholder="Jawaban..." oninput="autoResize(this); saveToLocalStorage();"></textarea>`;
+                    }
+                }
+            }
         }
 
         // ==================== LOAD DATA SISWA ====================
@@ -1650,79 +2047,10 @@
             });
         }
 
-        // ==================== GENERATE TABLES ====================
-        function generateTables() {
-            // Digitalisasi Body - 3 platform
-            const digitalisasiBody = document.getElementById('digitalisasiBody');
-            if (digitalisasiBody) {
-                digitalisasiBody.innerHTML = '';
-                const platforms = ["Website/Museum Digital", "YouTube", "Media Sosial (IG/TikTok)"];
-                for (let i = 1; i <= platforms.length; i++) {
-                    const row = digitalisasiBody.insertRow();
-                    row.insertCell(0).innerHTML = i;
-                    row.insertCell(1).innerHTML = platforms[i-1];
-                    row.insertCell(2).innerHTML = `<input type="text" class="answer-field" id="digital_contoh_${i}" placeholder="Contoh budaya" oninput="saveToLocalStorage();">`;
-                    row.insertCell(3).innerHTML = `<textarea class="answer-field" id="digital_deskripsi_${i}" placeholder="Deskripsi" oninput="saveToLocalStorage();"></textarea>`;
-                }
-            }
-
-            // Diskusi Body - 4 pertanyaan
-            const diskusiBody = document.getElementById('diskusiBody');
-            if (diskusiBody) {
-                diskusiBody.innerHTML = '';
-                const pertanyaan = [
-                    "Apa contoh digitalisasi budaya yang paling menarik menurut kelompok? Mengapa?",
-                    "Bagaimana digitalisasi dapat membantu melestarikan budaya yang hampir punah?",
-                    "Bagaimana cara memastikan digitalisasi budaya tidak menghilangkan nilai aslinya?",
-                    "Apakah digitalisasi budaya bisa membuat budaya Indonesia dikenal dunia? Jelaskan!"
-                ];
-                for (let i = 1; i <= pertanyaan.length; i++) {
-                    const row = diskusiBody.insertRow();
-                    row.insertCell(0).innerHTML = i;
-                    row.insertCell(1).innerHTML = pertanyaan[i-1];
-                    row.insertCell(2).innerHTML = `<textarea class="answer-field" id="diskusi_${i}" placeholder="Jawaban kelompok..." oninput="saveToLocalStorage();"></textarea>`;
-                }
-            }
-
-            // Budaya Form Body - 6 bagian
-            const budayaFormBody = document.getElementById('budayaFormBody');
-            if (budayaFormBody) {
-                budayaFormBody.innerHTML = '';
-                const bagian = [
-                    "Nama Budaya",
-                    "Jenis Budaya",
-                    "Asal Daerah",
-                    "Deskripsi Singkat (apa itu?)",
-                    "Keunikan (apa yang membuatnya istimewa?)",
-                    "Mengapa kami memilih budaya ini?"
-                ];
-                for (let i = 1; i <= bagian.length; i++) {
-                    const row = budayaFormBody.insertRow();
-                    row.insertCell(0).innerHTML = i;
-                    row.insertCell(1).innerHTML = bagian[i-1];
-                    if (i === 2) {
-                        row.insertCell(2).innerHTML = `
-                            <div class="radio-group">
-                                <label><input type="radio" name="budaya_jenis" value="Tarian" onchange="saveToLocalStorage();"> Tarian</label>
-                                <label><input type="radio" name="budaya_jenis" value="Musik" onchange="saveToLocalStorage();"> Musik</label>
-                                <label><input type="radio" name="budaya_jenis" value="Pakaian Adat" onchange="saveToLocalStorage();"> Pakaian Adat</label>
-                                <label><input type="radio" name="budaya_jenis" value="Makanan" onchange="saveToLocalStorage();"> Makanan</label>
-                                <label><input type="radio" name="budaya_jenis" value="Upacara Adat" onchange="saveToLocalStorage();"> Upacara Adat</label>
-                                <label><input type="radio" name="budaya_jenis" value="Lainnya" onchange="saveToLocalStorage();"> Lainnya: <input type="text" class="answer-field" id="budaya_jenis_lain" style="width:150px" oninput="saveToLocalStorage();"></label>
-                            </div>
-                        `;
-                    } else {
-                        row.insertCell(2).innerHTML = `<textarea class="answer-field" id="budaya_${i}" placeholder="Jawaban..." oninput="saveToLocalStorage();"></textarea>`;
-                    }
-                }
-            }
-        }
-
-        // ==================== CEK DATA DI SPREADSHEET ====================
+        // ==================== CEK DATA ====================
         async function cekDataDiSpreadsheet(kelas, nama, aktivitas) {
             try {
                 const url = `${URL_PEREKAPAN}?action=getDataSiswa&kelas=${encodeURIComponent(kelas)}&nama=${encodeURIComponent(nama)}&aktivitas=${encodeURIComponent(aktivitas)}`;
-                
                 const response = await fetch(url);
                 const result = await response.json();
                 
@@ -1733,7 +2061,6 @@
                         data: result.data
                     };
                 }
-                
                 return { found: false };
             } catch (error) {
                 console.error('Error cek data:', error);
@@ -1741,13 +2068,12 @@
             }
         }
 
-        // ==================== SUBMIT DATA ====================
+        // ==================== SUBMIT ====================
         async function submitData() {
             if (isLoading) { alert('Data masih dimuat. Silakan tunggu.'); return; }
             if (!navigator.onLine) { alert('Tidak ada koneksi internet.'); return; }
             if (isSubmitting) { alert('Proses pengiriman sedang berlangsung. Mohon tunggu...'); return; }
 
-            // ===== VALIDASI: Apakah sudah membaca materi? =====
             const sudahBaca = confirm(
                 '📖 Apakah kamu sudah membaca materi "Digitalisasi Budaya Indonesia"?\n\n' +
                 'Jika belum, klik "Batal" untuk membaca materi terlebih dahulu.\n' +
@@ -1759,25 +2085,14 @@
                       'Klik tombol "Baca Materi Sekarang" di bagian atas halaman.');
                 return;
             }
-            // ===== END VALIDASI =====
 
             const kelas = document.getElementById('kelas').value;
             const nama = document.getElementById('nama').value;
             const kelompok = document.getElementById('kelompok').value;
-            const peran = document.getElementById('peran').value;
 
-            if (!kelas) {
-                alert('Silakan isi kelas terlebih dahulu');
-                return;
-            }
-            if (!nama) {
-                alert('Silakan isi nama terlebih dahulu');
-                return;
-            }
-            if (!kelompok) {
-                alert('Silakan isi nama kelompok');
-                return;
-            }
+            if (!kelas) { alert('Silakan isi kelas terlebih dahulu'); return; }
+            if (!nama) { alert('Silakan isi nama terlebih dahulu'); return; }
+            if (!kelompok) { alert('Silakan isi nama kelompok'); return; }
 
             const submitBtn = document.getElementById('submitBtn');
             submitBtn.disabled = true;
@@ -1789,8 +2104,7 @@
                     allData: allData,
                     kelas: kelas,
                     nama: nama,
-                    kelompok: kelompok,
-                    peran: peran
+                    kelompok: kelompok
                 };
 
                 const result = await cekDataDiSpreadsheet(kelas, nama, AKTIVITAS_NAMA);
@@ -1823,21 +2137,16 @@
                 const { allData, kelas, nama } = data;
                 
                 const formData = new URLSearchParams();
-                
                 formData.append('sheetName', SHEET_NAME);
                 formData.append('data', JSON.stringify(allData));
                 formData.append('kelas', kelas);
                 formData.append('nama', nama);
                 formData.append('aktivitas', AKTIVITAS_NAMA);
-                if (isReplace) {
-                    formData.append('replace', 'true');
-                }
+                if (isReplace) formData.append('replace', 'true');
 
                 const response = await fetch(URL_PEREKAPAN, {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                    },
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                     body: formData
                 });
 
@@ -1877,20 +2186,18 @@
                 submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Kumpulkan LKPD';
                 isSubmitting = false;
                 pendingSubmitData = null;
-                
                 document.getElementById('confirmGantiBtn').disabled = false;
                 document.getElementById('confirmGantiBtn').innerHTML = '<i class="fas fa-exchange-alt"></i> Ya, Ganti Data';
             }
         }
 
-        // ==================== EXPORT TEMPLATE LEMBAR AKTIVITAS (KOSONG) ====================
+        // ==================== EXPORT ====================
         function exportToDocx() {
             const exportBtn = document.getElementById('exportBtn');
             exportBtn.disabled = true;
             exportBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memproses...';
 
             try {
-                // === BANGUN HTML TEMPLATE KOSONG UNTUK WORD ===
                 const now = new Date();
                 const dateStr = now.toLocaleDateString('id-ID', {
                     day: 'numeric', month: 'long', year: 'numeric'
@@ -1912,245 +2219,76 @@
                         </xml>
                         <![endif]-->
                         <style>
-                            /* ===== STYLE UNTUK TEMPLATE ===== */
-                            body {
-                                font-family: 'Calibri', 'Segoe UI', Arial, sans-serif;
-                                font-size: 11pt;
-                                line-height: 1.5;
-                                color: #222;
-                                padding: 30px 40px;
-                                margin: 0;
-                            }
-                            
-                            .worksheet-title {
-                                color: #21618c;
-                                font-size: 18pt;
-                                text-align: center;
-                                font-weight: bold;
-                                border-bottom: 2px solid #d5f4e6;
-                                padding-bottom: 8px;
-                                margin: 0 0 15px 0;
-                            }
-                            
-                            .section-title {
-                                color: #21618c;
-                                font-size: 12pt;
-                                font-weight: 600;
-                                border-bottom: 2px solid #ebf5fb;
-                                padding-bottom: 6px;
-                                margin: 15px 0 8px 0;
-                            }
-                            
-                            .subtitle {
-                                color: #666;
-                                font-size: 10pt;
-                                margin-bottom: 12px;
-                            }
-                            .subtitle span {
-                                margin-right: 15px;
-                            }
-                            
-                            .identitas-box {
-                                background: #f0f8f0;
-                                padding: 12px 15px;
-                                margin-bottom: 15px;
-                                border-radius: 4px;
-                            }
-                            .identitas-box table {
-                                width: 100%;
-                                border: none;
-                            }
-                            .identitas-box td {
-                                padding: 4px 8px;
-                                border: none;
-                                vertical-align: middle;
-                            }
-                            .identitas-box .label {
-                                font-weight: 600;
-                                color: #21618c;
-                                width: 80px;
-                            }
-                            .identitas-box .kosong {
-                                border-bottom: 1px solid #999;
-                                min-width: 150px;
-                                display: inline-block;
-                                padding: 0 20px 0 5px;
-                                color: #999;
-                                font-style: italic;
-                            }
-                            
-                            table {
-                                width: 100%;
-                                border-collapse: collapse;
-                                margin: 8px 0;
-                                font-size: 10pt;
-                            }
-                            
-                            th {
-                                background: #3498db;
-                                color: white;
-                                padding: 6px 8px;
-                                text-align: left;
-                                font-weight: 600;
-                                border: 1px solid #3498db;
-                            }
-                            
-                            td {
-                                padding: 6px 8px;
-                                border: 1px solid #ddd;
-                                vertical-align: top;
-                            }
-                            
-                            .checkbox-grid {
-                                display: flex;
-                                flex-wrap: wrap;
-                                gap: 8px 20px;
-                                margin: 8px 0;
-                            }
-                            .checkbox-item {
-                                display: flex;
-                                align-items: center;
-                                gap: 6px;
-                            }
-                            .checkbox-item .kotak-cek {
-                                display: inline-block;
-                                width: 14px;
-                                height: 14px;
-                                border: 2px solid #999;
-                                background: white;
-                                margin-right: 5px;
-                            }
-                            
-                            .radio-group {
-                                display: flex;
-                                gap: 15px;
-                                flex-wrap: wrap;
-                            }
-                            .radio-group label {
-                                display: inline-flex;
-                                align-items: center;
-                                gap: 5px;
-                            }
-                            .radio-group .lingkaran-cek {
-                                display: inline-block;
-                                width: 14px;
-                                height: 14px;
-                                border: 2px solid #999;
-                                border-radius: 50%;
-                                background: white;
-                                margin-right: 5px;
-                            }
-                            
-                            .tempat-jawaban {
-                                background: #fafafa;
-                                padding: 4px 8px;
-                                border-radius: 3px;
-                                border: 1px dashed #ccc;
-                                display: block;
-                                min-height: 35px;
-                                color: #999;
-                                font-style: italic;
-                            }
-                            
-                            .instruction-box {
-                                background: #ebf5fb;
-                                padding: 8px 12px;
-                                border-left: 4px solid #3498db;
-                                margin: 8px 0;
-                                border-radius: 4px;
-                            }
-                            
-                            .section-card {
-                                border: 1px solid #e0e7ff;
-                                border-radius: 8px;
-                                padding: 12px 15px;
-                                margin-bottom: 15px;
-                            }
-                            
+                            body { font-family: 'Calibri', 'Segoe UI', Arial, sans-serif; font-size: 11pt; line-height: 1.5; color: #222; padding: 30px 40px; margin: 0; }
+                            .worksheet-title { color: #21618c; font-size: 18pt; text-align: center; font-weight: bold; border-bottom: 2px solid #d5f4e6; padding-bottom: 8px; margin: 0 0 15px 0; }
+                            .section-title { color: #21618c; font-size: 12pt; font-weight: 600; border-bottom: 2px solid #ebf5fb; padding-bottom: 6px; margin: 15px 0 8px 0; }
+                            .section-badge { background: #3498db; color: white; padding: 2px 10px; border-radius: 12px; font-size: 8pt; display: inline-block; margin-left: 8px; }
+                            .subtitle { color: #666; font-size: 10pt; margin-bottom: 12px; }
+                            .subtitle span { margin-right: 15px; }
+                            .identitas-box { background: #f0f8f0; padding: 12px 15px; margin-bottom: 15px; border-radius: 4px; }
+                            .identitas-box table { width: 100%; border: none; }
+                            .identitas-box td { padding: 4px 8px; border: none; vertical-align: middle; }
+                            .identitas-box .label { font-weight: 600; color: #21618c; width: 80px; }
+                            .identitas-box .kosong { border-bottom: 1px solid #999; min-width: 150px; display: inline-block; padding: 0 20px 0 5px; color: #999; font-style: italic; }
+                            table { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 10pt; }
+                            th { background: #3498db; color: white; padding: 6px 8px; text-align: left; font-weight: 600; border: 1px solid #3498db; }
+                            td { padding: 6px 8px; border: 1px solid #ddd; vertical-align: top; }
+                            .checkbox-grid { display: flex; flex-wrap: wrap; gap: 8px 20px; margin: 8px 0; }
+                            .checkbox-item { display: flex; align-items: center; gap: 6px; }
+                            .checkbox-item .kotak-cek { display: inline-block; width: 14px; height: 14px; border: 2px solid #999; background: white; margin-right: 5px; }
+                            .radio-group { display: flex; gap: 15px; flex-wrap: wrap; }
+                            .radio-group label { display: inline-flex; align-items: center; gap: 5px; }
+                            .radio-group .lingkaran-cek { display: inline-block; width: 14px; height: 14px; border: 2px solid #999; border-radius: 50%; background: white; margin-right: 5px; }
+                            .tempat-jawaban { background: #fafafa; padding: 4px 8px; border-radius: 3px; border: 1px dashed #ccc; display: block; min-height: 35px; color: #999; font-style: italic; }
+                            .instruction-box { background: #ebf5fb; padding: 8px 12px; border-left: 4px solid #3498db; margin: 8px 0; border-radius: 4px; }
+                            .section-card { border: 1px solid #e0e7ff; border-radius: 8px; padding: 12px 15px; margin-bottom: 15px; }
                             .qa-table .no-col { width: 6%; text-align: center; }
                             .qa-table .question-col { width: 34%; }
                             .qa-table .answer-col { width: 60%; }
-                            
                             .qa-table.four-col .no-col { width: 6%; text-align: center; }
                             .qa-table.four-col .col1 { width: 22%; }
                             .qa-table.four-col .col2 { width: 32%; }
                             .qa-table.four-col .col3 { width: 40%; }
-                            
-                            .culture-tip {
-                                background: #e8f5e9;
-                                padding: 8px 12px;
-                                border-left: 4px solid #4caf50;
-                                margin: 8px 0;
-                                border-radius: 4px;
-                            }
-                            
-                            .footer-text {
-                                text-align: center;
-                                color: #999;
-                                font-size: 9pt;
-                                margin-top: 20px;
-                                border-top: 1px solid #eee;
-                                padding-top: 10px;
-                            }
-                            
-                            .btn, .btn-submit, .export-wrapper, 
-                            .connection-status, .success-message, .error-message,
-                            .loading-message, .activity-navigation, .nav-btn,
-                            .modal, .modal-content, #confirmModal, #resetModal,
-                            .reset-button, .hamburger, .navbar, header,
-                            .alert, .refresh-btn, .materi-section {
+                            .culture-tip { background: #e8f5e9; padding: 8px 12px; border-left: 4px solid #4caf50; margin: 8px 0; border-radius: 4px; }
+                            .screenshot-instruction { background: #fff3cd; padding: 8px 12px; border-left: 4px solid #f39c12; margin: 8px 0; border-radius: 4px; }
+                            .folder-link-box { background: #e8f5e9; padding: 10px 14px; border-radius: 8px; margin: 12px 0 0 0; border-left: 5px solid #4caf50; }
+                            .folder-link-box .label-link { font-weight: 600; color: #2e7d32; }
+                            .footer-text { text-align: center; color: #999; font-size: 9pt; margin-top: 20px; border-top: 1px solid #eee; padding-top: 10px; }
+                            .btn, .btn-submit, .export-wrapper, .connection-status, .success-message, .error-message,
+                            .loading-message, .activity-navigation, .nav-btn, .modal, .modal-content, #confirmModal, #resetModal,
+                            .reset-button, .hamburger, .navbar, header, .alert, .refresh-btn, .materi-section {
                                 display: none !important;
                             }
-                            
-                            .informatika-content-card {
-                                padding: 15px;
-                                border-left: 5px solid #3498db;
-                                margin-bottom: 15px;
-                            }
-                            
-                            .informatika-content-card h2 {
-                                color: #21618c;
-                                font-size: 18pt;
-                            }
-                            
-                            .informatika-content-card > p {
-                                font-size: 11pt;
-                                padding: 8px 12px;
-                                background: #ebf5fb;
-                                border-radius: 6px;
-                                border-left: 4px solid #3498db;
-                            }
-                            
-                            ol {
-                                margin-left: 20px;
-                                color: #555;
-                            }
-                            
-                            .worksheet-container {
-                                padding: 0;
-                                margin: 0;
-                                border: none;
-                                box-shadow: none;
-                            }
+                            .informatika-content-card { padding: 15px; border-left: 5px solid #3498db; margin-bottom: 15px; }
+                            .informatika-content-card h2 { color: #21618c; font-size: 18pt; }
+                            .worksheet-container { padding: 0; margin: 0; border: none; box-shadow: none; }
+                            .tp-card { background: #e8f4fd; padding: 12px 16px; border-radius: 8px; margin-bottom: 15px; border-left: 5px solid #3498db; }
+                            .tp-card .tp-item { padding: 2px 0; }
+                            .tp-card .tp-code { background: #3498db; color: white; padding: 2px 10px; border-radius: 12px; font-weight: 700; font-size: 0.8rem; display: inline-block; min-width: 45px; text-align: center; margin-right: 10px; }
+                            hr { border: 0; border-top: 2px solid #d5f4e6; margin: 15px 0; }
+                            ol { margin-left: 20px; color: #555; }
                         </style>
                     </head>
                     <body>
-                        <!-- ===== HEADER ===== -->
                         <div class="informatika-content-card">
                             <h2>Proyek 2 Aktivitas 1: Mengenal Budaya & Dunia Digital</h2>
                             <div class="subtitle">
                                 <span>📅 Pertemuan 1 • Proyek 2: Digitalisasi Budaya</span>
                                 <span>⏰ 4 JP</span>
                             </div>
-                            <p><i>"Memahami dan memberikan contoh penerapan digitalisasi budaya Indonesia."</i></p>
                         </div>
-                        
+
+                        <div class="tp-card">
+                            <div style="font-weight:700; color:#21618c; margin-bottom:4px;">Tujuan Pembelajaran</div>
+                            <div class="tp-item"><span class="tp-code">TP 2.9</span> Memahami dan memberikan contoh penerapan digitalisasi budaya Indonesia</div>
+                        </div>
+
                         <div class="instruction-box" style="background:#e8f5e9; border-left-color: #3498db;">
                             <strong>HALO, KELOMPOK HEBAT! 👋</strong><br>
                             Silakan isi lembar kerja ini untuk mempelajari digitalisasi budaya Indonesia.
                         </div>
 
-                        <h1 class="worksheet-title">LEMBAR KERJA PESERTA DIDIK (LKPD) PROYEK 2 – AKTIVITAS 1</h1>
+                        <h1 class="worksheet-title">LEMBAR KERJA PESERTA DIDIK (LKPD) PROYEK 2 – AKTIVITAS 1 (MENGENAL BUDAYA &amp; DUNIA DIGITAL)</h1>
                         <p style="text-align: center; margin-bottom: 1.5rem; font-size: 12pt; color: #9b59b6;">
                             <strong>MENGENAL BUDAYA & DUNIA DIGITAL</strong>
                         </p>
@@ -2158,7 +2296,6 @@
                             <p><strong>Tujuan Pembelajaran (TP 2.9):</strong> Memahami dan memberikan contoh penerapan digitalisasi budaya Indonesia.</p>
                         </div>
 
-                        <!-- ===== IDENTITAS ===== -->
                         <h3 style="color: #21618c; margin: 20px 0 10px 0; font-size: 13pt;">Identitas Kelompok</h3>
                         <div class="identitas-box">
                             <table>
@@ -2169,28 +2306,25 @@
                             </table>
                         </div>
 
-                        <!-- ===== PETUNJUK ===== -->
                         <div class="instruction-box">
                             <strong>📚 PETUNJUK PENGGUNAAN LKPD</strong><br><br>
                             <ol>
-                                <li>Pastikan kamu sudah membaca materi <strong>"Digitalisasi Budaya Indonesia"</strong> yang tersedia di menu Daftar Materi.</li>
+                                <li>Pastikan kamu sudah membaca materi <strong>"Digitalisasi Budaya Indonesia"</strong>.</li>
                                 <li>Kerjakan setiap bagian dengan berdiskusi bersama kelompok.</li>
-                                <li>Tulis jawaban dengan jelas dan lengkap.</li>
+                                <li>Ambil screenshot sebagai bukti pengerjaan setiap bagian.</li>
                                 <li>Kumpulkan LKPD setelah selesai dikerjakan.</li>
                             </ol>
                         </div>
 
-                        <!-- ===== BAGIAN A ===== -->
+                        <!-- BAGIAN A -->
                         <div class="section-card">
-                            <h3 class="section-title">📖 BAGIAN A: PEMAHAMAN MATERI (INDIVIDU)</h3>
-                            <div class="instruction-box">
-                                "Pastikan kamu sudah membaca materi sebelum mengerjakan!"
+                            <h3 class="section-title">A. PEMAHAMAN MATERI <span class="section-badge">Individu</span></h3>
+                            <div class="instruction-box">Pastikan kamu sudah membaca materi sebelum mengerjakan!</div>
+                            <div class="screenshot-instruction">
+                                <strong>📸 Instruksi Screenshot:</strong> Screenshot halaman materi yang sudah kamu baca → Upload ke Google Drive → Tempel link di bawah
                             </div>
-
                             <table class="qa-table">
-                                <thead>
-                                    <tr><th class="no-col">No</th><th class="question-col">Pertanyaan</th><th class="answer-col">Jawaban</th></tr>
-                                </thead>
+                                <thead><tr><th class="no-col">No</th><th class="question-col">Pertanyaan</th><th class="answer-col">Jawaban</th></tr></thead>
                                 <tbody>
                                     <tr><td class="no-col">1</td><td>Apa yang dimaksud dengan digitalisasi budaya?</td><td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
                                     <tr><td class="no-col">2</td><td>Mengapa budaya Indonesia perlu didigitalisasi?</td><td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
@@ -2198,23 +2332,27 @@
                                     <tr><td class="no-col">4</td><td>Apa manfaat digitalisasi budaya bagi generasi muda?</td><td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
                                 </tbody>
                             </table>
-
                             <div style="margin-top: 1rem; background: #f8fafc; border-radius: 8px; padding: 1rem; border: 1px dashed #3498db;">
                                 <div class="checkbox-item"><span class="kotak-cek"></span> <strong>Ya, saya sudah membaca materi "Digitalisasi Budaya Indonesia"</strong></div>
                             </div>
+                            <div class="folder-link-box">
+                                <span class="label-link">📸 Link Screenshot - Bagian A</span>
+                                <div style="font-size:0.9rem; color:#555; margin-top:4px;">Tempel link folder/screenshot bukti membaca materi:</div>
+                                <div style="margin-top:6px; background:white; padding:6px 10px; border-radius:6px; border:1px solid #ddd;">
+                                    <span class="tempat-jawaban">[Tempel link di sini]</span>
+                                </div>
+                            </div>
                         </div>
 
-                        <!-- ===== BAGIAN B ===== -->
+                        <!-- BAGIAN B -->
                         <div class="section-card">
-                            <h3 class="section-title">🏯 BAGIAN B: REFLEKSI PENGALAMAN BUDAYA (INDIVIDU)</h3>
-                            <div class="instruction-box">
-                                "Apa yang kamu ketahui tentang budaya Indonesia?"
+                            <h3 class="section-title">B. REFLEKSI PENGALAMAN BUDAYA <span class="section-badge">Individu</span></h3>
+                            <div class="instruction-box">Apa yang kamu ketahui tentang budaya Indonesia?</div>
+                            <div class="screenshot-instruction">
+                                <strong>📸 Instruksi Screenshot:</strong> Screenshot foto/kegiatan budaya yang pernah kamu ikuti → Upload ke Google Drive → Tempel link di bawah
                             </div>
-
                             <table class="qa-table">
-                                <thead>
-                                    <tr><th class="no-col">No</th><th class="question-col">Pertanyaan</th><th class="answer-col">Jawaban</th></tr>
-                                </thead>
+                                <thead><tr><th class="no-col">No</th><th class="question-col">Pertanyaan</th><th class="answer-col">Jawaban</th></tr></thead>
                                 <tbody>
                                     <tr><td class="no-col">1</td><td>Apakah kamu pernah mengikuti upacara adat atau festival budaya? Ceritakan!</td><td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
                                     <tr><td class="no-col">2</td><td>Apakah kamu bisa memainkan alat musik tradisional? Sebutkan!</td><td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
@@ -2223,19 +2361,24 @@
                                     <tr><td class="no-col">5</td><td>Sebutkan 3 budaya Indonesia yang paling kamu kenal!</td><td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
                                 </tbody>
                             </table>
+                            <div class="folder-link-box">
+                                <span class="label-link">📸 Link Screenshot - Bagian B</span>
+                                <div style="font-size:0.9rem; color:#555; margin-top:4px;">Tempel link folder/screenshot kegiatan budaya yang pernah diikuti:</div>
+                                <div style="margin-top:6px; background:white; padding:6px 10px; border-radius:6px; border:1px solid #ddd;">
+                                    <span class="tempat-jawaban">[Tempel link di sini]</span>
+                                </div>
+                            </div>
                         </div>
 
-                        <!-- ===== BAGIAN C ===== -->
+                        <!-- BAGIAN C -->
                         <div class="section-card">
-                            <h3 class="section-title">🎬 BAGIAN C: VIDEO PROMOSI BUDAYA (KELOMPOK)</h3>
-                            <div class="instruction-box">
-                                "Lihat bagaimana budaya dipromosikan di dunia digital!"
+                            <h3 class="section-title">C. VIDEO PROMOSI BUDAYA <span class="section-badge">Kelompok</span></h3>
+                            <div class="instruction-box">Lihat bagaimana budaya dipromosikan di dunia digital!</div>
+                            <div class="screenshot-instruction">
+                                <strong>📸 Instruksi Screenshot:</strong> Screenshot video promosi budaya yang kamu tonton → Upload ke Google Drive → Tempel link di bawah
                             </div>
-
                             <table class="qa-table">
-                                <thead>
-                                    <tr><th class="no-col">No</th><th class="question-col">Pertanyaan</th><th class="answer-col">Jawaban</th></tr>
-                                </thead>
+                                <thead><tr><th class="no-col">No</th><th class="question-col">Pertanyaan</th><th class="answer-col">Jawaban</th></tr></thead>
                                 <tbody>
                                     <tr><td class="no-col">1</td><td>Judul Video</td><td><span class="tempat-jawaban">[Tulis judul di sini]</span></td></tr>
                                     <tr><td class="no-col">2</td><td>Sumber/Platform</td><td><span class="tempat-jawaban">[Tulis sumber di sini]</span></td></tr>
@@ -2244,34 +2387,34 @@
                                     <tr><td class="no-col">5</td><td>Bagaimana video tersebut mempromosikan budaya Indonesia?</td><td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
                                 </tbody>
                             </table>
+                            <div class="folder-link-box">
+                                <span class="label-link">📸 Link Screenshot - Bagian C</span>
+                                <div style="font-size:0.9rem; color:#555; margin-top:4px;">Tempel link folder/screenshot video promosi budaya:</div>
+                                <div style="margin-top:6px; background:white; padding:6px 10px; border-radius:6px; border:1px solid #ddd;">
+                                    <span class="tempat-jawaban">[Tempel link di sini]</span>
+                                </div>
+                            </div>
                         </div>
 
-                        <!-- ===== BAGIAN D ===== -->
+                        <!-- BAGIAN D -->
                         <div class="section-card">
-                            <h3 class="section-title">💻 BAGIAN D: DIGITALISASI BUDAYA (KELOMPOK)</h3>
-                            <div class="instruction-box">
-                                "Jelajahi bagaimana budaya hadir di dunia digital!"
+                            <h3 class="section-title">D. DIGITALISASI BUDAYA <span class="section-badge">Kelompok</span></h3>
+                            <div class="instruction-box">Jelajahi bagaimana budaya hadir di dunia digital!</div>
+                            <div class="screenshot-instruction">
+                                <strong>📸 Instruksi Screenshot:</strong> Screenshot contoh digitalisasi budaya dari setiap platform → Upload ke Google Drive → Tempel link di bawah
                             </div>
-
                             <h4 style="color: #21618c; margin: 12px 0 6px 0;">Eksplorasi Digitalisasi Budaya</h4>
-
                             <table class="qa-table four-col">
-                                <thead>
-                                    <tr><th class="no-col">No</th><th class="col1">Platform/Media</th><th class="col2">Contoh Budaya</th><th class="col3">Deskripsi</th></tr>
-                                </thead>
+                                <thead><tr><th class="no-col">No</th><th class="col1">Platform/Media</th><th class="col2">Contoh Budaya</th><th class="col3">Deskripsi</th></tr></thead>
                                 <tbody>
                                     <tr><td class="no-col">1</td><td>Website/Museum Digital</td><td><span class="tempat-jawaban">[Tulis di sini]</span></td><td><span class="tempat-jawaban">[Tulis di sini]</span></td></tr>
                                     <tr><td class="no-col">2</td><td>YouTube</td><td><span class="tempat-jawaban">[Tulis di sini]</span></td><td><span class="tempat-jawaban">[Tulis di sini]</span></td></tr>
                                     <tr><td class="no-col">3</td><td>Media Sosial (IG/TikTok)</td><td><span class="tempat-jawaban">[Tulis di sini]</span></td><td><span class="tempat-jawaban">[Tulis di sini]</span></td></tr>
                                 </tbody>
                             </table>
-
                             <h4 style="color: #21618c; margin: 15px 0 6px 0;">Diskusi Digitalisasi Budaya</h4>
-
                             <table class="qa-table">
-                                <thead>
-                                    <tr><th class="no-col">No</th><th class="question-col">Pertanyaan</th><th class="answer-col">Jawaban Kelompok</th></tr>
-                                </thead>
+                                <thead><tr><th class="no-col">No</th><th class="question-col">Pertanyaan</th><th class="answer-col">Jawaban Kelompok</th></tr></thead>
                                 <tbody>
                                     <tr><td class="no-col">1</td><td>Apa contoh digitalisasi budaya yang paling menarik menurut kelompok? Mengapa?</td><td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
                                     <tr><td class="no-col">2</td><td>Bagaimana digitalisasi dapat membantu melestarikan budaya yang hampir punah?</td><td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
@@ -2279,23 +2422,25 @@
                                     <tr><td class="no-col">4</td><td>Apakah digitalisasi budaya bisa membuat budaya Indonesia dikenal dunia? Jelaskan!</td><td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
                                 </tbody>
                             </table>
+                            <div class="folder-link-box">
+                                <span class="label-link">📸 Link Screenshot - Bagian D</span>
+                                <div style="font-size:0.9rem; color:#555; margin-top:4px;">Tempel link folder/screenshot eksplorasi digitalisasi budaya:</div>
+                                <div style="margin-top:6px; background:white; padding:6px 10px; border-radius:6px; border:1px solid #ddd;">
+                                    <span class="tempat-jawaban">[Tempel link di sini]</span>
+                                </div>
+                            </div>
                         </div>
 
-                        <!-- ===== BAGIAN E ===== -->
+                        <!-- BAGIAN E -->
                         <div class="section-card">
-                            <h3 class="section-title">🌍 BAGIAN E: BUDAYA LOKAL KITA (KELOMPOK)</h3>
-                            <div class="instruction-box">
-                                "Angkat budaya dari daerahmu!"
+                            <h3 class="section-title">E. BUDAYA LOKAL KITA <span class="section-badge">Kelompok</span></h3>
+                            <div class="instruction-box">Angkat budaya dari daerahmu!</div>
+                            <div class="culture-tip"><strong>Info:</strong> Pilih satu budaya dari daerahmu yang ingin kamu angkat!</div>
+                            <div class="screenshot-instruction">
+                                <strong>📸 Instruksi Screenshot:</strong> Screenshot foto/artikel tentang budaya yang dipilih → Upload ke Google Drive → Tempel link di bawah
                             </div>
-
-                            <div class="culture-tip">
-                                <strong>Info:</strong> Pilih satu budaya dari daerahmu yang ingin kamu angkat!
-                            </div>
-
                             <table class="qa-table">
-                                <thead>
-                                    <tr><th class="no-col">No</th><th class="question-col">Bagian</th><th class="answer-col">Jawaban Kelompok</th></tr>
-                                </thead>
+                                <thead><tr><th class="no-col">No</th><th class="question-col">Bagian</th><th class="answer-col">Jawaban Kelompok</th></tr></thead>
                                 <tbody>
                                     <tr><td class="no-col">1</td><td>Nama Budaya</td><td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
                                     <tr><td class="no-col">2</td><td>Jenis Budaya</td><td><div class="radio-group"><label><span class="lingkaran-cek"></span> Tarian</label><label><span class="lingkaran-cek"></span> Musik</label><label><span class="lingkaran-cek"></span> Pakaian Adat</label><label><span class="lingkaran-cek"></span> Makanan</label><label><span class="lingkaran-cek"></span> Upacara Adat</label><label><span class="lingkaran-cek"></span> Lainnya: ________</label></div></td></tr>
@@ -2305,19 +2450,21 @@
                                     <tr><td class="no-col">6</td><td>Mengapa kami memilih budaya ini?</td><td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
                                 </tbody>
                             </table>
+                            <div class="folder-link-box">
+                                <span class="label-link">📸 Link Screenshot - Bagian E</span>
+                                <div style="font-size:0.9rem; color:#555; margin-top:4px;">Tempel link folder/screenshot budaya lokal yang dipilih:</div>
+                                <div style="margin-top:6px; background:white; padding:6px 10px; border-radius:6px; border:1px solid #ddd;">
+                                    <span class="tempat-jawaban">[Tempel link di sini]</span>
+                                </div>
+                            </div>
                         </div>
 
-                        <!-- ===== BAGIAN F ===== -->
+                        <!-- BAGIAN F -->
                         <div class="section-card">
-                            <h3 class="section-title">📝 BAGIAN F: REFLEKSI AKHIR (INDIVIDU)</h3>
-                            <div class="instruction-box">
-                                "Apa yang aku pelajari hari ini?"
-                            </div>
-
+                            <h3 class="section-title">F. REFLEKSI AKHIR <span class="section-badge">Individu</span></h3>
+                            <div class="instruction-box">"Apa yang aku pelajari hari ini? Tulis dengan jujur!"</div>
                             <table class="qa-table">
-                                <thead>
-                                    <tr><th class="no-col">No</th><th class="question-col">Pertanyaan</th><th class="answer-col">Jawabanku</th></tr>
-                                </thead>
+                                <thead><tr><th class="no-col">No</th><th class="question-col">Pertanyaan</th><th class="answer-col">Jawabanku</th></tr></thead>
                                 <tbody>
                                     <tr><td class="no-col">1</td><td>Hal baru apa yang aku pelajari tentang digitalisasi budaya hari ini?</td><td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
                                     <tr><td class="no-col">2</td><td>Budaya Indonesia apa yang paling menarik menurutku? Mengapa?</td><td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
@@ -2326,9 +2473,8 @@
                                     <tr><td class="no-col">5</td><td>Apakah budaya daerahku sudah dikenal secara digital?</td><td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
                                 </tbody>
                             </table>
-
-                            <div style="margin-top: 1rem; background: #f8fafc; border-radius: 8px; padding: 1rem; border: 1px dashed #3498db;">
-                                <p><strong>Checklist Pemahaman:</strong></p>
+                            <div style="margin-top: 1.5rem; background: #f8fafc; border-radius: 8px; padding: 1rem; border: 1px dashed #3498db;">
+                                <p><strong>✅ Checklist Pemahaman Akhir:</strong></p>
                                 <div class="checkbox-grid">
                                     <div class="checkbox-item"><span class="kotak-cek"></span> Saya sudah membaca materi "Digitalisasi Budaya Indonesia"</div>
                                     <div class="checkbox-item"><span class="kotak-cek"></span> Saya sudah mengenal berbagai budaya Indonesia</div>
@@ -2338,7 +2484,6 @@
                             </div>
                         </div>
 
-                        <!-- ===== FOOTER ===== -->
                         <div class="footer-text">
                             LKPD Proyek 2 Aktivitas 1 - Mengenal Budaya & Dunia Digital | ${dateStr}
                         </div>
@@ -2346,12 +2491,7 @@
                     </html>
                 `;
 
-                // === BUAT FILE .doc ===
-                const blob = new Blob([htmlContent], {
-                    type: 'application/msword;charset=utf-8'
-                });
-
-                // === DOWNLOAD ===
+                const blob = new Blob([htmlContent], { type: 'application/msword;charset=utf-8' });
                 const link = document.createElement('a');
                 link.href = URL.createObjectURL(blob);
                 const today = new Date();
@@ -2362,9 +2502,7 @@
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
-                setTimeout(() => {
-                    URL.revokeObjectURL(link.href);
-                }, 1000);
+                setTimeout(() => URL.revokeObjectURL(link.href), 1000);
 
                 exportBtn.innerHTML = '<i class="fas fa-file-word"></i> Export Template DOCX';
                 exportBtn.disabled = false;
@@ -2381,11 +2519,12 @@
         document.addEventListener('DOMContentLoaded', function() {
             generateTables();
 
-            const hamburger = document.getElementById('hamburger');
-            const navMenu = document.getElementById('nav-menu');
-            if (hamburger) {
-                hamburger.addEventListener('click', () => navMenu.classList.toggle('active'));
-            }
+            document.querySelectorAll('textarea.answer-field').forEach(el => {
+                el.addEventListener('input', function() {
+                    autoResize(this);
+                });
+                autoResize(el);
+            });
 
             document.querySelectorAll('input, select, textarea').forEach(el => {
                 el.addEventListener('input', saveToLocalStorage);
@@ -2403,14 +2542,19 @@
             });
 
             loadDataFromGoogleSheets();
-            loadFromLocalStorage();
             updateConnectionStatus();
-            setInterval(checkConnection, 5000);
-        });
+            setInterval(updateConnectionStatus, 5000);
 
-        function checkConnection() {
-            updateConnectionStatus();
-        }
+            window.updateNamaDropdown = updateNamaDropdown;
+            window.saveToLocalStorage = saveToLocalStorage;
+            window.submitData = submitData;
+            window.exportToDocx = exportToDocx;
+            window.confirmGantiTugas = confirmGantiTugas;
+            window.confirmReset = confirmReset;
+            window.closeModal = closeModal;
+            window.closeConfirmModal = closeConfirmModal;
+            window.autoResize = autoResize;
+        });
     </script>
 </body>
 </html>

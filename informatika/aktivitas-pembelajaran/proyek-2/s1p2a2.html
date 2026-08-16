@@ -12,8 +12,6 @@
             --informatika-secondary: #2980b9;
             --informatika-light: #ebf5fb;
             --informatika-dark: #21618c;
-            --informatika-accent: #9b59b6;
-            --informatika-gray: #f5f7fa;
             --informatika-orange: #f39c12;
             --informatika-red: #e74c3c;
         }
@@ -25,6 +23,37 @@
             background-color: #f5f7fa;
             color: #2c3e50;
             line-height: 1.6;
+        }
+
+        .tp-card {
+            background: linear-gradient(135deg, #e8f4fd 0%, #d6eaf8 100%);
+            border-radius: 16px;
+            padding: 1.2rem 1.8rem;
+            margin-bottom: 1.5rem;
+            border-left: 5px solid var(--informatika-primary);
+        }
+
+        .tp-card .tp-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 4px 0;
+            font-size: 0.95rem;
+        }
+
+        .tp-card .tp-item .tp-code {
+            background: var(--informatika-primary);
+            color: white;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            min-width: 45px;
+            text-align: center;
+        }
+
+        .tp-card .tp-item .tp-desc {
+            color: var(--informatika-dark);
         }
 
         .activity-detail-container {
@@ -80,7 +109,7 @@
         .informatika-content-card .subtitle {
             color: #666;
             font-size: 1rem;
-            margin-bottom: 2rem;
+            margin-bottom: 0;
             display: flex;
             align-items: center;
             gap: 15px;
@@ -89,18 +118,6 @@
 
         .informatika-content-card .subtitle i { color: var(--informatika-primary); }
 
-        .informatika-content-card > p {
-            font-size: 1.1rem;
-            line-height: 1.7;
-            color: #555;
-            margin-bottom: 2.5rem;
-            padding: 1rem 1.5rem;
-            background: var(--informatika-light);
-            border-radius: 10px;
-            border-left: 4px solid var(--informatika-primary);
-        }
-
-        /* ============ MATERI SECTION ============ */
         .materi-section {
             background: linear-gradient(135deg, #fff5e6 0%, #fffaf0 100%);
             border-radius: 20px;
@@ -108,18 +125,6 @@
             margin: 2rem 0;
             border: 2px solid #f39c12;
             box-shadow: 0 4px 15px rgba(243, 156, 18, 0.15);
-            animation: fadeInUp 0.6s ease;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         .materi-header {
@@ -278,10 +283,21 @@
             font-size: 1.6rem;
         }
 
+        .section-badge {
+            display: inline-block;
+            background: var(--informatika-primary);
+            color: white;
+            padding: 2px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
         .section-subtitle {
             color: var(--informatika-secondary);
-            font-size: 1.2rem;
-            margin: 1.5rem 0 1rem 0;
+            font-size: 1.1rem;
+            margin: 1.5rem 0 0.8rem 0;
             font-weight: 600;
         }
 
@@ -336,7 +352,6 @@
             box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.15);
         }
 
-        /* ===== TABEL 3 KOLOM ===== */
         .qa-table {
             width: 100%;
             border-collapse: collapse;
@@ -365,7 +380,6 @@
         .qa-table .question-col { width: 34%; font-weight: 500; color: #2c3e50; }
         .qa-table .answer-col { width: 60%; }
 
-        /* ===== TABEL 4 KOLOM ===== */
         .qa-table.four-col .no-col { width: 6%; text-align: center; font-weight: 600; color: #7f8c8d; }
         .qa-table.four-col .col1 { width: 22%; font-weight: 500; color: #2c3e50; }
         .qa-table.four-col .col2 { width: 32%; }
@@ -382,7 +396,10 @@
             background: #fafcfe !important;
             color: #2c3e50 !important;
             box-sizing: border-box !important;
-            resize: vertical;
+            resize: none !important;
+            overflow: hidden !important;
+            min-height: 50px !important;
+            line-height: 1.6 !important;
         }
 
         .answer-field:hover {
@@ -408,7 +425,7 @@
 
         .checkbox-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 0.5rem 1.5rem;
             margin: 0.5rem 0;
         }
@@ -453,6 +470,117 @@
             height: 16px;
             accent-color: var(--informatika-primary);
             cursor: pointer;
+        }
+
+        .screenshot-instruction {
+            background: #fff3cd;
+            border-radius: 10px;
+            padding: 0.8rem 1.2rem;
+            margin: 0.5rem 0 1rem 0;
+            border-left: 4px solid #f39c12;
+        }
+
+        .screenshot-instruction i {
+            color: #f39c12;
+            margin-right: 8px;
+        }
+
+        .folder-link-box {
+            background: #e8f5e9;
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            margin-top: 1rem;
+            border-left: 5px solid #4caf50;
+        }
+
+        .folder-link-box .label-link {
+            font-weight: 600;
+            color: #2e7d32;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .folder-link-box .sub-text {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 6px;
+        }
+
+        .folder-link-box input {
+            width: 100% !important;
+        }
+
+        .profession-tip {
+            background: #e8f5e9;
+            border-radius: 10px;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 4px solid #4caf50;
+        }
+
+        .profession-tip i {
+            color: #4caf50;
+            margin-right: 8px;
+        }
+
+        .matching-container {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 1.2rem;
+            margin: 0.5rem 0 1rem 0;
+            border: 1px solid #e0e7ff;
+        }
+
+        .matching-container .matching-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 8px 20px;
+            padding: 6px 0;
+        }
+
+        .matching-container .matching-grid .profesi-label {
+            font-weight: 600;
+            color: var(--informatika-dark);
+            padding: 6px 0;
+        }
+
+        .matching-container .matching-grid .profesi-select {
+            padding: 4px 0;
+        }
+
+        .matching-select {
+            width: 100%;
+            max-width: 100%;
+            padding: 6px 10px;
+            border: 2px solid #d0dbe8;
+            border-radius: 8px;
+            font-size: 0.88rem;
+            font-family: inherit;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-height: 38px;
+        }
+
+        .matching-select:hover {
+            border-color: #a0b8d0;
+        }
+
+        .matching-select:focus {
+            outline: none;
+            border-color: var(--informatika-primary);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.12);
+        }
+
+        .matching-header {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 8px 20px;
+            padding: 8px 0;
+            font-weight: 700;
+            color: var(--informatika-dark);
+            border-bottom: 2px solid var(--informatika-light);
+            margin-bottom: 4px;
         }
 
         .alert {
@@ -546,7 +674,6 @@
 
         .btn-submit i { margin-right: 10px; }
 
-        /* ============ EXPORT BUTTON ============ */
         .export-button {
             background: linear-gradient(135deg, #3498db, #2980b9);
             color: white;
@@ -630,72 +757,6 @@
             pointer-events: none;
         }
 
-        .profession-tip {
-            background: #e8f5e9;
-            border-radius: 10px;
-            padding: 1rem;
-            margin: 1rem 0;
-            border-left: 4px solid #4caf50;
-        }
-
-        .profession-tip i {
-            color: #4caf50;
-            margin-right: 8px;
-        }
-
-        .matching-box {
-            background: #f8fafc;
-            border: 2px solid var(--informatika-accent);
-            border-radius: 15px;
-            padding: 1.5rem;
-            margin: 1rem 0;
-        }
-
-        .matching-box .matching-row {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 0;
-            border-bottom: 1px solid #e8edf4;
-        }
-
-        .matching-box .matching-row:last-child { border-bottom: none; }
-
-        .matching-box .matching-label {
-            font-weight: 600;
-            color: var(--informatika-dark);
-            min-width: 30px;
-        }
-
-        .matching-box .matching-input {
-            width: 50px;
-            padding: 4px 8px;
-            border: 2px solid #d0dbe8;
-            border-radius: 6px;
-            text-align: center;
-            font-size: 0.9rem;
-        }
-
-        .matching-box .matching-input:focus {
-            outline: none;
-            border-color: var(--informatika-primary);
-            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
-        }
-
-        .matching-box .profession-list {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4px 20px;
-            margin: 10px 0;
-        }
-
-        .matching-box .profession-list .prof-item {
-            padding: 4px 0;
-            font-size: 0.92rem;
-        }
-
-        /* ============ MODAL ============ */
         .modal {
             display: none;
             position: fixed;
@@ -816,15 +877,6 @@
             box-shadow: none;
         }
 
-        .modal-btn.no {
-            background: #6c757d;
-            color: white;
-        }
-
-        .modal-btn.no:hover {
-            background: #5a6268;
-        }
-
         .modal-btn.secondary {
             background: #6c757d;
             color: white;
@@ -855,7 +907,9 @@
             .checkbox-grid { grid-template-columns: 1fr; }
             .radio-group { flex-direction: column; gap: 5px; }
             .answer-field { font-size: 0.9rem !important; padding: 8px 12px !important; }
-            .matching-box .profession-list { grid-template-columns: 1fr; }
+            .matching-container .matching-grid { grid-template-columns: 1fr; gap: 4px 0; }
+            .matching-header { grid-template-columns: 1fr; }
+            .matching-select { font-size: 0.85rem; }
             .modal-content { margin: 15% auto; padding: 2rem; width: 95%; max-width: 400px; }
             .modal-buttons { flex-direction: column; align-items: stretch; }
             .modal-btn { flex: none; min-width: unset; width: 100%; justify-content: center; padding: 0.8rem; }
@@ -864,15 +918,11 @@
             .btn-submit { width: 100%; justify-content: center; padding: 1rem; }
             .informatika-content-card h2 { font-size: 1.6rem; }
             .informatika-content-card { padding: 1.5rem; }
-            
-            .materi-header {
-                flex-direction: column;
-                text-align: center;
-            }
-            .materi-card .btn-materi {
-                width: 100%;
-                justify-content: center;
-            }
+            .materi-header { flex-direction: column; text-align: center; }
+            .materi-card .btn-materi { width: 100%; justify-content: center; }
+            .tp-card .tp-item { flex-wrap: wrap; }
+            .screenshot-instruction { padding: 0.6rem 1rem; }
+            .folder-link-box { padding: 0.8rem 1rem; }
         }
 
         @media (max-width: 480px) {
@@ -889,9 +939,11 @@
         }
 
         @media print {
-            .materi-section {
-                display: none !important;
-            }
+            .materi-section { display: none !important; }
+            .export-wrapper { display: none !important; }
+            .btn-submit { display: none !important; }
+            .activity-navigation { display: none !important; }
+            .connection-status { display: none !important; }
         }
     </style>
 </head>
@@ -901,7 +953,7 @@
             <div class="nav-container">
                 <div class="logo">
                     <img src="../../../assets/images/logo.png" alt="Logo Sekolah">
-                    <h1>INFORMATIKA - AKTIVITAS PEMBELAJARAN</h1>
+                    <h1>INFORMATIKA - PROJEK 2</h1>
                 </div>
                 <ul class="nav-menu" id="nav-menu">
                     <li><a href="../../../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
@@ -921,16 +973,26 @@
 
     <section class="activity-detail-container">
         <div class="informatika-content-card">
-            <h2>Proyek 2 Aktivitas 2: Profesi Digital & Peran Informatika</h2>
+            <h2>Proyek 2 Aktivitas 2: Profesi Digital &amp; Peran Informatika</h2>
             <div class="subtitle">
                 <span><i class="fas fa-calendar"></i> Pertemuan 2 • Proyek 2: Digitalisasi Budaya</span>
                 <span><i class="fas fa-clock"></i> 4 JP</span>
                 <span class="connection-status online" id="connectionStatus"><i class="fas fa-wifi"></i> Online</span>
             </div>
-            <p><i class="fas fa-quote-left"></i> Mengenal berbagai profesi di bidang informatika dan kontribusinya dalam pelestarian budaya. <i class="fas fa-quote-right"></i></p>
         </div>
 
-        <!-- ===== BAGIAN MEMBACA MATERI ===== -->
+        <!-- TP CARD -->
+        <div class="tp-card">
+            <div style="font-weight:700; color:var(--informatika-dark); margin-bottom:6px; font-size:1.1rem;">
+                <i class="fas fa-bullseye"></i> Tujuan Pembelajaran
+            </div>
+            <div class="tp-item">
+                <span class="tp-code">TP 2.8</span>
+                <span class="tp-desc">Mengenal berbagai profesi di bidang informatika dan kontribusinya dalam pelestarian budaya</span>
+            </div>
+        </div>
+
+        <!-- MATERI SECTION -->
         <div class="materi-section">
             <div class="materi-header">
                 <div class="materi-icon">
@@ -941,7 +1003,7 @@
                     <p>Sebelum mengerjakan LKPD ini, pastikan kamu sudah membaca dan memahami materi berikut:</p>
                 </div>
             </div>
-            
+
             <div class="materi-card">
                 <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
                     <span class="badge">MATERI 2.2</span>
@@ -957,11 +1019,11 @@
                     <i class="fas fa-arrow-right"></i> Baca Materi Sekarang
                 </a>
             </div>
-            
+
             <div class="materi-tip">
                 <p>
                     <i class="fas fa-info-circle"></i> 
-                    <strong>Tips:</strong> Baca materi dengan saksama agar kamu lebih mudah mengerjakan LKPD ini. Materi akan terbuka di tab baru.
+                    <strong>Tips:</strong> Baca materi dengan saksama agar kamu lebih mudah mengerjakan LKPD ini.
                 </p>
             </div>
         </div>
@@ -976,28 +1038,15 @@
         </div>
 
         <div class="worksheet-container" id="worksheetForm">
-            <!-- Tombol Export -->
             <div class="export-wrapper">
                 <button class="export-button" id="exportBtn" onclick="exportToDocx()" disabled>
                     <i class="fas fa-file-word"></i> Export Template DOCX
                 </button>
             </div>
 
-            <div class="instruction-box" style="background:#e8f5e9; border-left-color: var(--informatika-primary);">
-                <i class="fas fa-lightbulb" style="color: var(--informatika-primary); margin-right: 10px;"></i>
-                <strong>HALO, KELOMPOK HEBAT! 👋</strong><br>
-                Silakan isi lembar kerja ini untuk mempelajari profesi digital dan peran informatika dalam pelestarian budaya.
-            </div>
+            <h1 class="worksheet-title">LEMBAR KERJA PESERTA DIDIK (LKPD) PROYEK 2 – AKTIVITAS 2 (PROFESI DIGITAL &amp; PERAN INFORMATIKA)</h1>
 
-            <h1 class="worksheet-title">LEMBAR KERJA PESERTA DIDIK (LKPD) PROYEK 2 – AKTIVITAS 2</h1>
-            <p style="text-align: center; margin-bottom: 2rem; font-size: 1.2rem; color: var(--informatika-accent);">
-                <strong>PROFESI DIGITAL & PERAN INFORMATIKA</strong>
-            </p>
-            <div style="text-align: center; margin-bottom: 2rem; background: var(--informatika-light); padding: 0.8rem; border-radius: 10px;">
-                <p><i class="fas fa-bullseye"></i> <strong>Tujuan Pembelajaran (TP 2.8):</strong> Mengenal berbagai profesi di bidang informatika dan kontribusinya dalam pelestarian budaya.</p>
-            </div>
-
-            <!-- ===== IDENTITAS ===== -->
+            <!-- IDENTITAS -->
             <h3 style="margin: 2rem 0 1rem 0; color: var(--informatika-dark);">
                 <i class="fas fa-users"></i> Identitas Kelompok
             </h3>
@@ -1016,7 +1065,7 @@
                 </div>
                 <div class="identitas-item">
                     <label><i class="fas fa-users"></i> Nama Kelompok</label>
-                    <input type="text" id="kelompok" placeholder="Contoh: Kelompok 1 - Digital" oninput="saveToLocalStorage();" disabled>
+                    <input type="text" id="kelompok" placeholder="Contoh: Kelompok Digital" oninput="saveToLocalStorage();" disabled>
                 </div>
                 <div class="identitas-item">
                     <label><i class="fas fa-tasks"></i> Peran dalam Kelompok</label>
@@ -1024,111 +1073,257 @@
                 </div>
             </div>
 
-            <!-- ===== PETUNJUK ===== -->
             <div class="instruction-box">
                 <i class="fas fa-info-circle" style="margin-right: 10px;"></i>
                 <strong>📚 PETUNJUK PENGGUNAAN LKPD</strong><br><br>
                 <ol>
-                    <li>Pastikan kamu sudah membaca materi <strong>"Profesi di Bidang Informatika"</strong> yang tersedia di menu Daftar Materi.</li>
+                    <li>Pastikan kamu sudah membaca materi <strong>"Profesi di Bidang Informatika"</strong>.</li>
                     <li>Kerjakan setiap bagian dengan berdiskusi bersama kelompok.</li>
-                    <li>Gunakan hasil pemilihan budaya dari Aktivitas 1 untuk Bagian C dan D.</li>
-                    <li>Tulis jawaban dengan jelas dan lengkap.</li>
                     <li>Data akan <strong>tersimpan otomatis</strong> di browser Anda.</li>
-                    <li>Klik tombol <strong>Kumpulkan LKPD</strong> di bagian bawah untuk mengirimkan data ke Google Spreadsheet.</li>
+                    <li>Klik <strong>Kumpulkan LKPD</strong> di bagian bawah untuk mengirimkan data.</li>
                 </ol>
             </div>
 
-            <!-- ===== BAGIAN A: PEMAHAMAN PROFESI ===== -->
+            <!-- ============================================================ -->
+            <!-- BAGIAN A: PEMAHAMAN PROFESI -->
+            <!-- ============================================================ -->
             <div class="section-card">
-                <h3 class="section-title"><i class="fas fa-book-reader"></i> 📖 BAGIAN A: PEMAHAMAN PROFESI (INDIVIDU)</h3>
+                <h3 class="section-title">
+                    <i class="fas fa-book-reader"></i> A. PEMAHAMAN PROFESI
+                    <span class="section-badge">Individu</span>
+                </h3>
                 <div class="instruction-box">
-                    <i class="fas fa-question-circle"></i> "Pastikan kamu sudah membaca materi sebelum mengerjakan!"
+                    <i class="fas fa-question-circle"></i> Pastikan kamu sudah membaca materi sebelum mengerjakan!
                 </div>
 
-                <table class="qa-table" id="tabelPemahaman">
+                <div class="screenshot-instruction">
+                    <i class="fas fa-camera"></i>
+                    <strong>📸 Instruksi Screenshot:</strong> Screenshot halaman materi yang sudah kamu baca → Upload ke Google Drive → Tempel link di bawah
+                </div>
+
+                <table class="qa-table">
                     <thead>
                         <tr><th class="no-col">No</th><th class="question-col">Pertanyaan</th><th class="answer-col">Jawaban</th></tr>
                     </thead>
                     <tbody>
-                        <tr><td class="no-col">1</td><td>Apa yang dimaksud dengan profesi di bidang informatika?</td><td><textarea class="answer-field" id="review1" placeholder="Tulis jawabanmu..." oninput="saveToLocalStorage();"></textarea></td></tr>
-                        <tr><td class="no-col">2</td><td>Sebutkan 3 profesi di bidang informatika yang kamu ketahui!</td><td><textarea class="answer-field" id="review2" placeholder="1.&#10;2.&#10;3." oninput="saveToLocalStorage();"></textarea></td></tr>
-                        <tr><td class="no-col">3</td><td>Apa tugas seorang Web Developer?</td><td><textarea class="answer-field" id="review3" placeholder="Tulis jawabanmu..." oninput="saveToLocalStorage();"></textarea></td></tr>
-                        <tr><td class="no-col">4</td><td>Mengapa profesi di bidang informatika penting di era digital?</td><td><textarea class="answer-field" id="review4" placeholder="Tulis jawabanmu..." oninput="saveToLocalStorage();"></textarea></td></tr>
+                        <tr><td class="no-col">1</td><td>Apa yang dimaksud dengan profesi di bidang informatika?</td><td><textarea class="answer-field" id="review1" placeholder="Tulis jawabanmu..." oninput="autoResize(this); saveToLocalStorage();"></textarea></td></tr>
+                        <tr><td class="no-col">2</td><td>Sebutkan 3 profesi di bidang informatika yang kamu ketahui!</td><td><textarea class="answer-field" id="review2" placeholder="1.&#10;2.&#10;3." oninput="autoResize(this); saveToLocalStorage();"></textarea></td></tr>
+                        <tr><td class="no-col">3</td><td>Apa tugas seorang Web Developer?</td><td><textarea class="answer-field" id="review3" placeholder="Tulis jawabanmu..." oninput="autoResize(this); saveToLocalStorage();"></textarea></td></tr>
+                        <tr><td class="no-col">4</td><td>Mengapa profesi di bidang informatika penting di era digital?</td><td><textarea class="answer-field" id="review4" placeholder="Tulis jawabanmu..." oninput="autoResize(this); saveToLocalStorage();"></textarea></td></tr>
                     </tbody>
                 </table>
 
                 <div style="margin-top: 1rem; background: #f8fafc; border-radius: 10px; padding: 1rem; border: 1px dashed var(--informatika-primary);">
-                    <div class="checkbox-item"><input type="checkbox" id="bacaMateri" onchange="saveToLocalStorage();"><label for="bacaMateri"><strong>☐ Ya, saya sudah membaca materi "Profesi di Bidang Informatika"</strong></label></div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="bacaMateri" onchange="saveToLocalStorage();">
+                        <label for="bacaMateri"><strong>☐ Ya, saya sudah membaca materi "Profesi di Bidang Informatika"</strong></label>
+                    </div>
+                </div>
+
+                <div class="folder-link-box">
+                    <span class="label-link"><i class="fas fa-camera"></i> 📸 Link Screenshot - Bagian A</span>
+                    <div class="sub-text">Tempel link folder/screenshot bukti membaca materi:</div>
+                    <input type="text" class="answer-field" id="link_screenshot_a" placeholder="https://drive.google.com/drive/folders/xxx" oninput="saveToLocalStorage();">
                 </div>
             </div>
 
-            <!-- ===== BAGIAN B: MENGENAL PROFESI DIGITAL ===== -->
+            <!-- ============================================================ -->
+            <!-- BAGIAN B: MENGENAL PROFESI DIGITAL -->
+            <!-- ============================================================ -->
             <div class="section-card">
-                <h3 class="section-title"><i class="fas fa-briefcase"></i> 💼 BAGIAN B: MENGENAL PROFESI DIGITAL (INDIVIDU)</h3>
+                <h3 class="section-title">
+                    <i class="fas fa-briefcase"></i> B. MENGENAL PROFESI DIGITAL
+                    <span class="section-badge">Individu</span>
+                </h3>
                 <div class="instruction-box">
-                    <i class="fas fa-question-circle"></i> "Kenali berbagai profesi di dunia IT!"
+                    <i class="fas fa-question-circle"></i> Kenali berbagai profesi di dunia IT!
                 </div>
 
                 <h4 class="section-subtitle">Aktivitas 1: Menjodohkan Profesi dengan Tugasnya</h4>
-                <div class="matching-box">
-                    <div style="margin-bottom: 10px;">
-                        <p><strong>📋 Daftar Profesi:</strong></p>
-                        <div class="profession-list">
-                            <div class="prof-item">1. Web Developer</div>
-                            <div class="prof-item">2. Mobile App Developer</div>
-                            <div class="prof-item">3. Game Developer</div>
-                            <div class="prof-item">4. Data Scientist</div>
-                            <div class="prof-item">5. UI/UX Designer</div>
-                            <div class="prof-item">6. Cyber Security Specialist</div>
-                            <div class="prof-item">7. DevOps Engineer</div>
-                            <div class="prof-item">8. Database Administrator</div>
+
+                <div class="matching-container">
+                    <div class="matching-header">
+                        <div>📋 Profesi</div>
+                        <div>📝 Tugas yang Dipilih</div>
+                    </div>
+
+                    <!-- Profesi 1 -->
+                    <div class="matching-grid">
+                        <div class="profesi-label">1. Web Developer</div>
+                        <div class="profesi-select">
+                            <select class="matching-select" id="matching1" onchange="saveToLocalStorage();">
+                                <option value="">-- Pilih Tugas --</option>
+                                <option value="D. Membuat website yang bisa diakses publik">D. Membuat website yang bisa diakses publik</option>
+                                <option value="E. Membuat aplikasi untuk smartphone">E. Membuat aplikasi untuk smartphone</option>
+                                <option value="F. Membuat game untuk berbagai platform">F. Membuat game untuk berbagai platform</option>
+                                <option value="B. Mengelola dan menganalisis data">B. Mengelola dan menganalisis data</option>
+                                <option value="A. Membuat desain antarmuka aplikasi">A. Membuat desain antarmuka aplikasi</option>
+                                <option value="C. Memastikan keamanan sistem & jaringan">C. Memastikan keamanan sistem & jaringan</option>
+                                <option value="G. Mengelola infrastruktur & deployment">G. Mengelola infrastruktur & deployment</option>
+                                <option value="H. Mengelola dan memelihara basis data">H. Mengelola dan memelihara basis data</option>
+                            </select>
                         </div>
                     </div>
 
-                    <div style="margin-bottom: 10px;">
-                        <p><strong>📝 Daftar Tugas (A-H):</strong></p>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px 20px; font-size: 0.92rem;">
-                            <div>A. Membuat desain antarmuka aplikasi</div>
-                            <div>B. Mengelola dan menganalisis data</div>
-                            <div>C. Memastikan keamanan sistem & jaringan</div>
-                            <div>D. Membuat website yang bisa diakses publik</div>
-                            <div>E. Membuat aplikasi untuk smartphone</div>
-                            <div>F. Membuat game untuk berbagai platform</div>
-                            <div>G. Mengelola infrastruktur & deployment</div>
-                            <div>H. Mengelola dan memelihara basis data</div>
+                    <!-- Profesi 2 -->
+                    <div class="matching-grid">
+                        <div class="profesi-label">2. Mobile App Developer</div>
+                        <div class="profesi-select">
+                            <select class="matching-select" id="matching2" onchange="saveToLocalStorage();">
+                                <option value="">-- Pilih Tugas --</option>
+                                <option value="D. Membuat website yang bisa diakses publik">D. Membuat website yang bisa diakses publik</option>
+                                <option value="E. Membuat aplikasi untuk smartphone">E. Membuat aplikasi untuk smartphone</option>
+                                <option value="F. Membuat game untuk berbagai platform">F. Membuat game untuk berbagai platform</option>
+                                <option value="B. Mengelola dan menganalisis data">B. Mengelola dan menganalisis data</option>
+                                <option value="A. Membuat desain antarmuka aplikasi">A. Membuat desain antarmuka aplikasi</option>
+                                <option value="C. Memastikan keamanan sistem & jaringan">C. Memastikan keamanan sistem & jaringan</option>
+                                <option value="G. Mengelola infrastruktur & deployment">G. Mengelola infrastruktur & deployment</option>
+                                <option value="H. Mengelola dan memelihara basis data">H. Mengelola dan memelihara basis data</option>
+                            </select>
                         </div>
                     </div>
 
-                    <p><strong>✏️ Tulis huruf tugas yang sesuai (A-H):</strong></p>
-                    <div style="display: flex; flex-wrap: wrap; gap: 10px 20px; margin-top: 8px;">
-                        <div>1 = <input type="text" class="matching-input" id="matching1" maxlength="1" placeholder="?" oninput="saveToLocalStorage();"></div>
-                        <div>2 = <input type="text" class="matching-input" id="matching2" maxlength="1" placeholder="?" oninput="saveToLocalStorage();"></div>
-                        <div>3 = <input type="text" class="matching-input" id="matching3" maxlength="1" placeholder="?" oninput="saveToLocalStorage();"></div>
-                        <div>4 = <input type="text" class="matching-input" id="matching4" maxlength="1" placeholder="?" oninput="saveToLocalStorage();"></div>
-                        <div>5 = <input type="text" class="matching-input" id="matching5" maxlength="1" placeholder="?" oninput="saveToLocalStorage();"></div>
-                        <div>6 = <input type="text" class="matching-input" id="matching6" maxlength="1" placeholder="?" oninput="saveToLocalStorage();"></div>
-                        <div>7 = <input type="text" class="matching-input" id="matching7" maxlength="1" placeholder="?" oninput="saveToLocalStorage();"></div>
-                        <div>8 = <input type="text" class="matching-input" id="matching8" maxlength="1" placeholder="?" oninput="saveToLocalStorage();"></div>
+                    <!-- Profesi 3 -->
+                    <div class="matching-grid">
+                        <div class="profesi-label">3. Game Developer</div>
+                        <div class="profesi-select">
+                            <select class="matching-select" id="matching3" onchange="saveToLocalStorage();">
+                                <option value="">-- Pilih Tugas --</option>
+                                <option value="D. Membuat website yang bisa diakses publik">D. Membuat website yang bisa diakses publik</option>
+                                <option value="E. Membuat aplikasi untuk smartphone">E. Membuat aplikasi untuk smartphone</option>
+                                <option value="F. Membuat game untuk berbagai platform">F. Membuat game untuk berbagai platform</option>
+                                <option value="B. Mengelola dan menganalisis data">B. Mengelola dan menganalisis data</option>
+                                <option value="A. Membuat desain antarmuka aplikasi">A. Membuat desain antarmuka aplikasi</option>
+                                <option value="C. Memastikan keamanan sistem & jaringan">C. Memastikan keamanan sistem & jaringan</option>
+                                <option value="G. Mengelola infrastruktur & deployment">G. Mengelola infrastruktur & deployment</option>
+                                <option value="H. Mengelola dan memelihara basis data">H. Mengelola dan memelihara basis data</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Profesi 4 -->
+                    <div class="matching-grid">
+                        <div class="profesi-label">4. Data Scientist</div>
+                        <div class="profesi-select">
+                            <select class="matching-select" id="matching4" onchange="saveToLocalStorage();">
+                                <option value="">-- Pilih Tugas --</option>
+                                <option value="D. Membuat website yang bisa diakses publik">D. Membuat website yang bisa diakses publik</option>
+                                <option value="E. Membuat aplikasi untuk smartphone">E. Membuat aplikasi untuk smartphone</option>
+                                <option value="F. Membuat game untuk berbagai platform">F. Membuat game untuk berbagai platform</option>
+                                <option value="B. Mengelola dan menganalisis data">B. Mengelola dan menganalisis data</option>
+                                <option value="A. Membuat desain antarmuka aplikasi">A. Membuat desain antarmuka aplikasi</option>
+                                <option value="C. Memastikan keamanan sistem & jaringan">C. Memastikan keamanan sistem & jaringan</option>
+                                <option value="G. Mengelola infrastruktur & deployment">G. Mengelola infrastruktur & deployment</option>
+                                <option value="H. Mengelola dan memelihara basis data">H. Mengelola dan memelihara basis data</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Profesi 5 -->
+                    <div class="matching-grid">
+                        <div class="profesi-label">5. UI/UX Designer</div>
+                        <div class="profesi-select">
+                            <select class="matching-select" id="matching5" onchange="saveToLocalStorage();">
+                                <option value="">-- Pilih Tugas --</option>
+                                <option value="D. Membuat website yang bisa diakses publik">D. Membuat website yang bisa diakses publik</option>
+                                <option value="E. Membuat aplikasi untuk smartphone">E. Membuat aplikasi untuk smartphone</option>
+                                <option value="F. Membuat game untuk berbagai platform">F. Membuat game untuk berbagai platform</option>
+                                <option value="B. Mengelola dan menganalisis data">B. Mengelola dan menganalisis data</option>
+                                <option value="A. Membuat desain antarmuka aplikasi">A. Membuat desain antarmuka aplikasi</option>
+                                <option value="C. Memastikan keamanan sistem & jaringan">C. Memastikan keamanan sistem & jaringan</option>
+                                <option value="G. Mengelola infrastruktur & deployment">G. Mengelola infrastruktur & deployment</option>
+                                <option value="H. Mengelola dan memelihara basis data">H. Mengelola dan memelihara basis data</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Profesi 6 -->
+                    <div class="matching-grid">
+                        <div class="profesi-label">6. Cyber Security Specialist</div>
+                        <div class="profesi-select">
+                            <select class="matching-select" id="matching6" onchange="saveToLocalStorage();">
+                                <option value="">-- Pilih Tugas --</option>
+                                <option value="D. Membuat website yang bisa diakses publik">D. Membuat website yang bisa diakses publik</option>
+                                <option value="E. Membuat aplikasi untuk smartphone">E. Membuat aplikasi untuk smartphone</option>
+                                <option value="F. Membuat game untuk berbagai platform">F. Membuat game untuk berbagai platform</option>
+                                <option value="B. Mengelola dan menganalisis data">B. Mengelola dan menganalisis data</option>
+                                <option value="A. Membuat desain antarmuka aplikasi">A. Membuat desain antarmuka aplikasi</option>
+                                <option value="C. Memastikan keamanan sistem & jaringan">C. Memastikan keamanan sistem & jaringan</option>
+                                <option value="G. Mengelola infrastruktur & deployment">G. Mengelola infrastruktur & deployment</option>
+                                <option value="H. Mengelola dan memelihara basis data">H. Mengelola dan memelihara basis data</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Profesi 7 -->
+                    <div class="matching-grid">
+                        <div class="profesi-label">7. DevOps Engineer</div>
+                        <div class="profesi-select">
+                            <select class="matching-select" id="matching7" onchange="saveToLocalStorage();">
+                                <option value="">-- Pilih Tugas --</option>
+                                <option value="D. Membuat website yang bisa diakses publik">D. Membuat website yang bisa diakses publik</option>
+                                <option value="E. Membuat aplikasi untuk smartphone">E. Membuat aplikasi untuk smartphone</option>
+                                <option value="F. Membuat game untuk berbagai platform">F. Membuat game untuk berbagai platform</option>
+                                <option value="B. Mengelola dan menganalisis data">B. Mengelola dan menganalisis data</option>
+                                <option value="A. Membuat desain antarmuka aplikasi">A. Membuat desain antarmuka aplikasi</option>
+                                <option value="C. Memastikan keamanan sistem & jaringan">C. Memastikan keamanan sistem & jaringan</option>
+                                <option value="G. Mengelola infrastruktur & deployment">G. Mengelola infrastruktur & deployment</option>
+                                <option value="H. Mengelola dan memelihara basis data">H. Mengelola dan memelihara basis data</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Profesi 8 -->
+                    <div class="matching-grid">
+                        <div class="profesi-label">8. Database Administrator</div>
+                        <div class="profesi-select">
+                            <select class="matching-select" id="matching8" onchange="saveToLocalStorage();">
+                                <option value="">-- Pilih Tugas --</option>
+                                <option value="D. Membuat website yang bisa diakses publik">D. Membuat website yang bisa diakses publik</option>
+                                <option value="E. Membuat aplikasi untuk smartphone">E. Membuat aplikasi untuk smartphone</option>
+                                <option value="F. Membuat game untuk berbagai platform">F. Membuat game untuk berbagai platform</option>
+                                <option value="B. Mengelola dan menganalisis data">B. Mengelola dan menganalisis data</option>
+                                <option value="A. Membuat desain antarmuka aplikasi">A. Membuat desain antarmuka aplikasi</option>
+                                <option value="C. Memastikan keamanan sistem & jaringan">C. Memastikan keamanan sistem & jaringan</option>
+                                <option value="G. Mengelola infrastruktur & deployment">G. Mengelola infrastruktur & deployment</option>
+                                <option value="H. Mengelola dan memelihara basis data">H. Mengelola dan memelihara basis data</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
 
+                <div style="margin-top: 1rem; background: #fff3cd; border-radius: 10px; padding: 0.8rem 1.2rem; border-left: 4px solid #f39c12;">
+                    <i class="fas fa-info-circle" style="color: #f39c12;"></i>
+                    <strong>Tips:</strong> Setiap profesi memiliki satu tugas yang paling sesuai. Pilih dengan teliti!
+                </div>
+
                 <h4 class="section-subtitle">Aktivitas 2: Refleksi Minat Karier</h4>
-                <table class="qa-table" id="tabelMinat">
+                <table class="qa-table">
                     <thead>
                         <tr><th class="no-col">No</th><th class="question-col">Pertanyaan</th><th class="answer-col">Jawaban</th></tr>
                     </thead>
                     <tbody>
-                        <tr><td class="no-col">1</td><td>Dari semua profesi di atas, mana yang paling menarik menurutmu? Mengapa?</td><td><textarea class="answer-field" id="minat1" oninput="saveToLocalStorage();"></textarea></td></tr>
-                        <tr><td class="no-col">2</td><td>Keterampilan apa yang perlu kamu kuasai untuk profesi itu?</td><td><textarea class="answer-field" id="minat2" oninput="saveToLocalStorage();"></textarea></td></tr>
+                        <tr><td class="no-col">1</td><td>Dari semua profesi di atas, mana yang paling menarik menurutmu? Mengapa?</td><td><textarea class="answer-field" id="minat1" placeholder="Tulis jawabanmu..." oninput="autoResize(this); saveToLocalStorage();"></textarea></td></tr>
+                        <tr><td class="no-col">2</td><td>Keterampilan apa yang perlu kamu kuasai untuk profesi itu?</td><td><textarea class="answer-field" id="minat2" placeholder="Tulis jawabanmu..." oninput="autoResize(this); saveToLocalStorage();"></textarea></td></tr>
                     </tbody>
                 </table>
             </div>
 
-            <!-- ===== BAGIAN C: PERAN IT UNTUK BUDAYA ===== -->
+            <!-- ============================================================ -->
+            <!-- BAGIAN C: PERAN IT UNTUK PELESTARIAN BUDAYA -->
+            <!-- ============================================================ -->
             <div class="section-card">
-                <h3 class="section-title"><i class="fas fa-link"></i> 🔗 BAGIAN C: PERAN IT UNTUK PELESTARIAN BUDAYA (KELOMPOK)</h3>
+                <h3 class="section-title">
+                    <i class="fas fa-link"></i> C. PERAN IT UNTUK PELESTARIAN BUDAYA
+                    <span class="section-badge">Kelompok</span>
+                </h3>
                 <div class="instruction-box">
-                    <i class="fas fa-search"></i> "Bagaimana profesi IT dapat membantu melestarikan budaya?"
+                    <i class="fas fa-search"></i> Bagaimana profesi IT dapat membantu melestarikan budaya?
+                </div>
+
+                <div class="screenshot-instruction">
+                    <i class="fas fa-camera"></i>
+                    <strong>📸 Instruksi Screenshot:</strong> Screenshot hasil diskusi peran IT untuk budaya → Upload ke Google Drive → Tempel link di bawah
                 </div>
 
                 <table class="qa-table four-col" id="tabelPeranBudaya">
@@ -1137,13 +1332,29 @@
                     </thead>
                     <tbody id="peranBudayaBody"></tbody>
                 </table>
+
+                <div class="folder-link-box">
+                    <span class="label-link"><i class="fas fa-camera"></i> 📸 Link Screenshot - Bagian C</span>
+                    <div class="sub-text">Tempel link folder/screenshot diskusi peran IT untuk budaya:</div>
+                    <input type="text" class="answer-field" id="link_screenshot_c" placeholder="https://drive.google.com/drive/folders/xxx" oninput="saveToLocalStorage();">
+                </div>
             </div>
 
-            <!-- ===== BAGIAN D: MERENCANAKAN PROYEK ===== -->
+            <!-- ============================================================ -->
+            <!-- BAGIAN D: MERENCANAKAN PROYEK -->
+            <!-- ============================================================ -->
             <div class="section-card">
-                <h3 class="section-title"><i class="fas fa-project-diagram"></i> 📋 BAGIAN D: MERENCANAKAN PROYEK (KELOMPOK)</h3>
+                <h3 class="section-title">
+                    <i class="fas fa-project-diagram"></i> D. MERENCANAKAN PROYEK
+                    <span class="section-badge">Kelompok</span>
+                </h3>
                 <div class="instruction-box">
-                    <i class="fas fa-lightbulb"></i> "Hubungkan profesi digital dengan budaya yang kalian pilih!"
+                    <i class="fas fa-lightbulb"></i> Hubungkan profesi digital dengan budaya yang kalian pilih!
+                </div>
+
+                <div class="screenshot-instruction">
+                    <i class="fas fa-camera"></i>
+                    <strong>📸 Instruksi Screenshot:</strong> Screenshot hasil perencanaan proyek kelompok → Upload ke Google Drive → Tempel link di bawah
                 </div>
 
                 <div class="profession-tip">
@@ -1167,29 +1378,40 @@
                     </thead>
                     <tbody id="kontenBody"></tbody>
                 </table>
+
+                <div class="folder-link-box">
+                    <span class="label-link"><i class="fas fa-camera"></i> 📸 Link Screenshot - Bagian D</span>
+                    <div class="sub-text">Tempel link folder/screenshot perencanaan proyek kelompok:</div>
+                    <input type="text" class="answer-field" id="link_screenshot_d" placeholder="https://drive.google.com/drive/folders/xxx" oninput="saveToLocalStorage();">
+                </div>
             </div>
 
-            <!-- ===== BAGIAN E: REFLEKSI AKHIR ===== -->
+            <!-- ============================================================ -->
+            <!-- BAGIAN E: REFLEKSI AKHIR -->
+            <!-- ============================================================ -->
             <div class="section-card">
-                <h3 class="section-title"><i class="fas fa-pen"></i> 📝 BAGIAN E: REFLEKSI AKHIR (INDIVIDU)</h3>
+                <h3 class="section-title">
+                    <i class="fas fa-pen"></i> E. REFLEKSI AKHIR
+                    <span class="section-badge">Individu</span>
+                </h3>
                 <div class="instruction-box">
-                    <i class="fas fa-question-circle"></i> "Apa yang aku pelajari hari ini?"
+                    <i class="fas fa-question-circle"></i> "Apa yang aku pelajari hari ini? Tulis dengan jujur!"
                 </div>
 
-                <table class="qa-table" id="tabelRefleksi">
+                <table class="qa-table">
                     <thead>
                         <tr><th class="no-col">No</th><th class="question-col">Pertanyaan</th><th class="answer-col">Jawabanku</th></tr>
                     </thead>
                     <tbody>
-                        <tr><td class="no-col">1</td><td>Hal baru apa yang aku pelajari tentang profesi di bidang informatika?</td><td><textarea class="answer-field" id="ref1" oninput="saveToLocalStorage();"></textarea></td></tr>
-                        <tr><td class="no-col">2</td><td>Profesi apa yang paling menarik menurutku? Mengapa?</td><td><textarea class="answer-field" id="ref2" oninput="saveToLocalStorage();"></textarea></td></tr>
-                        <tr><td class="no-col">3</td><td>Bagaimana profesi IT dapat membantu melestarikan budaya?</td><td><textarea class="answer-field" id="ref3" oninput="saveToLocalStorage();"></textarea></td></tr>
-                        <tr><td class="no-col">4</td><td>Peran apa yang aku ambil dalam kelompok untuk proyek ini?</td><td><textarea class="answer-field" id="ref4" oninput="saveToLocalStorage();"></textarea></td></tr>
+                        <tr><td class="no-col">1</td><td>Hal baru apa yang aku pelajari tentang profesi di bidang informatika?</td><td><textarea class="answer-field" id="ref1" placeholder="Tulis jawabanmu..." oninput="autoResize(this); saveToLocalStorage();"></textarea></td></tr>
+                        <tr><td class="no-col">2</td><td>Profesi apa yang paling menarik menurutku? Mengapa?</td><td><textarea class="answer-field" id="ref2" placeholder="Tulis jawabanmu..." oninput="autoResize(this); saveToLocalStorage();"></textarea></td></tr>
+                        <tr><td class="no-col">3</td><td>Bagaimana profesi IT dapat membantu melestarikan budaya?</td><td><textarea class="answer-field" id="ref3" placeholder="Tulis jawabanmu..." oninput="autoResize(this); saveToLocalStorage();"></textarea></td></tr>
+                        <tr><td class="no-col">4</td><td>Peran apa yang aku ambil dalam kelompok untuk proyek ini?</td><td><textarea class="answer-field" id="ref4" placeholder="Tulis jawabanmu..." oninput="autoResize(this); saveToLocalStorage();"></textarea></td></tr>
                     </tbody>
                 </table>
 
-                <div style="margin-top: 1rem; background: #f8fafc; border-radius: 10px; padding: 1rem; border: 1px dashed var(--informatika-primary);">
-                    <p><strong>Checklist Pemahaman:</strong></p>
+                <div style="margin-top: 1.5rem; background: #f8fafc; border-radius: 10px; padding: 1rem; border: 1px dashed var(--informatika-primary);">
+                    <p><strong>✅ Checklist Pemahaman Akhir:</strong></p>
                     <div class="checkbox-grid">
                         <div class="checkbox-item"><input type="checkbox" id="chk1" onchange="saveToLocalStorage();"><label for="chk1">Saya sudah membaca materi "Profesi di Bidang Informatika"</label></div>
                         <div class="checkbox-item"><input type="checkbox" id="chk2" onchange="saveToLocalStorage();"><label for="chk2">Saya sudah mengenal minimal 5 profesi IT</label></div>
@@ -1199,6 +1421,7 @@
                 </div>
             </div>
 
+            <!-- SUBMIT -->
             <button class="btn-submit" id="submitBtn" onclick="submitData()" disabled>
                 <i class="fas fa-paper-plane"></i> Kumpulkan LKPD
             </button>
@@ -1214,7 +1437,7 @@
         </div>
     </section>
 
-    <!-- ===== MODAL KONFIRMASI RESET (SUKSES) ===== -->
+    <!-- MODAL RESET -->
     <div id="resetModal" class="modal">
         <div class="modal-content">
             <div class="modal-icon icon-success">
@@ -1233,7 +1456,7 @@
         </div>
     </div>
 
-    <!-- ===== MODAL KONFIRMASI GANTI TUGAS ===== -->
+    <!-- MODAL KONFIRMASI GANTI -->
     <div id="confirmModal" class="modal">
         <div class="modal-content">
             <div class="modal-icon icon-warning">
@@ -1257,11 +1480,74 @@
         </div>
     </div>
 
-    <script src="../../../script.js"></script>
     <script>
-        // ==================== KONFIGURASI URL ====================
+        // ==================== AUTO RESIZE TEXTAREA ====================
+        function autoResize(element) {
+            element.style.height = 'auto';
+            element.style.height = element.scrollHeight + 'px';
+        }
+
+        // ==================== HAMBURGER MENU ====================
+        (function() {
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            const bars = hamburger ? hamburger.querySelectorAll('.bar') : [];
+
+            if (hamburger && navMenu) {
+                hamburger.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    navMenu.classList.toggle('active');
+                    
+                    if (navMenu.classList.contains('active')) {
+                        bars.forEach((bar, index) => {
+                            if (index === 0) bar.style.transform = 'rotate(45deg) translate(5px, 5px)';
+                            else if (index === 1) bar.style.opacity = '0';
+                            else if (index === 2) bar.style.transform = 'rotate(-45deg) translate(5px, -5px)';
+                        });
+                    } else {
+                        bars.forEach(bar => {
+                            bar.style.transform = 'none';
+                            bar.style.opacity = '1';
+                        });
+                    }
+                });
+
+                document.addEventListener('click', function(event) {
+                    const isClickInside = navMenu.contains(event.target) || hamburger.contains(event.target);
+                    if (!isClickInside && navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                        bars.forEach(bar => {
+                            bar.style.transform = 'none';
+                            bar.style.opacity = '1';
+                        });
+                    }
+                });
+
+                navMenu.querySelectorAll('.nav-link').forEach(link => {
+                    link.addEventListener('click', function() {
+                        navMenu.classList.remove('active');
+                        bars.forEach(bar => {
+                            bar.style.transform = 'none';
+                            bar.style.opacity = '1';
+                        });
+                    });
+                });
+
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                        bars.forEach(bar => {
+                            bar.style.transform = 'none';
+                            bar.style.opacity = '1';
+                        });
+                    }
+                });
+            }
+        })();
+
+        // ==================== KONFIGURASI ====================
         const URL_DATA_SISWA = 'https://script.google.com/macros/s/AKfycbxZMS_o6xWMAQAkjBzzEMR9tJmHOnHCX13KJX2xZMn7WIr-A9pwVK_3DDHnMg7y_rD29Q/exec';
-        const URL_PEREKAPAN = 'https://script.google.com/macros/s/AKfycbwRlLJQQ5ypD1jzsHICPZH6kfrSFHKHGXo0hPKjzwtHH04EDrAid7dqtDv7q6TCbDRj/exec';
+        const URL_PEREKAPAN = 'https://script.google.com/macros/s/AKfycbzBn7u9sH-UrUL3Xc4PnI16c1QbkR-w2Za5JDaJM5Utak1gntOvfrbsbkTEkRBn5xB9uQ/exec';
         const STORAGE_KEY = 'proyek2_aktivitas2_draft';
         const AKTIVITAS_NAMA = 'AKTIVITAS 2 - Profesi Digital & Peran Informatika';
         const SHEET_NAME = 'data_aktivitas';
@@ -1274,8 +1560,7 @@
         let isSubmitting = false;
         let pendingSubmitData = null;
 
-        // ==================== FUNGSI UTILITY ====================
-        function getValue(id) { const el = document.getElementById(id); return el ? el.value : ''; }
+        // ==================== UTILITY ====================
         function getChecked(id) { const el = document.getElementById(id); return el ? el.checked : false; }
 
         function getFormattedTimestamp() {
@@ -1304,8 +1589,7 @@
             autoSaveTimeout = setTimeout(() => {
                 const formData = collectAllFormData();
                 localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
-                console.log('Data tersimpan otomatis', new Date().toLocaleTimeString());
-            }, 1000);
+            }, 500);
         }
 
         function loadFromLocalStorage() {
@@ -1314,6 +1598,9 @@
                 try {
                     const data = JSON.parse(savedData);
                     populateFormData(data);
+                    document.querySelectorAll('textarea.answer-field').forEach(el => {
+                        autoResize(el);
+                    });
                 } catch (e) {
                     console.error('Error loading saved data:', e);
                 }
@@ -1324,94 +1611,158 @@
             localStorage.removeItem(STORAGE_KEY);
         }
 
-        // ==================== COLLECT ALL FORM DATA ====================
+        // ==================== COLLECT FORM DATA ====================
         function collectAllFormData() {
             const timestamp = getFormattedTimestamp();
             
-            // Collect matching data
-            const matching = {};
+            // Collect matching data - nilai lengkap dari dropdown
+            const matchingData = [];
+            const profesiLabels = ['Web Developer', 'Mobile App Developer', 'Game Developer', 'Data Scientist', 
+                                    'UI/UX Designer', 'Cyber Security Specialist', 'DevOps Engineer', 'Database Administrator'];
             for (let i = 1; i <= 8; i++) {
-                matching[`profesi_${i}`] = document.getElementById(`matching${i}`)?.value || '';
-            }
-
-            // Collect peran kelompok data
-            const peranKelompok = [];
-            for (let i = 1; i <= 4; i++) {
-                peranKelompok.push({
-                    nama: document.getElementById(`peran_nama_${i}`)?.value || '',
-                    profesi: document.getElementById(`peran_profesi_${i}`)?.value || ''
-                });
-            }
-
-            // Collect ide konten data
-            const ideKonten = [];
-            for (let i = 1; i <= 4; i++) {
-                ideKonten.push(document.getElementById(`konten_ide_${i}`)?.value || '');
+                const el = document.getElementById(`matching${i}`);
+                const value = el ? el.value : '';
+                // Simpan nilai lengkap dari dropdown (bukan hanya huruf)
+                matchingData.push([profesiLabels[i-1], value]);
             }
 
             // Collect peran budaya data
             const peranBudaya = [];
             for (let i = 1; i <= 5; i++) {
-                peranBudaya.push({
-                    profesi: document.getElementById(`peran_budaya_peran_${i}`)?.value || '',
-                    contoh: document.getElementById(`peran_budaya_contoh_${i}`)?.value || ''
-                });
+                const peranEl = document.getElementById(`peran_budaya_peran_${i}`);
+                const contohEl = document.getElementById(`peran_budaya_contoh_${i}`);
+                if (peranEl && contohEl) {
+                    peranBudaya.push([peranEl.value || '', contohEl.value || '']);
+                }
+            }
+
+            // Collect peran kelompok data
+            const peranKelompok = [];
+            for (let i = 1; i <= 4; i++) {
+                const namaEl = document.getElementById(`peran_nama_${i}`);
+                const profesiEl = document.getElementById(`peran_profesi_${i}`);
+                if (namaEl && profesiEl) {
+                    peranKelompok.push([namaEl.value || '', profesiEl.value || '']);
+                }
+            }
+
+            // Collect ide konten data
+            const ideKonten = [];
+            const kontenJenis = ['Website/Blog Budaya', 'Video Promosi Budaya', 'Poster/Infografis', 'Game Edukasi'];
+            for (let i = 1; i <= 4; i++) {
+                const el = document.getElementById(`konten_ide_${i}`);
+                ideKonten.push([kontenJenis[i-1], el ? el.value : '']);
             }
 
             return {
-                "timestamp": timestamp,
-                "identitas": {
-                    "kelas": document.getElementById('kelas').value || '',
-                    "nama": document.getElementById('nama').value || '',
-                    "kelompok": document.getElementById('kelompok').value || '',
-                    "peran": document.getElementById('peran').value || ''
+                "Timestamp Pengisian": timestamp,
+                "A. Identitas Kelompok": [
+                    ["Field", "Nilai"],
+                    ["Kelas", document.getElementById('kelas').value || ''],
+                    ["Nama Lengkap", document.getElementById('nama').value || ''],
+                    ["Nama Kelompok", document.getElementById('kelompok').value || ''],
+                    ["Peran dalam Kelompok", document.getElementById('peran').value || '']
+                ],
+                "B. Pemahaman Profesi": {
+                    "Pertanyaan": [
+                        ["Pertanyaan", "Jawaban"],
+                        ["Apa yang dimaksud dengan profesi di bidang informatika?", document.getElementById('review1').value || ''],
+                        ["Sebutkan 3 profesi di bidang informatika yang kamu ketahui!", document.getElementById('review2').value || ''],
+                        ["Apa tugas seorang Web Developer?", document.getElementById('review3').value || ''],
+                        ["Mengapa profesi di bidang informatika penting di era digital?", document.getElementById('review4').value || '']
+                    ],
+                    "Checklist": [
+                        ["Item", "Status"],
+                        ["Sudah membaca materi Profesi di Bidang Informatika", getChecked('bacaMateri')]
+                    ],
+                    "Link Screenshot": document.getElementById('link_screenshot_a').value || ''
                 },
-                "bagian_a": {
-                    "review1": document.getElementById('review1')?.value || '',
-                    "review2": document.getElementById('review2')?.value || '',
-                    "review3": document.getElementById('review3')?.value || '',
-                    "review4": document.getElementById('review4')?.value || '',
-                    "bacaMateri": getChecked('bacaMateri')
+                "C. Mengenal Profesi Digital": {
+                    "Matching": [
+                        ["Profesi", "Tugas yang Dipilih"],
+                        ...matchingData
+                    ],
+                    "Minat": [
+                        ["Pertanyaan", "Jawaban"],
+                        ["Profesi paling menarik? Mengapa?", document.getElementById('minat1').value || ''],
+                        ["Keterampilan yang perlu dikuasai", document.getElementById('minat2').value || '']
+                    ]
                 },
-                "bagian_b": {
-                    "matching": matching,
-                    "minat1": document.getElementById('minat1')?.value || '',
-                    "minat2": document.getElementById('minat2')?.value || ''
+                "D. Peran IT untuk Pelestarian Budaya": {
+                    "Peran": [
+                        ["Profesi", "Peran dalam Digitalisasi Budaya", "Contoh Konkret"],
+                        ["Web Developer", peranBudaya[0] ? peranBudaya[0][0] : '', peranBudaya[0] ? peranBudaya[0][1] : ''],
+                        ["Mobile App Developer", peranBudaya[1] ? peranBudaya[1][0] : '', peranBudaya[1] ? peranBudaya[1][1] : ''],
+                        ["Content Creator", peranBudaya[2] ? peranBudaya[2][0] : '', peranBudaya[2] ? peranBudaya[2][1] : ''],
+                        ["Videografer/Editor", peranBudaya[3] ? peranBudaya[3][0] : '', peranBudaya[3] ? peranBudaya[3][1] : ''],
+                        ["UI/UX Designer", peranBudaya[4] ? peranBudaya[4][0] : '', peranBudaya[4] ? peranBudaya[4][1] : '']
+                    ],
+                    "Link Screenshot": document.getElementById('link_screenshot_c').value || ''
                 },
-                "bagian_c": {
-                    "peranBudaya": peranBudaya
+                "E. Merencanakan Proyek": {
+                    "Budaya Pilihan": [
+                        ["Pertanyaan", "Jawaban"],
+                        ["Budaya pilihan kelompok", document.getElementById('budaya_pilihan').value || '']
+                    ],
+                    "Peran Kelompok": [
+                        ["No", "Nama Anggota", "Profesi yang Diperankan"],
+                        ["1", peranKelompok[0] ? peranKelompok[0][0] : '', peranKelompok[0] ? peranKelompok[0][1] : ''],
+                        ["2", peranKelompok[1] ? peranKelompok[1][0] : '', peranKelompok[1] ? peranKelompok[1][1] : ''],
+                        ["3", peranKelompok[2] ? peranKelompok[2][0] : '', peranKelompok[2] ? peranKelompok[2][1] : ''],
+                        ["4", peranKelompok[3] ? peranKelompok[3][0] : '', peranKelompok[3] ? peranKelompok[3][1] : '']
+                    ],
+                    "Ide Konten": [
+                        ["Jenis Konten", "Deskripsi Ide"],
+                        ...ideKonten
+                    ],
+                    "Link Screenshot": document.getElementById('link_screenshot_d').value || ''
                 },
-                "bagian_d": {
-                    "budaya_pilihan": document.getElementById('budaya_pilihan')?.value || '',
-                    "peranKelompok": peranKelompok,
-                    "ideKonten": ideKonten
-                },
-                "bagian_e": {
-                    "ref1": document.getElementById('ref1')?.value || '',
-                    "ref2": document.getElementById('ref2')?.value || '',
-                    "ref3": document.getElementById('ref3')?.value || '',
-                    "ref4": document.getElementById('ref4')?.value || '',
-                    "checklist": {
-                        "chk1": getChecked('chk1'),
-                        "chk2": getChecked('chk2'),
-                        "chk3": getChecked('chk3'),
-                        "chk4": getChecked('chk4')
-                    }
+                "F. Refleksi Akhir": {
+                    "Pertanyaan": [
+                        ["Pertanyaan", "Jawabanku"],
+                        ["Hal baru yang aku pelajari tentang profesi di bidang informatika", document.getElementById('ref1').value || ''],
+                        ["Profesi yang paling menarik? Mengapa?", document.getElementById('ref2').value || ''],
+                        ["Bagaimana profesi IT membantu melestarikan budaya?", document.getElementById('ref3').value || ''],
+                        ["Peran yang aku ambil dalam kelompok", document.getElementById('ref4').value || '']
+                    ],
+                    "Checklist": [
+                        ["Pemahaman", "Status"],
+                        ["Membaca materi Profesi di Bidang Informatika", getChecked('chk1')],
+                        ["Mengenal minimal 5 profesi IT", getChecked('chk2')],
+                        ["Memahami kontribusi profesi IT untuk budaya", getChecked('chk3')],
+                        ["Siap untuk aktivitas berikutnya", getChecked('chk4')]
+                    ]
                 }
             };
         }
 
-        // ==================== POPULATE FORM DATA ====================
+        // ==================== POPULATE FORM ====================
         function populateFormData(savedData) {
             if (!savedData) return;
             
-            // Identitas
-            if (savedData.identitas) {
+            // A. Identitas
+            if (savedData["A. Identitas Kelompok"] && Array.isArray(savedData["A. Identitas Kelompok"])) {
+                const identitasArray = savedData["A. Identitas Kelompok"];
                 const kelasEl = document.getElementById('kelas');
                 const namaEl = document.getElementById('nama');
+                
+                let kelasValue = '';
+                let namaValue = '';
+                let kelompokValue = '';
+                let peranValue = '';
+                
+                identitasArray.forEach(item => {
+                    if (Array.isArray(item) && item.length === 2) {
+                        if (item[0] === "Kelas") kelasValue = item[1];
+                        else if (item[0] === "Nama Lengkap") namaValue = item[1];
+                        else if (item[0] === "Nama Kelompok") kelompokValue = item[1];
+                        else if (item[0] === "Peran dalam Kelompok") peranValue = item[1];
+                    }
+                });
+                
                 if (kelasEl) {
                     for (let option of kelasEl.options) {
-                        if (option.value === savedData.identitas.kelas) {
+                        if (option.value === kelasValue) {
                             option.selected = true;
                             break;
                         }
@@ -1420,82 +1771,210 @@
                 }
                 if (namaEl) {
                     for (let option of namaEl.options) {
-                        if (option.value === savedData.identitas.nama) {
+                        if (option.value === namaValue) {
                             option.selected = true;
                             break;
                         }
                     }
                 }
-                document.getElementById('kelompok').value = savedData.identitas.kelompok || '';
-                document.getElementById('peran').value = savedData.identitas.peran || '';
+                document.getElementById('kelompok').value = kelompokValue;
+                document.getElementById('peran').value = peranValue;
             }
 
-            // Bagian A
-            if (savedData.bagian_a) {
-                const a = savedData.bagian_a;
-                document.getElementById('review1').value = a.review1 || '';
-                document.getElementById('review2').value = a.review2 || '';
-                document.getElementById('review3').value = a.review3 || '';
-                document.getElementById('review4').value = a.review4 || '';
-                document.getElementById('bacaMateri').checked = a.bacaMateri || false;
-            }
-
-            // Bagian B
-            if (savedData.bagian_b) {
-                const b = savedData.bagian_b;
-                if (b.matching) {
-                    for (let i = 1; i <= 8; i++) {
-                        const el = document.getElementById(`matching${i}`);
-                        if (el) el.value = b.matching[`profesi_${i}`] || '';
+            // B. Pemahaman Profesi
+            if (savedData["B. Pemahaman Profesi"]) {
+                const b = savedData["B. Pemahaman Profesi"];
+                if (b["Pertanyaan"] && Array.isArray(b["Pertanyaan"])) {
+                    const qMap = {
+                        "Apa yang dimaksud dengan profesi di bidang informatika?": 'review1',
+                        "Sebutkan 3 profesi di bidang informatika yang kamu ketahui!": 'review2',
+                        "Apa tugas seorang Web Developer?": 'review3',
+                        "Mengapa profesi di bidang informatika penting di era digital?": 'review4'
+                    };
+                    b["Pertanyaan"].forEach(item => {
+                        if (Array.isArray(item) && item.length === 2) {
+                            const id = qMap[item[0]];
+                            if (id) {
+                                const el = document.getElementById(id);
+                                if (el) el.value = item[1] || '';
+                            }
+                        }
+                    });
+                }
+                if (b["Checklist"] && Array.isArray(b["Checklist"])) {
+                    const el = document.getElementById('bacaMateri');
+                    if (el) {
+                        b["Checklist"].forEach(item => {
+                            if (Array.isArray(item) && item.length === 2 && item[0] === "Sudah membaca materi Profesi di Bidang Informatika") {
+                                el.checked = item[1] || false;
+                            }
+                        });
                     }
                 }
-                document.getElementById('minat1').value = b.minat1 || '';
-                document.getElementById('minat2').value = b.minat2 || '';
+                const linkEl = document.getElementById('link_screenshot_a');
+                if (linkEl) linkEl.value = b["Link Screenshot"] || '';
             }
 
-            // Bagian C
-            if (savedData.bagian_c && savedData.bagian_c.peranBudaya) {
-                const pb = savedData.bagian_c.peranBudaya;
-                for (let i = 1; i <= Math.min(pb.length, 5); i++) {
-                    const peranEl = document.getElementById(`peran_budaya_peran_${i}`);
-                    const contohEl = document.getElementById(`peran_budaya_contoh_${i}`);
-                    if (peranEl) peranEl.value = pb[i-1].profesi || '';
-                    if (contohEl) contohEl.value = pb[i-1].contoh || '';
+            // C. Mengenal Profesi Digital - Matching dengan nilai lengkap
+            if (savedData["C. Mengenal Profesi Digital"]) {
+                const c = savedData["C. Mengenal Profesi Digital"];
+                if (c["Matching"] && Array.isArray(c["Matching"])) {
+                    const profesiMap = {
+                        "Web Developer": 'matching1',
+                        "Mobile App Developer": 'matching2',
+                        "Game Developer": 'matching3',
+                        "Data Scientist": 'matching4',
+                        "UI/UX Designer": 'matching5',
+                        "Cyber Security Specialist": 'matching6',
+                        "DevOps Engineer": 'matching7',
+                        "Database Administrator": 'matching8'
+                    };
+                    c["Matching"].forEach(item => {
+                        if (Array.isArray(item) && item.length === 2) {
+                            const id = profesiMap[item[0]];
+                            if (id) {
+                                const el = document.getElementById(id);
+                                if (el) {
+                                    // Cari opsi yang nilainya sama dengan item[1]
+                                    const options = el.options;
+                                    let found = false;
+                                    for (let i = 0; i < options.length; i++) {
+                                        if (options[i].value === item[1]) {
+                                            el.selectedIndex = i;
+                                            found = true;
+                                            break;
+                                        }
+                                    }
+                                    if (!found) {
+                                        el.selectedIndex = 0;
+                                    }
+                                }
+                            }
+                        }
+                    });
+                }
+                if (c["Minat"] && Array.isArray(c["Minat"])) {
+                    const qMap = {
+                        "Profesi paling menarik? Mengapa?": 'minat1',
+                        "Keterampilan yang perlu dikuasai": 'minat2'
+                    };
+                    c["Minat"].forEach(item => {
+                        if (Array.isArray(item) && item.length === 2) {
+                            const id = qMap[item[0]];
+                            if (id) {
+                                const el = document.getElementById(id);
+                                if (el) el.value = item[1] || '';
+                            }
+                        }
+                    });
                 }
             }
 
-            // Bagian D
-            if (savedData.bagian_d) {
-                const d = savedData.bagian_d;
-                document.getElementById('budaya_pilihan').value = d.budaya_pilihan || '';
-                if (d.peranKelompok) {
-                    for (let i = 1; i <= Math.min(d.peranKelompok.length, 4); i++) {
-                        const namaEl = document.getElementById(`peran_nama_${i}`);
-                        const profesiEl = document.getElementById(`peran_profesi_${i}`);
-                        if (namaEl) namaEl.value = d.peranKelompok[i-1].nama || '';
-                        if (profesiEl) profesiEl.value = d.peranKelompok[i-1].profesi || '';
-                    }
+            // D. Peran IT untuk Pelestarian Budaya
+            if (savedData["D. Peran IT untuk Pelestarian Budaya"]) {
+                const d = savedData["D. Peran IT untuk Pelestarian Budaya"];
+                if (d["Peran"] && Array.isArray(d["Peran"])) {
+                    const profesiMap = {
+                        "Web Developer": 1,
+                        "Mobile App Developer": 2,
+                        "Content Creator": 3,
+                        "Videografer/Editor": 4,
+                        "UI/UX Designer": 5
+                    };
+                    d["Peran"].forEach((item, idx) => {
+                        if (idx === 0 || !Array.isArray(item) || item.length < 3) return;
+                        const num = profesiMap[item[0]];
+                        if (num) {
+                            const peranEl = document.getElementById(`peran_budaya_peran_${num}`);
+                            const contohEl = document.getElementById(`peran_budaya_contoh_${num}`);
+                            if (peranEl) peranEl.value = item[1] || '';
+                            if (contohEl) contohEl.value = item[2] || '';
+                        }
+                    });
                 }
-                if (d.ideKonten) {
-                    for (let i = 1; i <= Math.min(d.ideKonten.length, 4); i++) {
-                        const el = document.getElementById(`konten_ide_${i}`);
-                        if (el) el.value = d.ideKonten[i-1] || '';
-                    }
-                }
+                const linkEl = document.getElementById('link_screenshot_c');
+                if (linkEl) linkEl.value = d["Link Screenshot"] || '';
             }
 
-            // Bagian E
-            if (savedData.bagian_e) {
-                const e = savedData.bagian_e;
-                document.getElementById('ref1').value = e.ref1 || '';
-                document.getElementById('ref2').value = e.ref2 || '';
-                document.getElementById('ref3').value = e.ref3 || '';
-                document.getElementById('ref4').value = e.ref4 || '';
-                if (e.checklist) {
-                    document.getElementById('chk1').checked = e.checklist.chk1 || false;
-                    document.getElementById('chk2').checked = e.checklist.chk2 || false;
-                    document.getElementById('chk3').checked = e.checklist.chk3 || false;
-                    document.getElementById('chk4').checked = e.checklist.chk4 || false;
+            // E. Merencanakan Proyek
+            if (savedData["E. Merencanakan Proyek"]) {
+                const e = savedData["E. Merencanakan Proyek"];
+                if (e["Budaya Pilihan"] && Array.isArray(e["Budaya Pilihan"])) {
+                    e["Budaya Pilihan"].forEach(item => {
+                        if (Array.isArray(item) && item.length === 2 && item[0] === "Budaya pilihan kelompok") {
+                            const el = document.getElementById('budaya_pilihan');
+                            if (el) el.value = item[1] || '';
+                        }
+                    });
+                }
+                if (e["Peran Kelompok"] && Array.isArray(e["Peran Kelompok"])) {
+                    e["Peran Kelompok"].forEach((item, idx) => {
+                        if (idx === 0 || !Array.isArray(item) || item.length < 3) return;
+                        const num = parseInt(item[0]);
+                        if (num >= 1 && num <= 4) {
+                            const namaEl = document.getElementById(`peran_nama_${num}`);
+                            const profesiEl = document.getElementById(`peran_profesi_${num}`);
+                            if (namaEl) namaEl.value = item[1] || '';
+                            if (profesiEl) profesiEl.value = item[2] || '';
+                        }
+                    });
+                }
+                if (e["Ide Konten"] && Array.isArray(e["Ide Konten"])) {
+                    const jenisMap = {
+                        "Website/Blog Budaya": 1,
+                        "Video Promosi Budaya": 2,
+                        "Poster/Infografis": 3,
+                        "Game Edukasi": 4
+                    };
+                    e["Ide Konten"].forEach((item, idx) => {
+                        if (idx === 0 || !Array.isArray(item) || item.length < 2) return;
+                        const num = jenisMap[item[0]];
+                        if (num) {
+                            const el = document.getElementById(`konten_ide_${num}`);
+                            if (el) el.value = item[1] || '';
+                        }
+                    });
+                }
+                const linkEl = document.getElementById('link_screenshot_d');
+                if (linkEl) linkEl.value = e["Link Screenshot"] || '';
+            }
+
+            // F. Refleksi Akhir
+            if (savedData["F. Refleksi Akhir"]) {
+                const f = savedData["F. Refleksi Akhir"];
+                if (f["Pertanyaan"] && Array.isArray(f["Pertanyaan"])) {
+                    const qMap = {
+                        "Hal baru yang aku pelajari tentang profesi di bidang informatika": 'ref1',
+                        "Profesi yang paling menarik? Mengapa?": 'ref2',
+                        "Bagaimana profesi IT membantu melestarikan budaya?": 'ref3',
+                        "Peran yang aku ambil dalam kelompok": 'ref4'
+                    };
+                    f["Pertanyaan"].forEach(item => {
+                        if (Array.isArray(item) && item.length === 2) {
+                            const id = qMap[item[0]];
+                            if (id) {
+                                const el = document.getElementById(id);
+                                if (el) el.value = item[1] || '';
+                            }
+                        }
+                    });
+                }
+                if (f["Checklist"] && Array.isArray(f["Checklist"])) {
+                    const clMap = {
+                        "Membaca materi Profesi di Bidang Informatika": 'chk1',
+                        "Mengenal minimal 5 profesi IT": 'chk2',
+                        "Memahami kontribusi profesi IT untuk budaya": 'chk3',
+                        "Siap untuk aktivitas berikutnya": 'chk4'
+                    };
+                    f["Checklist"].forEach(item => {
+                        if (Array.isArray(item) && item.length === 2) {
+                            const id = clMap[item[0]];
+                            if (id) {
+                                const el = document.getElementById(id);
+                                if (el) el.checked = item[1] || false;
+                            }
+                        }
+                    });
                 }
             }
         }
@@ -1516,32 +1995,32 @@
             document.getElementById('kelompok').value = '';
             document.getElementById('peran').value = '';
             
+            document.querySelectorAll('textarea.answer-field').forEach(el => {
+                el.style.height = 'auto';
+            });
+            
             clearLocalStorage();
         }
 
-        // ==================== MODAL FUNCTIONS ====================
+        // ==================== MODAL ====================
         function showModal() { 
-            const modal = document.getElementById('resetModal');
-            modal.style.display = 'block'; 
+            document.getElementById('resetModal').style.display = 'block'; 
             document.body.classList.add('modal-open');
         }
 
         function closeModal() { 
-            const modal = document.getElementById('resetModal');
-            modal.style.display = 'none'; 
+            document.getElementById('resetModal').style.display = 'none'; 
             document.body.classList.remove('modal-open');
         }
 
         function showConfirmModal(key) {
             document.getElementById('confirmKeyDisplay').textContent = key;
-            const modal = document.getElementById('confirmModal');
-            modal.style.display = 'block';
+            document.getElementById('confirmModal').style.display = 'block';
             document.body.classList.add('modal-open');
         }
 
         function closeConfirmModal() {
-            const modal = document.getElementById('confirmModal');
-            modal.style.display = 'none';
+            document.getElementById('confirmModal').style.display = 'none';
             document.body.classList.remove('modal-open');
             pendingSubmitData = null;
         }
@@ -1568,33 +2047,59 @@
             }
         }
 
-        // Tutup modal jika klik di luar
         document.addEventListener('click', function(event) {
-            const resetModal = document.getElementById('resetModal');
-            const confirmModal = document.getElementById('confirmModal');
-            
-            if (event.target === resetModal) {
-                closeModal();
-            }
-            if (event.target === confirmModal) {
-                closeConfirmModal();
+            if (event.target === document.getElementById('resetModal')) closeModal();
+            if (event.target === document.getElementById('confirmModal')) closeConfirmModal();
+        });
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                if (document.getElementById('resetModal').style.display === 'block') closeModal();
+                if (document.getElementById('confirmModal').style.display === 'block') closeConfirmModal();
             }
         });
 
-        // Tutup modal dengan tombol ESC
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                const resetModal = document.getElementById('resetModal');
-                const confirmModal = document.getElementById('confirmModal');
-                
-                if (resetModal.style.display === 'block') {
-                    closeModal();
-                }
-                if (confirmModal.style.display === 'block') {
-                    closeConfirmModal();
+        // ==================== GENERATE TABLES ====================
+        function generateTables() {
+            // Peran IT untuk Budaya - 5 profesi
+            const peranBudayaBody = document.getElementById('peranBudayaBody');
+            if (peranBudayaBody) {
+                peranBudayaBody.innerHTML = '';
+                const profesi = ["Web Developer", "Mobile App Developer", "Content Creator", "Videografer/Editor", "UI/UX Designer"];
+                for (let i = 1; i <= profesi.length; i++) {
+                    const row = peranBudayaBody.insertRow();
+                    row.insertCell(0).innerHTML = i;
+                    row.insertCell(1).innerHTML = profesi[i-1];
+                    row.insertCell(2).innerHTML = `<textarea class="answer-field" id="peran_budaya_peran_${i}" placeholder="Peran..." oninput="autoResize(this); saveToLocalStorage();"></textarea>`;
+                    row.insertCell(3).innerHTML = `<textarea class="answer-field" id="peran_budaya_contoh_${i}" placeholder="Contoh konkret..." oninput="autoResize(this); saveToLocalStorage();"></textarea>`;
                 }
             }
-        });
+
+            // Peran Kelompok - 4 anggota
+            const peranBody = document.getElementById('peranBody');
+            if (peranBody) {
+                peranBody.innerHTML = '';
+                for (let i = 1; i <= 4; i++) {
+                    const row = peranBody.insertRow();
+                    row.insertCell(0).innerHTML = i;
+                    row.insertCell(1).innerHTML = `<input type="text" class="answer-field" id="peran_nama_${i}" placeholder="Nama anggota..." oninput="saveToLocalStorage();">`;
+                    row.insertCell(2).innerHTML = `<input type="text" class="answer-field" id="peran_profesi_${i}" placeholder="Profesi yang diperankan..." oninput="saveToLocalStorage();">`;
+                }
+            }
+
+            // Ide Konten - 4 jenis
+            const kontenBody = document.getElementById('kontenBody');
+            if (kontenBody) {
+                kontenBody.innerHTML = '';
+                const jenis = ["Website/Blog Budaya", "Video Promosi Budaya", "Poster/Infografis", "Game Edukasi"];
+                for (let i = 1; i <= jenis.length; i++) {
+                    const row = kontenBody.insertRow();
+                    row.insertCell(0).innerHTML = i;
+                    row.insertCell(1).innerHTML = jenis[i-1];
+                    row.insertCell(2).innerHTML = `<textarea class="answer-field" id="konten_ide_${i}" placeholder="Deskripsi ide konten..." oninput="autoResize(this); saveToLocalStorage();"></textarea>`;
+                }
+            }
+        }
 
         // ==================== KONEKSI ====================
         function updateConnectionStatus() {
@@ -1710,59 +2215,10 @@
             });
         }
 
-        // ==================== GENERATE TABLES ====================
-        function generateTables() {
-            // Peran IT untuk Budaya - 5 profesi
-            const peranBudayaBody = document.getElementById('peranBudayaBody');
-            if (peranBudayaBody) {
-                peranBudayaBody.innerHTML = '';
-                const profesi = [
-                    "Web Developer",
-                    "Mobile App Developer", 
-                    "Content Creator",
-                    "Videografer/Editor",
-                    "UI/UX Designer"
-                ];
-                for (let i = 1; i <= profesi.length; i++) {
-                    const row = peranBudayaBody.insertRow();
-                    row.insertCell(0).innerHTML = i;
-                    row.insertCell(1).innerHTML = profesi[i-1];
-                    row.insertCell(2).innerHTML = `<textarea class="answer-field" id="peran_budaya_peran_${i}" placeholder="Peran..." oninput="saveToLocalStorage();"></textarea>`;
-                    row.insertCell(3).innerHTML = `<textarea class="answer-field" id="peran_budaya_contoh_${i}" placeholder="Contoh konkret..." oninput="saveToLocalStorage();"></textarea>`;
-                }
-            }
-
-            // Peran Kelompok - 4 anggota
-            const peranBody = document.getElementById('peranBody');
-            if (peranBody) {
-                peranBody.innerHTML = '';
-                for (let i = 1; i <= 4; i++) {
-                    const row = peranBody.insertRow();
-                    row.insertCell(0).innerHTML = i;
-                    row.insertCell(1).innerHTML = `<input type="text" class="answer-field" id="peran_nama_${i}" placeholder="Nama anggota..." oninput="saveToLocalStorage();">`;
-                    row.insertCell(2).innerHTML = `<input type="text" class="answer-field" id="peran_profesi_${i}" placeholder="Profesi yang diperankan..." oninput="saveToLocalStorage();">`;
-                }
-            }
-
-            // Ide Konten - 4 jenis
-            const kontenBody = document.getElementById('kontenBody');
-            if (kontenBody) {
-                kontenBody.innerHTML = '';
-                const jenis = ["Website/Blog Budaya", "Video Promosi Budaya", "Poster/Infografis", "Game Edukasi"];
-                for (let i = 1; i <= jenis.length; i++) {
-                    const row = kontenBody.insertRow();
-                    row.insertCell(0).innerHTML = i;
-                    row.insertCell(1).innerHTML = jenis[i-1];
-                    row.insertCell(2).innerHTML = `<textarea class="answer-field" id="konten_ide_${i}" placeholder="Deskripsi ide konten..." oninput="saveToLocalStorage();"></textarea>`;
-                }
-            }
-        }
-
-        // ==================== CEK DATA DI SPREADSHEET ====================
+        // ==================== CEK DATA ====================
         async function cekDataDiSpreadsheet(kelas, nama, aktivitas) {
             try {
                 const url = `${URL_PEREKAPAN}?action=getDataSiswa&kelas=${encodeURIComponent(kelas)}&nama=${encodeURIComponent(nama)}&aktivitas=${encodeURIComponent(aktivitas)}`;
-                
                 const response = await fetch(url);
                 const result = await response.json();
                 
@@ -1773,7 +2229,6 @@
                         data: result.data
                     };
                 }
-                
                 return { found: false };
             } catch (error) {
                 console.error('Error cek data:', error);
@@ -1781,13 +2236,12 @@
             }
         }
 
-        // ==================== SUBMIT DATA ====================
+        // ==================== SUBMIT ====================
         async function submitData() {
             if (isLoading) { alert('Data masih dimuat. Silakan tunggu.'); return; }
             if (!navigator.onLine) { alert('Tidak ada koneksi internet.'); return; }
             if (isSubmitting) { alert('Proses pengiriman sedang berlangsung. Mohon tunggu...'); return; }
 
-            // ===== VALIDASI: Apakah sudah membaca materi? =====
             const sudahBaca = confirm(
                 '📖 Apakah kamu sudah membaca materi "Profesi di Bidang Informatika"?\n\n' +
                 'Jika belum, klik "Batal" untuk membaca materi terlebih dahulu.\n' +
@@ -1799,25 +2253,14 @@
                       'Klik tombol "Baca Materi Sekarang" di bagian atas halaman.');
                 return;
             }
-            // ===== END VALIDASI =====
 
             const kelas = document.getElementById('kelas').value;
             const nama = document.getElementById('nama').value;
             const kelompok = document.getElementById('kelompok').value;
-            const peran = document.getElementById('peran').value;
 
-            if (!kelas) {
-                alert('Silakan isi kelas terlebih dahulu');
-                return;
-            }
-            if (!nama) {
-                alert('Silakan isi nama terlebih dahulu');
-                return;
-            }
-            if (!kelompok) {
-                alert('Silakan isi nama kelompok');
-                return;
-            }
+            if (!kelas) { alert('Silakan isi kelas terlebih dahulu'); return; }
+            if (!nama) { alert('Silakan isi nama terlebih dahulu'); return; }
+            if (!kelompok) { alert('Silakan isi nama kelompok'); return; }
 
             const submitBtn = document.getElementById('submitBtn');
             submitBtn.disabled = true;
@@ -1829,8 +2272,7 @@
                     allData: allData,
                     kelas: kelas,
                     nama: nama,
-                    kelompok: kelompok,
-                    peran: peran
+                    kelompok: kelompok
                 };
 
                 const result = await cekDataDiSpreadsheet(kelas, nama, AKTIVITAS_NAMA);
@@ -1863,21 +2305,16 @@
                 const { allData, kelas, nama } = data;
                 
                 const formData = new URLSearchParams();
-                
                 formData.append('sheetName', SHEET_NAME);
                 formData.append('data', JSON.stringify(allData));
                 formData.append('kelas', kelas);
                 formData.append('nama', nama);
                 formData.append('aktivitas', AKTIVITAS_NAMA);
-                if (isReplace) {
-                    formData.append('replace', 'true');
-                }
+                if (isReplace) formData.append('replace', 'true');
 
                 const response = await fetch(URL_PEREKAPAN, {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                    },
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                     body: formData
                 });
 
@@ -1917,20 +2354,18 @@
                 submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Kumpulkan LKPD';
                 isSubmitting = false;
                 pendingSubmitData = null;
-                
                 document.getElementById('confirmGantiBtn').disabled = false;
                 document.getElementById('confirmGantiBtn').innerHTML = '<i class="fas fa-exchange-alt"></i> Ya, Ganti Data';
             }
         }
 
-        // ==================== EXPORT TEMPLATE LEMBAR AKTIVITAS (KOSONG) ====================
+        // ==================== EXPORT ====================
         function exportToDocx() {
             const exportBtn = document.getElementById('exportBtn');
             exportBtn.disabled = true;
             exportBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memproses...';
 
             try {
-                // === BANGUN HTML TEMPLATE KOSONG UNTUK WORD ===
                 const now = new Date();
                 const dateStr = now.toLocaleDateString('id-ID', {
                     day: 'numeric', month: 'long', year: 'numeric'
@@ -1952,254 +2387,78 @@
                         </xml>
                         <![endif]-->
                         <style>
-                            /* ===== STYLE UNTUK TEMPLATE ===== */
-                            body {
-                                font-family: 'Calibri', 'Segoe UI', Arial, sans-serif;
-                                font-size: 11pt;
-                                line-height: 1.5;
-                                color: #222;
-                                padding: 30px 40px;
-                                margin: 0;
-                            }
-                            
-                            .worksheet-title {
-                                color: #21618c;
-                                font-size: 18pt;
-                                text-align: center;
-                                font-weight: bold;
-                                border-bottom: 2px solid #d5f4e6;
-                                padding-bottom: 8px;
-                                margin: 0 0 15px 0;
-                            }
-                            
-                            .section-title {
-                                color: #21618c;
-                                font-size: 12pt;
-                                font-weight: 600;
-                                border-bottom: 2px solid #ebf5fb;
-                                padding-bottom: 6px;
-                                margin: 15px 0 8px 0;
-                            }
-                            
-                            .section-subtitle {
-                                color: #2980b9;
-                                font-size: 11pt;
-                                font-weight: 600;
-                                margin: 12px 0 6px 0;
-                            }
-                            
-                            .subtitle {
-                                color: #666;
-                                font-size: 10pt;
-                                margin-bottom: 12px;
-                            }
-                            .subtitle span {
-                                margin-right: 15px;
-                            }
-                            
-                            .identitas-box {
-                                background: #f0f8f0;
-                                padding: 12px 15px;
-                                margin-bottom: 15px;
-                                border-radius: 4px;
-                            }
-                            .identitas-box table {
-                                width: 100%;
-                                border: none;
-                            }
-                            .identitas-box td {
-                                padding: 4px 8px;
-                                border: none;
-                                vertical-align: middle;
-                            }
-                            .identitas-box .label {
-                                font-weight: 600;
-                                color: #21618c;
-                                width: 80px;
-                            }
-                            .identitas-box .kosong {
-                                border-bottom: 1px solid #999;
-                                min-width: 150px;
-                                display: inline-block;
-                                padding: 0 20px 0 5px;
-                                color: #999;
-                                font-style: italic;
-                            }
-                            
-                            table {
-                                width: 100%;
-                                border-collapse: collapse;
-                                margin: 8px 0;
-                                font-size: 10pt;
-                            }
-                            
-                            th {
-                                background: #3498db;
-                                color: white;
-                                padding: 6px 8px;
-                                text-align: left;
-                                font-weight: 600;
-                                border: 1px solid #3498db;
-                            }
-                            
-                            td {
-                                padding: 6px 8px;
-                                border: 1px solid #ddd;
-                                vertical-align: top;
-                            }
-                            
-                            .checkbox-grid {
-                                display: flex;
-                                flex-wrap: wrap;
-                                gap: 8px 20px;
-                                margin: 8px 0;
-                            }
-                            .checkbox-item {
-                                display: flex;
-                                align-items: center;
-                                gap: 6px;
-                            }
-                            .checkbox-item .kotak-cek {
-                                display: inline-block;
-                                width: 14px;
-                                height: 14px;
-                                border: 2px solid #999;
-                                background: white;
-                                margin-right: 5px;
-                            }
-                            
-                            .tempat-jawaban {
-                                background: #fafafa;
-                                padding: 4px 8px;
-                                border-radius: 3px;
-                                border: 1px dashed #ccc;
-                                display: block;
-                                min-height: 35px;
-                                color: #999;
-                                font-style: italic;
-                            }
-                            
-                            .instruction-box {
-                                background: #ebf5fb;
-                                padding: 8px 12px;
-                                border-left: 4px solid #3498db;
-                                margin: 8px 0;
-                                border-radius: 4px;
-                            }
-                            
-                            .section-card {
-                                border: 1px solid #e0e7ff;
-                                border-radius: 8px;
-                                padding: 12px 15px;
-                                margin-bottom: 15px;
-                            }
-                            
+                            body { font-family: 'Calibri', 'Segoe UI', Arial, sans-serif; font-size: 11pt; line-height: 1.5; color: #222; padding: 30px 40px; margin: 0; }
+                            .worksheet-title { color: #21618c; font-size: 18pt; text-align: center; font-weight: bold; border-bottom: 2px solid #d5f4e6; padding-bottom: 8px; margin: 0 0 15px 0; }
+                            .section-title { color: #21618c; font-size: 12pt; font-weight: 600; border-bottom: 2px solid #ebf5fb; padding-bottom: 6px; margin: 15px 0 8px 0; }
+                            .section-subtitle { color: #2980b9; font-size: 11pt; font-weight: 600; margin: 12px 0 6px 0; }
+                            .section-badge { background: #3498db; color: white; padding: 2px 10px; border-radius: 12px; font-size: 8pt; display: inline-block; margin-left: 8px; }
+                            .subtitle { color: #666; font-size: 10pt; margin-bottom: 12px; }
+                            .subtitle span { margin-right: 15px; }
+                            .identitas-box { background: #f0f8f0; padding: 12px 15px; margin-bottom: 15px; border-radius: 4px; }
+                            .identitas-box table { width: 100%; border: none; }
+                            .identitas-box td { padding: 4px 8px; border: none; vertical-align: middle; }
+                            .identitas-box .label { font-weight: 600; color: #21618c; width: 80px; }
+                            .identitas-box .kosong { border-bottom: 1px solid #999; min-width: 150px; display: inline-block; padding: 0 20px 0 5px; color: #999; font-style: italic; }
+                            table { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 10pt; }
+                            th { background: #3498db; color: white; padding: 6px 8px; text-align: left; font-weight: 600; border: 1px solid #3498db; }
+                            td { padding: 6px 8px; border: 1px solid #ddd; vertical-align: top; }
+                            .checkbox-grid { display: flex; flex-wrap: wrap; gap: 8px 20px; margin: 8px 0; }
+                            .checkbox-item { display: flex; align-items: center; gap: 6px; }
+                            .checkbox-item .kotak-cek { display: inline-block; width: 14px; height: 14px; border: 2px solid #999; background: white; margin-right: 5px; }
+                            .tempat-jawaban { background: #fafafa; padding: 4px 8px; border-radius: 3px; border: 1px dashed #ccc; display: block; min-height: 35px; color: #999; font-style: italic; }
+                            .instruction-box { background: #ebf5fb; padding: 8px 12px; border-left: 4px solid #3498db; margin: 8px 0; border-radius: 4px; }
+                            .section-card { border: 1px solid #e0e7ff; border-radius: 8px; padding: 12px 15px; margin-bottom: 15px; }
                             .qa-table .no-col { width: 6%; text-align: center; }
                             .qa-table .question-col { width: 34%; }
                             .qa-table .answer-col { width: 60%; }
-                            
                             .qa-table.four-col .no-col { width: 6%; text-align: center; }
                             .qa-table.four-col .col1 { width: 22%; }
                             .qa-table.four-col .col2 { width: 32%; }
                             .qa-table.four-col .col3 { width: 40%; }
-                            
-                            .profession-tip {
-                                background: #e8f5e9;
-                                padding: 8px 12px;
-                                border-left: 4px solid #4caf50;
-                                margin: 8px 0;
-                                border-radius: 4px;
-                            }
-                            
-                            .matching-box {
-                                background: #f8fafc;
-                                border: 2px solid #9b59b6;
-                                border-radius: 8px;
-                                padding: 12px 15px;
-                                margin: 8px 0;
-                            }
-                            
-                            .matching-box .profession-list {
-                                display: grid;
-                                grid-template-columns: 1fr 1fr;
-                                gap: 2px 15px;
-                                margin: 6px 0;
-                            }
-                            
-                            .matching-box .matching-input {
-                                width: 40px;
-                                padding: 2px 4px;
-                                border: 1px solid #ccc;
-                                text-align: center;
-                            }
-                            
-                            .footer-text {
-                                text-align: center;
-                                color: #999;
-                                font-size: 9pt;
-                                margin-top: 20px;
-                                border-top: 1px solid #eee;
-                                padding-top: 10px;
-                            }
-                            
-                            .btn, .btn-submit, .export-wrapper, 
-                            .connection-status, .success-message, .error-message,
-                            .loading-message, .activity-navigation, .nav-btn,
-                            .modal, .modal-content, #confirmModal, #resetModal,
-                            .reset-button, .hamburger, .navbar, header,
-                            .alert, .refresh-btn, .materi-section {
+                            .profession-tip { background: #e8f5e9; padding: 8px 12px; border-left: 4px solid #4caf50; margin: 8px 0; border-radius: 4px; }
+                            .screenshot-instruction { background: #fff3cd; padding: 8px 12px; border-left: 4px solid #f39c12; margin: 8px 0; border-radius: 4px; }
+                            .folder-link-box { background: #e8f5e9; padding: 10px 14px; border-radius: 8px; margin: 12px 0 0 0; border-left: 5px solid #4caf50; }
+                            .folder-link-box .label-link { font-weight: 600; color: #2e7d32; }
+                            .matching-container { background: #f8fafc; border: 1px solid #e0e7ff; border-radius: 8px; padding: 12px 15px; margin: 8px 0; }
+                            .matching-container .matching-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 6px 15px; }
+                            .matching-container .matching-header { display: grid; grid-template-columns: 1fr 1.5fr; gap: 6px 15px; font-weight: 700; color: #21618c; border-bottom: 2px solid #ebf5fb; padding-bottom: 6px; margin-bottom: 4px; }
+                            .matching-select { width: 100%; padding: 4px 6px; border: 1px solid #ccc; border-radius: 4px; font-size: 9pt; }
+                            .footer-text { text-align: center; color: #999; font-size: 9pt; margin-top: 20px; border-top: 1px solid #eee; padding-top: 10px; }
+                            .btn, .btn-submit, .export-wrapper, .connection-status, .success-message, .error-message,
+                            .loading-message, .activity-navigation, .nav-btn, .modal, .modal-content, #confirmModal, #resetModal,
+                            .reset-button, .hamburger, .navbar, header, .alert, .refresh-btn, .materi-section {
                                 display: none !important;
                             }
-                            
-                            .informatika-content-card {
-                                padding: 15px;
-                                border-left: 5px solid #3498db;
-                                margin-bottom: 15px;
-                            }
-                            
-                            .informatika-content-card h2 {
-                                color: #21618c;
-                                font-size: 18pt;
-                            }
-                            
-                            .informatika-content-card > p {
-                                font-size: 11pt;
-                                padding: 8px 12px;
-                                background: #ebf5fb;
-                                border-radius: 6px;
-                                border-left: 4px solid #3498db;
-                            }
-                            
-                            ol {
-                                margin-left: 20px;
-                                color: #555;
-                            }
-                            
-                            .worksheet-container {
-                                padding: 0;
-                                margin: 0;
-                                border: none;
-                                box-shadow: none;
-                            }
+                            .informatika-content-card { padding: 15px; border-left: 5px solid #3498db; margin-bottom: 15px; }
+                            .informatika-content-card h2 { color: #21618c; font-size: 18pt; }
+                            .worksheet-container { padding: 0; margin: 0; border: none; box-shadow: none; }
+                            .tp-card { background: #e8f4fd; padding: 12px 16px; border-radius: 8px; margin-bottom: 15px; border-left: 5px solid #3498db; }
+                            .tp-card .tp-item { padding: 2px 0; }
+                            .tp-card .tp-code { background: #3498db; color: white; padding: 2px 10px; border-radius: 12px; font-weight: 700; font-size: 0.8rem; display: inline-block; min-width: 45px; text-align: center; margin-right: 10px; }
+                            hr { border: 0; border-top: 2px solid #d5f4e6; margin: 15px 0; }
+                            ol { margin-left: 20px; color: #555; }
                         </style>
                     </head>
                     <body>
-                        <!-- ===== HEADER ===== -->
                         <div class="informatika-content-card">
                             <h2>Proyek 2 Aktivitas 2: Profesi Digital & Peran Informatika</h2>
                             <div class="subtitle">
                                 <span>📅 Pertemuan 2 • Proyek 2: Digitalisasi Budaya</span>
                                 <span>⏰ 4 JP</span>
                             </div>
-                            <p><i>"Mengenal berbagai profesi di bidang informatika dan kontribusinya dalam pelestarian budaya."</i></p>
                         </div>
-                        
+
+                        <div class="tp-card">
+                            <div style="font-weight:700; color:#21618c; margin-bottom:4px;">Tujuan Pembelajaran</div>
+                            <div class="tp-item"><span class="tp-code">TP 2.8</span> Mengenal berbagai profesi di bidang informatika dan kontribusinya dalam pelestarian budaya</div>
+                        </div>
+
                         <div class="instruction-box" style="background:#e8f5e9; border-left-color: #3498db;">
                             <strong>HALO, KELOMPOK HEBAT! 👋</strong><br>
                             Silakan isi lembar kerja ini untuk mempelajari profesi digital dan peran informatika dalam pelestarian budaya.
                         </div>
 
-                        <h1 class="worksheet-title">LEMBAR KERJA PESERTA DIDIK (LKPD) PROYEK 2 – AKTIVITAS 2</h1>
+                        <h1 class="worksheet-title">LEMBAR KERJA PESERTA DIDIK (LKPD) PROYEK 2 – AKTIVITAS 2 (PROFESI DIGITAL &amp; PERAN INFORMATIKA)</h1>
                         <p style="text-align: center; margin-bottom: 1.5rem; font-size: 12pt; color: #9b59b6;">
                             <strong>PROFESI DIGITAL & PERAN INFORMATIKA</strong>
                         </p>
@@ -2207,7 +2466,6 @@
                             <p><strong>Tujuan Pembelajaran (TP 2.8):</strong> Mengenal berbagai profesi di bidang informatika dan kontribusinya dalam pelestarian budaya.</p>
                         </div>
 
-                        <!-- ===== IDENTITAS ===== -->
                         <h3 style="color: #21618c; margin: 20px 0 10px 0; font-size: 13pt;">Identitas Kelompok</h3>
                         <div class="identitas-box">
                             <table>
@@ -2218,28 +2476,24 @@
                             </table>
                         </div>
 
-                        <!-- ===== PETUNJUK ===== -->
                         <div class="instruction-box">
                             <strong>📚 PETUNJUK PENGGUNAAN LKPD</strong><br><br>
                             <ol>
-                                <li>Pastikan kamu sudah membaca materi <strong>"Profesi di Bidang Informatika"</strong> yang tersedia di menu Daftar Materi.</li>
+                                <li>Pastikan kamu sudah membaca materi <strong>"Profesi di Bidang Informatika"</strong>.</li>
                                 <li>Kerjakan setiap bagian dengan berdiskusi bersama kelompok.</li>
-                                <li>Gunakan hasil pemilihan budaya dari Aktivitas 1 untuk Bagian C dan D.</li>
-                                <li>Tulis jawaban dengan jelas dan lengkap.</li>
+                                <li>Kumpulkan LKPD setelah selesai dikerjakan.</li>
                             </ol>
                         </div>
 
-                        <!-- ===== BAGIAN A ===== -->
+                        <!-- BAGIAN A -->
                         <div class="section-card">
-                            <h3 class="section-title">📖 BAGIAN A: PEMAHAMAN PROFESI (INDIVIDU)</h3>
-                            <div class="instruction-box">
-                                "Pastikan kamu sudah membaca materi sebelum mengerjakan!"
+                            <h3 class="section-title">A. PEMAHAMAN PROFESI <span class="section-badge">Individu</span></h3>
+                            <div class="instruction-box">Pastikan kamu sudah membaca materi sebelum mengerjakan!</div>
+                            <div class="screenshot-instruction">
+                                <strong>📸 Instruksi Screenshot:</strong> Screenshot halaman materi yang sudah kamu baca → Upload ke Google Drive → Tempel link di bawah
                             </div>
-
                             <table class="qa-table">
-                                <thead>
-                                    <tr><th class="no-col">No</th><th class="question-col">Pertanyaan</th><th class="answer-col">Jawaban</th></tr>
-                                </thead>
+                                <thead><tr><th class="no-col">No</th><th class="question-col">Pertanyaan</th><th class="answer-col">Jawaban</th></tr></thead>
                                 <tbody>
                                     <tr><td class="no-col">1</td><td>Apa yang dimaksud dengan profesi di bidang informatika?</td><td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
                                     <tr><td class="no-col">2</td><td>Sebutkan 3 profesi di bidang informatika yang kamu ketahui!</td><td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
@@ -2247,67 +2501,43 @@
                                     <tr><td class="no-col">4</td><td>Mengapa profesi di bidang informatika penting di era digital?</td><td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
                                 </tbody>
                             </table>
-
                             <div style="margin-top: 1rem; background: #f8fafc; border-radius: 8px; padding: 1rem; border: 1px dashed #3498db;">
                                 <div class="checkbox-item"><span class="kotak-cek"></span> <strong>Ya, saya sudah membaca materi "Profesi di Bidang Informatika"</strong></div>
                             </div>
+                            <div class="folder-link-box">
+                                <span class="label-link">📸 Link Screenshot - Bagian A</span>
+                                <div style="font-size:0.9rem; color:#555; margin-top:4px;">Tempel link folder/screenshot bukti membaca materi:</div>
+                                <div style="margin-top:6px; background:white; padding:6px 10px; border-radius:6px; border:1px solid #ddd;">
+                                    <span class="tempat-jawaban">[Tempel link di sini]</span>
+                                </div>
+                            </div>
                         </div>
 
-                        <!-- ===== BAGIAN B ===== -->
+                        <!-- BAGIAN B -->
                         <div class="section-card">
-                            <h3 class="section-title">💼 BAGIAN B: MENGENAL PROFESI DIGITAL (INDIVIDU)</h3>
-                            <div class="instruction-box">
-                                "Kenali berbagai profesi di dunia IT!"
-                            </div>
-
+                            <h3 class="section-title">B. MENGENAL PROFESI DIGITAL <span class="section-badge">Individu</span></h3>
+                            <div class="instruction-box">Kenali berbagai profesi di dunia IT!</div>
                             <h4 class="section-subtitle">Aktivitas 1: Menjodohkan Profesi dengan Tugasnya</h4>
-                            <div class="matching-box">
-                                <div style="margin-bottom: 10px;">
-                                    <p><strong>📋 Daftar Profesi:</strong></p>
-                                    <div class="profession-list">
-                                        <div>1. Web Developer</div>
-                                        <div>2. Mobile App Developer</div>
-                                        <div>3. Game Developer</div>
-                                        <div>4. Data Scientist</div>
-                                        <div>5. UI/UX Designer</div>
-                                        <div>6. Cyber Security Specialist</div>
-                                        <div>7. DevOps Engineer</div>
-                                        <div>8. Database Administrator</div>
-                                    </div>
+                            <div class="matching-container">
+                                <div class="matching-header">
+                                    <div>📋 Profesi</div>
+                                    <div>📝 Tugas yang Dipilih</div>
                                 </div>
-
-                                <div style="margin-bottom: 10px;">
-                                    <p><strong>📝 Daftar Tugas (A-H):</strong></p>
-                                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2px 15px; font-size: 10pt;">
-                                        <div>A. Membuat desain antarmuka aplikasi</div>
-                                        <div>B. Mengelola dan menganalisis data</div>
-                                        <div>C. Memastikan keamanan sistem & jaringan</div>
-                                        <div>D. Membuat website yang bisa diakses publik</div>
-                                        <div>E. Membuat aplikasi untuk smartphone</div>
-                                        <div>F. Membuat game untuk berbagai platform</div>
-                                        <div>G. Mengelola infrastruktur & deployment</div>
-                                        <div>H. Mengelola dan memelihara basis data</div>
-                                    </div>
-                                </div>
-
-                                <p><strong>✏️ Tulis huruf tugas yang sesuai (A-H):</strong></p>
-                                <div style="display: flex; flex-wrap: wrap; gap: 8px 15px; margin-top: 6px;">
-                                    <div>1 = <input type="text" class="matching-input" placeholder="?"></div>
-                                    <div>2 = <input type="text" class="matching-input" placeholder="?"></div>
-                                    <div>3 = <input type="text" class="matching-input" placeholder="?"></div>
-                                    <div>4 = <input type="text" class="matching-input" placeholder="?"></div>
-                                    <div>5 = <input type="text" class="matching-input" placeholder="?"></div>
-                                    <div>6 = <input type="text" class="matching-input" placeholder="?"></div>
-                                    <div>7 = <input type="text" class="matching-input" placeholder="?"></div>
-                                    <div>8 = <input type="text" class="matching-input" placeholder="?"></div>
-                                </div>
+                                <div class="matching-grid"><div><strong>1. Web Developer</strong></div><div><select class="matching-select"><option value="">-- Pilih Tugas --</option><option value="D. Membuat website yang bisa diakses publik">D. Membuat website yang bisa diakses publik</option><option value="E. Membuat aplikasi untuk smartphone">E. Membuat aplikasi untuk smartphone</option><option value="F. Membuat game untuk berbagai platform">F. Membuat game untuk berbagai platform</option><option value="B. Mengelola dan menganalisis data">B. Mengelola dan menganalisis data</option><option value="A. Membuat desain antarmuka aplikasi">A. Membuat desain antarmuka aplikasi</option><option value="C. Memastikan keamanan sistem & jaringan">C. Memastikan keamanan sistem & jaringan</option><option value="G. Mengelola infrastruktur & deployment">G. Mengelola infrastruktur & deployment</option><option value="H. Mengelola dan memelihara basis data">H. Mengelola dan memelihara basis data</option></select></div></div>
+                                <div class="matching-grid"><div><strong>2. Mobile App Developer</strong></div><div><select class="matching-select"><option value="">-- Pilih Tugas --</option><option value="D. Membuat website yang bisa diakses publik">D. Membuat website yang bisa diakses publik</option><option value="E. Membuat aplikasi untuk smartphone">E. Membuat aplikasi untuk smartphone</option><option value="F. Membuat game untuk berbagai platform">F. Membuat game untuk berbagai platform</option><option value="B. Mengelola dan menganalisis data">B. Mengelola dan menganalisis data</option><option value="A. Membuat desain antarmuka aplikasi">A. Membuat desain antarmuka aplikasi</option><option value="C. Memastikan keamanan sistem & jaringan">C. Memastikan keamanan sistem & jaringan</option><option value="G. Mengelola infrastruktur & deployment">G. Mengelola infrastruktur & deployment</option><option value="H. Mengelola dan memelihara basis data">H. Mengelola dan memelihara basis data</option></select></div></div>
+                                <div class="matching-grid"><div><strong>3. Game Developer</strong></div><div><select class="matching-select"><option value="">-- Pilih Tugas --</option><option value="D. Membuat website yang bisa diakses publik">D. Membuat website yang bisa diakses publik</option><option value="E. Membuat aplikasi untuk smartphone">E. Membuat aplikasi untuk smartphone</option><option value="F. Membuat game untuk berbagai platform">F. Membuat game untuk berbagai platform</option><option value="B. Mengelola dan menganalisis data">B. Mengelola dan menganalisis data</option><option value="A. Membuat desain antarmuka aplikasi">A. Membuat desain antarmuka aplikasi</option><option value="C. Memastikan keamanan sistem & jaringan">C. Memastikan keamanan sistem & jaringan</option><option value="G. Mengelola infrastruktur & deployment">G. Mengelola infrastruktur & deployment</option><option value="H. Mengelola dan memelihara basis data">H. Mengelola dan memelihara basis data</option></select></div></div>
+                                <div class="matching-grid"><div><strong>4. Data Scientist</strong></div><div><select class="matching-select"><option value="">-- Pilih Tugas --</option><option value="D. Membuat website yang bisa diakses publik">D. Membuat website yang bisa diakses publik</option><option value="E. Membuat aplikasi untuk smartphone">E. Membuat aplikasi untuk smartphone</option><option value="F. Membuat game untuk berbagai platform">F. Membuat game untuk berbagai platform</option><option value="B. Mengelola dan menganalisis data">B. Mengelola dan menganalisis data</option><option value="A. Membuat desain antarmuka aplikasi">A. Membuat desain antarmuka aplikasi</option><option value="C. Memastikan keamanan sistem & jaringan">C. Memastikan keamanan sistem & jaringan</option><option value="G. Mengelola infrastruktur & deployment">G. Mengelola infrastruktur & deployment</option><option value="H. Mengelola dan memelihara basis data">H. Mengelola dan memelihara basis data</option></select></div></div>
+                                <div class="matching-grid"><div><strong>5. UI/UX Designer</strong></div><div><select class="matching-select"><option value="">-- Pilih Tugas --</option><option value="D. Membuat website yang bisa diakses publik">D. Membuat website yang bisa diakses publik</option><option value="E. Membuat aplikasi untuk smartphone">E. Membuat aplikasi untuk smartphone</option><option value="F. Membuat game untuk berbagai platform">F. Membuat game untuk berbagai platform</option><option value="B. Mengelola dan menganalisis data">B. Mengelola dan menganalisis data</option><option value="A. Membuat desain antarmuka aplikasi">A. Membuat desain antarmuka aplikasi</option><option value="C. Memastikan keamanan sistem & jaringan">C. Memastikan keamanan sistem & jaringan</option><option value="G. Mengelola infrastruktur & deployment">G. Mengelola infrastruktur & deployment</option><option value="H. Mengelola dan memelihara basis data">H. Mengelola dan memelihara basis data</option></select></div></div>
+                                <div class="matching-grid"><div><strong>6. Cyber Security Specialist</strong></div><div><select class="matching-select"><option value="">-- Pilih Tugas --</option><option value="D. Membuat website yang bisa diakses publik">D. Membuat website yang bisa diakses publik</option><option value="E. Membuat aplikasi untuk smartphone">E. Membuat aplikasi untuk smartphone</option><option value="F. Membuat game untuk berbagai platform">F. Membuat game untuk berbagai platform</option><option value="B. Mengelola dan menganalisis data">B. Mengelola dan menganalisis data</option><option value="A. Membuat desain antarmuka aplikasi">A. Membuat desain antarmuka aplikasi</option><option value="C. Memastikan keamanan sistem & jaringan">C. Memastikan keamanan sistem & jaringan</option><option value="G. Mengelola infrastruktur & deployment">G. Mengelola infrastruktur & deployment</option><option value="H. Mengelola dan memelihara basis data">H. Mengelola dan memelihara basis data</option></select></div></div>
+                                <div class="matching-grid"><div><strong>7. DevOps Engineer</strong></div><div><select class="matching-select"><option value="">-- Pilih Tugas --</option><option value="D. Membuat website yang bisa diakses publik">D. Membuat website yang bisa diakses publik</option><option value="E. Membuat aplikasi untuk smartphone">E. Membuat aplikasi untuk smartphone</option><option value="F. Membuat game untuk berbagai platform">F. Membuat game untuk berbagai platform</option><option value="B. Mengelola dan menganalisis data">B. Mengelola dan menganalisis data</option><option value="A. Membuat desain antarmuka aplikasi">A. Membuat desain antarmuka aplikasi</option><option value="C. Memastikan keamanan sistem & jaringan">C. Memastikan keamanan sistem & jaringan</option><option value="G. Mengelola infrastruktur & deployment">G. Mengelola infrastruktur & deployment</option><option value="H. Mengelola dan memelihara basis data">H. Mengelola dan memelihara basis data</option></select></div></div>
+                                <div class="matching-grid"><div><strong>8. Database Administrator</strong></div><div><select class="matching-select"><option value="">-- Pilih Tugas --</option><option value="D. Membuat website yang bisa diakses publik">D. Membuat website yang bisa diakses publik</option><option value="E. Membuat aplikasi untuk smartphone">E. Membuat aplikasi untuk smartphone</option><option value="F. Membuat game untuk berbagai platform">F. Membuat game untuk berbagai platform</option><option value="B. Mengelola dan menganalisis data">B. Mengelola dan menganalisis data</option><option value="A. Membuat desain antarmuka aplikasi">A. Membuat desain antarmuka aplikasi</option><option value="C. Memastikan keamanan sistem & jaringan">C. Memastikan keamanan sistem & jaringan</option><option value="G. Mengelola infrastruktur & deployment">G. Mengelola infrastruktur & deployment</option><option value="H. Mengelola dan memelihara basis data">H. Mengelola dan memelihara basis data</option></select></div></div>
                             </div>
-
+                            <div style="margin-top: 0.8rem; background: #fff3cd; padding: 0.6rem 1rem; border-left: 4px solid #f39c12; border-radius: 4px;">
+                                <strong>Tips:</strong> Setiap profesi memiliki satu tugas yang paling sesuai. Pilih dengan teliti!
+                            </div>
                             <h4 class="section-subtitle">Aktivitas 2: Refleksi Minat Karier</h4>
                             <table class="qa-table">
-                                <thead>
-                                    <tr><th class="no-col">No</th><th class="question-col">Pertanyaan</th><th class="answer-col">Jawaban</th></tr>
-                                </thead>
+                                <thead><tr><th class="no-col">No</th><th class="question-col">Pertanyaan</th><th class="answer-col">Jawaban</th></tr></thead>
                                 <tbody>
                                     <tr><td class="no-col">1</td><td>Dari semua profesi di atas, mana yang paling menarik menurutmu? Mengapa?</td><td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
                                     <tr><td class="no-col">2</td><td>Keterampilan apa yang perlu kamu kuasai untuk profesi itu?</td><td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
@@ -2315,17 +2545,15 @@
                             </table>
                         </div>
 
-                        <!-- ===== BAGIAN C ===== -->
+                        <!-- BAGIAN C -->
                         <div class="section-card">
-                            <h3 class="section-title">🔗 BAGIAN C: PERAN IT UNTUK PELESTARIAN BUDAYA (KELOMPOK)</h3>
-                            <div class="instruction-box">
-                                "Bagaimana profesi IT dapat membantu melestarikan budaya?"
+                            <h3 class="section-title">C. PERAN IT UNTUK PELESTARIAN BUDAYA <span class="section-badge">Kelompok</span></h3>
+                            <div class="instruction-box">Bagaimana profesi IT dapat membantu melestarikan budaya?</div>
+                            <div class="screenshot-instruction">
+                                <strong>📸 Instruksi Screenshot:</strong> Screenshot hasil diskusi peran IT untuk budaya → Upload ke Google Drive → Tempel link di bawah
                             </div>
-
                             <table class="qa-table four-col">
-                                <thead>
-                                    <tr><th class="no-col">No</th><th class="col1">Profesi</th><th class="col2">Peran dalam Digitalisasi Budaya</th><th class="col3">Contoh Konkret</th></tr>
-                                </thead>
+                                <thead><tr><th class="no-col">No</th><th class="col1">Profesi</th><th class="col2">Peran dalam Digitalisasi Budaya</th><th class="col3">Contoh Konkret</th></tr></thead>
                                 <tbody>
                                     <tr><td class="no-col">1</td><td>Web Developer</td><td><span class="tempat-jawaban">[Tulis di sini]</span></td><td><span class="tempat-jawaban">[Tulis di sini]</span></td></tr>
                                     <tr><td class="no-col">2</td><td>Mobile App Developer</td><td><span class="tempat-jawaban">[Tulis di sini]</span></td><td><span class="tempat-jawaban">[Tulis di sini]</span></td></tr>
@@ -2334,25 +2562,29 @@
                                     <tr><td class="no-col">5</td><td>UI/UX Designer</td><td><span class="tempat-jawaban">[Tulis di sini]</span></td><td><span class="tempat-jawaban">[Tulis di sini]</span></td></tr>
                                 </tbody>
                             </table>
+                            <div class="folder-link-box">
+                                <span class="label-link">📸 Link Screenshot - Bagian C</span>
+                                <div style="font-size:0.9rem; color:#555; margin-top:4px;">Tempel link folder/screenshot diskusi peran IT untuk budaya:</div>
+                                <div style="margin-top:6px; background:white; padding:6px 10px; border-radius:6px; border:1px solid #ddd;">
+                                    <span class="tempat-jawaban">[Tempel link di sini]</span>
+                                </div>
+                            </div>
                         </div>
 
-                        <!-- ===== BAGIAN D ===== -->
+                        <!-- BAGIAN D -->
                         <div class="section-card">
-                            <h3 class="section-title">📋 BAGIAN D: MERENCANAKAN PROYEK (KELOMPOK)</h3>
-                            <div class="instruction-box">
-                                "Hubungkan profesi digital dengan budaya yang kalian pilih!"
+                            <h3 class="section-title">D. MERENCANAKAN PROYEK <span class="section-badge">Kelompok</span></h3>
+                            <div class="instruction-box">Hubungkan profesi digital dengan budaya yang kalian pilih!</div>
+                            <div class="screenshot-instruction">
+                                <strong>📸 Instruksi Screenshot:</strong> Screenshot hasil perencanaan proyek kelompok → Upload ke Google Drive → Tempel link di bawah
                             </div>
-
                             <div class="profession-tip">
                                 <strong>Budaya pilihan kelompok dari Aktivitas 1:</strong>
                                 <span class="tempat-jawaban" style="margin-top: 6px;">[Tulis budaya yang kalian pilih]</span>
                             </div>
-
                             <h4 class="section-subtitle">Aktivitas 1: Pembagian Peran dalam Kelompok</h4>
                             <table class="qa-table">
-                                <thead>
-                                    <tr><th class="no-col">No</th><th class="question-col">Nama Anggota</th><th class="answer-col">Profesi yang Diperankan</th></tr>
-                                </thead>
+                                <thead><tr><th class="no-col">No</th><th class="question-col">Nama Anggota</th><th class="answer-col">Profesi yang Diperankan</th></tr></thead>
                                 <tbody>
                                     <tr><td class="no-col">1</td><td><span class="tempat-jawaban">[Nama]</span></td><td><span class="tempat-jawaban">[Profesi]</span></td></tr>
                                     <tr><td class="no-col">2</td><td><span class="tempat-jawaban">[Nama]</span></td><td><span class="tempat-jawaban">[Profesi]</span></td></tr>
@@ -2360,12 +2592,9 @@
                                     <tr><td class="no-col">4</td><td><span class="tempat-jawaban">[Nama]</span></td><td><span class="tempat-jawaban">[Profesi]</span></td></tr>
                                 </tbody>
                             </table>
-
                             <h4 class="section-subtitle">Aktivitas 2: Ide Konten Digital</h4>
                             <table class="qa-table">
-                                <thead>
-                                    <tr><th class="no-col">No</th><th class="question-col">Jenis Konten</th><th class="answer-col">Deskripsi Ide</th></tr>
-                                </thead>
+                                <thead><tr><th class="no-col">No</th><th class="question-col">Jenis Konten</th><th class="answer-col">Deskripsi Ide</th></tr></thead>
                                 <tbody>
                                     <tr><td class="no-col">1</td><td>Website/Blog Budaya</td><td><span class="tempat-jawaban">[Deskripsi ide]</span></td></tr>
                                     <tr><td class="no-col">2</td><td>Video Promosi Budaya</td><td><span class="tempat-jawaban">[Deskripsi ide]</span></td></tr>
@@ -2373,19 +2602,21 @@
                                     <tr><td class="no-col">4</td><td>Game Edukasi</td><td><span class="tempat-jawaban">[Deskripsi ide]</span></td></tr>
                                 </tbody>
                             </table>
+                            <div class="folder-link-box">
+                                <span class="label-link">📸 Link Screenshot - Bagian D</span>
+                                <div style="font-size:0.9rem; color:#555; margin-top:4px;">Tempel link folder/screenshot perencanaan proyek kelompok:</div>
+                                <div style="margin-top:6px; background:white; padding:6px 10px; border-radius:6px; border:1px solid #ddd;">
+                                    <span class="tempat-jawaban">[Tempel link di sini]</span>
+                                </div>
+                            </div>
                         </div>
 
-                        <!-- ===== BAGIAN E ===== -->
+                        <!-- BAGIAN E -->
                         <div class="section-card">
-                            <h3 class="section-title">📝 BAGIAN E: REFLEKSI AKHIR (INDIVIDU)</h3>
-                            <div class="instruction-box">
-                                "Apa yang aku pelajari hari ini?"
-                            </div>
-
+                            <h3 class="section-title">E. REFLEKSI AKHIR <span class="section-badge">Individu</span></h3>
+                            <div class="instruction-box">"Apa yang aku pelajari hari ini? Tulis dengan jujur!"</div>
                             <table class="qa-table">
-                                <thead>
-                                    <tr><th class="no-col">No</th><th class="question-col">Pertanyaan</th><th class="answer-col">Jawabanku</th></tr>
-                                </thead>
+                                <thead><tr><th class="no-col">No</th><th class="question-col">Pertanyaan</th><th class="answer-col">Jawabanku</th></tr></thead>
                                 <tbody>
                                     <tr><td class="no-col">1</td><td>Hal baru apa yang aku pelajari tentang profesi di bidang informatika?</td><td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
                                     <tr><td class="no-col">2</td><td>Profesi apa yang paling menarik menurutku? Mengapa?</td><td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
@@ -2393,9 +2624,8 @@
                                     <tr><td class="no-col">4</td><td>Peran apa yang aku ambil dalam kelompok untuk proyek ini?</td><td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
                                 </tbody>
                             </table>
-
-                            <div style="margin-top: 1rem; background: #f8fafc; border-radius: 8px; padding: 1rem; border: 1px dashed #3498db;">
-                                <p><strong>Checklist Pemahaman:</strong></p>
+                            <div style="margin-top: 1.5rem; background: #f8fafc; border-radius: 8px; padding: 1rem; border: 1px dashed #3498db;">
+                                <p><strong>✅ Checklist Pemahaman Akhir:</strong></p>
                                 <div class="checkbox-grid">
                                     <div class="checkbox-item"><span class="kotak-cek"></span> Saya sudah membaca materi "Profesi di Bidang Informatika"</div>
                                     <div class="checkbox-item"><span class="kotak-cek"></span> Saya sudah mengenal minimal 5 profesi IT</div>
@@ -2405,7 +2635,6 @@
                             </div>
                         </div>
 
-                        <!-- ===== FOOTER ===== -->
                         <div class="footer-text">
                             LKPD Proyek 2 Aktivitas 2 - Profesi Digital & Peran Informatika | ${dateStr}
                         </div>
@@ -2413,12 +2642,7 @@
                     </html>
                 `;
 
-                // === BUAT FILE .doc ===
-                const blob = new Blob([htmlContent], {
-                    type: 'application/msword;charset=utf-8'
-                });
-
-                // === DOWNLOAD ===
+                const blob = new Blob([htmlContent], { type: 'application/msword;charset=utf-8' });
                 const link = document.createElement('a');
                 link.href = URL.createObjectURL(blob);
                 const today = new Date();
@@ -2429,9 +2653,7 @@
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
-                setTimeout(() => {
-                    URL.revokeObjectURL(link.href);
-                }, 1000);
+                setTimeout(() => URL.revokeObjectURL(link.href), 1000);
 
                 exportBtn.innerHTML = '<i class="fas fa-file-word"></i> Export Template DOCX';
                 exportBtn.disabled = false;
@@ -2448,11 +2670,12 @@
         document.addEventListener('DOMContentLoaded', function() {
             generateTables();
 
-            const hamburger = document.getElementById('hamburger');
-            const navMenu = document.getElementById('nav-menu');
-            if (hamburger) {
-                hamburger.addEventListener('click', () => navMenu.classList.toggle('active'));
-            }
+            document.querySelectorAll('textarea.answer-field').forEach(el => {
+                el.addEventListener('input', function() {
+                    autoResize(this);
+                });
+                autoResize(el);
+            });
 
             document.querySelectorAll('input, select, textarea').forEach(el => {
                 el.addEventListener('input', saveToLocalStorage);
@@ -2470,14 +2693,19 @@
             });
 
             loadDataFromGoogleSheets();
-            loadFromLocalStorage();
             updateConnectionStatus();
-            setInterval(checkConnection, 5000);
-        });
+            setInterval(updateConnectionStatus, 5000);
 
-        function checkConnection() {
-            updateConnectionStatus();
-        }
+            window.updateNamaDropdown = updateNamaDropdown;
+            window.saveToLocalStorage = saveToLocalStorage;
+            window.submitData = submitData;
+            window.exportToDocx = exportToDocx;
+            window.confirmGantiTugas = confirmGantiTugas;
+            window.confirmReset = confirmReset;
+            window.closeModal = closeModal;
+            window.closeConfirmModal = closeConfirmModal;
+            window.autoResize = autoResize;
+        });
     </script>
 </body>
 </html>

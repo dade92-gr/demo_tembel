@@ -12,8 +12,6 @@
             --informatika-secondary: #2980b9;
             --informatika-light: #ebf5fb;
             --informatika-dark: #21618c;
-            --informatika-accent: #9b59b6;
-            --informatika-gray: #f5f7fa;
             --informatika-orange: #f39c12;
             --informatika-red: #e74c3c;
         }
@@ -25,6 +23,37 @@
             background-color: #f5f7fa;
             color: #2c3e50;
             line-height: 1.6;
+        }
+
+        .tp-card {
+            background: linear-gradient(135deg, #e8f4fd 0%, #d6eaf8 100%);
+            border-radius: 16px;
+            padding: 1.2rem 1.8rem;
+            margin-bottom: 1.5rem;
+            border-left: 5px solid var(--informatika-primary);
+        }
+
+        .tp-card .tp-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 4px 0;
+            font-size: 0.95rem;
+        }
+
+        .tp-card .tp-item .tp-code {
+            background: var(--informatika-primary);
+            color: white;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            min-width: 45px;
+            text-align: center;
+        }
+
+        .tp-card .tp-item .tp-desc {
+            color: var(--informatika-dark);
         }
 
         .activity-detail-container {
@@ -80,7 +109,7 @@
         .informatika-content-card .subtitle {
             color: #666;
             font-size: 1rem;
-            margin-bottom: 2rem;
+            margin-bottom: 0;
             display: flex;
             align-items: center;
             gap: 15px;
@@ -89,18 +118,6 @@
 
         .informatika-content-card .subtitle i { color: var(--informatika-primary); }
 
-        .informatika-content-card > p {
-            font-size: 1.1rem;
-            line-height: 1.7;
-            color: #555;
-            margin-bottom: 2.5rem;
-            padding: 1rem 1.5rem;
-            background: var(--informatika-light);
-            border-radius: 10px;
-            border-left: 4px solid var(--informatika-primary);
-        }
-
-        /* ============ MATERI SECTION ============ */
         .materi-section {
             background: linear-gradient(135deg, #fff5e6 0%, #fffaf0 100%);
             border-radius: 20px;
@@ -108,18 +125,6 @@
             margin: 2rem 0;
             border: 2px solid #f39c12;
             box-shadow: 0 4px 15px rgba(243, 156, 18, 0.15);
-            animation: fadeInUp 0.6s ease;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         .materi-header {
@@ -278,10 +283,21 @@
             font-size: 1.6rem;
         }
 
+        .section-badge {
+            display: inline-block;
+            background: var(--informatika-primary);
+            color: white;
+            padding: 2px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
         .section-subtitle {
             color: var(--informatika-secondary);
-            font-size: 1.2rem;
-            margin: 1.5rem 0 1rem 0;
+            font-size: 1.1rem;
+            margin: 1.5rem 0 0.8rem 0;
             font-weight: 600;
         }
 
@@ -336,7 +352,6 @@
             box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.15);
         }
 
-        /* ===== TABEL ===== */
         .qa-table {
             width: 100%;
             border-collapse: collapse;
@@ -376,7 +391,10 @@
             background: #fafcfe !important;
             color: #2c3e50 !important;
             box-sizing: border-box !important;
-            resize: vertical;
+            resize: none !important;
+            overflow: hidden !important;
+            min-height: 50px !important;
+            line-height: 1.6 !important;
         }
 
         .answer-field:hover {
@@ -402,7 +420,7 @@
 
         .checkbox-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 0.5rem 1.5rem;
             margin: 0.5rem 0;
         }
@@ -428,179 +446,42 @@
             color: #2c3e50;
         }
 
-        .alert {
-            padding: 1rem 1.5rem;
-            border-radius: 12px;
-            margin: 1rem 0;
-            display: none;
-            text-align: center;
-            font-weight: 500;
-        }
-
-        .alert-success {
-            background: #d4edda;
-            color: #155724;
-            border-left: 5px solid #28a745;
-        }
-
-        .alert-error {
-            background: #f8d7da;
-            color: #721c24;
-            border-left: 5px solid #dc3545;
-        }
-
-        .alert-loading {
+        .screenshot-instruction {
             background: #fff3cd;
-            color: #856404;
-            border-left: 5px solid #ffc107;
+            border-radius: 10px;
+            padding: 0.8rem 1.2rem;
+            margin: 0.5rem 0 1rem 0;
+            border-left: 4px solid #f39c12;
         }
 
-        .alert-loading i { margin-right: 10px; }
-
-        .connection-status {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 5px 14px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 500;
+        .screenshot-instruction i {
+            color: #f39c12;
+            margin-right: 8px;
         }
 
-        .connection-status.online {
-            background: #d4edda;
-            color: #155724;
+        .folder-link-box {
+            background: #e8f5e9;
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            margin-top: 1rem;
+            border-left: 5px solid #4caf50;
         }
 
-        .connection-status.offline {
-            background: #f8d7da;
-            color: #721c24;
-        }
-
-        .refresh-btn {
-            background: var(--informatika-primary);
-            color: white;
-            border: none;
-            padding: 8px 20px;
-            border-radius: 25px;
-            cursor: pointer;
-            margin-top: 10px;
-            font-size: 0.9rem;
-            transition: background 0.3s;
-        }
-
-        .refresh-btn:hover { background: var(--informatika-secondary); }
-
-        .btn-submit {
-            background: linear-gradient(135deg, var(--informatika-primary), var(--informatika-secondary));
-            color: white;
-            border: none;
-            padding: 1rem 2.8rem;
-            border-radius: 50px;
-            font-size: 1.1rem;
+        .folder-link-box .label-link {
             font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            color: #2e7d32;
             display: block;
-            width: fit-content;
-            margin: 2rem auto;
-            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+            margin-bottom: 4px;
         }
 
-        .btn-submit:hover:not(:disabled) {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4);
+        .folder-link-box .sub-text {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 6px;
         }
 
-        .btn-submit:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-        }
-
-        .btn-submit i { margin-right: 10px; }
-
-        /* ============ EXPORT BUTTON ============ */
-        .export-button {
-            background: linear-gradient(135deg, #3498db, #2980b9);
-            color: white;
-            border: none;
-            padding: 0.8rem 2rem;
-            border-radius: 50px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
-        }
-
-        .export-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4);
-        }
-
-        .export-button i { font-size: 1.1rem; }
-
-        .export-button:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-        }
-
-        .export-wrapper {
-            display: flex;
-            justify-content: flex-end;
-            gap: 1rem;
-            flex-wrap: wrap;
-            margin-bottom: 1rem;
-        }
-
-        .activity-navigation {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .nav-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: white;
-            color: var(--informatika-dark);
-            padding: 0.8rem 1.5rem;
-            border-radius: 40px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: 1px solid var(--informatika-light);
-        }
-
-        .nav-btn:hover {
-            background: var(--informatika-primary);
-            color: white;
-        }
-
-        .nav-btn.primary {
-            background: var(--informatika-primary);
-            color: white;
-            border: none;
-        }
-
-        .nav-btn.primary:hover {
-            background: var(--informatika-secondary);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
-        }
-
-        .form-disabled {
-            opacity: 0.6;
-            pointer-events: none;
+        .folder-link-box input {
+            width: 100% !important;
         }
 
         .production-tip {
@@ -707,7 +588,180 @@
         .platform-badge.canva { background: #00c4cc; }
         .platform-badge.other { background: #6c757d; }
 
-        /* ============ MODAL ============ */
+        .alert {
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            margin: 1rem 0;
+            display: none;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border-left: 5px solid #28a745;
+        }
+
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border-left: 5px solid #dc3545;
+        }
+
+        .alert-loading {
+            background: #fff3cd;
+            color: #856404;
+            border-left: 5px solid #ffc107;
+        }
+
+        .alert-loading i { margin-right: 10px; }
+
+        .connection-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .connection-status.online {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .connection-status.offline {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .refresh-btn {
+            background: var(--informatika-primary);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+
+        .refresh-btn:hover { background: var(--informatika-secondary); }
+
+        .btn-submit {
+            background: linear-gradient(135deg, var(--informatika-primary), var(--informatika-secondary));
+            color: white;
+            border: none;
+            padding: 1rem 2.8rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            width: fit-content;
+            margin: 2rem auto;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .btn-submit:hover:not(:disabled) {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4);
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .btn-submit i { margin-right: 10px; }
+
+        .export-button {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .export-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4);
+        }
+
+        .export-button i { font-size: 1.1rem; }
+
+        .export-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .export-wrapper {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .activity-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: white;
+            color: var(--informatika-dark);
+            padding: 0.8rem 1.5rem;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 1px solid var(--informatika-light);
+        }
+
+        .nav-btn:hover {
+            background: var(--informatika-primary);
+            color: white;
+        }
+
+        .nav-btn.primary {
+            background: var(--informatika-primary);
+            color: white;
+            border: none;
+        }
+
+        .nav-btn.primary:hover {
+            background: var(--informatika-secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .form-disabled {
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
         .modal {
             display: none;
             position: fixed;
@@ -828,15 +882,6 @@
             box-shadow: none;
         }
 
-        .modal-btn.no {
-            background: #6c757d;
-            color: white;
-        }
-
-        .modal-btn.no:hover {
-            background: #5a6268;
-        }
-
         .modal-btn.secondary {
             background: #6c757d;
             color: white;
@@ -877,15 +922,11 @@
             .btn-submit { width: 100%; justify-content: center; padding: 1rem; }
             .informatika-content-card h2 { font-size: 1.6rem; }
             .informatika-content-card { padding: 1.5rem; }
-            
-            .materi-header {
-                flex-direction: column;
-                text-align: center;
-            }
-            .materi-card .btn-materi {
-                width: 100%;
-                justify-content: center;
-            }
+            .materi-header { flex-direction: column; text-align: center; }
+            .materi-card .btn-materi { width: 100%; justify-content: center; }
+            .tp-card .tp-item { flex-wrap: wrap; }
+            .screenshot-instruction { padding: 0.6rem 1rem; }
+            .folder-link-box { padding: 0.8rem 1rem; }
         }
 
         @media (max-width: 480px) {
@@ -902,9 +943,11 @@
         }
 
         @media print {
-            .materi-section {
-                display: none !important;
-            }
+            .materi-section { display: none !important; }
+            .export-wrapper { display: none !important; }
+            .btn-submit { display: none !important; }
+            .activity-navigation { display: none !important; }
+            .connection-status { display: none !important; }
         }
     </style>
 </head>
@@ -914,7 +957,7 @@
             <div class="nav-container">
                 <div class="logo">
                     <img src="../../../assets/images/logo.png" alt="Logo Sekolah">
-                    <h1>INFORMATIKA - AKTIVITAS PEMBELAJARAN</h1>
+                    <h1>INFORMATIKA - PROJEK 2</h1>
                 </div>
                 <ul class="nav-menu" id="nav-menu">
                     <li><a href="../../../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
@@ -940,10 +983,20 @@
                 <span><i class="fas fa-clock"></i> 4 JP</span>
                 <span class="connection-status online" id="connectionStatus"><i class="fas fa-wifi"></i> Online</span>
             </div>
-            <p><i class="fas fa-quote-left"></i> Menggunakan media digital untuk produksi konten, partisipasi aktif, dan kolaborasi daring. <i class="fas fa-quote-right"></i></p>
         </div>
 
-        <!-- ===== BAGIAN MEMBACA MATERI ===== -->
+        <!-- TP CARD -->
+        <div class="tp-card">
+            <div style="font-weight:700; color:var(--informatika-dark); margin-bottom:6px; font-size:1.1rem;">
+                <i class="fas fa-bullseye"></i> Tujuan Pembelajaran
+            </div>
+            <div class="tp-item">
+                <span class="tp-code">TP 2.6</span>
+                <span class="tp-desc">Menggunakan media digital untuk produksi konten, partisipasi aktif, dan kolaborasi daring</span>
+            </div>
+        </div>
+
+        <!-- MATERI SECTION -->
         <div class="materi-section">
             <div class="materi-header">
                 <div class="materi-icon">
@@ -954,7 +1007,7 @@
                     <p>Sebelum mengerjakan LKPD ini, pastikan kamu sudah membaca dan memahami materi berikut:</p>
                 </div>
             </div>
-            
+
             <div class="materi-card">
                 <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
                     <span class="badge">MATERI 2.3</span>
@@ -970,11 +1023,11 @@
                     <i class="fas fa-arrow-right"></i> Baca Materi Sekarang
                 </a>
             </div>
-            
+
             <div class="materi-tip">
                 <p>
                     <i class="fas fa-info-circle"></i> 
-                    <strong>Tips:</strong> Baca materi dengan saksama agar kamu lebih mudah mengerjakan LKPD ini. Materi akan terbuka di tab baru.
+                    <strong>Tips:</strong> Baca materi dengan saksama agar kamu lebih mudah mengerjakan LKPD ini.
                 </p>
             </div>
         </div>
@@ -989,28 +1042,15 @@
         </div>
 
         <div class="worksheet-container" id="worksheetForm">
-            <!-- Tombol Export -->
             <div class="export-wrapper">
                 <button class="export-button" id="exportBtn" onclick="exportToDocx()" disabled>
                     <i class="fas fa-file-word"></i> Export Template DOCX
                 </button>
             </div>
 
-            <div class="instruction-box" style="background:#e8f5e9; border-left-color: var(--informatika-primary);">
-                <i class="fas fa-lightbulb" style="color: var(--informatika-primary); margin-right: 10px;"></i>
-                <strong>HALO, KELOMPOK HEBAT! 👋</strong><br>
-                Silakan isi lembar kerja ini untuk memproduksi konten budaya digital.
-            </div>
+            <h1 class="worksheet-title">LEMBAR KERJA PESERTA DIDIK (LKPD) PROYEK 2 – AKTIVITAS 3 (PRODUKSI KONTEN BUDAYA DIGITAL)</h1>
 
-            <h1 class="worksheet-title">LEMBAR KERJA PESERTA DIDIK (LKPD) PROYEK 2 – AKTIVITAS 3</h1>
-            <p style="text-align: center; margin-bottom: 2rem; font-size: 1.2rem; color: var(--informatika-accent);">
-                <strong>PRODUKSI KONTEN BUDAYA DIGITAL</strong>
-            </p>
-            <div style="text-align: center; margin-bottom: 2rem; background: var(--informatika-light); padding: 0.8rem; border-radius: 10px;">
-                <p><i class="fas fa-bullseye"></i> <strong>Tujuan Pembelajaran (TP 2.6):</strong> Menggunakan media digital untuk produksi konten, partisipasi aktif, dan kolaborasi daring.</p>
-            </div>
-
-            <!-- ===== IDENTITAS ===== -->
+            <!-- IDENTITAS -->
             <h3 style="margin: 2rem 0 1rem 0; color: var(--informatika-dark);">
                 <i class="fas fa-users"></i> Identitas Kelompok
             </h3>
@@ -1029,7 +1069,7 @@
                 </div>
                 <div class="identitas-item">
                     <label><i class="fas fa-users"></i> Nama Kelompok</label>
-                    <input type="text" id="kelompok" placeholder="Contoh: Kelompok 1 - Budaya Digital" oninput="saveToLocalStorage();" disabled>
+                    <input type="text" id="kelompok" placeholder="Contoh: Kelompok Budaya Digital" oninput="saveToLocalStorage();" disabled>
                 </div>
                 <div class="identitas-item">
                     <label><i class="fas fa-tasks"></i> Peran dalam Kelompok</label>
@@ -1037,50 +1077,72 @@
                 </div>
             </div>
 
-            <!-- ===== PETUNJUK ===== -->
             <div class="instruction-box">
                 <i class="fas fa-info-circle" style="margin-right: 10px;"></i>
                 <strong>📚 PETUNJUK PENGGUNAAN LKPD</strong><br><br>
                 <ol>
-                    <li>Pastikan kamu sudah membaca materi <strong>"Produksi Konten Digital"</strong> yang tersedia di menu Daftar Materi.</li>
-                    <li>Gunakan hasil pemilihan budaya dari Aktivitas 1 dan pembagian peran dari Aktivitas 2.</li>
+                    <li>Pastikan kamu sudah membaca materi <strong>"Produksi Konten Digital untuk Budaya"</strong>.</li>
+                    <li>Gunakan hasil pemilihan budaya dari Aktivitas 1.</li>
                     <li>Kerjakan setiap bagian dengan berdiskusi bersama kelompok.</li>
                     <li>Gunakan smartphone/laptop untuk membuat konten digital.</li>
-                    <li>Setelah selesai, unggah konten ke platform digital dan salin link-nya.</li>
                     <li>Data akan <strong>tersimpan otomatis</strong> di browser Anda.</li>
-                    <li>Klik tombol <strong>Kumpulkan LKPD</strong> di bagian bawah untuk mengirimkan data ke Google Spreadsheet.</li>
+                    <li>Klik <strong>Kumpulkan LKPD</strong> di bagian bawah untuk mengirimkan data.</li>
                 </ol>
             </div>
 
-            <!-- ===== BAGIAN A: PEMAHAMAN PRODUKSI ===== -->
+            <!-- ============================================================ -->
+            <!-- BAGIAN A: PEMAHAMAN PRODUKSI -->
+            <!-- ============================================================ -->
             <div class="section-card">
-                <h3 class="section-title"><i class="fas fa-book-reader"></i> 📖 BAGIAN A: PEMAHAMAN PRODUKSI (INDIVIDU)</h3>
+                <h3 class="section-title">
+                    <i class="fas fa-book-reader"></i> A. PEMAHAMAN PRODUKSI
+                    <span class="section-badge">Individu</span>
+                </h3>
                 <div class="instruction-box">
-                    <i class="fas fa-question-circle"></i> "Pastikan kamu sudah membaca materi sebelum mengerjakan!"
+                    <i class="fas fa-question-circle"></i> Pastikan kamu sudah membaca materi sebelum mengerjakan!
                 </div>
 
-                <table class="qa-table" id="tabelPemahaman">
+                <div class="screenshot-instruction">
+                    <i class="fas fa-camera"></i>
+                    <strong>📸 Instruksi Screenshot:</strong> Screenshot halaman materi yang sudah kamu baca → Upload ke Google Drive → Tempel link di bawah
+                </div>
+
+                <table class="qa-table">
                     <thead>
                         <tr><th class="no-col">No</th><th class="question-col">Pertanyaan</th><th class="answer-col">Jawaban</th></tr>
                     </thead>
                     <tbody>
-                        <tr><td class="no-col">1</td><td>Apa yang dimaksud dengan konten digital?</td><td><textarea class="answer-field" id="review1" placeholder="Tulis jawabanmu..." oninput="saveToLocalStorage();"></textarea></td></tr>
-                        <tr><td class="no-col">2</td><td>Sebutkan 3 jenis konten digital yang populer!</td><td><textarea class="answer-field" id="review2" placeholder="1.&#10;2.&#10;3." oninput="saveToLocalStorage();"></textarea></td></tr>
-                        <tr><td class="no-col">3</td><td>Apa yang perlu diperhatikan dalam membuat konten yang baik?</td><td><textarea class="answer-field" id="review3" placeholder="Tulis jawabanmu..." oninput="saveToLocalStorage();"></textarea></td></tr>
-                        <tr><td class="no-col">4</td><td>Mengapa kita perlu memperhatikan hak cipta dalam membuat konten?</td><td><textarea class="answer-field" id="review4" placeholder="Tulis jawabanmu..." oninput="saveToLocalStorage();"></textarea></td></tr>
+                        <tr><td class="no-col">1</td><td>Apa yang dimaksud dengan konten digital?</td><td><textarea class="answer-field" id="review1" placeholder="Tulis jawabanmu..." oninput="autoResize(this); saveToLocalStorage();"></textarea></td></tr>
+                        <tr><td class="no-col">2</td><td>Sebutkan 3 jenis konten digital yang populer!</td><td><textarea class="answer-field" id="review2" placeholder="1.&#10;2.&#10;3." oninput="autoResize(this); saveToLocalStorage();"></textarea></td></tr>
+                        <tr><td class="no-col">3</td><td>Apa yang perlu diperhatikan dalam membuat konten yang baik?</td><td><textarea class="answer-field" id="review3" placeholder="Tulis jawabanmu..." oninput="autoResize(this); saveToLocalStorage();"></textarea></td></tr>
+                        <tr><td class="no-col">4</td><td>Mengapa kita perlu memperhatikan hak cipta dalam membuat konten?</td><td><textarea class="answer-field" id="review4" placeholder="Tulis jawabanmu..." oninput="autoResize(this); saveToLocalStorage();"></textarea></td></tr>
                     </tbody>
                 </table>
 
                 <div style="margin-top: 1rem; background: #f8fafc; border-radius: 10px; padding: 1rem; border: 1px dashed var(--informatika-primary);">
-                    <div class="checkbox-item"><input type="checkbox" id="bacaMateri" onchange="saveToLocalStorage();"><label for="bacaMateri"><strong>☐ Ya, saya sudah membaca materi "Produksi Konten Digital"</strong></label></div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="bacaMateri" onchange="saveToLocalStorage();">
+                        <label for="bacaMateri"><strong>☐ Ya, saya sudah membaca materi "Produksi Konten Digital untuk Budaya"</strong></label>
+                    </div>
+                </div>
+
+                <div class="folder-link-box">
+                    <span class="label-link"><i class="fas fa-camera"></i> 📸 Link Screenshot - Bagian A</span>
+                    <div class="sub-text">Tempel link folder/screenshot bukti membaca materi:</div>
+                    <input type="text" class="answer-field" id="link_screenshot_a" placeholder="https://drive.google.com/drive/folders/xxx" oninput="saveToLocalStorage();">
                 </div>
             </div>
 
-            <!-- ===== BAGIAN B: PERENCANAAN KONTEN ===== -->
+            <!-- ============================================================ -->
+            <!-- BAGIAN B: PERENCANAAN KONTEN -->
+            <!-- ============================================================ -->
             <div class="section-card">
-                <h3 class="section-title"><i class="fas fa-pencil-ruler"></i> 📋 BAGIAN B: PERENCANAAN KONTEN (KELOMPOK)</h3>
+                <h3 class="section-title">
+                    <i class="fas fa-pencil-ruler"></i> B. PERENCANAAN KONTEN
+                    <span class="section-badge">Kelompok</span>
+                </h3>
                 <div class="instruction-box">
-                    <i class="fas fa-lightbulb"></i> "Rencanakan konten budaya digitalmu!"
+                    <i class="fas fa-lightbulb"></i> Rencanakan konten budaya digitalmu!
                 </div>
 
                 <div class="production-tip">
@@ -1089,7 +1151,7 @@
                     <input type="text" class="answer-field" id="budaya_pilihan" placeholder="Tulis budaya yang kalian pilih..." style="margin-top: 8px;" oninput="saveToLocalStorage();">
                 </div>
 
-                <table class="qa-table" id="tabelPerencanaan">
+                <table class="qa-table">
                     <thead>
                         <tr><th class="no-col">No</th><th class="question-col">Elemen Perencanaan</th><th class="answer-col">Rencana Kelompok</th></tr>
                     </thead>
@@ -1108,21 +1170,31 @@
                         </tr>
                         <tr><td class="no-col">2</td><td>Judul Konten</td><td><input type="text" class="answer-field" id="judul_konten" placeholder="Tulis judul..." oninput="saveToLocalStorage();"></td></tr>
                         <tr><td class="no-col">3</td><td>Target Audiens</td><td><input type="text" class="answer-field" id="target_audiens" placeholder="Siapa yang ingin dijangkau?" oninput="saveToLocalStorage();"></td></tr>
-                        <tr><td class="no-col">4</td><td>Pesan Utama (1-2 kalimat)</td><td><textarea class="answer-field" id="pesan_utama" placeholder="Tulis pesan utama..." oninput="saveToLocalStorage();"></textarea></td></tr>
-                        <tr><td class="no-col">5</td><td>Fakta Unik Budaya</td><td><textarea class="answer-field" id="fakta_unik" placeholder="Tulis 2-3 fakta menarik..." oninput="saveToLocalStorage();"></textarea></td></tr>
+                        <tr><td class="no-col">4</td><td>Pesan Utama (1-2 kalimat)</td><td><textarea class="answer-field" id="pesan_utama" placeholder="Tulis pesan utama..." oninput="autoResize(this); saveToLocalStorage();"></textarea></td></tr>
+                        <tr><td class="no-col">5</td><td>Fakta Unik Budaya</td><td><textarea class="answer-field" id="fakta_unik" placeholder="Tulis 2-3 fakta menarik..." oninput="autoResize(this); saveToLocalStorage();"></textarea></td></tr>
                         <tr><td class="no-col">6</td><td>Aplikasi/Tools yang Digunakan</td><td><input type="text" class="answer-field" id="tools_konten" placeholder="Canva, InShot, CapCut, dll" oninput="saveToLocalStorage();"></td></tr>
                     </tbody>
                 </table>
             </div>
 
-            <!-- ===== BAGIAN C: STORYBOARD & PRODUKSI ===== -->
+            <!-- ============================================================ -->
+            <!-- BAGIAN C: STORYBOARD & PRODUKSI -->
+            <!-- ============================================================ -->
             <div class="section-card">
-                <h3 class="section-title"><i class="fas fa-film"></i> 🎬 BAGIAN C: STORYBOARD & PRODUKSI (KELOMPOK)</h3>
+                <h3 class="section-title">
+                    <i class="fas fa-film"></i> C. STORYBOARD & PRODUKSI
+                    <span class="section-badge">Kelompok</span>
+                </h3>
                 <div class="instruction-box">
-                    <i class="fas fa-video"></i> "Rencanakan alur kontenmu, lalu produksi!"
+                    <i class="fas fa-video"></i> Rencanakan alur kontenmu, lalu produksi!
                 </div>
 
-                <h4 class="section-subtitle">Aktivitas 1: Storyboard (Untuk Video) atau Sketsa (Untuk Poster)</h4>
+                <div class="screenshot-instruction">
+                    <i class="fas fa-camera"></i>
+                    <strong>📸 Instruksi Screenshot:</strong> Screenshot proses pembuatan konten (desain/editing) → Upload ke Google Drive → Tempel link di bawah
+                </div>
+
+                <h4 class="section-subtitle">Kegiatan 1: Storyboard (Minimal 3 Scene)</h4>
                 <p style="margin-bottom: 10px; color: #666; font-size: 0.95rem;">
                     <i class="fas fa-info-circle" style="color: var(--informatika-primary);"></i> 
                     Jika membuat video, isi 3-5 scene. Jika membuat poster, isi sebagai deskripsi visual.
@@ -1144,24 +1216,40 @@
                     </span>
                 </div>
 
-                <h4 class="section-subtitle" style="margin-top: 2rem;">Aktivitas 2: Catatan Produksi</h4>
-                <table class="qa-table" id="tabelProduksi">
+                <h4 class="section-subtitle" style="margin-top: 2rem;">Kegiatan 2: Catatan Produksi</h4>
+                <table class="qa-table">
                     <thead>
                         <tr><th class="no-col">No</th><th class="question-col">Tahapan</th><th class="answer-col">Kendala & Solusi</th></tr>
                     </thead>
                     <tbody>
-                        <tr><td class="no-col">1</td><td>Pengumpulan Materi</td><td><textarea class="answer-field" id="produksi_1" placeholder="Tulis kendala dan solusi..." oninput="saveToLocalStorage();"></textarea></td></tr>
-                        <tr><td class="no-col">2</td><td>Proses Desain/Editing</td><td><textarea class="answer-field" id="produksi_2" placeholder="Tulis kendala dan solusi..." oninput="saveToLocalStorage();"></textarea></td></tr>
-                        <tr><td class="no-col">3</td><td>Finishing & Upload</td><td><textarea class="answer-field" id="produksi_3" placeholder="Tulis kendala dan solusi..." oninput="saveToLocalStorage();"></textarea></td></tr>
+                        <tr><td class="no-col">1</td><td>Pengumpulan Materi</td><td><textarea class="answer-field" id="produksi_1" placeholder="Tulis kendala dan solusi..." oninput="autoResize(this); saveToLocalStorage();"></textarea></td></tr>
+                        <tr><td class="no-col">2</td><td>Proses Desain/Editing</td><td><textarea class="answer-field" id="produksi_2" placeholder="Tulis kendala dan solusi..." oninput="autoResize(this); saveToLocalStorage();"></textarea></td></tr>
+                        <tr><td class="no-col">3</td><td>Finishing & Upload</td><td><textarea class="answer-field" id="produksi_3" placeholder="Tulis kendala dan solusi..." oninput="autoResize(this); saveToLocalStorage();"></textarea></td></tr>
                     </tbody>
                 </table>
+
+                <div class="folder-link-box">
+                    <span class="label-link"><i class="fas fa-camera"></i> 📸 Link Screenshot - Bagian C</span>
+                    <div class="sub-text">Tempel link folder/screenshot proses pembuatan konten:</div>
+                    <input type="text" class="answer-field" id="link_screenshot_c" placeholder="https://drive.google.com/drive/folders/xxx" oninput="saveToLocalStorage();">
+                </div>
             </div>
 
-            <!-- ===== BAGIAN D: HASIL KONTEN ===== -->
+            <!-- ============================================================ -->
+            <!-- BAGIAN D: HASIL KONTEN -->
+            <!-- ============================================================ -->
             <div class="section-card">
-                <h3 class="section-title"><i class="fas fa-share-alt"></i> 📤 BAGIAN D: HASIL KONTEN (KELOMPOK)</h3>
+                <h3 class="section-title">
+                    <i class="fas fa-share-alt"></i> D. HASIL KONTEN
+                    <span class="section-badge">Kelompok</span>
+                </h3>
                 <div class="instruction-box">
-                    <i class="fas fa-link"></i> "Bagikan hasil karyamu! Unggah konten ke platform digital dan tempel link-nya di sini."
+                    <i class="fas fa-link"></i> Bagikan hasil karyamu! Unggah konten ke platform digital dan tempel link-nya di sini.
+                </div>
+
+                <div class="screenshot-instruction">
+                    <i class="fas fa-camera"></i>
+                    <strong>📸 Instruksi Screenshot:</strong> Screenshot hasil konten yang sudah diunggah → Upload ke Google Drive → Tempel link di bawah
                 </div>
 
                 <div class="link-box">
@@ -1185,7 +1273,7 @@
                     </div>
                 </div>
 
-                <table class="qa-table" id="tabelPublikasi">
+                <table class="qa-table">
                     <thead>
                         <tr><th class="no-col">No</th><th class="question-col">Platform Publikasi</th><th class="answer-col">Link/URL</th></tr>
                     </thead>
@@ -1194,32 +1282,43 @@
                         <tr><td class="no-col">2</td><td>Platform Cadangan</td><td><input type="text" class="answer-field" id="platform_2" placeholder="Link cadangan (opsional)..." oninput="saveToLocalStorage();"></td></tr>
                     </tbody>
                 </table>
+
+                <div class="folder-link-box">
+                    <span class="label-link"><i class="fas fa-camera"></i> 📸 Link Screenshot - Bagian D</span>
+                    <div class="sub-text">Tempel link folder/screenshot hasil konten yang sudah diunggah:</div>
+                    <input type="text" class="answer-field" id="link_screenshot_d" placeholder="https://drive.google.com/drive/folders/xxx" oninput="saveToLocalStorage();">
+                </div>
             </div>
 
-            <!-- ===== BAGIAN E: REFLEKSI ===== -->
+            <!-- ============================================================ -->
+            <!-- BAGIAN E: REFLEKSI -->
+            <!-- ============================================================ -->
             <div class="section-card">
-                <h3 class="section-title"><i class="fas fa-pen"></i> 📝 BAGIAN E: REFLEKSI (INDIVIDU)</h3>
+                <h3 class="section-title">
+                    <i class="fas fa-pen"></i> E. REFLEKSI
+                    <span class="section-badge">Individu</span>
+                </h3>
                 <div class="instruction-box">
-                    <i class="fas fa-question-circle"></i> "Apa yang aku pelajari hari ini?"
+                    <i class="fas fa-question-circle"></i> "Apa yang aku pelajari hari ini? Tulis dengan jujur!"
                 </div>
 
-                <table class="qa-table" id="tabelRefleksi">
+                <table class="qa-table">
                     <thead>
                         <tr><th class="no-col">No</th><th class="question-col">Pertanyaan</th><th class="answer-col">Jawabanku</th></tr>
                     </thead>
                     <tbody>
-                        <tr><td class="no-col">1</td><td>Hal baru apa yang aku pelajari tentang produksi konten digital?</td><td><textarea class="answer-field" id="ref1" oninput="saveToLocalStorage();"></textarea></td></tr>
-                        <tr><td class="no-col">2</td><td>Kesulitan apa yang aku hadapi saat membuat konten?</td><td><textarea class="answer-field" id="ref2" oninput="saveToLocalStorage();"></textarea></td></tr>
-                        <tr><td class="no-col">3</td><td>Aplikasi apa yang paling membantu dalam pembuatan konten?</td><td><input type="text" class="answer-field" id="ref3" oninput="saveToLocalStorage();"></td></tr>
-                        <tr><td class="no-col">4</td><td>Apakah konten ini sudah cukup baik untuk mempromosikan budaya?</td><td><textarea class="answer-field" id="ref4" oninput="saveToLocalStorage();"></textarea></td></tr>
-                        <tr><td class="no-col">5</td><td>Bagaimana perasaanmu setelah berhasil membuat konten budaya digital?</td><td><textarea class="answer-field" id="ref5" oninput="saveToLocalStorage();"></textarea></td></tr>
+                        <tr><td class="no-col">1</td><td>Hal baru apa yang aku pelajari tentang produksi konten digital?</td><td><textarea class="answer-field" id="ref1" placeholder="Tulis jawabanmu..." oninput="autoResize(this); saveToLocalStorage();"></textarea></td></tr>
+                        <tr><td class="no-col">2</td><td>Kesulitan apa yang aku hadapi saat membuat konten?</td><td><textarea class="answer-field" id="ref2" placeholder="Tulis jawabanmu..." oninput="autoResize(this); saveToLocalStorage();"></textarea></td></tr>
+                        <tr><td class="no-col">3</td><td>Aplikasi apa yang paling membantu dalam pembuatan konten?</td><td><input type="text" class="answer-field" id="ref3" placeholder="Tulis jawabanmu..." oninput="saveToLocalStorage();"></td></tr>
+                        <tr><td class="no-col">4</td><td>Apakah konten ini sudah cukup baik untuk mempromosikan budaya?</td><td><textarea class="answer-field" id="ref4" placeholder="Tulis jawabanmu..." oninput="autoResize(this); saveToLocalStorage();"></textarea></td></tr>
+                        <tr><td class="no-col">5</td><td>Bagaimana perasaanmu setelah berhasil membuat konten budaya digital?</td><td><textarea class="answer-field" id="ref5" placeholder="Tulis jawabanmu..." oninput="autoResize(this); saveToLocalStorage();"></textarea></td></tr>
                     </tbody>
                 </table>
 
-                <div style="margin-top: 1rem; background: #f8fafc; border-radius: 10px; padding: 1rem; border: 1px dashed var(--informatika-primary);">
-                    <p><strong>Checklist Pemahaman:</strong></p>
+                <div style="margin-top: 1.5rem; background: #f8fafc; border-radius: 10px; padding: 1rem; border: 1px dashed var(--informatika-primary);">
+                    <p><strong>✅ Checklist Pemahaman Akhir:</strong></p>
                     <div class="checkbox-grid">
-                        <div class="checkbox-item"><input type="checkbox" id="chk1" onchange="saveToLocalStorage();"><label for="chk1">Saya sudah membaca materi "Produksi Konten Digital"</label></div>
+                        <div class="checkbox-item"><input type="checkbox" id="chk1" onchange="saveToLocalStorage();"><label for="chk1">Saya sudah membaca materi "Produksi Konten Digital untuk Budaya"</label></div>
                         <div class="checkbox-item"><input type="checkbox" id="chk2" onchange="saveToLocalStorage();"><label for="chk2">Saya sudah berpartisipasi dalam pembuatan konten</label></div>
                         <div class="checkbox-item"><input type="checkbox" id="chk3" onchange="saveToLocalStorage();"><label for="chk3">Saya sudah menyelesaikan konten budaya digital</label></div>
                         <div class="checkbox-item"><input type="checkbox" id="chk4" onchange="saveToLocalStorage();"><label for="chk4">Saya sudah mengunggah konten ke platform digital</label></div>
@@ -1228,6 +1327,7 @@
                 </div>
             </div>
 
+            <!-- SUBMIT -->
             <button class="btn-submit" id="submitBtn" onclick="submitData()" disabled>
                 <i class="fas fa-paper-plane"></i> Kumpulkan LKPD
             </button>
@@ -1243,7 +1343,7 @@
         </div>
     </section>
 
-    <!-- ===== MODAL KONFIRMASI RESET (SUKSES) ===== -->
+    <!-- MODAL RESET -->
     <div id="resetModal" class="modal">
         <div class="modal-content">
             <div class="modal-icon icon-success">
@@ -1262,7 +1362,7 @@
         </div>
     </div>
 
-    <!-- ===== MODAL KONFIRMASI GANTI TUGAS ===== -->
+    <!-- MODAL KONFIRMASI GANTI -->
     <div id="confirmModal" class="modal">
         <div class="modal-content">
             <div class="modal-icon icon-warning">
@@ -1287,9 +1387,73 @@
     </div>
 
     <script>
-        // ==================== KONFIGURASI URL ====================
+        // ==================== AUTO RESIZE TEXTAREA ====================
+        function autoResize(element) {
+            element.style.height = 'auto';
+            element.style.height = element.scrollHeight + 'px';
+        }
+
+        // ==================== HAMBURGER MENU ====================
+        (function() {
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            const bars = hamburger ? hamburger.querySelectorAll('.bar') : [];
+
+            if (hamburger && navMenu) {
+                hamburger.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    navMenu.classList.toggle('active');
+                    
+                    if (navMenu.classList.contains('active')) {
+                        bars.forEach((bar, index) => {
+                            if (index === 0) bar.style.transform = 'rotate(45deg) translate(5px, 5px)';
+                            else if (index === 1) bar.style.opacity = '0';
+                            else if (index === 2) bar.style.transform = 'rotate(-45deg) translate(5px, -5px)';
+                        });
+                    } else {
+                        bars.forEach(bar => {
+                            bar.style.transform = 'none';
+                            bar.style.opacity = '1';
+                        });
+                    }
+                });
+
+                document.addEventListener('click', function(event) {
+                    const isClickInside = navMenu.contains(event.target) || hamburger.contains(event.target);
+                    if (!isClickInside && navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                        bars.forEach(bar => {
+                            bar.style.transform = 'none';
+                            bar.style.opacity = '1';
+                        });
+                    }
+                });
+
+                navMenu.querySelectorAll('.nav-link').forEach(link => {
+                    link.addEventListener('click', function() {
+                        navMenu.classList.remove('active');
+                        bars.forEach(bar => {
+                            bar.style.transform = 'none';
+                            bar.style.opacity = '1';
+                        });
+                    });
+                });
+
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                        bars.forEach(bar => {
+                            bar.style.transform = 'none';
+                            bar.style.opacity = '1';
+                        });
+                    }
+                });
+            }
+        })();
+
+        // ==================== KONFIGURASI ====================
         const URL_DATA_SISWA = 'https://script.google.com/macros/s/AKfycbxZMS_o6xWMAQAkjBzzEMR9tJmHOnHCX13KJX2xZMn7WIr-A9pwVK_3DDHnMg7y_rD29Q/exec';
-        const URL_PEREKAPAN = 'https://script.google.com/macros/s/AKfycbwRlLJQQ5ypD1jzsHICPZH6kfrSFHKHGXo0hPKjzwtHH04EDrAid7dqtDv7q6TCbDRj/exec';
+        const URL_PEREKAPAN = 'https://script.google.com/macros/s/AKfycbzBn7u9sH-UrUL3Xc4PnI16c1QbkR-w2Za5JDaJM5Utak1gntOvfrbsbkTEkRBn5xB9uQ/exec';
         const STORAGE_KEY = 'proyek2_aktivitas3_draft';
         const AKTIVITAS_NAMA = 'AKTIVITAS 3 - Produksi Konten Budaya Digital';
         const SHEET_NAME = 'data_aktivitas';
@@ -1303,8 +1467,7 @@
         let pendingSubmitData = null;
         let sceneCounter = 0;
 
-        // ==================== FUNGSI UTILITY ====================
-        function getValue(id) { const el = document.getElementById(id); return el ? el.value : ''; }
+        // ==================== UTILITY ====================
         function getChecked(id) { const el = document.getElementById(id); return el ? el.checked : false; }
 
         function getFormattedTimestamp() {
@@ -1333,8 +1496,7 @@
             autoSaveTimeout = setTimeout(() => {
                 const formData = collectAllFormData();
                 localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
-                console.log('Data tersimpan otomatis', new Date().toLocaleTimeString());
-            }, 1000);
+            }, 500);
         }
 
         function loadFromLocalStorage() {
@@ -1343,6 +1505,9 @@
                 try {
                     const data = JSON.parse(savedData);
                     populateFormData(data);
+                    document.querySelectorAll('textarea.answer-field').forEach(el => {
+                        autoResize(el);
+                    });
                 } catch (e) {
                     console.error('Error loading saved data:', e);
                 }
@@ -1363,8 +1528,8 @@
             const no = tbody.rows.length;
 
             row.insertCell(0).innerHTML = no;
-            row.insertCell(1).innerHTML = `<textarea class="answer-field" id="scene_visual_${sceneCounter}" placeholder="Deskripsi visual/adegan..." oninput="saveToLocalStorage();"></textarea>`;
-            row.insertCell(2).innerHTML = `<textarea class="answer-field" id="scene_narasi_${sceneCounter}" placeholder="Narasi/keterangan..." oninput="saveToLocalStorage();"></textarea>`;
+            row.insertCell(1).innerHTML = `<textarea class="answer-field" id="scene_visual_${sceneCounter}" placeholder="Deskripsi visual/adegan..." oninput="autoResize(this); saveToLocalStorage();"></textarea>`;
+            row.insertCell(2).innerHTML = `<textarea class="answer-field" id="scene_narasi_${sceneCounter}" placeholder="Narasi/keterangan..." oninput="autoResize(this); saveToLocalStorage();"></textarea>`;
 
             const actionCell = row.insertCell(3);
             actionCell.className = 'action-cell';
@@ -1432,8 +1597,8 @@
                     sceneCounter++;
                     const row = tbody.insertRow();
                     row.insertCell(0).innerHTML = tbody.rows.length;
-                    row.insertCell(1).innerHTML = `<textarea class="answer-field" id="scene_visual_${sceneCounter}" placeholder="Deskripsi visual/adegan..." oninput="saveToLocalStorage();">${scene.Visual || ''}</textarea>`;
-                    row.insertCell(2).innerHTML = `<textarea class="answer-field" id="scene_narasi_${sceneCounter}" placeholder="Narasi/keterangan..." oninput="saveToLocalStorage();">${scene.Narasi || ''}</textarea>`;
+                    row.insertCell(1).innerHTML = `<textarea class="answer-field" id="scene_visual_${sceneCounter}" placeholder="Deskripsi visual/adegan..." oninput="autoResize(this); saveToLocalStorage();">${scene.Visual || ''}</textarea>`;
+                    row.insertCell(2).innerHTML = `<textarea class="answer-field" id="scene_narasi_${sceneCounter}" placeholder="Narasi/keterangan..." oninput="autoResize(this); saveToLocalStorage();">${scene.Narasi || ''}</textarea>`;
                     const actionCell = row.insertCell(3);
                     actionCell.className = 'action-cell';
                     actionCell.innerHTML = `
@@ -1443,81 +1608,136 @@
                     `;
                 });
             } else {
-                // Default 4 scenes
-                for (let i = 1; i <= 4; i++) {
+                // Default 3 scenes
+                for (let i = 1; i <= 3; i++) {
                     tambahScene();
                 }
             }
             updateNomorScene();
         }
 
-        // ==================== COLLECT ALL FORM DATA ====================
+        // ==================== COLLECT FORM DATA ====================
         function collectAllFormData() {
             const timestamp = getFormattedTimestamp();
             
+            // Collect storyboard data
+            const storyboardData = getDataStoryboard();
+            const storyboardArray = [["Scene", "Visual/Adegan", "Narasi/Keterangan"]];
+            storyboardData.forEach((item, idx) => {
+                storyboardArray.push([String(idx + 1), item.Visual || '', item.Narasi || '']);
+            });
+
+            // Collect production notes
+            const produksiArray = [
+                ["Tahapan", "Kendala & Solusi"],
+                ["Pengumpulan Materi", document.getElementById('produksi_1').value || ''],
+                ["Proses Desain/Editing", document.getElementById('produksi_2').value || ''],
+                ["Finishing & Upload", document.getElementById('produksi_3').value || '']
+            ];
+
+            // Collect links
+            const linkArray = [
+                ["Jenis", "Link"],
+                ["Link Hasil Konten", document.getElementById('link_konten').value || ''],
+                ["Platform Utama", document.getElementById('platform_1').value || ''],
+                ["Platform Cadangan", document.getElementById('platform_2').value || '']
+            ];
+
             return {
-                "timestamp": timestamp,
-                "identitas": {
-                    "kelas": document.getElementById('kelas').value || '',
-                    "nama": document.getElementById('nama').value || '',
-                    "kelompok": document.getElementById('kelompok').value || '',
-                    "peran": document.getElementById('peran').value || ''
+                "Timestamp Pengisian": timestamp,
+                "A. Identitas Kelompok": [
+                    ["Field", "Nilai"],
+                    ["Kelas", document.getElementById('kelas').value || ''],
+                    ["Nama Lengkap", document.getElementById('nama').value || ''],
+                    ["Nama Kelompok", document.getElementById('kelompok').value || ''],
+                    ["Peran dalam Kelompok", document.getElementById('peran').value || '']
+                ],
+                "B. Pemahaman Produksi": {
+                    "Pertanyaan": [
+                        ["Pertanyaan", "Jawaban"],
+                        ["Apa yang dimaksud dengan konten digital?", document.getElementById('review1').value || ''],
+                        ["Sebutkan 3 jenis konten digital yang populer!", document.getElementById('review2').value || ''],
+                        ["Apa yang perlu diperhatikan dalam membuat konten yang baik?", document.getElementById('review3').value || ''],
+                        ["Mengapa kita perlu memperhatikan hak cipta dalam membuat konten?", document.getElementById('review4').value || '']
+                    ],
+                    "Checklist": [
+                        ["Item", "Status"],
+                        ["Sudah membaca materi Produksi Konten Digital untuk Budaya", getChecked('bacaMateri')]
+                    ],
+                    "Link Screenshot": document.getElementById('link_screenshot_a').value || ''
                 },
-                "bagian_a": {
-                    "review1": document.getElementById('review1')?.value || '',
-                    "review2": document.getElementById('review2')?.value || '',
-                    "review3": document.getElementById('review3')?.value || '',
-                    "review4": document.getElementById('review4')?.value || '',
-                    "bacaMateri": getChecked('bacaMateri')
+                "C. Perencanaan Konten": {
+                    "Budaya Pilihan": [
+                        ["Pertanyaan", "Jawaban"],
+                        ["Budaya pilihan kelompok", document.getElementById('budaya_pilihan').value || '']
+                    ],
+                    "Rencana": [
+                        ["Elemen Perencanaan", "Rencana Kelompok"],
+                        ["Jenis konten", document.getElementById('jenis_konten').value || ''],
+                        ["Judul Konten", document.getElementById('judul_konten').value || ''],
+                        ["Target Audiens", document.getElementById('target_audiens').value || ''],
+                        ["Pesan Utama", document.getElementById('pesan_utama').value || ''],
+                        ["Fakta Unik Budaya", document.getElementById('fakta_unik').value || ''],
+                        ["Aplikasi/Tools", document.getElementById('tools_konten').value || '']
+                    ]
                 },
-                "bagian_b": {
-                    "budaya_pilihan": document.getElementById('budaya_pilihan')?.value || '',
-                    "jenis_konten": document.getElementById('jenis_konten')?.value || '',
-                    "judul_konten": document.getElementById('judul_konten')?.value || '',
-                    "target_audiens": document.getElementById('target_audiens')?.value || '',
-                    "pesan_utama": document.getElementById('pesan_utama')?.value || '',
-                    "fakta_unik": document.getElementById('fakta_unik')?.value || '',
-                    "tools_konten": document.getElementById('tools_konten')?.value || ''
+                "D. Storyboard & Produksi": {
+                    "Storyboard": storyboardArray,
+                    "Catatan Produksi": produksiArray,
+                    "Link Screenshot": document.getElementById('link_screenshot_c').value || ''
                 },
-                "bagian_c": {
-                    "storyboard": getDataStoryboard(),
-                    "produksi_1": document.getElementById('produksi_1')?.value || '',
-                    "produksi_2": document.getElementById('produksi_2')?.value || '',
-                    "produksi_3": document.getElementById('produksi_3')?.value || ''
+                "E. Hasil Konten": {
+                    "Link": linkArray,
+                    "Link Screenshot": document.getElementById('link_screenshot_d').value || ''
                 },
-                "bagian_d": {
-                    "link_konten": document.getElementById('link_konten')?.value || '',
-                    "platform_1": document.getElementById('platform_1')?.value || '',
-                    "platform_2": document.getElementById('platform_2')?.value || ''
-                },
-                "bagian_e": {
-                    "ref1": document.getElementById('ref1')?.value || '',
-                    "ref2": document.getElementById('ref2')?.value || '',
-                    "ref3": document.getElementById('ref3')?.value || '',
-                    "ref4": document.getElementById('ref4')?.value || '',
-                    "ref5": document.getElementById('ref5')?.value || '',
-                    "checklist": {
-                        "chk1": getChecked('chk1'),
-                        "chk2": getChecked('chk2'),
-                        "chk3": getChecked('chk3'),
-                        "chk4": getChecked('chk4'),
-                        "chk5": getChecked('chk5')
-                    }
+                "F. Refleksi": {
+                    "Pertanyaan": [
+                        ["Pertanyaan", "Jawabanku"],
+                        ["Hal baru yang aku pelajari tentang produksi konten digital", document.getElementById('ref1').value || ''],
+                        ["Kesulitan yang aku hadapi saat membuat konten", document.getElementById('ref2').value || ''],
+                        ["Aplikasi yang paling membantu", document.getElementById('ref3').value || ''],
+                        ["Apakah konten ini sudah cukup baik untuk mempromosikan budaya?", document.getElementById('ref4').value || ''],
+                        ["Perasaan setelah berhasil membuat konten", document.getElementById('ref5').value || '']
+                    ],
+                    "Checklist": [
+                        ["Pemahaman", "Status"],
+                        ["Membaca materi Produksi Konten Digital untuk Budaya", getChecked('chk1')],
+                        ["Berpartisipasi dalam pembuatan konten", getChecked('chk2')],
+                        ["Menyelesaikan konten budaya digital", getChecked('chk3')],
+                        ["Mengunggah konten ke platform digital", getChecked('chk4')],
+                        ["Bangga dengan hasil karya kelompok", getChecked('chk5')]
+                    ]
                 }
             };
         }
 
-        // ==================== POPULATE FORM DATA ====================
+        // ==================== POPULATE FORM ====================
         function populateFormData(savedData) {
             if (!savedData) return;
             
-            // Identitas
-            if (savedData.identitas) {
+            // A. Identitas
+            if (savedData["A. Identitas Kelompok"] && Array.isArray(savedData["A. Identitas Kelompok"])) {
+                const identitasArray = savedData["A. Identitas Kelompok"];
                 const kelasEl = document.getElementById('kelas');
                 const namaEl = document.getElementById('nama');
+                
+                let kelasValue = '';
+                let namaValue = '';
+                let kelompokValue = '';
+                let peranValue = '';
+                
+                identitasArray.forEach(item => {
+                    if (Array.isArray(item) && item.length === 2) {
+                        if (item[0] === "Kelas") kelasValue = item[1];
+                        else if (item[0] === "Nama Lengkap") namaValue = item[1];
+                        else if (item[0] === "Nama Kelompok") kelompokValue = item[1];
+                        else if (item[0] === "Peran dalam Kelompok") peranValue = item[1];
+                    }
+                });
+                
                 if (kelasEl) {
                     for (let option of kelasEl.options) {
-                        if (option.value === savedData.identitas.kelas) {
+                        if (option.value === kelasValue) {
                             option.selected = true;
                             break;
                         }
@@ -1526,71 +1746,179 @@
                 }
                 if (namaEl) {
                     for (let option of namaEl.options) {
-                        if (option.value === savedData.identitas.nama) {
+                        if (option.value === namaValue) {
                             option.selected = true;
                             break;
                         }
                     }
                 }
-                document.getElementById('kelompok').value = savedData.identitas.kelompok || '';
-                document.getElementById('peran').value = savedData.identitas.peran || '';
+                document.getElementById('kelompok').value = kelompokValue;
+                document.getElementById('peran').value = peranValue;
             }
 
-            // Bagian A
-            if (savedData.bagian_a) {
-                const a = savedData.bagian_a;
-                document.getElementById('review1').value = a.review1 || '';
-                document.getElementById('review2').value = a.review2 || '';
-                document.getElementById('review3').value = a.review3 || '';
-                document.getElementById('review4').value = a.review4 || '';
-                document.getElementById('bacaMateri').checked = a.bacaMateri || false;
-            }
-
-            // Bagian B
-            if (savedData.bagian_b) {
-                const b = savedData.bagian_b;
-                document.getElementById('budaya_pilihan').value = b.budaya_pilihan || '';
-                document.getElementById('jenis_konten').value = b.jenis_konten || '';
-                document.getElementById('judul_konten').value = b.judul_konten || '';
-                document.getElementById('target_audiens').value = b.target_audiens || '';
-                document.getElementById('pesan_utama').value = b.pesan_utama || '';
-                document.getElementById('fakta_unik').value = b.fakta_unik || '';
-                document.getElementById('tools_konten').value = b.tools_konten || '';
-            }
-
-            // Bagian C
-            if (savedData.bagian_c) {
-                const c = savedData.bagian_c;
-                if (c.storyboard) {
-                    populateStoryboard(c.storyboard);
+            // B. Pemahaman Produksi
+            if (savedData["B. Pemahaman Produksi"]) {
+                const b = savedData["B. Pemahaman Produksi"];
+                if (b["Pertanyaan"] && Array.isArray(b["Pertanyaan"])) {
+                    const qMap = {
+                        "Apa yang dimaksud dengan konten digital?": 'review1',
+                        "Sebutkan 3 jenis konten digital yang populer!": 'review2',
+                        "Apa yang perlu diperhatikan dalam membuat konten yang baik?": 'review3',
+                        "Mengapa kita perlu memperhatikan hak cipta dalam membuat konten?": 'review4'
+                    };
+                    b["Pertanyaan"].forEach(item => {
+                        if (Array.isArray(item) && item.length === 2) {
+                            const id = qMap[item[0]];
+                            if (id) {
+                                const el = document.getElementById(id);
+                                if (el) el.value = item[1] || '';
+                            }
+                        }
+                    });
                 }
-                document.getElementById('produksi_1').value = c.produksi_1 || '';
-                document.getElementById('produksi_2').value = c.produksi_2 || '';
-                document.getElementById('produksi_3').value = c.produksi_3 || '';
+                if (b["Checklist"] && Array.isArray(b["Checklist"])) {
+                    const el = document.getElementById('bacaMateri');
+                    if (el) {
+                        b["Checklist"].forEach(item => {
+                            if (Array.isArray(item) && item.length === 2 && item[0] === "Sudah membaca materi Produksi Konten Digital untuk Budaya") {
+                                el.checked = item[1] || false;
+                            }
+                        });
+                    }
+                }
+                const linkEl = document.getElementById('link_screenshot_a');
+                if (linkEl) linkEl.value = b["Link Screenshot"] || '';
             }
 
-            // Bagian D
-            if (savedData.bagian_d) {
-                const d = savedData.bagian_d;
-                document.getElementById('link_konten').value = d.link_konten || '';
-                document.getElementById('platform_1').value = d.platform_1 || '';
-                document.getElementById('platform_2').value = d.platform_2 || '';
+            // C. Perencanaan Konten
+            if (savedData["C. Perencanaan Konten"]) {
+                const c = savedData["C. Perencanaan Konten"];
+                if (c["Budaya Pilihan"] && Array.isArray(c["Budaya Pilihan"])) {
+                    c["Budaya Pilihan"].forEach(item => {
+                        if (Array.isArray(item) && item.length === 2 && item[0] === "Budaya pilihan kelompok") {
+                            const el = document.getElementById('budaya_pilihan');
+                            if (el) el.value = item[1] || '';
+                        }
+                    });
+                }
+                if (c["Rencana"] && Array.isArray(c["Rencana"])) {
+                    const qMap = {
+                        "Jenis konten": 'jenis_konten',
+                        "Judul Konten": 'judul_konten',
+                        "Target Audiens": 'target_audiens',
+                        "Pesan Utama": 'pesan_utama',
+                        "Fakta Unik Budaya": 'fakta_unik',
+                        "Aplikasi/Tools": 'tools_konten'
+                    };
+                    c["Rencana"].forEach(item => {
+                        if (Array.isArray(item) && item.length === 2) {
+                            const id = qMap[item[0]];
+                            if (id) {
+                                const el = document.getElementById(id);
+                                if (el) el.value = item[1] || '';
+                            }
+                        }
+                    });
+                }
             }
 
-            // Bagian E
-            if (savedData.bagian_e) {
-                const e = savedData.bagian_e;
-                document.getElementById('ref1').value = e.ref1 || '';
-                document.getElementById('ref2').value = e.ref2 || '';
-                document.getElementById('ref3').value = e.ref3 || '';
-                document.getElementById('ref4').value = e.ref4 || '';
-                document.getElementById('ref5').value = e.ref5 || '';
-                if (e.checklist) {
-                    document.getElementById('chk1').checked = e.checklist.chk1 || false;
-                    document.getElementById('chk2').checked = e.checklist.chk2 || false;
-                    document.getElementById('chk3').checked = e.checklist.chk3 || false;
-                    document.getElementById('chk4').checked = e.checklist.chk4 || false;
-                    document.getElementById('chk5').checked = e.checklist.chk5 || false;
+            // D. Storyboard & Produksi
+            if (savedData["D. Storyboard & Produksi"]) {
+                const d = savedData["D. Storyboard & Produksi"];
+                if (d["Storyboard"] && Array.isArray(d["Storyboard"])) {
+                    const scenes = [];
+                    // Skip header (index 0)
+                    for (let i = 1; i < d["Storyboard"].length; i++) {
+                        const row = d["Storyboard"][i];
+                        if (Array.isArray(row) && row.length >= 3) {
+                            scenes.push({ Visual: row[1] || '', Narasi: row[2] || '' });
+                        }
+                    }
+                    if (scenes.length > 0) {
+                        populateStoryboard(scenes);
+                    }
+                }
+                if (d["Catatan Produksi"] && Array.isArray(d["Catatan Produksi"])) {
+                    const qMap = {
+                        "Pengumpulan Materi": 'produksi_1',
+                        "Proses Desain/Editing": 'produksi_2',
+                        "Finishing & Upload": 'produksi_3'
+                    };
+                    d["Catatan Produksi"].forEach(item => {
+                        if (Array.isArray(item) && item.length === 2) {
+                            const id = qMap[item[0]];
+                            if (id) {
+                                const el = document.getElementById(id);
+                                if (el) el.value = item[1] || '';
+                            }
+                        }
+                    });
+                }
+                const linkEl = document.getElementById('link_screenshot_c');
+                if (linkEl) linkEl.value = d["Link Screenshot"] || '';
+            }
+
+            // E. Hasil Konten
+            if (savedData["E. Hasil Konten"]) {
+                const e = savedData["E. Hasil Konten"];
+                if (e["Link"] && Array.isArray(e["Link"])) {
+                    const qMap = {
+                        "Link Hasil Konten": 'link_konten',
+                        "Platform Utama": 'platform_1',
+                        "Platform Cadangan": 'platform_2'
+                    };
+                    e["Link"].forEach(item => {
+                        if (Array.isArray(item) && item.length === 2) {
+                            const id = qMap[item[0]];
+                            if (id) {
+                                const el = document.getElementById(id);
+                                if (el) el.value = item[1] || '';
+                            }
+                        }
+                    });
+                }
+                const linkEl = document.getElementById('link_screenshot_d');
+                if (linkEl) linkEl.value = e["Link Screenshot"] || '';
+            }
+
+            // F. Refleksi
+            if (savedData["F. Refleksi"]) {
+                const f = savedData["F. Refleksi"];
+                if (f["Pertanyaan"] && Array.isArray(f["Pertanyaan"])) {
+                    const qMap = {
+                        "Hal baru yang aku pelajari tentang produksi konten digital": 'ref1',
+                        "Kesulitan yang aku hadapi saat membuat konten": 'ref2',
+                        "Aplikasi yang paling membantu": 'ref3',
+                        "Apakah konten ini sudah cukup baik untuk mempromosikan budaya?": 'ref4',
+                        "Perasaan setelah berhasil membuat konten": 'ref5'
+                    };
+                    f["Pertanyaan"].forEach(item => {
+                        if (Array.isArray(item) && item.length === 2) {
+                            const id = qMap[item[0]];
+                            if (id) {
+                                const el = document.getElementById(id);
+                                if (el) el.value = item[1] || '';
+                            }
+                        }
+                    });
+                }
+                if (f["Checklist"] && Array.isArray(f["Checklist"])) {
+                    const clMap = {
+                        "Membaca materi Produksi Konten Digital untuk Budaya": 'chk1',
+                        "Berpartisipasi dalam pembuatan konten": 'chk2',
+                        "Menyelesaikan konten budaya digital": 'chk3',
+                        "Mengunggah konten ke platform digital": 'chk4',
+                        "Bangga dengan hasil karya kelompok": 'chk5'
+                    };
+                    f["Checklist"].forEach(item => {
+                        if (Array.isArray(item) && item.length === 2) {
+                            const id = clMap[item[0]];
+                            if (id) {
+                                const el = document.getElementById(id);
+                                if (el) el.checked = item[1] || false;
+                            }
+                        }
+                    });
                 }
             }
         }
@@ -1616,37 +1944,37 @@
             if (tbody) {
                 tbody.innerHTML = '';
                 sceneCounter = 0;
-                for (let i = 1; i <= 4; i++) {
+                for (let i = 1; i <= 3; i++) {
                     tambahScene();
                 }
             }
             
+            document.querySelectorAll('textarea.answer-field').forEach(el => {
+                el.style.height = 'auto';
+            });
+            
             clearLocalStorage();
         }
 
-        // ==================== MODAL FUNCTIONS ====================
+        // ==================== MODAL ====================
         function showModal() { 
-            const modal = document.getElementById('resetModal');
-            modal.style.display = 'block'; 
+            document.getElementById('resetModal').style.display = 'block'; 
             document.body.classList.add('modal-open');
         }
 
         function closeModal() { 
-            const modal = document.getElementById('resetModal');
-            modal.style.display = 'none'; 
+            document.getElementById('resetModal').style.display = 'none'; 
             document.body.classList.remove('modal-open');
         }
 
         function showConfirmModal(key) {
             document.getElementById('confirmKeyDisplay').textContent = key;
-            const modal = document.getElementById('confirmModal');
-            modal.style.display = 'block';
+            document.getElementById('confirmModal').style.display = 'block';
             document.body.classList.add('modal-open');
         }
 
         function closeConfirmModal() {
-            const modal = document.getElementById('confirmModal');
-            modal.style.display = 'none';
+            document.getElementById('confirmModal').style.display = 'none';
             document.body.classList.remove('modal-open');
             pendingSubmitData = null;
         }
@@ -1673,31 +2001,15 @@
             }
         }
 
-        // Tutup modal jika klik di luar
         document.addEventListener('click', function(event) {
-            const resetModal = document.getElementById('resetModal');
-            const confirmModal = document.getElementById('confirmModal');
-            
-            if (event.target === resetModal) {
-                closeModal();
-            }
-            if (event.target === confirmModal) {
-                closeConfirmModal();
-            }
+            if (event.target === document.getElementById('resetModal')) closeModal();
+            if (event.target === document.getElementById('confirmModal')) closeConfirmModal();
         });
 
-        // Tutup modal dengan tombol ESC
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
-                const resetModal = document.getElementById('resetModal');
-                const confirmModal = document.getElementById('confirmModal');
-                
-                if (resetModal.style.display === 'block') {
-                    closeModal();
-                }
-                if (confirmModal.style.display === 'block') {
-                    closeConfirmModal();
-                }
+                if (document.getElementById('resetModal').style.display === 'block') closeModal();
+                if (document.getElementById('confirmModal').style.display === 'block') closeConfirmModal();
             }
         });
 
@@ -1815,11 +2127,10 @@
             });
         }
 
-        // ==================== CEK DATA DI SPREADSHEET ====================
+        // ==================== CEK DATA ====================
         async function cekDataDiSpreadsheet(kelas, nama, aktivitas) {
             try {
                 const url = `${URL_PEREKAPAN}?action=getDataSiswa&kelas=${encodeURIComponent(kelas)}&nama=${encodeURIComponent(nama)}&aktivitas=${encodeURIComponent(aktivitas)}`;
-                
                 const response = await fetch(url);
                 const result = await response.json();
                 
@@ -1830,7 +2141,6 @@
                         data: result.data
                     };
                 }
-                
                 return { found: false };
             } catch (error) {
                 console.error('Error cek data:', error);
@@ -1838,13 +2148,12 @@
             }
         }
 
-        // ==================== SUBMIT DATA ====================
+        // ==================== SUBMIT ====================
         async function submitData() {
             if (isLoading) { alert('Data masih dimuat. Silakan tunggu.'); return; }
             if (!navigator.onLine) { alert('Tidak ada koneksi internet.'); return; }
             if (isSubmitting) { alert('Proses pengiriman sedang berlangsung. Mohon tunggu...'); return; }
 
-            // ===== VALIDASI: Apakah sudah membaca materi? =====
             const sudahBaca = confirm(
                 '📖 Apakah kamu sudah membaca materi "Produksi Konten Digital untuk Budaya"?\n\n' +
                 'Jika belum, klik "Batal" untuk membaca materi terlebih dahulu.\n' +
@@ -1856,25 +2165,14 @@
                       'Klik tombol "Baca Materi Sekarang" di bagian atas halaman.');
                 return;
             }
-            // ===== END VALIDASI =====
 
             const kelas = document.getElementById('kelas').value;
             const nama = document.getElementById('nama').value;
             const kelompok = document.getElementById('kelompok').value;
-            const peran = document.getElementById('peran').value;
 
-            if (!kelas) {
-                alert('Silakan isi kelas terlebih dahulu');
-                return;
-            }
-            if (!nama) {
-                alert('Silakan isi nama terlebih dahulu');
-                return;
-            }
-            if (!kelompok) {
-                alert('Silakan isi nama kelompok');
-                return;
-            }
+            if (!kelas) { alert('Silakan isi kelas terlebih dahulu'); return; }
+            if (!nama) { alert('Silakan isi nama terlebih dahulu'); return; }
+            if (!kelompok) { alert('Silakan isi nama kelompok'); return; }
 
             const submitBtn = document.getElementById('submitBtn');
             submitBtn.disabled = true;
@@ -1886,8 +2184,7 @@
                     allData: allData,
                     kelas: kelas,
                     nama: nama,
-                    kelompok: kelompok,
-                    peran: peran
+                    kelompok: kelompok
                 };
 
                 const result = await cekDataDiSpreadsheet(kelas, nama, AKTIVITAS_NAMA);
@@ -1920,21 +2217,16 @@
                 const { allData, kelas, nama } = data;
                 
                 const formData = new URLSearchParams();
-                
                 formData.append('sheetName', SHEET_NAME);
                 formData.append('data', JSON.stringify(allData));
                 formData.append('kelas', kelas);
                 formData.append('nama', nama);
                 formData.append('aktivitas', AKTIVITAS_NAMA);
-                if (isReplace) {
-                    formData.append('replace', 'true');
-                }
+                if (isReplace) formData.append('replace', 'true');
 
                 const response = await fetch(URL_PEREKAPAN, {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                    },
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                     body: formData
                 });
 
@@ -1974,20 +2266,18 @@
                 submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Kumpulkan LKPD';
                 isSubmitting = false;
                 pendingSubmitData = null;
-                
                 document.getElementById('confirmGantiBtn').disabled = false;
                 document.getElementById('confirmGantiBtn').innerHTML = '<i class="fas fa-exchange-alt"></i> Ya, Ganti Data';
             }
         }
 
-        // ==================== EXPORT TEMPLATE LEMBAR AKTIVITAS (KOSONG) ====================
+        // ==================== EXPORT ====================
         function exportToDocx() {
             const exportBtn = document.getElementById('exportBtn');
             exportBtn.disabled = true;
             exportBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memproses...';
 
             try {
-                // === BANGUN HTML TEMPLATE KOSONG UNTUK WORD ===
                 const now = new Date();
                 const dateStr = now.toLocaleDateString('id-ID', {
                     day: 'numeric', month: 'long', year: 'numeric'
@@ -2009,255 +2299,78 @@
                         </xml>
                         <![endif]-->
                         <style>
-                            /* ===== STYLE UNTUK TEMPLATE ===== */
-                            body {
-                                font-family: 'Calibri', 'Segoe UI', Arial, sans-serif;
-                                font-size: 11pt;
-                                line-height: 1.5;
-                                color: #222;
-                                padding: 30px 40px;
-                                margin: 0;
-                            }
-                            
-                            .worksheet-title {
-                                color: #21618c;
-                                font-size: 18pt;
-                                text-align: center;
-                                font-weight: bold;
-                                border-bottom: 2px solid #d5f4e6;
-                                padding-bottom: 8px;
-                                margin: 0 0 15px 0;
-                            }
-                            
-                            .section-title {
-                                color: #21618c;
-                                font-size: 12pt;
-                                font-weight: 600;
-                                border-bottom: 2px solid #ebf5fb;
-                                padding-bottom: 6px;
-                                margin: 15px 0 8px 0;
-                            }
-                            
-                            .section-subtitle {
-                                color: #2980b9;
-                                font-size: 11pt;
-                                font-weight: 600;
-                                margin: 12px 0 6px 0;
-                            }
-                            
-                            .subtitle {
-                                color: #666;
-                                font-size: 10pt;
-                                margin-bottom: 12px;
-                            }
-                            .subtitle span {
-                                margin-right: 15px;
-                            }
-                            
-                            .identitas-box {
-                                background: #f0f8f0;
-                                padding: 12px 15px;
-                                margin-bottom: 15px;
-                                border-radius: 4px;
-                            }
-                            .identitas-box table {
-                                width: 100%;
-                                border: none;
-                            }
-                            .identitas-box td {
-                                padding: 4px 8px;
-                                border: none;
-                                vertical-align: middle;
-                            }
-                            .identitas-box .label {
-                                font-weight: 600;
-                                color: #21618c;
-                                width: 80px;
-                            }
-                            .identitas-box .kosong {
-                                border-bottom: 1px solid #999;
-                                min-width: 150px;
-                                display: inline-block;
-                                padding: 0 20px 0 5px;
-                                color: #999;
-                                font-style: italic;
-                            }
-                            
-                            table {
-                                width: 100%;
-                                border-collapse: collapse;
-                                margin: 8px 0;
-                                font-size: 10pt;
-                            }
-                            
-                            th {
-                                background: #3498db;
-                                color: white;
-                                padding: 6px 8px;
-                                text-align: left;
-                                font-weight: 600;
-                                border: 1px solid #3498db;
-                            }
-                            
-                            td {
-                                padding: 6px 8px;
-                                border: 1px solid #ddd;
-                                vertical-align: top;
-                            }
-                            
-                            .checkbox-grid {
-                                display: flex;
-                                flex-wrap: wrap;
-                                gap: 8px 20px;
-                                margin: 8px 0;
-                            }
-                            .checkbox-item {
-                                display: flex;
-                                align-items: center;
-                                gap: 6px;
-                            }
-                            .checkbox-item .kotak-cek {
-                                display: inline-block;
-                                width: 14px;
-                                height: 14px;
-                                border: 2px solid #999;
-                                background: white;
-                                margin-right: 5px;
-                            }
-                            
-                            .tempat-jawaban {
-                                background: #fafafa;
-                                padding: 4px 8px;
-                                border-radius: 3px;
-                                border: 1px dashed #ccc;
-                                display: block;
-                                min-height: 35px;
-                                color: #999;
-                                font-style: italic;
-                            }
-                            
-                            .instruction-box {
-                                background: #ebf5fb;
-                                padding: 8px 12px;
-                                border-left: 4px solid #3498db;
-                                margin: 8px 0;
-                                border-radius: 4px;
-                            }
-                            
-                            .section-card {
-                                border: 1px solid #e0e7ff;
-                                border-radius: 8px;
-                                padding: 12px 15px;
-                                margin-bottom: 15px;
-                            }
-                            
+                            body { font-family: 'Calibri', 'Segoe UI', Arial, sans-serif; font-size: 11pt; line-height: 1.5; color: #222; padding: 30px 40px; margin: 0; }
+                            .worksheet-title { color: #21618c; font-size: 18pt; text-align: center; font-weight: bold; border-bottom: 2px solid #d5f4e6; padding-bottom: 8px; margin: 0 0 15px 0; }
+                            .section-title { color: #21618c; font-size: 12pt; font-weight: 600; border-bottom: 2px solid #ebf5fb; padding-bottom: 6px; margin: 15px 0 8px 0; }
+                            .section-subtitle { color: #2980b9; font-size: 11pt; font-weight: 600; margin: 12px 0 6px 0; }
+                            .section-badge { background: #3498db; color: white; padding: 2px 10px; border-radius: 12px; font-size: 8pt; display: inline-block; margin-left: 8px; }
+                            .subtitle { color: #666; font-size: 10pt; margin-bottom: 12px; }
+                            .subtitle span { margin-right: 15px; }
+                            .identitas-box { background: #f0f8f0; padding: 12px 15px; margin-bottom: 15px; border-radius: 4px; }
+                            .identitas-box table { width: 100%; border: none; }
+                            .identitas-box td { padding: 4px 8px; border: none; vertical-align: middle; }
+                            .identitas-box .label { font-weight: 600; color: #21618c; width: 80px; }
+                            .identitas-box .kosong { border-bottom: 1px solid #999; min-width: 150px; display: inline-block; padding: 0 20px 0 5px; color: #999; font-style: italic; }
+                            table { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 10pt; }
+                            th { background: #3498db; color: white; padding: 6px 8px; text-align: left; font-weight: 600; border: 1px solid #3498db; }
+                            td { padding: 6px 8px; border: 1px solid #ddd; vertical-align: top; }
+                            .checkbox-grid { display: flex; flex-wrap: wrap; gap: 8px 20px; margin: 8px 0; }
+                            .checkbox-item { display: flex; align-items: center; gap: 6px; }
+                            .checkbox-item .kotak-cek { display: inline-block; width: 14px; height: 14px; border: 2px solid #999; background: white; margin-right: 5px; }
+                            .tempat-jawaban { background: #fafafa; padding: 4px 8px; border-radius: 3px; border: 1px dashed #ccc; display: block; min-height: 35px; color: #999; font-style: italic; }
+                            .instruction-box { background: #ebf5fb; padding: 8px 12px; border-left: 4px solid #3498db; margin: 8px 0; border-radius: 4px; }
+                            .section-card { border: 1px solid #e0e7ff; border-radius: 8px; padding: 12px 15px; margin-bottom: 15px; }
                             .qa-table .no-col { width: 6%; text-align: center; }
                             .qa-table .question-col { width: 34%; }
                             .qa-table .answer-col { width: 60%; }
-                            
-                            .production-tip {
-                                background: #e8f5e9;
-                                padding: 8px 12px;
-                                border-left: 4px solid #4caf50;
-                                margin: 8px 0;
-                                border-radius: 4px;
-                            }
-                            
-                            .link-box {
-                                background: #f0f7ff;
-                                border: 2px solid #3498db;
-                                border-radius: 8px;
-                                padding: 12px 15px;
-                                margin: 8px 0;
-                            }
-                            
-                            .platform-badge {
-                                display: inline-block;
-                                padding: 2px 10px;
-                                border-radius: 12px;
-                                font-size: 8pt;
-                                font-weight: 600;
-                                color: white;
-                                margin: 2px 3px;
-                            }
+                            .production-tip { background: #e8f5e9; padding: 8px 12px; border-left: 4px solid #4caf50; margin: 8px 0; border-radius: 4px; }
+                            .link-box { background: #f0f7ff; border: 2px solid #3498db; border-radius: 8px; padding: 12px 15px; margin: 8px 0; }
+                            .platform-badge { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 8pt; font-weight: 600; color: white; margin: 2px 3px; }
                             .platform-badge.youtube { background: #ff0000; }
                             .platform-badge.instagram { background: #e4405f; }
                             .platform-badge.tiktok { background: #000000; }
                             .platform-badge.canva { background: #00c4cc; }
                             .platform-badge.other { background: #6c757d; }
-                            
-                            .btn-row-action {
+                            .screenshot-instruction { background: #fff3cd; padding: 8px 12px; border-left: 4px solid #f39c12; margin: 8px 0; border-radius: 4px; }
+                            .folder-link-box { background: #e8f5e9; padding: 10px 14px; border-radius: 8px; margin: 12px 0 0 0; border-left: 5px solid #4caf50; }
+                            .folder-link-box .label-link { font-weight: 600; color: #2e7d32; }
+                            .btn-row-action { display: none !important; }
+                            .footer-text { text-align: center; color: #999; font-size: 9pt; margin-top: 20px; border-top: 1px solid #eee; padding-top: 10px; }
+                            .btn, .btn-submit, .export-wrapper, .connection-status, .success-message, .error-message,
+                            .loading-message, .activity-navigation, .nav-btn, .modal, .modal-content, #confirmModal, #resetModal,
+                            .reset-button, .hamburger, .navbar, header, .alert, .refresh-btn, .materi-section {
                                 display: none !important;
                             }
-                            
-                            .footer-text {
-                                text-align: center;
-                                color: #999;
-                                font-size: 9pt;
-                                margin-top: 20px;
-                                border-top: 1px solid #eee;
-                                padding-top: 10px;
-                            }
-                            
-                            .btn, .btn-submit, .export-wrapper, 
-                            .connection-status, .success-message, .error-message,
-                            .loading-message, .activity-navigation, .nav-btn,
-                            .modal, .modal-content, #confirmModal, #resetModal,
-                            .reset-button, .hamburger, .navbar, header,
-                            .alert, .refresh-btn, .materi-section,
-                            .table-actions, .action-cell {
-                                display: none !important;
-                            }
-                            
-                            .informatika-content-card {
-                                padding: 15px;
-                                border-left: 5px solid #3498db;
-                                margin-bottom: 15px;
-                            }
-                            
-                            .informatika-content-card h2 {
-                                color: #21618c;
-                                font-size: 18pt;
-                            }
-                            
-                            .informatika-content-card > p {
-                                font-size: 11pt;
-                                padding: 8px 12px;
-                                background: #ebf5fb;
-                                border-radius: 6px;
-                                border-left: 4px solid #3498db;
-                            }
-                            
-                            ol {
-                                margin-left: 20px;
-                                color: #555;
-                            }
-                            
-                            .worksheet-container {
-                                padding: 0;
-                                margin: 0;
-                                border: none;
-                                box-shadow: none;
-                            }
+                            .informatika-content-card { padding: 15px; border-left: 5px solid #3498db; margin-bottom: 15px; }
+                            .informatika-content-card h2 { color: #21618c; font-size: 18pt; }
+                            .worksheet-container { padding: 0; margin: 0; border: none; box-shadow: none; }
+                            .tp-card { background: #e8f4fd; padding: 12px 16px; border-radius: 8px; margin-bottom: 15px; border-left: 5px solid #3498db; }
+                            .tp-card .tp-item { padding: 2px 0; }
+                            .tp-card .tp-code { background: #3498db; color: white; padding: 2px 10px; border-radius: 12px; font-weight: 700; font-size: 0.8rem; display: inline-block; min-width: 45px; text-align: center; margin-right: 10px; }
+                            hr { border: 0; border-top: 2px solid #d5f4e6; margin: 15px 0; }
+                            ol { margin-left: 20px; color: #555; }
                         </style>
                     </head>
                     <body>
-                        <!-- ===== HEADER ===== -->
                         <div class="informatika-content-card">
                             <h2>Proyek 2 Aktivitas 3: Produksi Konten Budaya Digital</h2>
                             <div class="subtitle">
                                 <span>📅 Pertemuan 3 • Proyek 2: Digitalisasi Budaya</span>
                                 <span>⏰ 4 JP</span>
                             </div>
-                            <p><i>"Menggunakan media digital untuk produksi konten, partisipasi aktif, dan kolaborasi daring."</i></p>
                         </div>
-                        
+
+                        <div class="tp-card">
+                            <div style="font-weight:700; color:#21618c; margin-bottom:4px;">Tujuan Pembelajaran</div>
+                            <div class="tp-item"><span class="tp-code">TP 2.6</span> Menggunakan media digital untuk produksi konten, partisipasi aktif, dan kolaborasi daring</div>
+                        </div>
+
                         <div class="instruction-box" style="background:#e8f5e9; border-left-color: #3498db;">
                             <strong>HALO, KELOMPOK HEBAT! 👋</strong><br>
                             Silakan isi lembar kerja ini untuk memproduksi konten budaya digital.
                         </div>
 
-                        <h1 class="worksheet-title">LEMBAR KERJA PESERTA DIDIK (LKPD) PROYEK 2 – AKTIVITAS 3</h1>
+                        <h1 class="worksheet-title">LEMBAR KERJA PESERTA DIDIK (LKPD) PROYEK 2 – AKTIVITAS 3 (PRODUKSI KONTEN BUDAYA DIGITAL)</h1>
                         <p style="text-align: center; margin-bottom: 1.5rem; font-size: 12pt; color: #9b59b6;">
                             <strong>PRODUKSI KONTEN BUDAYA DIGITAL</strong>
                         </p>
@@ -2265,7 +2378,6 @@
                             <p><strong>Tujuan Pembelajaran (TP 2.6):</strong> Menggunakan media digital untuk produksi konten, partisipasi aktif, dan kolaborasi daring.</p>
                         </div>
 
-                        <!-- ===== IDENTITAS ===== -->
                         <h3 style="color: #21618c; margin: 20px 0 10px 0; font-size: 13pt;">Identitas Kelompok</h3>
                         <div class="identitas-box">
                             <table>
@@ -2276,29 +2388,26 @@
                             </table>
                         </div>
 
-                        <!-- ===== PETUNJUK ===== -->
                         <div class="instruction-box">
                             <strong>📚 PETUNJUK PENGGUNAAN LKPD</strong><br><br>
                             <ol>
-                                <li>Pastikan kamu sudah membaca materi <strong>"Produksi Konten Digital"</strong> yang tersedia di menu Daftar Materi.</li>
-                                <li>Gunakan hasil pemilihan budaya dari Aktivitas 1 dan pembagian peran dari Aktivitas 2.</li>
+                                <li>Pastikan kamu sudah membaca materi <strong>"Produksi Konten Digital untuk Budaya"</strong>.</li>
+                                <li>Gunakan hasil pemilihan budaya dari Aktivitas 1.</li>
                                 <li>Kerjakan setiap bagian dengan berdiskusi bersama kelompok.</li>
                                 <li>Gunakan smartphone/laptop untuk membuat konten digital.</li>
-                                <li>Setelah selesai, unggah konten ke platform digital dan salin link-nya.</li>
+                                <li>Kumpulkan LKPD setelah selesai dikerjakan.</li>
                             </ol>
                         </div>
 
-                        <!-- ===== BAGIAN A ===== -->
+                        <!-- BAGIAN A -->
                         <div class="section-card">
-                            <h3 class="section-title">📖 BAGIAN A: PEMAHAMAN PRODUKSI (INDIVIDU)</h3>
-                            <div class="instruction-box">
-                                "Pastikan kamu sudah membaca materi sebelum mengerjakan!"
+                            <h3 class="section-title">A. PEMAHAMAN PRODUKSI <span class="section-badge">Individu</span></h3>
+                            <div class="instruction-box">Pastikan kamu sudah membaca materi sebelum mengerjakan!</div>
+                            <div class="screenshot-instruction">
+                                <strong>📸 Instruksi Screenshot:</strong> Screenshot halaman materi yang sudah kamu baca → Upload ke Google Drive → Tempel link di bawah
                             </div>
-
                             <table class="qa-table">
-                                <thead>
-                                    <tr><th class="no-col">No</th><th class="question-col">Pertanyaan</th><th class="answer-col">Jawaban</th></tr>
-                                </thead>
+                                <thead><tr><th class="no-col">No</th><th class="question-col">Pertanyaan</th><th class="answer-col">Jawaban</th></tr></thead>
                                 <tbody>
                                     <tr><td class="no-col">1</td><td>Apa yang dimaksud dengan konten digital?</td><td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
                                     <tr><td class="no-col">2</td><td>Sebutkan 3 jenis konten digital yang populer!</td><td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
@@ -2306,32 +2415,30 @@
                                     <tr><td class="no-col">4</td><td>Mengapa kita perlu memperhatikan hak cipta dalam membuat konten?</td><td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
                                 </tbody>
                             </table>
-
                             <div style="margin-top: 1rem; background: #f8fafc; border-radius: 8px; padding: 1rem; border: 1px dashed #3498db;">
-                                <div class="checkbox-item"><span class="kotak-cek"></span> <strong>Ya, saya sudah membaca materi "Produksi Konten Digital"</strong></div>
+                                <div class="checkbox-item"><span class="kotak-cek"></span> <strong>Ya, saya sudah membaca materi "Produksi Konten Digital untuk Budaya"</strong></div>
+                            </div>
+                            <div class="folder-link-box">
+                                <span class="label-link">📸 Link Screenshot - Bagian A</span>
+                                <div style="font-size:0.9rem; color:#555; margin-top:4px;">Tempel link folder/screenshot bukti membaca materi:</div>
+                                <div style="margin-top:6px; background:white; padding:6px 10px; border-radius:6px; border:1px solid #ddd;">
+                                    <span class="tempat-jawaban">[Tempel link di sini]</span>
+                                </div>
                             </div>
                         </div>
 
-                        <!-- ===== BAGIAN B ===== -->
+                        <!-- BAGIAN B -->
                         <div class="section-card">
-                            <h3 class="section-title">📋 BAGIAN B: PERENCANAAN KONTEN (KELOMPOK)</h3>
-                            <div class="instruction-box">
-                                "Rencanakan konten budaya digitalmu!"
-                            </div>
-
+                            <h3 class="section-title">B. PERENCANAAN KONTEN <span class="section-badge">Kelompok</span></h3>
+                            <div class="instruction-box">Rencanakan konten budaya digitalmu!</div>
                             <div class="production-tip">
                                 <strong>Budaya pilihan kelompok dari Aktivitas 1:</strong>
                                 <span class="tempat-jawaban" style="margin-top: 6px;">[Tulis budaya yang kalian pilih]</span>
                             </div>
-
                             <table class="qa-table">
-                                <thead>
-                                    <tr><th class="no-col">No</th><th class="question-col">Elemen Perencanaan</th><th class="answer-col">Rencana Kelompok</th></tr>
-                                </thead>
+                                <thead><tr><th class="no-col">No</th><th class="question-col">Elemen Perencanaan</th><th class="answer-col">Rencana Kelompok</th></tr></thead>
                                 <tbody>
-                                    <tr><td class="no-col">1</td><td>Jenis konten yang akan dibuat</td>
-                                        <td><span class="tempat-jawaban">[Pilih: Poster/Video/Website/Game/Lainnya]</span></td>
-                                    </tr>
+                                    <tr><td class="no-col">1</td><td>Jenis konten yang akan dibuat</td><td><span class="tempat-jawaban">[Pilih: Poster/Video/Website/Game/Lainnya]</span></td></tr>
                                     <tr><td class="no-col">2</td><td>Judul Konten</td><td><span class="tempat-jawaban">[Tulis judul di sini]</span></td></tr>
                                     <tr><td class="no-col">3</td><td>Target Audiens</td><td><span class="tempat-jawaban">[Tulis target audiens]</span></td></tr>
                                     <tr><td class="no-col">4</td><td>Pesan Utama (1-2 kalimat)</td><td><span class="tempat-jawaban">[Tulis pesan utama]</span></td></tr>
@@ -2341,19 +2448,16 @@
                             </table>
                         </div>
 
-                        <!-- ===== BAGIAN C ===== -->
+                        <!-- BAGIAN C -->
                         <div class="section-card">
-                            <h3 class="section-title">🎬 BAGIAN C: STORYBOARD & PRODUKSI (KELOMPOK)</h3>
-                            <div class="instruction-box">
-                                "Rencanakan alur kontenmu, lalu produksi!"
+                            <h3 class="section-title">C. STORYBOARD & PRODUKSI <span class="section-badge">Kelompok</span></h3>
+                            <div class="instruction-box">Rencanakan alur kontenmu, lalu produksi!</div>
+                            <div class="screenshot-instruction">
+                                <strong>📸 Instruksi Screenshot:</strong> Screenshot proses pembuatan konten (desain/editing) → Upload ke Google Drive → Tempel link di bawah
                             </div>
-
-                            <h4 class="section-subtitle">Aktivitas 1: Storyboard</h4>
-
+                            <h4 class="section-subtitle">Kegiatan 1: Storyboard (Minimal 3 Scene)</h4>
                             <table class="qa-table">
-                                <thead>
-                                    <tr><th class="no-col">Scene</th><th class="question-col">Visual/Adegan</th><th class="answer-col">Narasi/Keterangan</th></tr>
-                                </thead>
+                                <thead><tr><th class="no-col">Scene</th><th class="question-col">Visual/Adegan</th><th class="answer-col">Narasi/Keterangan</th></tr></thead>
                                 <tbody>
                                     <tr><td class="no-col">1</td><td><span class="tempat-jawaban">[Deskripsi visual]</span></td><td><span class="tempat-jawaban">[Narasi]</span></td></tr>
                                     <tr><td class="no-col">2</td><td><span class="tempat-jawaban">[Deskripsi visual]</span></td><td><span class="tempat-jawaban">[Narasi]</span></td></tr>
@@ -2362,31 +2466,33 @@
                                     <tr><td class="no-col">5</td><td><span class="tempat-jawaban">[Deskripsi visual]</span></td><td><span class="tempat-jawaban">[Narasi]</span></td></tr>
                                 </tbody>
                             </table>
-
-                            <h4 class="section-subtitle">Aktivitas 2: Catatan Produksi</h4>
+                            <h4 class="section-subtitle">Kegiatan 2: Catatan Produksi</h4>
                             <table class="qa-table">
-                                <thead>
-                                    <tr><th class="no-col">No</th><th class="question-col">Tahapan</th><th class="answer-col">Kendala & Solusi</th></tr>
-                                </thead>
+                                <thead><tr><th class="no-col">No</th><th class="question-col">Tahapan</th><th class="answer-col">Kendala & Solusi</th></tr></thead>
                                 <tbody>
                                     <tr><td class="no-col">1</td><td>Pengumpulan Materi</td><td><span class="tempat-jawaban">[Tulis kendala dan solusi]</span></td></tr>
                                     <tr><td class="no-col">2</td><td>Proses Desain/Editing</td><td><span class="tempat-jawaban">[Tulis kendala dan solusi]</span></td></tr>
                                     <tr><td class="no-col">3</td><td>Finishing & Upload</td><td><span class="tempat-jawaban">[Tulis kendala dan solusi]</span></td></tr>
                                 </tbody>
                             </table>
+                            <div class="folder-link-box">
+                                <span class="label-link">📸 Link Screenshot - Bagian C</span>
+                                <div style="font-size:0.9rem; color:#555; margin-top:4px;">Tempel link folder/screenshot proses pembuatan konten:</div>
+                                <div style="margin-top:6px; background:white; padding:6px 10px; border-radius:6px; border:1px solid #ddd;">
+                                    <span class="tempat-jawaban">[Tempel link di sini]</span>
+                                </div>
+                            </div>
                         </div>
 
-                        <!-- ===== BAGIAN D ===== -->
+                        <!-- BAGIAN D -->
                         <div class="section-card">
-                            <h3 class="section-title">📤 BAGIAN D: HASIL KONTEN (KELOMPOK)</h3>
-                            <div class="instruction-box">
-                                "Bagikan hasil karyamu! Unggah konten ke platform digital dan tempel link-nya di sini."
+                            <h3 class="section-title">D. HASIL KONTEN <span class="section-badge">Kelompok</span></h3>
+                            <div class="instruction-box">Bagikan hasil karyamu! Unggah konten ke platform digital dan tempel link-nya di sini.</div>
+                            <div class="screenshot-instruction">
+                                <strong>📸 Instruksi Screenshot:</strong> Screenshot hasil konten yang sudah diunggah → Upload ke Google Drive → Tempel link di bawah
                             </div>
-
                             <div class="link-box">
-                                <p style="font-weight:600; margin-bottom:10px;">
-                                    🌐 Link Hasil Konten Digital
-                                </p>
+                                <p style="font-weight:600; margin-bottom:10px;">🌐 Link Hasil Konten Digital</p>
                                 <p><span class="tempat-jawaban">[Tempelkan link di sini]</span></p>
                                 <div style="margin-top:10px;">
                                     <span class="platform-badge youtube">YouTube</span>
@@ -2396,29 +2502,28 @@
                                     <span class="platform-badge other">Lainnya</span>
                                 </div>
                             </div>
-
                             <table class="qa-table">
-                                <thead>
-                                    <tr><th class="no-col">No</th><th class="question-col">Platform Publikasi</th><th class="answer-col">Link/URL</th></tr>
-                                </thead>
+                                <thead><tr><th class="no-col">No</th><th class="question-col">Platform Publikasi</th><th class="answer-col">Link/URL</th></tr></thead>
                                 <tbody>
                                     <tr><td class="no-col">1</td><td>Platform Utama</td><td><span class="tempat-jawaban">[Link utama]</span></td></tr>
                                     <tr><td class="no-col">2</td><td>Platform Cadangan</td><td><span class="tempat-jawaban">[Link cadangan opsional]</span></td></tr>
                                 </tbody>
                             </table>
+                            <div class="folder-link-box">
+                                <span class="label-link">📸 Link Screenshot - Bagian D</span>
+                                <div style="font-size:0.9rem; color:#555; margin-top:4px;">Tempel link folder/screenshot hasil konten yang sudah diunggah:</div>
+                                <div style="margin-top:6px; background:white; padding:6px 10px; border-radius:6px; border:1px solid #ddd;">
+                                    <span class="tempat-jawaban">[Tempel link di sini]</span>
+                                </div>
+                            </div>
                         </div>
 
-                        <!-- ===== BAGIAN E ===== -->
+                        <!-- BAGIAN E -->
                         <div class="section-card">
-                            <h3 class="section-title">📝 BAGIAN E: REFLEKSI (INDIVIDU)</h3>
-                            <div class="instruction-box">
-                                "Apa yang aku pelajari hari ini?"
-                            </div>
-
+                            <h3 class="section-title">E. REFLEKSI <span class="section-badge">Individu</span></h3>
+                            <div class="instruction-box">"Apa yang aku pelajari hari ini? Tulis dengan jujur!"</div>
                             <table class="qa-table">
-                                <thead>
-                                    <tr><th class="no-col">No</th><th class="question-col">Pertanyaan</th><th class="answer-col">Jawabanku</th></tr>
-                                </thead>
+                                <thead><tr><th class="no-col">No</th><th class="question-col">Pertanyaan</th><th class="answer-col">Jawabanku</th></tr></thead>
                                 <tbody>
                                     <tr><td class="no-col">1</td><td>Hal baru apa yang aku pelajari tentang produksi konten digital?</td><td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
                                     <tr><td class="no-col">2</td><td>Kesulitan apa yang aku hadapi saat membuat konten?</td><td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
@@ -2427,11 +2532,10 @@
                                     <tr><td class="no-col">5</td><td>Bagaimana perasaanmu setelah berhasil membuat konten budaya digital?</td><td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
                                 </tbody>
                             </table>
-
-                            <div style="margin-top: 1rem; background: #f8fafc; border-radius: 8px; padding: 1rem; border: 1px dashed #3498db;">
-                                <p><strong>Checklist Pemahaman:</strong></p>
+                            <div style="margin-top: 1.5rem; background: #f8fafc; border-radius: 8px; padding: 1rem; border: 1px dashed #3498db;">
+                                <p><strong>✅ Checklist Pemahaman Akhir:</strong></p>
                                 <div class="checkbox-grid">
-                                    <div class="checkbox-item"><span class="kotak-cek"></span> Saya sudah membaca materi "Produksi Konten Digital"</div>
+                                    <div class="checkbox-item"><span class="kotak-cek"></span> Saya sudah membaca materi "Produksi Konten Digital untuk Budaya"</div>
                                     <div class="checkbox-item"><span class="kotak-cek"></span> Saya sudah berpartisipasi dalam pembuatan konten</div>
                                     <div class="checkbox-item"><span class="kotak-cek"></span> Saya sudah menyelesaikan konten budaya digital</div>
                                     <div class="checkbox-item"><span class="kotak-cek"></span> Saya sudah mengunggah konten ke platform digital</div>
@@ -2440,7 +2544,6 @@
                             </div>
                         </div>
 
-                        <!-- ===== FOOTER ===== -->
                         <div class="footer-text">
                             LKPD Proyek 2 Aktivitas 3 - Produksi Konten Budaya Digital | ${dateStr}
                         </div>
@@ -2448,12 +2551,7 @@
                     </html>
                 `;
 
-                // === BUAT FILE .doc ===
-                const blob = new Blob([htmlContent], {
-                    type: 'application/msword;charset=utf-8'
-                });
-
-                // === DOWNLOAD ===
+                const blob = new Blob([htmlContent], { type: 'application/msword;charset=utf-8' });
                 const link = document.createElement('a');
                 link.href = URL.createObjectURL(blob);
                 const today = new Date();
@@ -2464,9 +2562,7 @@
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
-                setTimeout(() => {
-                    URL.revokeObjectURL(link.href);
-                }, 1000);
+                setTimeout(() => URL.revokeObjectURL(link.href), 1000);
 
                 exportBtn.innerHTML = '<i class="fas fa-file-word"></i> Export Template DOCX';
                 exportBtn.disabled = false;
@@ -2481,21 +2577,22 @@
 
         // ==================== INIT ====================
         document.addEventListener('DOMContentLoaded', function() {
-            // Generate 4 default scenes
+            // Generate 3 default scenes
             const tbody = document.getElementById('storyboardBody');
             if (tbody) {
                 tbody.innerHTML = '';
                 sceneCounter = 0;
-                for (let i = 1; i <= 4; i++) {
+                for (let i = 1; i <= 3; i++) {
                     tambahScene();
                 }
             }
 
-            const hamburger = document.getElementById('hamburger');
-            const navMenu = document.getElementById('nav-menu');
-            if (hamburger) {
-                hamburger.addEventListener('click', () => navMenu.classList.toggle('active'));
-            }
+            document.querySelectorAll('textarea.answer-field').forEach(el => {
+                el.addEventListener('input', function() {
+                    autoResize(this);
+                });
+                autoResize(el);
+            });
 
             document.querySelectorAll('input, select, textarea').forEach(el => {
                 el.addEventListener('input', saveToLocalStorage);
@@ -2513,14 +2610,21 @@
             });
 
             loadDataFromGoogleSheets();
-            loadFromLocalStorage();
             updateConnectionStatus();
-            setInterval(checkConnection, 5000);
-        });
+            setInterval(updateConnectionStatus, 5000);
 
-        function checkConnection() {
-            updateConnectionStatus();
-        }
+            window.updateNamaDropdown = updateNamaDropdown;
+            window.saveToLocalStorage = saveToLocalStorage;
+            window.submitData = submitData;
+            window.exportToDocx = exportToDocx;
+            window.confirmGantiTugas = confirmGantiTugas;
+            window.confirmReset = confirmReset;
+            window.closeModal = closeModal;
+            window.closeConfirmModal = closeConfirmModal;
+            window.autoResize = autoResize;
+            window.tambahScene = tambahScene;
+            window.hapusScene = hapusScene;
+        });
     </script>
 </body>
 </html>

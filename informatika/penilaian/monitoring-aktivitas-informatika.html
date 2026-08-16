@@ -580,20 +580,7 @@
             border-radius: 6px;
         }
         
-        .popup-jawaban-info {
-            background: var(--info-light);
-            padding: 0.5rem 1rem;
-            border-radius: 10px;
-            font-size: 0.8rem;
-            margin-bottom: 1rem;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem 1.5rem;
-        }
-        .popup-jawaban-info span { color: #555; }
-        .popup-jawaban-info strong { color: var(--info-dark); }
-        
-        /* ===== STYLE JAWABAN POPUP UNIVERSAL ===== */
+        /* ===== STYLE JAWABAN POPUP - SAMA DENGAN FILE PENILAIAN ===== */
         .popup-field {
             background: #f8f9fa;
             border-radius: var(--border-radius);
@@ -921,6 +908,18 @@
                         <h2><i class="fas fa-chart-simple"></i> Monitoring Aktivitas &amp; Nilai Informatika</h2>
                         <p>Pantau status pengumpulan tugas dan nilai capaian TP siswa</p>
                     </div>
+                    <div id="profileContainer" style="display: none;">
+                        <div class="profile-section">
+                            <div class="profile-avatar" id="profileAvatar">G</div>
+                            <div class="profile-info">
+                                <div class="profile-name" id="profileName">Guru</div>
+                                <div class="profile-role" id="profileRole">Administrator</div>
+                            </div>
+                            <button class="logout-btn" id="logoutBtn" title="Logout" onclick="handleLogout()">
+                                <i class="fas fa-sign-out-alt"></i>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -942,13 +941,13 @@
                     <div class="filter-group">
                         <label><i class="fas fa-building"></i> Kelas</label>
                         <select id="filterKelas" disabled>
-                            <option value="">-- Pilih Semester Dulu --</option>
+                            <option value="">-- Pilih Kelas Dulu --</option>
                         </select>
                     </div>
                     <div class="filter-group">
                         <label><i class="fas fa-user"></i> Nama Siswa</label>
                         <select id="filterNama" disabled>
-                            <option value="">-- Pilih Kelas Dulu --</option>
+                            <option value="">-- Pilih Siswa Dulu --</option>
                         </select>
                     </div>
                     <div class="filter-group">
@@ -1197,16 +1196,37 @@
         }
 
         function formatLabel(key) {
-            return key.replace(/_/g, ' ')
+            let cleaned = key.replace(/^[A-Z]\.\s*/, '');
+            cleaned = cleaned.replace(/_/g, ' ')
                 .replace(/([A-Z])/g, ' $1')
                 .replace(/^./, str => str.toUpperCase())
                 .trim()
                 .replace(/\s+/g, ' ');
+            return cleaned;
         }
 
         function formatTanggalDetail(timestamp) {
             if (!timestamp) return '-';
             try {
+                let cleaned = timestamp.replace('pukul', '').replace(/\./g, ':');
+                const parts = cleaned.match(/(\d+)\s+(\w+)\s+(\d+)\s*[-:]\s*(\d+):(\d+):(\d+)/);
+                if (parts) {
+                    const day = parseInt(parts[1]);
+                    const monthName = parts[2];
+                    const year = parseInt(parts[3]);
+                    const hours = parseInt(parts[4]);
+                    const minutes = parseInt(parts[5]);
+                    const seconds = parseInt(parts[6]);
+                    
+                    const monthMap = {
+                        'Januari': 0, 'Februari': 1, 'Maret': 2, 'April': 3, 'Mei': 4, 'Juni': 5,
+                        'Juli': 6, 'Agustus': 7, 'September': 8, 'Oktober': 9, 'November': 10, 'Desember': 11
+                    };
+                    const month = monthMap[monthName];
+                    if (month !== undefined) {
+                        return `${day} ${monthName} ${year} ${hours.toString().padStart(2,'0')}:${minutes.toString().padStart(2,'0')}:${seconds.toString().padStart(2,'0')}`;
+                    }
+                }
                 const date = new Date(timestamp);
                 if (!isNaN(date.getTime())) {
                     const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
@@ -1220,13 +1240,12 @@
                     const seconds = date.getSeconds().toString().padStart(2, '0');
                     return `${dayName}, ${day} ${month} ${year} ${hours}:${minutes}:${seconds}`;
                 }
-            } catch (e) {}
-            return String(timestamp).split(' ')[0] || '-';
+                return String(timestamp);
+            } catch (e) {
+                return String(timestamp);
+            }
         }
 
-        // ================================================================
-        // ==================== FUNGSI DETEKSI LINK ========================
-        // ================================================================
         function isLink(text) {
             if (typeof text !== 'string') return false;
             const trimmed = text.trim();
@@ -1240,36 +1259,6 @@
                    trimmed.match(/^https?:\/\/[^\s]+\.(jpg|jpeg|png|gif|webp|svg|mp4|webm|mov|pdf)/i);
         }
 
-        // ================================================================
-        // ==================== FUNGSI EKSTRAK LINK ========================
-        // ================================================================
-        function extractAllLinksFromObject(obj, links = []) {
-            if (!obj || typeof obj !== 'object') return links;
-            
-            if (Array.isArray(obj)) {
-                for (const item of obj) {
-                    extractAllLinksFromObject(item, links);
-                }
-                return links;
-            }
-            
-            for (const key of Object.keys(obj)) {
-                const val = obj[key];
-                
-                if (typeof val === 'string' && isLink(val)) {
-                    links.push(val);
-                }
-                
-                if (typeof val === 'object' && val !== null) {
-                    extractAllLinksFromObject(val, links);
-                }
-            }
-            return links;
-        }
-
-        // ================================================================
-        // ==================== FUNGSI DETEKSI JENIS FILE ==================
-        // ================================================================
         function detectDriveFileType(url) {
             const patterns = {
                 video: /docs\.google\.com\/videos\/d\/([a-zA-Z0-9_-]+)/,
@@ -1315,9 +1304,6 @@
             return { type: 'unknown', fileId: null };
         }
 
-        // ================================================================
-        // ==================== FUNGSI COPY LINK ===========================
-        // ================================================================
         function copyLink(url) {
             if (navigator.clipboard && navigator.clipboard.writeText) {
                 navigator.clipboard.writeText(url).then(() => {
@@ -1355,34 +1341,140 @@
             document.body.removeChild(textArea);
         }
 
+        function detectIcon(key) {
+            const lowerKey = key.toLowerCase();
+            if (lowerKey.includes('identitas') || lowerKey.includes('nama') || lowerKey.includes('kelas')) {
+                return 'fa-id-card';
+            }
+            if (lowerKey.includes('aktivitas') || lowerKey.includes('docs') || lowerKey.includes('workspace')) {
+                return 'fa-tools';
+            }
+            if (lowerKey.includes('refleksi') || lowerKey.includes('ref')) {
+                return 'fa-smile';
+            }
+            if (lowerKey.includes('checklist') || lowerKey.includes('cek')) {
+                return 'fa-check-double';
+            }
+            if (lowerKey.includes('timestamp') || lowerKey.includes('waktu')) {
+                return 'fa-clock';
+            }
+            if (lowerKey.includes('link') || lowerKey.includes('folder') || lowerKey.includes('screenshot')) {
+                return 'fa-link';
+            }
+            if (lowerKey.includes('diskusi') || lowerKey.includes('pembagian')) {
+                return 'fa-comments';
+            }
+            return 'fa-file-alt';
+        }
+
         // ================================================================
-        // ==================== FUNGSI RENDER BAB ARRAY ====================
+        // ==================== RENDER ARRAY UNIVERSAL ======================
         // ================================================================
-        function renderBabArray(babArray) {
-            if (!babArray || !Array.isArray(babArray) || babArray.length === 0) {
+        function renderArrayUniversal(data) {
+            if (!Array.isArray(data) || data.length === 0) {
                 return `<div class="field-value-box"><span class="empty-value">(kosong)</span></div>`;
             }
+
+            const allAreArrays = data.every(item => Array.isArray(item));
             
-            let html = '';
-            babArray.forEach((item, index) => {
-                const nama = item.nama || 'Bab ' + (index + 1);
-                const link = item.link || '';
-                const selesai = item.selesai || false;
-                const statusIcon = selesai ? '✅' : '⏳';
+            if (allAreArrays && data.length > 0) {
+                const headers = data[0].map(h => String(h));
+                const rows = data.slice(1);
                 
-                html += `
-                    <div style="margin-bottom:12px; border:1px solid #e8e8e8; border-radius:8px; padding:10px; background:#fafafa;">
-                        <div style="font-weight:600; color:var(--info-dark); margin-bottom:6px; font-size:0.85rem;">
-                            ${statusIcon} ${escapeHtml(nama)}
-                        </div>
-                        <div>
-                            ${link && isLink(link) ? renderLinkPreviewUniversal(link) : '<span class="empty-value">(Tidak ada link)</span>'}
-                        </div>
-                    </div>
-                `;
+                let html = `<div class="field-value-box"><table style="width:100%;border-collapse:collapse;">`;
+                html += `<thead><tr>`;
+                headers.forEach(h => {
+                    html += `<th style="padding:8px 10px;border:1px solid #ddd;background:#f0f0f0;text-align:left;font-weight:600;">${escapeHtml(h)}</th>`;
+                });
+                html += `</tr></thead><tbody>`;
+
+                rows.forEach(row => {
+                    if (!Array.isArray(row)) return;
+                    html += `<tr>`;
+                    row.forEach((cell, idx) => {
+                        let display = '';
+                        let align = 'left';
+                        
+                        if (typeof cell === 'boolean') {
+                            display = cell ? '✅ Selesai' : '❌ Belum';
+                            align = 'center';
+                        } else if (cell === undefined || cell === null || cell === '') {
+                            display = '<span class="empty-value">-</span>';
+                        } else if (typeof cell === 'string' && isLink(cell)) {
+                            display = renderLinkPreviewUniversal(cell);
+                        } else {
+                            display = escapeHtml(String(cell));
+                        }
+                        
+                        if (idx === row.length - 1 && typeof row[idx] === 'boolean') {
+                            align = 'center';
+                        }
+                        
+                        html += `<td style="padding:6px 10px;border:1px solid #ddd;vertical-align:middle;text-align:${align};">${display}</td>`;
+                    });
+                    html += `</tr>`;
+                });
+
+                html += `</tbody></table></div>`;
+                return html;
+            }
+
+            if (data.every(item => typeof item === 'string')) {
+                let listHtml = `<div class="field-value-box">`;
+                data.forEach((item, idx) => {
+                    listHtml += `<div class="obj-item">${idx+1}. ${escapeHtml(item)}</div>`;
+                });
+                listHtml += `</div>`;
+                return listHtml;
+            }
+
+            if (data.every(item => typeof item === 'object' && item !== null && !Array.isArray(item))) {
+                const allKeys = new Set();
+                data.forEach(item => {
+                    Object.keys(item).forEach(k => allKeys.add(k));
+                });
+                
+                if (allKeys.size === 0) {
+                    return `<div class="field-value-box"><span class="empty-value">(kosong)</span></div>`;
+                }
+
+                const headers = Array.from(allKeys);
+                let tableHtml = `<div class="field-value-box"><table style="width:100%;border-collapse:collapse;">`;
+                tableHtml += `<thead><tr>`;
+                headers.forEach(h => {
+                    tableHtml += `<th style="padding:8px 10px;border:1px solid #ddd;background:#f0f0f0;text-align:left;font-weight:600;">${escapeHtml(formatLabel(h))}</th>`;
+                });
+                tableHtml += `</tr></thead><tbody>`;
+                
+                data.forEach(item => {
+                    tableHtml += `<tr>`;
+                    headers.forEach(h => {
+                        const val = item[h];
+                        let display = (val !== undefined && val !== null && val !== '') ? 
+                                      renderValueUniversal(val) : 
+                                      '<span class="empty-value">-</span>';
+                        tableHtml += `<td style="padding:6px 10px;border:1px solid #ddd;vertical-align:middle;">${display}</td>`;
+                    });
+                    tableHtml += `</tr>`;
+                });
+                
+                tableHtml += `</tbody></table></div>`;
+                return tableHtml;
+            }
+
+            let listHtml = `<div class="field-value-box">`;
+            data.forEach((item, idx) => {
+                if (typeof item === 'object' && item !== null) {
+                    listHtml += `<div style="border:1px solid #e8e8e8;border-radius:8px;padding:10px;margin-bottom:8px;">`;
+                    listHtml += `<div style="font-weight:600;color:var(--info-dark);font-size:0.8rem;margin-bottom:4px;">Item ${idx + 1}</div>`;
+                    listHtml += renderValueUniversal(item);
+                    listHtml += `</div>`;
+                } else {
+                    listHtml += `<div class="obj-item">${idx+1}. ${escapeHtml(String(item))}</div>`;
+                }
             });
-            
-            return html;
+            listHtml += `</div>`;
+            return listHtml;
         }
 
         // ================================================================
@@ -1396,7 +1488,6 @@
             let cleanUrl = url.trim();
             const driveInfo = detectDriveFileType(cleanUrl);
             
-            // ===== YOUTUBE =====
             const youtubeMatch = cleanUrl.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([a-zA-Z0-9_-]+)/);
             if (youtubeMatch) {
                 return `
@@ -1418,7 +1509,6 @@
                 `;
             }
             
-            // ===== GOOGLE DRIVE FILE =====
             if (driveInfo.fileId) {
                 const iconMap = {
                     spreadsheet: 'fa-table',
@@ -1449,7 +1539,6 @@
                                  driveInfo.type === 'presentation' ? 'presentation' :
                                  driveInfo.type === 'pdf' ? 'pdf' : '';
 
-                // Untuk folder, gunakan embedded view
                 if (driveInfo.type === 'folder') {
                     const embedUrl = `https://drive.google.com/embeddedfolderview?id=${driveInfo.fileId}#grid`;
                     return `
@@ -1462,7 +1551,6 @@
                     `;
                 }
 
-                // Untuk file lainnya
                 const embedUrl = `https://drive.google.com/file/d/${driveInfo.fileId}/preview`;
                 return `
                     <div class="file-info-card">
@@ -1486,7 +1574,6 @@
                 `;
             }
             
-            // ===== GAMBAR LANGSUNG =====
             if (cleanUrl.match(/\.(jpg|jpeg|png|gif|webp|svg|bmp|ico)$/i)) {
                 return `
                     <div class="link-preview-container">
@@ -1499,7 +1586,6 @@
                 `;
             }
             
-            // ===== VIDEO LANGSUNG =====
             if (cleanUrl.match(/\.(mp4|webm|mov|avi|mkv|flv)$/i)) {
                 return `
                     <div class="link-preview-container">
@@ -1519,7 +1605,6 @@
                 `;
             }
             
-            // ===== FALLBACK =====
             return `
                 <div class="link-preview-container">
                     <div class="preview-error">
@@ -1534,131 +1619,60 @@
         // ==================== RENDER VALUE UNIVERSAL ======================
         // ================================================================
         function renderValueUniversal(value) {
-            // ===== NULL / UNDEFINED / KOSONG =====
             if (value === null || value === undefined || value === '') {
                 return `<div class="field-value-box"><span class="empty-value">(kosong)</span></div>`;
             }
 
-            // ===== NUMBER =====
             if (typeof value === 'number') {
                 return `<div class="field-value-box">${escapeHtml(String(value))}</div>`;
             }
 
-            // ===== BOOLEAN =====
             if (typeof value === 'boolean') {
                 return `<div class="field-value-box">${value ? '✅ Ya' : '❌ Tidak'}</div>`;
             }
 
-            // ===== STRING =====
             if (typeof value === 'string') {
-                // Cek apakah ini link
                 if (isLink(value)) {
                     return renderLinkPreviewUniversal(value);
                 }
                 
-                // Cek apakah ini JSON string
+                if (value.includes('\n')) {
+                    const lines = value.split('\n').filter(line => line.trim() !== '');
+                    if (lines.length > 1) {
+                        let listHtml = `<div class="field-value-box">`;
+                        lines.forEach(line => {
+                            listHtml += `<div class="obj-item">• ${escapeHtml(line.trim())}</div>`;
+                        });
+                        listHtml += `</div>`;
+                        return listHtml;
+                    }
+                }
+                
                 if ((value.startsWith('{') || value.startsWith('[')) && (value.endsWith('}') || value.endsWith(']'))) {
                     try {
                         const parsed = JSON.parse(value);
                         return renderValueUniversal(parsed);
-                    } catch (e) {
-                        // Bukan JSON valid, tampilkan sebagai string biasa
-                    }
+                    } catch (e) {}
                 }
                 
                 return `<div class="field-value-box">${escapeHtml(value)}</div>`;
             }
 
-            // ===== ARRAY =====
             if (Array.isArray(value)) {
-                if (value.length === 0) {
-                    return `<div class="field-value-box"><span class="empty-value">(kosong)</span></div>`;
-                }
-
-                // Cek apakah semua elemen adalah string (checklist)
-                if (value.every(item => typeof item === 'string')) {
-                    let listHtml = `<div class="field-value-box">`;
-                    value.forEach((item, idx) => {
-                        listHtml += `<div class="obj-item">${idx+1}. ${escapeHtml(item)}</div>`;
-                    });
-                    listHtml += `</div>`;
-                    return listHtml;
-                }
-
-                // Array of objects (tabel)
-                if (value.every(item => typeof item === 'object' && item !== null)) {
-                    // Kumpulkan semua key yang mungkin ada
-                    const allKeys = new Set();
-                    value.forEach(item => {
-                        Object.keys(item).forEach(k => allKeys.add(k));
-                    });
-                    
-                    if (allKeys.size === 0) {
-                        return `<div class="field-value-box"><span class="empty-value">(kosong)</span></div>`;
-                    }
-
-                    const headers = Array.from(allKeys);
-                    let tableHtml = `<div class="field-value-box"><table>`;
-                    tableHtml += `<thead><tr>`;
-                    headers.forEach(h => {
-                        tableHtml += `<th>${escapeHtml(formatLabel(h))}</th>`;
-                    });
-                    tableHtml += `</tr></thead><tbody>`;
-                    
-                    value.forEach(item => {
-                        tableHtml += `<tr>`;
-                        headers.forEach(h => {
-                            const val = item[h];
-                            let display = (val !== undefined && val !== null && val !== '') ? 
-                                          renderValueUniversal(val) : 
-                                          '<span class="empty-value">-</span>';
-                            tableHtml += `<td>${display}</td>`;
-                        });
-                        tableHtml += `</tr>`;
-                    });
-                    
-                    tableHtml += `</tbody></table></div>`;
-                    return tableHtml;
-                }
-
-                // Array campuran
-                let listHtml = `<div class="field-value-box">`;
-                value.forEach((item, idx) => {
-                    if (typeof item === 'object' && item !== null) {
-                        listHtml += `<div style="border:1px solid #e8e8e8;border-radius:8px;padding:10px;margin-bottom:8px;">`;
-                        listHtml += `<div style="font-weight:600;color:var(--info-dark);font-size:0.8rem;margin-bottom:4px;">Item ${idx + 1}</div>`;
-                        listHtml += renderValueUniversal(item);
-                        listHtml += `</div>`;
-                    } else {
-                        listHtml += `<div class="obj-item">${idx+1}. ${escapeHtml(String(item))}</div>`;
-                    }
-                });
-                listHtml += `</div>`;
-                return listHtml;
+                return renderArrayUniversal(value);
             }
 
-            // ===== OBJECT =====
             if (typeof value === 'object') {
                 const keys = Object.keys(value);
                 if (keys.length === 0) {
                     return `<div class="field-value-box"><span class="empty-value">(kosong)</span></div>`;
                 }
 
-                // Prioritaskan link folder
-                const linkKeys = keys.filter(k => 
-                    k.toLowerCase().includes('link') || 
-                    k.toLowerCase().includes('folder') || 
-                    k.toLowerCase().includes('screenshot')
-                );
-                const otherKeys = keys.filter(k => !linkKeys.includes(k));
-                const sortedKeys = [...linkKeys, ...otherKeys];
-
                 let objHtml = `<div class="field-value-box">`;
-                sortedKeys.forEach(key => {
+                keys.forEach(key => {
                     const val = value[key];
                     const label = formatLabel(key);
                     
-                    // Cek apakah ini link
                     const isLinkValue = typeof val === 'string' && isLink(val);
                     
                     if (isLinkValue) {
@@ -1682,60 +1696,7 @@
                 return objHtml;
             }
 
-            // ===== FALLBACK =====
             return `<div class="field-value-box">${escapeHtml(String(value))}</div>`;
-        }
-
-        // ================================================================
-        // ==================== DETEKSI IKON ===============================
-        // ================================================================
-        function detectIcon(key) {
-            const lowerKey = key.toLowerCase();
-            
-            if (lowerKey.includes('identitas') || lowerKey.includes('nama') || lowerKey.includes('kelas')) {
-                return 'fa-id-card';
-            }
-            if (lowerKey.includes('aktivitas') || lowerKey.includes('docs') || lowerKey.includes('workspace')) {
-                return 'fa-tools';
-            }
-            if (lowerKey.includes('keamanan') || lowerKey.includes('2fa') || lowerKey.includes('password')) {
-                return 'fa-user-shield';
-            }
-            if (lowerKey.includes('jaringan') || lowerKey.includes('wifi') || lowerKey.includes('internet')) {
-                return 'fa-wifi';
-            }
-            if (lowerKey.includes('refleksi') || lowerKey.includes('ref')) {
-                return 'fa-smile';
-            }
-            if (lowerKey.includes('checklist') || lowerKey.includes('cek')) {
-                return 'fa-check-double';
-            }
-            if (lowerKey.includes('timestamp') || lowerKey.includes('waktu')) {
-                return 'fa-clock';
-            }
-            if (lowerKey.includes('link') || lowerKey.includes('folder') || lowerKey.includes('screenshot')) {
-                return 'fa-link';
-            }
-            if (lowerKey.includes('literasi')) {
-                return 'fa-book-open';
-            }
-            if (lowerKey.includes('observasi')) {
-                return 'fa-binoculars';
-            }
-            if (lowerKey.includes('prediksi')) {
-                return 'fa-hand-pointer';
-            }
-            if (lowerKey.includes('pembuktian')) {
-                return 'fa-flask';
-            }
-            if (lowerKey.includes('jurusan') || lowerKey.includes('profesi')) {
-                return 'fa-briefcase';
-            }
-            if (lowerKey.includes('nilai') || lowerKey.includes('skor')) {
-                return 'fa-star';
-            }
-            
-            return 'fa-file-alt';
         }
 
         // ================================================================
@@ -1748,44 +1709,37 @@
 
             let html = '';
 
-            // ===== INFO SISWA =====
-            const nama = namaSiswa || data.Nama || data.nama || data['Nama Lengkap'] || data.identitas?.Nama || '-';
-            const kelas = kelasSiswa || data.Kelas || data.kelas || data['Kelas'] || data.identitas?.Kelas || '-';
-            const timestamp = data.Timestamp || data.timestamp || data['Timestamp Pengisian'] || '';
+            // ===== TIDAK ADA INFO SISWA DI SINI (SUDAH DIHAPUS, SAMA DENGAN FILE PENILAIAN) =====
+            // Nama siswa sudah muncul di header popup, dan data identitas ada di dalam konten
 
-            html += `<div class="popup-jawaban-info">
-                <span><strong>👤 Nama:</strong> ${escapeHtml(nama)}</span>
-                <span><strong>📚 Kelas:</strong> ${escapeHtml(kelas)}</span>
-                ${timestamp ? `<span><strong>📅 Waktu:</strong> ${escapeHtml(formatTanggalDetail(timestamp))}</span>` : ''}
-            </div>`;
-
-            // ===== AMBIL SEMUA KEY (KECUALI KEY KHUSUS) =====
-            const excludeKeys = ['Nama', 'nama', 'Kelas', 'kelas', 'Semester', 'semester', 
-                                 'Status', 'status', 'Key', 'key', '_status', '_key', 
-                                 'Timestamp', 'timestamp', 'Waktu', 'waktu', 'identitas',
-                                 'aktivitas', 'timestamp'];
+            const priorityKeys = ['A. Identitas Kelompok', 'B. Produk Google Docs', 'C. Produk Google Sheets', 
+                                  'D. Produk Google Slides', 'E. Diskusi Kelompok', 'F. Refleksi Individu', 
+                                  'G. Pembagian Tugas'];
             
-            let keys = Object.keys(data).filter(key => {
-                if (key.startsWith('_')) return false;
-                if (excludeKeys.includes(key)) return false;
-                if (excludeKeys.includes(key.toLowerCase())) return false;
-                return true;
-            });
-
-            // ===== URUTKAN KEY (ALFABETIS) =====
-            keys.sort((a, b) => a.localeCompare(b));
-
-            if (keys.length === 0) {
-                return '<div class="popup-empty">Tidak ada data untuk ditampilkan</div>';
+            let processedKeys = new Set(['Nama', 'nama', 'Kelas', 'kelas', 'Semester', 'semester', 
+                                         'Status', 'status', 'Key', 'key', 'Timestamp', 'timestamp', 
+                                         'Waktu', 'waktu', 'aktivitas', 'identitas', 'Identitas',
+                                         'A. Identitas Kelompok', 'Identitas Kelompok']);
+            
+            let otherKeys = Object.keys(data).filter(key => !processedKeys.has(key) && !key.startsWith('_'));
+            
+            let sortedKeys = [];
+            for (const pKey of priorityKeys) {
+                if (data[pKey] !== undefined) {
+                    sortedKeys.push(pKey);
+                }
+            }
+            for (const key of otherKeys) {
+                if (!sortedKeys.includes(key)) {
+                    sortedKeys.push(key);
+                }
             }
 
-            // ===== RENDER SEMUA KEY =====
-            for (const key of keys) {
+            for (const key of sortedKeys) {
                 const value = data[key];
                 const label = formatLabel(key);
                 const icon = detectIcon(key);
                 
-                // Render value dengan fungsi universal
                 const displayValue = renderValueUniversal(value);
 
                 html += `
@@ -2146,11 +2100,9 @@
             });
 
             if (aktivitasData && aktivitasData.Data_JSON) {
-                // ===== MENGGUNAKAN PREVIEW UNIVERSAL =====
+                // ===== MENGGUNAKAN PREVIEW UNIVERSAL (TANPA INFO SISWA DI ATAS) =====
                 const data = aktivitasData.Data_JSON;
-                const namaSiswa = data.nama || data.Nama || data['Nama Lengkap'] || data.identitas?.Nama || '-';
-                const kelasSiswa = data.kelas || data.Kelas || data.identitas?.Kelas || '-';
-                body.innerHTML = renderPreviewUniversal(data, namaSiswa, kelasSiswa);
+                body.innerHTML = renderPreviewUniversal(data);
                 return;
             }
 
@@ -2378,6 +2330,28 @@
         }
 
         // ================================================================
+        // ==================== LOGIN & PROFILE ============================
+        // ================================================================
+        function loadProfileFromSession() {
+            const adminName = sessionStorage.getItem('adminName');
+            const adminRole = sessionStorage.getItem('adminRole');
+            if (adminName) {
+                document.getElementById('profileName').innerText = adminName;
+                document.getElementById('profileRole').innerText = adminRole || 'Administrator';
+                document.getElementById('profileAvatar').innerText = adminName.charAt(0);
+                document.getElementById('profileContainer').style.display = 'block';
+            }
+        }
+
+        function handleLogout() {
+            sessionStorage.removeItem('isAdminLoggedIn');
+            sessionStorage.removeItem('adminName');
+            sessionStorage.removeItem('adminRole');
+            sessionStorage.removeItem('adminUsername');
+            window.location.href = 'index-penilaian-informatika.html';
+        }
+
+        // ================================================================
         // ==================== INISIALISASI ==============================
         // ================================================================
         async function init() {
@@ -2388,6 +2362,8 @@
                     navMenu.classList.toggle('active');
                 });
             }
+
+            loadProfileFromSession();
 
             var loadingMsg = document.getElementById('loadingMessage');
             loadingMsg.style.display = 'block';
