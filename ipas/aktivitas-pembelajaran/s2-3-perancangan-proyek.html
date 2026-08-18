@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Aktivitas 3: Perancangan Proyek - IPAS SMK</title>
+    <title>Perancangan Proyek - Lembar Kerja IPAS</title>
     <link rel="stylesheet" href="../../style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <style>
         /* ================================================================
-           ROOT & RESET
+           ROOT & RESET - TEMA BIRU TUA (PERANCANGAN PROYEK)
            ================================================================ */
         * {
             margin: 0;
@@ -17,9 +17,9 @@
         }
 
         :root {
-            --primary: #2ecc71;
-            --primary-dark: #27ae60;
-            --primary-light: #d5f4e6;
+            --primary: #2c3e50;
+            --primary-dark: #1a252f;
+            --primary-light: #d5dbe0;
             --accent: #3498db;
             --gray-bg: #f5f7fa;
             --text: #2c3e50;
@@ -73,7 +73,42 @@
             margin-bottom: 1.5rem;
         }
 
-        /* ===== IDENTITAS ===== */
+        /* ============ TP CARD ============ */
+        .tp-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 16px;
+            padding: 1.2rem 1.8rem;
+            margin-bottom: 1.5rem;
+            border-left: 5px solid var(--primary);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        .tp-card .tp-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 4px 0;
+            font-size: 0.95rem;
+        }
+
+        .tp-card .tp-item .tp-code {
+            background: var(--primary);
+            color: white;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            min-width: 45px;
+            text-align: center;
+        }
+
+        .tp-card .tp-item .tp-desc {
+            color: var(--primary-dark);
+        }
+
+        /* ================================================================
+           SISA CSS
+           ================================================================ */
         .identitas-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -101,9 +136,9 @@
             background: #fff;
             transition: 0.2s;
             font-family: inherit;
-            resize: vertical;
+            resize: none !important;
+            overflow: hidden !important;
             min-height: 42px;
-            overflow: hidden;
         }
 
         .identitas-item select:focus,
@@ -112,7 +147,6 @@
             border-color: var(--primary);
         }
 
-        /* ===== SECTION ===== */
         .section-title {
             font-size: 1.3rem;
             font-weight: 700;
@@ -134,7 +168,7 @@
             font-size: 0.95rem;
             margin-bottom: 1rem;
             padding: 0.8rem 1.2rem;
-            background: #f0faf0;
+            background: #eef1f3;
             border-radius: 10px;
             border-left: 4px solid var(--primary);
         }
@@ -143,7 +177,6 @@
             color: var(--text);
         }
 
-        /* ===== TABEL ===== */
         .table-wrap {
             overflow-x: auto;
             margin: 0.8rem 0;
@@ -176,7 +209,6 @@
             border-bottom: none;
         }
 
-        /* ===== DINAMIC TEXTAREA ===== */
         .dynamic-textarea {
             width: 100%;
             border: 2px solid #e8e8e8;
@@ -186,16 +218,16 @@
             font-size: 0.95rem;
             background: #fff;
             transition: 0.2s;
-            resize: vertical;
+            resize: none !important;
+            overflow: hidden !important;
             min-height: 42px;
             line-height: 1.6;
-            overflow: hidden;
         }
 
         .dynamic-textarea:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.15);
+            box-shadow: 0 0 0 3px rgba(44, 62, 80, 0.15);
         }
 
         .dynamic-textarea-sm {
@@ -208,34 +240,79 @@
             min-height: 70px;
         }
 
-        /* ===== SELECT UNIFORM ===== */
-        .select-uniform {
-            width: 100%;
-            padding: 0.6rem 0.8rem;
-            border: 2px solid #e8e8e8;
-            border-radius: 8px;
-            font-size: 0.95rem;
-            background: #fff;
+        /* ============ EMOJI RADIO GROUP ============ */
+        .emoji-group {
+            display: flex;
+            gap: 0.4rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 4px;
+        }
+
+        .emoji-group label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            cursor: pointer;
+            padding: 4px 6px;
+            border-radius: 10px;
             transition: 0.2s;
-            font-family: inherit;
-            color: var(--text);
-            appearance: auto;
+            font-size: 1.8rem;
+            min-width: 44px;
+        }
+
+        .emoji-group label:hover {
+            background: var(--primary-light);
+            transform: scale(1.05);
+        }
+
+        .emoji-group label input[type="radio"] {
+            width: 16px;
+            height: 16px;
+            accent-color: var(--primary);
             cursor: pointer;
         }
 
-        .select-uniform:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.15);
+        .emoji-group label .emoji-label {
+            font-size: 0.6rem;
+            color: var(--text-light);
+            font-weight: 600;
         }
 
-        .select-uniform:disabled {
-            background: #f5f5f5;
-            color: #999;
-            cursor: not-allowed;
+        .emoji-card {
+            background: #eef1f3;
+            padding: 0.8rem 1rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: 0.2s;
         }
 
-        /* ===== RADIO & CHECKBOX ===== */
+        .emoji-card:hover {
+            border-color: var(--primary-light);
+        }
+
+        .emoji-card .emoji-title {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text);
+            margin-bottom: 2px;
+        }
+
+        .emoji-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.8rem;
+            margin: 1rem 0;
+        }
+
+        @media (max-width: 600px) {
+            .emoji-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         .options-group {
             display: flex;
             flex-wrap: wrap;
@@ -260,7 +337,6 @@
             flex-shrink: 0;
         }
 
-        /* ===== TOMBOL ===== */
         .btn-row {
             display: inline-flex;
             align-items: center;
@@ -310,12 +386,12 @@
             transition: 0.3s;
             display: block;
             margin: 2rem auto 1rem;
-            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+            box-shadow: 0 4px 15px rgba(44, 62, 80, 0.3);
         }
 
         .btn-submit:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(46, 204, 113, 0.4);
+            box-shadow: 0 8px 25px rgba(44, 62, 80, 0.4);
         }
         .btn-submit:disabled {
             background: #ccc;
@@ -359,7 +435,6 @@
             margin-bottom: 1rem;
         }
 
-        /* ===== STATUS ===== */
         .status-bar {
             display: flex;
             align-items: center;
@@ -384,15 +459,9 @@
         }
 
         @keyframes pulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.5);
-            }
-            70% {
-                box-shadow: 0 0 0 8px rgba(40, 167, 69, 0);
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(40, 167, 69, 0);
-            }
+            0% { box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.5); }
+            70% { box-shadow: 0 0 0 8px rgba(40, 167, 69, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(40, 167, 69, 0); }
         }
 
         .msg {
@@ -421,7 +490,266 @@
             margin-right: 8px;
         }
 
-        /* ===== MODAL ===== */
+        .dokumentasi-instruction {
+            background: #fff3cd;
+            border-radius: 10px;
+            padding: 0.8rem 1.2rem;
+            margin: 0.5rem 0 1rem 0;
+            border-left: 4px solid #f39c12;
+        }
+
+        .dokumentasi-instruction i {
+            color: #f39c12;
+            margin-right: 8px;
+        }
+
+        .dokumentasi-instruction .contoh-dok {
+            margin-top: 6px;
+            font-size: 0.85rem;
+            color: #666;
+            background: #fff8e1;
+            padding: 6px 12px;
+            border-radius: 6px;
+        }
+
+        .folder-link-box {
+            background: #e8f5e9;
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            margin-top: 1rem;
+            border-left: 5px solid #4caf50;
+        }
+
+        .folder-link-box .label-link {
+            font-weight: 600;
+            color: #2e7d32;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .folder-link-box .sub-text {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 6px;
+        }
+
+        .folder-link-box input {
+            width: 100% !important;
+        }
+
+        /* ===== SELECT UNIFORM ===== */
+        .select-uniform {
+            width: 100%;
+            padding: 0.6rem 0.8rem;
+            border: 2px solid #e8e8e8;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            background: #fff;
+            transition: 0.2s;
+            font-family: inherit;
+            color: var(--text);
+            appearance: auto;
+            cursor: pointer;
+        }
+
+        .select-uniform:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(44, 62, 80, 0.15);
+        }
+
+        .select-uniform:disabled {
+            background: #f5f5f5;
+            color: #999;
+            cursor: not-allowed;
+        }
+
+        /* ===== INFO BOX ===== */
+        .info-hijau {
+            background: #e8f5e9;
+            border-left: 5px solid #4caf50;
+            padding: 1rem;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .info-biru {
+            background: #e3f2fd;
+            border-left: 5px solid var(--accent);
+            padding: 1rem;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .kotak-checklist {
+            border: 1px solid var(--primary-light);
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            background: #f9f9f9;
+            margin: 15px 0;
+        }
+
+        /* ===== PANDUAN DESAIN ===== */
+        .panduan-desain {
+            background: #fef9e7;
+            border: 2px solid var(--orange);
+            border-radius: 12px;
+            padding: 1.2rem 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .panduan-desain .step {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed #f0e0c0;
+        }
+
+        .panduan-desain .step:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .panduan-desain .step-num {
+            background: var(--orange);
+            color: #fff;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .panduan-desain .step-content {
+            font-size: 0.92rem;
+            color: #555;
+        }
+
+        .panduan-desain .step-content strong {
+            color: var(--text);
+        }
+
+        .panduan-desain .step-content .highlight {
+            background: #fff3cd;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.85rem;
+        }
+
+        .link-preview {
+            display: inline-block;
+            margin-top: 8px;
+            padding: 6px 14px;
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            text-decoration: none;
+        }
+        .link-preview:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .anggota-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .btn-hapus-baris {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 4px 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.75rem;
+            transition: 0.2s;
+        }
+        .btn-hapus-baris:hover {
+            background: #c0392b;
+        }
+        .btn-hapus-baris:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .btn-table-add {
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            padding: 4px 14px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .btn-table-add:hover {
+            background: var(--primary-dark);
+            transform: scale(1.02);
+        }
+
+        .btn-table-remove {
+            background: #e74c3c;
+            color: #fff;
+            border: none;
+            padding: 4px 14px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .btn-table-remove:hover {
+            background: #c0392b;
+            transform: scale(1.02);
+        }
+        .btn-table-remove:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .table-toolbar {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 6px;
+        }
+
+        .link-drive-box {
+            background: #e3f2fd;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            border-left: 5px solid #1976d2;
+            margin: 1rem 0;
+        }
+
+        .link-drive-box ul {
+            margin-left: 1.5rem;
+            margin-top: 4px;
+        }
+        .link-drive-box ul li {
+            margin-bottom: 2px;
+        }
+
         .modal {
             display: none;
             position: fixed;
@@ -434,12 +762,8 @@
         }
 
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .modal-box {
@@ -454,14 +778,8 @@
         }
 
         @keyframes slideDown {
-            from {
-                transform: translateY(-40px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
+            from { transform: translateY(-40px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
         .modal-icon {
@@ -532,224 +850,6 @@
             background: #5a6268;
         }
 
-        /* ===== INFO BOX ===== */
-        .info-hijau {
-            background: #e8f5e9;
-            border-left: 5px solid var(--primary);
-            padding: 1rem;
-            border-radius: 12px;
-            margin-bottom: 20px;
-        }
-
-        .info-biru {
-            background: #e3f2fd;
-            border-left: 5px solid var(--accent);
-            padding: 1rem;
-            border-radius: 12px;
-            margin-bottom: 20px;
-        }
-
-        .kotak-checklist {
-            border: 1px solid var(--primary-light);
-            padding: 1rem 1.5rem;
-            border-radius: 12px;
-            background: #f9f9f9;
-            margin: 15px 0;
-        }
-
-        .materi-box {
-            background: #e3f2fd;
-            border-radius: 12px;
-            padding: 15px;
-            margin: 15px 0;
-            border-left: 4px solid var(--accent);
-        }
-
-        .btn-materi {
-            display: inline-block;
-            background: var(--accent);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 30px;
-            text-decoration: none;
-            margin-top: 10px;
-            font-size: 0.9rem;
-        }
-        .btn-materi:hover {
-            background: #2980b9;
-        }
-
-        .soal-cek {
-            background: #fff8e1;
-            padding: 15px;
-            border-radius: 12px;
-            margin-top: 10px;
-        }
-
-        .soal-cek textarea {
-            margin-bottom: 10px;
-        }
-
-        .link-drive-box {
-            background: #e3f2fd;
-            padding: 1rem 1.5rem;
-            border-radius: 12px;
-            border-left: 5px solid #1976d2;
-            margin: 1rem 0;
-        }
-
-        .link-drive-box ul {
-            margin-left: 1.5rem;
-            margin-top: 4px;
-        }
-
-        .link-drive-box ul li {
-            margin-bottom: 2px;
-        }
-
-        .anggota-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-        }
-
-        /* ===== PANDUAN DESAIN ===== */
-        .panduan-desain {
-            background: #fef9e7;
-            border: 2px solid #f39c12;
-            border-radius: 12px;
-            padding: 1.2rem 1.5rem;
-            margin: 1rem 0;
-        }
-
-        .panduan-desain .step {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            margin-bottom: 10px;
-            padding-bottom: 10px;
-            border-bottom: 1px dashed #f0e0c0;
-        }
-
-        .panduan-desain .step:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-
-        .panduan-desain .step-num {
-            background: var(--orange);
-            color: #fff;
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 0.9rem;
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
-
-        .panduan-desain .step-content {
-            font-size: 0.92rem;
-            color: #555;
-        }
-
-        .panduan-desain .step-content strong {
-            color: var(--text);
-        }
-
-        .panduan-desain .step-content .highlight {
-            background: #fff3cd;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-family: monospace;
-            font-size: 0.85rem;
-        }
-
-        .link-preview {
-            display: inline-block;
-            margin-top: 8px;
-            padding: 6px 14px;
-            background: var(--primary-light);
-            color: var(--primary-dark);
-            border-radius: 20px;
-            font-size: 0.8rem;
-            text-decoration: none;
-        }
-        .link-preview:hover {
-            background: var(--primary);
-            color: white;
-        }
-
-        /* ===== TOMBOL TABEL DINAMIS ===== */
-        .table-toolbar {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-            margin-top: 6px;
-        }
-
-        .btn-table-add {
-            background: var(--primary);
-            color: #fff;
-            border: none;
-            padding: 4px 14px;
-            border-radius: 6px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.2s;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-        }
-        .btn-table-add:hover {
-            background: var(--primary-dark);
-            transform: scale(1.02);
-        }
-
-        .btn-table-remove {
-            background: #e74c3c;
-            color: #fff;
-            border: none;
-            padding: 4px 14px;
-            border-radius: 6px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.2s;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-        }
-        .btn-table-remove:hover {
-            background: #c0392b;
-            transform: scale(1.02);
-        }
-        .btn-table-remove:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .btn-hapus-baris {
-            background: #e74c3c;
-            color: white;
-            border: none;
-            padding: 4px 10px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 0.75rem;
-            transition: 0.2s;
-        }
-        .btn-hapus-baris:hover {
-            background: #c0392b;
-        }
-
-        /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             .container {
                 padding: 0 0.8rem;
@@ -786,12 +886,19 @@
                 flex: none;
                 width: 100%;
             }
-            .anggota-grid {
-                grid-template-columns: 1fr !important;
+            .options-group {
+                gap: 8px 14px;
             }
-            table {
-                display: block;
-                overflow-x: auto;
+            .tp-card .tp-item {
+                flex-wrap: wrap;
+            }
+            .emoji-group label {
+                font-size: 1.5rem;
+                min-width: 36px;
+                padding: 2px 4px;
+            }
+            .anggota-grid {
+                grid-template-columns: 1fr;
             }
             .panduan-desain .step {
                 flex-direction: column;
@@ -811,14 +918,26 @@
             table {
                 font-size: 0.85rem;
             }
-            th,
-            td {
+            th, td {
                 padding: 6px 8px;
             }
             .dynamic-textarea {
                 font-size: 0.85rem;
                 min-height: 36px;
                 padding: 6px 8px;
+            }
+            .tp-card {
+                padding: 0.8rem 1rem;
+            }
+            .tp-card .tp-item {
+                font-size: 0.85rem;
+            }
+            .emoji-group label {
+                font-size: 1.3rem;
+                min-width: 32px;
+            }
+            .emoji-group label .emoji-label {
+                font-size: 0.5rem;
             }
             .btn-table-add,
             .btn-table-remove {
@@ -836,7 +955,7 @@
             <div class="nav-container">
                 <div class="logo">
                     <img src="../../assets/images/logo.png" alt="Logo" />
-                    <h1>TEMBOK BELAJAR - PROJEK IPAS SMK</h1>
+                    <h1>TEMBOK BELAJAR - PROJEK IPAS</h1>
                 </div>
                 <ul class="nav-menu" id="nav-menu">
                     <li><a href="../../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
@@ -867,6 +986,17 @@
             <p style="color:var(--text-light); font-size:0.95rem; max-width:600px; margin:0 auto;">
                 Rancang produk secara detail: spesifikasi, desain, bahan, dan rencana produksi!
             </p>
+        </div>
+
+        <!-- ===== TP CARD ===== -->
+        <div class="tp-card">
+            <div style="font-weight:700; color:var(--primary-dark); margin-bottom:6px; font-size:1.1rem;">
+                <i class="fas fa-bullseye"></i> Tujuan Pembelajaran
+            </div>
+            <div class="tp-item">
+                <span class="tp-code">TP 2.1</span>
+                <span class="tp-desc">Menyusun rancangan percobaan dengan mengikuti prosedur penyelidikan ilmiah</span>
+            </div>
         </div>
 
         <!-- STATUS -->
@@ -902,16 +1032,16 @@
             <!-- A. IDENTITAS -->
             <!-- ============================================================ -->
             <div class="card">
-                <h2 class="section-title"><i class="fas fa-id-card"></i> Identitas</h2>
+                <h2 class="section-title"><i class="fas fa-id-card"></i> A. Identitas</h2>
                 <div class="identitas-grid">
                     <div class="identitas-item">
                         <label>Kelas</label>
-                        <select id="kelas" onchange="onKelasChange(); saveDraft();" disabled>
+                        <select id="kelas" onchange="updateNama(); saveDraft();" disabled>
                             <option value="">-- Pilih --</option>
                         </select>
                     </div>
                     <div class="identitas-item">
-                        <label>Nama (Pengisi)</label>
+                        <label>Nama</label>
                         <select id="nama" onchange="saveDraft();" disabled>
                             <option value="">-- Pilih --</option>
                         </select>
@@ -931,7 +1061,7 @@
             <!-- B. CEK PEMAHAMAN MATERI -->
             <!-- ============================================================ -->
             <div class="card">
-                <h2 class="section-title"><i class="fas fa-book-open"></i> Cek Pemahaman Materi</h2>
+                <h2 class="section-title"><i class="fas fa-book-open"></i> B. Cek Pemahaman Materi</h2>
                 <div class="section-desc">
                     <i class="fas fa-info-circle"></i>
                     Sebelum memulai, baca dulu materi
@@ -939,6 +1069,12 @@
                         "Perancangan Proyek"
                     </a>
                     , lalu jawab pertanyaan di bawah ini.
+                </div>
+
+                <div class="dokumentasi-instruction">
+                    <i class="fas fa-camera"></i>
+                    <strong>📸 Instruksi Dokumentasi:</strong> 
+                    Screenshot halaman materi yang sudah kamu baca → Upload ke Google Drive → Tempel link folder di bawah (kolom Link Dokumentasi di bagian H).
                 </div>
 
                 <div class="table-wrap">
@@ -960,16 +1096,23 @@
                         </tbody>
                     </table>
                 </div>
+
+                <div style="margin-top:1rem; background:#f8fafc; border-radius:10px; padding:1rem; border:1px dashed var(--primary);">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="bacaMateri" onchange="saveDraft();" style="width:18px; height:18px; accent-color:var(--primary);">
+                        <label for="bacaMateri" style="font-weight:600; margin-left:8px;">☐ Ya, saya sudah membaca materi "Perancangan Proyek"</label>
+                    </div>
+                </div>
             </div>
 
             <!-- ============================================================ -->
             <!-- C. MASALAH & SOLUSI -->
             <!-- ============================================================ -->
             <div class="card">
-                <h2 class="section-title"><i class="fas fa-bullseye"></i> Masalah & Solusi</h2>
+                <h2 class="section-title"><i class="fas fa-bullseye"></i> C. Masalah &amp; Solusi</h2>
 
                 <div class="info-biru">
-                    <strong>📝 PETUNJUK:</strong> Tuliskan masalah dan solusi yang sudah kalian pilih dari Aktivitas 1 & 2.
+                    <strong>📝 PETUNJUK:</strong> Tuliskan masalah dan solusi yang sudah kalian pilih dari Aktivitas 1 &amp; 2.
                 </div>
 
                 <div class="kotak-checklist">
@@ -988,7 +1131,7 @@
             <!-- D. SPESIFIKASI PRODUK -->
             <!-- ============================================================ -->
             <div class="card">
-                <h2 class="section-title"><i class="fas fa-cog"></i> Spesifikasi Produk</h2>
+                <h2 class="section-title"><i class="fas fa-cog"></i> D. Spesifikasi Produk</h2>
 
                 <div class="info-biru">
                     <strong>📝 PETUNJUK:</strong> Tentukan spesifikasi produk yang akan kalian buat.
@@ -1048,10 +1191,10 @@
             </div>
 
             <!-- ============================================================ -->
-            <!-- E. DESAIN PRODUK (DENGAN PANDUAN LENGKAP) -->
+            <!-- E. DESAIN PRODUK -->
             <!-- ============================================================ -->
             <div class="card">
-                <h2 class="section-title"><i class="fas fa-pencil-ruler"></i> Desain Produk</h2>
+                <h2 class="section-title"><i class="fas fa-pencil-ruler"></i> E. Desain Produk</h2>
 
                 <div class="info-hijau">
                     <i class="fas fa-lightbulb" style="color:var(--orange);"></i>
@@ -1097,7 +1240,7 @@
                     <div class="step">
                         <div class="step-num">5</div>
                         <div class="step-content">
-                            <strong>Upload ke Google Drive & Bagikan</strong><br />
+                            <strong>Upload ke Google Drive &amp; Bagikan</strong><br />
                             • Upload file desain ke <strong>Google Drive</strong><br />
                             • Klik kanan file → <strong>"Bagikan"</strong><br />
                             • Ubah akses menjadi <strong>"Siapa saja dengan link dapat melihat"</strong><br />
@@ -1112,7 +1255,7 @@
                     </div>
                 </div>
 
-                <!-- Link Google Drive -->
+                <!-- Link Google Drive - Desain -->
                 <div class="link-drive-box" style="margin-top:1rem;">
                     <label style="font-weight:600; display:block; margin-bottom:4px; font-size:1rem;">
                         📁 Link Google Drive - Hasil Desain Produk
@@ -1156,7 +1299,7 @@
             <!-- F. KEBERHASILAN PRODUK -->
             <!-- ============================================================ -->
             <div class="card">
-                <h2 class="section-title"><i class="fas fa-check-circle"></i> Keberhasilan Produk</h2>
+                <h2 class="section-title"><i class="fas fa-check-circle"></i> F. Keberhasilan Produk</h2>
 
                 <div class="info-biru">
                     <strong>📝 PETUNJUK:</strong> Tentukan kriteria keberhasilan produk. Bagaimana kalian tahu produk berhasil? Klik <strong>"Tambah Baris"</strong> untuk menambah kriteria.
@@ -1186,7 +1329,7 @@
             <!-- G. RENCANA PRODUKSI -->
             <!-- ============================================================ -->
             <div class="card">
-                <h2 class="section-title"><i class="fas fa-calendar-alt"></i> Rencana Produksi</h2>
+                <h2 class="section-title"><i class="fas fa-calendar-alt"></i> G. Rencana Produksi</h2>
 
                 <div class="info-biru">
                     <strong>📝 PETUNJUK:</strong> Rencanakan kegiatan produksi untuk 4 minggu ke depan.
@@ -1211,7 +1354,7 @@
             <!-- H. RENCANA PENGUJIAN -->
             <!-- ============================================================ -->
             <div class="card">
-                <h2 class="section-title"><i class="fas fa-flask"></i> Rencana Pengujian</h2>
+                <h2 class="section-title"><i class="fas fa-flask"></i> H. Rencana Pengujian</h2>
 
                 <div class="info-biru">
                     <strong>📝 PETUNJUK:</strong> Rencanakan bagaimana kalian akan menguji produk. Klik <strong>"Tambah Baris"</strong> untuk menambah pengujian.
@@ -1236,13 +1379,20 @@
                     <button type="button" class="btn-table-add" onclick="tambahBarisPengujian()"><i class="fas fa-plus"></i> Tambah Baris</button>
                     <button type="button" class="btn-table-remove" id="hapusPengujianBtn" onclick="hapusBarisPengujian()" disabled><i class="fas fa-minus"></i> Hapus</button>
                 </div>
+
+                <!-- ===== LINK DOKUMENTASI B ===== -->
+                <div class="folder-link-box" style="margin-top:1.5rem;">
+                    <span class="label-link"><i class="fas fa-folder-open"></i> 📁 Link Dokumentasi - Bagian B</span>
+                    <div class="sub-text">Tempel link folder/screenshot bukti membaca materi:</div>
+                    <input type="text" class="dynamic-textarea dynamic-textarea-sm" id="link_screenshot_b" placeholder="https://drive.google.com/drive/folders/xxx" oninput="saveDraft(); autoResize(this);">
+                </div>
             </div>
 
             <!-- ============================================================ -->
             <!-- I. PERSIAPAN PRESENTASI & DOKUMENTASI -->
             <!-- ============================================================ -->
             <div class="card">
-                <h2 class="section-title"><i class="fas fa-presentation"></i> Persiapan Presentasi & Dokumentasi</h2>
+                <h2 class="section-title"><i class="fas fa-presentation"></i> I. Persiapan Presentasi &amp; Dokumentasi</h2>
 
                 <div class="info-biru">
                     <strong>📝 PETUNJUK:</strong> Tentukan siapa yang akan presentasi rancangan kalian.
@@ -1324,7 +1474,7 @@
             <!-- J. REFLEKSI -->
             <!-- ============================================================ -->
             <div class="card">
-                <h2 class="section-title"><i class="fas fa-smile"></i> Refleksi</h2>
+                <h2 class="section-title"><i class="fas fa-smile"></i> J. Refleksi</h2>
                 <div class="section-desc">
                     <i class="fas fa-comment"></i>
                     Tulis dengan jujur, ya! Tidak ada jawaban benar atau salah.
@@ -1345,48 +1495,151 @@
             </div>
 
             <!-- ============================================================ -->
-            <!-- K. NILAI DIRI KELOMPOK -->
+            <!-- K. REFLEKSI KELOMPOK (EMOJI + CERITA) -->
             <!-- ============================================================ -->
             <div class="card">
-                <h2 class="section-title"><i class="fas fa-star"></i> Nilai Diri Kelompok</h2>
+                <h2 class="section-title"><i class="fas fa-star"></i> K. Refleksi Kelompok</h2>
                 <div class="section-desc">
                     <i class="fas fa-hand-peace"></i>
-                    Berikan nilai untuk kelompokmu (1 = Kurang, 4 = Sangat Baik)!
+                    Pilih emoji yang paling menggambarkan kelompokmu! Lalu tulis cerita singkatnya.
                 </div>
 
-                <div class="table-wrap">
-                    <table>
-                        <thead><tr><th style="width:40px;">No</th><th>Aspek</th><th style="width:130px;">Nilai (1-4)</th></tr></thead>
-                        <tbody>
-                            <tr><td>1</td><td>Partisipasi dalam diskusi</td><td>
-                                    <select id="nilai1" class="select-uniform" onchange="saveDraft();">
-                                        <option value="">--</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3" selected>3</option>
-                                        <option value="4">4</option>
-                                    </select>
-                            </td></tr>
-                            <tr><td>2</td><td>Kreativitas dalam merancang</td><td>
-                                    <select id="nilai2" class="select-uniform" onchange="saveDraft();">
-                                        <option value="">--</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3" selected>3</option>
-                                        <option value="4">4</option>
-                                    </select>
-                            </td></tr>
-                            <tr><td>3</td><td>Kerja sama dalam kelompok</td><td>
-                                    <select id="nilai3" class="select-uniform" onchange="saveDraft();">
-                                        <option value="">--</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3" selected>3</option>
-                                        <option value="4">4</option>
-                                    </select>
-                            </td></tr>
-                        </tbody>
-                    </table>
+                <div class="emoji-grid">
+                    <!-- 1. Kerjasama -->
+                    <div class="emoji-card">
+                        <div class="emoji-title">🤝 Kerjasama</div>
+                        <div class="emoji-group">
+                            <label>
+                                <input type="radio" name="g_kerjasama" value="5" onchange="saveDraft();">
+                                😊
+                                <span class="emoji-label">Sangat Baik</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kerjasama" value="4" onchange="saveDraft();">
+                                🙂
+                                <span class="emoji-label">Baik</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kerjasama" value="3" onchange="saveDraft();" checked>
+                                😐
+                                <span class="emoji-label">Cukup</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kerjasama" value="2" onchange="saveDraft();">
+                                😕
+                                <span class="emoji-label">Kurang</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kerjasama" value="1" onchange="saveDraft();">
+                                😞
+                                <span class="emoji-label">Perlu Perbaikan</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- 2. Kontribusi -->
+                    <div class="emoji-card">
+                        <div class="emoji-title">📊 Kontribusi</div>
+                        <div class="emoji-group">
+                            <label>
+                                <input type="radio" name="g_kontribusi" value="5" onchange="saveDraft();">
+                                😊
+                                <span class="emoji-label">Sangat Baik</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kontribusi" value="4" onchange="saveDraft();">
+                                🙂
+                                <span class="emoji-label">Baik</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kontribusi" value="3" onchange="saveDraft();" checked>
+                                😐
+                                <span class="emoji-label">Cukup</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kontribusi" value="2" onchange="saveDraft();">
+                                😕
+                                <span class="emoji-label">Kurang</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kontribusi" value="1" onchange="saveDraft();">
+                                😞
+                                <span class="emoji-label">Perlu Perbaikan</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- 3. Tepat Waktu -->
+                    <div class="emoji-card">
+                        <div class="emoji-title">⏰ Tepat Waktu</div>
+                        <div class="emoji-group">
+                            <label>
+                                <input type="radio" name="g_waktu" value="5" onchange="saveDraft();">
+                                😊
+                                <span class="emoji-label">Sangat Baik</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_waktu" value="4" onchange="saveDraft();">
+                                🙂
+                                <span class="emoji-label">Baik</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_waktu" value="3" onchange="saveDraft();" checked>
+                                😐
+                                <span class="emoji-label">Cukup</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_waktu" value="2" onchange="saveDraft();">
+                                😕
+                                <span class="emoji-label">Kurang</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_waktu" value="1" onchange="saveDraft();">
+                                😞
+                                <span class="emoji-label">Perlu Perbaikan</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- 4. Kualitas Hasil -->
+                    <div class="emoji-card">
+                        <div class="emoji-title">💡 Kualitas Hasil</div>
+                        <div class="emoji-group">
+                            <label>
+                                <input type="radio" name="g_kualitas" value="5" onchange="saveDraft();">
+                                😊
+                                <span class="emoji-label">Sangat Baik</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kualitas" value="4" onchange="saveDraft();">
+                                🙂
+                                <span class="emoji-label">Baik</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kualitas" value="3" onchange="saveDraft();" checked>
+                                😐
+                                <span class="emoji-label">Cukup</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kualitas" value="2" onchange="saveDraft();">
+                                😕
+                                <span class="emoji-label">Kurang</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kualitas" value="1" onchange="saveDraft();">
+                                😞
+                                <span class="emoji-label">Perlu Perbaikan</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cerita Kelompok -->
+                <div style="margin-top:0.8rem;">
+                    <label style="font-weight:600; display:block; margin-bottom:4px;">
+                        📝 Ceritakan pengalaman kerjamu dalam kelompok ini (1-2 kalimat):
+                    </label>
+                    <textarea class="dynamic-textarea" id="refleksiCerita" rows="2" placeholder="Contoh: Kami bekerja sama dengan baik, semua saling membantu menyelesaikan tugas..." oninput="saveDraft(); autoResize(this);"></textarea>
                 </div>
             </div>
 
@@ -1450,8 +1703,8 @@
         // KONFIGURASI
         // ================================================================
         const URL_DATA_SISWA = 'https://script.google.com/macros/s/AKfycbxZMS_o6xWMAQAkjBzzEMR9tJmHOnHCX13KJX2xZMn7WIr-A9pwVK_3DDHnMg7y_rD29Q/exec';
-        const URL_PEREKAPAN = 'https://script.google.com/macros/s/AKfycbyOV0q9vp8bVeVXCoYWa7qNUqzSPTA7BgTTjwEO0qjUGeHy-mrx7O0hFhcEHxK57oVY/exec';
-        const STORAGE_KEY = 'ipas_s2_a3_draft_v3';
+        const URL_PEREKAPAN = 'https://script.google.com/macros/s/AKfycbxyGnBMWRIQKRtHa3ogqvT_66Tt3gTEcxZ7dsPPnob3tsVU9IuPWTEpxWH7mGX7YPZj/exec';
+        const STORAGE_KEY = 'ipas_s2_a3_draft_v5';
         const AKTIVITAS_NAMA = 'AKTIVITAS 3 - PERANCANGAN PROYEK';
         const SHEET_NAME = 'data_aktivitas';
 
@@ -1569,14 +1822,8 @@
         }
 
         // ================================================================
-        // FUNGSI KELAS
+        // UPDATE NAMA
         // ================================================================
-        function onKelasChange() {
-            updateNama();
-            updateSiswaDropdowns();
-            saveDraft();
-        }
-
         function updateNama() {
             const kelas = document.getElementById('kelas').value;
             const namaSel = document.getElementById('nama');
@@ -1809,17 +2056,32 @@
         }
 
         // ================================================================
+        // GET EMOJI VALUE
+        // ================================================================
+        function getEmojiValue(name) {
+            const el = document.querySelector(`input[name="${name}"]:checked`);
+            return el ? el.value : '3';
+        }
+
+        // ================================================================
         // TIMESTAMP
         // ================================================================
-        function getTimestamp() {
+        function getFormattedTimestamp() {
             const now = new Date();
-            const d = String(now.getDate()).padStart(2, '0');
-            const m = String(now.getMonth() + 1).padStart(2, '0');
-            const y = now.getFullYear();
-            const h = String(now.getHours()).padStart(2, '0');
-            const min = String(now.getMinutes()).padStart(2, '0');
-            const s = String(now.getSeconds()).padStart(2, '0');
-            return `${d}/${m}/${y} ${h}:${min}:${s}`;
+            const hari = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+            const bulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+                'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+            ];
+
+            const hariName = hari[now.getDay()];
+            const tanggal = String(now.getDate()).padStart(2, '0');
+            const bulanName = bulan[now.getMonth()];
+            const tahun = now.getFullYear();
+            const jam = String(now.getHours()).padStart(2, '0');
+            const menit = String(now.getMinutes()).padStart(2, '0');
+            const detik = String(now.getSeconds()).padStart(2, '0');
+
+            return `${hariName}, ${tanggal} ${bulanName} ${tahun} - ${jam}:${menit}:${detik}`;
         }
 
         // ================================================================
@@ -1860,32 +2122,20 @@
         }
 
         // ================================================================
-        // COLLECT DATA
+        // COLLECT DATA - STRUKTUR JSON KONSISTEN
         // ================================================================
         function collectData() {
-            const data = { timestamp: getTimestamp() };
+            const timestamp = getFormattedTimestamp();
 
-            // Identitas
-            data.identitas = {
-                "Kelas": document.getElementById('kelas').value || '',
-                "Nama": document.getElementById('nama').value || '',
-                "Kelompok": document.getElementById('kelompok').value || '',
-                "Tugas/Peran": document.getElementById('tugas').value || ''
-            };
+            // Get anggota
+            const anggota = [
+                document.getElementById('anggota1').value || '',
+                document.getElementById('anggota2').value || '',
+                document.getElementById('anggota3').value || '',
+                document.getElementById('anggota4').value || ''
+            ].filter(a => a).join(', ');
 
-            // Cek Pemahaman
-            data.cek_pemahaman = {
-                "Komponen utama perancangan proyek": document.getElementById('cek1').value || '',
-                "Mengapa perlu perencanaan": document.getElementById('cek2').value || ''
-            };
-
-            // Masalah & Solusi
-            data.masalah_solusi = {
-                "Masalah yang akan diselesaikan": document.getElementById('masalah_proyek').value || '',
-                "Solusi/Produk yang akan dibuat": document.getElementById('solusi_proyek').value || ''
-            };
-
-            // Spesifikasi - Bahan
+            // Collect bahan
             const bahanList = [];
             const bahanNama = document.querySelectorAll('.bahan_nama');
             const bahanJumlah = document.querySelectorAll('.bahan_jumlah');
@@ -1903,15 +2153,7 @@
                 }
             }
 
-            data.spesifikasi = {
-                "Fungsi Produk": document.getElementById('fungsi_produk').value || '',
-                "Target Pengguna": document.getElementById('target_pengguna').value || '',
-                "Daftar Bahan": bahanList,
-                "Total Biaya": document.getElementById('total_biaya').value || '0',
-                "Cara Kerja": document.getElementById('cara_kerja').value || ''
-            };
-
-            // Desain - Bagian
+            // Collect bagian
             const bagianList = [];
             const bagianNama = document.querySelectorAll('.bagian_nama');
             const bagianFungsi = document.querySelectorAll('.bagian_fungsi');
@@ -1925,12 +2167,7 @@
                 }
             }
 
-            data.desain = {
-                "Link Google Drive": document.getElementById('link_desain').value || '',
-                "Bagian-bagian Produk": bagianList
-            };
-
-            // Keberhasilan
+            // Collect kriteria
             const kriteriaList = [];
             const kriteriaNama = document.querySelectorAll('.kriteria_nama');
             const kriteriaUkur = document.querySelectorAll('.kriteria_ukur');
@@ -1943,18 +2180,8 @@
                     });
                 }
             }
-            data.keberhasilan = kriteriaList;
 
-            // Rencana Produksi
-            const produksiList = [];
-            for (let i = 1; i <= 4; i++) {
-                const aktivitas = document.getElementById(`produksi${i}`)?.value || '';
-                const pj = document.getElementById(`pj${i}`)?.value || '';
-                produksiList.push({ aktivitas, pj });
-            }
-            data.produksi = produksiList;
-
-            // Rencana Pengujian
+            // Collect pengujian
             const ujiList = [];
             const ujiAspek = document.querySelectorAll('.uji_aspek');
             const ujiCara = document.querySelectorAll('.uji_cara');
@@ -1969,42 +2196,76 @@
                     });
                 }
             }
-            data.pengujian = ujiList;
 
-            // Presentasi
-            const anggota = [
-                document.getElementById('anggota1').value || '',
-                document.getElementById('anggota2').value || '',
-                document.getElementById('anggota3').value || '',
-                document.getElementById('anggota4').value || ''
-            ].filter(a => a).join(', ');
+            // Collect produksi
+            const produksiList = [];
+            for (let i = 1; i <= 4; i++) {
+                const aktivitas = document.getElementById(`produksi${i}`)?.value || '';
+                const pj = document.getElementById(`pj${i}`)?.value || '';
+                produksiList.push({ aktivitas, pj });
+            }
 
-            data.presentasi = {
-                "Presenter Utama": document.getElementById('presenter_utama').value || '',
-                "Anggota Kelompok": anggota,
-                "Catatan Presentasi": document.getElementById('catatan_presentasi').value || ''
+            return {
+                "Timestamp Pengisian": timestamp,
+                "A. Identitas Kelompok": [
+                    ["Field", "Nilai"],
+                    ["Kelas", document.getElementById('kelas').value || ''],
+                    ["Nama", document.getElementById('nama').value || ''],
+                    ["Kelompok", document.getElementById('kelompok').value || ''],
+                    ["Tugas/Peran", document.getElementById('tugas').value || '']
+                ],
+                "B. Cek Pemahaman": {
+                    "Pertanyaan": [
+                        ["Pertanyaan", "Jawaban"],
+                        ["Komponen utama dalam perancangan proyek (min 3)", document.getElementById('cek1').value || ''],
+                        ["Mengapa perlu perencanaan sebelum produksi?", document.getElementById('cek2').value || '']
+                    ],
+                    "Checklist": [
+                        ["Item", "Status"],
+                        ["Sudah membaca materi Perancangan Proyek", document.getElementById('bacaMateri')?.checked || false]
+                    ],
+                    "Link Dokumentasi (Screenshot)": document.getElementById('link_screenshot_b').value || ''
+                },
+                "C. Masalah & Solusi": [
+                    ["Pertanyaan", "Jawaban"],
+                    ["Masalah yang Akan Diselesaikan", document.getElementById('masalah_proyek').value || ''],
+                    ["Solusi/Produk yang Akan Dibuat", document.getElementById('solusi_proyek').value || '']
+                ],
+                "D. Spesifikasi Produk": {
+                    "Fungsi Produk": document.getElementById('fungsi_produk').value || '',
+                    "Target Pengguna": document.getElementById('target_pengguna').value || '',
+                    "Bahan": bahanList,
+                    "Total Biaya": document.getElementById('total_biaya').value || '0',
+                    "Cara Kerja": document.getElementById('cara_kerja').value || ''
+                },
+                "E. Desain Produk": {
+                    "Link Google Drive": document.getElementById('link_desain').value || '',
+                    "Bagian-bagian": bagianList
+                },
+                "F. Keberhasilan Produk": kriteriaList,
+                "G. Rencana Produksi": produksiList,
+                "H. Rencana Pengujian": ujiList,
+                "I. Presentasi": {
+                    "Presenter Utama": document.getElementById('presenter_utama').value || '',
+                    "Anggota Kelompok": anggota,
+                    "Catatan Presentasi": document.getElementById('catatan_presentasi').value || '',
+                    "Link Dokumentasi (Video)": document.getElementById('link_dokumentasi').value || ''
+                },
+                "J. Refleksi": [
+                    ["Pertanyaan", "Jawaban"],
+                    ["Hal paling menarik", document.getElementById('ref1').value || ''],
+                    ["Kesulitan terbesar", document.getElementById('ref2').value || ''],
+                    ["Rencana minggu depan", document.getElementById('ref3').value || '']
+                ],
+                "K. Refleksi Kelompok (Emoji)": [
+                    ["Aspek", "Nilai"],
+                    ["Kerjasama", getEmojiValue('g_kerjasama')],
+                    ["Kontribusi", getEmojiValue('g_kontribusi')],
+                    ["Tepat Waktu", getEmojiValue('g_waktu')],
+                    ["Kualitas Hasil", getEmojiValue('g_kualitas')],
+                    ["Cerita Kelompok", document.getElementById('refleksiCerita').value || '']
+                ]
             };
-
-            // Dokumentasi
-            data.dokumentasi = {
-                "Link Video Presentasi": document.getElementById('link_dokumentasi').value || ''
-            };
-
-            // Refleksi
-            data.refleksi = {
-                "Hal paling menarik": document.getElementById('ref1').value || '',
-                "Kesulitan terbesar": document.getElementById('ref2').value || '',
-                "Rencana minggu depan": document.getElementById('ref3').value || ''
-            };
-
-            // Nilai
-            data.nilai = {
-                "Partisipasi diskusi": document.getElementById('nilai1').value || '3',
-                "Kreativitas merancang": document.getElementById('nilai2').value || '3',
-                "Kerja sama": document.getElementById('nilai3').value || '3'
-            };
-
-            return data;
         }
 
         // ================================================================
@@ -2013,41 +2274,96 @@
         function restoreData(data) {
             if (!data) return;
 
-            if (data.identitas) {
+            // A. Identitas (Array 2D)
+            if (data["A. Identitas Kelompok"] && Array.isArray(data["A. Identitas Kelompok"])) {
+                const identitasArray = data["A. Identitas Kelompok"];
+                let kelasValue = '', namaValue = '', kelompokValue = '', tugasValue = '';
+
+                identitasArray.forEach(item => {
+                    if (Array.isArray(item) && item.length === 2) {
+                        const field = item[0];
+                        const value = item[1] || '';
+                        if (field === "Kelas") kelasValue = value;
+                        else if (field === "Nama") namaValue = value;
+                        else if (field === "Kelompok") kelompokValue = value;
+                        else if (field === "Tugas/Peran") tugasValue = value;
+                    }
+                });
+
                 const sel = document.getElementById('kelas');
                 for (let opt of sel.options) {
-                    if (opt.value === data.identitas["Kelas"]) { opt.selected = true; break; }
+                    if (opt.value === kelasValue) { opt.selected = true; break; }
                 }
                 updateNama();
+
                 const selNama = document.getElementById('nama');
                 for (let opt of selNama.options) {
-                    if (opt.value === data.identitas["Nama"]) { opt.selected = true; break; }
+                    if (opt.value === namaValue) { opt.selected = true; break; }
                 }
-                document.getElementById('kelompok').value = data.identitas["Kelompok"] || '';
-                document.getElementById('tugas').value = data.identitas["Tugas/Peran"] || '';
+                document.getElementById('kelompok').value = kelompokValue;
+                document.getElementById('tugas').value = tugasValue;
+
+                setTimeout(() => updateSiswaDropdowns(), 100);
             }
 
-            if (data.cek_pemahaman) {
-                document.getElementById('cek1').value = data.cek_pemahaman["Komponen utama perancangan proyek"] || '';
-                document.getElementById('cek2').value = data.cek_pemahaman["Mengapa perlu perencanaan"] || '';
+            // B. Cek Pemahaman
+            if (data["B. Cek Pemahaman"]) {
+                const b = data["B. Cek Pemahaman"];
+                if (b["Pertanyaan"] && Array.isArray(b["Pertanyaan"])) {
+                    const qMap = {
+                        "Komponen utama dalam perancangan proyek (min 3)": 'cek1',
+                        "Mengapa perlu perencanaan sebelum produksi?": 'cek2'
+                    };
+                    b["Pertanyaan"].forEach(item => {
+                        if (Array.isArray(item) && item.length === 2) {
+                            const id = qMap[item[0]];
+                            if (id) {
+                                const el = document.getElementById(id);
+                                if (el) el.value = item[1] || '';
+                            }
+                        }
+                    });
+                }
+                if (b["Checklist"] && Array.isArray(b["Checklist"])) {
+                    const el = document.getElementById('bacaMateri');
+                    if (el) {
+                        b["Checklist"].forEach(item => {
+                            if (Array.isArray(item) && item.length === 2 && item[0] === "Sudah membaca materi Perancangan Proyek") {
+                                el.checked = item[1] || false;
+                            }
+                        });
+                    }
+                }
+                const linkEl = document.getElementById('link_screenshot_b');
+                if (linkEl) linkEl.value = b["Link Dokumentasi (Screenshot)"] || '';
             }
 
-            if (data.masalah_solusi) {
-                document.getElementById('masalah_proyek').value = data.masalah_solusi["Masalah yang akan diselesaikan"] || '';
-                document.getElementById('solusi_proyek').value = data.masalah_solusi["Solusi/Produk yang akan dibuat"] || '';
+            // C. Masalah & Solusi (Array 2D)
+            if (data["C. Masalah & Solusi"] && Array.isArray(data["C. Masalah & Solusi"])) {
+                data["C. Masalah & Solusi"].forEach(item => {
+                    if (Array.isArray(item) && item.length === 2) {
+                        const pertanyaan = item[0];
+                        const jawaban = item[1] || '';
+                        if (pertanyaan === "Masalah yang Akan Diselesaikan") document.getElementById('masalah_proyek')
+                            .value = jawaban;
+                        else if (pertanyaan === "Solusi/Produk yang Akan Dibuat") document.getElementById('solusi_proyek')
+                            .value = jawaban;
+                    }
+                });
             }
 
-            if (data.spesifikasi) {
-                const s = data.spesifikasi;
+            // D. Spesifikasi Produk
+            if (data["D. Spesifikasi Produk"]) {
+                const s = data["D. Spesifikasi Produk"];
                 document.getElementById('fungsi_produk').value = s["Fungsi Produk"] || '';
                 document.getElementById('target_pengguna').value = s["Target Pengguna"] || '';
                 document.getElementById('cara_kerja').value = s["Cara Kerja"] || '';
                 document.getElementById('total_biaya').value = s["Total Biaya"] || '0';
 
-                if (s["Daftar Bahan"] && s["Daftar Bahan"].length > 0) {
+                if (s["Bahan"] && s["Bahan"].length > 0) {
                     const tbody = document.getElementById('tbody_bahan');
                     tbody.innerHTML = '';
-                    s["Daftar Bahan"].forEach((b) => {
+                    s["Bahan"].forEach((b) => {
                         const tr = document.createElement('tr');
                         tr.innerHTML = `
                             <td><textarea class="dynamic-textarea dynamic-textarea-sm bahan_nama" rows="1" placeholder="Contoh: Botol bekas" oninput="saveDraft(); autoResize(this);">${escapeHtml(b.nama || '')}</textarea></td>
@@ -2061,14 +2377,16 @@
                 }
             }
 
-            if (data.desain) {
-                document.getElementById('link_desain').value = data.desain["Link Google Drive"] || '';
+            // E. Desain Produk
+            if (data["E. Desain Produk"]) {
+                const e = data["E. Desain Produk"];
+                document.getElementById('link_desain').value = e["Link Google Drive"] || '';
                 setTimeout(previewLinkDesain, 100);
 
-                if (data.desain["Bagian-bagian Produk"] && data.desain["Bagian-bagian Produk"].length > 0) {
+                if (e["Bagian-bagian"] && e["Bagian-bagian"].length > 0) {
                     const tbody = document.getElementById('tbody_bagian');
                     tbody.innerHTML = '';
-                    data.desain["Bagian-bagian Produk"].forEach((b) => {
+                    e["Bagian-bagian"].forEach((b) => {
                         const tr = document.createElement('tr');
                         tr.innerHTML = `
                             <td><textarea class="dynamic-textarea dynamic-textarea-sm bagian_nama" rows="1" placeholder="Contoh: Rangka utama" oninput="saveDraft(); autoResize(this);">${escapeHtml(b.nama || '')}</textarea></td>
@@ -2080,10 +2398,11 @@
                 }
             }
 
-            if (data.keberhasilan && data.keberhasilan.length > 0) {
+            // F. Keberhasilan Produk
+            if (data["F. Keberhasilan Produk"] && data["F. Keberhasilan Produk"].length > 0) {
                 const tbody = document.getElementById('tbody_kriteria');
                 tbody.innerHTML = '';
-                data.keberhasilan.forEach((k) => {
+                data["F. Keberhasilan Produk"].forEach((k) => {
                     const tr = document.createElement('tr');
                     tr.innerHTML = `
                         <td><textarea class="dynamic-textarea dynamic-textarea-sm kriteria_nama" rows="1" placeholder="Contoh: Produk kuat dan tidak mudah rusak" oninput="saveDraft(); autoResize(this);">${escapeHtml(k.nama || '')}</textarea></td>
@@ -2094,19 +2413,21 @@
                 });
             }
 
-            if (data.produksi && data.produksi.length > 0) {
-                for (let i = 0; i < Math.min(4, data.produksi.length); i++) {
+            // G. Rencana Produksi
+            if (data["G. Rencana Produksi"] && data["G. Rencana Produksi"].length > 0) {
+                for (let i = 0; i < Math.min(4, data["G. Rencana Produksi"].length); i++) {
                     const idx = i + 1;
-                    const p = data.produksi[i];
+                    const p = data["G. Rencana Produksi"][i];
                     document.getElementById(`produksi${idx}`).value = p.aktivitas || '';
                     document.getElementById(`pj${idx}`).value = p.pj || '';
                 }
             }
 
-            if (data.pengujian && data.pengujian.length > 0) {
+            // H. Rencana Pengujian
+            if (data["H. Rencana Pengujian"] && data["H. Rencana Pengujian"].length > 0) {
                 const tbody = document.getElementById('tbody_pengujian');
                 tbody.innerHTML = '';
-                data.pengujian.forEach((u) => {
+                data["H. Rencana Pengujian"].forEach((u) => {
                     const tr = document.createElement('tr');
                     tr.innerHTML = `
                         <td><textarea class="dynamic-textarea dynamic-textarea-sm uji_aspek" rows="1" placeholder="Contoh: Ketahanan produk" oninput="saveDraft(); autoResize(this);">${escapeHtml(u.aspek || '')}</textarea></td>
@@ -2118,32 +2439,58 @@
                 });
             }
 
-            if (data.presentasi) {
+            // I. Presentasi
+            if (data["I. Presentasi"]) {
+                const i = data["I. Presentasi"];
                 setTimeout(() => {
-                    document.getElementById('presenter_utama').value = data.presentasi["Presenter Utama"] || '';
-                    const anggota = (data.presentasi["Anggota Kelompok"] || '').split(', ');
+                    document.getElementById('presenter_utama').value = i["Presenter Utama"] || '';
+                    const anggota = (i["Anggota Kelompok"] || '').split(', ');
                     document.getElementById('anggota1').value = anggota[0] || '';
                     document.getElementById('anggota2').value = anggota[1] || '';
                     document.getElementById('anggota3').value = anggota[2] || '';
                     document.getElementById('anggota4').value = anggota[3] || '';
                 }, 200);
-                document.getElementById('catatan_presentasi').value = data.presentasi["Catatan Presentasi"] || '';
+                document.getElementById('catatan_presentasi').value = i["Catatan Presentasi"] || '';
+                document.getElementById('link_dokumentasi').value = i["Link Dokumentasi (Video)"] || '';
             }
 
-            if (data.dokumentasi) {
-                document.getElementById('link_dokumentasi').value = data.dokumentasi["Link Video Presentasi"] || '';
+            // J. Refleksi (Array 2D)
+            if (data["J. Refleksi"] && Array.isArray(data["J. Refleksi"])) {
+                data["J. Refleksi"].forEach(item => {
+                    if (Array.isArray(item) && item.length === 2) {
+                        const pertanyaan = item[0];
+                        const jawaban = item[1] || '';
+                        if (pertanyaan === "Hal paling menarik") document.getElementById('ref1').value = jawaban;
+                        else if (pertanyaan === "Kesulitan terbesar") document.getElementById('ref2').value = jawaban;
+                        else if (pertanyaan === "Rencana minggu depan") document.getElementById('ref3').value = jawaban;
+                    }
+                });
             }
 
-            if (data.refleksi) {
-                document.getElementById('ref1').value = data.refleksi["Hal paling menarik"] || '';
-                document.getElementById('ref2').value = data.refleksi["Kesulitan terbesar"] || '';
-                document.getElementById('ref3').value = data.refleksi["Rencana minggu depan"] || '';
-            }
-
-            if (data.nilai) {
-                document.getElementById('nilai1').value = data.nilai["Partisipasi diskusi"] || '3';
-                document.getElementById('nilai2').value = data.nilai["Kreativitas merancang"] || '3';
-                document.getElementById('nilai3').value = data.nilai["Kerja sama"] || '3';
+            // K. Refleksi Kelompok (Emoji) - Array 2D
+            if (data["K. Refleksi Kelompok (Emoji)"] && Array.isArray(data["K. Refleksi Kelompok (Emoji)"])) {
+                const k = data["K. Refleksi Kelompok (Emoji)"];
+                const map = {
+                    "Kerjasama": 'g_kerjasama',
+                    "Kontribusi": 'g_kontribusi',
+                    "Tepat Waktu": 'g_waktu',
+                    "Kualitas Hasil": 'g_kualitas'
+                };
+                k.forEach(item => {
+                    if (Array.isArray(item) && item.length === 2) {
+                        const aspek = item[0];
+                        const nilai = item[1] || '3';
+                        if (map[aspek]) {
+                            const name = map[aspek];
+                            document.querySelectorAll(`input[name="${name}"]`).forEach(r => {
+                                if (r.value === nilai) r.checked = true;
+                            });
+                        }
+                        if (aspek === "Cerita Kelompok") {
+                            document.getElementById('refleksiCerita').value = nilai;
+                        }
+                    }
+                });
             }
 
             refreshAutoResize();
@@ -2175,11 +2522,13 @@
                 else el.value = '';
             });
             document.querySelectorAll('input[type="radio"], input[type="checkbox"]').forEach(el => el.checked = false);
-            document.getElementById('nama').innerHTML = '<option value="">-- Pilih Nama --</option>';
-            ['nilai1', 'nilai2', 'nilai3'].forEach(id => {
-                const el = document.getElementById(id);
-                if (el) el.value = '3';
+
+            // Reset emoji to default '3' (😐)
+            document.querySelectorAll('.emoji-group input[type="radio"][value="3"]').forEach(r => {
+                r.checked = true;
             });
+
+            document.getElementById('nama').innerHTML = '<option value="">-- Pilih Nama --</option>';
             document.getElementById('total_biaya').value = '0';
             document.getElementById('preview_link_desain').innerHTML = '';
 
@@ -2267,7 +2616,7 @@
         }
 
         // ================================================================
-        // CEK DATA
+        // CEK DATA SPREADSHEET
         // ================================================================
         async function cekDataSpreadsheet(kelas, nama) {
             const url =
@@ -2407,19 +2756,27 @@
                     <html><head><meta charset="UTF-8"><title>Template Perancangan Proyek</title>
                     <style>
                         body { font-family: 'Segoe UI', Arial, sans-serif; padding:30px; max-width:960px; margin:auto; line-height:1.6; }
-                        .card { background:#fff; border-radius:12px; padding:20px; margin-bottom:16px; border-left:5px solid #2ecc71; }
-                        .section-title { font-size:1.2rem; font-weight:700; margin:0 0 8px 0; border-bottom:2px solid #d5f4e6; padding-bottom:4px; }
-                        .section-desc { background:#f0faf0; padding:8px 14px; border-radius:8px; margin-bottom:12px; }
+                        .card { background:#fff; border-radius:12px; padding:20px; margin-bottom:16px; border-left:5px solid #2c3e50; }
+                        .section-title { font-size:1.2rem; font-weight:700; margin:0 0 8px 0; border-bottom:2px solid #d5dbe0; padding-bottom:4px; }
+                        .section-desc { background:#eef1f3; padding:8px 14px; border-radius:8px; margin-bottom:12px; }
                         table { width:100%; border-collapse:collapse; margin:8px 0; }
-                        th { background:#2ecc71; color:#fff; padding:8px 10px; text-align:left; }
+                        th { background:#2c3e50; color:#fff; padding:8px 10px; text-align:left; }
                         td { padding:6px 10px; border-bottom:1px solid #eee; }
-                        .identitas-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; background:#d5f4e6; padding:12px 16px; border-radius:10px; }
-                        .kotak-checklist { border:1px solid #d5f4e6; padding:12px 16px; border-radius:12px; background:#f9f9f9; margin:15px 0; }
+                        .identitas-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; background:#d5dbe0; padding:12px 16px; border-radius:10px; }
+                        .kotak-checklist { border:1px solid #d5dbe0; padding:12px 16px; border-radius:12px; background:#f9f9f9; margin:15px 0; }
                         .info-biru { background:#e3f2fd; padding:8px 14px; border-radius:8px; border-left:4px solid #3498db; margin-bottom:12px; }
-                        .info-hijau { background:#e8f5e9; padding:8px 14px; border-radius:8px; border-left:4px solid #2ecc71; margin-bottom:12px; }
+                        .info-hijau { background:#e8f5e9; padding:8px 14px; border-radius:8px; border-left:4px solid #4caf50; margin-bottom:12px; }
                         .link-drive-box { background:#e3f2fd; padding:12px 16px; border-radius:12px; border-left:5px solid #1976d2; margin:15px 0; }
-                        .header-title { text-align:center; font-size:1.6rem; color:#27ae60; }
+                        .header-title { text-align:center; font-size:1.6rem; color:#1a252f; }
                         .header-sub { text-align:center; color:#666; }
+                        .tp-card { background:#fff; border-radius:12px; padding:12px 18px; margin-bottom:16px; border-left:5px solid #2c3e50; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+                        .tp-card .tp-item { display:flex; align-items:center; gap:12px; padding:3px 0; }
+                        .tp-card .tp-item .tp-code { background:#2c3e50; color:#fff; padding:2px 10px; border-radius:12px; font-weight:700; font-size:0.8rem; min-width:45px; text-align:center; }
+                        .tp-card .tp-item .tp-desc { color:#1a252f; }
+                        .emoji-grid { display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; margin:1rem 0; }
+                        .emoji-card { background:#eef1f3; padding:0.8rem 1rem; border-radius:12px; text-align:center; }
+                        .emoji-card .emoji-title { font-weight:600; font-size:0.9rem; margin-bottom:2px; }
+                        .emoji-group { display:flex; gap:0.4rem; justify-content:center; flex-wrap:wrap; }
                         .panduan-desain { background:#fef9e7; border:2px solid #f39c12; border-radius:12px; padding:12px 16px; margin:10px 0; }
                         .panduan-desain .step { display:flex; gap:12px; margin-bottom:8px; padding-bottom:8px; border-bottom:1px dashed #f0e0c0; }
                         .panduan-desain .step:last-child { border-bottom:none; margin-bottom:0; padding-bottom:0; }
@@ -2427,10 +2784,18 @@
                         .panduan-desain .step-content { font-size:0.9rem; color:#555; }
                         .anggota-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
                         .select-uniform { width:100%; padding:6px 10px; border:2px solid #e0e0e0; border-radius:8px; }
+                        .folder-link-box { background:#e8f5e9; padding:10px 14px; border-radius:8px; border-left:5px solid #4caf50; margin:10px 0; }
+                        .folder-link-box .label-link { font-weight:600; color:#2e7d32; }
+                        .dokumentasi-instruction { background:#fff3cd; padding:8px 12px; border-radius:8px; border-left:4px solid #f39c12; margin:8px 0; }
+                        .link-preview { display:inline-block; margin-top:8px; padding:6px 14px; background:#d5dbe0; color:#1a252f; border-radius:20px; font-size:0.8rem; text-decoration:none; }
                     </style>
                     </head><body>
                     <h1 class="header-title">📐 Perancangan Proyek</h1>
                     <p class="header-sub">Lembar Kerja IPAS SMK - Semester Genap</p>
+                    <div class="tp-card">
+                        <div style="font-weight:700; color:#1a252f; margin-bottom:6px; font-size:1.1rem;">Tujuan Pembelajaran</div>
+                        <div class="tp-item"><span class="tp-code">TP 2.1</span><span class="tp-desc">Menyusun rancangan percobaan dengan mengikuti prosedur penyelidikan ilmiah</span></div>
+                    </div>
                     ${clone.innerHTML}
                     <p style="text-align:center; color:#999; font-size:0.85rem; margin-top:30px; border-top:1px solid #eee; padding-top:12px;">
                         Dicetak dari Sistem IPAS Tembok Belajar

@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Aktivitas 1: Menemukan Masalah Proyek - IPAS SMK</title>
+    <title>Menemukan Masalah Proyek - Lembar Kerja IPAS</title>
     <link rel="stylesheet" href="../../style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <style>
         /* ================================================================
-           ROOT & RESET
+           ROOT & RESET - TEMA ORANGE (PROYEK)
            ================================================================ */
         * {
             margin: 0;
@@ -17,9 +17,9 @@
         }
 
         :root {
-            --primary: #2ecc71;
-            --primary-dark: #27ae60;
-            --primary-light: #d5f4e6;
+            --primary: #f39c12;
+            --primary-dark: #e67e22;
+            --primary-light: #fdebd0;
             --accent: #3498db;
             --gray-bg: #f5f7fa;
             --text: #2c3e50;
@@ -27,7 +27,6 @@
             --shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
             --radius: 16px;
             --border: #e0e0e0;
-            --orange: #f39c12;
         }
 
         body {
@@ -37,7 +36,6 @@
             line-height: 1.7;
         }
 
-        /* ===== LOGO ZOOM EFFECT ===== */
         .logo img {
             transition: transform 0.3s ease;
         }
@@ -45,9 +43,6 @@
             transform: scale(1.2);
         }
 
-        /* ================================================================
-           KONTEN UTAMA
-           ================================================================ */
         .container {
             max-width: 960px;
             margin: 2rem auto;
@@ -77,7 +72,42 @@
             margin-bottom: 1.5rem;
         }
 
-        /* ===== IDENTITAS ===== */
+        /* ============ TP CARD ============ */
+        .tp-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 16px;
+            padding: 1.2rem 1.8rem;
+            margin-bottom: 1.5rem;
+            border-left: 5px solid var(--primary);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        .tp-card .tp-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 4px 0;
+            font-size: 0.95rem;
+        }
+
+        .tp-card .tp-item .tp-code {
+            background: var(--primary);
+            color: white;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            min-width: 45px;
+            text-align: center;
+        }
+
+        .tp-card .tp-item .tp-desc {
+            color: var(--primary-dark);
+        }
+
+        /* ================================================================
+           SISA CSS
+           ================================================================ */
         .identitas-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -105,9 +135,9 @@
             background: #fff;
             transition: 0.2s;
             font-family: inherit;
-            resize: vertical;
+            resize: none !important;
+            overflow: hidden !important;
             min-height: 42px;
-            overflow: hidden;
         }
 
         .identitas-item select:focus,
@@ -116,7 +146,6 @@
             border-color: var(--primary);
         }
 
-        /* ===== SECTION ===== */
         .section-title {
             font-size: 1.3rem;
             font-weight: 700;
@@ -138,7 +167,7 @@
             font-size: 0.95rem;
             margin-bottom: 1rem;
             padding: 0.8rem 1.2rem;
-            background: #f0faf0;
+            background: #fef9e7;
             border-radius: 10px;
             border-left: 4px solid var(--primary);
         }
@@ -147,7 +176,6 @@
             color: var(--text);
         }
 
-        /* ===== TABEL ===== */
         .table-wrap {
             overflow-x: auto;
             margin: 0.8rem 0;
@@ -180,7 +208,6 @@
             border-bottom: none;
         }
 
-        /* ===== DINAMIC TEXTAREA ===== */
         .dynamic-textarea {
             width: 100%;
             border: 2px solid #e8e8e8;
@@ -190,16 +217,16 @@
             font-size: 0.95rem;
             background: #fff;
             transition: 0.2s;
-            resize: vertical;
+            resize: none !important;
+            overflow: hidden !important;
             min-height: 42px;
             line-height: 1.6;
-            overflow: hidden;
         }
 
         .dynamic-textarea:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.15);
+            box-shadow: 0 0 0 3px rgba(243, 156, 18, 0.15);
         }
 
         .dynamic-textarea-sm {
@@ -212,38 +239,79 @@
             min-height: 70px;
         }
 
-        /* ===== SELECT STYLE UNIFORM ===== */
-        .select-uniform {
-            width: 100%;
-            padding: 0.6rem 0.8rem;
-            border: 2px solid #e8e8e8;
-            border-radius: 8px;
-            font-size: 0.95rem;
-            background: #fff;
+        /* ============ EMOJI RADIO GROUP ============ */
+        .emoji-group {
+            display: flex;
+            gap: 0.4rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 4px;
+        }
+
+        .emoji-group label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            cursor: pointer;
+            padding: 4px 6px;
+            border-radius: 10px;
             transition: 0.2s;
-            font-family: inherit;
-            color: var(--text);
-            appearance: auto;
+            font-size: 1.8rem;
+            min-width: 44px;
+        }
+
+        .emoji-group label:hover {
+            background: var(--primary-light);
+            transform: scale(1.05);
+        }
+
+        .emoji-group label input[type="radio"] {
+            width: 16px;
+            height: 16px;
+            accent-color: var(--primary);
             cursor: pointer;
         }
 
-        .select-uniform:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.15);
+        .emoji-group label .emoji-label {
+            font-size: 0.6rem;
+            color: var(--text-light);
+            font-weight: 600;
         }
 
-        .select-uniform:disabled {
-            background: #f5f5f5;
-            color: #999;
-            cursor: not-allowed;
+        .emoji-card {
+            background: #fef9e7;
+            padding: 0.8rem 1rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: 0.2s;
         }
 
-        .select-uniform option {
-            padding: 6px 10px;
+        .emoji-card:hover {
+            border-color: var(--primary-light);
         }
 
-        /* ===== RADIO & CHECKBOX ===== */
+        .emoji-card .emoji-title {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text);
+            margin-bottom: 2px;
+        }
+
+        .emoji-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.8rem;
+            margin: 1rem 0;
+        }
+
+        @media (max-width: 600px) {
+            .emoji-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         .options-group {
             display: flex;
             flex-wrap: wrap;
@@ -268,7 +336,6 @@
             flex-shrink: 0;
         }
 
-        /* ===== TOMBOL ===== */
         .btn-row {
             display: inline-flex;
             align-items: center;
@@ -318,12 +385,12 @@
             transition: 0.3s;
             display: block;
             margin: 2rem auto 1rem;
-            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+            box-shadow: 0 4px 15px rgba(243, 156, 18, 0.3);
         }
 
         .btn-submit:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(46, 204, 113, 0.4);
+            box-shadow: 0 8px 25px rgba(243, 156, 18, 0.4);
         }
         .btn-submit:disabled {
             background: #ccc;
@@ -367,7 +434,6 @@
             margin-bottom: 1rem;
         }
 
-        /* ===== STATUS ===== */
         .status-bar {
             display: flex;
             align-items: center;
@@ -392,15 +458,9 @@
         }
 
         @keyframes pulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.5);
-            }
-            70% {
-                box-shadow: 0 0 0 8px rgba(40, 167, 69, 0);
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(40, 167, 69, 0);
-            }
+            0% { box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.5); }
+            70% { box-shadow: 0 0 0 8px rgba(40, 167, 69, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(40, 167, 69, 0); }
         }
 
         .msg {
@@ -429,7 +489,142 @@
             margin-right: 8px;
         }
 
-        /* ===== MODAL ===== */
+        .dokumentasi-instruction {
+            background: #fff3cd;
+            border-radius: 10px;
+            padding: 0.8rem 1.2rem;
+            margin: 0.5rem 0 1rem 0;
+            border-left: 4px solid #f39c12;
+        }
+
+        .dokumentasi-instruction i {
+            color: #f39c12;
+            margin-right: 8px;
+        }
+
+        .dokumentasi-instruction .contoh-dok {
+            margin-top: 6px;
+            font-size: 0.85rem;
+            color: #666;
+            background: #fff8e1;
+            padding: 6px 12px;
+            border-radius: 6px;
+        }
+
+        .folder-link-box {
+            background: #e8f5e9;
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            margin-top: 1rem;
+            border-left: 5px solid #4caf50;
+        }
+
+        .folder-link-box .label-link {
+            font-weight: 600;
+            color: #2e7d32;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .folder-link-box .sub-text {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 6px;
+        }
+
+        .folder-link-box input {
+            width: 100% !important;
+        }
+
+        .panduan-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 6px;
+            font-size: 0.9rem;
+        }
+
+        .panduan-box .contoh-benar {
+            background: #fff;
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid #a5d6a7;
+        }
+
+        .panduan-box .contoh-salah {
+            background: #fff3cd;
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid #ffc107;
+        }
+
+        .panduan-box ul {
+            margin-left: 1.2rem;
+            margin-top: 4px;
+        }
+
+        .panduan-box ul li {
+            margin-bottom: 2px;
+        }
+
+        /* ===== SELECT UNIFORM ===== */
+        .select-uniform {
+            width: 100%;
+            padding: 0.6rem 0.8rem;
+            border: 2px solid #e8e8e8;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            background: #fff;
+            transition: 0.2s;
+            font-family: inherit;
+            color: var(--text);
+            appearance: auto;
+            cursor: pointer;
+        }
+
+        .select-uniform:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(243, 156, 18, 0.15);
+        }
+
+        .select-uniform:disabled {
+            background: #f5f5f5;
+            color: #999;
+            cursor: not-allowed;
+        }
+
+        .anggota-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .kotak-checklist {
+            border: 1px solid var(--primary-light);
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            background: #f9f9f9;
+            margin: 15px 0;
+        }
+
+        .analisis-box {
+            background: #fef9e7;
+            border-radius: 12px;
+            padding: 15px;
+            margin: 15px 0;
+            border-left: 4px solid var(--primary);
+        }
+
+        .info-produk {
+            background: #e8f5e9;
+            border-radius: 12px;
+            padding: 12px;
+            margin-top: 10px;
+            border-left: 4px solid #4caf50;
+            font-size: 0.9rem;
+        }
+
         .modal {
             display: none;
             position: fixed;
@@ -442,12 +637,8 @@
         }
 
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .modal-box {
@@ -462,14 +653,8 @@
         }
 
         @keyframes slideDown {
-            from {
-                transform: translateY(-40px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
+            from { transform: translateY(-40px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
         .modal-icon {
@@ -540,116 +725,6 @@
             background: #5a6268;
         }
 
-        /* ===== PANDUAN ===== */
-        .panduan-box {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-top: 6px;
-            font-size: 0.9rem;
-        }
-
-        .panduan-box .contoh-benar {
-            background: #fff;
-            padding: 8px 12px;
-            border-radius: 8px;
-            border: 1px solid #a5d6a7;
-        }
-
-        .panduan-box .contoh-salah {
-            background: #fff3cd;
-            padding: 8px 12px;
-            border-radius: 8px;
-            border: 1px solid #ffc107;
-        }
-
-        .panduan-box ul {
-            margin-left: 1.2rem;
-            margin-top: 4px;
-        }
-
-        .panduan-box ul li {
-            margin-bottom: 2px;
-        }
-
-        /* ===== KOTAK ===== */
-        .kotak-checklist {
-            border: 1px solid var(--primary-light);
-            padding: 1rem 1.5rem;
-            border-radius: 12px;
-            background: #f9f9f9;
-            margin: 15px 0;
-        }
-
-        .kotak-checklist select {
-            width: 100%;
-            padding: 0.6rem 0.8rem;
-            border: 2px solid #e8e8e8;
-            border-radius: 8px;
-            font-size: 0.95rem;
-            background: #fff;
-            transition: 0.2s;
-            font-family: inherit;
-            color: var(--text);
-            appearance: auto;
-            cursor: pointer;
-        }
-
-        .kotak-checklist select:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.15);
-        }
-
-        .kotak-checklist select:disabled {
-            background: #f5f5f5;
-            color: #999;
-            cursor: not-allowed;
-        }
-
-        .analisis-box {
-            background: #f0f7ff;
-            border-radius: 12px;
-            padding: 15px;
-            margin: 15px 0;
-            border-left: 4px solid var(--accent);
-        }
-
-        .materi-box {
-            background: #e3f2fd;
-            border-radius: 12px;
-            padding: 15px;
-            margin: 15px 0;
-            border-left: 4px solid var(--accent);
-        }
-
-        .info-produk {
-            background: #e8f5e9;
-            border-radius: 12px;
-            padding: 12px;
-            margin-top: 10px;
-            border-left: 4px solid var(--primary);
-            font-size: 0.9rem;
-        }
-
-        .link-drive-box {
-            background: #e3f2fd;
-            padding: 1rem 1.5rem;
-            border-radius: 12px;
-            border-left: 5px solid #1976d2;
-            margin: 1rem 0;
-        }
-
-        .link-drive-box ul {
-            margin-left: 1.5rem;
-            margin-top: 4px;
-        }
-
-        .link-drive-box ul li {
-            margin-bottom: 2px;
-        }
-
-        /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             .container {
                 padding: 0 0.8rem;
@@ -692,8 +767,16 @@
             .panduan-box {
                 grid-template-columns: 1fr;
             }
+            .tp-card .tp-item {
+                flex-wrap: wrap;
+            }
+            .emoji-group label {
+                font-size: 1.5rem;
+                min-width: 36px;
+                padding: 2px 4px;
+            }
             .anggota-grid {
-                grid-template-columns: 1fr !important;
+                grid-template-columns: 1fr;
             }
         }
 
@@ -704,8 +787,7 @@
             table {
                 font-size: 0.85rem;
             }
-            th,
-            td {
+            th, td {
                 padding: 6px 8px;
             }
             .dynamic-textarea {
@@ -713,12 +795,19 @@
                 min-height: 36px;
                 padding: 6px 8px;
             }
-        }
-
-        .anggota-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
+            .tp-card {
+                padding: 0.8rem 1rem;
+            }
+            .tp-card .tp-item {
+                font-size: 0.85rem;
+            }
+            .emoji-group label {
+                font-size: 1.3rem;
+                min-width: 32px;
+            }
+            .emoji-group label .emoji-label {
+                font-size: 0.5rem;
+            }
         }
     </style>
 </head>
@@ -730,7 +819,7 @@
             <div class="nav-container">
                 <div class="logo">
                     <img src="../../assets/images/logo.png" alt="Logo" />
-                    <h1>TEMBOK BELAJAR - PROJEK IPAS SMK</h1>
+                    <h1>TEMBOK BELAJAR - PROJEK IPAS</h1>
                 </div>
                 <ul class="nav-menu" id="nav-menu">
                     <li><a href="../../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
@@ -761,6 +850,21 @@
             <p style="color:var(--text-light); font-size:0.95rem; max-width:600px; margin:0 auto;">
                 Temukan dan rumuskan masalah proyek yang akan dikerjakan selama semester genap!
             </p>
+        </div>
+
+        <!-- ===== TP CARD ===== -->
+        <div class="tp-card">
+            <div style="font-weight:700; color:var(--primary-dark); margin-bottom:6px; font-size:1.1rem;">
+                <i class="fas fa-bullseye"></i> Tujuan Pembelajaran
+            </div>
+            <div class="tp-item">
+                <span class="tp-code">TP 2.1</span>
+                <span class="tp-desc">Menyusun rancangan percobaan dengan mengikuti prosedur penyelidikan ilmiah</span>
+            </div>
+            <div class="tp-item">
+                <span class="tp-code">TP 3.5</span>
+                <span class="tp-desc">Melakukan refleksi diri terhadap tahapan kegiatan penyelidikan yang telah dilakukan</span>
+            </div>
         </div>
 
         <!-- STATUS -->
@@ -796,16 +900,16 @@
             <!-- A. IDENTITAS -->
             <!-- ============================================================ -->
             <div class="card">
-                <h2 class="section-title"><i class="fas fa-id-card"></i> Identitas</h2>
+                <h2 class="section-title"><i class="fas fa-id-card"></i> A. Identitas</h2>
                 <div class="identitas-grid">
                     <div class="identitas-item">
                         <label>Kelas</label>
-                        <select id="kelas" onchange="onKelasChange(); saveDraft();" disabled>
+                        <select id="kelas" onchange="updateNama(); saveDraft();" disabled>
                             <option value="">-- Pilih --</option>
                         </select>
                     </div>
                     <div class="identitas-item">
-                        <label>Nama (Pengisi)</label>
+                        <label>Nama</label>
                         <select id="nama" onchange="saveDraft();" disabled>
                             <option value="">-- Pilih --</option>
                         </select>
@@ -825,7 +929,7 @@
             <!-- B. CEK PEMAHAMAN MATERI -->
             <!-- ============================================================ -->
             <div class="card">
-                <h2 class="section-title"><i class="fas fa-book-open"></i> Cek Pemahaman Materi</h2>
+                <h2 class="section-title"><i class="fas fa-book-open"></i> B. Cek Pemahaman Materi</h2>
                 <div class="section-desc">
                     <i class="fas fa-info-circle"></i>
                     Sebelum memulai, baca dulu materi
@@ -833,6 +937,12 @@
                         "Identifikasi Masalah"
                     </a>
                     , lalu jawab pertanyaan di bawah ini.
+                </div>
+
+                <div class="dokumentasi-instruction">
+                    <i class="fas fa-camera"></i>
+                    <strong>📸 Instruksi Dokumentasi:</strong> 
+                    Screenshot halaman materi yang sudah kamu baca → Upload ke Google Drive → Tempel link folder di bawah (kolom Link Dokumentasi di bagian F).
                 </div>
 
                 <div class="table-wrap">
@@ -863,13 +973,20 @@
                         </tbody>
                     </table>
                 </div>
+
+                <div style="margin-top:1rem; background:#f8fafc; border-radius:10px; padding:1rem; border:1px dashed var(--primary);">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="bacaMateri" onchange="saveDraft();" style="width:18px; height:18px; accent-color:var(--primary);">
+                        <label for="bacaMateri" style="font-weight:600; margin-left:8px;">☐ Ya, saya sudah membaca materi "Identifikasi Masalah"</label>
+                    </div>
+                </div>
             </div>
 
             <!-- ============================================================ -->
             <!-- C. PEMILIHAN MASALAH -->
             <!-- ============================================================ -->
             <div class="card">
-                <h2 class="section-title"><i class="fas fa-microchip"></i> Pemilihan Masalah</h2>
+                <h2 class="section-title"><i class="fas fa-microchip"></i> C. Pemilihan Masalah</h2>
 
                 <div class="kotak-checklist">
                     <div style="margin-bottom:1rem;">
@@ -915,7 +1032,7 @@
             <!-- D. ANALISIS MASALAH -->
             <!-- ============================================================ -->
             <div class="card">
-                <h2 class="section-title"><i class="fas fa-chart-line"></i> Analisis Masalah</h2>
+                <h2 class="section-title"><i class="fas fa-chart-line"></i> D. Analisis Masalah</h2>
 
                 <div class="analisis-box">
                     <div style="margin-bottom:1rem;">
@@ -948,7 +1065,7 @@
             <!-- E. PERSIAPAN PRESENTASI -->
             <!-- ============================================================ -->
             <div class="card">
-                <h2 class="section-title"><i class="fas fa-presentation"></i> Persiapan Presentasi</h2>
+                <h2 class="section-title"><i class="fas fa-presentation"></i> E. Persiapan Presentasi</h2>
 
                 <div class="kotak-checklist">
                     <div style="margin-bottom:1rem;">
@@ -999,18 +1116,26 @@
             </div>
 
             <!-- ============================================================ -->
-            <!-- F. LINK DOKUMENTASI (VIDEO PRESENTASI) -->
+            <!-- F. LINK DOKUMENTASI -->
             <!-- ============================================================ -->
             <div class="card">
-                <h2 class="section-title"><i class="fas fa-video"></i> Link Dokumentasi Video Presentasi</h2>
+                <h2 class="section-title"><i class="fas fa-video"></i> F. Link Dokumentasi</h2>
 
-                <div class="link-drive-box">
+                <!-- Link Dokumentasi B (Screenshot Materi) -->
+                <div class="folder-link-box">
+                    <span class="label-link"><i class="fas fa-folder-open"></i> 📁 Link Dokumentasi - Bagian B</span>
+                    <div class="sub-text">Tempel link folder/screenshot bukti membaca materi:</div>
+                    <input type="text" class="dynamic-textarea dynamic-textarea-sm" id="link_screenshot_b" placeholder="https://drive.google.com/drive/folders/xxx" oninput="saveDraft(); autoResize(this);">
+                </div>
+
+                <!-- Link Video Presentasi -->
+                <div style="margin-top:1rem; background:#e3f2fd; padding:1rem 1.5rem; border-radius:12px; border-left:5px solid #1976d2;">
                     <label style="font-weight:600; display:block; margin-bottom:4px; font-size:1rem;">
                         📁 Link Google Drive - Video Presentasi
                     </label>
                     <div style="margin-bottom:6px; font-size:0.9rem; color:#555; background:#fff; padding:6px 12px; border-radius:6px;">
                         <strong>💡 Panduan:</strong>
-                        <ul>
+                        <ul style="margin-left:1.5rem; margin-top:2px;">
                             <li>Rekam video presentasi kelompok kalian saat presentasi di kelas.</li>
                             <li>Upload video ke <strong>Google Drive</strong> (bisa satu folder khusus kelompok).</li>
                             <li>Klik kanan folder/video → <strong>"Bagikan"</strong> → ubah akses menjadi <strong>"Siapa saja dengan link dapat melihat"</strong>.</li>
@@ -1032,7 +1157,7 @@
             <!-- G. REFLEKSI -->
             <!-- ============================================================ -->
             <div class="card">
-                <h2 class="section-title"><i class="fas fa-smile"></i> Refleksi</h2>
+                <h2 class="section-title"><i class="fas fa-smile"></i> G. Refleksi</h2>
                 <div class="section-desc">
                     <i class="fas fa-comment"></i>
                     Tulis dengan jujur, ya! Tidak ada jawaban benar atau salah.
@@ -1053,48 +1178,151 @@
             </div>
 
             <!-- ============================================================ -->
-            <!-- H. NILAI DIRI KELOMPOK -->
+            <!-- H. REFLEKSI KELOMPOK (EMOJI + CERITA) -->
             <!-- ============================================================ -->
             <div class="card">
-                <h2 class="section-title"><i class="fas fa-star"></i> Nilai Diri Kelompok</h2>
+                <h2 class="section-title"><i class="fas fa-star"></i> H. Refleksi Kelompok</h2>
                 <div class="section-desc">
                     <i class="fas fa-hand-peace"></i>
-                    Berikan nilai untuk kelompokmu (1 = Kurang, 4 = Sangat Baik)!
+                    Pilih emoji yang paling menggambarkan kelompokmu! Lalu tulis cerita singkatnya.
                 </div>
 
-                <div class="table-wrap">
-                    <table>
-                        <thead><tr><th style="width:40px;">No</th><th>Aspek</th><th style="width:130px;">Nilai (1-4)</th></tr></thead>
-                        <tbody>
-                            <tr><td>1</td><td>Partisipasi dalam diskusi</td><td>
-                                    <select id="nilai1" class="select-uniform" onchange="saveDraft();">
-                                        <option value="">--</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3" selected>3</option>
-                                        <option value="4">4</option>
-                                    </select>
-                            </td></tr>
-                            <tr><td>2</td><td>Kerja sama dalam kelompok</td><td>
-                                    <select id="nilai2" class="select-uniform" onchange="saveDraft();">
-                                        <option value="">--</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3" selected>3</option>
-                                        <option value="4">4</option>
-                                    </select>
-                            </td></tr>
-                            <tr><td>3</td><td>Ketepatan waktu</td><td>
-                                    <select id="nilai3" class="select-uniform" onchange="saveDraft();">
-                                        <option value="">--</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3" selected>3</option>
-                                        <option value="4">4</option>
-                                    </select>
-                            </td></tr>
-                        </tbody>
-                    </table>
+                <div class="emoji-grid">
+                    <!-- 1. Kerjasama -->
+                    <div class="emoji-card">
+                        <div class="emoji-title">🤝 Kerjasama</div>
+                        <div class="emoji-group">
+                            <label>
+                                <input type="radio" name="g_kerjasama" value="5" onchange="saveDraft();">
+                                😊
+                                <span class="emoji-label">Sangat Baik</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kerjasama" value="4" onchange="saveDraft();">
+                                🙂
+                                <span class="emoji-label">Baik</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kerjasama" value="3" onchange="saveDraft();" checked>
+                                😐
+                                <span class="emoji-label">Cukup</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kerjasama" value="2" onchange="saveDraft();">
+                                😕
+                                <span class="emoji-label">Kurang</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kerjasama" value="1" onchange="saveDraft();">
+                                😞
+                                <span class="emoji-label">Perlu Perbaikan</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- 2. Kontribusi -->
+                    <div class="emoji-card">
+                        <div class="emoji-title">📊 Kontribusi</div>
+                        <div class="emoji-group">
+                            <label>
+                                <input type="radio" name="g_kontribusi" value="5" onchange="saveDraft();">
+                                😊
+                                <span class="emoji-label">Sangat Baik</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kontribusi" value="4" onchange="saveDraft();">
+                                🙂
+                                <span class="emoji-label">Baik</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kontribusi" value="3" onchange="saveDraft();" checked>
+                                😐
+                                <span class="emoji-label">Cukup</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kontribusi" value="2" onchange="saveDraft();">
+                                😕
+                                <span class="emoji-label">Kurang</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kontribusi" value="1" onchange="saveDraft();">
+                                😞
+                                <span class="emoji-label">Perlu Perbaikan</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- 3. Tepat Waktu -->
+                    <div class="emoji-card">
+                        <div class="emoji-title">⏰ Tepat Waktu</div>
+                        <div class="emoji-group">
+                            <label>
+                                <input type="radio" name="g_waktu" value="5" onchange="saveDraft();">
+                                😊
+                                <span class="emoji-label">Sangat Baik</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_waktu" value="4" onchange="saveDraft();">
+                                🙂
+                                <span class="emoji-label">Baik</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_waktu" value="3" onchange="saveDraft();" checked>
+                                😐
+                                <span class="emoji-label">Cukup</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_waktu" value="2" onchange="saveDraft();">
+                                😕
+                                <span class="emoji-label">Kurang</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_waktu" value="1" onchange="saveDraft();">
+                                😞
+                                <span class="emoji-label">Perlu Perbaikan</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- 4. Kualitas Hasil -->
+                    <div class="emoji-card">
+                        <div class="emoji-title">💡 Kualitas Hasil</div>
+                        <div class="emoji-group">
+                            <label>
+                                <input type="radio" name="g_kualitas" value="5" onchange="saveDraft();">
+                                😊
+                                <span class="emoji-label">Sangat Baik</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kualitas" value="4" onchange="saveDraft();">
+                                🙂
+                                <span class="emoji-label">Baik</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kualitas" value="3" onchange="saveDraft();" checked>
+                                😐
+                                <span class="emoji-label">Cukup</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kualitas" value="2" onchange="saveDraft();">
+                                😕
+                                <span class="emoji-label">Kurang</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kualitas" value="1" onchange="saveDraft();">
+                                😞
+                                <span class="emoji-label">Perlu Perbaikan</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cerita Kelompok -->
+                <div style="margin-top:0.8rem;">
+                    <label style="font-weight:600; display:block; margin-bottom:4px;">
+                        📝 Ceritakan pengalaman kerjamu dalam kelompok ini (1-2 kalimat):
+                    </label>
+                    <textarea class="dynamic-textarea" id="refleksiCerita" rows="2" placeholder="Contoh: Kami bekerja sama dengan baik, semua saling membantu menyelesaikan tugas..." oninput="saveDraft(); autoResize(this);"></textarea>
                 </div>
             </div>
 
@@ -1158,8 +1386,8 @@
         // KONFIGURASI
         // ================================================================
         const URL_DATA_SISWA = 'https://script.google.com/macros/s/AKfycbxZMS_o6xWMAQAkjBzzEMR9tJmHOnHCX13KJX2xZMn7WIr-A9pwVK_3DDHnMg7y_rD29Q/exec';
-        const URL_PEREKAPAN = 'https://script.google.com/macros/s/AKfycbyOV0q9vp8bVeVXCoYWa7qNUqzSPTA7BgTTjwEO0qjUGeHy-mrx7O0hFhcEHxK57oVY/exec';
-        const STORAGE_KEY = 'ipas_s2_a1_draft_v4';
+        const URL_PEREKAPAN = 'https://script.google.com/macros/s/AKfycbxyGnBMWRIQKRtHa3ogqvT_66Tt3gTEcxZ7dsPPnob3tsVU9IuPWTEpxWH7mGX7YPZj/exec';
+        const STORAGE_KEY = 'ipas_s2_a1_draft_v5';
         const AKTIVITAS_NAMA = 'AKTIVITAS 1 - MENEMUKAN MASALAH PROYEK';
         const SHEET_NAME = 'data_aktivitas';
 
@@ -1391,15 +1619,8 @@
         }
 
         // ================================================================
-        // FUNGSI KELAS
+        // UPDATE NAMA
         // ================================================================
-        function onKelasChange() {
-            updateNama();
-            updateKonsentrasiByKelas();
-            updateSiswaDropdowns();
-            saveDraft();
-        }
-
         function updateNama() {
             const kelas = document.getElementById('kelas').value;
             const namaSel = document.getElementById('nama');
@@ -1414,47 +1635,6 @@
                     }
                 });
             }
-            saveDraft();
-        }
-
-        function updateKonsentrasiByKelas() {
-            const kelas = document.getElementById('kelas').value;
-            const konsentrasiSelect = document.getElementById('konsentrasi');
-
-            const kelasToKonsentrasi = {
-                'X TSM 1': 'TSM',
-                'X TSM 2': 'TSM',
-                'XI TSM 1': 'TSM',
-                'XI TSM 2': 'TSM',
-                'XII TSM 1': 'TSM',
-                'XII TSM 2': 'TSM',
-                'X AKL 1': 'AKL',
-                'X AKL 2': 'AKL',
-                'XI AKL 1': 'AKL',
-                'XI AKL 2': 'AKL',
-                'XII AKL 1': 'AKL',
-                'XII AKL 2': 'AKL',
-                'X TKJ 1': 'TKJ',
-                'X TKJ 2': 'TKJ',
-                'XI TKJ 1': 'TKJ',
-                'XI TKJ 2': 'TKJ',
-                'XII TKJ 1': 'TKJ',
-                'XII TKJ 2': 'TKJ',
-                'X ATPH 1': 'ATPH',
-                'X ATPH 2': 'ATPH',
-                'XI ATPH 1': 'ATPH',
-                'XI ATPH 2': 'ATPH',
-                'XII ATPH 1': 'ATPH',
-                'XII ATPH 2': 'ATPH'
-            };
-
-            const konsentrasi = kelasToKonsentrasi[kelas] || '';
-
-            if (konsentrasi) {
-                konsentrasiSelect.value = konsentrasi;
-                updateTemaByKonsentrasi();
-            }
-
             saveDraft();
         }
 
@@ -1592,15 +1772,22 @@
         // ================================================================
         // TIMESTAMP
         // ================================================================
-        function getTimestamp() {
+        function getFormattedTimestamp() {
             const now = new Date();
-            const d = String(now.getDate()).padStart(2, '0');
-            const m = String(now.getMonth() + 1).padStart(2, '0');
-            const y = now.getFullYear();
-            const h = String(now.getHours()).padStart(2, '0');
-            const min = String(now.getMinutes()).padStart(2, '0');
-            const s = String(now.getSeconds()).padStart(2, '0');
-            return `${d}/${m}/${y} ${h}:${min}:${s}`;
+            const hari = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+            const bulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+                'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+            ];
+
+            const hariName = hari[now.getDay()];
+            const tanggal = String(now.getDate()).padStart(2, '0');
+            const bulanName = bulan[now.getMonth()];
+            const tahun = now.getFullYear();
+            const jam = String(now.getHours()).padStart(2, '0');
+            const menit = String(now.getMinutes()).padStart(2, '0');
+            const detik = String(now.getSeconds()).padStart(2, '0');
+
+            return `${hariName}, ${tanggal} ${bulanName} ${tahun} - ${jam}:${menit}:${detik}`;
         }
 
         // ================================================================
@@ -1633,32 +1820,18 @@
         }
 
         // ================================================================
-        // COLLECT DATA
+        // COLLECT DATA - STRUKTUR JSON KONSISTEN
         // ================================================================
         function collectData() {
-            const data = { timestamp: getTimestamp() };
+            const timestamp = getFormattedTimestamp();
 
-            // Identitas
-            data.identitas = {
-                "Kelas": document.getElementById('kelas').value || '',
-                "Nama": document.getElementById('nama').value || '',
-                "Kelompok": document.getElementById('kelompok').value || '',
-                "Tugas/Peran": document.getElementById('tugas').value || ''
+            // Get emoji values
+            const getEmojiValue = (name) => {
+                const el = document.querySelector(`input[name="${name}"]:checked`);
+                return el ? el.value : '3';
             };
 
-            // Cek Pemahaman
-            data.cek_pemahaman = {
-                "Apa yang dimaksud dengan masalah dalam proyek IPAS": document.getElementById('cek1').value || '',
-                "Sebutkan 3 tempat/lingkungan yang bisa menjadi sumber masalah - 1": document.getElementById('cek2a')
-                    .value || '',
-                "Sebutkan 3 tempat/lingkungan yang bisa menjadi sumber masalah - 2": document.getElementById('cek2b')
-                    .value || '',
-                "Sebutkan 3 tempat/lingkungan yang bisa menjadi sumber masalah - 3": document.getElementById('cek2c')
-                    .value || '',
-                "Apa kepanjangan dari 5W+1H dalam merumuskan masalah": document.getElementById('cek3').value || ''
-            };
-
-            // Pemilihan Masalah
+            // Get final tema & masalah
             const temaFinal = document.getElementById('tema_pilihan').value === "Tema Kustom" ?
                 document.getElementById('tema_kustom_teks').value :
                 document.getElementById('tema_pilihan').value;
@@ -1667,20 +1840,7 @@
                 document.getElementById('masalah_kustom_teks').value :
                 document.getElementById('masalah_terpilih').value;
 
-            data.pemilihan = {
-                "Konsentrasi Keahlian": document.getElementById('konsentrasi').value || '',
-                "Tema Proyek": temaFinal,
-                "Masalah yang Akan Diselesaikan": masalahFinal
-            };
-
-            // Analisis
-            data.analisis = {
-                "Mengapa masalah ini penting": document.getElementById('analisis_penting').value || '',
-                "Dampak positif jika selesai": document.getElementById('analisis_dampak').value || '',
-                "Mengapa yakin bisa menyelesaikan": document.getElementById('analisis_kelayakan').value || ''
-            };
-
-            // Presentasi
+            // Get anggota
             const anggota = [
                 document.getElementById('anggota1').value || '',
                 document.getElementById('anggota2').value || '',
@@ -1688,32 +1848,63 @@
                 document.getElementById('anggota4').value || ''
             ].filter(a => a).join(', ');
 
-            data.presentasi = {
-                "Presenter Utama": document.getElementById('presenter_utama').value || '',
-                "Anggota Kelompok": anggota,
-                "Catatan Presentasi": document.getElementById('catatan_presentasi').value || ''
+            return {
+                "Timestamp Pengisian": timestamp,
+                "A. Identitas Kelompok": [
+                    ["Field", "Nilai"],
+                    ["Kelas", document.getElementById('kelas').value || ''],
+                    ["Nama", document.getElementById('nama').value || ''],
+                    ["Kelompok", document.getElementById('kelompok').value || ''],
+                    ["Tugas/Peran", document.getElementById('tugas').value || '']
+                ],
+                "B. Cek Pemahaman": {
+                    "Pertanyaan": [
+                        ["Pertanyaan", "Jawaban"],
+                        ["Apa yang dimaksud dengan masalah dalam proyek IPAS?", document.getElementById('cek1').value || ''],
+                        ["Sebutkan 3 tempat sumber masalah - 1", document.getElementById('cek2a').value || ''],
+                        ["Sebutkan 3 tempat sumber masalah - 2", document.getElementById('cek2b').value || ''],
+                        ["Sebutkan 3 tempat sumber masalah - 3", document.getElementById('cek2c').value || ''],
+                        ["Apa kepanjangan dari 5W+1H?", document.getElementById('cek3').value || '']
+                    ],
+                    "Checklist": [
+                        ["Item", "Status"],
+                        ["Sudah membaca materi Identifikasi Masalah", document.getElementById('bacaMateri')?.checked || false]
+                    ],
+                    "Link Dokumentasi (Screenshot)": document.getElementById('link_screenshot_b').value || ''
+                },
+                "C. Pemilihan Masalah": [
+                    ["Aspek", "Pilihan"],
+                    ["Konsentrasi Keahlian", document.getElementById('konsentrasi').value || ''],
+                    ["Tema Proyek", temaFinal],
+                    ["Masalah yang Akan Diselesaikan", masalahFinal]
+                ],
+                "D. Analisis Masalah": [
+                    ["Pertanyaan", "Jawaban"],
+                    ["Mengapa masalah ini penting?", document.getElementById('analisis_penting').value || ''],
+                    ["Dampak positif jika selesai", document.getElementById('analisis_dampak').value || ''],
+                    ["Mengapa yakin bisa menyelesaikan?", document.getElementById('analisis_kelayakan').value || '']
+                ],
+                "E. Persiapan Presentasi": {
+                    "Presenter Utama": document.getElementById('presenter_utama').value || '',
+                    "Anggota Kelompok": anggota,
+                    "Catatan Presentasi": document.getElementById('catatan_presentasi').value || ''
+                },
+                "F. Link Dokumentasi (Video)": document.getElementById('linkDokumentasi').value || '',
+                "G. Refleksi": [
+                    ["Pertanyaan", "Jawaban"],
+                    ["Hal paling menarik", document.getElementById('ref1').value || ''],
+                    ["Kesulitan saat memilih tema", document.getElementById('ref2').value || ''],
+                    ["Hal yang akan diperbaiki", document.getElementById('ref3').value || '']
+                ],
+                "H. Refleksi Kelompok (Emoji)": [
+                    ["Aspek", "Nilai"],
+                    ["Kerjasama", getEmojiValue('g_kerjasama')],
+                    ["Kontribusi", getEmojiValue('g_kontribusi')],
+                    ["Tepat Waktu", getEmojiValue('g_waktu')],
+                    ["Kualitas Hasil", getEmojiValue('g_kualitas')],
+                    ["Cerita Kelompok", document.getElementById('refleksiCerita').value || '']
+                ]
             };
-
-            // Link Dokumentasi (Video Presentasi)
-            data.dokumentasi = {
-                "Link Google Drive (Video Presentasi)": document.getElementById('linkDokumentasi').value || ''
-            };
-
-            // Refleksi
-            data.refleksi = {
-                "Hal paling menarik": document.getElementById('ref1').value || '',
-                "Kesulitan saat memilih tema": document.getElementById('ref2').value || '',
-                "Hal yang akan diperbaiki": document.getElementById('ref3').value || ''
-            };
-
-            // Nilai
-            data.nilai = {
-                "Partisipasi dalam diskusi": document.getElementById('nilai1').value || '3',
-                "Kerja sama dalam kelompok": document.getElementById('nilai2').value || '3',
-                "Ketepatan waktu": document.getElementById('nilai3').value || '3'
-            };
-
-            return data;
         }
 
         // ================================================================
@@ -1722,106 +1913,203 @@
         function restoreData(data) {
             if (!data) return;
 
-            if (data.identitas) {
+            // A. Identitas (Array 2D)
+            if (data["A. Identitas Kelompok"] && Array.isArray(data["A. Identitas Kelompok"])) {
+                const identitasArray = data["A. Identitas Kelompok"];
+                let kelasValue = '', namaValue = '', kelompokValue = '', tugasValue = '';
+
+                identitasArray.forEach(item => {
+                    if (Array.isArray(item) && item.length === 2) {
+                        const field = item[0];
+                        const value = item[1] || '';
+                        if (field === "Kelas") kelasValue = value;
+                        else if (field === "Nama") namaValue = value;
+                        else if (field === "Kelompok") kelompokValue = value;
+                        else if (field === "Tugas/Peran") tugasValue = value;
+                    }
+                });
+
                 const sel = document.getElementById('kelas');
                 for (let opt of sel.options) {
-                    if (opt.value === data.identitas["Kelas"]) { opt.selected = true; break; }
+                    if (opt.value === kelasValue) { opt.selected = true; break; }
                 }
                 updateNama();
+
                 const selNama = document.getElementById('nama');
                 for (let opt of selNama.options) {
-                    if (opt.value === data.identitas["Nama"]) { opt.selected = true; break; }
+                    if (opt.value === namaValue) { opt.selected = true; break; }
                 }
-                document.getElementById('kelompok').value = data.identitas["Kelompok"] || '';
-                document.getElementById('tugas').value = data.identitas["Tugas/Peran"] || '';
+                document.getElementById('kelompok').value = kelompokValue;
+                document.getElementById('tugas').value = tugasValue;
+
+                setTimeout(() => updateSiswaDropdowns(), 100);
             }
 
-            if (data.cek_pemahaman) {
-                document.getElementById('cek1').value = data.cek_pemahaman[
-                    "Apa yang dimaksud dengan masalah dalam proyek IPAS"] || '';
-                document.getElementById('cek2a').value = data.cek_pemahaman[
-                    "Sebutkan 3 tempat/lingkungan yang bisa menjadi sumber masalah - 1"] || '';
-                document.getElementById('cek2b').value = data.cek_pemahaman[
-                    "Sebutkan 3 tempat/lingkungan yang bisa menjadi sumber masalah - 2"] || '';
-                document.getElementById('cek2c').value = data.cek_pemahaman[
-                    "Sebutkan 3 tempat/lingkungan yang bisa menjadi sumber masalah - 3"] || '';
-                document.getElementById('cek3').value = data.cek_pemahaman[
-                    "Apa kepanjangan dari 5W+1H dalam merumuskan masalah"] || '';
-            }
-
-            if (data.pemilihan) {
-                const konsentrasiSelect = document.getElementById('konsentrasi');
-                for (let opt of konsentrasiSelect.options) {
-                    if (opt.value === data.pemilihan["Konsentrasi Keahlian"]) { opt.selected = true; break; }
-                }
-                setTimeout(() => {
-                    updateTemaByKonsentrasi();
-                    setTimeout(() => {
-                        const temaSelect = document.getElementById('tema_pilihan');
-                        for (let opt of temaSelect.options) {
-                            if (opt.value === data.pemilihan["Tema Proyek"]) {
-                                opt.selected = true;
-                                break;
+            // B. Cek Pemahaman
+            if (data["B. Cek Pemahaman"]) {
+                const b = data["B. Cek Pemahaman"];
+                if (b["Pertanyaan"] && Array.isArray(b["Pertanyaan"])) {
+                    const qMap = {
+                        "Apa yang dimaksud dengan masalah dalam proyek IPAS?": 'cek1',
+                        "Sebutkan 3 tempat sumber masalah - 1": 'cek2a',
+                        "Sebutkan 3 tempat sumber masalah - 2": 'cek2b',
+                        "Sebutkan 3 tempat sumber masalah - 3": 'cek2c',
+                        "Apa kepanjangan dari 5W+1H?": 'cek3'
+                    };
+                    b["Pertanyaan"].forEach(item => {
+                        if (Array.isArray(item) && item.length === 2) {
+                            const id = qMap[item[0]];
+                            if (id) {
+                                const el = document.getElementById(id);
+                                if (el) el.value = item[1] || '';
                             }
                         }
-                        if (data.pemilihan["Tema Proyek"] === "Tema Kustom") {
-                            document.getElementById('tema_kustom_teks').value = data.pemilihan["Tema Proyek"];
-                            document.getElementById('tema_kustom_teks').disabled = false;
-                            document.getElementById('tema_kustom_input').style.display = 'block';
+                    });
+                }
+                if (b["Checklist"] && Array.isArray(b["Checklist"])) {
+                    const el = document.getElementById('bacaMateri');
+                    if (el) {
+                        b["Checklist"].forEach(item => {
+                            if (Array.isArray(item) && item.length === 2 && item[0] === "Sudah membaca materi Identifikasi Masalah") {
+                                el.checked = item[1] || false;
+                            }
+                        });
+                    }
+                }
+                const linkEl = document.getElementById('link_screenshot_b');
+                if (linkEl) linkEl.value = b["Link Dokumentasi (Screenshot)"] || '';
+            }
+
+            // C. Pemilihan Masalah (Array 2D)
+            if (data["C. Pemilihan Masalah"] && Array.isArray(data["C. Pemilihan Masalah"])) {
+                data["C. Pemilihan Masalah"].forEach(item => {
+                    if (Array.isArray(item) && item.length === 2) {
+                        const aspek = item[0];
+                        const jawaban = item[1] || '';
+                        if (aspek === "Konsentrasi Keahlian") {
+                            const el = document.getElementById('konsentrasi');
+                            for (let opt of el.options) {
+                                if (opt.value === jawaban) { opt.selected = true; break; }
+                            }
+                            setTimeout(() => {
+                                updateTemaByKonsentrasi();
+                                setTimeout(() => {
+                                    const temaEl = document.getElementById('tema_pilihan');
+                                    for (let opt of temaEl.options) {
+                                        if (opt.value === data["C. Pemilihan Masalah"].find(i => i[0] ===
+                                            "Tema Proyek")?.[1]) {
+                                            opt.selected = true;
+                                            break;
+                                        }
+                                    }
+                                    if (document.getElementById('tema_pilihan').value === "Tema Kustom") {
+                                        document.getElementById('tema_kustom_teks').value = data["C. Pemilihan Masalah"]
+                                            .find(i => i[0] === "Tema Proyek")?.[1] || '';
+                                        document.getElementById('tema_kustom_teks').disabled = false;
+                                        document.getElementById('tema_kustom_input').style.display = 'block';
+                                    }
+                                    updateMasalahByTema();
+                                    setTimeout(() => {
+                                        const masalahEl = document.getElementById('masalah_terpilih');
+                                        const masalahVal = data["C. Pemilihan Masalah"].find(i => i[0] ===
+                                            "Masalah yang Akan Diselesaikan")?.[1];
+                                        for (let opt of masalahEl.options) {
+                                            if (opt.value === masalahVal) { opt.selected = true; break; }
+                                        }
+                                        if (masalahVal === "Masalah Kustom") {
+                                            document.getElementById('masalah_kustom_teks').value = masalahVal;
+                                            document.getElementById('masalah_kustom_teks').disabled = false;
+                                            document.getElementById('masalah_kustom_input').style.display =
+                                            'block';
+                                        }
+                                        updateProdukByMasalah();
+                                    }, 100);
+                                }, 100);
+                            }, 100);
                         }
-                        updateMasalahByTema();
-                        setTimeout(() => {
-                            const masalahSelect = document.getElementById('masalah_terpilih');
-                            for (let opt of masalahSelect.options) {
-                                if (opt.value === data.pemilihan["Masalah yang Akan Diselesaikan"]) {
-                                    opt.selected = true;
-                                    break;
-                                }
-                            }
-                            if (data.pemilihan["Masalah yang Akan Diselesaikan"] === "Masalah Kustom") {
-                                document.getElementById('masalah_kustom_teks').value = data.pemilihan[
-                                    "Masalah yang Akan Diselesaikan"];
-                                document.getElementById('masalah_kustom_teks').disabled = false;
-                                document.getElementById('masalah_kustom_input').style.display = 'block';
-                            }
-                            updateProdukByMasalah();
-                        }, 100);
-                    }, 100);
-                }, 100);
+                    }
+                });
             }
 
-            if (data.analisis) {
-                document.getElementById('analisis_penting').value = data.analisis["Mengapa masalah ini penting"] || '';
-                document.getElementById('analisis_dampak').value = data.analisis["Dampak positif jika selesai"] || '';
-                document.getElementById('analisis_kelayakan').value = data.analisis["Mengapa yakin bisa menyelesaikan"] || '';
+            // D. Analisis Masalah (Array 2D)
+            if (data["D. Analisis Masalah"] && Array.isArray(data["D. Analisis Masalah"])) {
+                data["D. Analisis Masalah"].forEach(item => {
+                    if (Array.isArray(item) && item.length === 2) {
+                        const pertanyaan = item[0];
+                        const jawaban = item[1] || '';
+                        if (pertanyaan === "Mengapa masalah ini penting?") document.getElementById('analisis_penting')
+                            .value = jawaban;
+                        else if (pertanyaan === "Dampak positif jika selesai") document.getElementById(
+                            'analisis_dampak').value = jawaban;
+                        else if (pertanyaan === "Mengapa yakin bisa menyelesaikan?") document.getElementById(
+                            'analisis_kelayakan').value = jawaban;
+                    }
+                });
             }
 
-            if (data.presentasi) {
+            // E. Persiapan Presentasi
+            if (data["E. Persiapan Presentasi"]) {
+                const e = data["E. Persiapan Presentasi"];
                 setTimeout(() => {
-                    document.getElementById('presenter_utama').value = data.presentasi["Presenter Utama"] || '';
-                    const anggota = (data.presentasi["Anggota Kelompok"] || '').split(', ');
+                    const presenterEl = document.getElementById('presenter_utama');
+                    if (e["Presenter Utama"]) {
+                        for (let opt of presenterEl.options) {
+                            if (opt.value === e["Presenter Utama"]) { opt.selected = true; break; }
+                        }
+                    }
+                    const anggota = (e["Anggota Kelompok"] || '').split(', ');
                     document.getElementById('anggota1').value = anggota[0] || '';
                     document.getElementById('anggota2').value = anggota[1] || '';
                     document.getElementById('anggota3').value = anggota[2] || '';
                     document.getElementById('anggota4').value = anggota[3] || '';
                 }, 200);
-                document.getElementById('catatan_presentasi').value = data.presentasi["Catatan Presentasi"] || '';
+                document.getElementById('catatan_presentasi').value = e["Catatan Presentasi"] || '';
             }
 
-            if (data.dokumentasi) {
-                document.getElementById('linkDokumentasi').value = data.dokumentasi["Link Google Drive (Video Presentasi)"] || '';
+            // F. Link Dokumentasi (Video)
+            if (data["F. Link Dokumentasi (Video)"]) {
+                document.getElementById('linkDokumentasi').value = data["F. Link Dokumentasi (Video)"] || '';
             }
 
-            if (data.refleksi) {
-                document.getElementById('ref1').value = data.refleksi["Hal paling menarik"] || '';
-                document.getElementById('ref2').value = data.refleksi["Kesulitan saat memilih tema"] || '';
-                document.getElementById('ref3').value = data.refleksi["Hal yang akan diperbaiki"] || '';
+            // G. Refleksi (Array 2D)
+            if (data["G. Refleksi"] && Array.isArray(data["G. Refleksi"])) {
+                data["G. Refleksi"].forEach(item => {
+                    if (Array.isArray(item) && item.length === 2) {
+                        const pertanyaan = item[0];
+                        const jawaban = item[1] || '';
+                        if (pertanyaan === "Hal paling menarik") document.getElementById('ref1').value = jawaban;
+                        else if (pertanyaan === "Kesulitan saat memilih tema") document.getElementById('ref2')
+                            .value = jawaban;
+                        else if (pertanyaan === "Hal yang akan diperbaiki") document.getElementById('ref3')
+                            .value = jawaban;
+                    }
+                });
             }
 
-            if (data.nilai) {
-                document.getElementById('nilai1').value = data.nilai["Partisipasi dalam diskusi"] || '3';
-                document.getElementById('nilai2').value = data.nilai["Kerja sama dalam kelompok"] || '3';
-                document.getElementById('nilai3').value = data.nilai["Ketepatan waktu"] || '3';
+            // H. Refleksi Kelompok (Emoji) - Array 2D
+            if (data["H. Refleksi Kelompok (Emoji)"] && Array.isArray(data["H. Refleksi Kelompok (Emoji)"])) {
+                const h = data["H. Refleksi Kelompok (Emoji)"];
+                const map = {
+                    "Kerjasama": 'g_kerjasama',
+                    "Kontribusi": 'g_kontribusi',
+                    "Tepat Waktu": 'g_waktu',
+                    "Kualitas Hasil": 'g_kualitas'
+                };
+                h.forEach(item => {
+                    if (Array.isArray(item) && item.length === 2) {
+                        const aspek = item[0];
+                        const nilai = item[1] || '3';
+                        if (map[aspek]) {
+                            const name = map[aspek];
+                            document.querySelectorAll(`input[name="${name}"]`).forEach(r => {
+                                if (r.value === nilai) r.checked = true;
+                            });
+                        }
+                        if (aspek === "Cerita Kelompok") {
+                            document.getElementById('refleksiCerita').value = nilai;
+                        }
+                    }
+                });
             }
 
             refreshAutoResize();
@@ -1836,14 +2124,14 @@
                 else el.value = '';
             });
             document.querySelectorAll('input[type="radio"], input[type="checkbox"]').forEach(el => el.checked = false);
-            document.getElementById('nama').innerHTML = '<option value="">-- Pilih Nama --</option>';
-            ['nilai1', 'nilai2', 'nilai3'].forEach(id => {
-                const el = document.getElementById(id);
-                if (el) el.value = '3';
+
+            // Reset emoji to default '3' (😐)
+            document.querySelectorAll('.emoji-group input[type="radio"][value="3"]').forEach(r => {
+                r.checked = true;
             });
 
-            document.getElementById('presenter_utama').innerHTML = '<option value="">-- Pilih Presenter --</option>';
-            ['anggota1', 'anggota2', 'anggota3', 'anggota4'].forEach(id => {
+            document.getElementById('nama').innerHTML = '<option value="">-- Pilih Nama --</option>';
+            ['presenter_utama', 'anggota1', 'anggota2', 'anggota3', 'anggota4'].forEach(id => {
                 const el = document.getElementById(id);
                 el.innerHTML = '<option value="">-- Pilih --</option>';
             });
@@ -1889,7 +2177,7 @@
         }
 
         // ================================================================
-        // CEK DATA
+        // CEK DATA SPREADSHEET
         // ================================================================
         async function cekDataSpreadsheet(kelas, nama) {
             const url =
@@ -2029,25 +2317,41 @@
                     <html><head><meta charset="UTF-8"><title>Template Menemukan Masalah Proyek</title>
                     <style>
                         body { font-family: 'Segoe UI', Arial, sans-serif; padding:30px; max-width:960px; margin:auto; line-height:1.6; }
-                        .card { background:#fff; border-radius:12px; padding:20px; margin-bottom:16px; border-left:5px solid #2ecc71; }
-                        .section-title { font-size:1.2rem; font-weight:700; margin:0 0 8px 0; border-bottom:2px solid #d5f4e6; padding-bottom:4px; }
-                        .section-desc { background:#f0faf0; padding:8px 14px; border-radius:8px; margin-bottom:12px; }
+                        .card { background:#fff; border-radius:12px; padding:20px; margin-bottom:16px; border-left:5px solid #f39c12; }
+                        .section-title { font-size:1.2rem; font-weight:700; margin:0 0 8px 0; border-bottom:2px solid #fdebd0; padding-bottom:4px; }
+                        .section-desc { background:#fef9e7; padding:8px 14px; border-radius:8px; margin-bottom:12px; }
                         table { width:100%; border-collapse:collapse; margin:8px 0; }
-                        th { background:#2ecc71; color:#fff; padding:8px 10px; text-align:left; }
+                        th { background:#f39c12; color:#fff; padding:8px 10px; text-align:left; }
                         td { padding:6px 10px; border-bottom:1px solid #eee; }
-                        .identitas-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; background:#d5f4e6; padding:12px 16px; border-radius:10px; }
+                        .identitas-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; background:#fdebd0; padding:12px 16px; border-radius:10px; }
                         .options-group { display:flex; flex-wrap:wrap; gap:10px 20px; }
-                        .kotak-checklist { border:1px solid #d5f4e6; padding:12px 16px; border-radius:12px; background:#f9f9f9; margin:15px 0; }
-                        .analisis-box { background:#f0f7ff; border-radius:12px; padding:15px; margin:15px 0; border-left:4px solid #3498db; }
-                        .link-drive-box { background:#e3f2fd; padding:12px 16px; border-radius:12px; border-left:5px solid #1976d2; margin:15px 0; }
-                        .info-produk { background:#e8f5e9; border-radius:12px; padding:12px; margin-top:10px; border-left:4px solid #2ecc71; }
+                        .kotak-checklist { border:1px solid #fdebd0; padding:12px 16px; border-radius:12px; background:#f9f9f9; margin:15px 0; }
+                        .analisis-box { background:#fef9e7; border-radius:12px; padding:15px; margin:15px 0; border-left:4px solid #f39c12; }
+                        .info-produk { background:#e8f5e9; border-radius:12px; padding:12px; margin-top:10px; border-left:4px solid #4caf50; }
                         .anggota-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
-                        .header-title { text-align:center; font-size:1.6rem; color:#27ae60; }
+                        .header-title { text-align:center; font-size:1.6rem; color:#e67e22; }
                         .header-sub { text-align:center; color:#666; }
+                        .tp-card { background:#fff; border-radius:12px; padding:12px 18px; margin-bottom:16px; border-left:5px solid #f39c12; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+                        .tp-card .tp-item { display:flex; align-items:center; gap:12px; padding:3px 0; }
+                        .tp-card .tp-item .tp-code { background:#f39c12; color:#fff; padding:2px 10px; border-radius:12px; font-weight:700; font-size:0.8rem; min-width:45px; text-align:center; }
+                        .tp-card .tp-item .tp-desc { color:#e67e22; }
+                        .emoji-grid { display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; margin:1rem 0; }
+                        .emoji-card { background:#fef9e7; padding:0.8rem 1rem; border-radius:12px; text-align:center; }
+                        .emoji-card .emoji-title { font-weight:600; font-size:0.9rem; margin-bottom:2px; }
+                        .emoji-group { display:flex; gap:0.4rem; justify-content:center; flex-wrap:wrap; }
+                        .dokumentasi-instruction { background:#fff3cd; padding:8px 12px; border-radius:8px; border-left:4px solid #f39c12; margin:8px 0; }
+                        .folder-link-box { background:#e8f5e9; padding:10px 14px; border-radius:8px; border-left:5px solid #4caf50; margin:10px 0; }
+                        .folder-link-box .label-link { font-weight:600; color:#2e7d32; }
+                        @media (max-width:768px) { .anggota-grid { grid-template-columns:1fr; } .emoji-grid { grid-template-columns:1fr; } }
                     </style>
                     </head><body>
                     <h1 class="header-title">🔍 Menemukan Masalah Proyek</h1>
                     <p class="header-sub">Lembar Kerja IPAS SMK - Semester Genap</p>
+                    <div class="tp-card">
+                        <div style="font-weight:700; color:#e67e22; margin-bottom:6px; font-size:1.1rem;">Tujuan Pembelajaran</div>
+                        <div class="tp-item"><span class="tp-code">TP 2.1</span><span class="tp-desc">Menyusun rancangan percobaan dengan mengikuti prosedur penyelidikan ilmiah</span></div>
+                        <div class="tp-item"><span class="tp-code">TP 3.5</span><span class="tp-desc">Melakukan refleksi diri terhadap tahapan kegiatan penyelidikan yang telah dilakukan</span></div>
+                    </div>
                     ${clone.innerHTML}
                     <p style="text-align:center; color:#999; font-size:0.85rem; margin-top:30px; border-top:1px solid #eee; padding-top:12px;">
                         Dicetak dari Sistem IPAS Tembok Belajar
