@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <style>
         /* ================================================================
-           ROOT & RESET
+           ROOT & RESET - TEMA UNGU (DISEMINASI)
            ================================================================ */
         * {
             margin: 0;
@@ -17,9 +17,9 @@
         }
 
         :root {
-            --primary: #2ecc71;
-            --primary-dark: #27ae60;
-            --primary-light: #d5f4e6;
+            --primary: #8e44ad;
+            --primary-dark: #7d3c98;
+            --primary-light: #e8daef;
             --accent: #3498db;
             --gray-bg: #f5f7fa;
             --text: #2c3e50;
@@ -73,7 +73,42 @@
             margin-bottom: 1.5rem;
         }
 
-        /* ===== IDENTITAS ===== */
+        /* ============ TP CARD ============ */
+        .tp-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 16px;
+            padding: 1.2rem 1.8rem;
+            margin-bottom: 1.5rem;
+            border-left: 5px solid var(--primary);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        .tp-card .tp-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 4px 0;
+            font-size: 0.95rem;
+        }
+
+        .tp-card .tp-item .tp-code {
+            background: var(--primary);
+            color: white;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            min-width: 45px;
+            text-align: center;
+        }
+
+        .tp-card .tp-item .tp-desc {
+            color: var(--primary-dark);
+        }
+
+        /* ================================================================
+           SISA CSS
+           ================================================================ */
         .identitas-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -101,9 +136,9 @@
             background: #fff;
             transition: 0.2s;
             font-family: inherit;
-            resize: vertical;
+            resize: none !important;
+            overflow: hidden !important;
             min-height: 42px;
-            overflow: hidden;
         }
 
         .identitas-item select:focus,
@@ -112,7 +147,6 @@
             border-color: var(--primary);
         }
 
-        /* ===== SECTION ===== */
         .section-title {
             font-size: 1.3rem;
             font-weight: 700;
@@ -134,7 +168,7 @@
             font-size: 0.95rem;
             margin-bottom: 1rem;
             padding: 0.8rem 1.2rem;
-            background: #f0faf0;
+            background: #f4ecf7;
             border-radius: 10px;
             border-left: 4px solid var(--primary);
         }
@@ -143,7 +177,6 @@
             color: var(--text);
         }
 
-        /* ===== TABEL ===== */
         .table-wrap {
             overflow-x: auto;
             margin: 0.8rem 0;
@@ -176,7 +209,6 @@
             border-bottom: none;
         }
 
-        /* ===== DINAMIC TEXTAREA ===== */
         .dynamic-textarea {
             width: 100%;
             border: 2px solid #e8e8e8;
@@ -186,16 +218,16 @@
             font-size: 0.95rem;
             background: #fff;
             transition: 0.2s;
-            resize: vertical;
+            resize: none !important;
+            overflow: hidden !important;
             min-height: 42px;
             line-height: 1.6;
-            overflow: hidden;
         }
 
         .dynamic-textarea:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.15);
+            box-shadow: 0 0 0 3px rgba(142, 68, 173, 0.15);
         }
 
         .dynamic-textarea-sm {
@@ -208,7 +240,80 @@
             min-height: 70px;
         }
 
-        /* ===== SELECT UNIFORM ===== */
+        /* ============ EMOJI RADIO GROUP ============ */
+        .emoji-group {
+            display: flex;
+            gap: 0.4rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 4px;
+        }
+
+        .emoji-group label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            cursor: pointer;
+            padding: 4px 6px;
+            border-radius: 10px;
+            transition: 0.2s;
+            font-size: 1.8rem;
+            min-width: 44px;
+        }
+
+        .emoji-group label:hover {
+            background: var(--primary-light);
+            transform: scale(1.05);
+        }
+
+        .emoji-group label input[type="radio"] {
+            width: 16px;
+            height: 16px;
+            accent-color: var(--primary);
+            cursor: pointer;
+        }
+
+        .emoji-group label .emoji-label {
+            font-size: 0.6rem;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        .emoji-card {
+            background: #f4ecf7;
+            padding: 0.8rem 1rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: 0.2s;
+        }
+
+        .emoji-card:hover {
+            border-color: var(--primary-light);
+        }
+
+        .emoji-card .emoji-title {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text);
+            margin-bottom: 2px;
+        }
+
+        .emoji-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.8rem;
+            margin: 1rem 0;
+        }
+
+        @media (max-width: 600px) {
+            .emoji-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ============ SELECT UNIFORM ============ */
         .select-uniform {
             width: 100%;
             padding: 0.6rem 0.8rem;
@@ -226,7 +331,7 @@
         .select-uniform:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.15);
+            box-shadow: 0 0 0 3px rgba(142, 68, 173, 0.15);
         }
 
         .select-uniform:disabled {
@@ -235,7 +340,7 @@
             cursor: not-allowed;
         }
 
-        /* ===== RADIO & CHECKBOX ===== */
+        /* ============ OPTIONS GROUP ============ */
         .options-group {
             display: flex;
             flex-wrap: wrap;
@@ -283,7 +388,7 @@
             font-weight: 600;
         }
 
-        /* ===== TOMBOL ===== */
+        /* ============ TOMBOL ============ */
         .btn-submit {
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: #fff;
@@ -296,12 +401,12 @@
             transition: 0.3s;
             display: block;
             margin: 2rem auto 1rem;
-            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+            box-shadow: 0 4px 15px rgba(142, 68, 173, 0.3);
         }
 
         .btn-submit:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(46, 204, 113, 0.4);
+            box-shadow: 0 8px 25px rgba(142, 68, 173, 0.4);
         }
         .btn-submit:disabled {
             background: #ccc;
@@ -345,7 +450,7 @@
             margin-bottom: 1rem;
         }
 
-        /* ===== STATUS ===== */
+        /* ============ STATUS ============ */
         .status-bar {
             display: flex;
             align-items: center;
@@ -370,15 +475,9 @@
         }
 
         @keyframes pulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.5);
-            }
-            70% {
-                box-shadow: 0 0 0 8px rgba(40, 167, 69, 0);
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(40, 167, 69, 0);
-            }
+            0% { box-shadow: 0 0 0 0 rgba(40, 167, 69, 0.5); }
+            70% { box-shadow: 0 0 0 8px rgba(40, 167, 69, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(40, 167, 69, 0); }
         }
 
         .msg {
@@ -407,7 +506,94 @@
             margin-right: 8px;
         }
 
-        /* ===== MODAL ===== */
+        /* ============ DOKUMENTASI ============ */
+        .dokumentasi-instruction {
+            background: #fff3cd;
+            border-radius: 10px;
+            padding: 0.8rem 1.2rem;
+            margin: 0.5rem 0 1rem 0;
+            border-left: 4px solid #f39c12;
+        }
+
+        .dokumentasi-instruction i {
+            color: #f39c12;
+            margin-right: 8px;
+        }
+
+        .folder-link-box {
+            background: #e8f5e9;
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            margin-top: 1rem;
+            border-left: 5px solid #4caf50;
+        }
+
+        .folder-link-box .label-link {
+            font-weight: 600;
+            color: #2e7d32;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .folder-link-box .sub-text {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 6px;
+        }
+
+        .folder-link-box input {
+            width: 100% !important;
+        }
+
+        /* ============ INFO BOX ============ */
+        .info-hijau {
+            background: #e8f5e9;
+            border-left: 5px solid #4caf50;
+            padding: 1rem;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .info-biru {
+            background: #e3f2fd;
+            border-left: 5px solid var(--accent);
+            padding: 1rem;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .info-ungu {
+            background: #f4ecf7;
+            border-left: 5px solid var(--primary);
+            padding: 1rem;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .kotak-checklist {
+            border: 1px solid var(--primary-light);
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            background: #f9f9f9;
+            margin: 15px 0;
+        }
+
+        .link-preview {
+            display: inline-block;
+            margin-top: 8px;
+            padding: 6px 14px;
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            text-decoration: none;
+        }
+        .link-preview:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* ============ MODAL ============ */
         .modal {
             display: none;
             position: fixed;
@@ -420,12 +606,8 @@
         }
 
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .modal-box {
@@ -440,14 +622,8 @@
         }
 
         @keyframes slideDown {
-            from {
-                transform: translateY(-40px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
+            from { transform: translateY(-40px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
         .modal-icon {
@@ -518,65 +694,7 @@
             background: #5a6268;
         }
 
-        /* ===== INFO BOX ===== */
-        .info-hijau {
-            background: #e8f5e9;
-            border-left: 5px solid var(--primary);
-            padding: 1rem;
-            border-radius: 12px;
-            margin-bottom: 20px;
-        }
-
-        .info-biru {
-            background: #e3f2fd;
-            border-left: 5px solid var(--accent);
-            padding: 1rem;
-            border-radius: 12px;
-            margin-bottom: 20px;
-        }
-
-        .kotak-checklist {
-            border: 1px solid var(--primary-light);
-            padding: 1rem 1.5rem;
-            border-radius: 12px;
-            background: #f9f9f9;
-            margin: 15px 0;
-        }
-
-        .materi-box {
-            background: #e3f2fd;
-            border-radius: 12px;
-            padding: 15px;
-            margin: 15px 0;
-            border-left: 4px solid var(--accent);
-        }
-
-        .btn-materi {
-            display: inline-block;
-            background: var(--accent);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 30px;
-            text-decoration: none;
-            margin-top: 10px;
-            font-size: 0.9rem;
-        }
-        .btn-materi:hover {
-            background: #2980b9;
-        }
-
-        .soal-cek {
-            background: #fff8e1;
-            padding: 15px;
-            border-radius: 12px;
-            margin-top: 10px;
-        }
-
-        .soal-cek textarea {
-            margin-bottom: 10px;
-        }
-
-        /* ===== RESPONSIVE ===== */
+        /* ============ RESPONSIVE ============ */
         @media (max-width: 768px) {
             .container {
                 padding: 0 0.8rem;
@@ -622,6 +740,14 @@
                 display: block;
                 overflow-x: auto;
             }
+            .emoji-grid {
+                grid-template-columns: 1fr;
+            }
+            .emoji-group label {
+                font-size: 1.5rem;
+                min-width: 36px;
+                padding: 2px 4px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -639,6 +765,13 @@
                 font-size: 0.85rem;
                 min-height: 36px;
                 padding: 6px 8px;
+            }
+            .emoji-group label {
+                font-size: 1.3rem;
+                min-width: 32px;
+            }
+            .emoji-group label .emoji-label {
+                font-size: 0.5rem;
             }
         }
     </style>
@@ -684,6 +817,29 @@
             </p>
         </div>
 
+        <!-- ===== TP CARD ===== -->
+        <div class="tp-card">
+            <div style="font-weight:700; color:var(--primary-dark); margin-bottom:6px; font-size:1.1rem;">
+                <i class="fas fa-bullseye"></i> Tujuan Pembelajaran
+            </div>
+            <div class="tp-item">
+                <span class="tp-code">TP 3.2</span>
+                <span class="tp-desc">Membangun argumen berdasarkan prinsip dasar dan bukti ilmiah yang diperoleh</span>
+            </div>
+            <div class="tp-item">
+                <span class="tp-code">TP 3.4</span>
+                <span class="tp-desc">Mengomunikasikan proses dan hasil kegiatan penyelidikan secara ilmiah</span>
+            </div>
+            <div class="tp-item">
+                <span class="tp-code">TP 3.5</span>
+                <span class="tp-desc">Melakukan refleksi diri terhadap tahapan kegiatan penyelidikan yang telah dilakukan</span>
+            </div>
+            <div class="tp-item">
+                <span class="tp-code">TP 4.1</span>
+                <span class="tp-desc">Menyebarluaskan hasil proyek kepada masyarakat melalui media digital</span>
+            </div>
+        </div>
+
         <!-- STATUS -->
         <div class="status-bar">
             <div class="status-dot" id="statusDot"></div>
@@ -717,7 +873,7 @@
             <!-- A. IDENTITAS -->
             <!-- ============================================================ -->
             <div class="card">
-                <h2 class="section-title"><i class="fas fa-id-card"></i> Identitas</h2>
+                <h2 class="section-title"><i class="fas fa-id-card"></i> A. Identitas</h2>
                 <div class="identitas-grid">
                     <div class="identitas-item">
                         <label>Kelas</label>
@@ -746,7 +902,7 @@
             <!-- B. CEK PEMAHAMAN MATERI -->
             <!-- ============================================================ -->
             <div class="card">
-                <h2 class="section-title"><i class="fas fa-book-open"></i> Cek Pemahaman Materi</h2>
+                <h2 class="section-title"><i class="fas fa-book-open"></i> B. Cek Pemahaman Materi</h2>
                 <div class="section-desc">
                     <i class="fas fa-info-circle"></i>
                     Sebelum membuat video, baca dulu materi
@@ -754,6 +910,12 @@
                         "Diseminasi Proyek"
                     </a>
                     , lalu jawab pertanyaan di bawah ini.
+                </div>
+
+                <div class="dokumentasi-instruction">
+                    <i class="fas fa-camera"></i>
+                    <strong>📸 Instruksi Dokumentasi:</strong> 
+                    Screenshot halaman materi yang sudah kamu baca → Upload ke Google Drive → Tempel link folder di bawah.
                 </div>
 
                 <div class="table-wrap">
@@ -779,13 +941,27 @@
                         </tbody>
                     </table>
                 </div>
+
+                <div style="margin-top:1rem; background:#f8fafc; border-radius:10px; padding:1rem; border:1px dashed var(--primary);">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="bacaMateri" onchange="saveDraft();" style="width:18px; height:18px; accent-color:var(--primary);">
+                        <label for="bacaMateri" style="font-weight:600; margin-left:8px;">☐ Ya, saya sudah membaca materi "Diseminasi Proyek"</label>
+                    </div>
+                </div>
+
+                <!-- ===== LINK DOKUMENTASI SCREENSHOT B ===== -->
+                <div class="folder-link-box" style="margin-top:1rem;">
+                    <span class="label-link"><i class="fas fa-folder-open"></i> 📁 Link Dokumentasi - Bagian B</span>
+                    <div class="sub-text">Tempel link folder/screenshot bukti membaca materi:</div>
+                    <input type="text" class="dynamic-textarea dynamic-textarea-sm" id="link_screenshot_b" placeholder="https://drive.google.com/drive/folders/xxx" oninput="saveDraft(); autoResize(this);">
+                </div>
             </div>
 
             <!-- ============================================================ -->
             <!-- C. INFORMASI PROYEK -->
             <!-- ============================================================ -->
             <div class="card">
-                <h2 class="section-title"><i class="fas fa-info-circle"></i> Informasi Proyek</h2>
+                <h2 class="section-title"><i class="fas fa-info-circle"></i> C. Informasi Proyek</h2>
 
                 <div class="info-biru">
                     <strong>📝 PETUNJUK:</strong> Tuliskan informasi tentang proyek yang akan dibuatkan video diseminasi.
@@ -815,7 +991,7 @@
             <!-- D. PESAN UTAMA VIDEO -->
             <!-- ============================================================ -->
             <div class="card">
-                <h2 class="section-title"><i class="fas fa-comment-dots"></i> Pesan Utama Video</h2>
+                <h2 class="section-title"><i class="fas fa-comment-dots"></i> D. Pesan Utama Video</h2>
 
                 <div class="info-biru">
                     <strong>📝 PETUNJUK:</strong> Tentukan pesan-pesan utama yang ingin disampaikan dalam video.
@@ -839,7 +1015,7 @@
             <!-- E. RENCANA VIDEO -->
             <!-- ============================================================ -->
             <div class="card">
-                <h2 class="section-title"><i class="fas fa-video"></i> Rencana Video</h2>
+                <h2 class="section-title"><i class="fas fa-video"></i> E. Rencana Video</h2>
 
                 <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1rem;">
                     <div>
@@ -879,7 +1055,7 @@
             <!-- F. ALUR VIDEO (STORYLINE) - TABEL -->
             <!-- ============================================================ -->
             <div class="card">
-                <h2 class="section-title"><i class="fas fa-film"></i> Alur Video (Storyline)</h2>
+                <h2 class="section-title"><i class="fas fa-film"></i> F. Alur Video (Storyline)</h2>
 
                 <div class="info-biru">
                     <strong>📝 PETUNJUK:</strong> Isi durasi dan deskripsi adegan untuk setiap bagian video.
@@ -890,8 +1066,8 @@
                         <thead>
                             <tr>
                                 <th style="width:15%;">Bagian</th>
-                                <th style="width:25%;">Durasi (detik)</th>
-                                <th style="width:60%;">Deskripsi Adegan</th>
+                                <th style="width:20%;">Durasi (detik)</th>
+                                <th style="width:65%;">Deskripsi Adegan</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -929,7 +1105,7 @@
             <!-- G. KEBUTUHAN PRODUKSI -->
             <!-- ============================================================ -->
             <div class="card">
-                <h2 class="section-title"><i class="fas fa-clipboard-list"></i> Kebutuhan Produksi</h2>
+                <h2 class="section-title"><i class="fas fa-clipboard-list"></i> G. Kebutuhan Produksi</h2>
 
                 <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
                     <div>
@@ -963,7 +1139,7 @@
             <!-- H. JADWAL PRODUKSI -->
             <!-- ============================================================ -->
             <div class="card">
-                <h2 class="section-title"><i class="fas fa-calendar-alt"></i> Jadwal Produksi</h2>
+                <h2 class="section-title"><i class="fas fa-calendar-alt"></i> H. Jadwal Produksi</h2>
 
                 <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:1rem;">
                     <div>
@@ -985,7 +1161,7 @@
             <!-- I. KENDALA PRODUKSI -->
             <!-- ============================================================ -->
             <div class="card">
-                <h2 class="section-title"><i class="fas fa-exclamation-triangle"></i> Kendala Produksi</h2>
+                <h2 class="section-title"><i class="fas fa-exclamation-triangle"></i> I. Kendala Produksi</h2>
 
                 <div style="margin-bottom:0.8rem;">
                     <label style="font-weight:600; display:block; margin-bottom:4px;">I1. Kendala saat pengambilan gambar</label>
@@ -1001,7 +1177,7 @@
             <!-- J. SPESIFIKASI VIDEO FINAL -->
             <!-- ============================================================ -->
             <div class="card">
-                <h2 class="section-title"><i class="fas fa-check-circle"></i> Spesifikasi Video Final</h2>
+                <h2 class="section-title"><i class="fas fa-check-circle"></i> J. Spesifikasi Video Final</h2>
 
                 <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
                     <div>
@@ -1043,7 +1219,7 @@
             <!-- K. REFLEKSI AKHIR PROYEK -->
             <!-- ============================================================ -->
             <div class="card">
-                <h2 class="section-title"><i class="fas fa-smile"></i> Refleksi Akhir Proyek</h2>
+                <h2 class="section-title"><i class="fas fa-smile"></i> K. Refleksi Akhir Proyek</h2>
                 <div class="section-desc">
                     <i class="fas fa-comment"></i>
                     Renungkan seluruh perjalanan proyek IPAS yang telah kalian lalui!
@@ -1068,10 +1244,159 @@
             </div>
 
             <!-- ============================================================ -->
-            <!-- L. NILAI DIRI KELOMPOK -->
+            <!-- L. REFLEKSI KELOMPOK (EMOJI + CERITA) -->
             <!-- ============================================================ -->
             <div class="card">
-                <h2 class="section-title"><i class="fas fa-star"></i> Nilai Diri Kelompok</h2>
+                <h2 class="section-title"><i class="fas fa-star"></i> L. Refleksi Kelompok</h2>
+                <div class="section-desc">
+                    <i class="fas fa-hand-peace"></i>
+                    Pilih emoji yang paling menggambarkan kelompokmu! Lalu tulis cerita singkatnya.
+                </div>
+
+                <div class="emoji-grid">
+                    <!-- 1. Kerjasama -->
+                    <div class="emoji-card">
+                        <div class="emoji-title">🤝 Kerjasama</div>
+                        <div class="emoji-group">
+                            <label>
+                                <input type="radio" name="g_kerjasama" value="5" onchange="saveDraft();">
+                                😊
+                                <span class="emoji-label">Sangat Baik</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kerjasama" value="4" onchange="saveDraft();">
+                                🙂
+                                <span class="emoji-label">Baik</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kerjasama" value="3" onchange="saveDraft();" checked>
+                                😐
+                                <span class="emoji-label">Cukup</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kerjasama" value="2" onchange="saveDraft();">
+                                😕
+                                <span class="emoji-label">Kurang</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kerjasama" value="1" onchange="saveDraft();">
+                                😞
+                                <span class="emoji-label">Perlu Perbaikan</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- 2. Kontribusi -->
+                    <div class="emoji-card">
+                        <div class="emoji-title">📊 Kontribusi</div>
+                        <div class="emoji-group">
+                            <label>
+                                <input type="radio" name="g_kontribusi" value="5" onchange="saveDraft();">
+                                😊
+                                <span class="emoji-label">Sangat Baik</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kontribusi" value="4" onchange="saveDraft();">
+                                🙂
+                                <span class="emoji-label">Baik</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kontribusi" value="3" onchange="saveDraft();" checked>
+                                😐
+                                <span class="emoji-label">Cukup</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kontribusi" value="2" onchange="saveDraft();">
+                                😕
+                                <span class="emoji-label">Kurang</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kontribusi" value="1" onchange="saveDraft();">
+                                😞
+                                <span class="emoji-label">Perlu Perbaikan</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- 3. Tepat Waktu -->
+                    <div class="emoji-card">
+                        <div class="emoji-title">⏰ Tepat Waktu</div>
+                        <div class="emoji-group">
+                            <label>
+                                <input type="radio" name="g_waktu" value="5" onchange="saveDraft();">
+                                😊
+                                <span class="emoji-label">Sangat Baik</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_waktu" value="4" onchange="saveDraft();">
+                                🙂
+                                <span class="emoji-label">Baik</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_waktu" value="3" onchange="saveDraft();" checked>
+                                😐
+                                <span class="emoji-label">Cukup</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_waktu" value="2" onchange="saveDraft();">
+                                😕
+                                <span class="emoji-label">Kurang</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_waktu" value="1" onchange="saveDraft();">
+                                😞
+                                <span class="emoji-label">Perlu Perbaikan</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- 4. Kualitas Hasil -->
+                    <div class="emoji-card">
+                        <div class="emoji-title">💡 Kualitas Hasil</div>
+                        <div class="emoji-group">
+                            <label>
+                                <input type="radio" name="g_kualitas" value="5" onchange="saveDraft();">
+                                😊
+                                <span class="emoji-label">Sangat Baik</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kualitas" value="4" onchange="saveDraft();">
+                                🙂
+                                <span class="emoji-label">Baik</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kualitas" value="3" onchange="saveDraft();" checked>
+                                😐
+                                <span class="emoji-label">Cukup</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kualitas" value="2" onchange="saveDraft();">
+                                😕
+                                <span class="emoji-label">Kurang</span>
+                            </label>
+                            <label>
+                                <input type="radio" name="g_kualitas" value="1" onchange="saveDraft();">
+                                😞
+                                <span class="emoji-label">Perlu Perbaikan</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cerita Kelompok -->
+                <div style="margin-top:0.8rem;">
+                    <label style="font-weight:600; display:block; margin-bottom:4px;">
+                        📝 Ceritakan pengalaman kerjamu dalam kelompok ini (1-2 kalimat):
+                    </label>
+                    <textarea class="dynamic-textarea" id="refleksiCerita" rows="2" placeholder="Contoh: Kami bekerja sama dengan baik, semua saling membantu menyelesaikan tugas..." oninput="saveDraft(); autoResize(this);"></textarea>
+                </div>
+            </div>
+
+            <!-- ============================================================ -->
+            <!-- M. NILAI DIRI KELOMPOK -->
+            <!-- ============================================================ -->
+            <div class="card">
+                <h2 class="section-title"><i class="fas fa-star"></i> M. Nilai Diri Kelompok</h2>
                 <div class="section-desc">
                     <i class="fas fa-hand-peace"></i>
                     Berikan nilai untuk kelompokmu (1 = Kurang, 4 = Sangat Baik)!
@@ -1173,7 +1498,7 @@
         // KONFIGURASI
         // ================================================================
         const URL_DATA_SISWA = 'https://script.google.com/macros/s/AKfycbxZMS_o6xWMAQAkjBzzEMR9tJmHOnHCX13KJX2xZMn7WIr-A9pwVK_3DDHnMg7y_rD29Q/exec';
-        const URL_PEREKAPAN = 'https://script.google.com/macros/s/AKfycbyOV0q9vp8bVeVXCoYWa7qNUqzSPTA7BgTTjwEO0qjUGeHy-mrx7O0hFhcEHxK57oVY/exec';
+        const URL_PEREKAPAN = 'https://script.google.com/macros/s/AKfycbxyGnBMWRIQKRtHa3ogqvT_66Tt3gTEcxZ7dsPPnob3tsVU9IuPWTEpxWH7mGX7YPZj/exec';
         const STORAGE_KEY = 'ipas_s2_a6_draft_v2';
         const AKTIVITAS_NAMA = 'AKTIVITAS 6 - DISEMINASI VIDEO';
         const SHEET_NAME = 'data_aktivitas';
@@ -1328,17 +1653,32 @@
         }
 
         // ================================================================
+        // GET EMOJI VALUE
+        // ================================================================
+        function getEmojiValue(name) {
+            const el = document.querySelector(`input[name="${name}"]:checked`);
+            return el ? el.value : '3';
+        }
+
+        // ================================================================
         // TIMESTAMP
         // ================================================================
-        function getTimestamp() {
+        function getFormattedTimestamp() {
             const now = new Date();
-            const d = String(now.getDate()).padStart(2, '0');
-            const m = String(now.getMonth() + 1).padStart(2, '0');
-            const y = now.getFullYear();
-            const h = String(now.getHours()).padStart(2, '0');
-            const min = String(now.getMinutes()).padStart(2, '0');
-            const s = String(now.getSeconds()).padStart(2, '0');
-            return `${d}/${m}/${y} ${h}:${min}:${s}`;
+            const hari = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+            const bulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+                'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+            ];
+
+            const hariName = hari[now.getDay()];
+            const tanggal = String(now.getDate()).padStart(2, '0');
+            const bulanName = bulan[now.getMonth()];
+            const tahun = now.getFullYear();
+            const jam = String(now.getHours()).padStart(2, '0');
+            const menit = String(now.getMinutes()).padStart(2, '0');
+            const detik = String(now.getSeconds()).padStart(2, '0');
+
+            return `${hariName}, ${tanggal} ${bulanName} ${tahun} - ${jam}:${menit}:${detik}`;
         }
 
         // ================================================================
@@ -1372,231 +1712,451 @@
         }
 
         // ================================================================
-        // COLLECT DATA
+        // COLLECT DATA - STRUKTUR JSON ARRAY 2D KONSISTEN
         // ================================================================
         function collectData() {
-            const data = { timestamp: getTimestamp() };
+            const timestamp = getFormattedTimestamp();
 
-            // Identitas
-            data.identitas = {
-                "Kelas": document.getElementById('kelas').value || '',
-                "Nama": document.getElementById('nama').value || '',
-                "Kelompok": document.getElementById('kelompok').value || '',
-                "Tugas/Peran": document.getElementById('tugas').value || ''
+            // Get platform checkboxes
+            const platformYoutube = document.getElementById('platform_youtube').checked || false;
+            const platformInstagram = document.getElementById('platform_instagram').checked || false;
+            const platformTiktok = document.getElementById('platform_tiktok').checked || false;
+            const platformLain = document.getElementById('platform_lain').checked || false;
+            const platformLainIsi = document.getElementById('platform_lain_isi').value || '';
+
+            // Get target penonton
+            const targetPenonton = document.querySelector('input[name="target_penonton"]:checked')?.value || '';
+
+            return {
+                "Timestamp Pengisian": timestamp,
+
+                "A. Identitas Kelompok": [
+                    ["Field", "Nilai"],
+                    ["Kelas", document.getElementById('kelas').value || ''],
+                    ["Nama", document.getElementById('nama').value || ''],
+                    ["Kelompok", document.getElementById('kelompok').value || ''],
+                    ["Tugas/Peran", document.getElementById('tugas').value || '']
+                ],
+
+                "B. Cek Pemahaman Materi": [
+                    ["Pertanyaan", "Jawaban"],
+                    ["Apa yang dimaksud dengan diseminasi proyek?", document.getElementById('cek1').value || ''],
+                    ["Sebutkan 3 platform diseminasi - 1", document.getElementById('cek2a').value || ''],
+                    ["Sebutkan 3 platform diseminasi - 2", document.getElementById('cek2b').value || ''],
+                    ["Sebutkan 3 platform diseminasi - 3", document.getElementById('cek2c').value || '']
+                ],
+                "B. Checklist": [
+                    ["Item", "Status"],
+                    ["Sudah membaca materi Diseminasi Proyek", document.getElementById('bacaMateri')?.checked || false]
+                ],
+                "B. Link Dokumentasi (Screenshot)": document.getElementById('link_screenshot_b').value || '',
+
+                "C. Informasi Proyek": [
+                    ["Pertanyaan", "Jawaban"],
+                    ["Tema Proyek", document.getElementById('tema_proyek').value || ''],
+                    ["Masalah yang Diselesaikan", document.getElementById('masalah_proyek').value || ''],
+                    ["Solusi/Produk yang Dibuat", document.getElementById('solusi_proyek').value || ''],
+                    ["Hasil Proyek", document.getElementById('hasil_proyek').value || '']
+                ],
+
+                "D. Pesan Utama Video": [
+                    ["Pesan", "Isi Pesan"],
+                    ["Pesan tentang Masalah", document.getElementById('pesan_masalah').value || ''],
+                    ["Pesan tentang Solusi", document.getElementById('pesan_solusi').value || ''],
+                    ["Pesan tentang Hasil", document.getElementById('pesan_hasil').value || '']
+                ],
+
+                "E. Rencana Video": [
+                    ["Aspek", "Keterangan"],
+                    ["Judul Video", document.getElementById('judul_video').value || ''],
+                    ["Durasi Rencana", document.getElementById('durasi_rencana').value || ''],
+                    ["Platform YouTube", platformYoutube],
+                    ["Platform Instagram", platformInstagram],
+                    ["Platform TikTok", platformTiktok],
+                    ["Platform Lainnya", platformLain],
+                    ["Platform Lainnya Isi", platformLainIsi],
+                    ["Target Penonton", targetPenonton]
+                ],
+
+                "F. Alur Video (Storyline)": [
+                    ["Bagian", "Durasi (detik)", "Deskripsi Adegan"],
+                    ["Pembukaan", document.getElementById('durasi_pembukaan').value || '', document.getElementById('adegan_pembukaan').value || ''],
+                    ["Masalah", document.getElementById('durasi_masalah').value || '', document.getElementById('adegan_masalah').value || ''],
+                    ["Solusi & Produk", document.getElementById('durasi_solusi').value || '', document.getElementById('adegan_solusi').value || ''],
+                    ["Hasil", document.getElementById('durasi_hasil').value || '', document.getElementById('adegan_hasil').value || ''],
+                    ["Penutup", document.getElementById('durasi_penutup').value || '', document.getElementById('adegan_penutup').value || '']
+                ],
+
+                "G. Kebutuhan Produksi": [
+                    ["Aspek", "Keterangan"],
+                    ["Alat rekam", document.getElementById('kebutuhan_alat_rekam').value || ''],
+                    ["Alat bantu", document.getElementById('kebutuhan_alat_bantu').value || ''],
+                    ["Lokasi syuting", document.getElementById('kebutuhan_lokasi').value || ''],
+                    ["Properti", document.getElementById('kebutuhan_properti').value || ''],
+                    ["Aplikasi editing", document.getElementById('kebutuhan_edit').value || ''],
+                    ["Kebutuhan lain", document.getElementById('kebutuhan_lain').value || '']
+                ],
+
+                "H. Jadwal Produksi": [
+                    ["Aspek", "Keterangan"],
+                    ["Hari/Tanggal", document.getElementById('jadwal_tanggal').value || ''],
+                    ["Kegiatan", document.getElementById('jadwal_kegiatan').value || ''],
+                    ["Anggota yang Terlibat", document.getElementById('jadwal_anggota').value || '']
+                ],
+
+                "I. Kendala Produksi": [
+                    ["Aspek", "Keterangan"],
+                    ["Kendala saat syuting", document.getElementById('kendala_syuting').value || ''],
+                    ["Kendala saat editing", document.getElementById('kendala_editing').value || '']
+                ],
+
+                "J. Spesifikasi Video Final": [
+                    ["Aspek", "Keterangan"],
+                    ["Judul Video Final", document.getElementById('judul_video_final').value || ''],
+                    ["Durasi Final", document.getElementById('durasi_final').value || ''],
+                    ["Link Video", document.getElementById('link_video').value || ''],
+                    ["Tanggal Unggah", document.getElementById('tanggal_unggah').value || ''],
+                    ["Jumlah Views", document.getElementById('jumlah_views').value || ''],
+                    ["Jumlah Likes", document.getElementById('jumlah_likes').value || ''],
+                    ["Jumlah Komentar", document.getElementById('jumlah_komentar').value || ''],
+                    ["Komentar Menarik", document.getElementById('komentar_menarik').value || '']
+                ],
+
+                "K. Refleksi Akhir Proyek": [
+                    ["Pertanyaan", "Jawaban"],
+                    ["Hal terbaik dari proyek ini", document.getElementById('ref1').value || ''],
+                    ["Hal tersulit dan cara mengatasinya", document.getElementById('ref2').value || ''],
+                    ["Keterampilan baru yang didapatkan", document.getElementById('ref3').value || ''],
+                    ["Pesan untuk kelompok lain", document.getElementById('ref4').value || '']
+                ],
+
+                "L. Refleksi Kelompok (Emoji)": [
+                    ["Aspek", "Nilai"],
+                    ["Kerjasama", getEmojiValue('g_kerjasama')],
+                    ["Kontribusi", getEmojiValue('g_kontribusi')],
+                    ["Tepat Waktu", getEmojiValue('g_waktu')],
+                    ["Kualitas Hasil", getEmojiValue('g_kualitas')],
+                    ["Cerita Kelompok", document.getElementById('refleksiCerita').value || '']
+                ],
+
+                "M. Nilai Diri Kelompok": [
+                    ["Aspek", "Nilai"],
+                    ["Kualitas video diseminasi", document.getElementById('nilai1').value || '3'],
+                    ["Kerja sama dalam pembuatan video", document.getElementById('nilai2').value || '3'],
+                    ["Ketepatan waktu penyelesaian", document.getElementById('nilai3').value || '3']
+                ]
             };
-
-            // Cek Pemahaman
-            data.cek_pemahaman = {
-                "Apa yang dimaksud dengan diseminasi proyek": document.getElementById('cek1').value || '',
-                "Platform 1": document.getElementById('cek2a').value || '',
-                "Platform 2": document.getElementById('cek2b').value || '',
-                "Platform 3": document.getElementById('cek2c').value || ''
-            };
-
-            // Informasi Proyek
-            data.informasi_proyek = {
-                "Tema Proyek": document.getElementById('tema_proyek').value || '',
-                "Masalah yang diselesaikan": document.getElementById('masalah_proyek').value || '',
-                "Solusi/Produk yang dibuat": document.getElementById('solusi_proyek').value || '',
-                "Hasil Proyek": document.getElementById('hasil_proyek').value || ''
-            };
-
-            // Pesan Utama
-            data.pesan_utama = {
-                "Pesan tentang Masalah": document.getElementById('pesan_masalah').value || '',
-                "Pesan tentang Solusi": document.getElementById('pesan_solusi').value || '',
-                "Pesan tentang Hasil": document.getElementById('pesan_hasil').value || ''
-            };
-
-            // Rencana Video
-            data.rencana_video = {
-                "Judul Video": document.getElementById('judul_video').value || '',
-                "Durasi Rencana": document.getElementById('durasi_rencana').value || '',
-                "Platform YouTube": document.getElementById('platform_youtube').checked || false,
-                "Platform Instagram": document.getElementById('platform_instagram').checked || false,
-                "Platform TikTok": document.getElementById('platform_tiktok').checked || false,
-                "Platform Lainnya": document.getElementById('platform_lain').checked || false,
-                "Platform Lainnya Isi": document.getElementById('platform_lain_isi').value || '',
-                "Target Penonton": document.querySelector('input[name="target_penonton"]:checked')?.value || ''
-            };
-
-            // Alur Video - dari tabel
-            data.alur_video = {
-                "Durasi Pembukaan": document.getElementById('durasi_pembukaan').value || '',
-                "Adegan Pembukaan": document.getElementById('adegan_pembukaan').value || '',
-                "Durasi Masalah": document.getElementById('durasi_masalah').value || '',
-                "Adegan Masalah": document.getElementById('adegan_masalah').value || '',
-                "Durasi Solusi": document.getElementById('durasi_solusi').value || '',
-                "Adegan Solusi": document.getElementById('adegan_solusi').value || '',
-                "Durasi Hasil": document.getElementById('durasi_hasil').value || '',
-                "Adegan Hasil": document.getElementById('adegan_hasil').value || '',
-                "Durasi Penutup": document.getElementById('durasi_penutup').value || '',
-                "Adegan Penutup": document.getElementById('adegan_penutup').value || ''
-            };
-
-            // Kebutuhan Produksi
-            data.kebutuhan_produksi = {
-                "Alat rekam": document.getElementById('kebutuhan_alat_rekam').value || '',
-                "Alat bantu": document.getElementById('kebutuhan_alat_bantu').value || '',
-                "Lokasi syuting": document.getElementById('kebutuhan_lokasi').value || '',
-                "Properti": document.getElementById('kebutuhan_properti').value || '',
-                "Aplikasi editing": document.getElementById('kebutuhan_edit').value || '',
-                "Kebutuhan lain": document.getElementById('kebutuhan_lain').value || ''
-            };
-
-            // Jadwal Produksi
-            data.jadwal_produksi = {
-                "Hari/Tanggal": document.getElementById('jadwal_tanggal').value || '',
-                "Kegiatan": document.getElementById('jadwal_kegiatan').value || '',
-                "Anggota yang Terlibat": document.getElementById('jadwal_anggota').value || ''
-            };
-
-            // Kendala Produksi
-            data.kendala_produksi = {
-                "Kendala syuting": document.getElementById('kendala_syuting').value || '',
-                "Kendala editing": document.getElementById('kendala_editing').value || ''
-            };
-
-            // Spesifikasi Final
-            data.spesifikasi_final = {
-                "Judul Video Final": document.getElementById('judul_video_final').value || '',
-                "Durasi Final": document.getElementById('durasi_final').value || '',
-                "Link Video": document.getElementById('link_video').value || '',
-                "Tanggal Unggah": document.getElementById('tanggal_unggah').value || '',
-                "Jumlah Views": document.getElementById('jumlah_views').value || '',
-                "Jumlah Likes": document.getElementById('jumlah_likes').value || '',
-                "Jumlah Komentar": document.getElementById('jumlah_komentar').value || '',
-                "Komentar Menarik": document.getElementById('komentar_menarik').value || ''
-            };
-
-            // Refleksi
-            data.refleksi = {
-                "Hal terbaik": document.getElementById('ref1').value || '',
-                "Hal tersulit": document.getElementById('ref2').value || '',
-                "Keterampilan baru": document.getElementById('ref3').value || '',
-                "Pesan untuk kelompok lain": document.getElementById('ref4').value || ''
-            };
-
-            // Nilai
-            data.nilai = {
-                "Kualitas video": document.getElementById('nilai1').value || '3',
-                "Kerja sama": document.getElementById('nilai2').value || '3',
-                "Ketepatan waktu": document.getElementById('nilai3').value || '3'
-            };
-
-            return data;
         }
 
         // ================================================================
-        // RESTORE DATA
+        // RESTORE DATA - DARI LOCALSTORAGE
         // ================================================================
         function restoreData(data) {
             if (!data) return;
 
-            if (data.identitas) {
+            // A. Identitas (Array 2D)
+            if (data["A. Identitas Kelompok"] && Array.isArray(data["A. Identitas Kelompok"])) {
+                const identitasArray = data["A. Identitas Kelompok"];
+                let kelasValue = '',
+                    namaValue = '',
+                    kelompokValue = '',
+                    tugasValue = '';
+
+                identitasArray.forEach(item => {
+                    if (Array.isArray(item) && item.length === 2) {
+                        const field = item[0];
+                        const value = item[1] || '';
+                        if (field === "Kelas") kelasValue = value;
+                        else if (field === "Nama") namaValue = value;
+                        else if (field === "Kelompok") kelompokValue = value;
+                        else if (field === "Tugas/Peran") tugasValue = value;
+                    }
+                });
+
                 const sel = document.getElementById('kelas');
                 for (let opt of sel.options) {
-                    if (opt.value === data.identitas["Kelas"]) { opt.selected = true; break; }
+                    if (opt.value === kelasValue) { opt.selected = true; break; }
                 }
                 updateNama();
+
                 const selNama = document.getElementById('nama');
                 for (let opt of selNama.options) {
-                    if (opt.value === data.identitas["Nama"]) { opt.selected = true; break; }
+                    if (opt.value === namaValue) { opt.selected = true; break; }
                 }
-                document.getElementById('kelompok').value = data.identitas["Kelompok"] || '';
-                document.getElementById('tugas').value = data.identitas["Tugas/Peran"] || '';
+                document.getElementById('kelompok').value = kelompokValue;
+                document.getElementById('tugas').value = tugasValue;
             }
 
-            if (data.cek_pemahaman) {
-                document.getElementById('cek1').value = data.cek_pemahaman["Apa yang dimaksud dengan diseminasi proyek"] || '';
-                document.getElementById('cek2a').value = data.cek_pemahaman["Platform 1"] || '';
-                document.getElementById('cek2b').value = data.cek_pemahaman["Platform 2"] || '';
-                document.getElementById('cek2c').value = data.cek_pemahaman["Platform 3"] || '';
+            // B. Cek Pemahaman Materi (Array 2D)
+            if (data["B. Cek Pemahaman Materi"] && Array.isArray(data["B. Cek Pemahaman Materi"])) {
+                const b = data["B. Cek Pemahaman Materi"];
+                const map = {
+                    "Apa yang dimaksud dengan diseminasi proyek?": 'cek1',
+                    "Sebutkan 3 platform diseminasi - 1": 'cek2a',
+                    "Sebutkan 3 platform diseminasi - 2": 'cek2b',
+                    "Sebutkan 3 platform diseminasi - 3": 'cek2c'
+                };
+                b.forEach(item => {
+                    if (Array.isArray(item) && item.length === 2) {
+                        const id = map[item[0]];
+                        if (id) {
+                            const el = document.getElementById(id);
+                            if (el) el.value = item[1] || '';
+                        }
+                    }
+                });
             }
 
-            if (data.informasi_proyek) {
-                document.getElementById('tema_proyek').value = data.informasi_proyek["Tema Proyek"] || '';
-                document.getElementById('masalah_proyek').value = data.informasi_proyek["Masalah yang diselesaikan"] || '';
-                document.getElementById('solusi_proyek').value = data.informasi_proyek["Solusi/Produk yang dibuat"] || '';
-                document.getElementById('hasil_proyek').value = data.informasi_proyek["Hasil Proyek"] || '';
-            }
-
-            if (data.pesan_utama) {
-                document.getElementById('pesan_masalah').value = data.pesan_utama["Pesan tentang Masalah"] || '';
-                document.getElementById('pesan_solusi').value = data.pesan_utama["Pesan tentang Solusi"] || '';
-                document.getElementById('pesan_hasil').value = data.pesan_utama["Pesan tentang Hasil"] || '';
-            }
-
-            if (data.rencana_video) {
-                document.getElementById('judul_video').value = data.rencana_video["Judul Video"] || '';
-                document.getElementById('durasi_rencana').value = data.rencana_video["Durasi Rencana"] || '';
-                document.getElementById('platform_youtube').checked = data.rencana_video["Platform YouTube"] || false;
-                document.getElementById('platform_instagram').checked = data.rencana_video["Platform Instagram"] || false;
-                document.getElementById('platform_tiktok').checked = data.rencana_video["Platform TikTok"] || false;
-                document.getElementById('platform_lain').checked = data.rencana_video["Platform Lainnya"] || false;
-                document.getElementById('platform_lain_isi').value = data.rencana_video["Platform Lainnya Isi"] || '';
-                if (data.rencana_video["Target Penonton"]) {
-                    const radio = document.querySelector(`input[name="target_penonton"][value="${data.rencana_video["Target Penonton"]}"]`);
-                    if (radio) radio.checked = true;
+            // B. Checklist
+            if (data["B. Checklist"] && Array.isArray(data["B. Checklist"])) {
+                const el = document.getElementById('bacaMateri');
+                if (el) {
+                    data["B. Checklist"].forEach(item => {
+                        if (Array.isArray(item) && item.length === 2 && item[0] === "Sudah membaca materi Diseminasi Proyek") {
+                            el.checked = item[1] || false;
+                        }
+                    });
                 }
+            }
+
+            // B. Link Dokumentasi
+            if (data["B. Link Dokumentasi (Screenshot)"] !== undefined) {
+                document.getElementById('link_screenshot_b').value = data["B. Link Dokumentasi (Screenshot)"] || '';
+            }
+
+            // C. Informasi Proyek (Array 2D)
+            if (data["C. Informasi Proyek"] && Array.isArray(data["C. Informasi Proyek"])) {
+                const c = data["C. Informasi Proyek"];
+                const map = {
+                    "Tema Proyek": 'tema_proyek',
+                    "Masalah yang Diselesaikan": 'masalah_proyek',
+                    "Solusi/Produk yang Dibuat": 'solusi_proyek',
+                    "Hasil Proyek": 'hasil_proyek'
+                };
+                c.forEach(item => {
+                    if (Array.isArray(item) && item.length === 2) {
+                        const id = map[item[0]];
+                        if (id) {
+                            const el = document.getElementById(id);
+                            if (el) el.value = item[1] || '';
+                        }
+                    }
+                });
+            }
+
+            // D. Pesan Utama Video (Array 2D)
+            if (data["D. Pesan Utama Video"] && Array.isArray(data["D. Pesan Utama Video"])) {
+                const d = data["D. Pesan Utama Video"];
+                const map = {
+                    "Pesan tentang Masalah": 'pesan_masalah',
+                    "Pesan tentang Solusi": 'pesan_solusi',
+                    "Pesan tentang Hasil": 'pesan_hasil'
+                };
+                d.forEach(item => {
+                    if (Array.isArray(item) && item.length === 2) {
+                        const id = map[item[0]];
+                        if (id) {
+                            const el = document.getElementById(id);
+                            if (el) el.value = item[1] || '';
+                        }
+                    }
+                });
+            }
+
+            // E. Rencana Video (Array 2D)
+            if (data["E. Rencana Video"] && Array.isArray(data["E. Rencana Video"])) {
+                const e = data["E. Rencana Video"];
+                e.forEach(item => {
+                    if (Array.isArray(item) && item.length === 2) {
+                        const aspek = item[0];
+                        const value = item[1];
+                        if (aspek === "Judul Video") document.getElementById('judul_video').value = value || '';
+                        else if (aspek === "Durasi Rencana") document.getElementById('durasi_rencana').value = value || '';
+                        else if (aspek === "Platform YouTube") document.getElementById('platform_youtube').checked = value || false;
+                        else if (aspek === "Platform Instagram") document.getElementById('platform_instagram').checked = value || false;
+                        else if (aspek === "Platform TikTok") document.getElementById('platform_tiktok').checked = value || false;
+                        else if (aspek === "Platform Lainnya") document.getElementById('platform_lain').checked = value || false;
+                        else if (aspek === "Platform Lainnya Isi") document.getElementById('platform_lain_isi').value = value || '';
+                        else if (aspek === "Target Penonton") {
+                            if (value) {
+                                const radio = document.querySelector(`input[name="target_penonton"][value="${value}"]`);
+                                if (radio) radio.checked = true;
+                            }
+                        }
+                    }
+                });
                 setTimeout(togglePlatformLain, 100);
             }
 
-            if (data.alur_video) {
-                document.getElementById('durasi_pembukaan').value = data.alur_video["Durasi Pembukaan"] || '';
-                document.getElementById('adegan_pembukaan').value = data.alur_video["Adegan Pembukaan"] || '';
-                document.getElementById('durasi_masalah').value = data.alur_video["Durasi Masalah"] || '';
-                document.getElementById('adegan_masalah').value = data.alur_video["Adegan Masalah"] || '';
-                document.getElementById('durasi_solusi').value = data.alur_video["Durasi Solusi"] || '';
-                document.getElementById('adegan_solusi').value = data.alur_video["Adegan Solusi"] || '';
-                document.getElementById('durasi_hasil').value = data.alur_video["Durasi Hasil"] || '';
-                document.getElementById('adegan_hasil').value = data.alur_video["Adegan Hasil"] || '';
-                document.getElementById('durasi_penutup').value = data.alur_video["Durasi Penutup"] || '';
-                document.getElementById('adegan_penutup').value = data.alur_video["Adegan Penutup"] || '';
+            // F. Alur Video (Array 2D)
+            if (data["F. Alur Video (Storyline)"] && Array.isArray(data["F. Alur Video (Storyline)"])) {
+                const f = data["F. Alur Video (Storyline)"];
+                const map = {
+                    "Pembukaan": { durasi: 'durasi_pembukaan', adegan: 'adegan_pembukaan' },
+                    "Masalah": { durasi: 'durasi_masalah', adegan: 'adegan_masalah' },
+                    "Solusi & Produk": { durasi: 'durasi_solusi', adegan: 'adegan_solusi' },
+                    "Hasil": { durasi: 'durasi_hasil', adegan: 'adegan_hasil' },
+                    "Penutup": { durasi: 'durasi_penutup', adegan: 'adegan_penutup' }
+                };
+                f.forEach(item => {
+                    if (Array.isArray(item) && item.length === 3) {
+                        const bagian = item[0];
+                        const durasi = item[1] || '';
+                        const adegan = item[2] || '';
+                        if (map[bagian]) {
+                            document.getElementById(map[bagian].durasi).value = durasi;
+                            document.getElementById(map[bagian].adegan).value = adegan;
+                        }
+                    }
+                });
             }
 
-            if (data.kebutuhan_produksi) {
-                document.getElementById('kebutuhan_alat_rekam').value = data.kebutuhan_produksi["Alat rekam"] || '';
-                document.getElementById('kebutuhan_alat_bantu').value = data.kebutuhan_produksi["Alat bantu"] || '';
-                document.getElementById('kebutuhan_lokasi').value = data.kebutuhan_produksi["Lokasi syuting"] || '';
-                document.getElementById('kebutuhan_properti').value = data.kebutuhan_produksi["Properti"] || '';
-                document.getElementById('kebutuhan_edit').value = data.kebutuhan_produksi["Aplikasi editing"] || '';
-                document.getElementById('kebutuhan_lain').value = data.kebutuhan_produksi["Kebutuhan lain"] || '';
+            // G. Kebutuhan Produksi (Array 2D)
+            if (data["G. Kebutuhan Produksi"] && Array.isArray(data["G. Kebutuhan Produksi"])) {
+                const g = data["G. Kebutuhan Produksi"];
+                const map = {
+                    "Alat rekam": 'kebutuhan_alat_rekam',
+                    "Alat bantu": 'kebutuhan_alat_bantu',
+                    "Lokasi syuting": 'kebutuhan_lokasi',
+                    "Properti": 'kebutuhan_properti',
+                    "Aplikasi editing": 'kebutuhan_edit',
+                    "Kebutuhan lain": 'kebutuhan_lain'
+                };
+                g.forEach(item => {
+                    if (Array.isArray(item) && item.length === 2) {
+                        const id = map[item[0]];
+                        if (id) {
+                            const el = document.getElementById(id);
+                            if (el) el.value = item[1] || '';
+                        }
+                    }
+                });
             }
 
-            if (data.jadwal_produksi) {
-                document.getElementById('jadwal_tanggal').value = data.jadwal_produksi["Hari/Tanggal"] || '';
-                document.getElementById('jadwal_kegiatan').value = data.jadwal_produksi["Kegiatan"] || '';
-                document.getElementById('jadwal_anggota').value = data.jadwal_produksi["Anggota yang Terlibat"] || '';
+            // H. Jadwal Produksi (Array 2D)
+            if (data["H. Jadwal Produksi"] && Array.isArray(data["H. Jadwal Produksi"])) {
+                const h = data["H. Jadwal Produksi"];
+                const map = {
+                    "Hari/Tanggal": 'jadwal_tanggal',
+                    "Kegiatan": 'jadwal_kegiatan',
+                    "Anggota yang Terlibat": 'jadwal_anggota'
+                };
+                h.forEach(item => {
+                    if (Array.isArray(item) && item.length === 2) {
+                        const id = map[item[0]];
+                        if (id) {
+                            const el = document.getElementById(id);
+                            if (el) el.value = item[1] || '';
+                        }
+                    }
+                });
             }
 
-            if (data.kendala_produksi) {
-                document.getElementById('kendala_syuting').value = data.kendala_produksi["Kendala syuting"] || '';
-                document.getElementById('kendala_editing').value = data.kendala_produksi["Kendala editing"] || '';
+            // I. Kendala Produksi (Array 2D)
+            if (data["I. Kendala Produksi"] && Array.isArray(data["I. Kendala Produksi"])) {
+                const i = data["I. Kendala Produksi"];
+                const map = {
+                    "Kendala saat syuting": 'kendala_syuting',
+                    "Kendala saat editing": 'kendala_editing'
+                };
+                i.forEach(item => {
+                    if (Array.isArray(item) && item.length === 2) {
+                        const id = map[item[0]];
+                        if (id) {
+                            const el = document.getElementById(id);
+                            if (el) el.value = item[1] || '';
+                        }
+                    }
+                });
             }
 
-            if (data.spesifikasi_final) {
-                document.getElementById('judul_video_final').value = data.spesifikasi_final["Judul Video Final"] || '';
-                document.getElementById('durasi_final').value = data.spesifikasi_final["Durasi Final"] || '';
-                document.getElementById('link_video').value = data.spesifikasi_final["Link Video"] || '';
-                document.getElementById('tanggal_unggah').value = data.spesifikasi_final["Tanggal Unggah"] || '';
-                document.getElementById('jumlah_views').value = data.spesifikasi_final["Jumlah Views"] || '';
-                document.getElementById('jumlah_likes').value = data.spesifikasi_final["Jumlah Likes"] || '';
-                document.getElementById('jumlah_komentar').value = data.spesifikasi_final["Jumlah Komentar"] || '';
-                document.getElementById('komentar_menarik').value = data.spesifikasi_final["Komentar Menarik"] || '';
+            // J. Spesifikasi Video Final (Array 2D)
+            if (data["J. Spesifikasi Video Final"] && Array.isArray(data["J. Spesifikasi Video Final"])) {
+                const j = data["J. Spesifikasi Video Final"];
+                const map = {
+                    "Judul Video Final": 'judul_video_final',
+                    "Durasi Final": 'durasi_final',
+                    "Link Video": 'link_video',
+                    "Tanggal Unggah": 'tanggal_unggah',
+                    "Jumlah Views": 'jumlah_views',
+                    "Jumlah Likes": 'jumlah_likes',
+                    "Jumlah Komentar": 'jumlah_komentar',
+                    "Komentar Menarik": 'komentar_menarik'
+                };
+                j.forEach(item => {
+                    if (Array.isArray(item) && item.length === 2) {
+                        const id = map[item[0]];
+                        if (id) {
+                            const el = document.getElementById(id);
+                            if (el) el.value = item[1] || '';
+                        }
+                    }
+                });
             }
 
-            if (data.refleksi) {
-                document.getElementById('ref1').value = data.refleksi["Hal terbaik"] || '';
-                document.getElementById('ref2').value = data.refleksi["Hal tersulit"] || '';
-                document.getElementById('ref3').value = data.refleksi["Keterampilan baru"] || '';
-                document.getElementById('ref4').value = data.refleksi["Pesan untuk kelompok lain"] || '';
+            // K. Refleksi Akhir Proyek (Array 2D)
+            if (data["K. Refleksi Akhir Proyek"] && Array.isArray(data["K. Refleksi Akhir Proyek"])) {
+                const k = data["K. Refleksi Akhir Proyek"];
+                const map = {
+                    "Hal terbaik dari proyek ini": 'ref1',
+                    "Hal tersulit dan cara mengatasinya": 'ref2',
+                    "Keterampilan baru yang didapatkan": 'ref3',
+                    "Pesan untuk kelompok lain": 'ref4'
+                };
+                k.forEach(item => {
+                    if (Array.isArray(item) && item.length === 2) {
+                        const id = map[item[0]];
+                        if (id) {
+                            const el = document.getElementById(id);
+                            if (el) el.value = item[1] || '';
+                        }
+                    }
+                });
             }
 
-            if (data.nilai) {
-                document.getElementById('nilai1').value = data.nilai["Kualitas video"] || '3';
-                document.getElementById('nilai2').value = data.nilai["Kerja sama"] || '3';
-                document.getElementById('nilai3').value = data.nilai["Ketepatan waktu"] || '3';
+            // L. Refleksi Kelompok (Emoji) - Array 2D
+            if (data["L. Refleksi Kelompok (Emoji)"] && Array.isArray(data["L. Refleksi Kelompok (Emoji)"])) {
+                const l = data["L. Refleksi Kelompok (Emoji)"];
+                const map = {
+                    "Kerjasama": 'g_kerjasama',
+                    "Kontribusi": 'g_kontribusi',
+                    "Tepat Waktu": 'g_waktu',
+                    "Kualitas Hasil": 'g_kualitas'
+                };
+                l.forEach(item => {
+                    if (Array.isArray(item) && item.length === 2) {
+                        const aspek = item[0];
+                        const nilai = item[1] || '3';
+                        if (map[aspek]) {
+                            const name = map[aspek];
+                            document.querySelectorAll(`input[name="${name}"]`).forEach(r => {
+                                if (r.value === nilai) r.checked = true;
+                            });
+                        }
+                        if (aspek === "Cerita Kelompok") {
+                            document.getElementById('refleksiCerita').value = nilai;
+                        }
+                    }
+                });
+            }
+
+            // M. Nilai Diri Kelompok (Array 2D)
+            if (data["M. Nilai Diri Kelompok"] && Array.isArray(data["M. Nilai Diri Kelompok"])) {
+                const m = data["M. Nilai Diri Kelompok"];
+                const map = {
+                    "Kualitas video diseminasi": 'nilai1',
+                    "Kerja sama dalam pembuatan video": 'nilai2',
+                    "Ketepatan waktu penyelesaian": 'nilai3'
+                };
+                m.forEach(item => {
+                    if (Array.isArray(item) && item.length === 2) {
+                        const id = map[item[0]];
+                        if (id) {
+                            const el = document.getElementById(id);
+                            if (el) el.value = item[1] || '3';
+                        }
+                    }
+                });
             }
 
             refreshAutoResize();
@@ -1611,6 +2171,12 @@
                 else el.value = '';
             });
             document.querySelectorAll('input[type="checkbox"], input[type="radio"]').forEach(el => el.checked = false);
+
+            // Reset emoji to default '3' (😐)
+            document.querySelectorAll('.emoji-group input[type="radio"][value="3"]').forEach(r => {
+                r.checked = true;
+            });
+
             document.getElementById('nama').innerHTML = '<option value="">-- Pilih Nama --</option>';
             ['nilai1', 'nilai2', 'nilai3'].forEach(id => {
                 const el = document.getElementById(id);
@@ -1807,10 +2373,29 @@
                         .form-group { margin-bottom:1rem; }
                         .form-group label { display:block; margin-bottom:5px; font-weight:600; }
                         .select-uniform { width:100%; padding:6px 10px; border:2px solid #e0e0e0; border-radius:8px; }
+                        .emoji-grid { display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; margin:1rem 0; }
+                        .emoji-card { background:#f0faf0; padding:0.8rem 1rem; border-radius:12px; text-align:center; }
+                        .emoji-card .emoji-title { font-weight:600; font-size:0.9rem; margin-bottom:2px; }
+                        .emoji-group { display:flex; gap:0.4rem; justify-content:center; flex-wrap:wrap; }
+                        .folder-link-box { background:#e8f5e9; padding:10px 14px; border-radius:8px; border-left:5px solid #4caf50; margin:10px 0; }
+                        .folder-link-box .label-link { font-weight:600; color:#2e7d32; }
+                        .dokumentasi-instruction { background:#fff3cd; padding:8px 12px; border-radius:8px; border-left:4px solid #f39c12; margin:8px 0; }
+                        .tp-card { background:#fff; border-radius:12px; padding:12px 18px; margin-bottom:16px; border-left:5px solid #2ecc71; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+                        .tp-card .tp-item { display:flex; align-items:center; gap:12px; padding:3px 0; }
+                        .tp-card .tp-item .tp-code { background:#2ecc71; color:#fff; padding:2px 10px; border-radius:12px; font-weight:700; font-size:0.8rem; min-width:45px; text-align:center; }
+                        .tp-card .tp-item .tp-desc { color:#27ae60; }
+                        @media (max-width:768px) { .checkbox-group, .radio-group { flex-direction:column; } .emoji-grid { grid-template-columns:1fr; } }
                     </style>
                     </head><body>
                     <h1 class="header-title">📹 Diseminasi Proyek (Pembuatan Video)</h1>
                     <p class="header-sub">Lembar Kerja IPAS SMK - Semester Genap</p>
+                    <div class="tp-card">
+                        <div style="font-weight:700; color:#27ae60; margin-bottom:6px; font-size:1.1rem;">Tujuan Pembelajaran</div>
+                        <div class="tp-item"><span class="tp-code">TP 3.2</span><span class="tp-desc">Membangun argumen berdasarkan prinsip dasar dan bukti ilmiah yang diperoleh</span></div>
+                        <div class="tp-item"><span class="tp-code">TP 3.4</span><span class="tp-desc">Mengomunikasikan proses dan hasil kegiatan penyelidikan secara ilmiah</span></div>
+                        <div class="tp-item"><span class="tp-code">TP 3.5</span><span class="tp-desc">Melakukan refleksi diri terhadap tahapan kegiatan penyelidikan yang telah dilakukan</span></div>
+                        <div class="tp-item"><span class="tp-code">TP 4.1</span><span class="tp-desc">Menyebarluaskan hasil proyek kepada masyarakat melalui media digital</span></div>
+                    </div>
                     ${clone.innerHTML}
                     <p style="text-align:center; color:#999; font-size:0.85rem; margin-top:30px; border-top:1px solid #eee; padding-top:12px;">
                         Dicetak dari Sistem IPAS Tembok Belajar

@@ -12,8 +12,6 @@
             --informatika-secondary: #2980b9;
             --informatika-light: #ebf5fb;
             --informatika-dark: #21618c;
-            --informatika-accent: #9b59b6;
-            --informatika-gray: #f5f7fa;
             --informatika-orange: #f39c12;
             --informatika-red: #e74c3c;
         }
@@ -27,6 +25,39 @@
             line-height: 1.6;
         }
 
+        /* ===== TP CARD ===== */
+        .tp-card {
+            background: linear-gradient(135deg, #e8f4fd 0%, #d6eaf8 100%);
+            border-radius: 16px;
+            padding: 1.2rem 1.8rem;
+            margin-bottom: 1.5rem;
+            border-left: 5px solid var(--informatika-primary);
+        }
+
+        .tp-card .tp-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 4px 0;
+            font-size: 0.95rem;
+        }
+
+        .tp-card .tp-item .tp-code {
+            background: var(--informatika-primary);
+            color: white;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            min-width: 45px;
+            text-align: center;
+        }
+
+        .tp-card .tp-item .tp-desc {
+            color: var(--informatika-dark);
+        }
+
+        /* ===== ACTIVITY CONTAINER ===== */
         .activity-detail-container {
             max-width: 1000px;
             margin: 2rem auto;
@@ -80,7 +111,7 @@
         .informatika-content-card .subtitle {
             color: #666;
             font-size: 1rem;
-            margin-bottom: 2rem;
+            margin-bottom: 0;
             display: flex;
             align-items: center;
             gap: 15px;
@@ -89,18 +120,7 @@
 
         .informatika-content-card .subtitle i { color: var(--informatika-primary); }
 
-        .informatika-content-card > p {
-            font-size: 1.1rem;
-            line-height: 1.7;
-            color: #555;
-            margin-bottom: 2.5rem;
-            padding: 1rem 1.5rem;
-            background: var(--informatika-light);
-            border-radius: 10px;
-            border-left: 4px solid var(--informatika-primary);
-        }
-
-        /* ============ MATERI SECTION ============ */
+        /* ===== MATERI SECTION ===== */
         .materi-section {
             background: linear-gradient(135deg, #fff5e6 0%, #fffaf0 100%);
             border-radius: 20px;
@@ -108,18 +128,6 @@
             margin: 2rem 0;
             border: 2px solid #f39c12;
             box-shadow: 0 4px 15px rgba(243, 156, 18, 0.15);
-            animation: fadeInUp 0.6s ease;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         .materi-header {
@@ -140,10 +148,7 @@
             flex-shrink: 0;
         }
 
-        .materi-icon i {
-            color: white;
-            font-size: 28px;
-        }
+        .materi-icon i { color: white; font-size: 28px; }
 
         .materi-title h3 {
             color: #e67e22;
@@ -231,10 +236,9 @@
             font-size: 0.9rem;
         }
 
-        .materi-tip i {
-            color: #f39c12;
-        }
+        .materi-tip i { color: #f39c12; }
 
+        /* ===== WORKSHEET ===== */
         .worksheet-container {
             background: white;
             border-radius: 20px;
@@ -278,10 +282,21 @@
             font-size: 1.6rem;
         }
 
+        .section-badge {
+            display: inline-block;
+            background: var(--informatika-primary);
+            color: white;
+            padding: 2px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
         .section-subtitle {
             color: var(--informatika-secondary);
-            font-size: 1.2rem;
-            margin: 1.5rem 0 1rem 0;
+            font-size: 1.1rem;
+            margin: 1.5rem 0 0.8rem 0;
             font-weight: 600;
         }
 
@@ -336,6 +351,7 @@
             box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.15);
         }
 
+        /* ===== TABLE ===== */
         .qa-table {
             width: 100%;
             border-collapse: collapse;
@@ -375,7 +391,10 @@
             background: #fafcfe !important;
             color: #2c3e50 !important;
             box-sizing: border-box !important;
-            resize: vertical;
+            resize: none !important;
+            overflow: hidden !important;
+            min-height: 50px !important;
+            line-height: 1.6 !important;
         }
 
         .answer-field:hover {
@@ -448,6 +467,89 @@
             cursor: pointer;
         }
 
+        .security-tip {
+            background: #e8f5e9;
+            border-radius: 10px;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 4px solid #4caf50;
+        }
+
+        .security-tip i {
+            color: #4caf50;
+            margin-right: 8px;
+        }
+
+        .warning-box {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+        }
+
+        .warning-box i { margin-right: 8px; }
+
+        /* ===== FOLDER LINK BOX ===== */
+        .folder-link-box {
+            background: #e8f5e9;
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            margin-top: 1rem;
+            border-left: 5px solid #4caf50;
+        }
+
+        .folder-link-box .label-link {
+            font-weight: 600;
+            color: #2e7d32;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .folder-link-box .sub-text {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 6px;
+        }
+
+        .folder-link-box input {
+            width: 100% !important;
+        }
+
+        /* ===== LINK BOX ===== */
+        .link-box {
+            background: #f0f7ff;
+            border: 2px solid var(--informatika-primary);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .link-box .link-input {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .link-box .link-input input {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .link-box .platform-badge {
+            display: inline-block;
+            padding: 3px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: white;
+            margin: 3px 4px;
+        }
+
+        .platform-badge.drive { background: #0b7b3d; }
+
+        /* ===== ALERT ===== */
         .alert {
             padding: 1rem 1.5rem;
             border-radius: 12px;
@@ -539,7 +641,6 @@
 
         .btn-submit i { margin-right: 10px; }
 
-        /* ============ EXPORT BUTTON ============ */
         .export-button {
             background: linear-gradient(135deg, #3498db, #2980b9);
             color: white;
@@ -623,63 +724,7 @@
             pointer-events: none;
         }
 
-        .security-tip {
-            background: #e8f5e9;
-            border-radius: 10px;
-            padding: 1rem;
-            margin: 1rem 0;
-            border-left: 4px solid #4caf50;
-        }
-
-        .security-tip i {
-            color: #4caf50;
-            margin-right: 8px;
-        }
-
-        .warning-box {
-            background: #fff3cd;
-            border-left: 5px solid #ffc107;
-            padding: 1rem;
-            margin: 1rem 0;
-            border-radius: 8px;
-        }
-
-        .warning-box i { margin-right: 8px; }
-
-        /* ===== LINK BOX ===== */
-        .link-box {
-            background: #f0f7ff;
-            border: 2px solid var(--informatika-primary);
-            border-radius: 15px;
-            padding: 1.5rem;
-            margin: 1rem 0;
-        }
-
-        .link-box .link-input {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .link-box .link-input input {
-            flex: 1;
-            min-width: 250px;
-        }
-
-        .link-box .platform-badge {
-            display: inline-block;
-            padding: 3px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: white;
-            margin: 3px 4px;
-        }
-
-        .platform-badge.drive { background: #0b7b3d; }
-
-        /* ============ MODAL ============ */
+        /* ===== MODAL ===== */
         .modal {
             display: none;
             position: fixed;
@@ -800,15 +845,6 @@
             box-shadow: none;
         }
 
-        .modal-btn.no {
-            background: #6c757d;
-            color: white;
-        }
-
-        .modal-btn.no:hover {
-            background: #5a6268;
-        }
-
         .modal-btn.secondary {
             background: #6c757d;
             color: white;
@@ -822,6 +858,7 @@
             overflow: hidden !important;
         }
 
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             .activity-detail-container { padding: 1rem; }
             .worksheet-container { padding: 1rem; }
@@ -849,15 +886,10 @@
             .btn-submit { width: 100%; justify-content: center; padding: 1rem; }
             .informatika-content-card h2 { font-size: 1.6rem; }
             .informatika-content-card { padding: 1.5rem; }
-            
-            .materi-header {
-                flex-direction: column;
-                text-align: center;
-            }
-            .materi-card .btn-materi {
-                width: 100%;
-                justify-content: center;
-            }
+            .materi-header { flex-direction: column; text-align: center; }
+            .materi-card .btn-materi { width: 100%; justify-content: center; }
+            .tp-card .tp-item { flex-wrap: wrap; }
+            .folder-link-box { padding: 0.8rem 1rem; }
         }
 
         @media (max-width: 480px) {
@@ -874,9 +906,11 @@
         }
 
         @media print {
-            .materi-section {
-                display: none !important;
-            }
+            .materi-section { display: none !important; }
+            .export-wrapper { display: none !important; }
+            .btn-submit { display: none !important; }
+            .activity-navigation { display: none !important; }
+            .connection-status { display: none !important; }
         }
     </style>
 </head>
@@ -886,7 +920,7 @@
             <div class="nav-container">
                 <div class="logo">
                     <img src="../../../assets/images/logo.png" alt="Logo Sekolah">
-                    <h1>INFORMATIKA - AKTIVITAS PEMBELAJARAN</h1>
+                    <h1>INFORMATIKA - PROJEK 3</h1>
                 </div>
                 <ul class="nav-menu" id="nav-menu">
                     <li><a href="../../../index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
@@ -905,6 +939,7 @@
     </header>
 
     <section class="activity-detail-container">
+        <!-- CONTENT CARD -->
         <div class="informatika-content-card">
             <h2>Proyek 3 Aktivitas 3: Praktik Pengamanan Digital (2FA)</h2>
             <div class="subtitle">
@@ -912,10 +947,20 @@
                 <span><i class="fas fa-clock"></i> 4 JP</span>
                 <span class="connection-status online" id="connectionStatus"><i class="fas fa-wifi"></i> Online</span>
             </div>
-            <p><i class="fas fa-quote-left"></i> Menerapkan autentikasi dua langkah untuk meningkatkan keamanan akun digital. <i class="fas fa-quote-right"></i></p>
         </div>
 
-        <!-- ===== BAGIAN MEMBACA MATERI ===== -->
+        <!-- TP CARD -->
+        <div class="tp-card">
+            <div style="font-weight:700; color:var(--informatika-dark); margin-bottom:6px; font-size:1.1rem;">
+                <i class="fas fa-bullseye"></i> Tujuan Pembelajaran
+            </div>
+            <div class="tp-item">
+                <span class="tp-code">TP 2.12</span>
+                <span class="tp-desc">Menerapkan autentikasi dua langkah (2FA) untuk meningkatkan keamanan akun digital</span>
+            </div>
+        </div>
+
+        <!-- MATERI SECTION -->
         <div class="materi-section">
             <div class="materi-header">
                 <div class="materi-icon">
@@ -926,7 +971,7 @@
                     <p>Sebelum mengerjakan LKPD ini, pastikan kamu sudah membaca dan memahami materi berikut:</p>
                 </div>
             </div>
-            
+
             <div class="materi-card">
                 <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
                     <span class="badge">MATERI 3.3</span>
@@ -942,7 +987,7 @@
                     <i class="fas fa-arrow-right"></i> Baca Materi Sekarang
                 </a>
             </div>
-            
+
             <div class="materi-tip">
                 <p>
                     <i class="fas fa-info-circle"></i> 
@@ -951,38 +996,29 @@
             </div>
         </div>
 
+        <!-- LOADING -->
         <div id="loadingMessage" class="alert alert-loading" style="display:none;">
             <i class="fas fa-spinner fa-spin"></i> Memuat data siswa...
         </div>
 
+        <!-- ERROR -->
         <div id="errorMessage" class="alert alert-error" style="display:none;">
             <i class="fas fa-exclamation-triangle"></i> <span id="errorText">Gagal terhubung ke server.</span>
             <br><button class="refresh-btn" onclick="location.reload()"><i class="fas fa-sync-alt"></i> Refresh Halaman</button>
         </div>
 
+        <!-- WORKSHEET -->
         <div class="worksheet-container" id="worksheetForm">
-            <!-- Tombol Export -->
             <div class="export-wrapper">
                 <button class="export-button" id="exportBtn" onclick="exportToDocx()" disabled>
                     <i class="fas fa-file-word"></i> Export Template DOCX
                 </button>
             </div>
 
-            <div class="instruction-box" style="background:#e8f5e9; border-left-color: var(--informatika-primary);">
-                <i class="fas fa-lightbulb" style="color: var(--informatika-primary); margin-right: 10px;"></i>
-                <strong>HALO, KELOMPOK HEBAT! 👋</strong><br>
-                Silakan isi lembar kerja ini untuk mempraktikkan autentikasi dua langkah (2FA) pada akun digital.
-            </div>
+            <h1 class="worksheet-title">LEMBAR KERJA PESERTA DIDIK (LKPD) PROYEK 3 – AKTIVITAS 3 (PRAKTIK PENGAMANAN DIGITAL - 2FA)</h1>
 
-            <h1 class="worksheet-title">LEMBAR KERJA PESERTA DIDIK (LKPD) PROYEK 3 – AKTIVITAS 3</h1>
-            <p style="text-align: center; margin-bottom: 2rem; font-size: 1.2rem; color: var(--informatika-accent);">
-                <strong>PRAKTIK PENGAMANAN DIGITAL (2FA)</strong>
-            </p>
-            <div style="text-align: center; margin-bottom: 2rem; background: var(--informatika-light); padding: 0.8rem; border-radius: 10px;">
-                <p><i class="fas fa-bullseye"></i> <strong>Tujuan Pembelajaran (TP 2.12):</strong> Menerapkan autentikasi dua langkah untuk meningkatkan keamanan akun digital.</p>
-            </div>
 
-            <!-- ===== IDENTITAS ===== -->
+            <!-- IDENTITAS -->
             <h3 style="margin: 2rem 0 1rem 0; color: var(--informatika-dark);">
                 <i class="fas fa-users"></i> Identitas Kelompok
             </h3>
@@ -1001,21 +1037,21 @@
                 </div>
                 <div class="identitas-item">
                     <label><i class="fas fa-users"></i> Nama Kelompok</label>
-                    <input type="text" id="kelompok" placeholder="Contoh: Kelompok 1 - Digital" oninput="saveToLocalStorage();" disabled>
+                    <input type="text" id="kelompok" placeholder="Contoh: Kelompok Keamanan Digital" oninput="saveToLocalStorage();" disabled>
                 </div>
                 <div class="identitas-item">
                     <label><i class="fas fa-tasks"></i> Peran dalam Kelompok</label>
-                    <input type="text" id="peran" placeholder="Contoh: Ketua / Analis" oninput="saveToLocalStorage();" disabled>
+                    <input type="text" id="peran" placeholder="Contoh: Ketua / Praktisi" oninput="saveToLocalStorage();" disabled>
                 </div>
             </div>
 
-            <!-- ===== PETUNJUK ===== -->
+            <!-- PETUNJUK -->
             <div class="instruction-box">
                 <i class="fas fa-info-circle" style="margin-right: 10px;"></i>
                 <strong>📚 PETUNJUK PENGGUNAAN LKPD</strong><br><br>
                 <ol>
-                    <li>Pastikan kamu sudah membaca materi <strong>"Autentikasi Dua Langkah (2FA)"</strong> yang tersedia di menu Daftar Materi.</li>
-                    <li>Kerjakan setiap bagian dengan berdiskusi bersama kelompok.</li>
+                    <li>Pastikan kamu sudah membaca materi <strong>"Autentikasi Dua Langkah (2FA)"</strong>.</li>
+                    <li>Kerjakan bagian <strong>Individu</strong> secara mandiri dan bagian <strong>Kelompok</strong> melalui diskusi.</li>
                     <li>Gunakan smartphone/laptop untuk mempraktikkan aktivasi 2FA.</li>
                     <li>Setelah mengaktifkan 2FA, simpan kode cadangan di tempat yang aman.</li>
                     <li>Ambil screenshot bukti aktivasi 2FA, upload ke Google Drive, dan tempel link-nya di bagian Bukti Praktik.</li>
@@ -1024,75 +1060,151 @@
                 </ol>
             </div>
 
-            <!-- ===== BAGIAN A: PEMAHAMAN 2FA ===== -->
+            <!-- ============================================================ -->
+            <!-- BAGIAN A: PEMAHAMAN 2FA (Individu) -->
+            <!-- ============================================================ -->
             <div class="section-card">
-                <h3 class="section-title"><i class="fas fa-book-reader"></i> 📖 BAGIAN A: PEMAHAMAN 2FA (INDIVIDU)</h3>
+                <h3 class="section-title">
+                    <i class="fas fa-book-reader"></i> A. PEMAHAMAN 2FA
+                    <span class="section-badge">Individu</span>
+                </h3>
                 <div class="instruction-box">
-                    <i class="fas fa-question-circle"></i> "Pastikan kamu sudah membaca materi sebelum mengerjakan!"
+                    <i class="fas fa-question-circle"></i> Jawablah pertanyaan berikut berdasarkan pemahamanmu setelah membaca materi!
                 </div>
 
-                <table class="qa-table" id="tabelPemahaman">
+                <table class="qa-table">
                     <thead>
                         <tr><th class="no-col">No</th><th class="question-col">Pertanyaan</th><th class="answer-col">Jawaban</th></tr>
                     </thead>
                     <tbody>
-                        <tr><td class="no-col">1</td><td>Apa yang dimaksud dengan autentikasi dua langkah (2FA)?</td><td><textarea class="answer-field" id="review1" placeholder="Tulis jawabanmu..." oninput="saveToLocalStorage();"></textarea></td></tr>
-                        <tr><td class="no-col">2</td><td>Mengapa 2FA penting untuk keamanan akun digital?</td><td><textarea class="answer-field" id="review2" placeholder="Tulis jawabanmu..." oninput="saveToLocalStorage();"></textarea></td></tr>
-                        <tr><td class="no-col">3</td><td>Sebutkan 3 metode 2FA yang umum digunakan!</td><td><textarea class="answer-field" id="review3" placeholder="1.&#10;2.&#10;3." oninput="saveToLocalStorage();"></textarea></td></tr>
-                        <tr><td class="no-col">4</td><td>Apa yang harus dilakukan jika ponsel hilang dan menggunakan 2FA?</td><td><textarea class="answer-field" id="review4" placeholder="Tulis jawabanmu..." oninput="saveToLocalStorage();"></textarea></td></tr>
+                        <tr>
+                            <td class="no-col">1</td>
+                            <td>Apa yang dimaksud dengan autentikasi dua langkah (2FA)?</td>
+                            <td><textarea class="answer-field" id="review1" placeholder="Tulis jawabanmu..." oninput="autoResize(this); saveToLocalStorage();"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td class="no-col">2</td>
+                            <td>Mengapa 2FA penting untuk keamanan akun digital?</td>
+                            <td><textarea class="answer-field" id="review2" placeholder="Tulis jawabanmu..." oninput="autoResize(this); saveToLocalStorage();"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td class="no-col">3</td>
+                            <td>Sebutkan 3 metode 2FA yang umum digunakan!</td>
+                            <td><textarea class="answer-field" id="review3" placeholder="1.&#10;2.&#10;3." oninput="autoResize(this); saveToLocalStorage();"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td class="no-col">4</td>
+                            <td>Apa yang harus dilakukan jika ponsel hilang dan menggunakan 2FA?</td>
+                            <td><textarea class="answer-field" id="review4" placeholder="Tulis jawabanmu..." oninput="autoResize(this); saveToLocalStorage();"></textarea></td>
+                        </tr>
                     </tbody>
                 </table>
 
                 <div style="margin-top: 1rem; background: #f8fafc; border-radius: 10px; padding: 1rem; border: 1px dashed var(--informatika-primary);">
-                    <div class="checkbox-item"><input type="checkbox" id="bacaMateri" onchange="saveToLocalStorage();"><label for="bacaMateri"><strong>☐ Ya, saya sudah membaca materi "Autentikasi Dua Langkah (2FA)"</strong></label></div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="bacaMateri" onchange="saveToLocalStorage();">
+                        <label for="bacaMateri"><strong>☐ Ya, saya sudah membaca materi "Autentikasi Dua Langkah (2FA)"</strong></label>
+                    </div>
+                </div>
+
+                <div class="folder-link-box">
+                    <span class="label-link"><i class="fas fa-camera"></i> 📸 Link Screenshot - Bukti Baca Materi</span>
+                    <div class="sub-text">Tempel link folder/screenshot bukti bahwa kamu sudah membaca materi:</div>
+                    <input type="text" class="answer-field" id="link_screenshot_a" placeholder="https://drive.google.com/drive/folders/xxx" oninput="saveToLocalStorage();">
                 </div>
             </div>
 
-            <!-- ===== BAGIAN B: METODE 2FA ===== -->
+            <!-- ============================================================ -->
+            <!-- BAGIAN B: METODE 2FA (Kelompok) -->
+            <!-- ============================================================ -->
             <div class="section-card">
-                <h3 class="section-title"><i class="fas fa-chart-line"></i> 🔐 BAGIAN B: METODE 2FA (KELOMPOK)</h3>
+                <h3 class="section-title">
+                    <i class="fas fa-chart-line"></i> B. METODE 2FA
+                    <span class="section-badge">Kelompok</span>
+                </h3>
                 <div class="instruction-box">
-                    <i class="fas fa-shield-alt"></i> "Pelajari berbagai metode 2FA dan kapan diperlukan!"
+                    <i class="fas fa-shield-alt"></i> Pelajari berbagai metode 2FA dan kapan diperlukan!
                 </div>
 
                 <h4 class="section-subtitle">Perbandingan Metode 2FA</h4>
-                <table class="qa-table" id="tabelMetode">
+                <table class="qa-table">
                     <thead>
-                        <tr><th class="no-col">No</th><th class="question-col">Metode</th><th class="answer-col">Kelebihan & Kekurangan</th></tr>
+                        <tr><th class="no-col">No</th><th class="question-col">Metode</th><th class="answer-col">Kelebihan &amp; Kekurangan</th></tr>
                     </thead>
                     <tbody>
-                        <tr><td class="no-col">1</td><td>SMS/Telepon</td><td><textarea class="answer-field" id="metode1" placeholder="Kelebihan: ...&#10;Kekurangan: ..." oninput="saveToLocalStorage();"></textarea></td></tr>
-                        <tr><td class="no-col">2</td><td>Aplikasi Authenticator</td><td><textarea class="answer-field" id="metode2" placeholder="Kelebihan: ...&#10;Kekurangan: ..." oninput="saveToLocalStorage();"></textarea></td></tr>
-                        <tr><td class="no-col">3</td><td>Kunci Keamanan Fisik</td><td><textarea class="answer-field" id="metode3" placeholder="Kelebihan: ...&#10;Kekurangan: ..." oninput="saveToLocalStorage();"></textarea></td></tr>
-                        <tr><td class="no-col">4</td><td>Kode Cadangan (Backup Codes)</td><td><textarea class="answer-field" id="metode4" placeholder="Kelebihan: ...&#10;Kekurangan: ..." oninput="saveToLocalStorage();"></textarea></td></tr>
+                        <tr><td class="no-col">1</td><td>SMS/Telepon</td>
+                            <td><textarea class="answer-field" id="metode1" placeholder="Kelebihan: ...&#10;Kekurangan: ..." oninput="autoResize(this); saveToLocalStorage();"></textarea></td></tr>
+                        <tr><td class="no-col">2</td><td>Aplikasi Authenticator</td>
+                            <td><textarea class="answer-field" id="metode2" placeholder="Kelebihan: ...&#10;Kekurangan: ..." oninput="autoResize(this); saveToLocalStorage();"></textarea></td></tr>
+                        <tr><td class="no-col">3</td><td>Kunci Keamanan Fisik</td>
+                            <td><textarea class="answer-field" id="metode3" placeholder="Kelebihan: ...&#10;Kekurangan: ..." oninput="autoResize(this); saveToLocalStorage();"></textarea></td></tr>
+                        <tr><td class="no-col">4</td><td>Kode Cadangan (Backup Codes)</td>
+                            <td><textarea class="answer-field" id="metode4" placeholder="Kelebihan: ...&#10;Kekurangan: ..." oninput="autoResize(this); saveToLocalStorage();"></textarea></td></tr>
                     </tbody>
                 </table>
 
                 <h4 class="section-subtitle">Kapan 2FA Diperlukan?</h4>
-                <table class="qa-table" id="tabelSituasi">
+                <table class="qa-table">
                     <thead>
-                        <tr><th class="no-col">No</th><th class="question-col">Situasi</th><th class="answer-col">Perlu 2FA? & Alasan</th></tr>
+                        <tr><th class="no-col">No</th><th class="question-col">Situasi</th><th class="answer-col">Perlu 2FA? &amp; Alasan</th></tr>
                     </thead>
                     <tbody>
-                        <tr><td class="no-col">1</td><td>Akun email utama</td><td><div class="radio-group"><label><input type="radio" name="situasi1" value="Ya" onchange="saveToLocalStorage();"> Ya</label><label><input type="radio" name="situasi1" value="Tidak" onchange="saveToLocalStorage();"> Tidak</label></div><textarea class="answer-field" id="situasi1_alasan" placeholder="Alasan..." oninput="saveToLocalStorage();"></textarea></td></tr>
-                        <tr><td class="no-col">2</td><td>Akun media sosial</td><td><div class="radio-group"><label><input type="radio" name="situasi2" value="Ya" onchange="saveToLocalStorage();"> Ya</label><label><input type="radio" name="situasi2" value="Tidak" onchange="saveToLocalStorage();"> Tidak</label></div><textarea class="answer-field" id="situasi2_alasan" placeholder="Alasan..." oninput="saveToLocalStorage();"></textarea></td></tr>
-                        <tr><td class="no-col">3</td><td>Akun mobile banking</td><td><div class="radio-group"><label><input type="radio" name="situasi3" value="Ya" onchange="saveToLocalStorage();"> Ya</label><label><input type="radio" name="situasi3" value="Tidak" onchange="saveToLocalStorage();"> Tidak</label></div><textarea class="answer-field" id="situasi3_alasan" placeholder="Alasan..." oninput="saveToLocalStorage();"></textarea></td></tr>
-                        <tr><td class="no-col">4</td><td>Akun game online</td><td><div class="radio-group"><label><input type="radio" name="situasi4" value="Ya" onchange="saveToLocalStorage();"> Ya</label><label><input type="radio" name="situasi4" value="Tidak" onchange="saveToLocalStorage();"> Tidak</label></div><textarea class="answer-field" id="situasi4_alasan" placeholder="Alasan..." oninput="saveToLocalStorage();"></textarea></td></tr>
+                        <tr><td class="no-col">1</td><td>Akun email utama</td>
+                            <td>
+                                <div class="radio-group">
+                                    <label><input type="radio" name="situasi1" value="Ya" onchange="saveToLocalStorage();"> Ya</label>
+                                    <label><input type="radio" name="situasi1" value="Tidak" onchange="saveToLocalStorage();"> Tidak</label>
+                                </div>
+                                <textarea class="answer-field" id="situasi1_alasan" placeholder="Alasan..." oninput="autoResize(this); saveToLocalStorage();"></textarea>
+                            </td>
+                        </tr>
+                        <tr><td class="no-col">2</td><td>Akun media sosial</td>
+                            <td>
+                                <div class="radio-group">
+                                    <label><input type="radio" name="situasi2" value="Ya" onchange="saveToLocalStorage();"> Ya</label>
+                                    <label><input type="radio" name="situasi2" value="Tidak" onchange="saveToLocalStorage();"> Tidak</label>
+                                </div>
+                                <textarea class="answer-field" id="situasi2_alasan" placeholder="Alasan..." oninput="autoResize(this); saveToLocalStorage();"></textarea>
+                            </td>
+                        </tr>
+                        <tr><td class="no-col">3</td><td>Akun mobile banking</td>
+                            <td>
+                                <div class="radio-group">
+                                    <label><input type="radio" name="situasi3" value="Ya" onchange="saveToLocalStorage();"> Ya</label>
+                                    <label><input type="radio" name="situasi3" value="Tidak" onchange="saveToLocalStorage();"> Tidak</label>
+                                </div>
+                                <textarea class="answer-field" id="situasi3_alasan" placeholder="Alasan..." oninput="autoResize(this); saveToLocalStorage();"></textarea>
+                            </td>
+                        </tr>
+                        <tr><td class="no-col">4</td><td>Akun game online</td>
+                            <td>
+                                <div class="radio-group">
+                                    <label><input type="radio" name="situasi4" value="Ya" onchange="saveToLocalStorage();"> Ya</label>
+                                    <label><input type="radio" name="situasi4" value="Tidak" onchange="saveToLocalStorage();"> Tidak</label>
+                                </div>
+                                <textarea class="answer-field" id="situasi4_alasan" placeholder="Alasan..." oninput="autoResize(this); saveToLocalStorage();"></textarea>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
 
                 <div class="security-tip">
                     <i class="fas fa-lightbulb"></i>
                     <strong>Kesimpulan:</strong> Akun apa saja yang WAJIB mengaktifkan 2FA?
-                    <textarea class="answer-field" id="kesimpulan2fa" placeholder="Tulis kesimpulan kelompok..." style="margin-top:8px;" oninput="saveToLocalStorage();"></textarea>
+                    <textarea class="answer-field" id="kesimpulan2fa" placeholder="Tulis kesimpulan kelompok..." style="margin-top:8px;" oninput="autoResize(this); saveToLocalStorage();"></textarea>
                 </div>
             </div>
 
-            <!-- ===== BAGIAN C: PRAKTIK AKTIVASI 2FA ===== -->
+            <!-- ============================================================ -->
+            <!-- BAGIAN C: PRAKTIK AKTIVASI 2FA (Individu) -->
+            <!-- ============================================================ -->
             <div class="section-card">
-                <h3 class="section-title"><i class="fas fa-mobile-alt"></i> 📱 BAGIAN C: PRAKTIK AKTIVASI 2FA (INDIVIDU)</h3>
+                <h3 class="section-title">
+                    <i class="fas fa-mobile-alt"></i> C. PRAKTIK AKTIVASI 2FA
+                    <span class="section-badge">Individu</span>
+                </h3>
                 <div class="instruction-box">
-                    <i class="fas fa-hand-pointer"></i> "Saatnya mempraktikkan! Ikuti langkah-langkah di materi untuk mengaktifkan 2FA."
+                    <i class="fas fa-hand-pointer"></i> Saatnya mempraktikkan! Ikuti langkah-langkah di materi untuk mengaktifkan 2FA.
                 </div>
 
                 <div class="security-tip">
@@ -1106,32 +1218,44 @@
                     </ol>
                 </div>
 
-                <table class="qa-table" id="tabelPraktik">
+                <table class="qa-table">
                     <thead>
-                        <tr><th class="no-col">No</th><th class="question-col">Platform</th><th class="answer-col">Status & Catatan</th></tr>
+                        <tr><th class="no-col">No</th><th class="question-col">Platform</th><th class="answer-col">Status &amp; Catatan</th></tr>
                     </thead>
                     <tbody>
                         <tr><td class="no-col">1</td><td>Google</td>
                             <td>
-                                <div class="radio-group"><label><input type="radio" name="google_status" value="Berhasil" onchange="saveToLocalStorage();"> ✅ Berhasil</label><label><input type="radio" name="google_status" value="Gagal" onchange="saveToLocalStorage();"> ❌ Gagal</label></div>
-                                <textarea class="answer-field" id="google_catatan" placeholder="Catatan/kendala..." oninput="saveToLocalStorage();"></textarea>
+                                <div class="radio-group">
+                                    <label><input type="radio" name="google_status" value="Berhasil" onchange="saveToLocalStorage();"> ✅ Berhasil</label>
+                                    <label><input type="radio" name="google_status" value="Gagal" onchange="saveToLocalStorage();"> ❌ Gagal</label>
+                                </div>
+                                <textarea class="answer-field" id="google_catatan" placeholder="Catatan/kendala..." oninput="autoResize(this); saveToLocalStorage();"></textarea>
                             </td>
                         </tr>
                         <tr><td class="no-col">2</td><td>Instagram</td>
                             <td>
-                                <div class="radio-group"><label><input type="radio" name="instagram_status" value="Berhasil" onchange="saveToLocalStorage();"> ✅ Berhasil</label><label><input type="radio" name="instagram_status" value="Gagal" onchange="saveToLocalStorage();"> ❌ Gagal</label></div>
-                                <textarea class="answer-field" id="instagram_catatan" placeholder="Catatan/kendala..." oninput="saveToLocalStorage();"></textarea>
+                                <div class="radio-group">
+                                    <label><input type="radio" name="instagram_status" value="Berhasil" onchange="saveToLocalStorage();"> ✅ Berhasil</label>
+                                    <label><input type="radio" name="instagram_status" value="Gagal" onchange="saveToLocalStorage();"> ❌ Gagal</label>
+                                </div>
+                                <textarea class="answer-field" id="instagram_catatan" placeholder="Catatan/kendala..." oninput="autoResize(this); saveToLocalStorage();"></textarea>
                             </td>
                         </tr>
                         <tr><td class="no-col">3</td><td>Aplikasi Authenticator</td>
                             <td>
                                 <input type="text" class="answer-field" id="app_authenticator" placeholder="Nama aplikasi yang digunakan..." oninput="saveToLocalStorage();">
-                                <div style="margin-top:5px;" class="radio-group"><label><input type="radio" name="app_status" value="Berhasil" onchange="saveToLocalStorage();"> ✅ Berhasil</label><label><input type="radio" name="app_status" value="Gagal" onchange="saveToLocalStorage();"> ❌ Gagal</label></div>
+                                <div style="margin-top:5px;" class="radio-group">
+                                    <label><input type="radio" name="app_status" value="Berhasil" onchange="saveToLocalStorage();"> ✅ Berhasil</label>
+                                    <label><input type="radio" name="app_status" value="Gagal" onchange="saveToLocalStorage();"> ❌ Gagal</label>
+                                </div>
                             </td>
                         </tr>
                         <tr><td class="no-col">4</td><td>Kode Cadangan</td>
                             <td>
-                                <div class="radio-group"><label><input type="radio" name="backup_status" value="Sudah" onchange="saveToLocalStorage();"> ✅ Sudah disimpan</label><label><input type="radio" name="backup_status" value="Belum" onchange="saveToLocalStorage();"> ❌ Belum disimpan</label></div>
+                                <div class="radio-group">
+                                    <label><input type="radio" name="backup_status" value="Sudah" onchange="saveToLocalStorage();"> ✅ Sudah disimpan</label>
+                                    <label><input type="radio" name="backup_status" value="Belum" onchange="saveToLocalStorage();"> ❌ Belum disimpan</label>
+                                </div>
                                 <input type="text" class="answer-field" id="backup_metode" placeholder="Metode penyimpanan: buku catatan, file, password manager, dll" oninput="saveToLocalStorage();">
                             </td>
                         </tr>
@@ -1143,11 +1267,16 @@
                 </div>
             </div>
 
-            <!-- ===== BAGIAN D: BUKTI PRAKTIK (LINK GDRIVE) ===== -->
+            <!-- ============================================================ -->
+            <!-- BAGIAN D: BUKTI PRAKTIK (Kelompok) -->
+            <!-- ============================================================ -->
             <div class="section-card">
-                <h3 class="section-title"><i class="fas fa-image"></i> 📸 BAGIAN D: BUKTI PRAKTIK (KELOMPOK)</h3>
+                <h3 class="section-title">
+                    <i class="fas fa-image"></i> D. BUKTI PRAKTIK
+                    <span class="section-badge">Kelompok</span>
+                </h3>
                 <div class="instruction-box">
-                    <i class="fas fa-link"></i> "Upload bukti praktik 2FA ke Google Drive dan tempel link-nya di sini!"
+                    <i class="fas fa-link"></i> Upload bukti praktik 2FA ke Google Drive dan tempel link-nya di sini!
                 </div>
 
                 <div class="link-box">
@@ -1170,51 +1299,69 @@
 
                 <div style="margin-top: 1rem; background: #f8fafc; border-radius: 10px; padding: 1rem; border: 1px dashed var(--informatika-primary);">
                     <p><strong>Deskripsi Bukti:</strong></p>
-                    <textarea class="answer-field" id="deskripsi_bukti" placeholder="Jelaskan isi screenshot yang diupload (misal: tampilan 2FA aktif di Google, kode cadangan, dll)" oninput="saveToLocalStorage();"></textarea>
+                    <textarea class="answer-field" id="deskripsi_bukti" placeholder="Jelaskan isi screenshot yang diupload (misal: tampilan 2FA aktif di Google, kode cadangan, dll)" oninput="autoResize(this); saveToLocalStorage();"></textarea>
                 </div>
             </div>
 
-            <!-- ===== BAGIAN E: DISKUSI PENGALAMAN ===== -->
+            <!-- ============================================================ -->
+            <!-- BAGIAN E: DISKUSI PENGALAMAN (Kelompok) -->
+            <!-- ============================================================ -->
             <div class="section-card">
-                <h3 class="section-title"><i class="fas fa-comments"></i> 💬 BAGIAN E: DISKUSI PENGALAMAN (KELOMPOK)</h3>
+                <h3 class="section-title">
+                    <i class="fas fa-comments"></i> E. DISKUSI PENGALAMAN
+                    <span class="section-badge">Kelompok</span>
+                </h3>
                 <div class="instruction-box">
-                    <i class="fas fa-share-alt"></i> "Bagikan pengalamanmu dalam mengaktifkan 2FA!"
+                    <i class="fas fa-share-alt"></i> Bagikan pengalamanmu dalam mengaktifkan 2FA!
                 </div>
 
-                <table class="qa-table" id="tabelDiskusi">
+                <table class="qa-table">
                     <thead>
                         <tr><th class="no-col">No</th><th class="question-col">Pertanyaan</th><th class="answer-col">Jawaban Kelompok</th></tr>
                     </thead>
                     <tbody>
-                        <tr><td class="no-col">1</td><td>Apa kendala utama yang dialami saat mengaktifkan 2FA?</td><td><textarea class="answer-field" id="diskusi1" oninput="saveToLocalStorage();"></textarea></td></tr>
-                        <tr><td class="no-col">2</td><td>Bagaimana perasaanmu setelah berhasil mengaktifkan 2FA?</td><td><textarea class="answer-field" id="diskusi2" oninput="saveToLocalStorage();"></textarea></td></tr>
-                        <tr><td class="no-col">3</td><td>Apakah prosesnya mudah atau sulit? Jelaskan!</td><td><textarea class="answer-field" id="diskusi3" oninput="saveToLocalStorage();"></textarea></td></tr>
-                        <tr><td class="no-col">4</td><td>Apakah kamu akan merekomendasikan 2FA kepada teman? Mengapa?</td><td><textarea class="answer-field" id="diskusi4" oninput="saveToLocalStorage();"></textarea></td></tr>
+                        <tr><td class="no-col">1</td><td>Apa kendala utama yang dialami saat mengaktifkan 2FA?</td>
+                            <td><textarea class="answer-field" id="diskusi1" placeholder="Tulis jawaban kelompok..." oninput="autoResize(this); saveToLocalStorage();"></textarea></td></tr>
+                        <tr><td class="no-col">2</td><td>Bagaimana perasaanmu setelah berhasil mengaktifkan 2FA?</td>
+                            <td><textarea class="answer-field" id="diskusi2" placeholder="Tulis jawaban kelompok..." oninput="autoResize(this); saveToLocalStorage();"></textarea></td></tr>
+                        <tr><td class="no-col">3</td><td>Apakah prosesnya mudah atau sulit? Jelaskan!</td>
+                            <td><textarea class="answer-field" id="diskusi3" placeholder="Tulis jawaban kelompok..." oninput="autoResize(this); saveToLocalStorage();"></textarea></td></tr>
+                        <tr><td class="no-col">4</td><td>Apakah kamu akan merekomendasikan 2FA kepada teman? Mengapa?</td>
+                            <td><textarea class="answer-field" id="diskusi4" placeholder="Tulis jawaban kelompok..." oninput="autoResize(this); saveToLocalStorage();"></textarea></td></tr>
                     </tbody>
                 </table>
             </div>
 
-            <!-- ===== BAGIAN F: REFLEKSI AKHIR ===== -->
+            <!-- ============================================================ -->
+            <!-- BAGIAN F: REFLEKSI AKHIR (Individu) -->
+            <!-- ============================================================ -->
             <div class="section-card">
-                <h3 class="section-title"><i class="fas fa-pen"></i> 📝 BAGIAN F: REFLEKSI AKHIR (INDIVIDU)</h3>
+                <h3 class="section-title">
+                    <i class="fas fa-pen"></i> F. REFLEKSI AKHIR
+                    <span class="section-badge">Individu</span>
+                </h3>
                 <div class="instruction-box">
-                    <i class="fas fa-question-circle"></i> "Apa yang aku pelajari hari ini?"
+                    <i class="fas fa-question-circle"></i> "Apa yang aku pelajari hari ini? Tulis dengan jujur!"
                 </div>
 
-                <table class="qa-table" id="tabelRefleksi">
+                <table class="qa-table">
                     <thead>
                         <tr><th class="no-col">No</th><th class="question-col">Pertanyaan</th><th class="answer-col">Jawabanku</th></tr>
                     </thead>
                     <tbody>
-                        <tr><td class="no-col">1</td><td>Hal baru apa yang aku pelajari tentang autentikasi dua langkah?</td><td><textarea class="answer-field" id="ref1" oninput="saveToLocalStorage();"></textarea></td></tr>
-                        <tr><td class="no-col">2</td><td>Apakah aku berhasil mengaktifkan 2FA? Jika belum, apa kendalanya?</td><td><textarea class="answer-field" id="ref2" oninput="saveToLocalStorage();"></textarea></td></tr>
-                        <tr><td class="no-col">3</td><td>Apakah menurutku 2FA penting untuk semua akun? Mengapa?</td><td><textarea class="answer-field" id="ref3" oninput="saveToLocalStorage();"></textarea></td></tr>
-                        <tr><td class="no-col">4</td><td>Apa komitmenku untuk keamanan akun digital ke depannya?</td><td><textarea class="answer-field" id="ref4" oninput="saveToLocalStorage();"></textarea></td></tr>
+                        <tr><td class="no-col">1</td><td>Hal baru apa yang aku pelajari tentang autentikasi dua langkah?</td>
+                            <td><textarea class="answer-field" id="ref1" placeholder="Tulis jawabanmu..." oninput="autoResize(this); saveToLocalStorage();"></textarea></td></tr>
+                        <tr><td class="no-col">2</td><td>Apakah aku berhasil mengaktifkan 2FA? Jika belum, apa kendalanya?</td>
+                            <td><textarea class="answer-field" id="ref2" placeholder="Tulis jawabanmu..." oninput="autoResize(this); saveToLocalStorage();"></textarea></td></tr>
+                        <tr><td class="no-col">3</td><td>Apakah menurutku 2FA penting untuk semua akun? Mengapa?</td>
+                            <td><textarea class="answer-field" id="ref3" placeholder="Tulis jawabanmu..." oninput="autoResize(this); saveToLocalStorage();"></textarea></td></tr>
+                        <tr><td class="no-col">4</td><td>Apa komitmenku untuk keamanan akun digital ke depannya?</td>
+                            <td><textarea class="answer-field" id="ref4" placeholder="Tulis jawabanmu..." oninput="autoResize(this); saveToLocalStorage();"></textarea></td></tr>
                     </tbody>
                 </table>
 
-                <div style="margin-top: 1rem; background: #f8fafc; border-radius: 10px; padding: 1rem; border: 1px dashed var(--informatika-primary);">
-                    <p><strong>Checklist Pemahaman:</strong></p>
+                <div style="margin-top: 1.5rem; background: #f8fafc; border-radius: 10px; padding: 1rem; border: 1px dashed var(--informatika-primary);">
+                    <p><strong>✅ Checklist Pemahaman Akhir:</strong></p>
                     <div class="checkbox-grid">
                         <div class="checkbox-item"><input type="checkbox" id="chk1" onchange="saveToLocalStorage();"><label for="chk1">Saya sudah membaca materi "Autentikasi Dua Langkah (2FA)"</label></div>
                         <div class="checkbox-item"><input type="checkbox" id="chk2" onchange="saveToLocalStorage();"><label for="chk2">Saya sudah mengaktifkan 2FA di minimal 1 akun</label></div>
@@ -1225,6 +1372,7 @@
                 </div>
             </div>
 
+            <!-- SUBMIT -->
             <button class="btn-submit" id="submitBtn" onclick="submitData()" disabled>
                 <i class="fas fa-paper-plane"></i> Kumpulkan LKPD
             </button>
@@ -1234,13 +1382,14 @@
             </div>
         </div>
 
+        <!-- NAVIGASI -->
         <div class="activity-navigation">
             <a href="s1p3a2.html" class="nav-btn"><i class="fas fa-arrow-left"></i> Kembali ke Aktivitas 2</a>
-            <a href="s1p3a4.html"" class="nav-btn primary">Lanjut Ke Aktivitas 4 <i class="fas fa-check"></i></a>
+            <a href="../index-aktivitas-informatika.html" class="nav-btn primary">Selesai <i class="fas fa-check"></i></a>
         </div>
     </section>
 
-    <!-- ===== MODAL KONFIRMASI RESET (SUKSES) ===== -->
+    <!-- MODAL RESET -->
     <div id="resetModal" class="modal">
         <div class="modal-content">
             <div class="modal-icon icon-success">
@@ -1259,7 +1408,7 @@
         </div>
     </div>
 
-    <!-- ===== MODAL KONFIRMASI GANTI TUGAS ===== -->
+    <!-- MODAL KONFIRMASI GANTI -->
     <div id="confirmModal" class="modal">
         <div class="modal-content">
             <div class="modal-icon icon-warning">
@@ -1284,9 +1433,73 @@
     </div>
 
     <script>
-        // ==================== KONFIGURASI URL ====================
+        // ==================== AUTO RESIZE ====================
+        function autoResize(element) {
+            element.style.height = 'auto';
+            element.style.height = element.scrollHeight + 'px';
+        }
+
+        // ==================== HAMBURGER MENU ====================
+        (function() {
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('nav-menu');
+            const bars = hamburger ? hamburger.querySelectorAll('.bar') : [];
+
+            if (hamburger && navMenu) {
+                hamburger.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    navMenu.classList.toggle('active');
+                    
+                    if (navMenu.classList.contains('active')) {
+                        bars.forEach((bar, index) => {
+                            if (index === 0) bar.style.transform = 'rotate(45deg) translate(5px, 5px)';
+                            else if (index === 1) bar.style.opacity = '0';
+                            else if (index === 2) bar.style.transform = 'rotate(-45deg) translate(5px, -5px)';
+                        });
+                    } else {
+                        bars.forEach(bar => {
+                            bar.style.transform = 'none';
+                            bar.style.opacity = '1';
+                        });
+                    }
+                });
+
+                document.addEventListener('click', function(event) {
+                    const isClickInside = navMenu.contains(event.target) || hamburger.contains(event.target);
+                    if (!isClickInside && navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                        bars.forEach(bar => {
+                            bar.style.transform = 'none';
+                            bar.style.opacity = '1';
+                        });
+                    }
+                });
+
+                navMenu.querySelectorAll('.nav-link').forEach(link => {
+                    link.addEventListener('click', function() {
+                        navMenu.classList.remove('active');
+                        bars.forEach(bar => {
+                            bar.style.transform = 'none';
+                            bar.style.opacity = '1';
+                        });
+                    });
+                });
+
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                        bars.forEach(bar => {
+                            bar.style.transform = 'none';
+                            bar.style.opacity = '1';
+                        });
+                    }
+                });
+            }
+        })();
+
+        // ==================== KONFIGURASI ====================
         const URL_DATA_SISWA = 'https://script.google.com/macros/s/AKfycbxZMS_o6xWMAQAkjBzzEMR9tJmHOnHCX13KJX2xZMn7WIr-A9pwVK_3DDHnMg7y_rD29Q/exec';
-        const URL_PEREKAPAN = 'https://script.google.com/macros/s/AKfycbwRlLJQQ5ypD1jzsHICPZH6kfrSFHKHGXo0hPKjzwtHH04EDrAid7dqtDv7q6TCbDRj/exec';
+        const URL_PEREKAPAN = 'https://script.google.com/macros/s/AKfycbzBn7u9sH-UrUL3Xc4PnI16c1QbkR-w2Za5JDaJM5Utak1gntOvfrbsbkTEkRBn5xB9uQ/exec';
         const STORAGE_KEY = 'proyek3_aktivitas3_draft';
         const AKTIVITAS_NAMA = 'AKTIVITAS 3 - Praktik Pengamanan Digital (2FA)';
         const SHEET_NAME = 'data_aktivitas';
@@ -1299,8 +1512,7 @@
         let isSubmitting = false;
         let pendingSubmitData = null;
 
-        // ==================== FUNGSI UTILITY ====================
-        function getValue(id) { const el = document.getElementById(id); return el ? el.value : ''; }
+        // ==================== UTILITY ====================
         function getChecked(id) { const el = document.getElementById(id); return el ? el.checked : false; }
         function getRadioValue(name) { const el = document.querySelector(`input[name="${name}"]:checked`); return el ? el.value : ''; }
 
@@ -1330,8 +1542,7 @@
             autoSaveTimeout = setTimeout(() => {
                 const formData = collectAllFormData();
                 localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
-                console.log('Data tersimpan otomatis', new Date().toLocaleTimeString());
-            }, 1000);
+            }, 500);
         }
 
         function loadFromLocalStorage() {
@@ -1340,6 +1551,9 @@
                 try {
                     const data = JSON.parse(savedData);
                     populateFormData(data);
+                    document.querySelectorAll('textarea.answer-field').forEach(el => {
+                        autoResize(el);
+                    });
                 } catch (e) {
                     console.error('Error loading saved data:', e);
                 }
@@ -1350,72 +1564,97 @@
             localStorage.removeItem(STORAGE_KEY);
         }
 
-        // ==================== COLLECT ALL FORM DATA ====================
+        // ==================== COLLECT FORM DATA ====================
         function collectAllFormData() {
             const timestamp = getFormattedTimestamp();
-            
+
             return {
-                "timestamp": timestamp,
-                "identitas": {
-                    "kelas": document.getElementById('kelas').value || '',
-                    "nama": document.getElementById('nama').value || '',
-                    "kelompok": document.getElementById('kelompok').value || '',
-                    "peran": document.getElementById('peran').value || ''
+                "Timestamp Pengisian": timestamp,
+                "A. Identitas Kelompok": [
+                    ["Field", "Nilai"],
+                    ["Kelas", document.getElementById('kelas').value || ''],
+                    ["Nama Lengkap", document.getElementById('nama').value || ''],
+                    ["Nama Kelompok", document.getElementById('kelompok').value || ''],
+                    ["Peran dalam Kelompok", document.getElementById('peran').value || '']
+                ],
+                "B. Pemahaman 2FA": {
+                    "Pertanyaan": [
+                        ["Pertanyaan", "Jawaban"],
+                        ["Apa yang dimaksud dengan autentikasi dua langkah (2FA)?", document.getElementById('review1').value || ''],
+                        ["Mengapa 2FA penting untuk keamanan akun digital?", document.getElementById('review2').value || ''],
+                        ["Sebutkan 3 metode 2FA yang umum digunakan!", document.getElementById('review3').value || ''],
+                        ["Apa yang harus dilakukan jika ponsel hilang?", document.getElementById('review4').value || '']
+                    ],
+                    "Checklist": [
+                        ["Item", "Status"],
+                        ["Sudah membaca materi Autentikasi Dua Langkah (2FA)", getChecked('bacaMateri')]
+                    ],
+                    "Link Screenshot": document.getElementById('link_screenshot_a').value || ''
                 },
-                "bagian_a": {
-                    "review1": document.getElementById('review1')?.value || '',
-                    "review2": document.getElementById('review2')?.value || '',
-                    "review3": document.getElementById('review3')?.value || '',
-                    "review4": document.getElementById('review4')?.value || '',
-                    "bacaMateri": getChecked('bacaMateri')
+                "C. Metode 2FA": {
+                    "Perbandingan": [
+                        ["Metode", "Kelebihan & Kekurangan"],
+                        ["SMS/Telepon", document.getElementById('metode1').value || ''],
+                        ["Aplikasi Authenticator", document.getElementById('metode2').value || ''],
+                        ["Kunci Keamanan Fisik", document.getElementById('metode3').value || ''],
+                        ["Kode Cadangan", document.getElementById('metode4').value || '']
+                    ],
+                    "Situasi": [
+                        ["Situasi", "Perlu 2FA?", "Alasan"],
+                        ["Akun email utama", getRadioValue('situasi1'), document.getElementById('situasi1_alasan').value || ''],
+                        ["Akun media sosial", getRadioValue('situasi2'), document.getElementById('situasi2_alasan').value || ''],
+                        ["Akun mobile banking", getRadioValue('situasi3'), document.getElementById('situasi3_alasan').value || ''],
+                        ["Akun game online", getRadioValue('situasi4'), document.getElementById('situasi4_alasan').value || '']
+                    ],
+                    "Kesimpulan": document.getElementById('kesimpulan2fa').value || ''
                 },
-                "bagian_b": {
-                    "metode1": document.getElementById('metode1')?.value || '',
-                    "metode2": document.getElementById('metode2')?.value || '',
-                    "metode3": document.getElementById('metode3')?.value || '',
-                    "metode4": document.getElementById('metode4')?.value || '',
-                    "situasi1": getRadioValue('situasi1'),
-                    "situasi1_alasan": document.getElementById('situasi1_alasan')?.value || '',
-                    "situasi2": getRadioValue('situasi2'),
-                    "situasi2_alasan": document.getElementById('situasi2_alasan')?.value || '',
-                    "situasi3": getRadioValue('situasi3'),
-                    "situasi3_alasan": document.getElementById('situasi3_alasan')?.value || '',
-                    "situasi4": getRadioValue('situasi4'),
-                    "situasi4_alasan": document.getElementById('situasi4_alasan')?.value || '',
-                    "kesimpulan2fa": document.getElementById('kesimpulan2fa')?.value || ''
-                },
-                "bagian_c": {
-                    "google_status": getRadioValue('google_status'),
-                    "google_catatan": document.getElementById('google_catatan')?.value || '',
-                    "instagram_status": getRadioValue('instagram_status'),
-                    "instagram_catatan": document.getElementById('instagram_catatan')?.value || '',
-                    "app_authenticator": document.getElementById('app_authenticator')?.value || '',
-                    "app_status": getRadioValue('app_status'),
-                    "backup_status": getRadioValue('backup_status'),
-                    "backup_metode": document.getElementById('backup_metode')?.value || ''
-                },
-                "bagian_d": {
-                    "link_bukti": document.getElementById('link_bukti')?.value || '',
-                    "deskripsi": document.getElementById('deskripsi_bukti')?.value || ''
-                },
-                "bagian_e": {
-                    "diskusi1": document.getElementById('diskusi1')?.value || '',
-                    "diskusi2": document.getElementById('diskusi2')?.value || '',
-                    "diskusi3": document.getElementById('diskusi3')?.value || '',
-                    "diskusi4": document.getElementById('diskusi4')?.value || ''
-                },
-                "bagian_f": {
-                    "ref1": document.getElementById('ref1')?.value || '',
-                    "ref2": document.getElementById('ref2')?.value || '',
-                    "ref3": document.getElementById('ref3')?.value || '',
-                    "ref4": document.getElementById('ref4')?.value || '',
-                    "checklist": {
-                        "chk1": getChecked('chk1'),
-                        "chk2": getChecked('chk2'),
-                        "chk3": getChecked('chk3'),
-                        "chk4": getChecked('chk4'),
-                        "chk5": getChecked('chk5')
+                "D. Praktik Aktivasi 2FA": {
+                    "Google": {
+                        "Status": getRadioValue('google_status'),
+                        "Catatan": document.getElementById('google_catatan').value || ''
+                    },
+                    "Instagram": {
+                        "Status": getRadioValue('instagram_status'),
+                        "Catatan": document.getElementById('instagram_catatan').value || ''
+                    },
+                    "Authenticator": {
+                        "Nama": document.getElementById('app_authenticator').value || '',
+                        "Status": getRadioValue('app_status')
+                    },
+                    "Backup": {
+                        "Status": getRadioValue('backup_status'),
+                        "Metode": document.getElementById('backup_metode').value || ''
                     }
+                },
+                "E. Bukti Praktik": {
+                    "Link": document.getElementById('link_bukti').value || '',
+                    "Deskripsi": document.getElementById('deskripsi_bukti').value || ''
+                },
+                "F. Diskusi Pengalaman": {
+                    "Pertanyaan": [
+                        ["Pertanyaan", "Jawaban"],
+                        ["Kendala utama saat mengaktifkan 2FA", document.getElementById('diskusi1').value || ''],
+                        ["Perasaan setelah berhasil mengaktifkan 2FA", document.getElementById('diskusi2').value || ''],
+                        ["Apakah prosesnya mudah atau sulit?", document.getElementById('diskusi3').value || ''],
+                        ["Akan merekomendasikan 2FA kepada teman?", document.getElementById('diskusi4').value || '']
+                    ]
+                },
+                "G. Refleksi Akhir": {
+                    "Pertanyaan": [
+                        ["Pertanyaan", "Jawabanku"],
+                        ["Hal baru tentang autentikasi dua langkah", document.getElementById('ref1').value || ''],
+                        ["Berhasil mengaktifkan 2FA? Kendala?", document.getElementById('ref2').value || ''],
+                        ["Apakah 2FA penting untuk semua akun?", document.getElementById('ref3').value || ''],
+                        ["Komitmen untuk keamanan akun digital", document.getElementById('ref4').value || '']
+                    ],
+                    "Checklist": [
+                        ["Pemahaman", "Status"],
+                        ["Membaca materi Autentikasi Dua Langkah (2FA)", getChecked('chk1')],
+                        ["Mengaktifkan 2FA di minimal 1 akun", getChecked('chk2')],
+                        ["Menyimpan kode cadangan dengan aman", getChecked('chk3')],
+                        ["Mengupload bukti praktik ke Google Drive", getChecked('chk4')],
+                        ["Siap untuk aktivitas berikutnya", getChecked('chk5')]
+                    ]
                 }
             };
         }
@@ -1424,121 +1663,230 @@
         function populateFormData(savedData) {
             if (!savedData) return;
             
-            // Identitas
-            if (savedData.identitas) {
+            // A. Identitas
+            if (savedData["A. Identitas Kelompok"] && Array.isArray(savedData["A. Identitas Kelompok"])) {
+                const identitasArray = savedData["A. Identitas Kelompok"];
                 const kelasEl = document.getElementById('kelas');
                 const namaEl = document.getElementById('nama');
+                
+                let kelasValue = '', namaValue = '', kelompokValue = '', peranValue = '';
+                
+                identitasArray.forEach(item => {
+                    if (Array.isArray(item) && item.length === 2) {
+                        if (item[0] === "Kelas") kelasValue = item[1];
+                        else if (item[0] === "Nama Lengkap") namaValue = item[1];
+                        else if (item[0] === "Nama Kelompok") kelompokValue = item[1];
+                        else if (item[0] === "Peran dalam Kelompok") peranValue = item[1];
+                    }
+                });
+                
                 if (kelasEl) {
                     for (let option of kelasEl.options) {
-                        if (option.value === savedData.identitas.kelas) {
-                            option.selected = true;
-                            break;
-                        }
+                        if (option.value === kelasValue) { option.selected = true; break; }
                     }
                     updateNamaDropdown();
                 }
                 if (namaEl) {
                     for (let option of namaEl.options) {
-                        if (option.value === savedData.identitas.nama) {
-                            option.selected = true;
-                            break;
-                        }
+                        if (option.value === namaValue) { option.selected = true; break; }
                     }
                 }
-                document.getElementById('kelompok').value = savedData.identitas.kelompok || '';
-                document.getElementById('peran').value = savedData.identitas.peran || '';
+                document.getElementById('kelompok').value = kelompokValue;
+                document.getElementById('peran').value = peranValue;
             }
 
-            // Bagian A
-            if (savedData.bagian_a) {
-                const a = savedData.bagian_a;
-                document.getElementById('review1').value = a.review1 || '';
-                document.getElementById('review2').value = a.review2 || '';
-                document.getElementById('review3').value = a.review3 || '';
-                document.getElementById('review4').value = a.review4 || '';
-                document.getElementById('bacaMateri').checked = a.bacaMateri || false;
+            // B. Pemahaman 2FA
+            if (savedData["B. Pemahaman 2FA"]) {
+                const b = savedData["B. Pemahaman 2FA"];
+                if (b["Pertanyaan"] && Array.isArray(b["Pertanyaan"])) {
+                    const qMap = {
+                        "Apa yang dimaksud dengan autentikasi dua langkah (2FA)?": 'review1',
+                        "Mengapa 2FA penting untuk keamanan akun digital?": 'review2',
+                        "Sebutkan 3 metode 2FA yang umum digunakan!": 'review3',
+                        "Apa yang harus dilakukan jika ponsel hilang?": 'review4'
+                    };
+                    b["Pertanyaan"].forEach(item => {
+                        if (Array.isArray(item) && item.length === 2) {
+                            const id = qMap[item[0]];
+                            if (id) {
+                                const el = document.getElementById(id);
+                                if (el) el.value = item[1] || '';
+                            }
+                        }
+                    });
+                }
+                if (b["Checklist"] && Array.isArray(b["Checklist"])) {
+                    const el = document.getElementById('bacaMateri');
+                    if (el) {
+                        b["Checklist"].forEach(item => {
+                            if (Array.isArray(item) && item.length === 2 && 
+                                item[0] === "Sudah membaca materi Autentikasi Dua Langkah (2FA)") {
+                                el.checked = item[1] || false;
+                            }
+                        });
+                    }
+                }
+                const linkEl = document.getElementById('link_screenshot_a');
+                if (linkEl) linkEl.value = b["Link Screenshot"] || '';
             }
 
-            // Bagian B
-            if (savedData.bagian_b) {
-                const b = savedData.bagian_b;
-                document.getElementById('metode1').value = b.metode1 || '';
-                document.getElementById('metode2').value = b.metode2 || '';
-                document.getElementById('metode3').value = b.metode3 || '';
-                document.getElementById('metode4').value = b.metode4 || '';
-                
-                const situasiRadios = ['situasi1', 'situasi2', 'situasi3', 'situasi4'];
-                situasiRadios.forEach(name => {
-                    if (b[name]) {
-                        const radio = document.querySelector(`input[name="${name}"][value="${b[name]}"]`);
+            // C. Metode 2FA
+            if (savedData["C. Metode 2FA"]) {
+                const c = savedData["C. Metode 2FA"];
+                if (c["Perbandingan"] && Array.isArray(c["Perbandingan"])) {
+                    const idMap = {
+                        "SMS/Telepon": 'metode1',
+                        "Aplikasi Authenticator": 'metode2',
+                        "Kunci Keamanan Fisik": 'metode3',
+                        "Kode Cadangan": 'metode4'
+                    };
+                    c["Perbandingan"].forEach(item => {
+                        if (Array.isArray(item) && item.length === 2) {
+                            const id = idMap[item[0]];
+                            if (id) {
+                                const el = document.getElementById(id);
+                                if (el) el.value = item[1] || '';
+                            }
+                        }
+                    });
+                }
+                if (c["Situasi"] && Array.isArray(c["Situasi"])) {
+                    const radioMap = {
+                        "Akun email utama": 'situasi1',
+                        "Akun media sosial": 'situasi2',
+                        "Akun mobile banking": 'situasi3',
+                        "Akun game online": 'situasi4'
+                    };
+                    const alasanMap = {
+                        "Akun email utama": 'situasi1_alasan',
+                        "Akun media sosial": 'situasi2_alasan',
+                        "Akun mobile banking": 'situasi3_alasan',
+                        "Akun game online": 'situasi4_alasan'
+                    };
+                    c["Situasi"].forEach(item => {
+                        if (Array.isArray(item) && item.length >= 3) {
+                            const radioName = radioMap[item[0]];
+                            if (radioName && item[1]) {
+                                const radio = document.querySelector(`input[name="${radioName}"][value="${item[1]}"]`);
+                                if (radio) radio.checked = true;
+                            }
+                            const alasanId = alasanMap[item[0]];
+                            if (alasanId) {
+                                const el = document.getElementById(alasanId);
+                                if (el) el.value = item[2] || '';
+                            }
+                        }
+                    });
+                }
+                const kesimpulanEl = document.getElementById('kesimpulan2fa');
+                if (kesimpulanEl) kesimpulanEl.value = c["Kesimpulan"] || '';
+            }
+
+            // D. Praktik Aktivasi 2FA
+            if (savedData["D. Praktik Aktivasi 2FA"]) {
+                const d = savedData["D. Praktik Aktivasi 2FA"];
+                if (d["Google"]) {
+                    if (d["Google"]["Status"]) {
+                        const radio = document.querySelector(`input[name="google_status"][value="${d["Google"]["Status"]}"]`);
                         if (radio) radio.checked = true;
                     }
-                });
-                
-                document.getElementById('situasi1_alasan').value = b.situasi1_alasan || '';
-                document.getElementById('situasi2_alasan').value = b.situasi2_alasan || '';
-                document.getElementById('situasi3_alasan').value = b.situasi3_alasan || '';
-                document.getElementById('situasi4_alasan').value = b.situasi4_alasan || '';
-                document.getElementById('kesimpulan2fa').value = b.kesimpulan2fa || '';
+                    const el = document.getElementById('google_catatan');
+                    if (el) el.value = d["Google"]["Catatan"] || '';
+                }
+                if (d["Instagram"]) {
+                    if (d["Instagram"]["Status"]) {
+                        const radio = document.querySelector(`input[name="instagram_status"][value="${d["Instagram"]["Status"]}"]`);
+                        if (radio) radio.checked = true;
+                    }
+                    const el = document.getElementById('instagram_catatan');
+                    if (el) el.value = d["Instagram"]["Catatan"] || '';
+                }
+                if (d["Authenticator"]) {
+                    const el = document.getElementById('app_authenticator');
+                    if (el) el.value = d["Authenticator"]["Nama"] || '';
+                    if (d["Authenticator"]["Status"]) {
+                        const radio = document.querySelector(`input[name="app_status"][value="${d["Authenticator"]["Status"]}"]`);
+                        if (radio) radio.checked = true;
+                    }
+                }
+                if (d["Backup"]) {
+                    if (d["Backup"]["Status"]) {
+                        const radio = document.querySelector(`input[name="backup_status"][value="${d["Backup"]["Status"]}"]`);
+                        if (radio) radio.checked = true;
+                    }
+                    const el = document.getElementById('backup_metode');
+                    if (el) el.value = d["Backup"]["Metode"] || '';
+                }
             }
 
-            // Bagian C
-            if (savedData.bagian_c) {
-                const c = savedData.bagian_c;
-                if (c.google_status) {
-                    const radio = document.querySelector(`input[name="google_status"][value="${c.google_status}"]`);
-                    if (radio) radio.checked = true;
-                }
-                document.getElementById('google_catatan').value = c.google_catatan || '';
-                
-                if (c.instagram_status) {
-                    const radio = document.querySelector(`input[name="instagram_status"][value="${c.instagram_status}"]`);
-                    if (radio) radio.checked = true;
-                }
-                document.getElementById('instagram_catatan').value = c.instagram_catatan || '';
-                document.getElementById('app_authenticator').value = c.app_authenticator || '';
-                
-                if (c.app_status) {
-                    const radio = document.querySelector(`input[name="app_status"][value="${c.app_status}"]`);
-                    if (radio) radio.checked = true;
-                }
-                
-                if (c.backup_status) {
-                    const radio = document.querySelector(`input[name="backup_status"][value="${c.backup_status}"]`);
-                    if (radio) radio.checked = true;
-                }
-                document.getElementById('backup_metode').value = c.backup_metode || '';
+            // E. Bukti Praktik
+            if (savedData["E. Bukti Praktik"]) {
+                const e = savedData["E. Bukti Praktik"];
+                const linkEl = document.getElementById('link_bukti');
+                if (linkEl) linkEl.value = e["Link"] || '';
+                const deskEl = document.getElementById('deskripsi_bukti');
+                if (deskEl) deskEl.value = e["Deskripsi"] || '';
             }
 
-            // Bagian D
-            if (savedData.bagian_d) {
-                const d = savedData.bagian_d;
-                document.getElementById('link_bukti').value = d.link_bukti || '';
-                document.getElementById('deskripsi_bukti').value = d.deskripsi || '';
+            // F. Diskusi Pengalaman
+            if (savedData["F. Diskusi Pengalaman"] && savedData["F. Diskusi Pengalaman"]["Pertanyaan"]) {
+                const f = savedData["F. Diskusi Pengalaman"]["Pertanyaan"];
+                if (Array.isArray(f)) {
+                    const idMap = {
+                        "Kendala utama saat mengaktifkan 2FA": 'diskusi1',
+                        "Perasaan setelah berhasil mengaktifkan 2FA": 'diskusi2',
+                        "Apakah prosesnya mudah atau sulit?": 'diskusi3',
+                        "Akan merekomendasikan 2FA kepada teman?": 'diskusi4'
+                    };
+                    f.forEach(item => {
+                        if (Array.isArray(item) && item.length === 2) {
+                            const id = idMap[item[0]];
+                            if (id) {
+                                const el = document.getElementById(id);
+                                if (el) el.value = item[1] || '';
+                            }
+                        }
+                    });
+                }
             }
 
-            // Bagian E
-            if (savedData.bagian_e) {
-                const e = savedData.bagian_e;
-                document.getElementById('diskusi1').value = e.diskusi1 || '';
-                document.getElementById('diskusi2').value = e.diskusi2 || '';
-                document.getElementById('diskusi3').value = e.diskusi3 || '';
-                document.getElementById('diskusi4').value = e.diskusi4 || '';
-            }
-
-            // Bagian F
-            if (savedData.bagian_f) {
-                const f = savedData.bagian_f;
-                document.getElementById('ref1').value = f.ref1 || '';
-                document.getElementById('ref2').value = f.ref2 || '';
-                document.getElementById('ref3').value = f.ref3 || '';
-                document.getElementById('ref4').value = f.ref4 || '';
-                if (f.checklist) {
-                    document.getElementById('chk1').checked = f.checklist.chk1 || false;
-                    document.getElementById('chk2').checked = f.checklist.chk2 || false;
-                    document.getElementById('chk3').checked = f.checklist.chk3 || false;
-                    document.getElementById('chk4').checked = f.checklist.chk4 || false;
-                    document.getElementById('chk5').checked = f.checklist.chk5 || false;
+            // G. Refleksi Akhir
+            if (savedData["G. Refleksi Akhir"]) {
+                const g = savedData["G. Refleksi Akhir"];
+                if (g["Pertanyaan"] && Array.isArray(g["Pertanyaan"])) {
+                    const qMap = {
+                        "Hal baru tentang autentikasi dua langkah": 'ref1',
+                        "Berhasil mengaktifkan 2FA? Kendala?": 'ref2',
+                        "Apakah 2FA penting untuk semua akun?": 'ref3',
+                        "Komitmen untuk keamanan akun digital": 'ref4'
+                    };
+                    g["Pertanyaan"].forEach(item => {
+                        if (Array.isArray(item) && item.length === 2) {
+                            const id = qMap[item[0]];
+                            if (id) {
+                                const el = document.getElementById(id);
+                                if (el) el.value = item[1] || '';
+                            }
+                        }
+                    });
+                }
+                if (g["Checklist"] && Array.isArray(g["Checklist"])) {
+                    const clMap = {
+                        "Membaca materi Autentikasi Dua Langkah (2FA)": 'chk1',
+                        "Mengaktifkan 2FA di minimal 1 akun": 'chk2',
+                        "Menyimpan kode cadangan dengan aman": 'chk3',
+                        "Mengupload bukti praktik ke Google Drive": 'chk4',
+                        "Siap untuk aktivitas berikutnya": 'chk5'
+                    };
+                    g["Checklist"].forEach(item => {
+                        if (Array.isArray(item) && item.length === 2) {
+                            const id = clMap[item[0]];
+                            if (id) {
+                                const el = document.getElementById(id);
+                                if (el) el.checked = item[1] || false;
+                            }
+                        }
+                    });
                 }
             }
         }
@@ -1559,32 +1907,32 @@
             document.getElementById('kelompok').value = '';
             document.getElementById('peran').value = '';
             
+            document.querySelectorAll('textarea.answer-field').forEach(el => {
+                el.style.height = 'auto';
+            });
+            
             clearLocalStorage();
         }
 
-        // ==================== MODAL FUNCTIONS ====================
+        // ==================== MODAL ====================
         function showModal() { 
-            const modal = document.getElementById('resetModal');
-            modal.style.display = 'block'; 
+            document.getElementById('resetModal').style.display = 'block'; 
             document.body.classList.add('modal-open');
         }
 
         function closeModal() { 
-            const modal = document.getElementById('resetModal');
-            modal.style.display = 'none'; 
+            document.getElementById('resetModal').style.display = 'none'; 
             document.body.classList.remove('modal-open');
         }
 
         function showConfirmModal(key) {
             document.getElementById('confirmKeyDisplay').textContent = key;
-            const modal = document.getElementById('confirmModal');
-            modal.style.display = 'block';
+            document.getElementById('confirmModal').style.display = 'block';
             document.body.classList.add('modal-open');
         }
 
         function closeConfirmModal() {
-            const modal = document.getElementById('confirmModal');
-            modal.style.display = 'none';
+            document.getElementById('confirmModal').style.display = 'none';
             document.body.classList.remove('modal-open');
             pendingSubmitData = null;
         }
@@ -1611,31 +1959,15 @@
             }
         }
 
-        // Tutup modal jika klik di luar
         document.addEventListener('click', function(event) {
-            const resetModal = document.getElementById('resetModal');
-            const confirmModal = document.getElementById('confirmModal');
-            
-            if (event.target === resetModal) {
-                closeModal();
-            }
-            if (event.target === confirmModal) {
-                closeConfirmModal();
-            }
+            if (event.target === document.getElementById('resetModal')) closeModal();
+            if (event.target === document.getElementById('confirmModal')) closeConfirmModal();
         });
 
-        // Tutup modal dengan tombol ESC
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
-                const resetModal = document.getElementById('resetModal');
-                const confirmModal = document.getElementById('confirmModal');
-                
-                if (resetModal.style.display === 'block') {
-                    closeModal();
-                }
-                if (confirmModal.style.display === 'block') {
-                    closeConfirmModal();
-                }
+                if (document.getElementById('resetModal').style.display === 'block') closeModal();
+                if (document.getElementById('confirmModal').style.display === 'block') closeConfirmModal();
             }
         });
 
@@ -1753,11 +2085,10 @@
             });
         }
 
-        // ==================== CEK DATA DI SPREADSHEET ====================
+        // ==================== CEK DATA ====================
         async function cekDataDiSpreadsheet(kelas, nama, aktivitas) {
             try {
                 const url = `${URL_PEREKAPAN}?action=getDataSiswa&kelas=${encodeURIComponent(kelas)}&nama=${encodeURIComponent(nama)}&aktivitas=${encodeURIComponent(aktivitas)}`;
-                
                 const response = await fetch(url);
                 const result = await response.json();
                 
@@ -1768,7 +2099,6 @@
                         data: result.data
                     };
                 }
-                
                 return { found: false };
             } catch (error) {
                 console.error('Error cek data:', error);
@@ -1776,13 +2106,12 @@
             }
         }
 
-        // ==================== SUBMIT DATA ====================
+        // ==================== SUBMIT ====================
         async function submitData() {
             if (isLoading) { alert('Data masih dimuat. Silakan tunggu.'); return; }
             if (!navigator.onLine) { alert('Tidak ada koneksi internet.'); return; }
             if (isSubmitting) { alert('Proses pengiriman sedang berlangsung. Mohon tunggu...'); return; }
 
-            // ===== VALIDASI: Apakah sudah membaca materi? =====
             const sudahBaca = confirm(
                 '📖 Apakah kamu sudah membaca materi "Autentikasi Dua Langkah (2FA)"?\n\n' +
                 'Jika belum, klik "Batal" untuk membaca materi terlebih dahulu.\n' +
@@ -1794,25 +2123,14 @@
                       'Klik tombol "Baca Materi Sekarang" di bagian atas halaman.');
                 return;
             }
-            // ===== END VALIDASI =====
 
             const kelas = document.getElementById('kelas').value;
             const nama = document.getElementById('nama').value;
             const kelompok = document.getElementById('kelompok').value;
-            const peran = document.getElementById('peran').value;
 
-            if (!kelas) {
-                alert('Silakan isi kelas terlebih dahulu');
-                return;
-            }
-            if (!nama) {
-                alert('Silakan isi nama terlebih dahulu');
-                return;
-            }
-            if (!kelompok) {
-                alert('Silakan isi nama kelompok');
-                return;
-            }
+            if (!kelas) { alert('Silakan isi kelas terlebih dahulu'); return; }
+            if (!nama) { alert('Silakan isi nama terlebih dahulu'); return; }
+            if (!kelompok) { alert('Silakan isi nama kelompok'); return; }
 
             const submitBtn = document.getElementById('submitBtn');
             submitBtn.disabled = true;
@@ -1824,8 +2142,7 @@
                     allData: allData,
                     kelas: kelas,
                     nama: nama,
-                    kelompok: kelompok,
-                    peran: peran
+                    kelompok: kelompok
                 };
 
                 const result = await cekDataDiSpreadsheet(kelas, nama, AKTIVITAS_NAMA);
@@ -1858,21 +2175,16 @@
                 const { allData, kelas, nama } = data;
                 
                 const formData = new URLSearchParams();
-                
                 formData.append('sheetName', SHEET_NAME);
                 formData.append('data', JSON.stringify(allData));
                 formData.append('kelas', kelas);
                 formData.append('nama', nama);
                 formData.append('aktivitas', AKTIVITAS_NAMA);
-                if (isReplace) {
-                    formData.append('replace', 'true');
-                }
+                if (isReplace) formData.append('replace', 'true');
 
                 const response = await fetch(URL_PEREKAPAN, {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded',
-                    },
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                     body: formData
                 });
 
@@ -1912,526 +2224,150 @@
                 submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Kumpulkan LKPD';
                 isSubmitting = false;
                 pendingSubmitData = null;
-                
                 document.getElementById('confirmGantiBtn').disabled = false;
                 document.getElementById('confirmGantiBtn').innerHTML = '<i class="fas fa-exchange-alt"></i> Ya, Ganti Data';
             }
         }
 
-        // ==================== EXPORT TEMPLATE LEMBAR AKTIVITAS (KOSONG) ====================
+        // ==================== EXPORT ====================
         function exportToDocx() {
             const exportBtn = document.getElementById('exportBtn');
             exportBtn.disabled = true;
             exportBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memproses...';
 
             try {
-                // === BANGUN HTML TEMPLATE KOSONG UNTUK WORD ===
                 const now = new Date();
                 const dateStr = now.toLocaleDateString('id-ID', {
                     day: 'numeric', month: 'long', year: 'numeric'
                 });
-                
-                let htmlContent = `
-                    <html xmlns:o='urn:schemas-microsoft-com:office:office' 
-                          xmlns:w='urn:schemas-microsoft-com:office:word' 
-                          xmlns='http://www.w3.org/TR/REC-html40'>
-                    <head>
-                        <meta charset="UTF-8">
-                        <title>LKPD - Proyek 3 Aktivitas 3</title>
-                        <!--[if gte mso 9]>
-                        <xml>
-                            <w:WordDocument>
-                                <w:View>Print</w:View>
-                                <w:Zoom>100</w:Zoom>
-                            </w:WordDocument>
-                        </xml>
-                        <![endif]-->
-                        <style>
-                            /* ===== STYLE UNTUK TEMPLATE ===== */
-                            body {
-                                font-family: 'Calibri', 'Segoe UI', Arial, sans-serif;
-                                font-size: 11pt;
-                                line-height: 1.5;
-                                color: #222;
-                                padding: 30px 40px;
-                                margin: 0;
-                            }
-                            
-                            .worksheet-title {
-                                color: #21618c;
-                                font-size: 18pt;
-                                text-align: center;
-                                font-weight: bold;
-                                border-bottom: 2px solid #d5f4e6;
-                                padding-bottom: 8px;
-                                margin: 0 0 15px 0;
-                            }
-                            
-                            .section-title {
-                                color: #21618c;
-                                font-size: 12pt;
-                                font-weight: 600;
-                                border-bottom: 2px solid #ebf5fb;
-                                padding-bottom: 6px;
-                                margin: 15px 0 8px 0;
-                            }
-                            
-                            .section-subtitle {
-                                color: #2980b9;
-                                font-size: 11pt;
-                                font-weight: 600;
-                                margin: 12px 0 6px 0;
-                            }
-                            
-                            .subtitle {
-                                color: #666;
-                                font-size: 10pt;
-                                margin-bottom: 12px;
-                            }
-                            .subtitle span {
-                                margin-right: 15px;
-                            }
-                            
-                            .identitas-box {
-                                background: #f0f8f0;
-                                padding: 12px 15px;
-                                margin-bottom: 15px;
-                                border-radius: 4px;
-                            }
-                            .identitas-box table {
-                                width: 100%;
-                                border: none;
-                            }
-                            .identitas-box td {
-                                padding: 4px 8px;
-                                border: none;
-                                vertical-align: middle;
-                            }
-                            .identitas-box .label {
-                                font-weight: 600;
-                                color: #21618c;
-                                width: 80px;
-                            }
-                            .identitas-box .kosong {
-                                border-bottom: 1px solid #999;
-                                min-width: 150px;
-                                display: inline-block;
-                                padding: 0 20px 0 5px;
-                                color: #999;
-                                font-style: italic;
-                            }
-                            
-                            table {
-                                width: 100%;
-                                border-collapse: collapse;
-                                margin: 8px 0;
-                                font-size: 10pt;
-                            }
-                            
-                            th {
-                                background: #3498db;
-                                color: white;
-                                padding: 6px 8px;
-                                text-align: left;
-                                font-weight: 600;
-                                border: 1px solid #3498db;
-                            }
-                            
-                            td {
-                                padding: 6px 8px;
-                                border: 1px solid #ddd;
-                                vertical-align: top;
-                            }
-                            
-                            .checkbox-grid {
-                                display: flex;
-                                flex-wrap: wrap;
-                                gap: 8px 20px;
-                                margin: 8px 0;
-                            }
-                            .checkbox-item {
-                                display: flex;
-                                align-items: center;
-                                gap: 6px;
-                            }
-                            .checkbox-item .kotak-cek {
-                                display: inline-block;
-                                width: 14px;
-                                height: 14px;
-                                border: 2px solid #999;
-                                background: white;
-                                margin-right: 5px;
-                            }
-                            
-                            .radio-group {
-                                display: flex;
-                                gap: 15px;
-                                flex-wrap: wrap;
-                            }
-                            .radio-group label {
-                                display: inline-flex;
-                                align-items: center;
-                                gap: 5px;
-                            }
-                            .radio-group .lingkaran-cek {
-                                display: inline-block;
-                                width: 14px;
-                                height: 14px;
-                                border: 2px solid #999;
-                                border-radius: 50%;
-                                background: white;
-                                margin-right: 5px;
-                            }
-                            
-                            .tempat-jawaban {
-                                background: #fafafa;
-                                padding: 4px 8px;
-                                border-radius: 3px;
-                                border: 1px dashed #ccc;
-                                display: block;
-                                min-height: 35px;
-                                color: #999;
-                                font-style: italic;
-                            }
-                            
-                            .instruction-box {
-                                background: #ebf5fb;
-                                padding: 8px 12px;
-                                border-left: 4px solid #3498db;
-                                margin: 8px 0;
-                                border-radius: 4px;
-                            }
-                            
-                            .section-card {
-                                border: 1px solid #e0e7ff;
-                                border-radius: 8px;
-                                padding: 12px 15px;
-                                margin-bottom: 15px;
-                            }
-                            
-                            .qa-table .no-col { width: 6%; text-align: center; }
-                            .qa-table .question-col { width: 34%; }
-                            .qa-table .answer-col { width: 60%; }
-                            
-                            .security-tip {
-                                background: #e8f5e9;
-                                padding: 8px 12px;
-                                border-left: 4px solid #4caf50;
-                                margin: 8px 0;
-                                border-radius: 4px;
-                            }
-                            
-                            .warning-box {
-                                background: #fff3cd;
-                                border-left: 5px solid #ffc107;
-                                padding: 8px 12px;
-                                margin: 8px 0;
-                                border-radius: 4px;
-                            }
-                            
-                            .link-box {
-                                background: #f0f7ff;
-                                border: 2px solid #3498db;
-                                border-radius: 8px;
-                                padding: 12px 15px;
-                                margin: 8px 0;
-                            }
-                            
-                            .link-box .platform-badge {
-                                display: inline-block;
-                                padding: 2px 10px;
-                                border-radius: 12px;
-                                font-size: 8pt;
-                                font-weight: 600;
-                                color: white;
-                                margin: 2px 3px;
-                            }
-                            .platform-badge.drive { background: #0b7b3d; }
-                            
-                            .footer-text {
-                                text-align: center;
-                                color: #999;
-                                font-size: 9pt;
-                                margin-top: 20px;
-                                border-top: 1px solid #eee;
-                                padding-top: 10px;
-                            }
-                            
-                            .btn, .btn-submit, .export-wrapper, 
-                            .connection-status, .success-message, .error-message,
-                            .loading-message, .activity-navigation, .nav-btn,
-                            .modal, .modal-content, #confirmModal, #resetModal,
-                            .reset-button, .hamburger, .navbar, header,
-                            .alert, .refresh-btn, .materi-section,
-                            .table-actions, .action-cell {
-                                display: none !important;
-                            }
-                            
-                            .informatika-content-card {
-                                padding: 15px;
-                                border-left: 5px solid #3498db;
-                                margin-bottom: 15px;
-                            }
-                            
-                            .informatika-content-card h2 {
-                                color: #21618c;
-                                font-size: 18pt;
-                            }
-                            
-                            .informatika-content-card > p {
-                                font-size: 11pt;
-                                padding: 8px 12px;
-                                background: #ebf5fb;
-                                border-radius: 6px;
-                                border-left: 4px solid #3498db;
-                            }
-                            
-                            ol {
-                                margin-left: 20px;
-                                color: #555;
-                            }
-                            
-                            .worksheet-container {
-                                padding: 0;
-                                margin: 0;
-                                border: none;
-                                box-shadow: none;
-                            }
-                        </style>
-                    </head>
-                    <body>
-                        <!-- ===== HEADER ===== -->
-                        <div class="informatika-content-card">
-                            <h2>Proyek 3 Aktivitas 3: Praktik Pengamanan Digital (2FA)</h2>
-                            <div class="subtitle">
-                                <span>📅 Pertemuan 3 • Proyek 3: Etika Digital</span>
-                                <span>⏰ 4 JP</span>
-                            </div>
-                            <p><i>"Menerapkan autentikasi dua langkah untuk meningkatkan keamanan akun digital."</i></p>
+
+                let htmlContent = `<!DOCTYPE html>
+                <html>
+                <head><meta charset="UTF-8"><title>LKPD Proyek 3 Aktivitas 3</title>
+                <style>
+                    body { font-family: Calibri, sans-serif; font-size: 11pt; padding: 30px; }
+                    h1 { color: #21618c; text-align: center; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+                    h2 { color: #21618c; border-bottom: 1px solid #ddd; padding-bottom: 5px; margin-top: 20px; }
+                    .badge { background: #3498db; color: white; padding: 2px 12px; border-radius: 12px; font-size: 10pt; display: inline-block; }
+                    .instruksi { background: #ebf5fb; padding: 10px 15px; border-left: 4px solid #3498db; margin: 10px 0; }
+                    .tempat { background: #fafafa; padding: 8px; border: 1px dashed #ccc; margin: 5px 0; min-height: 30px; color: #999; font-style: italic; }
+                    table { width: 100%; border-collapse: collapse; margin: 10px 0; }
+                    th { background: #3498db; color: white; padding: 8px; text-align: left; }
+                    td { padding: 8px; border-bottom: 1px solid #ddd; vertical-align: top; }
+                    .checkbox-grid { display: flex; flex-wrap: wrap; gap: 10px 20px; margin: 8px 0; }
+                    .checkbox-item { display: flex; align-items: center; gap: 5px; }
+                    .kotak { display: inline-block; width: 14px; height: 14px; border: 2px solid #999; background: white; margin-right: 5px; }
+                    .radio-group { display: flex; gap: 15px; flex-wrap: wrap; }
+                    .lingkaran { display: inline-block; width: 14px; height: 14px; border: 2px solid #999; border-radius: 50%; background: white; margin-right: 5px; }
+                    .security-tip { background: #e8f5e9; padding: 8px 12px; border-left: 4px solid #4caf50; margin: 8px 0; border-radius: 4px; }
+                    .warning-box { background: #fff3cd; border-left: 5px solid #ffc107; padding: 8px 12px; margin: 8px 0; border-radius: 4px; }
+                    .link-box { background: #f0f7ff; border: 2px solid #3498db; border-radius: 8px; padding: 12px 15px; margin: 8px 0; }
+                    .link-box .platform-badge { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 8pt; font-weight: 600; color: white; margin: 2px 3px; }
+                    .platform-badge.drive { background: #0b7b3d; }
+                    .btn, .modal, .export-wrapper, .activity-navigation { display: none !important; }
+                    .footer { text-align: center; color: #999; font-size: 9pt; margin-top: 20px; border-top: 1px solid #eee; padding-top: 10px; }
+                </style>
+                </head>
+                <body>
+                    <h1>LEMBAR KERJA PESERTA DIDIK (LKPD) PROYEK 3 – AKTIVITAS 3 (PRAKTIK PENGAMANAN DIGITAL - 2FA)</h1>
+                    
+
+                    <h2>IDENTITAS KELOMPOK</h2>
+                    <table>
+                        <tr><td style="width:120px; font-weight:600;">Kelas</td><td>: _________________</td></tr>
+                        <tr><td style="font-weight:600;">Nama Lengkap</td><td>: _________________</td></tr>
+                        <tr><td style="font-weight:600;">Nama Kelompok</td><td>: _________________</td></tr>
+                        <tr><td style="font-weight:600;">Peran</td><td>: _________________</td></tr>
+                    </table>
+                    
+                    <div class="instruksi"><strong>PETUNJUK:</strong> Kerjakan bagian individu secara mandiri dan bagian kelompok melalui diskusi. Gunakan smartphone/laptop untuk praktik 2FA.</div>
+                    
+                    <h2>A. PEMAHAMAN 2FA <span class="badge">Individu</span></h2>
+                    <table>
+                        <tr><th>No</th><th>Pertanyaan</th><th>Jawaban</th></tr>
+                        <tr><td>1</td><td>Apa yang dimaksud dengan autentikasi dua langkah (2FA)?</td><td><div class="tempat">[Tulis jawaban di sini]</div></td></tr>
+                        <tr><td>2</td><td>Mengapa 2FA penting untuk keamanan akun digital?</td><td><div class="tempat">[Tulis jawaban di sini]</div></td></tr>
+                        <tr><td>3</td><td>Sebutkan 3 metode 2FA yang umum digunakan!</td><td><div class="tempat">[Tulis jawaban di sini]</div></td></tr>
+                        <tr><td>4</td><td>Apa yang harus dilakukan jika ponsel hilang dan menggunakan 2FA?</td><td><div class="tempat">[Tulis jawaban di sini]</div></td></tr>
+                    </table>
+
+                    <div class="checkbox-item"><span class="kotak"></span> Saya sudah membaca materi "Autentikasi Dua Langkah (2FA)"</div>
+
+                    <h2>B. METODE 2FA <span class="badge">Kelompok</span></h2>
+                    <table>
+                        <tr><th>No</th><th>Metode</th><th>Kelebihan &amp; Kekurangan</th></tr>
+                        <tr><td>1</td><td>SMS/Telepon</td><td><div class="tempat">[Tulis di sini]</div></td></tr>
+                        <tr><td>2</td><td>Aplikasi Authenticator</td><td><div class="tempat">[Tulis di sini]</div></td></tr>
+                        <tr><td>3</td><td>Kunci Keamanan Fisik</td><td><div class="tempat">[Tulis di sini]</div></td></tr>
+                        <tr><td>4</td><td>Kode Cadangan</td><td><div class="tempat">[Tulis di sini]</div></td></tr>
+                    </table>
+
+                    <table>
+                        <tr><th>No</th><th>Situasi</th><th>Perlu 2FA? &amp; Alasan</th></tr>
+                        <tr><td>1</td><td>Akun email utama</td><td><div class="radio-group"><label><span class="lingkaran"></span> Ya</label><label><span class="lingkaran"></span> Tidak</label></div><br><div class="tempat">[Alasan]</div></td></tr>
+                        <tr><td>2</td><td>Akun media sosial</td><td><div class="radio-group"><label><span class="lingkaran"></span> Ya</label><label><span class="lingkaran"></span> Tidak</label></div><br><div class="tempat">[Alasan]</div></td></tr>
+                        <tr><td>3</td><td>Akun mobile banking</td><td><div class="radio-group"><label><span class="lingkaran"></span> Ya</label><label><span class="lingkaran"></span> Tidak</label></div><br><div class="tempat">[Alasan]</div></td></tr>
+                        <tr><td>4</td><td>Akun game online</td><td><div class="radio-group"><label><span class="lingkaran"></span> Ya</label><label><span class="lingkaran"></span> Tidak</label></div><br><div class="tempat">[Alasan]</div></td></tr>
+                    </table>
+
+                    <div class="security-tip"><strong>Kesimpulan:</strong> <span class="tempat">[Tulis kesimpulan di sini]</span></div>
+
+                    <h2>C. PRAKTIK AKTIVASI 2FA <span class="badge">Individu</span></h2>
+                    <table>
+                        <tr><th>No</th><th>Platform</th><th>Status &amp; Catatan</th></tr>
+                        <tr><td>1</td><td>Google</td><td><div class="radio-group"><label><span class="lingkaran"></span> ✅ Berhasil</label><label><span class="lingkaran"></span> ❌ Gagal</label></div><br><div class="tempat">[Catatan]</div></td></tr>
+                        <tr><td>2</td><td>Instagram</td><td><div class="radio-group"><label><span class="lingkaran"></span> ✅ Berhasil</label><label><span class="lingkaran"></span> ❌ Gagal</label></div><br><div class="tempat">[Catatan]</div></td></tr>
+                        <tr><td>3</td><td>Authenticator</td><td><div class="tempat">[Nama aplikasi]</div><br><div class="radio-group"><label><span class="lingkaran"></span> ✅ Berhasil</label><label><span class="lingkaran"></span> ❌ Gagal</label></div></td></tr>
+                        <tr><td>4</td><td>Kode Cadangan</td><td><div class="radio-group"><label><span class="lingkaran"></span> ✅ Sudah disimpan</label><label><span class="lingkaran"></span> ❌ Belum disimpan</label></div><br><div class="tempat">[Metode penyimpanan]</div></td></tr>
+                    </table>
+
+                    <div class="warning-box"><strong>Peringatan:</strong> Jangan bagikan kode cadangan kepada siapapun!</div>
+
+                    <h2>D. BUKTI PRAKTIK <span class="badge">Kelompok</span></h2>
+                    <div class="link-box">
+                        <p><strong>Link Google Drive Bukti Praktik 2FA</strong></p>
+                        <p><span class="tempat">[Tempelkan link di sini]</span></p>
+                        <div style="margin-top:8px;"><span class="platform-badge drive">Google Drive</span> Pastikan link dapat diakses oleh guru</div>
+                    </div>
+                    <div style="margin-top:10px; background:#f8fafc; padding:10px; border:1px dashed #3498db; border-radius:8px;">
+                        <p><strong>Deskripsi Bukti:</strong></p>
+                        <span class="tempat">[Jelaskan isi screenshot]</span>
+                    </div>
+
+                    <h2>E. DISKUSI PENGALAMAN <span class="badge">Kelompok</span></h2>
+                    <table>
+                        <tr><th>No</th><th>Pertanyaan</th><th>Jawaban</th></tr>
+                        <tr><td>1</td><td>Apa kendala utama saat mengaktifkan 2FA?</td><td><div class="tempat">[Tulis jawaban]</div></td></tr>
+                        <tr><td>2</td><td>Bagaimana perasaanmu setelah berhasil mengaktifkan 2FA?</td><td><div class="tempat">[Tulis jawaban]</div></td></tr>
+                        <tr><td>3</td><td>Apakah prosesnya mudah atau sulit?</td><td><div class="tempat">[Tulis jawaban]</div></td></tr>
+                        <tr><td>4</td><td>Apakah akan merekomendasikan 2FA kepada teman?</td><td><div class="tempat">[Tulis jawaban]</div></td></tr>
+                    </table>
+
+                    <h2>F. REFLEKSI AKHIR <span class="badge">Individu</span></h2>
+                    <table>
+                        <tr><th>No</th><th>Pertanyaan</th><th>Jawabanku</th></tr>
+                        <tr><td>1</td><td>Hal baru tentang autentikasi dua langkah?</td><td><div class="tempat">[Tulis jawaban]</div></td></tr>
+                        <tr><td>2</td><td>Berhasil mengaktifkan 2FA? Kendala?</td><td><div class="tempat">[Tulis jawaban]</div></td></tr>
+                        <tr><td>3</td><td>Apakah 2FA penting untuk semua akun?</td><td><div class="tempat">[Tulis jawaban]</div></td></tr>
+                        <tr><td>4</td><td>Komitmen untuk keamanan akun digital?</td><td><div class="tempat">[Tulis jawaban]</div></td></tr>
+                    </table>
+
+                    <div style="margin-top:15px; background:#f8fafc; padding:10px; border:1px dashed #3498db;">
+                        <p><strong>Checklist Pemahaman:</strong></p>
+                        <div class="checkbox-grid">
+                            <div class="checkbox-item"><span class="kotak"></span> Saya sudah membaca materi</div>
+                            <div class="checkbox-item"><span class="kotak"></span> Saya sudah mengaktifkan 2FA di minimal 1 akun</div>
+                            <div class="checkbox-item"><span class="kotak"></span> Saya sudah menyimpan kode cadangan</div>
+                            <div class="checkbox-item"><span class="kotak"></span> Saya sudah mengupload bukti praktik</div>
+                            <div class="checkbox-item"><span class="kotak"></span> Saya siap untuk aktivitas berikutnya</div>
                         </div>
-                        
-                        <div class="instruction-box" style="background:#e8f5e9; border-left-color: #3498db;">
-                            <strong>HALO, KELOMPOK HEBAT! 👋</strong><br>
-                            Silakan isi lembar kerja ini untuk mempraktikkan autentikasi dua langkah (2FA) pada akun digital.
-                        </div>
+                    </div>
 
-                        <h1 class="worksheet-title">LEMBAR KERJA PESERTA DIDIK (LKPD) PROYEK 3 – AKTIVITAS 3</h1>
-                        <p style="text-align: center; margin-bottom: 1.5rem; font-size: 12pt; color: #9b59b6;">
-                            <strong>PRAKTIK PENGAMANAN DIGITAL (2FA)</strong>
-                        </p>
-                        <div style="text-align: center; margin-bottom: 1.5rem; background: #ebf5fb; padding: 0.8rem; border-radius: 8px;">
-                            <p><strong>Tujuan Pembelajaran (TP 2.12):</strong> Menerapkan autentikasi dua langkah untuk meningkatkan keamanan akun digital.</p>
-                        </div>
+                    <div class="footer">LKPD Proyek 3 Aktivitas 3 - Praktik Pengamanan Digital (2FA) | ${dateStr}</div>
+                </body>
+                </html>`;
 
-                        <!-- ===== IDENTITAS ===== -->
-                        <h3 style="color: #21618c; margin: 20px 0 10px 0; font-size: 13pt;">Identitas Kelompok</h3>
-                        <div class="identitas-box">
-                            <table>
-                                <tr><td class="label">Kelas</td><td>: <span class="kosong">_________________</span></td></tr>
-                                <tr><td class="label">Nama Lengkap</td><td>: <span class="kosong">_________________</span></td></tr>
-                                <tr><td class="label">Nama Kelompok</td><td>: <span class="kosong">_________________</span></td></tr>
-                                <tr><td class="label">Peran dalam Kelompok</td><td>: <span class="kosong">_________________</span></td></tr>
-                            </table>
-                        </div>
-
-                        <!-- ===== PETUNJUK ===== -->
-                        <div class="instruction-box">
-                            <strong>📚 PETUNJUK PENGGUNAAN LKPD</strong><br><br>
-                            <ol>
-                                <li>Pastikan kamu sudah membaca materi <strong>"Autentikasi Dua Langkah (2FA)"</strong> yang tersedia di menu Daftar Materi.</li>
-                                <li>Kerjakan setiap bagian dengan berdiskusi bersama kelompok.</li>
-                                <li>Gunakan smartphone/laptop untuk mempraktikkan aktivasi 2FA.</li>
-                                <li>Setelah mengaktifkan 2FA, simpan kode cadangan di tempat yang aman.</li>
-                                <li>Ambil screenshot bukti aktivasi 2FA, upload ke Google Drive, dan tempel link-nya di bagian Bukti Praktik.</li>
-                            </ol>
-                        </div>
-
-                        <!-- ===== BAGIAN A ===== -->
-                        <div class="section-card">
-                            <h3 class="section-title">📖 BAGIAN A: PEMAHAMAN 2FA (INDIVIDU)</h3>
-                            <div class="instruction-box">
-                                "Pastikan kamu sudah membaca materi sebelum mengerjakan!"
-                            </div>
-
-                            <table class="qa-table">
-                                <thead>
-                                    <tr><th class="no-col">No</th><th class="question-col">Pertanyaan</th><th class="answer-col">Jawaban</th></tr>
-                                </thead>
-                                <tbody>
-                                    <tr><td class="no-col">1</td><td>Apa yang dimaksud dengan autentikasi dua langkah (2FA)?</td><td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
-                                    <tr><td class="no-col">2</td><td>Mengapa 2FA penting untuk keamanan akun digital?</td><td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
-                                    <tr><td class="no-col">3</td><td>Sebutkan 3 metode 2FA yang umum digunakan!</td><td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
-                                    <tr><td class="no-col">4</td><td>Apa yang harus dilakukan jika ponsel hilang dan menggunakan 2FA?</td><td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
-                                </tbody>
-                            </table>
-
-                            <div style="margin-top: 1rem; background: #f8fafc; border-radius: 8px; padding: 1rem; border: 1px dashed #3498db;">
-                                <div class="checkbox-item"><span class="kotak-cek"></span> <strong>Ya, saya sudah membaca materi "Autentikasi Dua Langkah (2FA)"</strong></div>
-                            </div>
-                        </div>
-
-                        <!-- ===== BAGIAN B ===== -->
-                        <div class="section-card">
-                            <h3 class="section-title">🔐 BAGIAN B: METODE 2FA (KELOMPOK)</h3>
-                            <div class="instruction-box">
-                                "Pelajari berbagai metode 2FA dan kapan diperlukan!"
-                            </div>
-
-                            <h4 class="section-subtitle">Perbandingan Metode 2FA</h4>
-                            <table class="qa-table">
-                                <thead>
-                                    <tr><th class="no-col">No</th><th class="question-col">Metode</th><th class="answer-col">Kelebihan & Kekurangan</th></tr>
-                                </thead>
-                                <tbody>
-                                    <tr><td class="no-col">1</td><td>SMS/Telepon</td><td><span class="tempat-jawaban">[Tulis di sini]</span></td></tr>
-                                    <tr><td class="no-col">2</td><td>Aplikasi Authenticator</td><td><span class="tempat-jawaban">[Tulis di sini]</span></td></tr>
-                                    <tr><td class="no-col">3</td><td>Kunci Keamanan Fisik</td><td><span class="tempat-jawaban">[Tulis di sini]</span></td></tr>
-                                    <tr><td class="no-col">4</td><td>Kode Cadangan (Backup Codes)</td><td><span class="tempat-jawaban">[Tulis di sini]</span></td></tr>
-                                </tbody>
-                            </table>
-
-                            <h4 class="section-subtitle">Kapan 2FA Diperlukan?</h4>
-                            <table class="qa-table">
-                                <thead>
-                                    <tr><th class="no-col">No</th><th class="question-col">Situasi</th><th class="answer-col">Perlu 2FA? & Alasan</th></tr>
-                                </thead>
-                                <tbody>
-                                    <tr><td class="no-col">1</td><td>Akun email utama</td><td><div class="radio-group"><label><span class="lingkaran-cek"></span> Ya</label><label><span class="lingkaran-cek"></span> Tidak</label></div><br><span class="tempat-jawaban">[Tulis alasan]</span></td></tr>
-                                    <tr><td class="no-col">2</td><td>Akun media sosial</td><td><div class="radio-group"><label><span class="lingkaran-cek"></span> Ya</label><label><span class="lingkaran-cek"></span> Tidak</label></div><br><span class="tempat-jawaban">[Tulis alasan]</span></td></tr>
-                                    <tr><td class="no-col">3</td><td>Akun mobile banking</td><td><div class="radio-group"><label><span class="lingkaran-cek"></span> Ya</label><label><span class="lingkaran-cek"></span> Tidak</label></div><br><span class="tempat-jawaban">[Tulis alasan]</span></td></tr>
-                                    <tr><td class="no-col">4</td><td>Akun game online</td><td><div class="radio-group"><label><span class="lingkaran-cek"></span> Ya</label><label><span class="lingkaran-cek"></span> Tidak</label></div><br><span class="tempat-jawaban">[Tulis alasan]</span></td></tr>
-                                </tbody>
-                            </table>
-
-                            <div class="security-tip">
-                                <strong>Kesimpulan:</strong> Akun apa saja yang WAJIB mengaktifkan 2FA?
-                                <span class="tempat-jawaban" style="margin-top:6px;">[Tulis kesimpulan di sini]</span>
-                            </div>
-                        </div>
-
-                        <!-- ===== BAGIAN C ===== -->
-                        <div class="section-card">
-                            <h3 class="section-title">📱 BAGIAN C: PRAKTIK AKTIVASI 2FA (INDIVIDU)</h3>
-                            <div class="instruction-box">
-                                "Saatnya mempraktikkan! Ikuti langkah-langkah di materi untuk mengaktifkan 2FA."
-                            </div>
-
-                            <div class="security-tip">
-                                <strong>Langkah Praktik:</strong>
-                                <ol style="margin-left:20px; margin-top:8px;">
-                                    <li>Instal aplikasi authenticator (Google Authenticator, Microsoft Authenticator, atau Authy)</li>
-                                    <li>Aktifkan 2FA pada akun Google (myaccount.google.com → Keamanan → Verifikasi 2 Langkah)</li>
-                                    <li>Aktifkan 2FA pada akun Instagram (Pengaturan → Keamanan → Autentikasi Dua Faktor)</li>
-                                    <li>Simpan kode cadangan di tempat yang aman</li>
-                                </ol>
-                            </div>
-
-                            <table class="qa-table">
-                                <thead>
-                                    <tr><th class="no-col">No</th><th class="question-col">Platform</th><th class="answer-col">Status & Catatan</th></tr>
-                                </thead>
-                                <tbody>
-                                    <tr><td class="no-col">1</td><td>Google</td><td><div class="radio-group"><label><span class="lingkaran-cek"></span> ✅ Berhasil</label><label><span class="lingkaran-cek"></span> ❌ Gagal</label></div><br><span class="tempat-jawaban">[Catatan/kendala]</span></td></tr>
-                                    <tr><td class="no-col">2</td><td>Instagram</td><td><div class="radio-group"><label><span class="lingkaran-cek"></span> ✅ Berhasil</label><label><span class="lingkaran-cek"></span> ❌ Gagal</label></div><br><span class="tempat-jawaban">[Catatan/kendala]</span></td></tr>
-                                    <tr><td class="no-col">3</td><td>Aplikasi Authenticator</td><td><span class="tempat-jawaban">[Nama aplikasi]</span><br><div class="radio-group"><label><span class="lingkaran-cek"></span> ✅ Berhasil</label><label><span class="lingkaran-cek"></span> ❌ Gagal</label></div></td></tr>
-                                    <tr><td class="no-col">4</td><td>Kode Cadangan</td><td><div class="radio-group"><label><span class="lingkaran-cek"></span> ✅ Sudah disimpan</label><label><span class="lingkaran-cek"></span> ❌ Belum disimpan</label></div><br><span class="tempat-jawaban">[Metode penyimpanan]</span></td></tr>
-                                </tbody>
-                            </table>
-
-                            <div class="warning-box">
-                                <p><strong>Peringatan:</strong> Jangan bagikan kode cadangan kepada siapapun! Simpan di tempat yang aman dan rahasia.</p>
-                            </div>
-                        </div>
-
-                        <!-- ===== BAGIAN D ===== -->
-                        <div class="section-card">
-                            <h3 class="section-title">📸 BAGIAN D: BUKTI PRAKTIK (KELOMPOK)</h3>
-                            <div class="instruction-box">
-                                "Upload bukti praktik 2FA ke Google Drive dan tempel link-nya di sini!"
-                            </div>
-
-                            <div class="link-box">
-                                <p style="font-weight:600; margin-bottom:10px;">
-                                    🌐 Link Google Drive Bukti Praktik 2FA
-                                </p>
-                                <p><span class="tempat-jawaban">[Tempelkan link di sini]</span></p>
-                                <div style="margin-top:10px;">
-                                    <span class="platform-badge drive">Google Drive</span>
-                                    <span style="font-size:0.85rem; color:#7f8c8d;">Pastikan link dapat diakses oleh guru</span>
-                                </div>
-                            </div>
-
-                            <div style="margin-top: 1rem; background: #f8fafc; border-radius: 8px; padding: 1rem; border: 1px dashed #3498db;">
-                                <p><strong>Deskripsi Bukti:</strong></p>
-                                <span class="tempat-jawaban">[Jelaskan isi screenshot yang diupload]</span>
-                            </div>
-                        </div>
-
-                        <!-- ===== BAGIAN E ===== -->
-                        <div class="section-card">
-                            <h3 class="section-title">💬 BAGIAN E: DISKUSI PENGALAMAN (KELOMPOK)</h3>
-                            <div class="instruction-box">
-                                "Bagikan pengalamanmu dalam mengaktifkan 2FA!"
-                            </div>
-
-                            <table class="qa-table">
-                                <thead>
-                                    <tr><th class="no-col">No</th><th class="question-col">Pertanyaan</th><th class="answer-col">Jawaban Kelompok</th></tr>
-                                </thead>
-                                <tbody>
-                                    <tr><td class="no-col">1</td><td>Apa kendala utama yang dialami saat mengaktifkan 2FA?</td><td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
-                                    <tr><td class="no-col">2</td><td>Bagaimana perasaanmu setelah berhasil mengaktifkan 2FA?</td><td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
-                                    <tr><td class="no-col">3</td><td>Apakah prosesnya mudah atau sulit? Jelaskan!</td><td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
-                                    <tr><td class="no-col">4</td><td>Apakah kamu akan merekomendasikan 2FA kepada teman? Mengapa?</td><td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <!-- ===== BAGIAN F ===== -->
-                        <div class="section-card">
-                            <h3 class="section-title">📝 BAGIAN F: REFLEKSI AKHIR (INDIVIDU)</h3>
-                            <div class="instruction-box">
-                                "Apa yang aku pelajari hari ini?"
-                            </div>
-
-                            <table class="qa-table">
-                                <thead>
-                                    <tr><th class="no-col">No</th><th class="question-col">Pertanyaan</th><th class="answer-col">Jawabanku</th></tr>
-                                </thead>
-                                <tbody>
-                                    <tr><td class="no-col">1</td><td>Hal baru apa yang aku pelajari tentang autentikasi dua langkah?</td><td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
-                                    <tr><td class="no-col">2</td><td>Apakah aku berhasil mengaktifkan 2FA? Jika belum, apa kendalanya?</td><td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
-                                    <tr><td class="no-col">3</td><td>Apakah menurutku 2FA penting untuk semua akun? Mengapa?</td><td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
-                                    <tr><td class="no-col">4</td><td>Apa komitmenku untuk keamanan akun digital ke depannya?</td><td><span class="tempat-jawaban">[Tulis jawaban di sini]</span></td></tr>
-                                </tbody>
-                            </table>
-
-                            <div style="margin-top: 1rem; background: #f8fafc; border-radius: 8px; padding: 1rem; border: 1px dashed #3498db;">
-                                <p><strong>Checklist Pemahaman:</strong></p>
-                                <div class="checkbox-grid">
-                                    <div class="checkbox-item"><span class="kotak-cek"></span> Saya sudah membaca materi "Autentikasi Dua Langkah (2FA)"</div>
-                                    <div class="checkbox-item"><span class="kotak-cek"></span> Saya sudah mengaktifkan 2FA di minimal 1 akun</div>
-                                    <div class="checkbox-item"><span class="kotak-cek"></span> Saya sudah menyimpan kode cadangan dengan aman</div>
-                                    <div class="checkbox-item"><span class="kotak-cek"></span> Saya sudah mengupload bukti praktik ke Google Drive</div>
-                                    <div class="checkbox-item"><span class="kotak-cek"></span> Saya siap untuk aktivitas berikutnya</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- ===== FOOTER ===== -->
-                        <div class="footer-text">
-                            LKPD Proyek 3 Aktivitas 3 - Praktik Pengamanan Digital (2FA) | ${dateStr}
-                        </div>
-                    </body>
-                    </html>
-                `;
-
-                // === BUAT FILE .doc ===
-                const blob = new Blob([htmlContent], {
-                    type: 'application/msword;charset=utf-8'
-                });
-
-                // === DOWNLOAD ===
+                const blob = new Blob([htmlContent], { type: 'application/msword;charset=utf-8' });
                 const link = document.createElement('a');
                 link.href = URL.createObjectURL(blob);
                 const today = new Date();
@@ -2442,9 +2378,7 @@
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
-                setTimeout(() => {
-                    URL.revokeObjectURL(link.href);
-                }, 1000);
+                setTimeout(() => URL.revokeObjectURL(link.href), 1000);
 
                 exportBtn.innerHTML = '<i class="fas fa-file-word"></i> Export Template DOCX';
                 exportBtn.disabled = false;
@@ -2459,11 +2393,12 @@
 
         // ==================== INIT ====================
         document.addEventListener('DOMContentLoaded', function() {
-            const hamburger = document.getElementById('hamburger');
-            const navMenu = document.getElementById('nav-menu');
-            if (hamburger) {
-                hamburger.addEventListener('click', () => navMenu.classList.toggle('active'));
-            }
+            document.querySelectorAll('textarea.answer-field').forEach(el => {
+                el.addEventListener('input', function() {
+                    autoResize(this);
+                });
+                autoResize(el);
+            });
 
             document.querySelectorAll('input, select, textarea').forEach(el => {
                 el.addEventListener('input', saveToLocalStorage);
@@ -2481,14 +2416,19 @@
             });
 
             loadDataFromGoogleSheets();
-            loadFromLocalStorage();
             updateConnectionStatus();
-            setInterval(checkConnection, 5000);
-        });
+            setInterval(updateConnectionStatus, 5000);
 
-        function checkConnection() {
-            updateConnectionStatus();
-        }
+            window.updateNamaDropdown = updateNamaDropdown;
+            window.saveToLocalStorage = saveToLocalStorage;
+            window.submitData = submitData;
+            window.exportToDocx = exportToDocx;
+            window.confirmGantiTugas = confirmGantiTugas;
+            window.confirmReset = confirmReset;
+            window.closeModal = closeModal;
+            window.closeConfirmModal = closeConfirmModal;
+            window.autoResize = autoResize;
+        });
     </script>
 </body>
 </html>
