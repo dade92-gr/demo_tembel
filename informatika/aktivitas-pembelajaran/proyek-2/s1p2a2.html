@@ -1622,7 +1622,6 @@
             for (let i = 1; i <= 8; i++) {
                 const el = document.getElementById(`matching${i}`);
                 const value = el ? el.value : '';
-                // Simpan nilai lengkap dari dropdown (bukan hanya huruf)
                 matchingData.push([profesiLabels[i-1], value]);
             }
 
@@ -1646,12 +1645,12 @@
                 }
             }
 
-            // Collect ide konten data
+            // Collect ide konten data - SEKARANG HANYA 1 BARIS dengan dropdown
+            const kontenJenisEl = document.getElementById('konten_jenis');
+            const kontenIdeEl = document.getElementById('konten_ide_1');
             const ideKonten = [];
-            const kontenJenis = ['Website/Blog Budaya', 'Video Promosi Budaya', 'Poster/Infografis', 'Game Edukasi'];
-            for (let i = 1; i <= 4; i++) {
-                const el = document.getElementById(`konten_ide_${i}`);
-                ideKonten.push([kontenJenis[i-1], el ? el.value : '']);
+            if (kontenJenisEl && kontenIdeEl) {
+                ideKonten.push([kontenJenisEl.value || '', kontenIdeEl.value || '']);
             }
 
             return {
@@ -1835,7 +1834,6 @@
                             if (id) {
                                 const el = document.getElementById(id);
                                 if (el) {
-                                    // Cari opsi yang nilainya sama dengan item[1]
                                     const options = el.options;
                                     let found = false;
                                     for (let i = 0; i < options.length; i++) {
@@ -1920,19 +1918,26 @@
                     });
                 }
                 if (e["Ide Konten"] && Array.isArray(e["Ide Konten"])) {
-                    const jenisMap = {
-                        "Website/Blog Budaya": 1,
-                        "Video Promosi Budaya": 2,
-                        "Poster/Infografis": 3,
-                        "Game Edukasi": 4
-                    };
+                    // Sekarang hanya 1 baris
                     e["Ide Konten"].forEach((item, idx) => {
                         if (idx === 0 || !Array.isArray(item) || item.length < 2) return;
-                        const num = jenisMap[item[0]];
-                        if (num) {
-                            const el = document.getElementById(`konten_ide_${num}`);
-                            if (el) el.value = item[1] || '';
+                        const jenisEl = document.getElementById('konten_jenis');
+                        const ideEl = document.getElementById('konten_ide_1');
+                        if (jenisEl) {
+                            const options = jenisEl.options;
+                            let found = false;
+                            for (let i = 0; i < options.length; i++) {
+                                if (options[i].value === item[0]) {
+                                    jenisEl.selectedIndex = i;
+                                    found = true;
+                                    break;
+                                }
+                            }
+                            if (!found) {
+                                jenisEl.selectedIndex = 0;
+                            }
                         }
+                        if (ideEl) ideEl.value = item[1] || '';
                     });
                 }
                 const linkEl = document.getElementById('link_screenshot_d');
@@ -2087,17 +2092,22 @@
                 }
             }
 
-            // Ide Konten - 4 jenis
+            // Ide Konten - SEKARANG HANYA 1 BARIS dengan dropdown
             const kontenBody = document.getElementById('kontenBody');
             if (kontenBody) {
                 kontenBody.innerHTML = '';
-                const jenis = ["Website/Blog Budaya", "Video Promosi Budaya", "Poster/Infografis", "Game Edukasi"];
-                for (let i = 1; i <= jenis.length; i++) {
-                    const row = kontenBody.insertRow();
-                    row.insertCell(0).innerHTML = i;
-                    row.insertCell(1).innerHTML = jenis[i-1];
-                    row.insertCell(2).innerHTML = `<textarea class="answer-field" id="konten_ide_${i}" placeholder="Deskripsi ide konten..." oninput="autoResize(this); saveToLocalStorage();"></textarea>`;
-                }
+                const row = kontenBody.insertRow();
+                row.insertCell(0).innerHTML = '1';
+                row.insertCell(1).innerHTML = `
+                    <select class="matching-select" id="konten_jenis" onchange="saveToLocalStorage();" style="width:100%;">
+                        <option value="">-- Pilih Jenis Konten --</option>
+                        <option value="Website/Blog Budaya">Website/Blog Budaya</option>
+                        <option value="Video Promosi Budaya">Video Promosi Budaya</option>
+                        <option value="Poster/Infografis">Poster/Infografis</option>
+                        <option value="Game Edukasi">Game Edukasi</option>
+                    </select>
+                `;
+                row.insertCell(2).innerHTML = `<textarea class="answer-field" id="konten_ide_1" placeholder="Deskripsi ide konten..." oninput="autoResize(this); saveToLocalStorage();"></textarea>`;
             }
         }
 
@@ -2596,10 +2606,18 @@
                             <table class="qa-table">
                                 <thead><tr><th class="no-col">No</th><th class="question-col">Jenis Konten</th><th class="answer-col">Deskripsi Ide</th></tr></thead>
                                 <tbody>
-                                    <tr><td class="no-col">1</td><td>Website/Blog Budaya</td><td><span class="tempat-jawaban">[Deskripsi ide]</span></td></tr>
-                                    <tr><td class="no-col">2</td><td>Video Promosi Budaya</td><td><span class="tempat-jawaban">[Deskripsi ide]</span></td></tr>
-                                    <tr><td class="no-col">3</td><td>Poster/Infografis</td><td><span class="tempat-jawaban">[Deskripsi ide]</span></td></tr>
-                                    <tr><td class="no-col">4</td><td>Game Edukasi</td><td><span class="tempat-jawaban">[Deskripsi ide]</span></td></tr>
+                                    <tr><td class="no-col">1</td>
+                                        <td>
+                                            <select class="matching-select" style="width:100%;">
+                                                <option value="">-- Pilih Jenis Konten --</option>
+                                                <option value="Website/Blog Budaya">Website/Blog Budaya</option>
+                                                <option value="Video Promosi Budaya">Video Promosi Budaya</option>
+                                                <option value="Poster/Infografis">Poster/Infografis</option>
+                                                <option value="Game Edukasi">Game Edukasi</option>
+                                            </select>
+                                        </td>
+                                        <td><span class="tempat-jawaban">[Deskripsi ide]</span></td>
+                                    </tr>
                                 </tbody>
                             </table>
                             <div class="folder-link-box">
