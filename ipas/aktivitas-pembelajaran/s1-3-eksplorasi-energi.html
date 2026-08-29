@@ -7,9 +7,6 @@
     <link rel="stylesheet" href="../../style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <style>
-        /* ================================================================
-           ROOT & RESET - TEMA ORANGE (ENERGI)
-           ================================================================ */
         * {
             margin: 0;
             padding: 0;
@@ -44,7 +41,7 @@
         }
 
         .container {
-            max-width: 960px;
+            max-width: 880px;
             margin: 2rem auto;
             padding: 0 1.5rem;
         }
@@ -72,7 +69,6 @@
             margin-bottom: 1.5rem;
         }
 
-        /* ============ TP CARD ============ */
         .tp-card {
             background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
             border-radius: 16px;
@@ -105,9 +101,6 @@
             color: var(--primary-dark);
         }
 
-        /* ================================================================
-           SISA CSS
-           ================================================================ */
         .identitas-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -149,7 +142,7 @@
         .section-title {
             font-size: 1.3rem;
             font-weight: 700;
-            margin: 1.5rem 0 0.8rem 0;
+            margin: 0 0 0.8rem 0;
             padding-bottom: 0.4rem;
             border-bottom: 3px solid var(--primary-light);
             display: flex;
@@ -239,77 +232,56 @@
             min-height: 70px;
         }
 
-        /* ============ EMOJI RADIO GROUP ============ */
-        .emoji-group {
-            display: flex;
-            gap: 0.4rem;
-            justify-content: center;
-            flex-wrap: wrap;
+        .mission-box {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 1.2rem 1.5rem;
+            margin-bottom: 1.2rem;
+            border-left: 5px solid var(--primary);
+        }
+
+        .mission-box .mission-icon {
+            font-size: 1.8rem;
+            margin-right: 8px;
+        }
+
+        .mission-box .mission-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--primary-dark);
+        }
+
+        .mission-box .mission-desc {
+            color: var(--text-light);
+            font-size: 0.92rem;
             margin-top: 4px;
         }
 
-        .emoji-group label {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2px;
-            cursor: pointer;
-            padding: 4px 6px;
-            border-radius: 10px;
-            transition: 0.2s;
-            font-size: 1.8rem;
-            min-width: 44px;
-        }
-
-        .emoji-group label:hover {
-            background: var(--primary-light);
-            transform: scale(1.05);
-        }
-
-        .emoji-group label input[type="radio"] {
-            width: 16px;
-            height: 16px;
-            accent-color: var(--primary);
-            cursor: pointer;
-        }
-
-        .emoji-group label .emoji-label {
-            font-size: 0.6rem;
-            color: var(--text-light);
-            font-weight: 600;
-        }
-
-        .emoji-card {
-            background: #fef9e7;
-            padding: 0.8rem 1rem;
-            border-radius: 12px;
-            text-align: center;
-            border: 2px solid transparent;
-            transition: 0.2s;
-        }
-
-        .emoji-card:hover {
-            border-color: var(--primary-light);
-        }
-
-        .emoji-card .emoji-title {
-            font-weight: 600;
+        .example-box {
+            background: #e8f5e9;
+            border-radius: 8px;
+            padding: 0.8rem 1.2rem;
+            margin: 0.8rem 0;
+            border-left: 4px solid #4caf50;
             font-size: 0.9rem;
-            color: var(--text);
-            margin-bottom: 2px;
         }
 
-        .emoji-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0.8rem;
-            margin: 1rem 0;
+        .example-box .label {
+            font-weight: 600;
+            color: #2e7d32;
         }
 
-        @media (max-width: 600px) {
-            .emoji-grid {
-                grid-template-columns: 1fr;
-            }
+        .example-box .bad {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 0.6rem 1rem;
+            border-radius: 6px;
+            margin-top: 4px;
+        }
+
+        .bad .label-bad {
+            font-weight: 600;
+            color: #856404;
         }
 
         .options-group {
@@ -489,84 +461,6 @@
             margin-right: 8px;
         }
 
-        .dokumentasi-instruction {
-            background: #fff3cd;
-            border-radius: 10px;
-            padding: 0.8rem 1.2rem;
-            margin: 0.5rem 0 1rem 0;
-            border-left: 4px solid #f39c12;
-        }
-
-        .dokumentasi-instruction i {
-            color: #f39c12;
-            margin-right: 8px;
-        }
-
-        .dokumentasi-instruction .contoh-dok {
-            margin-top: 6px;
-            font-size: 0.85rem;
-            color: #666;
-            background: #fff8e1;
-            padding: 6px 12px;
-            border-radius: 6px;
-        }
-
-        .folder-link-box {
-            background: #e8f5e9;
-            border-radius: 12px;
-            padding: 1rem 1.5rem;
-            margin-top: 1rem;
-            border-left: 5px solid #4caf50;
-        }
-
-        .folder-link-box .label-link {
-            font-weight: 600;
-            color: #2e7d32;
-            display: block;
-            margin-bottom: 4px;
-        }
-
-        .folder-link-box .sub-text {
-            font-size: 0.9rem;
-            color: #555;
-            margin-bottom: 6px;
-        }
-
-        .folder-link-box input {
-            width: 100% !important;
-        }
-
-        .panduan-box {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-top: 6px;
-            font-size: 0.9rem;
-        }
-
-        .panduan-box .contoh-benar {
-            background: #fff;
-            padding: 8px 12px;
-            border-radius: 8px;
-            border: 1px solid #a5d6a7;
-        }
-
-        .panduan-box .contoh-salah {
-            background: #fff3cd;
-            padding: 8px 12px;
-            border-radius: 8px;
-            border: 1px solid #ffc107;
-        }
-
-        .panduan-box ul {
-            margin-left: 1.2rem;
-            margin-top: 4px;
-        }
-
-        .panduan-box ul li {
-            margin-bottom: 2px;
-        }
-
         .modal {
             display: none;
             position: fixed;
@@ -667,6 +561,20 @@
             background: #5a6268;
         }
 
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
         @media (max-width: 768px) {
             .container {
                 padding: 0 0.8rem;
@@ -706,16 +614,8 @@
             .options-group {
                 gap: 8px 14px;
             }
-            .panduan-box {
-                grid-template-columns: 1fr;
-            }
             .tp-card .tp-item {
                 flex-wrap: wrap;
-            }
-            .emoji-group label {
-                font-size: 1.5rem;
-                min-width: 36px;
-                padding: 2px 4px;
             }
         }
 
@@ -740,19 +640,11 @@
             .tp-card .tp-item {
                 font-size: 0.85rem;
             }
-            .emoji-group label {
-                font-size: 1.3rem;
-                min-width: 32px;
-            }
-            .emoji-group label .emoji-label {
-                font-size: 0.5rem;
-            }
         }
     </style>
 </head>
 <body>
 
-    <!-- ===== HEADER NAV ===== -->
     <header>
         <nav class="navbar">
             <div class="nav-container">
@@ -776,7 +668,6 @@
         </nav>
     </header>
 
-    <!-- ===== MAIN ===== -->
     <div class="container">
 
         <!-- HEADER -->
@@ -784,14 +675,14 @@
             <h1 class="header-title">⚡ Eksplorasi Energi dan Perubahannya</h1>
             <p class="header-sub">
                 <i class="fas fa-calendar"></i> Semester Ganjil &nbsp;·&nbsp;
-                <i class="fas fa-clock"></i> 12 JP
+                <i class="fas fa-clock"></i> 6 JP
             </p>
             <p style="color:var(--text-light); font-size:0.95rem; max-width:600px; margin:0 auto;">
-                Ayo amati, tebak, buktikan, dan hubungkan dengan jurusanmu!
+                Temukan 1 fenomena perubahan energi, prediksi, dan buktikan!
             </p>
         </div>
 
-        <!-- ===== TP CARD ===== -->
+        <!-- TP CARD - 4 Tujuan Pembelajaran -->
         <div class="tp-card">
             <div style="font-weight:700; color:var(--primary-dark); margin-bottom:6px; font-size:1.1rem;">
                 <i class="fas fa-bullseye"></i> Tujuan Pembelajaran
@@ -820,7 +711,6 @@
             <span id="statusText">Memeriksa koneksi...</span>
         </div>
 
-        <!-- LOADING / ERROR -->
         <div id="loadingMsg" class="msg msg-loading" style="display:none;">
             <i class="fas fa-spinner fa-spin"></i> Memuat data...
         </div>
@@ -833,7 +723,6 @@
             </button>
         </div>
 
-        <!-- ===== FORM ===== -->
         <div id="formContainer">
 
             <!-- TOOLBAR -->
@@ -843,9 +732,9 @@
                 </button>
             </div>
 
-            <!-- ============================================================ -->
+            <!-- ========================================================== -->
             <!-- A. IDENTITAS -->
-            <!-- ============================================================ -->
+            <!-- ========================================================== -->
             <div class="card">
                 <h2 class="section-title"><i class="fas fa-id-card"></i> A. Identitas</h2>
                 <div class="identitas-grid">
@@ -862,211 +751,156 @@
                         </select>
                     </div>
                     <div class="identitas-item">
-                        <label>Kelompok</label>
-                        <textarea class="dynamic-textarea dynamic-textarea-sm" id="kelompok" rows="1" placeholder="Contoh: Kelompok 1" oninput="saveDraft(); autoResize(this);" disabled></textarea>
-                    </div>
-                    <div class="identitas-item">
                         <label>Tugas/Peran</label>
                         <textarea class="dynamic-textarea dynamic-textarea-sm" id="tugas" rows="1" placeholder="Contoh: Ketua" oninput="saveDraft(); autoResize(this);" disabled></textarea>
                     </div>
                 </div>
             </div>
 
-            <!-- ============================================================ -->
-            <!-- B. SEBELUM MULAI (Literasi) -->
-            <!-- ============================================================ -->
+            <!-- ========================================================== -->
+            <!-- B. AMATI - 1 FENOMENA -->
+            <!-- ========================================================== -->
             <div class="card">
-                <h2 class="section-title"><i class="fas fa-book-open"></i> B. Sebelum Mulai...</h2>
-                <div class="section-desc">
-                    <i class="fas fa-info-circle"></i>
-                    Baca dulu materi
-                    <a href="../materi-pembelajaran/s1-bab-4.html" target="_blank" style="color:var(--primary-dark); font-weight:600;">
-                        "Energi dan Perubahannya"
-                    </a>
-                    , lalu jawab pertanyaan di bawah ini dengan bahasamu sendiri.
+                <h2 class="section-title"><i class="fas fa-binoculars"></i> B. Amati</h2>
+
+                <div class="mission-box">
+                    <div>
+                        <span class="mission-icon">🔎</span>
+                        <span class="mission-title">Temukan 1 Fenomena Perubahan Energi!</span>
+                    </div>
+                    <div class="mission-desc">
+                        Amati lingkungan sekolahmu. Carilah <strong>satu peristiwa</strong> di mana terjadi perubahan energi!
+                    </div>
                 </div>
 
-                <div class="dokumentasi-instruction">
-                    <i class="fas fa-camera"></i>
-                    <strong>📸 Instruksi Dokumentasi:</strong> 
-                    Screenshot halaman materi yang sudah kamu baca → Upload ke Google Drive → Tempel link folder di bawah (kolom Link Dokumentasi di bagian D).
+                <div class="example-box">
+                    <div class="label">✅ Contoh yang benar:</div>
+                    <ul style="margin-left:1.5rem; margin-top:4px;">
+                        <li><strong>Peristiwa:</strong> Kipas angin berputar</li>
+                        <li><strong>Energi Awal → Akhir:</strong> Listrik → Gerak</li>
+                        <li><strong>Sumber:</strong> PLN</li>
+                        <li><strong>Manfaat:</strong> Menyejukkan ruangan</li>
+                    </ul>
+                    <div class="bad">
+                        <span class="label-bad">❌ BUKAN perubahan energi:</span>
+                        "Lampu" (nama benda saja), "Matahari" (sumber saja)
+                    </div>
                 </div>
 
-                <div class="table-wrap">
-                    <table>
-                        <thead>
-                            <tr><th style="width:50px;">No</th><th style="width:38%;">Pertanyaan</th><th>Jawaban</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Apa itu energi? Tulis dengan bahasamu sendiri!</td>
-                                <td><textarea class="dynamic-textarea" id="lit1" rows="2" oninput="saveDraft(); autoResize(this);"></textarea></td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Sebutkan 3 bentuk energi dan contohnya dalam kehidupan sehari-hari!</td>
-                                <td>
-                                    <textarea class="dynamic-textarea dynamic-textarea-sm" id="lit2a" rows="1" placeholder="Bentuk energi 1: ..." oninput="saveDraft(); autoResize(this);" style="margin-bottom:4px;"></textarea>
-                                    <textarea class="dynamic-textarea dynamic-textarea-sm" id="lit2b" rows="1" placeholder="Bentuk energi 2: ..." oninput="saveDraft(); autoResize(this);" style="margin-bottom:4px;"></textarea>
-                                    <textarea class="dynamic-textarea dynamic-textarea-sm" id="lit2c" rows="1" placeholder="Bentuk energi 3: ..." oninput="saveDraft(); autoResize(this);"></textarea>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Jelaskan Hukum Kekekalan Energi dengan kata-katamu sendiri!</td>
-                                <td><textarea class="dynamic-textarea" id="lit3" rows="2" oninput="saveDraft(); autoResize(this);"></textarea></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div style="margin-top:0.8rem;">
+                    <label style="font-weight:600; display:block; margin-bottom:4px;">
+                        📝 Tuliskan peristiwa yang kamu amati:
+                    </label>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th style="width:28%;">Peristiwa</th>
+                                    <th style="width:22%;">Energi Awal → Akhir</th>
+                                    <th style="width:22%;">Sumber Energi</th>
+                                    <th style="width:28%;">Manfaat</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="fenomena_nama" rows="1" placeholder="Contoh: Kipas angin berputar" oninput="saveDraft(); autoResize(this);"></textarea></td>
+                                    <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="fenomena_ubah" rows="1" placeholder="Contoh: Listrik → Gerak" oninput="saveDraft(); autoResize(this);"></textarea></td>
+                                    <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="fenomena_sumber" rows="1" placeholder="Contoh: PLN" oninput="saveDraft(); autoResize(this);"></textarea></td>
+                                    <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="fenomena_manfaat" rows="1" placeholder="Contoh: Menyejukkan ruangan" oninput="saveDraft(); autoResize(this);"></textarea></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div style="margin-top:1rem; background:#fff3e0; padding:0.8rem 1.2rem; border-radius:10px; border-left:4px solid #e65100;">
+                    <label style="font-weight:600; display:block; margin-bottom:2px;">
+                        📸 Dokumentasi Observasi
+                    </label>
+                    <div style="font-size:0.9rem; color:#555; margin-bottom:4px;">
+                        Ambil <strong>foto atau video</strong> peristiwa yang kamu amati. Upload ke Google Drive.
+                    </div>
+                    <textarea class="dynamic-textarea dynamic-textarea-sm" id="linkObservasi" rows="1" placeholder="Tempel link folder Google Drive..." oninput="saveDraft(); autoResize(this);"></textarea>
                 </div>
             </div>
 
-            <!-- ============================================================ -->
-            <!-- C. YUK, AMATI ENERGI DI SEKITAR! (Observasi) -->
-            <!-- ============================================================ -->
+            <!-- ========================================================== -->
+            <!-- C. TEBAK - PREDIKSI -->
+            <!-- ========================================================== -->
             <div class="card">
-                <h2 class="section-title"><i class="fas fa-binoculars"></i> C. Yuk, Amati Energi di Sekitar!</h2>
+                <h2 class="section-title"><i class="fas fa-brain"></i> C. Tebak</h2>
 
-                <!-- PANDUAN -->
-                <div class="section-desc" style="background:#fef9e7; border-left-color:#e67e22;">
-                    <i class="fas fa-lightbulb" style="color:#e67e22;"></i>
-                    <strong>Apa yang harus kamu lakukan?</strong>
-                    <p style="margin:6px 0 4px 0;">Amati 3 peristiwa perubahan energi di sekitarmu. Catat energi awal → akhir, sumber, dan manfaatnya!</p>
-                    <div class="panduan-box">
-                        <div class="contoh-benar">
-                            ✅ <strong>Contoh yang BENAR:</strong>
-                            <ul>
-                                <li><strong>Peristiwa:</strong> Lampu menyala</li>
-                                <li><strong>Energi awal:</strong> Listrik → <strong>Energi akhir:</strong> Cahaya + Panas</li>
-                                <li><strong>Sumber:</strong> PLN</li>
-                                <li><strong>Manfaat:</strong> Penerangan</li>
-                            </ul>
-                        </div>
-                        <div class="contoh-salah">
-                            ❌ <strong>BUKAN pengamatan energi:</strong>
-                            <ul>
-                                <li>"Lampu" (nama benda saja)</li>
-                                <li>"Matahari" (sumber saja, tidak ada perubahan)</li>
-                            </ul>
-                        </div>
+                <div class="mission-box">
+                    <div>
+                        <span class="mission-icon">🔮</span>
+                        <span class="mission-title">Buat Prediksi!</span>
                     </div>
-                    <p style="margin-top:6px; font-size:0.9rem; color:#e67e22;">
-                        <i class="fas fa-arrow-right"></i>
-                        <strong>Tips:</strong> Tuliskan <u>perubahan energi</u> yang terjadi, bukan hanya nama bendanya!
-                    </p>
-                </div>
-
-                <div class="dokumentasi-instruction">
-                    <i class="fas fa-video"></i>
-                    <strong>📸 Instruksi Dokumentasi:</strong> 
-                    Ambil <strong>foto atau video</strong> saat kamu mengamati peristiwa perubahan energi di sekitarmu.
-                    Upload semua dokumentasi ke Google Drive → Tempel link folder di bawah.
-                    <div class="contoh-dok">
-                        <i class="fas fa-lightbulb" style="color:#f39c12;"></i>
-                        <strong>Contoh:</strong> Foto lampu yang menyala, video kipas angin yang berputar, atau foto alat elektronik yang digunakan.
+                    <div class="mission-desc">
+                        Dari fenomena yang sudah kamu amati di bagian B, coba tebak apa yang akan terjadi jika dibiarkan lebih lama!
                     </div>
                 </div>
 
-                <div class="table-wrap">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th style="width:40px;">No</th>
-                                <th style="width:25%;">Peristiwa</th>
-                                <th style="width:20%;">Energi Awal → Akhir</th>
-                                <th style="width:18%;">Sumber Energi</th>
-                                <th style="width:20%;">Manfaat</th>
-                            </tr>
-                        </thead>
-                        <tbody id="energiBody">
-                            <!-- JS generate 3 baris -->
-                        </tbody>
-                    </table>
-                </div>
-                <div style="margin-top:8px; display:flex; gap:8px; flex-wrap:wrap;">
-                    <button class="btn-row btn-add" onclick="tambahEnergi()"><i class="fas fa-plus"></i> Tambah</button>
-                    <button class="btn-row btn-remove" id="hapusEnergiBtn" onclick="hapusEnergi()" disabled><i class="fas fa-minus"></i> Hapus</button>
-                </div>
-
-                <!-- ===== LINK DOKUMENTASI OBSERVASI - BAGIAN C ===== -->
-                <div class="folder-link-box">
-                    <span class="label-link"><i class="fas fa-folder-open"></i> 📁 Link Dokumentasi (Foto/Video) - Bagian C</span>
-                    <div class="sub-text">Tempel link folder dokumentasi hasil observasi energi:</div>
-                    <input type="text" class="dynamic-textarea dynamic-textarea-sm" id="link_screenshot_c" placeholder="https://drive.google.com/drive/folders/xxx" oninput="saveDraft(); autoResize(this);">
-                </div>
-
-                <!-- PILIH & PREDIKSI -->
-                <div style="margin-top:1.5rem; background:#f9f9f9; padding:1rem 1.5rem; border-radius:12px;">
-                    <h4 style="color:var(--primary-dark); margin-bottom:0.5rem;"><i class="fas fa-hand-pointer" style="color:var(--primary);"></i> Pilih & Prediksi</h4>
-                    <div style="margin-bottom:0.8rem;">
-                        <label style="font-weight:600; display:block; margin-bottom:4px;">Peristiwa pilihan saya (pilih salah satu dari tabel di atas)</label>
-                        <textarea class="dynamic-textarea dynamic-textarea-sm" id="predPilihan" rows="1" placeholder="Tulis peristiwa yang kamu pilih..." oninput="saveDraft(); autoResize(this);"></textarea>
-                    </div>
-                    <div style="margin-bottom:0.8rem;">
-                        <label style="font-weight:600; display:block; margin-bottom:4px;">Menurut saya, jika diamati lebih lama, yang akan terjadi adalah...</label>
-                        <textarea class="dynamic-textarea" id="predHasil" rows="2" placeholder="Tulis prediksimu..." oninput="saveDraft(); autoResize(this);"></textarea>
-                    </div>
-                    <div style="margin-bottom:0.5rem;">
-                        <label style="font-weight:600; display:block; margin-bottom:4px;">Saya berpendapat demikian karena...</label>
-                        <textarea class="dynamic-textarea" id="predAlasan" rows="2" placeholder="Tulis alasannya..." oninput="saveDraft(); autoResize(this);"></textarea>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ============================================================ -->
-            <!-- D. BUKTIKAN! (Pembuktian) -->
-            <!-- ============================================================ -->
-            <div class="card">
-                <h2 class="section-title"><i class="fas fa-flask"></i> D. Buktikan!</h2>
-                <div class="section-desc">
-                    <i class="fas fa-vial"></i>
-                    <strong>Uji prediksimu!</strong> Rancang dan lakukan pembuktian sederhana. Gunakan apa yang ada di sekitarmu!
-                </div>
-
-                <div class="dokumentasi-instruction">
-                    <i class="fas fa-video"></i>
-                    <strong>📸 Instruksi Dokumentasi:</strong> 
-                    Ambil <strong>foto atau video</strong> saat kamu melakukan pembuktian/eksperimen. 
-                    Dokumentasikan setiap tahapan (persiapan, proses, hasil).
-                    Upload semua dokumentasi ke Google Drive → Tempel link folder di bawah.
-                    <div class="contoh-dok">
-                        <i class="fas fa-lightbulb" style="color:#f39c12;"></i>
-                        <strong>Contoh:</strong> Foto alat dan bahan, video proses pembuktian, foto hasil akhir.
-                    </div>
-                </div>
-
-                <!-- Prediksi yang akan dibuktikan -->
                 <div style="margin-bottom:1rem;">
-                    <label style="font-weight:600; display:block; margin-bottom:4px;">Prediksi yang akan dibuktikan</label>
-                    <textarea class="dynamic-textarea" id="buktiPrediksi" rows="2" placeholder="Tulis ulang prediksimu..." oninput="saveDraft(); autoResize(this);"></textarea>
+                    <label style="font-weight:600; display:block; margin-bottom:4px;">
+                        ❓ Menurut saya, jika diamati lebih lama, yang akan terjadi adalah...
+                    </label>
+                    <textarea class="dynamic-textarea" id="predHasil" rows="2" placeholder="Tulis prediksimu..." oninput="saveDraft(); autoResize(this);"></textarea>
+                </div>
+
+                <div style="margin-bottom:0.5rem;">
+                    <label style="font-weight:600; display:block; margin-bottom:4px;">
+                        🧠 Saya berpendapat demikian karena...
+                    </label>
+                    <textarea class="dynamic-textarea" id="predAlasan" rows="2" placeholder="Tulis alasannya..." oninput="saveDraft(); autoResize(this);"></textarea>
+                </div>
+            </div>
+
+            <!-- ========================================================== -->
+            <!-- D. BUKTIKAN - PEMBUKTIAN -->
+            <!-- ========================================================== -->
+            <div class="card">
+                <h2 class="section-title"><i class="fas fa-flask"></i> D. Buktikan</h2>
+
+                <div class="mission-box">
+                    <div>
+                        <span class="mission-icon">🔬</span>
+                        <span class="mission-title">Rancang & Lakukan Pembuktian!</span>
+                    </div>
+                    <div class="mission-desc">
+                        Buktikan prediksimu dengan eksperimen sederhana! Gunakan alat di sekitarmu.
+                    </div>
+                </div>
+
+                <!-- Prediksi yang dibuktikan -->
+                <div style="margin-bottom:1rem;">
+                    <label style="font-weight:600; display:block; margin-bottom:4px;">
+                        📋 Prediksi yang akan dibuktikan (tulis ulang prediksimu dari bagian C):
+                    </label>
+                    <textarea class="dynamic-textarea dynamic-textarea-sm" id="buktiPrediksi" rows="1" placeholder="Tulis ulang prediksimu..." oninput="saveDraft(); autoResize(this);"></textarea>
                 </div>
 
                 <!-- Rencana -->
                 <div style="margin-bottom:1rem;">
-                    <label style="font-weight:600; display:block; margin-bottom:4px;">Rencana pembuktian</label>
+                    <label style="font-weight:600; display:block; margin-bottom:4px;">
+                        📝 Rencana pembuktian:
+                    </label>
                     <textarea class="dynamic-textarea" id="buktiRencana" rows="2" placeholder="Jelaskan caramu membuktikan..." oninput="saveDraft(); autoResize(this);"></textarea>
                 </div>
 
-                <!-- Langkah -->
+                <!-- TABEL ALAT DAN BAHAN -->
                 <div style="margin-bottom:1rem;">
-                    <label style="font-weight:600; display:block; margin-bottom:4px;">Langkah-langkah</label>
-                    <div id="langkahContainer">
-                        <!-- JS generate -->
-                    </div>
-                    <div style="margin-top:6px; display:flex; gap:8px; flex-wrap:wrap;">
-                        <button class="btn-row btn-add" onclick="tambahLangkah()"><i class="fas fa-plus"></i> Tambah</button>
-                        <button class="btn-row btn-remove" id="hapusLangkahBtn" onclick="hapusLangkah()" disabled><i class="fas fa-minus"></i> Hapus</button>
-                    </div>
-                </div>
-
-                <!-- Alat -->
-                <div style="margin-bottom:1rem;">
-                    <label style="font-weight:600; display:block; margin-bottom:4px;">Alat dan Bahan</label>
+                    <label style="font-weight:600; display:block; margin-bottom:4px;">
+                        🛠️ Alat dan Bahan
+                    </label>
                     <div class="table-wrap">
                         <table>
                             <thead>
-                                <tr><th style="width:35%;">Nama Alat/Bahan</th><th style="width:20%;">Jumlah</th><th style="width:45%;">Kegunaan</th></tr>
+                                <tr>
+                                    <th style="width:8%;">No</th>
+                                    <th style="width:40%;">Nama Alat/Bahan</th>
+                                    <th style="width:22%;">Jumlah</th>
+                                    <th style="width:30%;">Kegunaan</th>
+                                </tr>
                             </thead>
                             <tbody id="alatBody">
                                 <!-- JS generate 2 baris -->
@@ -1079,14 +913,46 @@
                     </div>
                 </div>
 
-                <!-- Hasil -->
+                <!-- TABEL LANGKAH-LANGKAH -->
                 <div style="margin-bottom:1rem;">
-                    <label style="font-weight:600; display:block; margin-bottom:4px;">Hasil pengamatan</label>
+                    <label style="font-weight:600; display:block; margin-bottom:4px;">
+                        📋 Langkah-langkah
+                    </label>
                     <div class="table-wrap">
                         <table>
-                            <thead><tr><th style="width:30%;">Waktu</th><th>Yang Terjadi</th></tr></thead>
+                            <thead>
+                                <tr>
+                                    <th style="width:8%;">No</th>
+                                    <th style="width:92%;">Langkah</th>
+                                </tr>
+                            </thead>
+                            <tbody id="langkahBody">
+                                <!-- JS generate 2 baris -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="margin-top:6px; display:flex; gap:8px; flex-wrap:wrap;">
+                        <button class="btn-row btn-add" onclick="tambahLangkah()"><i class="fas fa-plus"></i> Tambah</button>
+                        <button class="btn-row btn-remove" id="hapusLangkahBtn" onclick="hapusLangkah()" disabled><i class="fas fa-minus"></i> Hapus</button>
+                    </div>
+                </div>
+
+                <!-- TABEL HASIL PENGAMATAN -->
+                <div style="margin-bottom:1rem;">
+                    <label style="font-weight:600; display:block; margin-bottom:4px;">
+                        📊 Hasil Pengamatan
+                    </label>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th style="width:8%;">No</th>
+                                    <th style="width:30%;">Waktu</th>
+                                    <th style="width:62%;">Yang Terjadi</th>
+                                </tr>
+                            </thead>
                             <tbody id="hasilBody">
-                                <!-- JS generate -->
+                                <!-- JS generate 2 baris -->
                             </tbody>
                         </table>
                     </div>
@@ -1096,25 +962,15 @@
                     </div>
                 </div>
 
-                <!-- ===== LINK DOKUMENTASI GOOGLE DRIVE ===== -->
-                <div style="margin-bottom:1.5rem; background:#e3f2fd; padding:1rem 1.5rem; border-radius:12px; border-left:5px solid #1976d2;">
-                    <label style="font-weight:600; display:block; margin-bottom:4px; font-size:1rem;">
-                        📁 Link Dokumentasi (Google Drive) - Kumpulkan Semua Dokumentasi di Sini
+                <!-- Dokumentasi -->
+                <div style="margin-bottom:1rem; background:#e3f2fd; padding:0.8rem 1.2rem; border-radius:10px; border-left:5px solid #1976d2;">
+                    <label style="font-weight:600; display:block; margin-bottom:2px;">
+                        📸 Dokumentasi Pembuktian
                     </label>
-                    <div style="margin-bottom:6px; font-size:0.9rem; color:#555; background:#fff; padding:6px 12px; border-radius:6px;">
-                        <strong>💡 Panduan:</strong>
-                        <ul style="margin-left:1.5rem; margin-top:2px;">
-                            <li>Kumpulkan semua dokumentasi (screenshot materi, foto/video observasi, foto/video pembuktian).</li>
-                            <li>Upload semua dokumentasi ke <strong>Google Drive</strong> dalam satu folder.</li>
-                            <li>Klik kanan folder → <strong>"Bagikan"</strong> → ubah akses menjadi <strong>"Siapa saja dengan link dapat melihat"</strong>.</li>
-                            <li>Salin link folder dan tempel di kolom di bawah ini.</li>
-                        </ul>
-                        <div style="margin-top:4px; color:#1976d2; background:#e3f2fd; padding:4px 10px; border-radius:4px;">
-                            <strong>📌 Contoh:</strong> 
-                            <em>"https://drive.google.com/drive/folders/xxxxxxxxxxxx"</em>
-                        </div>
+                    <div style="font-size:0.9rem; color:#555; margin-bottom:4px;">
+                        Ambil foto/video setiap tahapan pembuktian. Upload ke Google Drive.
                     </div>
-                    <textarea class="dynamic-textarea dynamic-textarea-sm" id="linkDokumentasi" rows="1" placeholder="Tempel link folder Google Drive di sini..." oninput="saveDraft(); autoResize(this);"></textarea>
+                    <textarea class="dynamic-textarea dynamic-textarea-sm" id="linkPembuktian" rows="1" placeholder="Tempel link folder Google Drive..." oninput="saveDraft(); autoResize(this);"></textarea>
                 </div>
 
                 <!-- Analisis -->
@@ -1124,35 +980,33 @@
                     <div style="margin-bottom:0.8rem;">
                         <label style="font-weight:600; display:block; margin-bottom:4px;">Apakah hasilnya sesuai prediksi?</label>
                         <div class="options-group">
-                            <label><input type="radio" name="kesesuaian" value="sesuai" onchange="saveDraft();" /> Sesuai — prediksi tepat!</label>
-                            <label><input type="radio" name="kesesuaian" value="tidak" onchange="saveDraft();" /> Tidak sesuai — prediksi meleset</label>
-                            <label><input type="radio" name="kesesuaian" value="sebagian" onchange="saveDraft();" /> Sebagian sesuai</label>
+                            <label><input type="radio" name="kesesuaian" value="sesuai" onchange="saveDraft();" /> ✅ Sesuai — prediksi tepat!</label>
+                            <label><input type="radio" name="kesesuaian" value="tidak" onchange="saveDraft();" /> ❌ Tidak sesuai — prediksi meleset</label>
+                            <label><input type="radio" name="kesesuaian" value="sebagian" onchange="saveDraft();" /> 🔄 Sebagian sesuai</label>
                         </div>
                     </div>
+
                     <div style="margin-bottom:0.8rem;">
-                        <label style="font-weight:600; display:block; margin-bottom:4px;">Penjelasan</label>
+                        <label style="font-weight:600; display:block; margin-bottom:4px;">💬 Penjelasan</label>
                         <textarea class="dynamic-textarea" id="buktiPenjelasan" rows="2" placeholder="Mengapa bisa demikian?" oninput="saveDraft(); autoResize(this);"></textarea>
                     </div>
+
                     <div>
-                        <label style="font-weight:600; display:block; margin-bottom:4px;">Kesimpulan</label>
-                        <textarea class="dynamic-textarea" id="buktiKesimpulan" rows="2" placeholder="Apa yang kamu pelajari?" oninput="saveDraft(); autoResize(this);"></textarea>
+                        <label style="font-weight:600; display:block; margin-bottom:4px;">🎯 Kesimpulan</label>
+                        <textarea class="dynamic-textarea" id="buktiKesimpulan" rows="2" placeholder="Apa yang kamu pelajari dari pembuktian ini?" oninput="saveDraft(); autoResize(this);"></textarea>
                     </div>
                 </div>
             </div>
 
-            <!-- ============================================================ -->
-            <!-- E. HUBUNGKAN DENGAN JURUSANMU -->
-            <!-- ============================================================ -->
+            <!-- ========================================================== -->
+            <!-- E. HUBUNGKAN DENGAN JURUSAN -->
+            <!-- ========================================================== -->
             <div class="card">
-                <h2 class="section-title"><i class="fas fa-briefcase"></i> E. Hubungkan dengan Jurusanmu</h2>
+                <h2 class="section-title"><i class="fas fa-briefcase"></i> E. Hubungkan dengan Jurusan</h2>
 
                 <div class="section-desc" style="background:#fff3e0; border-left-color:#e65100;">
                     <i class="fas fa-lightbulb" style="color:#e65100;"></i>
-                    <strong>Panduan mengisi:</strong>
-                    <p style="margin:6px 0 4px 0;">
-                        Pikirkan bagaimana energi berperan dalam program keahlianmu.
-                        Jawablah setiap pertanyaan di bawah ini dengan bahasamu sendiri!
-                    </p>
+                    Pikirkan bagaimana energi berperan dalam program keahlianmu. Jawab dengan bahasamu sendiri!
                 </div>
 
                 <div style="margin-bottom:1rem;">
@@ -1168,238 +1022,92 @@
                     </div>
                 </div>
 
-                <div class="table-wrap">
-                    <table>
-                        <thead><tr><th style="width:30%;">Aspek</th><th style="width:70%;">Penggunaan Energi di Jurusan</th></tr></thead>
-                        <tbody>
-                            <tr>
-                                <td>Sumber energi yang digunakan</td>
-                                <td>
-                                    <label style="font-weight:500; display:block; margin-bottom:4px; color:#1565c0;">Apa saja sumber energi yang digunakan dalam jurusanmu? Apakah berasal dari listrik, bahan bakar, atau matahari?</label>
-                                    <textarea class="dynamic-textarea dynamic-textarea-sm" id="hubSumber" rows="1" placeholder="Tulis jawabanmu..." oninput="saveDraft(); autoResize(this);"></textarea>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Peralatan yang membutuhkan energi</td>
-                                <td>
-                                    <label style="font-weight:500; display:block; margin-bottom:4px; color:#1565c0;">Peralatan apa saja yang digunakan dalam jurusanmu yang membutuhkan energi? Sebutkan dan jelaskan fungsinya!</label>
-                                    <textarea class="dynamic-textarea dynamic-textarea-sm" id="hubAlat" rows="1" placeholder="Tulis jawabanmu..." oninput="saveDraft(); autoResize(this);"></textarea>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Proses produksi yang memerlukan energi</td>
-                                <td>
-                                    <label style="font-weight:500; display:block; margin-bottom:4px; color:#1565c0;">Bagaimana proses produksi di jurusanmu menggunakan energi? Jelaskan tahapan yang memerlukan energi!</label>
-                                    <textarea class="dynamic-textarea dynamic-textarea-sm" id="hubProses" rows="1" placeholder="Tulis jawabanmu..." oninput="saveDraft(); autoResize(this);"></textarea>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Produk/jasa yang dihasilkan</td>
-                                <td>
-                                    <label style="font-weight:500; display:block; margin-bottom:4px; color:#1565c0;">Apa produk atau jasa yang dihasilkan jurusanmu? Apakah dalam prosesnya memerlukan energi yang besar?</label>
-                                    <textarea class="dynamic-textarea dynamic-textarea-sm" id="hubProduk" rows="1" placeholder="Tulis jawabanmu..." oninput="saveDraft(); autoResize(this);"></textarea>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div style="margin-bottom:1rem;">
+                    <label style="font-weight:600; display:block; margin-bottom:4px;">
+                        1. Sumber energi apa saja yang digunakan dalam jurusanmu?
+                    </label>
+                    <div style="font-size:0.9rem; color:#555; margin-bottom:4px;">
+                        Apakah berasal dari listrik, bahan bakar, atau sumber lainnya?
+                    </div>
+                    <textarea class="dynamic-textarea" id="hubSumber" rows="2" placeholder="Tulis jawabanmu..." oninput="saveDraft(); autoResize(this);"></textarea>
                 </div>
 
-                <!-- Masalah & Solusi -->
-                <div style="margin-top:1.5rem; background:#f0f7f0; padding:1rem 1.5rem; border-radius:12px; border-left:5px solid var(--primary-dark);">
-                    <div style="margin-bottom:0.8rem;">
-                        <label style="font-weight:600; display:block; margin-bottom:4px;">🔋 Masalah pemborosan energi yang saya lihat di jurusan</label>
-                        <div style="margin-bottom:4px; font-size:0.9rem; color:#555;">
-                            <strong>💡 Panduan:</strong> Apakah ada alat/listrik yang dibiarkan menyala? Apakah ada energi yang terbuang? Apakah ada penggunaan energi yang berlebihan?
-                        </div>
-                        <textarea class="dynamic-textarea" id="solusiMasalah" rows="1" placeholder="Tulis masalah yang kamu lihat..." oninput="saveDraft(); autoResize(this);"></textarea>
+                <div style="margin-bottom:1rem;">
+                    <label style="font-weight:600; display:block; margin-bottom:4px;">
+                        2. Peralatan apa saja yang digunakan dalam jurusanmu yang membutuhkan energi? Sebutkan dan jelaskan fungsinya!
+                    </label>
+                    <textarea class="dynamic-textarea" id="hubAlat" rows="2" placeholder="Tulis jawabanmu..." oninput="saveDraft(); autoResize(this);"></textarea>
+                </div>
+
+                <div style="margin-bottom:1rem;">
+                    <label style="font-weight:600; display:block; margin-bottom:4px;">
+                        3. Bagaimana proses produksi di jurusanmu menggunakan energi? Jelaskan tahapan yang memerlukan energi!
+                    </label>
+                    <textarea class="dynamic-textarea" id="hubProses" rows="2" placeholder="Tulis jawabanmu..." oninput="saveDraft(); autoResize(this);"></textarea>
+                </div>
+
+                <div style="margin-bottom:1rem;">
+                    <label style="font-weight:600; display:block; margin-bottom:4px;">
+                        4. Apa produk atau jasa yang dihasilkan jurusanmu? Apakah dalam prosesnya memerlukan energi yang besar?
+                    </label>
+                    <textarea class="dynamic-textarea" id="hubProduk" rows="2" placeholder="Tulis jawabanmu..." oninput="saveDraft(); autoResize(this);"></textarea>
+                </div>
+
+                <div style="margin-bottom:1rem;">
+                    <label style="font-weight:600; display:block; margin-bottom:4px;">
+                        5. Menurutmu, adakah pemborosan energi yang terjadi di jurusanmu? Berikan contoh!
+                    </label>
+                    <textarea class="dynamic-textarea" id="hubBoros" rows="2" placeholder="Tulis jawabanmu..." oninput="saveDraft(); autoResize(this);"></textarea>
+                </div>
+
+                <div>
+                    <label style="font-weight:600; display:block; margin-bottom:4px;">
+                        6. Berikan satu ide hemat energi sederhana untuk jurusanmu!
+                    </label>
+                    <div style="font-size:0.9rem; color:#555; margin-bottom:4px;">
+                        Misalnya: mematikan alat yang tidak terpakai, mengganti dengan alat yang lebih efisien, atau memanfaatkan energi terbarukan.
                     </div>
-                    <div style="margin-bottom:0.8rem;">
-                        <label style="font-weight:600; display:block; margin-bottom:4px;">💡 Ide hemat energi sederhana</label>
-                        <div style="margin-bottom:4px; font-size:0.9rem; color:#555;">
-                            <strong>💡 Panduan:</strong> Bagaimana cara menghemat energi? Matikan alat yang tidak dipakai? Ganti dengan yang lebih efisien? Gunakan energi terbarukan?
-                        </div>
-                        <textarea class="dynamic-textarea" id="solusiIde" rows="1" placeholder="Tulis ide hemat energimu..." oninput="saveDraft(); autoResize(this);"></textarea>
-                    </div>
-                    <div>
-                        <label style="font-weight:600; display:block; margin-bottom:4px;">☀️ Potensi energi terbarukan di sekitar jurusan</label>
-                        <div style="margin-bottom:4px; font-size:0.9rem; color:#555;">
-                            <strong>💡 Panduan:</strong> Apakah ada sinar matahari, angin, atau air yang bisa dimanfaatkan sebagai sumber energi alternatif di sekitar jurusanmu?
-                        </div>
-                        <textarea class="dynamic-textarea" id="solusiTerbarukan" rows="1" placeholder="Tulis potensi energi terbarukan..." oninput="saveDraft(); autoResize(this);"></textarea>
-                    </div>
+                    <textarea class="dynamic-textarea" id="hubHemat" rows="2" placeholder="Tulis ide hemat energimu..." oninput="saveDraft(); autoResize(this);"></textarea>
                 </div>
             </div>
 
-            <!-- ============================================================ -->
+            <!-- ========================================================== -->
             <!-- F. REFLEKSI -->
-            <!-- ============================================================ -->
+            <!-- ========================================================== -->
             <div class="card">
                 <h2 class="section-title"><i class="fas fa-smile"></i> F. Refleksi</h2>
+
                 <div class="section-desc">
                     <i class="fas fa-comment"></i>
-                    Tulis dengan jujur, ya! Tidak ada jawaban benar atau salah.
+                    Tulis dengan jujur, ya! Tidak ada jawaban benar atau salah. Ceritakan pengalaman belajarmu hari ini.
                 </div>
 
                 <div style="margin-bottom:0.8rem;">
-                    <label style="font-weight:600; display:block; margin-bottom:4px;">1 hal paling menarik tentang energi</label>
-                    <textarea class="dynamic-textarea" id="ref1" rows="1" oninput="saveDraft(); autoResize(this);"></textarea>
-                </div>
-                <div style="margin-bottom:0.8rem;">
-                    <label style="font-weight:600; display:block; margin-bottom:4px;">1 kebiasaan boros energi yang saya sadari</label>
-                    <textarea class="dynamic-textarea" id="ref2" rows="1" oninput="saveDraft(); autoResize(this);"></textarea>
-                </div>
-                <div style="margin-bottom:0.5rem;">
-                    <label style="font-weight:600; display:block; margin-bottom:4px;">1 rencana hemat energi yang akan saya mulai</label>
-                    <textarea class="dynamic-textarea" id="ref3" rows="1" oninput="saveDraft(); autoResize(this);"></textarea>
-                </div>
-            </div>
-
-            <!-- ============================================================ -->
-            <!-- G. REFLEKSI KELOMPOK (EMOJI + CERITA) -->
-            <!-- ============================================================ -->
-            <div class="card">
-                <h2 class="section-title"><i class="fas fa-star"></i> G. Refleksi Kelompok</h2>
-                <div class="section-desc">
-                    <i class="fas fa-hand-peace"></i>
-                    Pilih emoji yang paling menggambarkan kelompokmu! Lalu tulis cerita singkatnya.
-                </div>
-
-                <div class="emoji-grid">
-                    <!-- 1. Kerjasama -->
-                    <div class="emoji-card">
-                        <div class="emoji-title">🤝 Kerjasama</div>
-                        <div class="emoji-group">
-                            <label>
-                                <input type="radio" name="g_kerjasama" value="5" onchange="saveDraft();">
-                                😊
-                                <span class="emoji-label">Sangat Baik</span>
-                            </label>
-                            <label>
-                                <input type="radio" name="g_kerjasama" value="4" onchange="saveDraft();">
-                                🙂
-                                <span class="emoji-label">Baik</span>
-                            </label>
-                            <label>
-                                <input type="radio" name="g_kerjasama" value="3" onchange="saveDraft();" checked>
-                                😐
-                                <span class="emoji-label">Cukup</span>
-                            </label>
-                            <label>
-                                <input type="radio" name="g_kerjasama" value="2" onchange="saveDraft();">
-                                😕
-                                <span class="emoji-label">Kurang</span>
-                            </label>
-                            <label>
-                                <input type="radio" name="g_kerjasama" value="1" onchange="saveDraft();">
-                                😞
-                                <span class="emoji-label">Perlu Perbaikan</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- 2. Kontribusi -->
-                    <div class="emoji-card">
-                        <div class="emoji-title">📊 Kontribusi</div>
-                        <div class="emoji-group">
-                            <label>
-                                <input type="radio" name="g_kontribusi" value="5" onchange="saveDraft();">
-                                😊
-                                <span class="emoji-label">Sangat Baik</span>
-                            </label>
-                            <label>
-                                <input type="radio" name="g_kontribusi" value="4" onchange="saveDraft();">
-                                🙂
-                                <span class="emoji-label">Baik</span>
-                            </label>
-                            <label>
-                                <input type="radio" name="g_kontribusi" value="3" onchange="saveDraft();" checked>
-                                😐
-                                <span class="emoji-label">Cukup</span>
-                            </label>
-                            <label>
-                                <input type="radio" name="g_kontribusi" value="2" onchange="saveDraft();">
-                                😕
-                                <span class="emoji-label">Kurang</span>
-                            </label>
-                            <label>
-                                <input type="radio" name="g_kontribusi" value="1" onchange="saveDraft();">
-                                😞
-                                <span class="emoji-label">Perlu Perbaikan</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- 3. Tepat Waktu -->
-                    <div class="emoji-card">
-                        <div class="emoji-title">⏰ Tepat Waktu</div>
-                        <div class="emoji-group">
-                            <label>
-                                <input type="radio" name="g_waktu" value="5" onchange="saveDraft();">
-                                😊
-                                <span class="emoji-label">Sangat Baik</span>
-                            </label>
-                            <label>
-                                <input type="radio" name="g_waktu" value="4" onchange="saveDraft();">
-                                🙂
-                                <span class="emoji-label">Baik</span>
-                            </label>
-                            <label>
-                                <input type="radio" name="g_waktu" value="3" onchange="saveDraft();" checked>
-                                😐
-                                <span class="emoji-label">Cukup</span>
-                            </label>
-                            <label>
-                                <input type="radio" name="g_waktu" value="2" onchange="saveDraft();">
-                                😕
-                                <span class="emoji-label">Kurang</span>
-                            </label>
-                            <label>
-                                <input type="radio" name="g_waktu" value="1" onchange="saveDraft();">
-                                😞
-                                <span class="emoji-label">Perlu Perbaikan</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- 4. Kualitas Hasil -->
-                    <div class="emoji-card">
-                        <div class="emoji-title">💡 Kualitas Hasil</div>
-                        <div class="emoji-group">
-                            <label>
-                                <input type="radio" name="g_kualitas" value="5" onchange="saveDraft();">
-                                😊
-                                <span class="emoji-label">Sangat Baik</span>
-                            </label>
-                            <label>
-                                <input type="radio" name="g_kualitas" value="4" onchange="saveDraft();">
-                                🙂
-                                <span class="emoji-label">Baik</span>
-                            </label>
-                            <label>
-                                <input type="radio" name="g_kualitas" value="3" onchange="saveDraft();" checked>
-                                😐
-                                <span class="emoji-label">Cukup</span>
-                            </label>
-                            <label>
-                                <input type="radio" name="g_kualitas" value="2" onchange="saveDraft();">
-                                😕
-                                <span class="emoji-label">Kurang</span>
-                            </label>
-                            <label>
-                                <input type="radio" name="g_kualitas" value="1" onchange="saveDraft();">
-                                😞
-                                <span class="emoji-label">Perlu Perbaikan</span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Cerita Kelompok -->
-                <div style="margin-top:0.8rem;">
                     <label style="font-weight:600; display:block; margin-bottom:4px;">
-                        📝 Ceritakan pengalaman kerjamu dalam kelompok ini (1-2 kalimat):
+                        1. Apa hal paling menarik yang kamu pelajari tentang energi hari ini?
                     </label>
-                    <textarea class="dynamic-textarea" id="refleksiCerita" rows="2" placeholder="Contoh: Kami bekerja sama dengan baik, semua saling membantu menyelesaikan tugas..." oninput="saveDraft(); autoResize(this);"></textarea>
+                    <textarea class="dynamic-textarea" id="ref1" rows="2" placeholder="Tulis jawabanmu..." oninput="saveDraft(); autoResize(this);"></textarea>
+                </div>
+
+                <div style="margin-bottom:0.8rem;">
+                    <label style="font-weight:600; display:block; margin-bottom:4px;">
+                        2. Apa kesulitan yang kamu alami saat mengerjakan aktivitas ini?
+                    </label>
+                    <textarea class="dynamic-textarea" id="ref2" rows="2" placeholder="Tulis jawabanmu..." oninput="saveDraft(); autoResize(this);"></textarea>
+                </div>
+
+                <div style="margin-bottom:0.8rem;">
+                    <label style="font-weight:600; display:block; margin-bottom:4px;">
+                        3. Bagaimana perasaanmu setelah berhasil menyelesaikan pembuktian ini?
+                    </label>
+                    <textarea class="dynamic-textarea" id="ref3" rows="2" placeholder="Tulis jawabanmu..." oninput="saveDraft(); autoResize(this);"></textarea>
+                </div>
+
+                <div>
+                    <label style="font-weight:600; display:block; margin-bottom:4px;">
+                        4. Apa yang akan kamu lakukan berbeda jika mengerjakan aktivitas ini lagi?
+                    </label>
+                    <textarea class="dynamic-textarea" id="ref4" rows="2" placeholder="Tulis jawabanmu..." oninput="saveDraft(); autoResize(this);"></textarea>
                 </div>
             </div>
 
@@ -1464,7 +1172,7 @@
         // ================================================================
         const URL_DATA_SISWA = 'https://script.google.com/macros/s/AKfycbxZMS_o6xWMAQAkjBzzEMR9tJmHOnHCX13KJX2xZMn7WIr-A9pwVK_3DDHnMg7y_rD29Q/exec';
         const URL_PEREKAPAN = 'https://script.google.com/macros/s/AKfycbxyGnBMWRIQKRtHa3ogqvT_66Tt3gTEcxZ7dsPPnob3tsVU9IuPWTEpxWH7mGX7YPZj/exec';
-        const STORAGE_KEY = 'ipas_aktivitas4_draft_v5';
+        const STORAGE_KEY = 'ipas_aktivitas4_draft_v7';
         const AKTIVITAS_NAMA = 'AKTIVITAS 4 - EKSPLORASI ENERGI';
         const SHEET_NAME = 'data_aktivitas';
 
@@ -1495,38 +1203,13 @@
         // INISIALISASI TABEL
         // ================================================================
         function initTables() {
-            // Energi: 3 baris
-            const energiBody = document.getElementById('energiBody');
-            energiBody.innerHTML = '';
-            for (let i = 1; i <= 3; i++) {
-                energiBody.innerHTML += `
-                    <tr>
-                        <td>${i}</td>
-                        <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="energi_${i}_nama" rows="1" placeholder="Contoh: Lampu menyala" oninput="saveDraft(); autoResize(this);"></textarea></td>
-                        <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="energi_${i}_ubah" rows="1" placeholder="Contoh: Listrik → Cahaya+Panas" oninput="saveDraft(); autoResize(this);"></textarea></td>
-                        <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="energi_${i}_sumber" rows="1" placeholder="Contoh: PLN" oninput="saveDraft(); autoResize(this);"></textarea></td>
-                        <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="energi_${i}_manfaat" rows="1" placeholder="Contoh: Penerangan" oninput="saveDraft(); autoResize(this);"></textarea></td>
-                    </tr>
-                `;
-            }
-            document.getElementById('hapusEnergiBtn').disabled = true;
-
-            // Langkah: 1 baris
-            const langkahContainer = document.getElementById('langkahContainer');
-            langkahContainer.innerHTML = `
-                <div style="display:flex; gap:8px; align-items:center; margin-bottom:4px;">
-                    <span style="font-weight:600; min-width:24px;">1.</span>
-                    <textarea class="dynamic-textarea dynamic-textarea-sm" id="langkah_1" rows="1" placeholder="Tulis langkah..." oninput="saveDraft(); autoResize(this);" style="flex:1;"></textarea>
-                </div>
-            `;
-            document.getElementById('hapusLangkahBtn').disabled = true;
-
-            // Alat: 2 baris
+            // Alat dan Bahan: 2 baris
             const alatBody = document.getElementById('alatBody');
             alatBody.innerHTML = '';
             for (let i = 1; i <= 2; i++) {
                 alatBody.innerHTML += `
                     <tr>
+                        <td style="text-align:center;">${i}</td>
                         <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="alat_${i}_nama" rows="1" placeholder="Nama alat/bahan..." oninput="saveDraft(); autoResize(this);"></textarea></td>
                         <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="alat_${i}_jumlah" rows="1" placeholder="Jumlah..." oninput="saveDraft(); autoResize(this);"></textarea></td>
                         <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="alat_${i}_kegunaan" rows="1" placeholder="Kegunaan..." oninput="saveDraft(); autoResize(this);"></textarea></td>
@@ -1535,109 +1218,45 @@
             }
             document.getElementById('hapusAlatBtn').disabled = true;
 
-            // Hasil: 1 baris
+            // Langkah-langkah: 2 baris
+            const langkahBody = document.getElementById('langkahBody');
+            langkahBody.innerHTML = '';
+            for (let i = 1; i <= 2; i++) {
+                langkahBody.innerHTML += `
+                    <tr>
+                        <td style="text-align:center;">${i}</td>
+                        <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="langkah_${i}" rows="1" placeholder="Tulis langkah..." oninput="saveDraft(); autoResize(this);"></textarea></td>
+                    </tr>
+                `;
+            }
+            document.getElementById('hapusLangkahBtn').disabled = true;
+
+            // Hasil Pengamatan: 2 baris
             const hasilBody = document.getElementById('hasilBody');
-            hasilBody.innerHTML = `
-                <tr>
-                    <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="hasil_1_waktu" rows="1" placeholder="Waktu..." oninput="saveDraft(); autoResize(this);"></textarea></td>
-                    <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="hasil_1_isi" rows="1" placeholder="Apa yang terjadi?" oninput="saveDraft(); autoResize(this);"></textarea></td>
-                </tr>
-            `;
+            hasilBody.innerHTML = '';
+            for (let i = 1; i <= 2; i++) {
+                hasilBody.innerHTML += `
+                    <tr>
+                        <td style="text-align:center;">${i}</td>
+                        <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="hasil_${i}_waktu" rows="1" placeholder="Waktu..." oninput="saveDraft(); autoResize(this);"></textarea></td>
+                        <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="hasil_${i}_isi" rows="1" placeholder="Apa yang terjadi?" oninput="saveDraft(); autoResize(this);"></textarea></td>
+                    </tr>
+                `;
+            }
             document.getElementById('hapusHasilBtn').disabled = true;
 
             refreshAutoResize();
         }
 
         // ================================================================
-        // TAMBAH / HAPUS BARIS
+        // TAMBAH / HAPUS ALAT
         // ================================================================
-        function tambahEnergi() {
-            const body = document.getElementById('energiBody');
-            const count = body.querySelectorAll('tr').length + 1;
-            const tr = document.createElement('tr');
-            tr.innerHTML = `
-                <td>${count}</td>
-                <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="energi_${count}_nama" rows="1" placeholder="Contoh: Lampu menyala" oninput="saveDraft(); autoResize(this);"></textarea></td>
-                <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="energi_${count}_ubah" rows="1" placeholder="Contoh: Listrik → Cahaya+Panas" oninput="saveDraft(); autoResize(this);"></textarea></td>
-                <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="energi_${count}_sumber" rows="1" placeholder="Contoh: PLN" oninput="saveDraft(); autoResize(this);"></textarea></td>
-                <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="energi_${count}_manfaat" rows="1" placeholder="Contoh: Penerangan" oninput="saveDraft(); autoResize(this);"></textarea></td>
-            `;
-            body.appendChild(tr);
-            updateHapus('energi');
-            saveDraft();
-            refreshAutoResize();
-        }
-
-        function hapusEnergi() {
-            const body = document.getElementById('energiBody');
-            const rows = body.querySelectorAll('tr');
-            if (rows.length > 1) {
-                body.removeChild(rows[rows.length - 1]);
-                renumberEnergi();
-                updateHapus('energi');
-                saveDraft();
-            }
-        }
-
-        function renumberEnergi() {
-            const body = document.getElementById('energiBody');
-            const rows = body.querySelectorAll('tr');
-            rows.forEach((row, i) => {
-                const num = i + 1;
-                row.querySelector('td:first-child').textContent = num;
-                const inputs = row.querySelectorAll('textarea');
-                if (inputs.length >= 4) {
-                    inputs[0].id = `energi_${num}_nama`;
-                    inputs[1].id = `energi_${num}_ubah`;
-                    inputs[2].id = `energi_${num}_sumber`;
-                    inputs[3].id = `energi_${num}_manfaat`;
-                }
-            });
-        }
-
-        function tambahLangkah() {
-            const container = document.getElementById('langkahContainer');
-            const count = container.querySelectorAll('div').length + 1;
-            const div = document.createElement('div');
-            div.style.cssText = 'display:flex; gap:8px; align-items:center; margin-bottom:4px;';
-            div.innerHTML = `
-                <span style="font-weight:600; min-width:24px;">${count}.</span>
-                <textarea class="dynamic-textarea dynamic-textarea-sm" id="langkah_${count}" rows="1" placeholder="Tulis langkah..." oninput="saveDraft(); autoResize(this);" style="flex:1;"></textarea>
-            `;
-            container.appendChild(div);
-            updateHapus('langkah');
-            saveDraft();
-            refreshAutoResize();
-        }
-
-        function hapusLangkah() {
-            const container = document.getElementById('langkahContainer');
-            const items = container.querySelectorAll('div');
-            if (items.length > 1) {
-                container.removeChild(items[items.length - 1]);
-                renumberLangkah();
-                updateHapus('langkah');
-                saveDraft();
-            }
-        }
-
-        function renumberLangkah() {
-            const container = document.getElementById('langkahContainer');
-            const items = container.querySelectorAll('div');
-            items.forEach((div, i) => {
-                const num = i + 1;
-                const span = div.querySelector('span');
-                const input = div.querySelector('textarea');
-                if (span) span.textContent = `${num}.`;
-                if (input) input.id = `langkah_${num}`;
-            });
-        }
-
         function tambahAlat() {
             const body = document.getElementById('alatBody');
             const count = body.querySelectorAll('tr').length + 1;
             const tr = document.createElement('tr');
             tr.innerHTML = `
+                <td style="text-align:center;">${count}</td>
                 <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="alat_${count}_nama" rows="1" placeholder="Nama alat/bahan..." oninput="saveDraft(); autoResize(this);"></textarea></td>
                 <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="alat_${count}_jumlah" rows="1" placeholder="Jumlah..." oninput="saveDraft(); autoResize(this);"></textarea></td>
                 <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="alat_${count}_kegunaan" rows="1" placeholder="Kegunaan..." oninput="saveDraft(); autoResize(this);"></textarea></td>
@@ -1664,6 +1283,7 @@
             const rows = body.querySelectorAll('tr');
             rows.forEach((row, i) => {
                 const num = i + 1;
+                row.querySelector('td:first-child').textContent = num;
                 const inputs = row.querySelectorAll('textarea');
                 if (inputs.length >= 3) {
                     inputs[0].id = `alat_${num}_nama`;
@@ -1673,11 +1293,54 @@
             });
         }
 
+        // ================================================================
+        // TAMBAH / HAPUS LANGKAH
+        // ================================================================
+        function tambahLangkah() {
+            const body = document.getElementById('langkahBody');
+            const count = body.querySelectorAll('tr').length + 1;
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td style="text-align:center;">${count}</td>
+                <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="langkah_${count}" rows="1" placeholder="Tulis langkah..." oninput="saveDraft(); autoResize(this);"></textarea></td>
+            `;
+            body.appendChild(tr);
+            updateHapus('langkah');
+            saveDraft();
+            refreshAutoResize();
+        }
+
+        function hapusLangkah() {
+            const body = document.getElementById('langkahBody');
+            const rows = body.querySelectorAll('tr');
+            if (rows.length > 1) {
+                body.removeChild(rows[rows.length - 1]);
+                renumberLangkah();
+                updateHapus('langkah');
+                saveDraft();
+            }
+        }
+
+        function renumberLangkah() {
+            const body = document.getElementById('langkahBody');
+            const rows = body.querySelectorAll('tr');
+            rows.forEach((row, i) => {
+                const num = i + 1;
+                row.querySelector('td:first-child').textContent = num;
+                const input = row.querySelector('textarea');
+                if (input) input.id = `langkah_${num}`;
+            });
+        }
+
+        // ================================================================
+        // TAMBAH / HAPUS HASIL
+        // ================================================================
         function tambahHasil() {
             const body = document.getElementById('hasilBody');
             const count = body.querySelectorAll('tr').length + 1;
             const tr = document.createElement('tr');
             tr.innerHTML = `
+                <td style="text-align:center;">${count}</td>
                 <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="hasil_${count}_waktu" rows="1" placeholder="Waktu..." oninput="saveDraft(); autoResize(this);"></textarea></td>
                 <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="hasil_${count}_isi" rows="1" placeholder="Apa yang terjadi?" oninput="saveDraft(); autoResize(this);"></textarea></td>
             `;
@@ -1703,6 +1366,7 @@
             const rows = body.querySelectorAll('tr');
             rows.forEach((row, i) => {
                 const num = i + 1;
+                row.querySelector('td:first-child').textContent = num;
                 const inputs = row.querySelectorAll('textarea');
                 if (inputs.length >= 2) {
                     inputs[0].id = `hasil_${num}_waktu`;
@@ -1713,15 +1377,12 @@
 
         function updateHapus(type) {
             let btn, count;
-            if (type === 'energi') {
-                btn = document.getElementById('hapusEnergiBtn');
-                count = document.getElementById('energiBody').querySelectorAll('tr').length;
-            } else if (type === 'langkah') {
-                btn = document.getElementById('hapusLangkahBtn');
-                count = document.getElementById('langkahContainer').querySelectorAll('div').length;
-            } else if (type === 'alat') {
+            if (type === 'alat') {
                 btn = document.getElementById('hapusAlatBtn');
                 count = document.getElementById('alatBody').querySelectorAll('tr').length;
+            } else if (type === 'langkah') {
+                btn = document.getElementById('hapusLangkahBtn');
+                count = document.getElementById('langkahBody').querySelectorAll('tr').length;
             } else if (type === 'hasil') {
                 btn = document.getElementById('hapusHasilBtn');
                 count = document.getElementById('hasilBody').querySelectorAll('tr').length;
@@ -1803,7 +1464,7 @@
 
         function enableForm() {
             if (isOnline) {
-                ['kelas', 'nama', 'kelompok', 'tugas', 'submitBtn', 'exportBtn'].forEach(id => {
+                ['kelas', 'nama', 'tugas', 'submitBtn', 'exportBtn'].forEach(id => {
                     const el = document.getElementById(id);
                     if (el) el.disabled = false;
                 });
@@ -1846,7 +1507,6 @@
             const bulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
                 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
             ];
-
             const hariName = hari[now.getDay()];
             const tanggal = String(now.getDate()).padStart(2, '0');
             const bulanName = bulan[now.getMonth()];
@@ -1854,12 +1514,11 @@
             const jam = String(now.getHours()).padStart(2, '0');
             const menit = String(now.getMinutes()).padStart(2, '0');
             const detik = String(now.getSeconds()).padStart(2, '0');
-
             return `${hariName}, ${tanggal} ${bulanName} ${tahun} - ${jam}:${menit}:${detik}`;
         }
 
         // ================================================================
-        // DRAFT - SAVE & LOAD (LOCALSTORAGE)
+        // DRAFT - SAVE & LOAD
         // ================================================================
         function saveDraft() {
             if (!isOnline) return;
@@ -1896,36 +1555,10 @@
         }
 
         // ================================================================
-        // COLLECT DATA - STRUKTUR JSON KONSISTEN
+        // COLLECT DATA
         // ================================================================
         function collectData() {
             const timestamp = getFormattedTimestamp();
-
-            // Collect observasi data
-            const observasiData = [];
-            document.querySelectorAll('#energiBody tr').forEach((row, idx) => {
-                const inputs = row.querySelectorAll('textarea');
-                if (inputs.length >= 4) {
-                    observasiData.push({
-                        "No": idx + 1,
-                        "Peristiwa": inputs[0].value || '',
-                        "Energi Awal → Akhir": inputs[1].value || '',
-                        "Sumber Energi": inputs[2].value || '',
-                        "Manfaat": inputs[3].value || ''
-                    });
-                }
-            });
-
-            // Collect langkah data
-            const langkahData = [];
-            document.querySelectorAll('#langkahContainer div textarea').forEach((inp, idx) => {
-                if (inp.value) {
-                    langkahData.push({ "No": idx + 1, "Langkah": inp.value });
-                }
-            });
-            if (langkahData.length === 0) {
-                langkahData.push({ "No": 1, "Langkah": "" });
-            }
 
             // Collect alat data
             const alatData = [];
@@ -1944,6 +1577,19 @@
                 alatData.push({ "Nama Alat/Bahan": "", "Jumlah": "", "Kegunaan": "" });
             }
 
+            // Collect langkah data
+            const langkahData = [];
+            document.querySelectorAll('#langkahBody tr').forEach(row => {
+                const input = row.querySelector('textarea');
+                if (input) {
+                    langkahData.push({ "Langkah": input.value || '' });
+                }
+            });
+            if (langkahData.length === 0) {
+                langkahData.push({ "Langkah": "" });
+                langkahData.push({ "Langkah": "" });
+            }
+
             // Collect hasil data
             const hasilData = [];
             document.querySelectorAll('#hasilBody tr').forEach(row => {
@@ -1957,212 +1603,135 @@
             });
             if (hasilData.length === 0) {
                 hasilData.push({ "Waktu": "", "Yang Terjadi": "" });
+                hasilData.push({ "Waktu": "", "Yang Terjadi": "" });
             }
 
-            // Get emoji values
-            const getEmojiValue = (name) => {
-                const el = document.querySelector(`input[name="${name}"]:checked`);
-                return el ? el.value : '3';
+            const getJurusan = () => {
+                const checked = document.querySelector('input[name="jurusan"]:checked');
+                if (!checked) return '';
+                if (checked.value === 'lain') {
+                    return document.getElementById('jurusanLain').value || 'Lainnya';
+                }
+                return checked.value;
             };
 
             return {
-                "Timestamp Pengisian": timestamp,
-                "A. Identitas Kelompok": [
+                "Timestamp": timestamp,
+                "A. Identitas": [
                     ["Field", "Nilai"],
                     ["Kelas", document.getElementById('kelas').value || ''],
                     ["Nama", document.getElementById('nama').value || ''],
-                    ["Kelompok", document.getElementById('kelompok').value || ''],
                     ["Tugas/Peran", document.getElementById('tugas').value || '']
                 ],
-                "B. Literasi Energi": [
-                    ["Pertanyaan", "Jawaban"],
-                    ["Apa itu energi?", document.getElementById('lit1').value || ''],
-                    ["Bentuk energi 1", document.getElementById('lit2a').value || ''],
-                    ["Bentuk energi 2", document.getElementById('lit2b').value || ''],
-                    ["Bentuk energi 3", document.getElementById('lit2c').value || ''],
-                    ["Hukum Kekekalan Energi", document.getElementById('lit3').value || '']
+                "B. Observasi": [
+                    ["Fenomena", document.getElementById('fenomena_nama').value || ''],
+                    ["Energi Awal → Akhir", document.getElementById('fenomena_ubah').value || ''],
+                    ["Sumber Energi", document.getElementById('fenomena_sumber').value || ''],
+                    ["Manfaat", document.getElementById('fenomena_manfaat').value || ''],
+                    ["Link Dokumentasi", document.getElementById('linkObservasi').value || '']
                 ],
-                "C. Observasi Energi": {
-                    "Tabel Observasi": observasiData,
-                    "Prediksi": {
-                        "Peristiwa pilihan": document.getElementById('predPilihan').value || '',
-                        "Prediksi hasil": document.getElementById('predHasil').value || '',
-                        "Alasan": document.getElementById('predAlasan').value || ''
-                    },
-                    "Link Dokumentasi": document.getElementById('link_screenshot_c').value || ''
-                },
+                "C. Prediksi": [
+                    ["Prediksi", document.getElementById('predHasil').value || ''],
+                    ["Alasan", document.getElementById('predAlasan').value || '']
+                ],
                 "D. Pembuktian": {
-                    "Rencana": [
-                        ["Pertanyaan", "Jawaban"],
-                        ["Prediksi yang dibuktikan", document.getElementById('buktiPrediksi').value || ''],
-                        ["Rencana pembuktian", document.getElementById('buktiRencana').value || ''],
-                        ["Kesesuaian hasil", document.querySelector('input[name="kesesuaian"]:checked')?.value || ''],
-                        ["Penjelasan", document.getElementById('buktiPenjelasan').value || ''],
-                        ["Kesimpulan", document.getElementById('buktiKesimpulan').value || '']
-                    ],
-                    "Langkah-langkah": langkahData,
+                    "Prediksi yang dibuktikan": document.getElementById('buktiPrediksi').value || '',
+                    "Rencana": document.getElementById('buktiRencana').value || '',
                     "Alat dan Bahan": alatData,
+                    "Langkah-langkah": langkahData,
                     "Hasil Pengamatan": hasilData,
-                    "Link Dokumentasi": document.getElementById('linkDokumentasi').value || ''
+                    "Link Dokumentasi": document.getElementById('linkPembuktian').value || '',
+                    "Kesesuaian": document.querySelector('input[name="kesesuaian"]:checked')?.value || '',
+                    "Penjelasan": document.getElementById('buktiPenjelasan').value || '',
+                    "Kesimpulan": document.getElementById('buktiKesimpulan').value || ''
                 },
-                "E. Hubungan dengan Jurusan": [
-                    ["Aspek", "Jawaban"],
-                    ["Program Keahlian", document.querySelector('input[name="jurusan"]:checked')?.value || ''],
-                    ["Program Keahlian (lainnya)", document.getElementById('jurusanLain').value || ''],
-                    ["Sumber energi", document.getElementById('hubSumber').value || ''],
-                    ["Peralatan berenergi", document.getElementById('hubAlat').value || ''],
-                    ["Proses produksi", document.getElementById('hubProses').value || ''],
-                    ["Produk/jasa", document.getElementById('hubProduk').value || ''],
-                    ["Masalah pemborosan", document.getElementById('solusiMasalah').value || ''],
-                    ["Ide hemat energi", document.getElementById('solusiIde').value || ''],
-                    ["Potensi terbarukan", document.getElementById('solusiTerbarukan').value || '']
+                "E. Hubungan Jurusan": [
+                    ["Program Keahlian", getJurusan()],
+                    ["Sumber Energi", document.getElementById('hubSumber').value || ''],
+                    ["Peralatan Berenergi", document.getElementById('hubAlat').value || ''],
+                    ["Proses Produksi", document.getElementById('hubProses').value || ''],
+                    ["Produk/Jasa", document.getElementById('hubProduk').value || ''],
+                    ["Pemborosan Energi", document.getElementById('hubBoros').value || ''],
+                    ["Ide Hemat Energi", document.getElementById('hubHemat').value || '']
                 ],
                 "F. Refleksi": [
-                    ["Pertanyaan", "Jawaban"],
-                    ["Hal paling menarik", document.getElementById('ref1').value || ''],
-                    ["Kebiasaan boros", document.getElementById('ref2').value || ''],
-                    ["Rencana hemat", document.getElementById('ref3').value || '']
-                ],
-                "G. Refleksi Kelompok (Emoji)": [
-                    ["Aspek", "Nilai"],
-                    ["Kerjasama", getEmojiValue('g_kerjasama')],
-                    ["Kontribusi", getEmojiValue('g_kontribusi')],
-                    ["Tepat Waktu", getEmojiValue('g_waktu')],
-                    ["Kualitas Hasil", getEmojiValue('g_kualitas')],
-                    ["Cerita Kelompok", document.getElementById('refleksiCerita').value || '']
+                    ["Hal Menarik", document.getElementById('ref1').value || ''],
+                    ["Kesulitan", document.getElementById('ref2').value || ''],
+                    ["Perasaan", document.getElementById('ref3').value || ''],
+                    ["Perbaikan ke Depan", document.getElementById('ref4').value || '']
                 ]
             };
         }
 
         // ================================================================
-        // RESTORE DATA - DARI LOCALSTORAGE
+        // RESTORE DATA
         // ================================================================
         function restoreData(data) {
             if (!data) return;
 
-            // A. Identitas (Array 2D)
-            if (data["A. Identitas Kelompok"] && Array.isArray(data["A. Identitas Kelompok"])) {
-                const identitasArray = data["A. Identitas Kelompok"];
-                let kelasValue = '', namaValue = '', kelompokValue = '', tugasValue = '';
-                
-                identitasArray.forEach(item => {
+            // A. Identitas
+            if (data["A. Identitas"] && Array.isArray(data["A. Identitas"])) {
+                const identitas = data["A. Identitas"];
+                let kelasValue = '',
+                    namaValue = '',
+                    tugasValue = '';
+                identitas.forEach(item => {
                     if (Array.isArray(item) && item.length === 2) {
                         const field = item[0];
                         const value = item[1] || '';
                         if (field === "Kelas") kelasValue = value;
                         else if (field === "Nama") namaValue = value;
-                        else if (field === "Kelompok") kelompokValue = value;
                         else if (field === "Tugas/Peran") tugasValue = value;
                     }
                 });
-                
                 const sel = document.getElementById('kelas');
                 for (let opt of sel.options) {
                     if (opt.value === kelasValue) { opt.selected = true; break; }
                 }
                 updateNama();
-                
                 const selNama = document.getElementById('nama');
                 for (let opt of selNama.options) {
                     if (opt.value === namaValue) { opt.selected = true; break; }
                 }
-                document.getElementById('kelompok').value = kelompokValue;
                 document.getElementById('tugas').value = tugasValue;
             }
 
-            // B. Literasi (Array 2D)
-            if (data["B. Literasi Energi"] && Array.isArray(data["B. Literasi Energi"])) {
-                const lit = data["B. Literasi Energi"];
-                lit.forEach(item => {
+            // B. Observasi
+            if (data["B. Observasi"] && Array.isArray(data["B. Observasi"])) {
+                const obs = data["B. Observasi"];
+                obs.forEach(item => {
                     if (Array.isArray(item) && item.length === 2) {
-                        const pertanyaan = item[0];
-                        const jawaban = item[1] || '';
-                        if (pertanyaan === "Apa itu energi?") document.getElementById('lit1').value = jawaban;
-                        else if (pertanyaan === "Bentuk energi 1") document.getElementById('lit2a').value = jawaban;
-                        else if (pertanyaan === "Bentuk energi 2") document.getElementById('lit2b').value = jawaban;
-                        else if (pertanyaan === "Bentuk energi 3") document.getElementById('lit2c').value = jawaban;
-                        else if (pertanyaan === "Hukum Kekekalan Energi") document.getElementById('lit3').value = jawaban;
+                        const field = item[0];
+                        const value = item[1] || '';
+                        if (field === "Fenomena") document.getElementById('fenomena_nama').value = value;
+                        else if (field === "Energi Awal → Akhir") document.getElementById('fenomena_ubah').value =
+                            value;
+                        else if (field === "Sumber Energi") document.getElementById('fenomena_sumber').value = value;
+                        else if (field === "Manfaat") document.getElementById('fenomena_manfaat').value = value;
+                        else if (field === "Link Dokumentasi") document.getElementById('linkObservasi').value = value;
                     }
                 });
             }
 
-            // C. Observasi
-            if (data["C. Observasi Energi"]) {
-                const obs = data["C. Observasi Energi"];
-                if (obs["Tabel Observasi"] && obs["Tabel Observasi"].length > 0) {
-                    const body = document.getElementById('energiBody');
-                    body.innerHTML = '';
-                    obs["Tabel Observasi"].forEach((item, i) => {
-                        const num = i + 1;
-                        body.innerHTML += `
-                            <tr>
-                                <td>${num}</td>
-                                <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="energi_${num}_nama" rows="1" placeholder="Contoh: Lampu menyala" oninput="saveDraft(); autoResize(this);">${item["Peristiwa"] || ''}</textarea></td>
-                                <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="energi_${num}_ubah" rows="1" placeholder="Contoh: Listrik → Cahaya+Panas" oninput="saveDraft(); autoResize(this);">${item["Energi Awal → Akhir"] || ''}</textarea></td>
-                                <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="energi_${num}_sumber" rows="1" placeholder="Contoh: PLN" oninput="saveDraft(); autoResize(this);">${item["Sumber Energi"] || ''}</textarea></td>
-                                <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="energi_${num}_manfaat" rows="1" placeholder="Contoh: Penerangan" oninput="saveDraft(); autoResize(this);">${item["Manfaat"] || ''}</textarea></td>
-                            </tr>
-                        `;
-                    });
-                    updateHapus('energi');
-                }
-                if (obs["Prediksi"]) {
-                    const pred = obs["Prediksi"];
-                    document.getElementById('predPilihan').value = pred["Peristiwa pilihan"] || '';
-                    document.getElementById('predHasil').value = pred["Prediksi hasil"] || '';
-                    document.getElementById('predAlasan').value = pred["Alasan"] || '';
-                }
-                // Link Dokumentasi Observasi
-                if (obs["Link Dokumentasi"]) {
-                    document.getElementById('link_screenshot_c').value = obs["Link Dokumentasi"] || '';
-                }
+            // C. Prediksi
+            if (data["C. Prediksi"] && Array.isArray(data["C. Prediksi"])) {
+                const pred = data["C. Prediksi"];
+                pred.forEach(item => {
+                    if (Array.isArray(item) && item.length === 2) {
+                        const field = item[0];
+                        const value = item[1] || '';
+                        if (field === "Prediksi") document.getElementById('predHasil').value = value;
+                        else if (field === "Alasan") document.getElementById('predAlasan').value = value;
+                    }
+                });
             }
 
             // D. Pembuktian
             if (data["D. Pembuktian"]) {
                 const p = data["D. Pembuktian"];
-
-                // Rencana (Array 2D)
-                if (p["Rencana"] && Array.isArray(p["Rencana"])) {
-                    p["Rencana"].forEach(item => {
-                        if (Array.isArray(item) && item.length === 2) {
-                            const pertanyaan = item[0];
-                            const jawaban = item[1] || '';
-                            if (pertanyaan === "Prediksi yang dibuktikan") document.getElementById('buktiPrediksi')
-                                .value = jawaban;
-                            else if (pertanyaan === "Rencana pembuktian") document.getElementById('buktiRencana')
-                                .value = jawaban;
-                            else if (pertanyaan === "Kesesuaian hasil") {
-                                document.querySelectorAll('input[name="kesesuaian"]').forEach(r => {
-                                    if (r.value === jawaban) r.checked = true;
-                                });
-                            } else if (pertanyaan === "Penjelasan") document.getElementById('buktiPenjelasan')
-                                .value = jawaban;
-                            else if (pertanyaan === "Kesimpulan") document.getElementById('buktiKesimpulan')
-                                .value = jawaban;
-                        }
-                    });
-                }
-
-                // Link Dokumentasi
-                document.getElementById('linkDokumentasi').value = p["Link Dokumentasi"] || '';
-
-                // Langkah-langkah
-                if (p["Langkah-langkah"] && p["Langkah-langkah"].length > 0) {
-                    const container = document.getElementById('langkahContainer');
-                    container.innerHTML = '';
-                    p["Langkah-langkah"].forEach((item, i) => {
-                        const num = i + 1;
-                        const div = document.createElement('div');
-                        div.style.cssText = 'display:flex; gap:8px; align-items:center; margin-bottom:4px;';
-                        div.innerHTML = `
-                            <span style="font-weight:600; min-width:24px;">${num}.</span>
-                            <textarea class="dynamic-textarea dynamic-textarea-sm" id="langkah_${num}" rows="1" placeholder="Tulis langkah..." oninput="saveDraft(); autoResize(this);" style="flex:1;">${item["Langkah"] || ''}</textarea>
-                        `;
-                        container.appendChild(div);
-                    });
-                    updateHapus('langkah');
-                }
+                document.getElementById('buktiPrediksi').value = p["Prediksi yang dibuktikan"] || '';
+                document.getElementById('buktiRencana').value = p["Rencana"] || '';
+                document.getElementById('linkPembuktian').value = p["Link Dokumentasi"] || '';
 
                 // Alat dan Bahan
                 if (p["Alat dan Bahan"] && p["Alat dan Bahan"].length > 0) {
@@ -2172,6 +1741,7 @@
                         const num = i + 1;
                         body.innerHTML += `
                             <tr>
+                                <td style="text-align:center;">${num}</td>
                                 <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="alat_${num}_nama" rows="1" placeholder="Nama alat/bahan..." oninput="saveDraft(); autoResize(this);">${item["Nama Alat/Bahan"] || ''}</textarea></td>
                                 <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="alat_${num}_jumlah" rows="1" placeholder="Jumlah..." oninput="saveDraft(); autoResize(this);">${item["Jumlah"] || ''}</textarea></td>
                                 <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="alat_${num}_kegunaan" rows="1" placeholder="Kegunaan..." oninput="saveDraft(); autoResize(this);">${item["Kegunaan"] || ''}</textarea></td>
@@ -2179,6 +1749,22 @@
                         `;
                     });
                     updateHapus('alat');
+                }
+
+                // Langkah-langkah
+                if (p["Langkah-langkah"] && p["Langkah-langkah"].length > 0) {
+                    const body = document.getElementById('langkahBody');
+                    body.innerHTML = '';
+                    p["Langkah-langkah"].forEach((item, i) => {
+                        const num = i + 1;
+                        body.innerHTML += `
+                            <tr>
+                                <td style="text-align:center;">${num}</td>
+                                <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="langkah_${num}" rows="1" placeholder="Tulis langkah..." oninput="saveDraft(); autoResize(this);">${item["Langkah"] || ''}</textarea></td>
+                            </tr>
+                        `;
+                    });
+                    updateHapus('langkah');
                 }
 
                 // Hasil Pengamatan
@@ -2189,6 +1775,7 @@
                         const num = i + 1;
                         body.innerHTML += `
                             <tr>
+                                <td style="text-align:center;">${num}</td>
                                 <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="hasil_${num}_waktu" rows="1" placeholder="Waktu..." oninput="saveDraft(); autoResize(this);">${item["Waktu"] || ''}</textarea></td>
                                 <td><textarea class="dynamic-textarea dynamic-textarea-sm" id="hasil_${num}_isi" rows="1" placeholder="Apa yang terjadi?" oninput="saveDraft(); autoResize(this);">${item["Yang Terjadi"] || ''}</textarea></td>
                             </tr>
@@ -2196,70 +1783,53 @@
                     });
                     updateHapus('hasil');
                 }
+
+                // Kesesuaian
+                if (p["Kesesuaian"]) {
+                    document.querySelectorAll('input[name="kesesuaian"]').forEach(r => {
+                        if (r.value === p["Kesesuaian"]) r.checked = true;
+                    });
+                }
+                document.getElementById('buktiPenjelasan').value = p["Penjelasan"] || '';
+                document.getElementById('buktiKesimpulan').value = p["Kesimpulan"] || '';
             }
 
-            // E. Hubungan dengan Jurusan (Array 2D)
-            if (data["E. Hubungan dengan Jurusan"] && Array.isArray(data["E. Hubungan dengan Jurusan"])) {
-                const e = data["E. Hubungan dengan Jurusan"];
+            // E. Hubungan Jurusan
+            if (data["E. Hubungan Jurusan"] && Array.isArray(data["E. Hubungan Jurusan"])) {
+                const e = data["E. Hubungan Jurusan"];
                 e.forEach(item => {
                     if (Array.isArray(item) && item.length === 2) {
-                        const aspek = item[0];
-                        const jawaban = item[1] || '';
-                        if (aspek === "Program Keahlian") {
+                        const field = item[0];
+                        const value = item[1] || '';
+                        if (field === "Program Keahlian") {
                             document.querySelectorAll('input[name="jurusan"]').forEach(r => {
-                                if (r.value === jawaban) r.checked = true;
+                                if (r.value === value) r.checked = true;
                             });
-                        } else if (aspek === "Program Keahlian (lainnya)") document.getElementById('jurusanLain')
-                            .value = jawaban;
-                        else if (aspek === "Sumber energi") document.getElementById('hubSumber').value = jawaban;
-                        else if (aspek === "Peralatan berenergi") document.getElementById('hubAlat').value = jawaban;
-                        else if (aspek === "Proses produksi") document.getElementById('hubProses').value = jawaban;
-                        else if (aspek === "Produk/jasa") document.getElementById('hubProduk').value = jawaban;
-                        else if (aspek === "Masalah pemborosan") document.getElementById('solusiMasalah').value =
-                            jawaban;
-                        else if (aspek === "Ide hemat energi") document.getElementById('solusiIde').value = jawaban;
-                        else if (aspek === "Potensi terbarukan") document.getElementById('solusiTerbarukan')
-                            .value = jawaban;
+                            if (!['ATPH', 'TSM', 'AKL', 'TKJ', 'lain'].includes(value) && value) {
+                                document.querySelector('input[name="jurusan"][value="lain"]').checked = true;
+                                document.getElementById('jurusanLain').value = value;
+                            }
+                        } else if (field === "Sumber Energi") document.getElementById('hubSumber').value = value;
+                        else if (field === "Peralatan Berenergi") document.getElementById('hubAlat').value = value;
+                        else if (field === "Proses Produksi") document.getElementById('hubProses').value = value;
+                        else if (field === "Produk/Jasa") document.getElementById('hubProduk').value = value;
+                        else if (field === "Pemborosan Energi") document.getElementById('hubBoros').value = value;
+                        else if (field === "Ide Hemat Energi") document.getElementById('hubHemat').value = value;
                     }
                 });
             }
 
-            // F. Refleksi (Array 2D)
+            // F. Refleksi
             if (data["F. Refleksi"] && Array.isArray(data["F. Refleksi"])) {
                 const f = data["F. Refleksi"];
                 f.forEach(item => {
                     if (Array.isArray(item) && item.length === 2) {
-                        const pertanyaan = item[0];
-                        const jawaban = item[1] || '';
-                        if (pertanyaan === "Hal paling menarik") document.getElementById('ref1').value = jawaban;
-                        else if (pertanyaan === "Kebiasaan boros") document.getElementById('ref2').value = jawaban;
-                        else if (pertanyaan === "Rencana hemat") document.getElementById('ref3').value = jawaban;
-                    }
-                });
-            }
-
-            // G. Refleksi Kelompok (Emoji) - Array 2D
-            if (data["G. Refleksi Kelompok (Emoji)"] && Array.isArray(data["G. Refleksi Kelompok (Emoji)"])) {
-                const g = data["G. Refleksi Kelompok (Emoji)"];
-                const map = {
-                    "Kerjasama": 'g_kerjasama',
-                    "Kontribusi": 'g_kontribusi',
-                    "Tepat Waktu": 'g_waktu',
-                    "Kualitas Hasil": 'g_kualitas'
-                };
-                g.forEach(item => {
-                    if (Array.isArray(item) && item.length === 2) {
-                        const aspek = item[0];
-                        const nilai = item[1] || '3';
-                        if (map[aspek]) {
-                            const name = map[aspek];
-                            document.querySelectorAll(`input[name="${name}"]`).forEach(r => {
-                                if (r.value === nilai) r.checked = true;
-                            });
-                        }
-                        if (aspek === "Cerita Kelompok") {
-                            document.getElementById('refleksiCerita').value = nilai;
-                        }
+                        const field = item[0];
+                        const value = item[1] || '';
+                        if (field === "Hal Menarik") document.getElementById('ref1').value = value;
+                        else if (field === "Kesulitan") document.getElementById('ref2').value = value;
+                        else if (field === "Perasaan") document.getElementById('ref3').value = value;
+                        else if (field === "Perbaikan ke Depan") document.getElementById('ref4').value = value;
                     }
                 });
             }
@@ -2275,13 +1845,7 @@
                 if (el.tagName === 'SELECT') el.selectedIndex = 0;
                 else el.value = '';
             });
-            document.querySelectorAll('input[type="radio"], input[type="checkbox"]').forEach(el => el.checked = false);
-
-            // Reset emoji to default '3' (😐)
-            document.querySelectorAll('.emoji-group input[type="radio"][value="3"]').forEach(r => {
-                r.checked = true;
-            });
-
+            document.querySelectorAll('input[type="radio"]').forEach(el => el.checked = false);
             document.getElementById('nama').innerHTML = '<option value="">-- Pilih Nama --</option>';
             initTables();
             clearDraft();
@@ -2349,18 +1913,16 @@
 
             const kelas = document.getElementById('kelas').value;
             const nama = document.getElementById('nama').value;
-            const kelompok = document.getElementById('kelompok').value;
 
             if (!kelas) { alert('Pilih kelas dulu!'); return; }
             if (!nama) { alert('Pilih nama dulu!'); return; }
-            if (!kelompok) { alert('Isi nama kelompok!'); return; }
 
             const btn = document.getElementById('submitBtn');
             btn.disabled = true;
             btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memeriksa...';
 
             const allData = collectData();
-            pendingData = { allData, kelas, nama, kelompok };
+            pendingData = { allData, kelas, nama };
 
             cekDataSpreadsheet(kelas, nama)
                 .then(result => {
@@ -2454,9 +2016,9 @@
                 });
 
                 const html = `
-                    <html><head><meta charset="UTF-8"><title>Template Lembar Kerja</title>
+                    <html><head><meta charset="UTF-8"><title>Lembar Kerja - Eksplorasi Energi</title>
                     <style>
-                        body { font-family: 'Segoe UI', Arial, sans-serif; padding:30px; max-width:960px; margin:auto; line-height:1.6; }
+                        body { font-family: 'Segoe UI', Arial, sans-serif; padding:30px; max-width:880px; margin:auto; line-height:1.6; }
                         .card { background:#fff; border-radius:12px; padding:20px; margin-bottom:16px; border-left:5px solid #f39c12; }
                         .section-title { font-size:1.2rem; font-weight:700; margin:0 0 8px 0; border-bottom:2px solid #fdebd0; padding-bottom:4px; }
                         .section-desc { background:#fef9e7; padding:8px 14px; border-radius:8px; margin-bottom:12px; }
@@ -2465,25 +2027,17 @@
                         td { padding:6px 10px; border-bottom:1px solid #eee; }
                         .identitas-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; background:#fdebd0; padding:12px 16px; border-radius:10px; }
                         .options-group { display:flex; flex-wrap:wrap; gap:10px 20px; }
-                        .panduan-box { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
-                        .panduan-box .contoh-benar { background:#e8f5e9; border:1px solid #a5d6a7; padding:8px 12px; border-radius:8px; }
-                        .panduan-box .contoh-salah { background:#fff3cd; border:1px solid #ffc107; padding:8px 12px; border-radius:8px; }
-                        .panduan-box ul { margin-left:1.2rem; }
+                        .mission-box { background:#f8f9fa; padding:12px 16px; border-radius:10px; border-left:5px solid #f39c12; margin-bottom:12px; }
+                        .mission-box .mission-title { font-weight:700; color:#e67e22; }
+                        .example-box { background:#e8f5e9; padding:10px 14px; border-radius:8px; border-left:4px solid #4caf50; margin:8px 0; }
+                        .example-box .bad { background:#fff3cd; border-left:4px solid #ffc107; padding:6px 10px; border-radius:6px; margin-top:4px; }
                         .header-title { text-align:center; font-size:1.6rem; color:#e67e22; }
                         .header-sub { text-align:center; color:#666; }
-                        .tp-card { background:#fff; border-radius:12px; padding:12px 18px; margin-bottom:16px; border-left:5px solid #f39c12; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+                        .tp-card { background:#fff; border-radius:12px; padding:12px 18px; margin-bottom:16px; border-left:5px solid #f39c12; }
                         .tp-card .tp-item { display:flex; align-items:center; gap:12px; padding:3px 0; }
                         .tp-card .tp-item .tp-code { background:#f39c12; color:#fff; padding:2px 10px; border-radius:12px; font-weight:700; font-size:0.8rem; min-width:45px; text-align:center; }
                         .tp-card .tp-item .tp-desc { color:#e67e22; }
-                        .emoji-grid { display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; margin:1rem 0; }
-                        .emoji-card { background:#fef9e7; padding:0.8rem 1rem; border-radius:12px; text-align:center; }
-                        .emoji-card .emoji-title { font-weight:600; font-size:0.9rem; margin-bottom:2px; }
-                        .emoji-group { display:flex; gap:0.4rem; justify-content:center; flex-wrap:wrap; }
-                        .dokumentasi-instruction { background:#fff3cd; padding:8px 12px; border-radius:8px; border-left:4px solid #f39c12; margin:8px 0; }
-                        .dokumentasi-instruction .contoh-dok { margin-top:6px; font-size:0.85rem; color:#666; background:#fff8e1; padding:6px 12px; border-radius:6px; }
-                        .folder-link-box { background:#e8f5e9; padding:10px 14px; border-radius:8px; border-left:5px solid #4caf50; margin:10px 0; }
-                        .folder-link-box .label-link { font-weight:600; color:#2e7d32; }
-                        @media (max-width:768px) { .panduan-box { grid-template-columns:1fr; } .emoji-grid { grid-template-columns:1fr; } }
+                        @media (max-width:768px) { .identitas-grid { grid-template-columns:1fr; } }
                     </style>
                     </head><body>
                     <h1 class="header-title">⚡ Eksplorasi Energi dan Perubahannya</h1>
