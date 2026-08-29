@@ -42,6 +42,34 @@
         .info-item { display: flex; align-items: center; gap: 10px; background: var(--ipas-light); padding: 0.8rem 1.5rem; border-radius: 50px; color: var(--ipas-dark); font-weight: 600; }
         .info-item i { color: var(--ipas-semester1); font-size: 1.2rem; }
         
+        /* ===== VIDEO WRAPPER ===== */
+        .video-wrapper {
+            margin: 1.5rem auto 2.5rem auto;
+            max-width: 800px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+            background: #000;
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+        }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .video-caption {
+            text-align: center;
+            color: #6c757d;
+            font-size: 0.95rem;
+            margin-top: 0.3rem;
+            font-style: italic;
+        }
+        
         .bab-description { background: white; border-radius: 20px; padding: 2rem; margin-bottom: 2rem; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 1px solid rgba(52, 152, 219, 0.1); }
         .bab-description h2, .bab-description h3, .bab-description h4, .bab-description p, .bab-description ul, .bab-description ol, .bab-description li, .bab-description table, .bab-description .note-box, .bab-description blockquote, .bab-description .energy-note { text-align: justify; }
         
@@ -88,6 +116,7 @@
             .bab-info { justify-content: center; }
             .bab-navigation { flex-direction: column; }
             .nav-btn { justify-content: center; }
+            .video-wrapper { max-width: 100%; }
         }
         
         @media (max-width: 480px) {
@@ -130,6 +159,20 @@
                 </div>
             </div>
 
+            <!-- ===== VIDEO YOUTUBE DI ATAS MATERI ===== -->
+            <div class="video-wrapper">
+<iframe
+    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
+    src="https://www.youtube-nocookie.com/embed/jYyRCuoKiqg"
+    title="Video: Energi dan Perubahannya"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen>
+</iframe>
+            </div>
+            <p class="video-caption">🎬 Video pengantar: Energi dan Perubahannya</p>
+
+            <!-- ===== AWAL MATERI ===== -->
             <div class="bab-description">
                 <h2>A. Pengantar Konsep Energi</h2>
                 <p>Coba bayangkan kehidupan tanpa energi: lampu tak menyala, kendaraan tak bergerak, tumbuhan tak tumbuh, tubuh manusia tak bisa berdiri, bahkan Bumi berhenti berputar. Semuanya berhenti.</p>
